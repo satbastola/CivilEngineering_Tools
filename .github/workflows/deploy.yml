@@ -36,9 +36,8 @@ jobs:
           pip install -r requirements.txt
 
       # Build the book
-      - name: Build the book .
-        run: |
-          jupyter-book build
+      - name: Build the book
+        run: jupyter-book build .
           
       # Deploy the book's HTML to GitHub Pages
       - name: Deploy to GitHub Pages
