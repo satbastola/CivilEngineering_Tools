@@ -38,6 +38,8 @@ jobs:
           if [ ! -d "_build/html" ]; then
             echo "❌ Build failed: _build/html not found"
             exit 1
+          fi  # <-- This was missing
+
       - name: Debug: List build output
         run: ls -R _build || echo "_build directory not found"
 
