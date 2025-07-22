@@ -33,14 +33,21 @@ jobs:
 
       - name: Build the Jupyter Book
         run: jupyter-book build .
-        
+
+      - name: Check if build output exists
+        run: |
+          if [ ! -d "_build/html" ]; then
+            echo "❌ Build failed: _build/html not found"
+            exit 1
+          fi
+
       - name: Debug: List build output
-        run: ls -R _build || echo ""_build directory not found"
+        run: ls -R _build || echo "_build directory not found"
 
       - name: Upload built book as artifact
         uses: actions/upload-pages-artifact@v3
         with:
-           path: _build/html
+          path: _build/html
 
       - name: Deploy to GitHub Pages
         id: deployment
