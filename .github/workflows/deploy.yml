@@ -20,16 +20,24 @@ jobs:
 
     - name: 📦 Install dependencies
       run: |
-        pip install jupyter-book ghp-import
+        pip install jupyter-book
 
     - name: 🏗️ Build Jupyter Book
       run: jupyter-book build .
 
-   - name: Deploy to GitHub Pages
-     env:
-     GH_TOKEN: ${{ secrets.GH_TOKEN }}
-     run: |
-     git config --global user.email "github-actions[bot]@users.noreply.github.com"
-     git config --global user.name "github-actions[bot]"
-     ghp-import -n -f -p _build/html -m "Deploy Jupyter Book"
-
+    - name: 🚀 Deploy to GitHub Pages
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git clone https://github.com/${{ github.repository }} --branch gh-pages --single-branch gh-pages || mkdir gh-pages
+        rm -rf gh-pages/*
+        cp -r _build/html/* gh-pages/
+        cd gh-pages
+        git init
+        git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+        git checkout -b gh-pages
+        git add .
+        git commit -m "Deploy Jupyter Book"
+        git push origin gh-pages --force
