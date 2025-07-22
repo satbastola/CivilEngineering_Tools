@@ -1,0 +1,43 @@
+# Book settings
+title: Civil Engineering Toolkit
+author: Satish Bastola
+logo: logo.png
+
+# Notebook execution settings
+execute:
+  execute_notebooks: auto
+  timeout: 180
+  allow_errors: false
+  run_in_temp: true
+  only_build_toc_files: true
+# PDF output settings
+latex:
+  latex_documents:
+    targetname: book.tex
+# Bibliography
+bibtex_bibfiles:
+  - references.bib
+# Repository info for GitHub links
+repository:
+  url: https://github.com/satbastola/CivilEngineering_Tools
+  path_to_book: ""  # adjust if your book is not inside 'docs'
+  branch: HEAD
+# HTML buttons
+html:
+  use_issues_button: true
+  use_repository_button: true
+  use_edit_page_button: true
+  navbar_footer_text: "Explore, simulate, and experiment with Civil Engineering"
+
+# Launch buttons for interactive notebooks
+launch_buttons:
+  binderhub_url: https://mybinder.org
+  repository: satbastola/CivilEngineering_Tools
+  branch: HEAD
+  path_to_book: ""
+  jupyterlab: true
+  noteburst: false
+  theve: true
+sphinx:
+  extra_extensions:
+    - sphinx.ext.mathjax
