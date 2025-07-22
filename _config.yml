@@ -84,7 +84,6 @@ sphinx:
     - sphinx.ext.mathjax
     - sphinx.ext.autodoc
     - sphinx.ext.napoleon
-    - nbsphinx  # Add nbsphinx extension
 
 # nbviewer settings
 nbviewer:
