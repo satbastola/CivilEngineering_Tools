@@ -90,6 +90,7 @@ sphinx:
     - sphinx.ext.mathjax
     - sphinx.ext.autodoc
     - sphinx.ext.napoleon
+    - sphinx_thebe 
 
 # nbviewer settings
 nbviewer:
