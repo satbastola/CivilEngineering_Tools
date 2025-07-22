@@ -5,7 +5,7 @@ logo: logo.png
 
 # Notebook execution settings
 execute:
-  execute_notebooks: "off"
+  execute_notebooks: false
   timeout: 180
   allow_errors: false
   run_in_temp: true
