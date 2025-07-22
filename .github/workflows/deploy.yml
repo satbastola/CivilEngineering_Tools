@@ -25,5 +25,11 @@ jobs:
     - name: 🏗️ Build Jupyter Book
       run: jupyter-book build .
 
-    - name: 🚀 Deploy to GitHub Pages
-      run: ghp-import -n -p -f _build/html
+   - name: Deploy to GitHub Pages
+     env:
+     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+     run: |
+     git config --global user.email "github-actions[bot]@users.noreply.github.com"
+     git config --global user.name "github-actions[bot]"
+     ghp-import -n -f -p _build/html -m "Deploy Jupyter Book"
+
