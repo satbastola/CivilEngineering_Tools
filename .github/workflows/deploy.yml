@@ -3,7 +3,7 @@ name: Deploy Jupyter Book to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch
+      - main
 
 permissions:
   contents: read
@@ -11,11 +11,10 @@ permissions:
   id-token: write
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      artifact-path: _build/html
 
     steps:
       - name: Checkout repository
@@ -32,14 +31,21 @@ jobs:
           pip install jupyter-book
 
       - name: Build the Jupyter Book
-        run: |
-          jupyter-book build .
+        run: jupyter-book build .
 
       - name: Upload built book as artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _build/html
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
