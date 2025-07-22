@@ -10,24 +10,40 @@ execute:
   allow_errors: false
   run_in_temp: true
   only_build_toc_files: true
+
 # PDF output settings
 latex:
   latex_documents:
     targetname: book.tex
+    title: Civil Engineering Toolkit
+    author: Satish Bastola
+    theme: "sphinx_book_theme"
+
 # Bibliography
 bibtex_bibfiles:
   - references.bib
+
 # Repository info for GitHub links
 repository:
   url: https://github.com/satbastola/CivilEngineering_Tools
   path_to_book: ""  # adjust if your book is not inside 'docs'
   branch: HEAD
-# HTML buttons
+
+# HTML settings
 html:
+  theme:
+    name: "sphinx_book_theme"
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
   navbar_footer_text: "Explore, simulate, and experiment with Civil Engineering"
+  navbar_items:
+    - name: "Home"
+      url: "index.html"
+    - name: "About"
+      url: "about.html"
+    - name: "Contact"
+      url: "contact.html"
 
 # Launch buttons for interactive notebooks
 launch_buttons:
@@ -36,8 +52,12 @@ launch_buttons:
   branch: HEAD
   path_to_book: ""
   jupyterlab: true
-  noteburst: false
-  theve: true
+  thebe: true
+  colab_url: https://colab.research.google.com
+
+# Sphinx extensions
 sphinx:
   extra_extensions:
     - sphinx.ext.mathjax
+    - sphinx.ext.autodoc
+    - sphinx.ext.napoleon
