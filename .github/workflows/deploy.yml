@@ -11,10 +11,11 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      artifact-path: _build/html
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -30,6 +31,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install jupyter-book
 
+      - name: List files for debugging
+        run: ls -R
+
       - name: Build the Jupyter Book
         run: jupyter-book build .
 
@@ -38,14 +42,6 @@ jobs:
         with:
           path: _build/html
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
