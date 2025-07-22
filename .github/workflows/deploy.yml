@@ -36,8 +36,6 @@ jobs:
 
       - name: Upload built book as artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          path: _build/html
 
       - name: Deploy to GitHub Pages
         id: deployment
