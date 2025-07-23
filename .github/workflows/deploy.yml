@@ -60,3 +60,5 @@ jobs:
          git add .
          git commit -m "Initial deploy of Jupyter Book"
          git push origin gh-pages --force
+      - name: Add .nojekyll
+        run: touch _build/html/.nojekyll
