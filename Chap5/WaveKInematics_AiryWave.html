@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 5 Coastal Engineering: Wave Kinematics &#8212; Civil Engineering Toolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap5/WaveKInematics_AiryWave';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 5 Coastal Engineering: Wave Kinematics" href="WaveBreaking.html" />
+    <link rel="prev" title="Chpater 4 Geotechnical Engineering: Slope Stability" href="../Chap4/slope_stability_analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Civil Engineering Toolkit - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Civil Engineering Toolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1. 0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Qualty based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">3.9 Pipe Hydraulics - Pump Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap5/WaveKInematics_AiryWave.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap5/WaveKInematics_AiryWave.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap5/WaveKInematics_AiryWave.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap5/WaveKInematics_AiryWave.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap5/WaveKInematics_AiryWave.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5 Coastal Engineering: Wave Kinematics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-kinematics">Wave kinematics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-wave-theory-interactive-simulator">Linear Wave Theory Interactive Simulator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#about-linear-wave-theory">📘 About Linear Wave Theory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equations">🔬 Governing Equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-solutions">📈 Wave Solutions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-wave-field-simulator-airy-theory-visualization">🌊 Interactive Wave Field Simulator — Airy Theory Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">🧠 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-via-sliders">🎛️ Inputs (via Sliders)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🧭 Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-kinematics-conceptual-understanding">Wave kinematics Conceptual Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-kinematics-quiz">Wave kinematics Quiz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer-discussion-prompts">Short Answer &amp; Discussion Prompts</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-coastal-engineering-wave-kinematics">
+<h1>Chapter 5 Coastal Engineering: Wave Kinematics<a class="headerlink" href="#chapter-5-coastal-engineering-wave-kinematics" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Wave Kinematics</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: AiryWave</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="wave-kinematics">
+<h3>Wave kinematics<a class="headerlink" href="#wave-kinematics" title="Link to this heading">#</a></h3>
+<p>This Jupyter Notebook simulates and visualizes the dynamic behavior of surface gravity waves in shallow water using linear wave theory. Users can interactively explore how wave amplitude, depth, and time affect wave properties such as surface elevation, velocity, acceleration, and pressure.</p>
+<p>Linear Wave Theory: Also known as Airy wave theory, it describes the propagation of small amplitude waves on the surface of a fluid. It is based on the assumption that the wave amplitude is small compared to the wavelength and water depth.</p>
+<p>Assumptions
+•	Small Amplitude Waves: The wave height is much smaller than the wavelength and water depth.<br />
+•	Incompressible Fluid: The fluid is assumed to be incompressible, meaning its density remains constant.<br />
+•	Irrotational Flow: The flow is assumed to be irrotational, meaning there is no rotation of fluid particles.
+•	Homogeneous Fluid: The fluid is assumed to be homogeneous, meaning its properties are uniform throughout.
+•	Gravity Waves: The waves are primarily driven by gravity.</p>
+<p>Wave Equations and Solutions</p>
+<p>Governing Equations
+•	Laplace’s Equation: Describes the potential flow in an incompressible, irrotational fluid.
+∇2ϕ=0∇2ϕ=0
+where ϕϕ is the velocity potential.
+•	Boundary Conditions:
+•	Free Surface Boundary Condition: At the free surface, the pressure is equal to the atmospheric pressure.
+∂ϕ∂t+gη=0atz=η∂t∂ϕ+gη=0atz=η
+where ηη is the surface elevation and gg is the acceleration due to gravity.
+•	Bottom Boundary Condition: At the bottom, the vertical velocity is zero.
+∂ϕ∂z=0atz=−h∂z∂ϕ=0atz=−h
+where hh is the water depth.</p>
+<p>Wave Solutions
+•	Surface Elevation: The surface elevation ηη can be expressed as:
+η=acos⁡(kx−ωt)η=acos(kx−ωt)
+where:
+•	aa = wave amplitude
+•	kk = wave number (k=2πλk=λ2π)
+•	ωω = angular frequency (ω=2πfω=2πf)
+•	λλ = wavelength
+•	ff = wave frequency
+•	Velocity Potential: The velocity potential ϕϕ can be expressed as:
+ϕ=agωcosh⁡(k(z+h))cos⁡(kx−ωt)ϕ=ωagcosh(k(z+h))cos(kx−ωt)
+•	Dispersion Relation: Relates the wave frequency ωω to the wave number kk and water depth hh:
+ω2=gktanh⁡(kh)ω2=gktanh(kh)</p>
+<section id="linear-wave-theory-interactive-simulator">
+<h4>Linear Wave Theory Interactive Simulator<a class="headerlink" href="#linear-wave-theory-interactive-simulator" title="Link to this heading">#</a></h4>
+<p>This Jupyter Notebook simulates and visualizes the dynamic behavior of surface gravity waves in shallow water using <strong>Linear Wave Theory</strong> (also known as Airy wave theory). Through interactive sliders, you can explore how wave amplitude, depth, and time influence:</p>
+<ul class="simple">
+<li><p><strong>Surface elevation</strong> ( \zeta(x, t) )</p></li>
+<li><p><strong>Velocity field</strong> ( u(x, z, t) )</p></li>
+<li><p><strong>Acceleration field</strong> ( a(x, z, t) )</p></li>
+<li><p><strong>Pressure distribution</strong> ( p(x, z, t) )</p></li>
+</ul>
+</section>
+<section id="about-linear-wave-theory">
+<h4>📘 About Linear Wave Theory<a class="headerlink" href="#about-linear-wave-theory" title="Link to this heading">#</a></h4>
+<p>Linear Wave Theory describes the propagation of small-amplitude waves on the free surface of an inviscid, incompressible, and irrotational fluid. It assumes:</p>
+<ul class="simple">
+<li><p><strong>Small Amplitude Waves</strong>: <span class="math notranslate nohighlight">\(H \ll \lambda\)</span>, <span class="math notranslate nohighlight">\(H \ll h\)</span></p></li>
+<li><p><strong>Incompressible Fluid</strong>: Constant density</p></li>
+<li><p><strong>Irrotational Flow</strong>: No internal vorticity</p></li>
+<li><p><strong>Homogeneous Properties</strong>: Uniform throughout</p></li>
+<li><p><strong>Gravity Waves</strong>: Dominated by gravitational restoring forces</p></li>
+</ul>
+</section>
+<section id="governing-equations">
+<h4>🔬 Governing Equations<a class="headerlink" href="#governing-equations" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Laplace’s Equation</strong> for velocity potential ( \phi ):<br />
+$<span class="math notranslate nohighlight">\(
+\nabla^2 \phi = 0
+\)</span>$$$</p></li>
+<li><p><strong>Free Surface Boundary Condition</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\frac{\partial \phi}{\partial t} + g\eta = 0 \quad \text{at } z = \eta
+\)</span>$</p></li>
+<li><p><strong>Bottom Boundary Condition</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\frac{\partial \phi}{\partial z} = 0 \quad \text{at } z = -h
+\)</span>$</p></li>
+</ul>
+</section>
+<section id="wave-solutions">
+<h4>📈 Wave Solutions<a class="headerlink" href="#wave-solutions" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Surface Elevation</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\eta(x, t) = a \cos(kx - \omega t)
+\)</span>$</p></li>
+<li><p><strong>Velocity Potential</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\phi(x, z, t) = \frac{a g}{\omega} \cosh(k(z + h)) \cos(kx - \omega t)
+\)</span>$</p></li>
+<li><p><strong>Dispersion Relation</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\omega^2 = gk \tanh(kh)
+\)</span>$</p></li>
+</ul>
+<p>Where:</p>
+<ul class="simple">
+<li><p>( a ): Wave amplitude</p></li>
+<li><p><span class="math notranslate nohighlight">\(k = \dfrac{2\pi}{\lambda}\)</span>: Wave number</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega = 2\pi f\)</span>: Angular frequency</p></li>
+<li><p><span class="math notranslate nohighlight">\(h\)</span>: Water depth- ( g ): Acceleration due to gravity</p></li>
+</ul>
+<hr class="docutils" />
+<p>🛠 Use the interactive simulation below to explore how these physical principles manifest across the wave field.</p>
+</section>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="interactive-wave-field-simulator-airy-theory-visualization">
+<h3>🌊 Interactive Wave Field Simulator — Airy Theory Visualization<a class="headerlink" href="#interactive-wave-field-simulator-airy-theory-visualization" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="what-it-is">
+<h3>🧠 What It Is<a class="headerlink" href="#what-it-is" title="Link to this heading">#</a></h3>
+<p>A dynamic Jupyter Notebook tool that simulates and visualizes wave-induced kinematics and pressure fields in a 2D domain using <strong>Airy wave theory</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Defines spatial grid</strong> in horizontal (x) and vertical (z) directions</p></li>
+<li><p>Computes:</p>
+<ul class="simple">
+<li><p><strong>Surface elevation ζ</strong></p></li>
+<li><p><strong>Horizontal velocity (u)</strong></p></li>
+<li><p><strong>Horizontal acceleration (aₓ)</strong></p></li>
+<li><p><strong>Hydrostatic + dynamic pressure (p)</strong></p></li>
+</ul>
+</li>
+<li><p>Uses sinusoidal expressions for wave motion and hyperbolic functions for vertical decay</p></li>
+<li><p>Visualizes outputs as:</p>
+<ul class="simple">
+<li><p>Line plot of surface elevation</p></li>
+<li><p>Heatmaps for velocity, acceleration, and pressure distributions</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="inputs-via-sliders">
+<h3>🎛️ Inputs (via Sliders)<a class="headerlink" href="#inputs-via-sliders" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">[s]</span></code></p></td>
+<td><p>Phase time of wave cycle</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Amplitude</span> <span class="pre">[m]</span></code></p></td>
+<td><p>Surface wave amplitude</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Depth</span> <span class="pre">[m]</span></code></p></td>
+<td><p>Water depth</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📊 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>ζ(x)</strong>: Surface elevation vs. horizontal distance</p></li>
+<li><p><strong>u(x, z)</strong>: Velocity field heatmap</p></li>
+<li><p><strong>aₓ(x, z)</strong>: Acceleration field heatmap</p></li>
+<li><p><strong>p(x, z)</strong>: Pressure field heatmap</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="interpretation">
+<h3>🧭 Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Velocity and pressure decay with depth due to hyperbolic attenuation</p></li>
+<li><p>Surface elevation shows sinusoidal wave form at selected time</p></li>
+<li><p>Use outputs to:</p>
+<ul>
+<li><p>Visualize wave structure and impact at different depths</p></li>
+<li><p>Explore nearshore hydrodynamics</p></li>
+<li><p>Validate linear theory assumptions</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p><em>Ideal for education, coastal planning, and understanding wave-driven forces beneath the surface.</em></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="c1"># Define all constant/parameters; grid size</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># number of grid along z-axis</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># number of grid along x-axis</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+<span class="n">freq</span><span class="o">=</span><span class="mi">1</span>     <span class="c1"># Hz frequency</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">freq</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">omega</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">g</span>
+<span class="n">zetaA</span><span class="o">=</span><span class="mf">0.2</span>  <span class="c1"># wave amplitude</span>
+<span class="n">ts</span><span class="o">=</span><span class="mi">0</span>       <span class="c1"># time start</span>
+<span class="n">te</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># terminal time</span>
+<span class="n">d</span><span class="o">=</span><span class="mi">2</span>       <span class="c1"># water depth</span>
+<span class="n">xe</span><span class="o">=</span><span class="mi">5</span>     <span class="c1"># maximum range</span>
+<span class="n">time</span><span class="o">=</span><span class="mf">2.</span>   <span class="c1"># ref time</span>
+<span class="n">x</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">k</span><span class="o">=</span><span class="n">omega</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">g</span>
+
+<span class="c1">############ Grid####################</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xe</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="p">)</span>
+
+<span class="c1"># Compute spatial distribution of velocity, accleration and pressure</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_fields</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">zetaA</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="mi">1000</span><span class="c1"># density of water in kg/m^3</span>
+    <span class="n">zeta</span><span class="o">=</span><span class="n">zetaA</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">time</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">u</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">nz</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">nz</span><span class="p">))</span>
+    <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">nz</span><span class="p">))</span>
+    <span class="n">sp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">nz</span><span class="p">))</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">zetaA</span>
+    <span class="c1">#print(nx,nz,k,d,time,zetaA,omega)</span>
+    <span class="k">for</span> <span class="n">iz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nz</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+            <span class="n">u</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span><span class="o">=</span><span class="n">zetaA</span><span class="o">*</span><span class="n">omega</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">iz</span><span class="p">]</span><span class="o">+</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">time</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">])</span>
+            <span class="c1">#p[ix,iz] = rho * g * (-z[iz]) + 0.5 * rho * u[ix, iz]**2</span>
+            <span class="n">p</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">rho</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">z</span><span class="p">[</span><span class="n">iz</span><span class="p">]</span> <span class="o">+</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">H</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="n">z</span><span class="p">[</span><span class="n">iz</span><span class="p">]))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">-</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>
+            <span class="c1">#sp[ix,iz] = omega/k*np.sqrt(np.cosh(k*d)/np.cosh(k*(z[ix]+d)))</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">ix</span><span class="p">,</span> <span class="n">iz</span><span class="p">]</span><span class="o">=</span><span class="n">zetaA</span><span class="o">*</span><span class="n">omega</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">iz</span><span class="p">]</span><span class="o">+</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span><span class="o">*</span><span class="n">time</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">zeta</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span><span class="n">sp</span>
+
+<span class="c1"># Interactive plotting function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_interactive</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">zetaA</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">z</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="p">)</span><span class="c1"># update z based on depth</span>
+    <span class="n">zeta</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">sp</span> <span class="o">=</span> <span class="n">compute_fields</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">zetaA</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    <span class="c1"># Surface elevation plot</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">zeta</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;water surface ζ&#39;</span><span class="p">,</span>
+                             <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Water Surface ζ [m]&#39;</span><span class="p">,</span>
+                      <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;distance [m]&#39;</span><span class="p">,</span>
+                      <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Surface ζ [m]&#39;</span><span class="p">,</span>
+                      <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1"># Velocity field plot</span>
+    <span class="n">fig_u</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;Jet&#39;</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;u [m/s]&#39;</span><span class="p">})</span>
+    <span class="n">fig_u</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Velocity Field u [m/s]&#39;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;x [m]&#39;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;z [m]&#39;</span><span class="p">)</span>
+    <span class="n">fig_u</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">tickvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">ticktext</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xe</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+    <span class="n">fig_u</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">tickvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">ticktext</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+    <span class="n">fig_u</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1"># Acceleration field plot</span>
+    <span class="n">fig_ax</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">color_continuous_scale</span><span class="o">=</span><span class="s1">&#39;Jet&#39;</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;w [m/s²]&#39;</span><span class="p">})</span>
+    <span class="n">fig_ax</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Acceleration Field w [m/s²]&#39;</span><span class="p">,</span><span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;x [m]&#39;</span><span class="p">,</span><span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;z [m]&#39;</span><span class="p">)</span>
+    <span class="n">fig_ax</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">tickvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">ticktext</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xe</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+    <span class="n">fig_ax</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">tickvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">ticktext</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+    <span class="n">fig_ax</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="c1"># pressure field plot</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span><span class="n">z</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;Jet&#39;</span><span class="p">,</span><span class="n">colorbar</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;p [pascal]&#39;</span><span class="p">)))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Pressure Field Pascal [Pa]&#39;</span><span class="p">,</span><span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;x [m]&#39;</span><span class="p">,</span><span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;z [m]&#39;</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">tickvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nx</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">ticktext</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xe</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_yaxes</span><span class="p">(</span><span class="n">tickvals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">ticktext</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Create interactive slider with all parameters</span>
+<span class="n">time_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">zeta_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Amplitude [m]&#39;</span><span class="p">)</span>
+<span class="n">depth_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Depth [m]&#39;</span><span class="p">)</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Run Simulation&quot;</span><span class="p">)</span>
+
+<span class="c1"># Output area</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="c1"># Callback function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_button_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">plot_interactive</span><span class="p">(</span><span class="n">time_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">zeta_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">depth_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_button_click</span><span class="p">)</span>
+<span class="c1"># Display widgets</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">time_slider</span><span class="p">,</span> <span class="n">zeta_slider</span><span class="p">,</span> <span class="n">depth_slider</span><span class="p">,</span> <span class="n">run_button</span><span class="p">,</span> <span class="n">output</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5f25c355d5fa4f23b51dc099518de6aa", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="wave-kinematics-conceptual-understanding">
+<h3>Wave kinematics Conceptual Understanding<a class="headerlink" href="#wave-kinematics-conceptual-understanding" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Why does linear wave theory assume small-amplitude waves? What physical phenomena would invalidate this assumption?</strong></p></li>
+<li><p><strong>What role does the velocity potential <span class="math notranslate nohighlight">\(( \phi \)</span>) play in describing wave motion?</strong></p></li>
+<li><p><strong>How does the dispersion relation <span class="math notranslate nohighlight">\(( \omega^2 = gk \tanh(kh) \)</span>) help us distinguish between shallow and deep water waves?</strong></p></li>
+<li><p><strong>Why does pressure beneath a wave include both hydrostatic and dynamic components?</strong></p></li>
+<li><p><strong>How would increasing depth <span class="math notranslate nohighlight">\(( h \)</span>) affect the vertical structure of the velocity and acceleration fields?</strong></p></li>
+<li><p><strong>What surprised you most when visualizing the pressure or velocity field?</strong><br />
+<em>Was it how deep the wave motion extended? Or how quickly the pressure varied with depth?</em></p></li>
+<li><p><strong>When adjusting wave amplitude or depth, how did your intuition compare to what the simulation revealed?</strong><br />
+<em>Did you expect deeper motion at higher amplitudes, or more flattening at greater depths?</em></p></li>
+<li><p><strong>How would you explain to a non-engineering friend why water particles in waves don’t move horizontally across the ocean?</strong></p></li>
+<li><p><strong>How might real-world effects (e.g., wind, viscosity, turbulence) deviate from what you saw in the simulation?</strong></p></li>
+</ol>
+</section>
+<section id="wave-kinematics-quiz">
+<h3>Wave kinematics Quiz<a class="headerlink" href="#wave-kinematics-quiz" title="Link to this heading">#</a></h3>
+<p><strong>Q1:</strong> Which assumption is <em>not</em> part of linear wave theory?<br />
+A. The fluid is homogeneous<br />
+B. The wave height is large compared to the depth<br />
+C. The flow is irrotational<br />
+D. The fluid is incompressible<br />
+🟢 <strong>Answer:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q2:</strong> In the wave equation <span class="math notranslate nohighlight">\(( \eta(x,t) = a \cos(kx - \omega t) \)</span>), what does <span class="math notranslate nohighlight">\(( a \)</span>) represent?<br />
+A. Wavelength<br />
+B. Water depth<br />
+C. Wave amplitude<br />
+D. Velocity potential<br />
+🟢 <strong>Answer:</strong> C</p>
+<hr class="docutils" />
+<p><strong>Q3:</strong> What does the term <span class="math notranslate nohighlight">\(( \cosh(k(z + h)) \)</span>) control in the solution for velocity potential?<br />
+A. Time oscillation<br />
+B. Horizontal periodicity<br />
+C. Decay with depth<br />
+D. Wave energy<br />
+🟢 <strong>Answer:</strong> C</p>
+<p>Q1. What does increasing the value of the Amplitude slider (ζₐ) do to the computed velocity and pressure fields?</p>
+<ul class="simple">
+<li><p>It reduces both fields</p></li>
+<li><p>It increases the surface wave speed only</p></li>
+<li><p>It increases the magnitude of velocity and pressure</p></li>
+<li><p>It has no effect on any field
+🟢 Correct Answer: C</p></li>
+</ul>
+<p>Q2. When using the Time slider, what type of behavior is observed in the surface elevation plot?</p>
+<ul class="simple">
+<li><p>Linear increase with time</p></li>
+<li><p>Random noise fluctuation</p></li>
+<li><p>Cyclical or oscillatory motion</p></li>
+<li><p>Constant wave crest height
+🟢 Correct Answer: C</p></li>
+</ul>
+<p>Q3. What effect does increasing the Water Depth (d) have on the shape of the velocity and acceleration fields?</p>
+<ul class="simple">
+<li><p>Motion penetrates deeper and becomes more uniform</p></li>
+<li><p>Particle velocity becomes vertical only</p></li>
+<li><p>Pressure increases but velocity vanishes</p></li>
+<li><p>Fields become zero beyond surface level
+🟢 Correct Answer: A</p></li>
+</ul>
+<p>Q4. At which depth zone is horizontal particle acceleration generally highest?</p>
+<ul class="simple">
+<li><p>At the bottom (z = −d)</p></li>
+<li><p>At the surface (z = 0)</p></li>
+<li><p>Uniform at all depths</p></li>
+<li><p>At mid-depth
+🟢 Correct Answer: B</p></li>
+</ul>
+<p>Q5. True or False:
+Increasing the wave amplitude will linearly increase pressure everywhere in the fluid column.
+🟢 Correct Answer: False
+💡 Explanation: Pressure depends on both hydrostatic and dynamic components, and the latter varies nonlinearly with depth and time.</p>
+</section>
+<section id="short-answer-discussion-prompts">
+<h3>Short Answer &amp; Discussion Prompts<a class="headerlink" href="#short-answer-discussion-prompts" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What do you observe about the pressure field as time progresses? How does this relate to the position of wave crests and troughs?</p></li>
+<li><p>Explain why acceleration and velocity fields attenuate with depth even though the wave propagates along the surface.</p></li>
+<li><p>If the wavelength were longer (i.e., smaller k), how do you think the shape of the pressure field would change</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Chap4/slope_stability_analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chpater 4 Geotechnical Engineering: Slope Stability</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="WaveBreaking.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Wave Kinematics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-kinematics">Wave kinematics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-wave-theory-interactive-simulator">Linear Wave Theory Interactive Simulator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#about-linear-wave-theory">📘 About Linear Wave Theory</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equations">🔬 Governing Equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-solutions">📈 Wave Solutions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-wave-field-simulator-airy-theory-visualization">🌊 Interactive Wave Field Simulator — Airy Theory Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">🧠 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-via-sliders">🎛️ Inputs (via Sliders)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🧭 Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-kinematics-conceptual-understanding">Wave kinematics Conceptual Understanding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-kinematics-quiz">Wave kinematics Quiz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer-discussion-prompts">Short Answer &amp; Discussion Prompts</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

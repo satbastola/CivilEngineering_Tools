@@ -1,0 +1,1227 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4 Geotechnical Engineering: 1D Consolidation Test &#8212; Civil Engineering Toolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"0000a2bf0d0c4f0fbe3cad10e899b6d2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "002f3558e64c4d0db6587ce49fde484f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "0086b0b68e5242698bfaa2b33cc306de": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Generate Full Report", "layout": "IPY_MODEL_5e0678375d09486eb49cc706d0eadbd5", "style": "IPY_MODEL_9a1954a27cdc441081e94dd54209215e", "tooltip": null}}, "04399d0bbcf841f58ee1f3df441b5356": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "06c20bfd750a4250bcac5b5cda27ca2f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "08cfbe312ef94bd58e11f02190c36feb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "0a64482467cb4901bb586278388808cc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "0aa808416c76453e82eed174c2ac4231": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "260px"}}, "0ab67bddeea740dbbcb9d023b1cc7123": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Liquid Limit (LL%)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_61995d7407534dbca477e6b8953e29ba", "value": 45}}, "0bd65bdf22654c70a12068abee4352bc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Specimen Area (m\u00b2):", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_a8e02a3443e142878d31ccc028333a5d", "value": 0.00785}}, "0bfef11943694212b83d51ea263d806c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Height (m):", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_0f56210d78ea4b849d8c0641bb6faf23", "value": 0.025}}, "0c34e13141c24e1c976c0e59aeda1ce6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "0e8d0631d44647da8a9c64409ed4630b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "0f56210d78ea4b849d8c0641bb6faf23": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "113dad0f75664bb6891865133c2528c0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "119d6525703541eb9d672eef35ad3253": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "11a87d236641406494b68f9e2f346290": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "12990c9f1f104f7481ccf7dd6b6d929c": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "14f7b26c63ab4a28bd5929e08a53885f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_26b9483d68ba481783e1f490e8b280de"}}, "15c014b976dd41d7bc1be2e6781c653b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Load Increment (kPa):", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_abb995f6cc28403f81907385fd018d43", "value": 12.5}}, "1791d68dae4e4f919842d40e2e49eb87": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_eeed037b52d84d1b8d1c44a881642a7b", "value": 0.25}}, "1b3e8ca4439743a89d51ba6ee93f12a2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "t\u2085\u2080 Time (min):", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_5e089f6cccba45cbb6437cfd921d9252", "value": 240}}, "1bbe8c91fa454346b52031f9b5c14976": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Final Dial T2 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_113dad0f75664bb6891865133c2528c0", "value": 0.25}}, "1bf081e5d9eb43c49b886bbd10434611": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_5bcffcc7dbbc49c3ade042ec5de15711", "IPY_MODEL_b1b6e622c39c44cead6f93b8ac284825", "IPY_MODEL_31395bc03ecf40108a133426cdb9ffb0", "IPY_MODEL_36abd790e3354db3ba2068d51cda8bc0", "IPY_MODEL_0ab67bddeea740dbbcb9d023b1cc7123", "IPY_MODEL_fb47c138ebae427da4e1ebd0b5dec0ca", "IPY_MODEL_14f7b26c63ab4a28bd5929e08a53885f", "IPY_MODEL_46937b3f513a4374bea36e4090ead6dd", "IPY_MODEL_7dabf826e3f1482e9cac140519497b6b", "IPY_MODEL_d32414838cc5476daf6e306ac52c9707", "IPY_MODEL_a1970c393dc94c98a6456b7593b4da74", "IPY_MODEL_e4bce8de6e4b4fa2b79e5b3162209eda", "IPY_MODEL_478e681a062b42d8b2e0a4d013055606", "IPY_MODEL_fa5053fdf1284e2e81e2912e066da38e", "IPY_MODEL_ed74f716d9dc454da61d27e50e2a2f95", "IPY_MODEL_be6a8ef131ce47ce8fbfbc4a30aec975", "IPY_MODEL_83d34678941f4fac8ce7de59e2d6f244", "IPY_MODEL_edc6c6c368c24f5fae2505dc24ee5c79", "IPY_MODEL_487cb0c342b44371a66e26f3730beb54", "IPY_MODEL_2e23ba060c484abca8ef5661c9ef7d6c", "IPY_MODEL_350a704488064d1b871494e6a6cfdecc"], "layout": "IPY_MODEL_f69c78e588554e30847d5dc150640525"}}, "1c025f2465f24199a7c924d66fe35fff": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "1d37e48eb4ab4582a0109fb7e8504e09": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Final Dial T3 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_6b5a89e3432e45f0bf4051e4b4d60163", "value": 0.25}}, "1fb4e542f9e94758adf8cd58217e2365": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Time to Final (min) T4", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_209235f09f3f4bac9db177777f4bb1b0", "value": 240}}, "20324287ea074726936615b4cc6dff23": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_b649989788ca40bcbb0879abcc0846fd", "IPY_MODEL_ecb4a9780e9d4ff4b645e2581ada3393", "IPY_MODEL_90301b29eb9e4363a186384b381af97a"], "layout": "IPY_MODEL_12990c9f1f104f7481ccf7dd6b6d929c"}}, "209235f09f3f4bac9db177777f4bb1b0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "215d7d4fc21747a8a3a09304757f6cfe": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "21d3467bc74b47b6b59baf73ee90e7f3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "23066583127f4d3683c77a5ebeaa13df": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "243689c0cfe449edb11f9706c682b34e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "24a9978b219340d4851115d2927d8083": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_e0fb3cd6822b4ac09f183149f71c6a04", "IPY_MODEL_6d1cba42945e4a3ebf9e24f8333c4dd6", "IPY_MODEL_f7c4340c827b491689c34fda39015e72"], "layout": "IPY_MODEL_de300b202b2e44b08ea913aab0bb7114"}}, "24f5e97410a84ef584b201f9a0cf59cf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "254c93982b0546dc8e668a4774dedb84": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "2646a6fb52da48dfab41b25117470bfb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Time (min)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_d8de4e93300f4672a6ab037c8b345eb2", "value": 240}}, "26b9483d68ba481783e1f490e8b280de": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "2797d645611d44f59793ec2c69991fd9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Time (min)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_71c5d4f1762f46cdb83efa480992ed52", "value": 240}}, "27b37fe9c7eb4a8b8f2b26fc9da7e3c2": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "28019447b1ea4133b4558f021f209ba4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Dial T1 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_72af5ccf124948ab8fcdd4ace5fcc8d1"}}, "28ec4efd1d964f1da8b59c353a566f0a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Time (min)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_cd3126c64f0c402baf5c9421c0ddf609", "value": 240}}, "28fd2479e35c4785b99365b733283b5b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_f21b16b6a22245eca4859ef919bcd014", "value": 0.25}}, "29ad53495d3448fd80b8a379c73d9cb5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Generate Full Report", "layout": "IPY_MODEL_794df6f9fa964b81980041703c59612a", "style": "IPY_MODEL_4c06700802704aa69221bcc280717b86", "tooltip": null}}, "2a3d62607b5041a3b5415583633f2e85": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "2ae9fd82782049e4a46669196b6f66ca": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "2d24efb203fc4d66a6323623f407dabc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Time (min)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_5962ed5627e043809dc51d668521c279", "value": 240}}, "2d8c4ce160ef487bb03f9060db3b801b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Time (min)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_644585c646a14bc28e0dac4bfb7cc8ef", "value": 240}}, "2e23ba060c484abca8ef5661c9ef7d6c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_2f1116c8db3d4b45a08a1e090e6ebd80", "value": 0.25}}, "2e764b32f5c74b8cadb7cce86b64c2e1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Dial T4 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_7629c66db8a34733a6d40ebd11572829"}}, "2eed1df37dc94adf9cd0c7f14520c97d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "2f1116c8db3d4b45a08a1e090e6ebd80": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "3070c9cab80640798f076073de874f47": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "31395bc03ecf40108a133426cdb9ffb0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Load Increment (kPa):", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_2eed1df37dc94adf9cd0c7f14520c97d", "value": 12.5}}, "325d54a16f044e18ac72e044acf26b07": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "3320f39b0d494a07a7f8f68c72c4a130": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_b26958a023ff42c9aff4fe2370ddf8a8", "value": 0.25}}, "33c79ecd17564ae1ab6d3a0f5949b843": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Plastic Limit (PL%)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_9957aa13ead94ce3aee82d9d1a860215", "value": 25}}, "350a704488064d1b871494e6a6cfdecc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Time (min)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_71222bb1517246ae9e6778ea272def08", "value": 240}}, "350e36128095410cb156154f1cc5994e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "3528a25b2ffe4e7d92b02da5d680ce4e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "35ce160b567a436d92b920f3abd58fce": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "35d05a5d809a4e15bbce489519d10988": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Height (m):", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_24f5e97410a84ef584b201f9a0cf59cf", "value": 0.025}}, "36abd790e3354db3ba2068d51cda8bc0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "t\u2085\u2080 Time (min):", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_3ac40958eefa41bdb79f0650d34f4016", "value": 240}}, "3ac40958eefa41bdb79f0650d34f4016": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "3b4f37273a3c40f08f811d8975c31ac7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_c4e7089ab7e44e6ca7d55eba3ba8422e", "value": 0.25}}, "3bae5ae957ce49a4b43c8fb2328f8bb4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "3ce1ab5b71124a0bbcc77d27b42d09de": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "3fffb660aafc476e9495ac9a60e2f322": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Load Increment (kPa):", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_cea8ba891dcd4d3da908d096515ad415", "value": 12.5}}, "431257e6d26c435c984daccfcaf005b2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_9874f0ce6d7346af9c924e3db456bd49", "IPY_MODEL_61e3e12140bf4714ace9c3f4edc1920f", "IPY_MODEL_ddd8be6eba764458a2904506d0d0658e"], "layout": "IPY_MODEL_cad1c31a29604ce4b267365337d4cf34"}}, "43dc52fd986240d4ae1272d2a8b10ebe": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "458d64a140ae4405809b94697ee861a2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "45de730323e5431d952ca2ad6dfdf18e": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "46937b3f513a4374bea36e4090ead6dd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_3ce1ab5b71124a0bbcc77d27b42d09de", "value": 0.25}}, "469f6b6b1c1043809fd2a345bd9cd5bb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "478e681a062b42d8b2e0a4d013055606": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_f0c9028aaef3451eaa645784a20fb50d"}}, "487cb0c342b44371a66e26f3730beb54": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_ddc6b1bd609f4c2686043b13c2e0c9f7"}}, "4b7bcb9621ad4da9be54d33b3154ce04": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Time (min)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_215d7d4fc21747a8a3a09304757f6cfe", "value": 240}}, "4bd24b03e8bf47ceb360296278e49e77": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_8845780cef5146d2889c78039e97654f"}}, "4c06700802704aa69221bcc280717b86": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "4c5f98cf78ee4a55a94232d571120ea0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Time (min)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_96ac8317987f4123b65477980a7bc82a", "value": 240}}, "4c8e7b7f885748ebac2b45a2bdf5072f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "4ccbabea03cf47918a0f74bfa19a5dfc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_23066583127f4d3683c77a5ebeaa13df"}}, "4cda210f7b784c3daeb79408722f4ccf": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "4da87b30b471440e975b678d68bf97f3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Load Steps:", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "max": 12, "min": 1, "style": "IPY_MODEL_a8decd06fc46441dade583ccc9e3c1b8", "value": 5}}, "4dce3ff54eb047478bb314dc0983b6fa": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_04399d0bbcf841f58ee1f3df441b5356", "value": 0.25}}, "509ea7fec1ca4764bfe2b51e628d7723": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "50d95e3158914595b7b79cc0e2959bff": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Load Increment (kPa):", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_5ffe1a54a6304689b8ea06d3a4d3dd6d", "value": 12.5}}, "513330999b80494a985b6ef50136dd46": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Time (min)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_5b5c09f7daad402aba6c43e4cc3dd127", "value": 240}}, "513e58ece6f14201859f94a973f3e49b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "51547f7e05174284bdd1a5fced87d5b5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "52fe2e1c85ee43eeb4199a5a511a42b0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "5354c89b7db24fcaba991047afbcab80": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Load Steps:", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "max": 12, "min": 1, "style": "IPY_MODEL_dabba9ed34da4538a7fc7f53003876cf", "value": 5}}, "53b658d6bf854f0687214a9ce679449e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Time (min)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_9efa915d1014480388245b406803c3e4", "value": 240}}, "53e6282988b7497387c2ad1ca75c1dc7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Time to Final (min) T1", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_740252a6186b4e6e96870efe0f5c79bf", "value": 240}}, "54c91d4945924a35bd3c18e8f7b460ed": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_cd35304ce38e4155b6fca95808dc45ba"}}, "5525b4e388554a4ab8e074c00d5c9297": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Time (min)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_ec68b12013a24651ae1465f9df3690fd", "value": 240}}, "581c46362c9440d0b89f0399a2d45a8c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Time to Final (min) T3", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_d97356b3bb8843fb922ddae862b8adda", "value": 240}}, "584ac3aafcda4835ad2f81cbc472f500": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_11a87d236641406494b68f9e2f346290", "value": 0.25}}, "58a7435180654844a9105bb84a673433": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_a7c86bbeaea44f308df2ccacaefb2197"}}, "5935e447bfe042ea8407471646e68ec3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_a93e6e5a0dac4c4a8e537cd1f366cb85"}}, "594c8cb8575942e9b80c4e200e46017e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "t\u2085\u2080 Time (min):", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_955a5ae1a08b4e248ab83b63433451a7", "value": 240}}, "5962ed5627e043809dc51d668521c279": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "5a8b5b3f7ebe43fdb8d8b4267802ec66": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "5b5c09f7daad402aba6c43e4cc3dd127": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "5bcffcc7dbbc49c3ade042ec5de15711": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Specimen Area (m\u00b2):", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_945830fe434b44d18da2772abc3a940d", "value": 0.00785}}, "5c45b25d58284bbeaa3ff9281b555969": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "5cef0709a669482c8b94108fe2eda16c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_0c34e13141c24e1c976c0e59aeda1ce6", "value": 0.25}}, "5d4112797c4c48ef8d4a5b2fa842e9f8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "5d4bfeb9467a4b10b1f2c7f812eed7fd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Dial T2 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_458d64a140ae4405809b94697ee861a2"}}, "5e0678375d09486eb49cc706d0eadbd5": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "260px"}}, "5e089f6cccba45cbb6437cfd921d9252": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "5ffe1a54a6304689b8ea06d3a4d3dd6d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "61424dceafa14268be61cb65e6043fe5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_5354c89b7db24fcaba991047afbcab80", "IPY_MODEL_1bf081e5d9eb43c49b886bbd10434611", "IPY_MODEL_29ad53495d3448fd80b8a379c73d9cb5"], "layout": "IPY_MODEL_d7af6523101241d0a8e6ab3b41ae6fad"}}, "61995d7407534dbca477e6b8953e29ba": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "61c2666c760642c39ed9df73278b7866": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "61e3e12140bf4714ace9c3f4edc1920f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_f46fb817e9ec4d5fae429e47655f0f83", "IPY_MODEL_35d05a5d809a4e15bbce489519d10988", "IPY_MODEL_15c014b976dd41d7bc1be2e6781c653b", "IPY_MODEL_28019447b1ea4133b4558f021f209ba4", "IPY_MODEL_feabe81d442b47278b341c4d72e0dc9a", "IPY_MODEL_53e6282988b7497387c2ad1ca75c1dc7", "IPY_MODEL_5d4bfeb9467a4b10b1f2c7f812eed7fd", "IPY_MODEL_1bbe8c91fa454346b52031f9b5c14976", "IPY_MODEL_f56fe27da6b94360acd37791adffc80f", "IPY_MODEL_ba650b368cdc4428904ba4d3c36eab41", "IPY_MODEL_1d37e48eb4ab4582a0109fb7e8504e09", "IPY_MODEL_581c46362c9440d0b89f0399a2d45a8c", "IPY_MODEL_2e764b32f5c74b8cadb7cce86b64c2e1", "IPY_MODEL_9645018737e74851a077548bc72f1022", "IPY_MODEL_1fb4e542f9e94758adf8cd58217e2365", "IPY_MODEL_759564f3d7ef4712bc4b689499b1d53e", "IPY_MODEL_caced2b2f9344ff0871b18858ce271e0", "IPY_MODEL_c1a0a2a014354240891a37d75317068b"], "layout": "IPY_MODEL_4cda210f7b784c3daeb79408722f4ccf"}}, "62a7a82310174d4e9c5720f33b90af46": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "644585c646a14bc28e0dac4bfb7cc8ef": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "64fead538bbe4f6bada21187c5859a59": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_5d4112797c4c48ef8d4a5b2fa842e9f8", "value": 0.25}}, "678b3dec7e4c4b1a9ead5cb816d029ad": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_e5e9d84600af4cd38e9a43375d6c6e56", "value": 0.25}}, "6a43dd40a6614114acf03fdcb5f76bdb": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "6b1f1b23f43a46d9aa49a7cb0559cb0d": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "6b5a89e3432e45f0bf4051e4b4d60163": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "6b9d9e99f4f042949810a38f2a60d4b8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "6c30be47542243979239debc1f6cf73d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "6d1cba42945e4a3ebf9e24f8333c4dd6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_cf52f2d7233b4d73a94797cf7ee8e086", "IPY_MODEL_911a260ac81741379d014293d905f65c", "IPY_MODEL_50d95e3158914595b7b79cc0e2959bff", "IPY_MODEL_1b3e8ca4439743a89d51ba6ee93f12a2", "IPY_MODEL_ba55bd3c009f4bf2b3065c93fcce729b", "IPY_MODEL_5cef0709a669482c8b94108fe2eda16c", "IPY_MODEL_bb55f405af8046cbacf8d06bdf1bc402", "IPY_MODEL_ca8e42c938a24d0d921e366f7c62fcaa", "IPY_MODEL_c034c2494d8b4489ba192cc178fd812c", "IPY_MODEL_8661678a37674efb83f942cb878e3328", "IPY_MODEL_cc4a941c96154d748fcbca2e44920ba7", "IPY_MODEL_584ac3aafcda4835ad2f81cbc472f500", "IPY_MODEL_2d8c4ce160ef487bb03f9060db3b801b", "IPY_MODEL_4bd24b03e8bf47ceb360296278e49e77", "IPY_MODEL_3320f39b0d494a07a7f8f68c72c4a130", "IPY_MODEL_28ec4efd1d964f1da8b59c353a566f0a", "IPY_MODEL_bf78341ceae64f98bdf481dca52ad31a", "IPY_MODEL_ff5da4bccbff4016a31e5b17f05c7970", "IPY_MODEL_4c5f98cf78ee4a55a94232d571120ea0"], "layout": "IPY_MODEL_fc0553226d6e41db82bc2d2ca49b92a5"}}, "71222bb1517246ae9e6778ea272def08": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "7134c753e20b40998a1d18c960fd85cf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_350e36128095410cb156154f1cc5994e", "value": 0.25}}, "71c5d4f1762f46cdb83efa480992ed52": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "71fa6e8c3a3347b9a019f4b41162a026": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "72af5ccf124948ab8fcdd4ace5fcc8d1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "740252a6186b4e6e96870efe0f5c79bf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "750e541149c74d83aaddfc5a87bd0443": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_3070c9cab80640798f076073de874f47"}}, "753f910ed793413488e957b9bf4c48b0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "759564f3d7ef4712bc4b689499b1d53e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Dial T5 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_bb3320811a10469abd514cff3aa1ec2e"}}, "761cf90447d6425a838a35d102edc093": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "t\u2085\u2080 Time (min):", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_0e8d0631d44647da8a9c64409ed4630b", "value": 240}}, "761fb93452394165b0c3e9517b2cc616": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_2ae9fd82782049e4a46669196b6f66ca", "value": 0.25}}, "7629c66db8a34733a6d40ebd11572829": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "78893e5f91794a158a67c7df48e2bae1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Generate Full Report", "layout": "IPY_MODEL_be9efae2d20d4be88b4f966f244c3885", "style": "IPY_MODEL_cc21d0dc6f8e4bea90b301d7fbff89c1", "tooltip": null}}, "78b8ab25699444e4a0e8e0a04e27768f": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "794df6f9fa964b81980041703c59612a": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "260px"}}, "7ced5fb2b6dc4339a6f2084b4bd96a08": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "7dabf826e3f1482e9cac140519497b6b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Time (min)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_a0b907e0865140ef87b4a62ece9206f6", "value": 240}}, "7e1e04577a8045218e6beaac28c59911": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "8118ff43c87a4e139d9d9f42c425ebcd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "8347f7274a54411fa315d579e59d62c5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_5c45b25d58284bbeaa3ff9281b555969", "value": 0.25}}, "83c01df3d46a4ce3995250d655e361e7": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "83d34678941f4fac8ce7de59e2d6f244": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_8f365684de9d40cea84b787e6b263ecd", "value": 0.25}}, "83f8a3bd942d435c94c8d3c04354d25d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "863b128250cd4e2fb6303bc9291ac662": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Liquid Limit (LL%)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_509ea7fec1ca4764bfe2b51e628d7723", "value": 45}}, "8661678a37674efb83f942cb878e3328": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Time (min)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_8a9c5a4c24274358b5c3a313c4df761a", "value": 240}}, "870fe1220195407cb8b0af6168599dea": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_83f8a3bd942d435c94c8d3c04354d25d"}}, "87af03b9912f4fc1b398f0f9afeae03c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_bf443da428c244558bbf60199c1c3482", "value": 0.25}}, "8845780cef5146d2889c78039e97654f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "892d84ee32aa4995a7e400c8d5cc1248": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Specimen Area (m\u00b2):", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_21d3467bc74b47b6b59baf73ee90e7f3", "value": 0.00785}}, "8a9c5a4c24274358b5c3a313c4df761a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "8ac4462e627b466496ab002d2bc3ce02": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "8d74e3b4a58c4ee08eca0ef5149303ae": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_a1439f157924491d9d850a7a2d901b91"}}, "8f365684de9d40cea84b787e6b263ecd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "90301b29eb9e4363a186384b381af97a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Generate Full Report", "layout": "IPY_MODEL_95857f58f7da4dda8823951bf13ad5b5", "style": "IPY_MODEL_06c20bfd750a4250bcac5b5cda27ca2f", "tooltip": null}}, "911a260ac81741379d014293d905f65c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Height (m):", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_7e1e04577a8045218e6beaac28c59911", "value": 0.025}}, "91551c94fde5431b966e108d12ef29b7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "9160b33c2e104c359b23cbddf71c65b4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Time (min)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_997a5b2d70c949ba9dcc81b4b819c913", "value": 240}}, "92e9d060f515434fbea4966f648f5d25": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "9318b3798f814946ba8f734a29cffae8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "938747e9b1e54b7d974142685605532e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "945830fe434b44d18da2772abc3a940d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "9462213ed6bd401083e67f642ad41179": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_efcbc98d513e49cda4afec92b9c4602d", "value": 0.25}}, "955a5ae1a08b4e248ab83b63433451a7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "95857f58f7da4dda8823951bf13ad5b5": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "260px"}}, "9645018737e74851a077548bc72f1022": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Final Dial T4 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_dde809aa6ba942539d5e59f65c1d6e51", "value": 0.25}}, "96ac8317987f4123b65477980a7bc82a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "9874f0ce6d7346af9c924e3db456bd49": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Load Steps:", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "max": 12, "min": 1, "style": "IPY_MODEL_f03023c5c0a74cf68df8e2cef27c0905", "value": 5}}, "98d9fe3fe86a4019a21bea97a36b8640": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Load Increment (kPa):", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_bcc3a9b57b974099a8fd247befcce4b9", "value": 12.5}}, "994835351d2f4839a4f204966b697b7a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "9957aa13ead94ce3aee82d9d1a860215": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "997a5b2d70c949ba9dcc81b4b819c913": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "99cfc005384a499295dbb2bb462e6814": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_f30851c2677c4b829d2b2c2090daefe9", "IPY_MODEL_c0bb75b617d6419b8815eb39d0fbabd0", "IPY_MODEL_ace3f4e7e80c481fac42559f5e567f6d", "IPY_MODEL_594c8cb8575942e9b80c4e200e46017e", "IPY_MODEL_aae41cd1915142f5aa7de1bb692af4b8", "IPY_MODEL_b82438282555498686ccc65e3f887d95", "IPY_MODEL_dd6c59f94ac741f39da9250d80eae326", "IPY_MODEL_8347f7274a54411fa315d579e59d62c5", "IPY_MODEL_dab6937db25f40dba78efd2fff81528d", "IPY_MODEL_9ee6f58e6fa54a8c9693d5855a6b9a29", "IPY_MODEL_9c3a486fe31d481f9b100c78866c3f9b", "IPY_MODEL_5525b4e388554a4ab8e074c00d5c9297", "IPY_MODEL_8d74e3b4a58c4ee08eca0ef5149303ae", "IPY_MODEL_7134c753e20b40998a1d18c960fd85cf", "IPY_MODEL_b14ffe281a3e49b5a4eddf58d356d5cb", "IPY_MODEL_54c91d4945924a35bd3c18e8f7b460ed", "IPY_MODEL_64fead538bbe4f6bada21187c5859a59", "IPY_MODEL_ab49226a83594ac1a31688e234da47d8", "IPY_MODEL_d6aa5f0fdf3248d5a4993fc20924a169", "IPY_MODEL_adf7525a845541ae8dbf8e201ca59bc3", "IPY_MODEL_2d24efb203fc4d66a6323623f407dabc"], "layout": "IPY_MODEL_78b8ab25699444e4a0e8e0a04e27768f"}}, "9a0f0811f8fd4f0e9628fa55cd0b5f2a": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "9a1954a27cdc441081e94dd54209215e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "9c3a486fe31d481f9b100c78866c3f9b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_ea9cd54e1cac43cd9ffaf4d699ba624b", "value": 0.25}}, "9ce7dc1d3bb64fd49e67f653a87b8c0d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Height (m):", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_35ce160b567a436d92b920f3abd58fce", "value": 0.025}}, "9ee6f58e6fa54a8c9693d5855a6b9a29": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_119d6525703541eb9d672eef35ad3253"}}, "9efa915d1014480388245b406803c3e4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "9f542351dd484e00b08b201c19a825b3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a0b907e0865140ef87b4a62ece9206f6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a1439f157924491d9d850a7a2d901b91": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a18e225d404349de9b66a82c00550639": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a1970c393dc94c98a6456b7593b4da74": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_938747e9b1e54b7d974142685605532e", "value": 0.25}}, "a2884bdf23a545119333c172f65c8795": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_0bd65bdf22654c70a12068abee4352bc", "IPY_MODEL_9ce7dc1d3bb64fd49e67f653a87b8c0d", "IPY_MODEL_3fffb660aafc476e9495ac9a60e2f322", "IPY_MODEL_af4a58999f2a4754a7f436082fe22fb6", "IPY_MODEL_cba33fd6728d463a9e5725d713479e0f", "IPY_MODEL_33c79ecd17564ae1ab6d3a0f5949b843", "IPY_MODEL_870fe1220195407cb8b0af6168599dea", "IPY_MODEL_678b3dec7e4c4b1a9ead5cb816d029ad", "IPY_MODEL_ba2199a733cb46c2b931f495a37f9811", "IPY_MODEL_c266026f424d4b90b3cf840cd13a0c01", "IPY_MODEL_87af03b9912f4fc1b398f0f9afeae03c", "IPY_MODEL_9160b33c2e104c359b23cbddf71c65b4", "IPY_MODEL_5935e447bfe042ea8407471646e68ec3", "IPY_MODEL_28fd2479e35c4785b99365b733283b5b", "IPY_MODEL_53b658d6bf854f0687214a9ce679449e", "IPY_MODEL_e48d3e123839481da9a926116ca6941c", "IPY_MODEL_9462213ed6bd401083e67f642ad41179", "IPY_MODEL_513330999b80494a985b6ef50136dd46", "IPY_MODEL_4ccbabea03cf47918a0f74bfa19a5dfc", "IPY_MODEL_e835c076b70349bc883b5ade01224050", "IPY_MODEL_f574e299a9fd4cbc90e1faf454ad78b4"], "layout": "IPY_MODEL_83c01df3d46a4ce3995250d655e361e7"}}, "a33aaca46f484ad78702250376812864": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a7c86bbeaea44f308df2ccacaefb2197": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a7f72ce7e2904a9680fa660090121aa1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a84172b5c5f746fa87a606049e539abc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "a8decd06fc46441dade583ccc9e3c1b8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "a8e02a3443e142878d31ccc028333a5d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a93e6e5a0dac4c4a8e537cd1f366cb85": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "aae41cd1915142f5aa7de1bb692af4b8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Liquid Limit (LL%)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_8118ff43c87a4e139d9d9f42c425ebcd", "value": 45}}, "ab49226a83594ac1a31688e234da47d8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Time (min)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_243689c0cfe449edb11f9706c682b34e", "value": 240}}, "abb995f6cc28403f81907385fd018d43": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "acc1aa460eae4c52ba7b666b065be22b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_d26737e10dad490388371bb0d96abc48", "IPY_MODEL_99cfc005384a499295dbb2bb462e6814", "IPY_MODEL_78893e5f91794a158a67c7df48e2bae1"], "layout": "IPY_MODEL_9a0f0811f8fd4f0e9628fa55cd0b5f2a"}}, "ace3f4e7e80c481fac42559f5e567f6d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Load Increment (kPa):", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_8ac4462e627b466496ab002d2bc3ce02", "value": 12.5}}, "ad2cbdff67dc4ad58123e5f04669b179": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "adf7525a845541ae8dbf8e201ca59bc3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_469f6b6b1c1043809fd2a345bd9cd5bb", "value": 0.25}}, "aeafbed5a8474b069328fae4a63dfcf1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "af4a58999f2a4754a7f436082fe22fb6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "t\u2085\u2080 Time (min):", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_0000a2bf0d0c4f0fbe3cad10e899b6d2", "value": 240}}, "b1232c99dd014f09a25131b22e21e38b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Time (min)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_ed63f2e46d1b4e829d7a6b80f09047f8", "value": 240}}, "b14ffe281a3e49b5a4eddf58d356d5cb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Time (min)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_3bae5ae957ce49a4b43c8fb2328f8bb4", "value": 240}}, "b152111c93ed4ad08ca97120a7fe5227": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_254c93982b0546dc8e668a4774dedb84", "value": 0.25}}, "b1b6e622c39c44cead6f93b8ac284825": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Height (m):", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_c296a019a3a84d20a7c2f547857e84c8", "value": 0.025}}, "b2389b86974540359d7ba295ab663f3c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_4da87b30b471440e975b678d68bf97f3", "IPY_MODEL_a2884bdf23a545119333c172f65c8795", "IPY_MODEL_0086b0b68e5242698bfaa2b33cc306de"], "layout": "IPY_MODEL_2a3d62607b5041a3b5415583633f2e85"}}, "b26958a023ff42c9aff4fe2370ddf8a8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "b3fef970743f4c3c910e4e7c406c1911": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "b649989788ca40bcbb0879abcc0846fd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Load Steps:", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "max": 12, "min": 1, "style": "IPY_MODEL_ccde9100a2634583b4e039dc94288b39", "value": 5}}, "b6731125b14a4989a0bf5494ce78a31a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_3528a25b2ffe4e7d92b02da5d680ce4e"}}, "b74418ee84ce44f8959f92451c0c36f7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "b74cb11690e54ab3aa922c1f72501604": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "b82438282555498686ccc65e3f887d95": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Plastic Limit (PL%)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_4c8e7b7f885748ebac2b45a2bdf5072f", "value": 25}}, "b9f19c8d84bd42c1821bc63fd36da8b8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_9f542351dd484e00b08b201c19a825b3"}}, "ba2199a733cb46c2b931f495a37f9811": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Time (min)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_a7f72ce7e2904a9680fa660090121aa1", "value": 240}}, "ba55bd3c009f4bf2b3065c93fcce729b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_b3fef970743f4c3c910e4e7c406c1911"}}, "ba650b368cdc4428904ba4d3c36eab41": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Dial T3 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_51547f7e05174284bdd1a5fced87d5b5"}}, "bb3320811a10469abd514cff3aa1ec2e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "bb55f405af8046cbacf8d06bdf1bc402": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Time (min)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_325d54a16f044e18ac72e044acf26b07", "value": 240}}, "bcc3a9b57b974099a8fd247befcce4b9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "be6a8ef131ce47ce8fbfbc4a30aec975": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_08cfbe312ef94bd58e11f02190c36feb"}}, "be9efae2d20d4be88b4f966f244c3885": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "260px"}}, "bf443da428c244558bbf60199c1c3482": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "bf78341ceae64f98bdf481dca52ad31a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_b74cb11690e54ab3aa922c1f72501604"}}, "c034c2494d8b4489ba192cc178fd812c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_e2d22d7e8e384b22b000479d18b112ed", "value": 0.25}}, "c0bb75b617d6419b8815eb39d0fbabd0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Initial Height (m):", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_52fe2e1c85ee43eeb4199a5a511a42b0", "value": 0.025}}, "c121f62a96274100b84bfb4bcfbf6101": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "c1a0a2a014354240891a37d75317068b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Time to Final (min) T5", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_aeafbed5a8474b069328fae4a63dfcf1", "value": 240}}, "c266026f424d4b90b3cf840cd13a0c01": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_6b9d9e99f4f042949810a38f2a60d4b8"}}, "c296a019a3a84d20a7c2f547857e84c8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "c4e7089ab7e44e6ca7d55eba3ba8422e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "c675877c654a42e295f0edd85a9dd3ad": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ca8e42c938a24d0d921e366f7c62fcaa": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_753f910ed793413488e957b9bf4c48b0"}}, "caced2b2f9344ff0871b18858ce271e0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Final Dial T5 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_a18e225d404349de9b66a82c00550639", "value": 0.25}}, "cad1c31a29604ce4b267365337d4cf34": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "cba33fd6728d463a9e5725d713479e0f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Liquid Limit (LL%)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_43dc52fd986240d4ae1272d2a8b10ebe", "value": 45}}, "cc21d0dc6f8e4bea90b301d7fbff89c1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "cc4a941c96154d748fcbca2e44920ba7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_d32c07c004d54c9ab39f13cd5f675a70"}}, "ccde9100a2634583b4e039dc94288b39": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "cd3126c64f0c402baf5c9421c0ddf609": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "cd35304ce38e4155b6fca95808dc45ba": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ce2e5cae2de34136b36d420dddd383e9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "cea8ba891dcd4d3da908d096515ad415": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ceb4d986bc694359b3806c14973a52c0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "cf1c298869694df1bbca0a32176b699d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "cf52f2d7233b4d73a94797cf7ee8e086": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Specimen Area (m\u00b2):", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_dcf03dd827a34cafb3d5c9cb89d6b9cf", "value": 0.00785}}, "d26737e10dad490388371bb0d96abc48": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Load Steps:", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "max": 12, "min": 1, "style": "IPY_MODEL_a84172b5c5f746fa87a606049e539abc", "value": 5}}, "d32414838cc5476daf6e306ac52c9707": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_e2845c2382204c2283392e757d33c92a"}}, "d32c07c004d54c9ab39f13cd5f675a70": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "d3406d9f04e9462680c28c7bbf1da9f6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Time (min)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_994835351d2f4839a4f204966b697b7a", "value": 240}}, "d6aa5f0fdf3248d5a4993fc20924a169": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_c675877c654a42e295f0edd85a9dd3ad"}}, "d7af6523101241d0a8e6ab3b41ae6fad": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "d8de4e93300f4672a6ab037c8b345eb2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "d97356b3bb8843fb922ddae862b8adda": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "dab6937db25f40dba78efd2fff81528d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Time (min)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_def015be74bb473c8cca87d160374709", "value": 240}}, "dabba9ed34da4538a7fc7f53003876cf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "dcf03dd827a34cafb3d5c9cb89d6b9cf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "dd6c59f94ac741f39da9250d80eae326": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_ad2cbdff67dc4ad58123e5f04669b179"}}, "ddc6b1bd609f4c2686043b13c2e0c9f7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ddd8be6eba764458a2904506d0d0658e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Generate Consolidation Report", "layout": "IPY_MODEL_e2ff0188162c4860a7a8dfefdc0643ca", "style": "IPY_MODEL_cf1c298869694df1bbca0a32176b699d", "tooltip": null}}, "dde809aa6ba942539d5e59f65c1d6e51": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "de300b202b2e44b08ea913aab0bb7114": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "def015be74bb473c8cca87d160374709": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "e0fb3cd6822b4ac09f183149f71c6a04": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Load Steps:", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "max": 12, "min": 1, "style": "IPY_MODEL_1c025f2465f24199a7c924d66fe35fff", "value": 5}}, "e2845c2382204c2283392e757d33c92a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "e2d22d7e8e384b22b000479d18b112ed": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "e2ff0188162c4860a7a8dfefdc0643ca": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "250px"}}, "e48d3e123839481da9a926116ca6941c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_ce2e5cae2de34136b36d420dddd383e9"}}, "e4bce8de6e4b4fa2b79e5b3162209eda": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Time (min)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_513e58ece6f14201859f94a973f3e49b", "value": 240}}, "e5e9d84600af4cd38e9a43375d6c6e56": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "e835c076b70349bc883b5ade01224050": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_a33aaca46f484ad78702250376812864", "value": 0.25}}, "ea746286c0d24339ab2fdc006276df87": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ea9cd54e1cac43cd9ffaf4d699ba624b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ec68b12013a24651ae1465f9df3690fd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ecb4a9780e9d4ff4b645e2581ada3393": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_892d84ee32aa4995a7e400c8d5cc1248", "IPY_MODEL_0bfef11943694212b83d51ea263d806c", "IPY_MODEL_98d9fe3fe86a4019a21bea97a36b8640", "IPY_MODEL_761cf90447d6425a838a35d102edc093", "IPY_MODEL_863b128250cd4e2fb6303bc9291ac662", "IPY_MODEL_f5ff78dd26294d1e80a62c1654245874", "IPY_MODEL_750e541149c74d83aaddfc5a87bd0443", "IPY_MODEL_b152111c93ed4ad08ca97120a7fe5227", "IPY_MODEL_b1232c99dd014f09a25131b22e21e38b", "IPY_MODEL_b6731125b14a4989a0bf5494ce78a31a", "IPY_MODEL_4dce3ff54eb047478bb314dc0983b6fa", "IPY_MODEL_2646a6fb52da48dfab41b25117470bfb", "IPY_MODEL_58a7435180654844a9105bb84a673433", "IPY_MODEL_3b4f37273a3c40f08f811d8975c31ac7", "IPY_MODEL_2797d645611d44f59793ec2c69991fd9", "IPY_MODEL_fe915899ee564303a77c839c404e221e", "IPY_MODEL_1791d68dae4e4f919842d40e2e49eb87", "IPY_MODEL_d3406d9f04e9462680c28c7bbf1da9f6", "IPY_MODEL_b9f19c8d84bd42c1821bc63fd36da8b8", "IPY_MODEL_761fb93452394165b0c3e9517b2cc616", "IPY_MODEL_4b7bcb9621ad4da9be54d33b3154ce04"], "layout": "IPY_MODEL_6a43dd40a6614114acf03fdcb5f76bdb"}}, "ed63f2e46d1b4e829d7a6b80f09047f8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ed74f716d9dc454da61d27e50e2a2f95": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Time (min)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_0a64482467cb4901bb586278388808cc", "value": 240}}, "edc6c6c368c24f5fae2505dc24ee5c79": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Time (min)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_ceb4d986bc694359b3806c14973a52c0", "value": 240}}, "eeed037b52d84d1b8d1c44a881642a7b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "efcbc98d513e49cda4afec92b9c4602d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "f03023c5c0a74cf68df8e2cef27c0905": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "f0c9028aaef3451eaa645784a20fb50d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "f21b16b6a22245eca4859ef919bcd014": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "f30851c2677c4b829d2b2c2090daefe9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Specimen Area (m\u00b2):", "layout": "IPY_MODEL_27b37fe9c7eb4a8b8f2b26fc9da7e3c2", "step": null, "style": "IPY_MODEL_6c30be47542243979239debc1f6cf73d", "value": 0.00785}}, "f46fb817e9ec4d5fae429e47655f0f83": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Specimen Area (m\u00b2):", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_5a8b5b3f7ebe43fdb8d8b4267802ec66", "value": 0.00785}}, "f56fe27da6b94360acd37791adffc80f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Time to Final (min) T2", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_7ced5fb2b6dc4339a6f2084b4bd96a08", "value": 240}}, "f574e299a9fd4cbc90e1faf454ad78b4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Time (min)", "layout": "IPY_MODEL_71fa6e8c3a3347b9a019f4b41162a026", "step": null, "style": "IPY_MODEL_002f3558e64c4d0db6587ce49fde484f", "value": 240}}, "f5ff78dd26294d1e80a62c1654245874": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Plastic Limit (PL%)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_62a7a82310174d4e9c5720f33b90af46", "value": 25}}, "f69c78e588554e30847d5dc150640525": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "f7c4340c827b491689c34fda39015e72": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Generate Report with Cc & Cv", "layout": "IPY_MODEL_0aa808416c76453e82eed174c2ac4231", "style": "IPY_MODEL_b74418ee84ce44f8959f92451c0c36f7", "tooltip": null}}, "f8987e34bd1a464a88c38068caf22c04": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "fa5053fdf1284e2e81e2912e066da38e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_9318b3798f814946ba8f734a29cffae8", "value": 0.25}}, "fb47c138ebae427da4e1ebd0b5dec0ca": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Plastic Limit (PL%)", "layout": "IPY_MODEL_45de730323e5431d952ca2ad6dfdf18e", "step": null, "style": "IPY_MODEL_f8987e34bd1a464a88c38068caf22c04", "value": 25}}, "fc0553226d6e41db82bc2d2ca49b92a5": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "fe915899ee564303a77c839c404e221e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Dial Initial (mm)", "layout": "IPY_MODEL_92e9d060f515434fbea4966f648f5d25", "step": null, "style": "IPY_MODEL_61c2666c760642c39ed9df73278b7866"}}, "feabe81d442b47278b341c4d72e0dc9a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Final Dial T1 (mm)", "layout": "IPY_MODEL_6b1f1b23f43a46d9aa49a7cb0559cb0d", "step": null, "style": "IPY_MODEL_ea746286c0d24339ab2fdc006276df87", "value": 0.25}}, "ff5da4bccbff4016a31e5b17f05c7970": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 5 \u2013 Dial Final (mm)", "layout": "IPY_MODEL_c121f62a96274100b84bfb4bcfbf6101", "step": null, "style": "IPY_MODEL_91551c94fde5431b966e108d12ef29b7", "value": 0.25}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap4/SoilConsolidationTest';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 4 Geotechnical Engineering: 1D Consolidation Theory" href="1DConsolidationAnalysis.html" />
+    <link rel="prev" title="Chapter 4 Geotechnical Engineering: Unconsolidated Undrained (UU) Triaxial Test" href="UUStrengthTest.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Civil Engineering Toolkit - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Civil Engineering Toolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1. 0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Qualty based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">3.9 Pipe Hydraulics - Pump Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap4/SoilConsolidationTest.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4 Geotechnical Engineering: 1D Consolidation Test</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-consolidation">🧱 Soil Consolidation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186">🧱 1D Consolidation Test – Key Steps per U.S. Standard (ASTM D2435/D4186)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astm-d2435-incremental-loading-procedure">📘 ASTM D2435 – Incremental Loading Procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-measured">🧪 Key Parameters Measured</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📐 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-checklist-of-test-steps-astm-d2435">✅ Visual Checklist of Test Steps (ASTM D2435)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module">🧱 Summary of the 1D Consolidation Test App (ASTM D2435 Interactive Module)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-output">🧮 How to Interpret the Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-results">Key Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-in-design">Use in Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-conceptual-reflective-quiz-questions">🧱 1D Consolidation Test – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-interpretation">Theory &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reasoning">Data &amp; Reasoning</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-geotechnical-engineering-1d-consolidation-test">
+<h1>Chapter 4 Geotechnical Engineering: 1D Consolidation Test<a class="headerlink" href="#chapter-4-geotechnical-engineering-1d-consolidation-test" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Soil Consolidation Test</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Soil Consolidation Test</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="soil-consolidation">
+<h3>🧱 Soil Consolidation:<a class="headerlink" href="#soil-consolidation" title="Link to this heading">#</a></h3>
+<p><strong>Soil consolidation</strong> is the process by which <strong>soil volume decreases over time</strong> due to the <strong>expulsion of pore water</strong> under sustained loading. It primarily occurs in <strong>saturated cohesive soils</strong> (e.g., clay) and is governed by the gradual transfer of stress from water to soil particles.</p>
+<ul class="simple">
+<li><p>When a load (e.g., building, embankment, dam) is applied to saturated soil:</p>
+<ul>
+<li><p>Initially, the load is carried by <strong>pore water pressure</strong></p></li>
+<li><p>Over time, water drains out, and the load is transferred to the <strong>soil skeleton</strong></p></li>
+<li><p>This causes <strong>settlement</strong> and <strong>reduction in void ratio</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186">
+<h3>🧱 1D Consolidation Test – Key Steps per U.S. Standard (ASTM D2435/D4186)<a class="headerlink" href="#d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186" title="Link to this heading">#</a></h3>
+<p>The <strong>1D Consolidation Test</strong> evaluates the compressibility and rate of consolidation of cohesive soils under axial load, as defined by <strong>ASTM D2435</strong> (incremental loading method) and <strong>ASTM D4186</strong> (continuous loading method). Here’s a summary of the standard measurement steps:</p>
+</section>
+<hr class="docutils" />
+<section id="astm-d2435-incremental-loading-procedure">
+<h3>📘 ASTM D2435 – Incremental Loading Procedure<a class="headerlink" href="#astm-d2435-incremental-loading-procedure" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1️⃣</p></td>
+<td><p>Prepare soil specimen (typically 20–25 mm thick)</p></td>
+<td><p>Saturate with water, trim uniformly</p></td>
+</tr>
+<tr class="row-odd"><td><p>2️⃣</p></td>
+<td><p>Assemble specimen in consolidation ring</p></td>
+<td><p>Ensure drainage top and bottom</p></td>
+</tr>
+<tr class="row-even"><td><p>3️⃣</p></td>
+<td><p>Place in load frame and saturate sample</p></td>
+<td><p>Record initial height and area</p></td>
+</tr>
+<tr class="row-odd"><td><p>4️⃣</p></td>
+<td><p>Apply incremental loads (e.g. 12.5, 25, 50, … kPa)</p></td>
+<td><p>Typically double per step</p></td>
+</tr>
+<tr class="row-even"><td><p>5️⃣</p></td>
+<td><p>Record dial gauge readings over time</p></td>
+<td><p>Track deformation at intervals (0.25, 1, 2, 4, 8… mins)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6️⃣</p></td>
+<td><p>Maintain each load for 24 hours or until deformation rate is negligible</p></td>
+<td><p>Use time–deformation curve</p></td>
+</tr>
+<tr class="row-even"><td><p>7️⃣</p></td>
+<td><p>Unload incrementally and monitor rebound</p></td>
+<td><p>Observe elastic recovery</p></td>
+</tr>
+<tr class="row-odd"><td><p>8️⃣</p></td>
+<td><p>Oven-dry sample to determine moisture content</p></td>
+<td><p>Required for calculating void ratio</p></td>
+</tr>
+<tr class="row-even"><td><p>9️⃣</p></td>
+<td><p>Calculate compression index (Cc) and coefficient of consolidation (Cv)</p></td>
+<td><p>Use log–strain regression and time factor (Tv)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="key-parameters-measured">
+<h3>🧪 Key Parameters Measured<a class="headerlink" href="#key-parameters-measured" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Dial Deflection</strong> → vertical deformation</p></li>
+<li><p><strong>Elapsed Time (t)</strong> → rate of settlement</p></li>
+<li><p><strong>Applied Stress (σ)</strong> → total vertical load</p></li>
+<li><p><strong>Specimen Dimensions</strong> → area and initial height</p></li>
+<li><p><strong>Moisture Content</strong> → for calculating void ratio and strain</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📐 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Formula</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cc</strong></p></td>
+<td><p>( C_c = \frac{\Delta e}{\log(\sigma_2/\sigma_1)} )</p></td>
+<td><p>Compressibility of soil</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cv</strong></p></td>
+<td><p>( C_v = \frac{T_v \cdot H^2}{t_{50}} )</p></td>
+<td><p>Settlement rate prediction</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Strain (%)</strong></p></td>
+<td><p>( \Delta H / H_0 \times 100 )</p></td>
+<td><p>Deformation under load</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Void Ratio (e)</strong></p></td>
+<td><p>Based on moisture and unit weight</p></td>
+<td><p>Required for settlement calculations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="visual-checklist-of-test-steps-astm-d2435">
+<h3>✅ Visual Checklist of Test Steps (ASTM D2435)<a class="headerlink" href="#visual-checklist-of-test-steps-astm-d2435" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Task</p></th>
+<th class="head"><p>Observation Point</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1️⃣</p></td>
+<td><p>Prepare saturated, trimmed specimen</p></td>
+<td><p>Uniform dimensions; full saturation</p></td>
+</tr>
+<tr class="row-odd"><td><p>2️⃣</p></td>
+<td><p>Place specimen in ring with porous stones</p></td>
+<td><p>No trapped air; drainage enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>3️⃣</p></td>
+<td><p>Position assembly in loading frame</p></td>
+<td><p>Ensure proper alignment and contact</p></td>
+</tr>
+<tr class="row-odd"><td><p>4️⃣</p></td>
+<td><p>Attach dial gauge or LVDT</p></td>
+<td><p>Zero reading; full-range accessibility</p></td>
+</tr>
+<tr class="row-even"><td><p>5️⃣</p></td>
+<td><p>Apply first load increment</p></td>
+<td><p>Record initial dial deflection</p></td>
+</tr>
+<tr class="row-odd"><td><p>6️⃣</p></td>
+<td><p>Capture dial readings over time</p></td>
+<td><p>Recommended intervals: <br>0.25, 1, 2, 4, 8, 15, 30 min… up to 24 hr</p></td>
+</tr>
+<tr class="row-even"><td><p>7️⃣</p></td>
+<td><p>Increase load incrementally</p></td>
+<td><p>Typically double each step (e.g., 12.5 → 25 → 50 kPa…)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8️⃣</p></td>
+<td><p>Monitor rebound on unloading</p></td>
+<td><p>Elastic recovery noted</p></td>
+</tr>
+<tr class="row-even"><td><p>9️⃣</p></td>
+<td><p>Oven-dry sample for moisture content</p></td>
+<td><p>For void ratio and compressibility</p></td>
+</tr>
+<tr class="row-odd"><td><p>🔟</p></td>
+<td><p>Analyze strain–log(stress), t₅₀, and compute Cc and Cv</p></td>
+<td><p>Graphs and regression output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module">
+<h3>🧱 Summary of the 1D Consolidation Test App (ASTM D2435 Interactive Module)<a class="headerlink" href="#summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-it-is">
+<h3>📘 What It Is<a class="headerlink" href="#what-it-is" title="Link to this heading">#</a></h3>
+<p>An interactive Python app built with <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> that simulates the <strong>1D Consolidation test</strong> for soil samples. It allows users to input lab data and automatically computes:</p>
+<ul class="simple">
+<li><p>Vertical strain under stepwise loading</p></li>
+<li><p><strong>Compression Index (Cc)</strong> for estimating compressibility</p></li>
+<li><p><strong>Consolidation Coefficient (Cv)</strong> for predicting settlement rate</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-it-does">
+<h3>⚙️ What It Does<a class="headerlink" href="#what-it-does" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Input dial readings</p></td>
+<td><p>Accepts initial/final dial gauge values per load increment</p></td>
+</tr>
+<tr class="row-odd"><td><p>Computes strain</p></td>
+<td><p>Calculates vertical strain (%) from dial compression</p></td>
+</tr>
+<tr class="row-even"><td><p>Regression for Cc</p></td>
+<td><p>Fits a line to strain vs. log stress for compression index</p></td>
+</tr>
+<tr class="row-odd"><td><p>Computes Cv</p></td>
+<td><p>Uses t₅₀ and specimen height to calculate consolidation rate</p></td>
+</tr>
+<tr class="row-even"><td><p>Generates report</p></td>
+<td><p>Summarizes data in Markdown with optional plot visualization</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-the-output">
+<h3>🧮 How to Interpret the Output<a class="headerlink" href="#how-to-interpret-the-output" title="Link to this heading">#</a></h3>
+</section>
+<section id="key-results">
+<h3>Key Results<a class="headerlink" href="#key-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Strain (%)</strong>: Relative vertical deformation from load</p></li>
+<li><p><strong>Cc</strong>: Compression Index<br />
+↳ Higher Cc ⇒ more compressible soil<br />
+↳ Used to estimate settlement from effective stress change</p></li>
+<li><p><strong>Cv (m²/s)</strong>: Coefficient of Consolidation<br />
+↳ Larger Cv ⇒ faster dissipation of pore water<br />
+↳ Important for evaluating settlement duration and stability</p></li>
+</ul>
+</section>
+<section id="use-in-design">
+<h3>Use in Design<a class="headerlink" href="#use-in-design" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cc and Cv are foundational parameters for predicting:</p>
+<ul>
+<li><p>Primary consolidation settlement</p></li>
+<li><p>Time-dependent deformation</p></li>
+<li><p>Earthwork and foundation stability over time</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 📐 Style</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;200px&#39;</span><span class="p">}</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;400px&#39;</span><span class="p">)</span>
+
+<span class="c1"># 📋 Specimen Parameters</span>
+<span class="n">specimen_area</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.00785</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Specimen Area (m²):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">specimen_height</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Height (m):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">load_increment</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">12.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Load Increment (kPa):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">num_increments</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Load Steps:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">t50_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;t₅₀ Time (min):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="c1"># 🧪 Atterberg Limits for USCS</span>
+<span class="n">LL_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">45.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Liquid Limit (LL%)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">PL_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Plastic Limit (PL%)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="c1"># 📥 Generate Reading Inputs</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_reading_inputs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">d0</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.00</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Dial Initial (mm)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Dial Final (mm)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Time (min)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">d0</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">inputs</span>
+
+<span class="n">reading_inputs</span> <span class="o">=</span> <span class="n">create_reading_inputs</span><span class="p">(</span><span class="n">num_increments</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">reading_inputs</span>
+    <span class="n">reading_inputs</span> <span class="o">=</span> <span class="n">create_reading_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">])</span>
+    <span class="n">input_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">specimen_area</span><span class="p">,</span> <span class="n">specimen_height</span><span class="p">,</span> <span class="n">load_increment</span><span class="p">,</span> <span class="n">t50_input</span><span class="p">,</span>
+        <span class="n">LL_input</span><span class="p">,</span> <span class="n">PL_input</span>
+    <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">reading_inputs</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">]</span>
+
+<span class="n">num_increments</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_inputs</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">input_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">specimen_area</span><span class="p">,</span> <span class="n">specimen_height</span><span class="p">,</span> <span class="n">load_increment</span><span class="p">,</span> <span class="n">t50_input</span><span class="p">,</span>
+    <span class="n">LL_input</span><span class="p">,</span> <span class="n">PL_input</span>
+<span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">reading_inputs</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">])</span>
+
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Generate Full Report&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;260px&#39;</span><span class="p">))</span>
+
+<span class="c1"># 🧭 USCS Classification Logic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">classify_uscs</span><span class="p">(</span><span class="n">ll</span><span class="p">,</span> <span class="n">pl</span><span class="p">):</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="n">ll</span> <span class="o">-</span> <span class="n">pl</span>
+    <span class="k">if</span> <span class="n">ll</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pi</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;ML – Low plasticity silt&quot;</span>
+        <span class="k">elif</span> <span class="n">pi</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CL or ML – Borderline low plasticity&quot;</span>
+        <span class="k">elif</span> <span class="n">pi</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CL – Lean clay&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CL – Medium plasticity clay&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pi</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;MH – Elastic silt&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CH – Fat clay&quot;</span>
+
+<span class="c1"># 🧮 Main Logic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">specimen_area</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">H0</span> <span class="o">=</span> <span class="n">specimen_height</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">dP</span> <span class="o">=</span> <span class="n">load_increment</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">t50</span> <span class="o">=</span> <span class="n">t50_input</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">60</span>
+    <span class="n">LL</span> <span class="o">=</span> <span class="n">LL_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">PL</span> <span class="o">=</span> <span class="n">PL_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">PI</span> <span class="o">=</span> <span class="n">LL</span> <span class="o">-</span> <span class="n">PL</span>
+    <span class="n">classification</span> <span class="o">=</span> <span class="n">classify_uscs</span><span class="p">(</span><span class="n">LL</span><span class="p">,</span> <span class="n">PL</span><span class="p">)</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cumulative_load</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d_init</span><span class="p">,</span> <span class="n">d_final</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reading_inputs</span><span class="p">):</span>
+        <span class="n">cumulative_load</span> <span class="o">+=</span> <span class="n">dP</span>
+        <span class="n">d1</span> <span class="o">=</span> <span class="n">d_init</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">1000</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="n">d_final</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">1000</span>
+        <span class="n">strain</span> <span class="o">=</span> <span class="p">(</span><span class="n">d2</span> <span class="o">-</span> <span class="n">d1</span><span class="p">)</span> <span class="o">/</span> <span class="n">H0</span> <span class="k">if</span> <span class="n">H0</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;Step&#39;</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">:</span> <span class="n">cumulative_load</span><span class="p">,</span>
+            <span class="s1">&#39;Dial Initial (mm)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">d_init</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;Dial Final (mm)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">d_final</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;Strain (%)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">strain</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="s1">&#39;Time (min)&#39;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="s1">&#39;Log(Stress)&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">cumulative_load</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">})</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+    <span class="c1"># 📊 Report Markdown</span>
+    <span class="n">report_md</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🧱 Consolidation Report – ASTM D2435</span>
+
+<span class="s2">| Step | Stress (kPa) | Dial Init (mm) | Dial Final (mm) | Strain (%) | Time (min) |</span>
+<span class="s2">|------|--------------|----------------|------------------|-------------|------------|</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Step&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Dial Initial (mm)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Dial Final (mm)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Time (min)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> |</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#### 📌 Specimen Details</span>
+<span class="s2">- **Area**: </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> m²  </span>
+<span class="s2">- **Initial Height**: </span><span class="si">{</span><span class="n">H0</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Load Increment**: </span><span class="si">{</span><span class="n">dP</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kPa  </span>
+<span class="s2">- **t₅₀ Time**: </span><span class="si">{</span><span class="n">t50</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min</span>
+
+<span class="s2">---</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="c1"># 📈 Cc Calculation &amp; Plot</span>
+    <span class="n">df_fit</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_fit</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">df_fit</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">df_fit</span><span class="p">[</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">]</span>
+        <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">fit_line</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span>
+        <span class="n">Cc</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">slope</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">],</span> <span class="s1">&#39;bo-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Measured Strain&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">],</span> <span class="n">fit_line</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cc Regression&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Log(Stress) [log(kPa)]&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Strain vs. Log(Stress) – Cc Fit&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 📊 Compression Index (Cc)</span>
+
+<span class="s2">- **Cc** = </span><span class="si">{</span><span class="n">Cc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- Based on strain–log(σ′) regression for final increments</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">report_md</span> <span class="o">+=</span> <span class="s2">&quot;⚠️ Insufficient data to compute compression index (Cc).</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="c1"># ⏳ Cv Calculation</span>
+    <span class="n">Tv</span> <span class="o">=</span> <span class="mf">0.197</span>
+    <span class="n">Hdr</span> <span class="o">=</span> <span class="n">H0</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Cv</span> <span class="o">=</span> <span class="p">(</span><span class="n">Tv</span> <span class="o">*</span> <span class="n">Hdr</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t50</span> <span class="k">if</span> <span class="n">t50</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### ⏳ Coefficient of Consolidation (Cv)</span>
+
+<span class="s2">- **Cv** = </span><span class="si">{</span><span class="n">Cv</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> m²/s  </span>
+<span class="s2">- Based on t₅₀ = </span><span class="si">{</span><span class="n">t50</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min and Hdr = </span><span class="si">{</span><span class="n">Hdr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="c1"># 📘 USCS Output</span>
+    <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🧭 USCS Classification (Atterberg Limits)</span>
+
+<span class="s2">- **Liquid Limit (LL)** = </span><span class="si">{</span><span class="n">LL</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **Plastic Limit (PL)** = </span><span class="si">{</span><span class="n">PL</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **Plasticity Index (PI)** = </span><span class="si">{</span><span class="n">PI</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **USCS Group** = </span><span class="si">{</span><span class="n">classification</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">report_md</span><span class="p">))</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="c1"># 📦 Display Interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">num_increments</span><span class="p">,</span> <span class="n">input_box</span><span class="p">,</span> <span class="n">run_btn</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "acc1aa460eae4c52ba7b666b065be22b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="d-consolidation-test-conceptual-reflective-quiz-questions">
+<h3>🧱 1D Consolidation Test – Conceptual, Reflective &amp; Quiz Questions<a class="headerlink" href="#d-consolidation-test-conceptual-reflective-quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="conceptual-questions">
+<h3>🔍 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What does the compression index (Cc) indicate about the compressibility of soil under load?</p></li>
+<li><p>Why is strain plotted against log of vertical stress in evaluating soil consolidation behavior?</p></li>
+<li><p>How does the coefficient of consolidation (Cv) influence the rate at which pore water dissipates?</p></li>
+<li><p>What is the significance of determining the time for 50% consolidation (t₅₀)?</p></li>
+<li><p>How do specimen geometry and drainage path affect the interpretation of Cv?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>💭 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>While reviewing your test data, which load steps showed nonlinear strain responses—and what might that imply?</p></li>
+<li><p>What factors in a lab setup could influence the accuracy of dial readings or strain measurements?</p></li>
+<li><p>If you observed a sudden drop in strain between two stress increments, how would you explain it?</p></li>
+<li><p>How would you communicate the meaning of Cc and Cv to a field engineer overseeing embankment construction?</p></li>
+<li><p>What challenges might arise when translating lab-calculated Cv into field-scale predictions?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="theory-interpretation">
+<h3>Theory &amp; Interpretation<a class="headerlink" href="#theory-interpretation" title="Link to this heading">#</a></h3>
+<p><strong>Q1. What is the formula used to calculate the compression index (Cc)?</strong><br />
+A. <span class="math notranslate nohighlight">\(( C_c = \Delta e / \log(\sigma_2 / \sigma_1) \)</span>) ✅<br />
+B. <span class="math notranslate nohighlight">\(( C_c = \Delta H / H_0 \)</span>)<br />
+C. <span class="math notranslate nohighlight">\(( C_c = \gamma_w \cdot t / H_0^2 \)</span>)<br />
+D. <span class="math notranslate nohighlight">\(( C_c = \sigma_2 - \sigma_1 \)</span>)</p>
+<p><strong>Q2. The time factor (Tv) for 50% consolidation using the square-root method is approximately:</strong><br />
+A. 0.5<br />
+B. 0.197 ✅<br />
+C. 1.0<br />
+D. 0.10</p>
+<p><strong>Q3. Cv is computed from which variables?</strong><br />
+A. Load and compression index<br />
+B. Time and specimen diameter<br />
+C. Drainage path length and time to 50% consolidation ✅<br />
+D. Moisture content and bulk density</p>
+</section>
+<section id="data-reasoning">
+<h3>Data &amp; Reasoning<a class="headerlink" href="#data-reasoning" title="Link to this heading">#</a></h3>
+<p><strong>Q4. A higher Cv value generally indicates:</strong><br />
+A. Slower water dissipation<br />
+B. Faster consolidation rate ✅<br />
+C. More clay content<br />
+D. Higher shrinkage</p>
+<p><strong>Q5. Why is the drainage path taken as H₀/2 in double-drainage setups?</strong><br />
+A. Because water exits only one face<br />
+B. Because soil drains vertically and horizontally<br />
+C. Because both top and bottom surfaces allow drainage ✅<br />
+D. Because initial strain is halved</p>
+<hr class="docutils" />
+<p>Would you like these embedded into the app as interactive explanations or formatted as a worksheet for learner assessment?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="UUStrengthTest.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: Unconsolidated Undrained (UU) Triaxial Test</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1DConsolidationAnalysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: 1D Consolidation Theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-consolidation">🧱 Soil Consolidation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186">🧱 1D Consolidation Test – Key Steps per U.S. Standard (ASTM D2435/D4186)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astm-d2435-incremental-loading-procedure">📘 ASTM D2435 – Incremental Loading Procedure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-measured">🧪 Key Parameters Measured</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📐 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-checklist-of-test-steps-astm-d2435">✅ Visual Checklist of Test Steps (ASTM D2435)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module">🧱 Summary of the 1D Consolidation Test App (ASTM D2435 Interactive Module)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-output">🧮 How to Interpret the Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-results">Key Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-in-design">Use in Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-conceptual-reflective-quiz-questions">🧱 1D Consolidation Test – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-interpretation">Theory &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reasoning">Data &amp; Reasoning</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

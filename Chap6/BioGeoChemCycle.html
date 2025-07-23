@@ -1,0 +1,1549 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Enginereing Sustainability: BioGeoChemCycle &#8212; Civil Engineering Toolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"1058079c16704c9db4ff6308c0fd5aef": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Leaf Temp (\u00b0C)", "layout": "IPY_MODEL_2d31afdf07fd41b5a79a8c04c8fb6baa", "max": 40, "min": 10, "style": "IPY_MODEL_c34ec0a1a61a41c9b0849c30566fb771", "value": 25}}, "16b741b3aca540e183be8b92cc0ea7e5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HBoxModel", "state": {"children": ["IPY_MODEL_34980616a7f2492cba7f37212464b890", "IPY_MODEL_84b901b6a8024735857b22011388d0bd"], "layout": "IPY_MODEL_bb62b687d4304f64b58ef12b06993ab9"}}, "1c6470c9ecee464694f9fa077be24b83": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "1f604f453b3f41f8b066a04898614801": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "20873db5f3454597911db1ae8493ef70": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Leaf N (g/m\u00b2)", "layout": "IPY_MODEL_1f604f453b3f41f8b066a04898614801", "max": 3, "min": 0.5, "step": 0.1, "style": "IPY_MODEL_a9b56aa2ecfd413b8159c2b99532f2cf", "value": 1.8}}, "20db6a820b0a47deb1c8141122ccec46": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "26fc9a29f0fe453881c9fcc556002053": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"layout": "IPY_MODEL_56acfc7d2c254add9512fc1b9976946e"}}, "297fea96b55440f484e35fcfeafde06b": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "2d31afdf07fd41b5a79a8c04c8fb6baa": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "2f449897bfc74a318c2da7ca1de90bc9": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "260px"}}, "3304452ecb3c4b12ba84bef12da04543": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "180px"}}, "34980616a7f2492cba7f37212464b890": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Annual Precip (mm)", "layout": "IPY_MODEL_7fbef4042e0b4207beb812ebbed52907", "max": 3000, "min": 500, "step": 100, "style": "IPY_MODEL_698dc0419c0847b78d20de19f1894882", "value": 1200}}, "3a19c70698ec4e3995b2c76acda5a6b4": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "42e788a7c5c24b7383adf849a540cd70": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "4d57ec64a2354ba490381b0fd1525aa4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Watershed Area (km\u00b2)", "layout": "IPY_MODEL_e6884bc599094f8691450301ed3d86d2", "step": null, "style": "IPY_MODEL_3304452ecb3c4b12ba84bef12da04543", "value": 100}}, "500aef91dc4f4b6d9019c939bbd32f76": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "50b695d1466d4fbca8c97c8b566b75ea": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "P Fertilizer (kg/ha)", "layout": "IPY_MODEL_500aef91dc4f4b6d9019c939bbd32f76", "step": 5, "style": "IPY_MODEL_e7b082036eaa46f3bdb56b9925c2f279", "value": 20}}, "5440428530f3451c8e129efdeb81f4db": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HBoxModel", "state": {"children": ["IPY_MODEL_4d57ec64a2354ba490381b0fd1525aa4", "IPY_MODEL_afcea9692c334236b316ca9afe2650c3"], "layout": "IPY_MODEL_1c6470c9ecee464694f9fa077be24b83"}}, "56acfc7d2c254add9512fc1b9976946e": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "5ae1afd185174b1e8b5cba0e37937fe8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "5ce76e37054d4065975875b6eddf3cc1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Simulate Photosynthesis", "layout": "IPY_MODEL_ef8c6c08ebb74ba4b51871688ef0a923", "style": "IPY_MODEL_5ae1afd185174b1e8b5cba0e37937fe8", "tooltip": null}}, "611353d72f334d2da8cd748492099e73": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"layout": "IPY_MODEL_e5ccb94d7c8d40e7b8c316282dc2b3cf"}}, "61c937fe8a94464eae9f128867a105f1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "180px"}}, "6764714472bf4b7f865ef25977a57db7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HBoxModel", "state": {"children": ["IPY_MODEL_1058079c16704c9db4ff6308c0fd5aef", "IPY_MODEL_20873db5f3454597911db1ae8493ef70"], "layout": "IPY_MODEL_20db6a820b0a47deb1c8141122ccec46"}}, "698dc0419c0847b78d20de19f1894882": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "180px"}}, "69d1c8a2187c44dc97f4003555840c41": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "6fe05a8007da4495bf9537564bd10ae3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "150px"}}, "775dd98c219f4eb89d0900ca0fd2d0a3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "150px"}}, "7cc8dbcdafe048bab9e5c2ee38c7d04b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Ci (\u00b5mol/mol)", "layout": "IPY_MODEL_a5f34d919731468b9c70be80f757b571", "max": 800, "min": 50, "step": 10, "style": "IPY_MODEL_775dd98c219f4eb89d0900ca0fd2d0a3", "value": 250}}, "7fbef4042e0b4207beb812ebbed52907": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "84b901b6a8024735857b22011388d0bd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "N Fertilizer (kg/ha)", "layout": "IPY_MODEL_297fea96b55440f484e35fcfeafde06b", "max": 300, "step": 10, "style": "IPY_MODEL_aa82beefd90f4ec29b165b1417197df5", "value": 40}}, "a395ae98c2944e57889c58a29e07b389": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HBoxModel", "state": {"children": ["IPY_MODEL_50b695d1466d4fbca8c97c8b566b75ea"], "layout": "IPY_MODEL_3a19c70698ec4e3995b2c76acda5a6b4"}}, "a5f34d919731468b9c70be80f757b571": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "a966d35f95384a95bb0b9f04a573ab88": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_ee5e4c772ec4429b850c45619b5e3f72", "IPY_MODEL_6764714472bf4b7f865ef25977a57db7", "IPY_MODEL_5ce76e37054d4065975875b6eddf3cc1", "IPY_MODEL_26fc9a29f0fe453881c9fcc556002053"], "layout": "IPY_MODEL_d9c528ae94334c9bbc9f298079b5a532"}}, "a9b56aa2ecfd413b8159c2b99532f2cf": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "150px"}}, "aa82beefd90f4ec29b165b1417197df5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "180px"}}, "aee18fbd6921481db3ed81714a9b9416": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_5440428530f3451c8e129efdeb81f4db", "IPY_MODEL_16b741b3aca540e183be8b92cc0ea7e5", "IPY_MODEL_a395ae98c2944e57889c58a29e07b389", "IPY_MODEL_dc60db0341be4110a6cd236783612260", "IPY_MODEL_611353d72f334d2da8cd748492099e73"], "layout": "IPY_MODEL_d80c7de135e9447c9e4c9cc59c0c82cc"}}, "afcea9692c334236b316ca9afe2650c3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DropdownModel", "state": {"_options_labels": ["Forest", "Agriculture", "Urban"], "description": "Vegetation:", "index": 0, "layout": "IPY_MODEL_b7ce633198c84ec69d9b8af94ebcec83", "style": "IPY_MODEL_61c937fe8a94464eae9f128867a105f1"}}, "b7bdb03e13214bf19f68d895260ae506": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "b7ce633198c84ec69d9b8af94ebcec83": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "bb62b687d4304f64b58ef12b06993ab9": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "c34ec0a1a61a41c9b0849c30566fb771": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "150px"}}, "cae721fced794cc19f6d60f3acef9c91": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "PPFD (\u00b5mol/m\u00b2/s)", "layout": "IPY_MODEL_b7bdb03e13214bf19f68d895260ae506", "max": 2000, "step": 50, "style": "IPY_MODEL_6fe05a8007da4495bf9537564bd10ae3", "value": 1200}}, "d80c7de135e9447c9e4c9cc59c0c82cc": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "d9c528ae94334c9bbc9f298079b5a532": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "dc60db0341be4110a6cd236783612260": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Simulate Nutrient Cycles", "layout": "IPY_MODEL_2f449897bfc74a318c2da7ca1de90bc9", "style": "IPY_MODEL_42e788a7c5c24b7383adf849a540cd70", "tooltip": null}}, "e5ccb94d7c8d40e7b8c316282dc2b3cf": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "e6884bc599094f8691450301ed3d86d2": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "e7b082036eaa46f3bdb56b9925c2f279": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "180px"}}, "ee5e4c772ec4429b850c45619b5e3f72": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HBoxModel", "state": {"children": ["IPY_MODEL_7cc8dbcdafe048bab9e5c2ee38c7d04b", "IPY_MODEL_cae721fced794cc19f6d60f3acef9c91"], "layout": "IPY_MODEL_69d1c8a2187c44dc97f4003555840c41"}}, "ef8c6c08ebb74ba4b51871688ef0a923": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "200px"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/BioGeoChemCycle';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Enginereing Sustainability: CarbonateCycleClimate" href="CarbonateCycleClimate.html" />
+    <link rel="prev" title="Chapter 6 Enginereing Sustainability: Life Cycle Assessment" href="LifeCycleAssessment.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Civil Engineering Toolkit - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Civil Engineering Toolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1. 0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Qualty based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">3.9 Pipe Hydraulics - Pump Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/BioGeoChemCycle.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/BioGeoChemCycle.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/BioGeoChemCycle.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/BioGeoChemCycle.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/BioGeoChemCycle.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Enginereing Sustainability: BioGeoChemCycle</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nitrogen-and-phosphorus-cycles-watershed-scale-overview">🌿 Nitrogen and Phosphorus Cycles – Watershed Scale Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-nitrogen-and-phosphorus-cycles">🧪 What Are the Nitrogen and Phosphorus Cycles?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factors-influencing-n-and-p-storage-at-watershed-scale">🔍 Factors Influencing N and P Storage at Watershed Scale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-study-these-cycles">🎯 Why Study These Cycles?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-river-basins-nitrogen-phosphorus-cycle-summary">🌍 Major River Basins – Nitrogen &amp; Phosphorus Cycle Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-and-the-farquhar-model-role-in-carbon-cycle-typical-parameters">🌿 Photosynthesis and the Farquhar Model – Role in Carbon Cycle &amp; Typical Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-photosynthesis">📘 What Is Photosynthesis?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-in-the-carbon-cycle">🌍 Role in the Carbon Cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-the-farquhar-model">🧪 Why Use the Farquhar Model?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-parameter-values-at-25c">📊 Typical Parameter Values (at 25°C)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-watershed-nutrient-simulator-nitrogen-phosphorus">🌿 Summary – Interactive Watershed Nutrient Simulator (Nitrogen + Phosphorus)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📤 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-farquhar-model-of-c3-photosynthesis-interactive-python-simulator">🌿 Summary – Farquhar Model of C₃ Photosynthesis (Interactive Python Simulator)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📤 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-nutrient-simulator-conceptual-reflective-quiz-questions">🧠 Watershed Nutrient Simulator – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nitrogen-dynamics">Nitrogen Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phosphorus-dynamics">Phosphorus Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-farquhar-model-conceptual-reflective-quiz-questions">🌿 Photosynthesis &amp; Farquhar Model – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biochemical-components">Biochemical Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-controls">Environmental Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-interpretation">Application &amp; Interpretation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-enginereing-sustainability-biogeochemcycle">
+<h1>Chapter 6 Enginereing Sustainability: BioGeoChemCycle<a class="headerlink" href="#chapter-6-enginereing-sustainability-biogeochemcycle" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: BioGeoChem</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: BioGeoChem</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="nitrogen-and-phosphorus-cycles-watershed-scale-overview">
+<h3>🌿 Nitrogen and Phosphorus Cycles – Watershed Scale Overview<a class="headerlink" href="#nitrogen-and-phosphorus-cycles-watershed-scale-overview" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="what-are-the-nitrogen-and-phosphorus-cycles">
+<h3>🧪 What Are the Nitrogen and Phosphorus Cycles?<a class="headerlink" href="#what-are-the-nitrogen-and-phosphorus-cycles" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Nitrogen Cycle</strong>: Describes the movement of nitrogen through the atmosphere, soil, water, and living organisms. Key processes include nitrogen fixation, mineralization, nitrification, denitrification, and assimilation.</p></li>
+<li><p><strong>Phosphorus Cycle</strong>: Tracks phosphorus movement through rocks, soil, water, and biota. Unlike nitrogen, phosphorus does not cycle through the atmosphere. Key processes include weathering, uptake, sedimentation, and mineralization.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="factors-influencing-n-and-p-storage-at-watershed-scale">
+<h3>🔍 Factors Influencing N and P Storage at Watershed Scale<a class="headerlink" href="#factors-influencing-n-and-p-storage-at-watershed-scale" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Factor</p></th>
+<th class="head"><p>Nitrogen Impact</p></th>
+<th class="head"><p>Phosphorus Impact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Land Use</strong></p></td>
+<td><p>Agriculture increases N runoff</p></td>
+<td><p>Fertilizer and erosion increase P loading</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Vegetation Type</strong></p></td>
+<td><p>Affects uptake and retention</p></td>
+<td><p>Influences P demand and cycling</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Soil Type</strong></p></td>
+<td><p>Controls N mineralization and leaching</p></td>
+<td><p>Governs P adsorption and mobility</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hydrology</strong></p></td>
+<td><p>Runoff and infiltration affect N transport</p></td>
+<td><p>Sediment flow influences P movement</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Climate</strong></p></td>
+<td><p>Temperature and rainfall affect microbial activity</p></td>
+<td><p>Alters weathering and runoff dynamics</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Human Inputs</strong></p></td>
+<td><p>Fertilizer, wastewater, fossil fuels</p></td>
+<td><p>Fertilizer, detergents, urban runoff</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="why-study-these-cycles">
+<h3>🎯 Why Study These Cycles?<a class="headerlink" href="#why-study-these-cycles" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Water Quality</strong>: Excess N and P lead to eutrophication, algal blooms, and hypoxia</p></li>
+<li><p><strong>Agricultural Efficiency</strong>: Optimizing nutrient use improves crop yield and reduces pollution</p></li>
+<li><p><strong>Ecosystem Health</strong>: Nutrient balance supports biodiversity and aquatic life</p></li>
+<li><p><strong>Climate Feedbacks</strong>: N₂O from nitrogen cycle is a potent greenhouse gas</p></li>
+<li><p><strong>Infrastructure Planning</strong>: Informs wastewater treatment, riparian buffer design, and land management</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="major-river-basins-nitrogen-phosphorus-cycle-summary">
+<h3>🌍 Major River Basins – Nitrogen &amp; Phosphorus Cycle Summary<a class="headerlink" href="#major-river-basins-nitrogen-phosphorus-cycle-summary" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>River Basin</p></th>
+<th class="head"><p>Nitrogen Cycle Highlights</p></th>
+<th class="head"><p>Phosphorus Cycle Highlights</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Mississippi (USA)</strong></p></td>
+<td><p>High nitrate loads from agriculture; hypoxia in Gulf of Mexico</p></td>
+<td><p>P from fertilizer and wastewater; contributes to eutrophication</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Danube (Europe)</strong></p></td>
+<td><p>Diffuse N sources from agriculture; improved treatment in upper basin</p></td>
+<td><p>P legacy in soils; sediment-bound P in floodplains</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Columbia (USA)</strong></p></td>
+<td><p>Salmon carcasses contribute N; dams alter transport</p></td>
+<td><p>Weathering and runoff dominate P input; estuarine export high</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Yangtze (China)</strong></p></td>
+<td><p>Industrial and urban N inputs; seasonal monsoon effects</p></td>
+<td><p>P from erosion and sewage; sedimentation in reservoirs</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Amazon (South America)</strong></p></td>
+<td><p>Mostly natural N cycling; low anthropogenic input</p></td>
+<td><p>P from weathering; low fertilizer use, high retention</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ganges (India)</strong></p></td>
+<td><p>N from agriculture and sewage; monsoon-driven fluxes</p></td>
+<td><p>P from detergents and erosion; urban runoff significant</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>📌 These basins illustrate how land use, climate, and hydrology shape nutrient dynamics and management priorities.</p>
+</div></blockquote>
+</section>
+<section id="photosynthesis-and-the-farquhar-model-role-in-carbon-cycle-typical-parameters">
+<h3>🌿 Photosynthesis and the Farquhar Model – Role in Carbon Cycle &amp; Typical Parameters<a class="headerlink" href="#photosynthesis-and-the-farquhar-model-role-in-carbon-cycle-typical-parameters" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="what-is-photosynthesis">
+<h3>📘 What Is Photosynthesis?<a class="headerlink" href="#what-is-photosynthesis" title="Link to this heading">#</a></h3>
+<p><strong>Photosynthesis</strong> is the biological process by which green plants, algae, and some bacteria convert <strong>carbon dioxide (CO₂)</strong> and <strong>water</strong> into <strong>glucose</strong> and <strong>oxygen</strong>, using sunlight as the energy source. The simplified equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂
+\]</div>
+<p>This process is the <strong>primary pathway</strong> by which atmospheric CO₂ is captured and stored in biomass, making it a cornerstone of the <strong>global carbon cycle</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="role-in-the-carbon-cycle">
+<h3>🌍 Role in the Carbon Cycle<a class="headerlink" href="#role-in-the-carbon-cycle" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Impact on Carbon Cycle</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CO₂ Uptake</strong></p></td>
+<td><p>Removes CO₂ from atmosphere into plant biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Carbon Storage</strong></p></td>
+<td><p>Transfers carbon to soils via litter and roots</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Respiration &amp; Decay</strong></p></td>
+<td><p>Returns CO₂ to atmosphere from biomass</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Climate Regulation</strong></p></td>
+<td><p>Influences atmospheric CO₂ and temperature</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Photosynthesis is the <strong>largest natural carbon sink</strong>, balancing emissions from respiration, decomposition, and human activities.</p>
+</section>
+<hr class="docutils" />
+<section id="why-use-the-farquhar-model">
+<h3>🧪 Why Use the Farquhar Model?<a class="headerlink" href="#why-use-the-farquhar-model" title="Link to this heading">#</a></h3>
+<p>The <strong>Farquhar–von Caemmerer–Berry (FvCB) model</strong> is widely used to simulate <strong>C₃ photosynthesis</strong> because it:</p>
+<ul class="simple">
+<li><p>Represents <strong>biochemical limitations</strong> (Rubisco activity, electron transport)</p></li>
+<li><p>Accounts for <strong>temperature, CO₂, light, and leaf nitrogen</strong></p></li>
+<li><p>Predicts <strong>net assimilation rate (Aₙ)</strong> under varying conditions</p></li>
+<li><p>Is mechanistic and scalable from <strong>leaf to canopy to ecosystem</strong></p></li>
+</ul>
+<p>It’s the gold standard for modeling plant carbon uptake in climate models, crop simulations, and ecological forecasting.</p>
+</section>
+<hr class="docutils" />
+<section id="typical-parameter-values-at-25c">
+<h3>📊 Typical Parameter Values (at 25°C)<a class="headerlink" href="#typical-parameter-values-at-25c" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>Typical Range (µmol/m²/s)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Max carboxylation</p></td>
+<td><p>Vcmax</p></td>
+<td><p>40–80</p></td>
+<td><p>Rubisco-limited rate</p></td>
+</tr>
+<tr class="row-odd"><td><p>Max electron transport</p></td>
+<td><p>Jmax</p></td>
+<td><p>80–160</p></td>
+<td><p>Light-limited rate</p></td>
+</tr>
+<tr class="row-even"><td><p>CO₂ compensation point</p></td>
+<td><p>Γ*</p></td>
+<td><p>~40</p></td>
+<td><p>CO₂ level where net assimilation = 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Michaelis constant (CO₂)</p></td>
+<td><p>Kc</p></td>
+<td><p>~404</p></td>
+<td><p>Affinity of Rubisco for CO₂</p></td>
+</tr>
+<tr class="row-even"><td><p>Michaelis constant (O₂)</p></td>
+<td><p>Ko</p></td>
+<td><p>~278</p></td>
+<td><p>Affinity of Rubisco for O₂</p></td>
+</tr>
+<tr class="row-odd"><td><p>Leaf respiration</p></td>
+<td><p>Rd</p></td>
+<td><p>~1–2</p></td>
+<td><p>CO₂ loss in light</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>These values vary by species, leaf nitrogen, temperature, and growth conditions.</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>Would you like a visual diagram of the FvCB model or a worksheet to explore how each parameter affects assimilation?</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="summary-interactive-watershed-nutrient-simulator-nitrogen-phosphorus">
+<h3>🌿 Summary – Interactive Watershed Nutrient Simulator (Nitrogen + Phosphorus)<a class="headerlink" href="#summary-interactive-watershed-nutrient-simulator-nitrogen-phosphorus" title="Link to this heading">#</a></h3>
+<p>A Python-based, interactive nutrient simulator that models <strong>nitrogen and phosphorus cycling</strong> at the watershed scale. It incorporates key factors like watershed area, precipitation, vegetation type, and fertilizer inputs to simulate fluxes such as atmospheric deposition, runoff, plant uptake, denitrification, sedimentation, and soil nutrient storage.</p>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> for dynamic user input (area, vegetation, precipitation, fertilizer rates)</p></li>
+<li><p>Computes nitrogen inputs (atmospheric + fertilizer) and losses (uptake, leaching, denitrification)</p></li>
+<li><p>Computes phosphorus inputs (weathering + fertilizer) and losses (uptake, runoff, sediment binding)</p></li>
+<li><p>Adjusts nutrient dynamics based on land use and precipitation sensitivity</p></li>
+<li><p>Displays summary tables and nutrient balance plots for N and P cycles</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="inputs">
+<h3>📥 Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Role</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Watershed Area</p></td>
+<td><p>km²</p></td>
+<td><p>Total landscape modeled</p></td>
+</tr>
+<tr class="row-odd"><td><p>Annual Precipitation</p></td>
+<td><p>mm/year</p></td>
+<td><p>Governs hydrological export and leaching intensity</p></td>
+</tr>
+<tr class="row-even"><td><p>Vegetation Type</p></td>
+<td><p>Category</p></td>
+<td><p>Determines nutrient uptake and sensitivity</p></td>
+</tr>
+<tr class="row-odd"><td><p>N Fertilizer Rate</p></td>
+<td><p>kg/ha</p></td>
+<td><p>Adds nitrogen input to agricultural systems</p></td>
+</tr>
+<tr class="row-even"><td><p>P Fertilizer Rate</p></td>
+<td><p>kg/ha</p></td>
+<td><p>Adds phosphorus input to agricultural systems</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📤 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>N &amp; P Inputs</p></td>
+<td><p>External nitrogen/phosphorus entering the system</p></td>
+</tr>
+<tr class="row-odd"><td><p>Plant Uptake</p></td>
+<td><p>Nutrients absorbed by vegetation</p></td>
+</tr>
+<tr class="row-even"><td><p>Leaching / Runoff (N/P)</p></td>
+<td><p>Nutrients exported via water movement</p></td>
+</tr>
+<tr class="row-odd"><td><p>Denitrification (N)</p></td>
+<td><p>Gaseous N loss via microbial activity</p></td>
+</tr>
+<tr class="row-even"><td><p>Sediment Binding (P)</p></td>
+<td><p>P captured in soil or aquatic sediments</p></td>
+</tr>
+<tr class="row-odd"><td><p>Soil Storage Δ (N/P)</p></td>
+<td><p>Net nutrient accumulation or depletion</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-results">
+<h3>🔍 How to Interpret Results<a class="headerlink" href="#how-to-interpret-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>High runoff or low uptake</strong> may suggest nutrient inefficiency or environmental risk</p></li>
+<li><p><strong>Positive storage Δ</strong> → accumulation in soils; <strong>negative Δ</strong> → nutrient loss</p></li>
+<li><p>Compare N and P cycles to assess <strong>eutrophication potential</strong>, <strong>crop efficiency</strong>, or <strong>watershed resilience</strong></p></li>
+</ul>
+<p>Let me know if you’d like to add land use fractions, seasonal inputs, or watershed export coefficients to further refine nutrient transport modeling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🌱 Revised Watershed Nutrient Simulator – Includes Nitrogen + Phosphorus Cycles</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># 📋 Input Widgets</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Watershed Area (km²)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">precip_mm</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Annual Precip (mm)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">veg_type</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Forest&#39;</span><span class="p">,</span> <span class="s1">&#39;Agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Urban&#39;</span><span class="p">],</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Vegetation:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">fert_rate_N</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;N Fertilizer (kg/ha)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">fert_rate_P</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;P Fertilizer (kg/ha)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+
+<span class="c1"># 🌿 Nutrient Simulation Function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_nutrient_cycles</span><span class="p">(</span><span class="n">area_km2</span><span class="p">,</span> <span class="n">precip_mm</span><span class="p">,</span> <span class="n">veg_type</span><span class="p">,</span> <span class="n">fert_N</span><span class="p">,</span> <span class="n">fert_P</span><span class="p">):</span>
+    <span class="n">area_ha</span> <span class="o">=</span> <span class="n">area_km2</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Nitrogen Inputs</span>
+    <span class="n">N_atm</span> <span class="o">=</span> <span class="mf">8.0</span> <span class="o">*</span> <span class="n">area_ha</span>
+    <span class="n">N_fert</span> <span class="o">=</span> <span class="n">fert_N</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="k">if</span> <span class="n">veg_type</span> <span class="o">==</span> <span class="s1">&#39;Agriculture&#39;</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">N_input</span> <span class="o">=</span> <span class="n">N_atm</span> <span class="o">+</span> <span class="n">N_fert</span>
+    <span class="n">N_uptake_base</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Forest&#39;</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">,</span> <span class="s1">&#39;Agriculture&#39;</span><span class="p">:</span> <span class="mf">30.0</span><span class="p">,</span> <span class="s1">&#39;Urban&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">}[</span><span class="n">veg_type</span><span class="p">]</span>
+    <span class="n">N_uptake</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">N_input</span><span class="p">,</span> <span class="n">N_uptake_base</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="o">+</span> <span class="n">N_atm</span> <span class="o">*</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">N_leach</span> <span class="o">=</span> <span class="mf">0.12</span> <span class="o">*</span> <span class="n">precip_mm</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">fert_N</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">N_deni</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="n">N_input</span> <span class="o">+</span> <span class="mf">0.005</span> <span class="o">*</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N_input</span> <span class="o">-</span> <span class="n">N_uptake</span><span class="p">)</span>
+    <span class="n">N_storage</span> <span class="o">=</span> <span class="n">N_input</span> <span class="o">-</span> <span class="n">N_uptake</span> <span class="o">-</span> <span class="n">N_leach</span> <span class="o">-</span> <span class="n">N_deni</span>
+
+    <span class="c1"># Phosphorus Inputs</span>
+    <span class="n">P_fert</span> <span class="o">=</span> <span class="n">fert_P</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="k">if</span> <span class="n">veg_type</span> <span class="o">==</span> <span class="s1">&#39;Agriculture&#39;</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">P_weather</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">area_ha</span>
+    <span class="n">P_input</span> <span class="o">=</span> <span class="n">P_fert</span> <span class="o">+</span> <span class="n">P_weather</span>
+    <span class="n">P_uptake_base</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Forest&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;Agriculture&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span> <span class="s1">&#39;Urban&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">}[</span><span class="n">veg_type</span><span class="p">]</span>
+    <span class="n">P_uptake</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">P_input</span><span class="p">,</span> <span class="n">P_uptake_base</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="o">+</span> <span class="n">P_weather</span> <span class="o">*</span> <span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">P_runoff</span> <span class="o">=</span> <span class="mf">0.08</span> <span class="o">*</span> <span class="n">precip_mm</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.05</span> <span class="o">*</span> <span class="n">fert_P</span> <span class="o">/</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">P_sediment</span> <span class="o">=</span> <span class="mf">0.015</span> <span class="o">*</span> <span class="n">P_input</span>
+    <span class="n">P_storage</span> <span class="o">=</span> <span class="n">P_input</span> <span class="o">-</span> <span class="n">P_uptake</span> <span class="o">-</span> <span class="n">P_runoff</span> <span class="o">-</span> <span class="n">P_sediment</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;Nitrogen&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;Atmospheric Deposition&#39;</span><span class="p">:</span> <span class="n">N_atm</span><span class="p">,</span>
+            <span class="s1">&#39;Fertilizer Input&#39;</span><span class="p">:</span> <span class="n">N_fert</span><span class="p">,</span>
+            <span class="s1">&#39;Plant Uptake&#39;</span><span class="p">:</span> <span class="n">N_uptake</span><span class="p">,</span>
+            <span class="s1">&#39;Leaching / Runoff&#39;</span><span class="p">:</span> <span class="n">N_leach</span><span class="p">,</span>
+            <span class="s1">&#39;Denitrification&#39;</span><span class="p">:</span> <span class="n">N_deni</span><span class="p">,</span>
+            <span class="s1">&#39;Soil Storage Δ&#39;</span><span class="p">:</span> <span class="n">N_storage</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;Phosphorus&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;Weathering Input&#39;</span><span class="p">:</span> <span class="n">P_weather</span><span class="p">,</span>
+            <span class="s1">&#39;Fertilizer Input&#39;</span><span class="p">:</span> <span class="n">P_fert</span><span class="p">,</span>
+            <span class="s1">&#39;Plant Uptake&#39;</span><span class="p">:</span> <span class="n">P_uptake</span><span class="p">,</span>
+            <span class="s1">&#39;Runoff Loss&#39;</span><span class="p">:</span> <span class="n">P_runoff</span><span class="p">,</span>
+            <span class="s1">&#39;Sediment Binding&#39;</span><span class="p">:</span> <span class="n">P_sediment</span><span class="p">,</span>
+            <span class="s1">&#39;Soil Storage Δ&#39;</span><span class="p">:</span> <span class="n">P_storage</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="c1"># 🔘 Run Button</span>
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Simulate Nutrient Cycles&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;260px&#39;</span><span class="p">))</span>
+<span class="n">output_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output_box</span><span class="p">:</span>
+        <span class="n">output_box</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">simulate_nutrient_cycles</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">precip_mm</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">veg_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">fert_rate_N</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">fert_rate_P</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="c1"># Summary Tables</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🌿 Watershed Nutrient Summary – Vegetation: **</span><span class="si">{</span><span class="n">veg_type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">**</span>
+
+<span class="s2">**Area**: </span><span class="si">{</span><span class="n">area</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> km²  </span>
+<span class="s2">**Annual Precipitation**: </span><span class="si">{</span><span class="n">precip_mm</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> mm  </span>
+<span class="s2">**Fertilizer N**: </span><span class="si">{</span><span class="n">fert_rate_N</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg/ha  </span>
+<span class="s2">**Fertilizer P**: </span><span class="si">{</span><span class="n">fert_rate_P</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg/ha  </span>
+
+<span class="s2">#### 🧪 Nitrogen Fluxes (kg/year)</span>
+
+<span class="s2">| Component              | Value |</span>
+<span class="s2">|------------------------|--------|</span>
+<span class="s2">| Atmospheric Deposition | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">][</span><span class="s1">&#39;Atmospheric Deposition&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Fertilizer Input       | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">][</span><span class="s1">&#39;Fertilizer Input&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Plant Uptake           | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">][</span><span class="s1">&#39;Plant Uptake&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Leaching / Runoff      | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">][</span><span class="s1">&#39;Leaching / Runoff&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Denitrification        | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">][</span><span class="s1">&#39;Denitrification&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Soil Storage Change    | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">][</span><span class="s1">&#39;Soil Storage Δ&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+
+<span class="s2">#### 🧬 Phosphorus Fluxes (kg/year)</span>
+
+<span class="s2">| Component              | Value |</span>
+<span class="s2">|------------------------|--------|</span>
+<span class="s2">| Weathering Input       | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">][</span><span class="s1">&#39;Weathering Input&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Fertilizer Input       | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">][</span><span class="s1">&#39;Fertilizer Input&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Plant Uptake           | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">][</span><span class="s1">&#39;Plant Uptake&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Runoff Loss            | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">][</span><span class="s1">&#39;Runoff Loss&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Sediment Binding       | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">][</span><span class="s1">&#39;Sediment Binding&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Soil Storage Change    | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">][</span><span class="s1">&#39;Soil Storage Δ&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+
+        <span class="c1"># Bar Charts</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Nitrogen&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Nitrogen Cycle&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;kg/year&#39;</span><span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Phosphorus&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff7f0e&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Phosphorus Cycle&#39;</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;kg/year&#39;</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="c1"># 🧩 Display Interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">area</span><span class="p">,</span> <span class="n">veg_type</span><span class="p">]),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">precip_mm</span><span class="p">,</span> <span class="n">fert_rate_N</span><span class="p">]),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">fert_rate_P</span><span class="p">]),</span>
+    <span class="n">run_btn</span><span class="p">,</span>
+    <span class="n">output_box</span>
+<span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "aee18fbd6921481db3ed81714a9b9416", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>3. Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="summary-farquhar-model-of-c3-photosynthesis-interactive-python-simulator">
+<h3>🌿 Summary – Farquhar Model of C₃ Photosynthesis (Interactive Python Simulator)<a class="headerlink" href="#summary-farquhar-model-of-c3-photosynthesis-interactive-python-simulator" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
+<p>A Python-based interactive simulator that models <strong>leaf-level C₃ photosynthesis</strong> using the <strong>Farquhar–von Caemmerer–Berry (FvCB) model</strong>. It computes net CO₂ assimilation (Aₙ) based on environmental and biochemical inputs, highlighting limitations from Rubisco activity and light-driven electron transport.</p>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3>⚙️ How It Works<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses the <strong>FvCB equations</strong> to calculate photosynthesis limited by:</p>
+<ul>
+<li><p><strong>Rubisco carboxylation</strong> (A𝚌)</p></li>
+<li><p><strong>Electron transport rate</strong> (A𝚓)</p></li>
+</ul>
+</li>
+<li><p>Adjusts <strong>Vcmax and Jmax</strong> with leaf temperature and nitrogen using <strong>Arrhenius functions</strong></p></li>
+<li><p>Simulates the limiting factor and subtracts <strong>leaf respiration</strong> (R𝚍)</p></li>
+<li><p>Graphs Aₙ vs. Ci to visualize response curve</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h3>📥 Inputs<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ci</p></td>
+<td><p>Intercellular CO₂ concentration (µmol/mol)</p></td>
+</tr>
+<tr class="row-odd"><td><p>PPFD</p></td>
+<td><p>Incident light (photosynthetic photon flux)</p></td>
+</tr>
+<tr class="row-even"><td><p>Leaf Temp (°C)</p></td>
+<td><p>Temperature affecting enzyme kinetics</p></td>
+</tr>
+<tr class="row-odd"><td><p>Leaf Nitrogen (g/m²)</p></td>
+<td><p>Proxy for biochemical capacity (Vcmax, Jmax)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3>📤 Outputs<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Vcmax</p></td>
+<td><p>Maximum Rubisco capacity at given temperature</p></td>
+</tr>
+<tr class="row-odd"><td><p>Jmax</p></td>
+<td><p>Maximum electron transport rate (light-driven)</p></td>
+</tr>
+<tr class="row-even"><td><p>Net Assimilation (Aₙ)</p></td>
+<td><p>Final photosynthetic rate after accounting for R𝚍</p></td>
+</tr>
+<tr class="row-odd"><td><p>Aₙ vs. Ci Plot</p></td>
+<td><p>Shows saturation and CO₂ response behavior</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h3>🔍 How to Interpret Results<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If <strong>Aₙ is limited by A𝚌</strong>, CO₂ concentration is the main constraint</p></li>
+<li><p>If <strong>Aₙ is limited by A𝚓</strong>, light or electron transport is limiting</p></li>
+<li><p>A decline in <strong>Vcmax or Jmax</strong> may indicate heat stress or low nitrogen</p></li>
+<li><p>The curve helps identify saturation thresholds and optimal conditions</p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🌿 Farquhar Model of C₃ Photosynthesis – Interactive Simulator</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># 📥 Physiological Inputs</span>
+<span class="n">Ci_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Ci (µmol/mol)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;150px&#39;</span><span class="p">})</span>
+<span class="n">PPFD_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;PPFD (µmol/m²/s)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;150px&#39;</span><span class="p">})</span>
+<span class="n">T_leaf_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Leaf Temp (°C)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;150px&#39;</span><span class="p">})</span>
+<span class="n">N_leaf_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Leaf N (g/m²)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;150px&#39;</span><span class="p">})</span>
+
+<span class="c1"># 📘 Constants and Temperature Dependency</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">arrhenius</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">Ea</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>  <span class="c1"># J/mol/K</span>
+    <span class="n">T0</span> <span class="o">=</span> <span class="mf">298.15</span>
+    <span class="n">TK</span> <span class="o">=</span> <span class="n">T</span> <span class="o">+</span> <span class="mf">273.15</span>
+    <span class="k">return</span> <span class="n">base</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">Ea</span><span class="o">/</span><span class="n">R</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">T0</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">TK</span><span class="p">)))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">photosynthesis_FvCB</span><span class="p">(</span><span class="n">Ci</span><span class="p">,</span> <span class="n">PPFD</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">,</span> <span class="n">Nleaf</span><span class="p">):</span>
+    <span class="c1"># Temp-dependent Vcmax &amp; Jmax (proxy from N content)</span>
+    <span class="n">Vcmax25</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">+</span> <span class="mi">25</span> <span class="o">*</span> <span class="p">(</span><span class="n">Nleaf</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">Jmax25</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">50</span> <span class="o">*</span> <span class="p">(</span><span class="n">Nleaf</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">Ea_v</span> <span class="o">=</span> <span class="mi">65000</span>
+    <span class="n">Ea_j</span> <span class="o">=</span> <span class="mi">30000</span>
+
+    <span class="n">Vcmax</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="n">Vcmax25</span><span class="p">,</span> <span class="n">Ea_v</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">)</span>
+    <span class="n">Jmax</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="n">Jmax25</span><span class="p">,</span> <span class="n">Ea_j</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">)</span>
+    
+    <span class="n">Kc</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="mi">79430</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">)</span>
+    <span class="n">Ko</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="mi">278</span><span class="p">,</span> <span class="mi">36380</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">)</span>
+    <span class="n">O</span> <span class="o">=</span> <span class="mi">210</span>  <span class="c1"># mmol/mol</span>
+    <span class="n">Gamma_star</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="mf">42.75</span><span class="p">,</span> <span class="mi">37830</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">)</span>
+
+    <span class="n">Rd</span> <span class="o">=</span> <span class="mf">0.015</span> <span class="o">*</span> <span class="n">Vcmax</span>
+
+    <span class="c1"># Photosynthetic limitations</span>
+    <span class="n">Ac</span> <span class="o">=</span> <span class="n">Vcmax</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ci</span> <span class="o">-</span> <span class="n">Gamma_star</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ci</span> <span class="o">+</span> <span class="n">Kc</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">O</span> <span class="o">/</span> <span class="n">Ko</span><span class="p">))</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">Jmax</span> <span class="o">*</span> <span class="n">PPFD</span> <span class="o">/</span> <span class="p">(</span><span class="n">PPFD</span> <span class="o">+</span> <span class="mi">300</span><span class="p">)</span>  <span class="c1"># Light saturation</span>
+    <span class="n">Aj</span> <span class="o">=</span> <span class="n">J</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ci</span> <span class="o">-</span> <span class="n">Gamma_star</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">Ci</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">Gamma_star</span><span class="p">)</span>
+
+    <span class="c1"># Net assimilation</span>
+    <span class="n">An</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">Ac</span><span class="p">,</span> <span class="n">Aj</span><span class="p">)</span> <span class="o">-</span> <span class="n">Rd</span>
+    <span class="k">return</span> <span class="n">An</span><span class="p">,</span> <span class="n">Vcmax</span><span class="p">,</span> <span class="n">Jmax</span>
+
+<span class="c1"># 🔘 Simulate Button</span>
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Simulate Photosynthesis&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;200px&#39;</span><span class="p">))</span>
+<span class="n">output_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output_box</span><span class="p">:</span>
+        <span class="n">output_box</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">Ci</span> <span class="o">=</span> <span class="n">Ci_slider</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">PPFD</span> <span class="o">=</span> <span class="n">PPFD_slider</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">Tleaf</span> <span class="o">=</span> <span class="n">T_leaf_slider</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">Nleaf</span> <span class="o">=</span> <span class="n">N_leaf_slider</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">An</span><span class="p">,</span> <span class="n">Vc</span><span class="p">,</span> <span class="n">Jm</span> <span class="o">=</span> <span class="n">photosynthesis_FvCB</span><span class="p">(</span><span class="n">Ci</span><span class="p">,</span> <span class="n">PPFD</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">,</span> <span class="n">Nleaf</span><span class="p">)</span>
+
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🌿 FvCB Model Results</span>
+
+<span class="s2">- **Ci**: </span><span class="si">{</span><span class="n">Ci</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> µmol/mol  </span>
+<span class="s2">- **PPFD**: </span><span class="si">{</span><span class="n">PPFD</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> µmol/m²/s  </span>
+<span class="s2">- **Leaf Temp**: </span><span class="si">{</span><span class="n">Tleaf</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> °C  </span>
+<span class="s2">- **Leaf N**: </span><span class="si">{</span><span class="n">Nleaf</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> g/m²  </span>
+
+<span class="s2">| Parameter           | Value |</span>
+<span class="s2">|---------------------|--------|</span>
+<span class="s2">| Vcmax (Temp-adj)    | </span><span class="si">{</span><span class="n">Vc</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> µmol/m²/s |</span>
+<span class="s2">| Jmax (Temp-adj)     | </span><span class="si">{</span><span class="n">Jm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> µmol/m²/s |</span>
+<span class="s2">| Net Assimilation (Aₙ) | </span><span class="si">{</span><span class="n">An</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> µmol/m²/s |</span>
+
+<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">Ci_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">An_curve</span> <span class="o">=</span> <span class="p">[</span><span class="n">photosynthesis_FvCB</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">PPFD</span><span class="p">,</span> <span class="n">Tleaf</span><span class="p">,</span> <span class="n">Nleaf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ci</span> <span class="ow">in</span> <span class="n">Ci_vals</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ci_vals</span><span class="p">,</span> <span class="n">An_curve</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Aₙ vs. Ci&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">Ci</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Ci = </span><span class="si">{</span><span class="n">Ci</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Intercellular CO₂ (µmol/mol)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Net Assimilation Aₙ (µmol/m²/s)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Farquhar Photosynthesis Response&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="c1"># 🔧 Display Controls</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">Ci_slider</span><span class="p">,</span> <span class="n">PPFD_slider</span><span class="p">]),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">T_leaf_slider</span><span class="p">,</span> <span class="n">N_leaf_slider</span><span class="p">]),</span>
+    <span class="n">run_btn</span><span class="p">,</span>
+    <span class="n">output_box</span>
+<span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a966d35f95384a95bb0b9f04a573ab88", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="watershed-nutrient-simulator-conceptual-reflective-quiz-questions">
+<h3>🧠 Watershed Nutrient Simulator – Conceptual, Reflective &amp; Quiz Questions<a class="headerlink" href="#watershed-nutrient-simulator-conceptual-reflective-quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>🔍 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What are the major input and output pathways in the nitrogen and phosphorus cycles at the watershed scale?</p></li>
+<li><p>Why does agricultural land use typically result in higher nutrient fluxes than forested land?</p></li>
+<li><p>How does precipitation intensity influence nitrogen and phosphorus export from a watershed?</p></li>
+<li><p>What distinguishes sediment-bound phosphorus from dissolved forms in runoff?</p></li>
+<li><p>Why is it important to simulate both storage and loss components when evaluating nutrient sustainability?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>💭 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Based on the simulation, which land cover type seems most efficient in nutrient retention?</p></li>
+<li><p>How does increasing fertilizer rate affect soil storage versus runoff in your selected scenario?</p></li>
+<li><p>What management strategies could reduce nutrient losses without compromising plant uptake?</p></li>
+<li><p>If sediment binding increases, does that always mean phosphorus pollution risk decreases? Why or why not?</p></li>
+<li><p>How would seasonal variability (e.g. monsoon vs. dry season) alter nutrient fluxes in this simulation?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>🧪 Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="nitrogen-dynamics">
+<h3>Nitrogen Dynamics<a class="headerlink" href="#nitrogen-dynamics" title="Link to this heading">#</a></h3>
+<p><strong>Q1. Which process contributes to gaseous nitrogen loss from the watershed?</strong></p>
+<ul class="simple">
+<li><p>A. Plant Uptake</p></li>
+<li><p>B. Leaching</p></li>
+<li><p>C. Denitrification ✅</p></li>
+<li><p>D. Sediment Binding</p></li>
+</ul>
+<p><strong>Q2. In this simulator, nitrogen fertilizer input is only active when:</strong></p>
+<ul class="simple">
+<li><p>A. Precipitation exceeds 1000 mm</p></li>
+<li><p>B. Vegetation type is set to Agriculture ✅</p></li>
+<li><p>C. Area is greater than 100 km²</p></li>
+<li><p>D. Uptake exceeds fertilizer rate</p></li>
+</ul>
+</section>
+<section id="phosphorus-dynamics">
+<h3>Phosphorus Dynamics<a class="headerlink" href="#phosphorus-dynamics" title="Link to this heading">#</a></h3>
+<p><strong>Q3. Why is phosphorus less mobile than nitrogen in the environment?</strong></p>
+<ul class="simple">
+<li><p>A. It is gaseous</p></li>
+<li><p>B. It binds to sediments ✅</p></li>
+<li><p>C. It dissolves in water easily</p></li>
+<li><p>D. It cycles through the atmosphere</p></li>
+</ul>
+<p><strong>Q4. Which pathway increases with erosion and rainfall in the P cycle?</strong></p>
+<ul class="simple">
+<li><p>A. Plant Uptake</p></li>
+<li><p>B. Runoff Loss ✅</p></li>
+<li><p>C. Fertilizer Input</p></li>
+<li><p>D. Mineralization</p></li>
+</ul>
+</section>
+<section id="application">
+<h3>Application<a class="headerlink" href="#application" title="Link to this heading">#</a></h3>
+<p><strong>Q5. A negative soil storage Δ value implies:</strong></p>
+<ul class="simple">
+<li><p>A. Nutrient accumulation</p></li>
+<li><p>B. Balanced cycling</p></li>
+<li><p>C. Nutrient depletion ✅</p></li>
+<li><p>D. Denitrification dominance</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="photosynthesis-farquhar-model-conceptual-reflective-quiz-questions">
+<h3>🌿 Photosynthesis &amp; Farquhar Model – Conceptual, Reflective &amp; Quiz Questions<a class="headerlink" href="#photosynthesis-farquhar-model-conceptual-reflective-quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h3>🔍 Conceptual Questions<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What are the primary biochemical limitations that govern C₃ photosynthesis according to the Farquhar model?</p></li>
+<li><p>Why does leaf nitrogen content affect Vcmax and Jmax in the model?</p></li>
+<li><p>How does the Farquhar model distinguish between Rubisco-limited and light-limited photosynthesis?</p></li>
+<li><p>What is the significance of Γ* (CO₂ compensation point), and how is it used in calculating net assimilation?</p></li>
+<li><p>How do environmental factors like temperature and light intensity alter the photosynthetic response curve?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h3>💭 Reflective Questions<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>When simulating Aₙ, which variable (Ci, PPFD, Tleaf, or leaf nitrogen) had the greatest impact in your tests?</p></li>
+<li><p>In what scenarios might the Farquhar model underestimate real-world plant carbon uptake?</p></li>
+<li><p>How does the assumption of steady-state internal CO₂ concentration (Ci) affect the realism of predictions?</p></li>
+<li><p>Why do plants sometimes operate below their theoretical Aₙ potential despite favorable conditions?</p></li>
+<li><p>How could this model be adapted or scaled for use in canopy or ecosystem-level carbon balance studies?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="biochemical-components">
+<h3>Biochemical Components<a class="headerlink" href="#biochemical-components" title="Link to this heading">#</a></h3>
+<p><strong>Q1. In the Farquhar model, Vcmax refers to:</strong></p>
+<ul class="simple">
+<li><p>A. Maximum light absorption</p></li>
+<li><p>B. Maximum Rubisco carboxylation capacity ✅</p></li>
+<li><p>C. Leaf nitrogen content</p></li>
+<li><p>D. Stomatal conductance</p></li>
+</ul>
+<p><strong>Q2. Net CO₂ assimilation (Aₙ) is calculated as:</strong></p>
+<ul class="simple">
+<li><p>A. Rubisco rate + light rate</p></li>
+<li><p>B. Maximum of Ac or Aj</p></li>
+<li><p>C. Minimum of Ac or Aj, minus respiration ✅</p></li>
+<li><p>D. Ci × PPFD</p></li>
+</ul>
+</section>
+<section id="environmental-controls">
+<h3>Environmental Controls<a class="headerlink" href="#environmental-controls" title="Link to this heading">#</a></h3>
+<p><strong>Q3. Increasing leaf temperature generally causes:</strong></p>
+<ul class="simple">
+<li><p>A. Higher Γ* and enzyme activity ✅</p></li>
+<li><p>B. Lower light saturation</p></li>
+<li><p>C. Reduced stomatal closure</p></li>
+<li><p>D. Zero net assimilation</p></li>
+</ul>
+<p><strong>Q4. Ci represents:</strong></p>
+<ul class="simple">
+<li><p>A. Chloroplast index</p></li>
+<li><p>B. Canopy influence</p></li>
+<li><p>C. Intercellular CO₂ concentration ✅</p></li>
+<li><p>D. Internal nitrogen ratio</p></li>
+</ul>
+</section>
+<section id="application-interpretation">
+<h3>Application &amp; Interpretation<a class="headerlink" href="#application-interpretation" title="Link to this heading">#</a></h3>
+<p><strong>Q5. A high PPFD but low Aₙ suggests:</strong></p>
+<ul class="simple">
+<li><p>A. Rubisco limitation ✅</p></li>
+<li><p>B. Light saturation</p></li>
+<li><p>C. Elevated Vcmax</p></li>
+<li><p>D. Nitrogen sufficiency</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LifeCycleAssessment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: Life Cycle Assessment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="CarbonateCycleClimate.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: CarbonateCycleClimate</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nitrogen-and-phosphorus-cycles-watershed-scale-overview">🌿 Nitrogen and Phosphorus Cycles – Watershed Scale Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-nitrogen-and-phosphorus-cycles">🧪 What Are the Nitrogen and Phosphorus Cycles?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factors-influencing-n-and-p-storage-at-watershed-scale">🔍 Factors Influencing N and P Storage at Watershed Scale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-study-these-cycles">🎯 Why Study These Cycles?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#major-river-basins-nitrogen-phosphorus-cycle-summary">🌍 Major River Basins – Nitrogen &amp; Phosphorus Cycle Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-and-the-farquhar-model-role-in-carbon-cycle-typical-parameters">🌿 Photosynthesis and the Farquhar Model – Role in Carbon Cycle &amp; Typical Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-photosynthesis">📘 What Is Photosynthesis?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-in-the-carbon-cycle">🌍 Role in the Carbon Cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-the-farquhar-model">🧪 Why Use the Farquhar Model?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-parameter-values-at-25c">📊 Typical Parameter Values (at 25°C)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-watershed-nutrient-simulator-nitrogen-phosphorus">🌿 Summary – Interactive Watershed Nutrient Simulator (Nitrogen + Phosphorus)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📤 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-farquhar-model-of-c3-photosynthesis-interactive-python-simulator">🌿 Summary – Farquhar Model of C₃ Photosynthesis (Interactive Python Simulator)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📤 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-nutrient-simulator-conceptual-reflective-quiz-questions">🧠 Watershed Nutrient Simulator – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nitrogen-dynamics">Nitrogen Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phosphorus-dynamics">Phosphorus Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application">Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-farquhar-model-conceptual-reflective-quiz-questions">🌿 Photosynthesis &amp; Farquhar Model – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biochemical-components">Biochemical Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-controls">Environmental Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#application-interpretation">Application &amp; Interpretation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

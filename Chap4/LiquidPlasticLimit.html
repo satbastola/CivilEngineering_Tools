@@ -1,0 +1,1219 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Geotech Engineering Laboratory: Liquid and Plastic Limit &#8212; Civil Engineering Toolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"030f1f45c0384429bfe81dc977915363": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Compute LL, PL & PI", "layout": "IPY_MODEL_ddcfc628dd134f3cbca46892d213b2f3", "style": "IPY_MODEL_519b6fa7f52447d4a61c254d4f979ffc", "tooltip": null}}, "0e0fae68626b41a98cf3394e037f4039": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Moisture (%)", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": null, "style": "IPY_MODEL_671319c50b4940b49b0aee9a3b397794", "value": 32}}, "10ed6807a83c45f3b1dbd2bff49624d5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "12733ff9a8944de89a826254b570a495": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 3 \u2013 Blows", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": 1, "style": "IPY_MODEL_78df661ef7e94f78966dd221d724c013", "value": 25}}, "14f07aab233642768221417f57eb1fc8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_6430cfeb93784e6b84b3832f78e4b2d8", "style": "IPY_MODEL_3b62c87418c64ac1a55c9e4096bf770d", "value": "<h3>\ud83e\uddc2 Plastic Limit Inputs (Roll Method)</h3>"}}, "15c65fdbaf8f45239e30a3fada23b259": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "15f635bd4f1548efbbefa964d1aab9be": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "171a8d9833df43d69b1a8aa8f5c705b4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Moisture (%)", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": null, "style": "IPY_MODEL_cf44dfe86477461a9f77e9ef1a67bff9", "value": 30}}, "1807a81182764ede8a96dbfd6481832e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Moisture (%)", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": null, "style": "IPY_MODEL_ad05abcf46984d29a4c797f34a3e8ef4", "value": 34}}, "2271246767604e229bcb793db8aad89b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_9e7b7dcfa1af41bfb8b30d296dba3e2d", "IPY_MODEL_6d6c1707df6343e892e2410580b83de2", "IPY_MODEL_adfe5d57cc604a52a4395a4d1d282f6b", "IPY_MODEL_14f07aab233642768221417f57eb1fc8", "IPY_MODEL_53b7ffd33b4c4d0d97b91383675b49ed", "IPY_MODEL_7dd9348357724cda93a34f95dc3fffca", "IPY_MODEL_030f1f45c0384429bfe81dc977915363"], "layout": "IPY_MODEL_e8dc029d68814b89bb75dec01613addc"}}, "28b9124bf64a448cbc57f4b57fde6b79": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_eac059ac439f49cf9465a437e8b01f02", "style": "IPY_MODEL_91dc73145ba04d5e82b2c9714a6e754c", "value": "<h3>\ud83e\uddc2 Plastic Limit Inputs (Roll Method)</h3>"}}, "329943bcaf83403bb11fc2fbe25e40f3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "PL Trials:", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "max": 5, "min": 1, "style": "IPY_MODEL_e0aeb84059a14037afed719d122e21fa", "value": 3}}, "32ae713fdb5b406db3c2e3139d01d8ce": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "PL Moisture (%) T1", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": null, "style": "IPY_MODEL_5f8403dc665d4e22a9fb8778602f7633", "value": 19}}, "392beaedddc14c289de57fe00243a859": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "3b62c87418c64ac1a55c9e4096bf770d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}, "3f176c900f5b4525a4ad134d82613b60": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_6e17ff4e344e458b8161809855d4dc72", "IPY_MODEL_81e02e3c7fcc42779329d522238f2795", "IPY_MODEL_171a8d9833df43d69b1a8aa8f5c705b4", "IPY_MODEL_7edf6877038a4353b88ee2839286f3f1", "IPY_MODEL_f2fadd4a5793477ca8b7f7ad69f59168", "IPY_MODEL_12733ff9a8944de89a826254b570a495", "IPY_MODEL_6ae7f9bcb5a043c5ac9d426be97db242", "IPY_MODEL_9920a40dff98448998ba61a6929cbd53"], "layout": "IPY_MODEL_f594bfd9e3dd4a9f8b2171c13b33dfa5"}}, "3fdb7a5cc7c34c568bcc18b41fed066c": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "433fc884da35429da1b6c97a0ad389fe": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "4907d839a16f4e30b0d2308da08b798f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "4d3e5b5a37f54f3dac2ceb759bf387ea": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "4f949d98f56a4671871c039fad53902b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "519b6fa7f52447d4a61c254d4f979ffc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonStyleModel", "state": {"font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "53b7ffd33b4c4d0d97b91383675b49ed": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "PL Trials:", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "max": 5, "min": 1, "style": "IPY_MODEL_67ecaf06ba954441b66aa727937e952d", "value": 3}}, "59533d8bedb84809923e1fad8a63968d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 2 \u2013 Blows", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": 1, "style": "IPY_MODEL_ab076dfe2fbd4faab2fd7a0db5bd0fe7", "value": 20}}, "5c0d7c5b870147128faa742c554411a6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}, "5f8403dc665d4e22a9fb8778602f7633": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "6430cfeb93784e6b84b3832f78e4b2d8": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "66b2914454234d4c98994dfc6648cb34": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "671319c50b4940b49b0aee9a3b397794": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "67da59cb380c4bb882a54fedaf3320ed": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "67ecaf06ba954441b66aa727937e952d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "6865f6b2c56f4cbaa03e39ff132edd3f": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "69c4308a23854c2ea579ecdb47bbc982": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "6ae7f9bcb5a043c5ac9d426be97db242": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 4 \u2013 Moisture (%)", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": null, "style": "IPY_MODEL_4f949d98f56a4671871c039fad53902b", "value": 34}}, "6d04b81cbe58423295571c1087937b39": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "6d6c1707df6343e892e2410580b83de2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "LL Trials:", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "max": 6, "min": 2, "style": "IPY_MODEL_10ed6807a83c45f3b1dbd2bff49624d5", "value": 4}}, "6e17ff4e344e458b8161809855d4dc72": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Moisture (%)", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": null, "style": "IPY_MODEL_7821b488a8554ec29d2748b31934bc94", "value": 28}}, "716e64dfa2e84d9cb39d210565e4498d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "LL Trials:", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "max": 6, "min": 2, "style": "IPY_MODEL_66b2914454234d4c98994dfc6648cb34", "value": 4}}, "7821b488a8554ec29d2748b31934bc94": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "78df661ef7e94f78966dd221d724c013": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "7dd9348357724cda93a34f95dc3fffca": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_85b78ca6b44c4fa8adae0ed6a55d6ddc", "IPY_MODEL_c9c4411c17ee45f8822a6cd8cc63bdab", "IPY_MODEL_ed2b9e7186dc41418e69e5356137df3f"], "layout": "IPY_MODEL_6865f6b2c56f4cbaa03e39ff132edd3f"}}, "7edf6877038a4353b88ee2839286f3f1": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 2 \u2013 Blows", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": 1, "style": "IPY_MODEL_996d010b00c141168ddb8aa1e18fbfc3", "value": 20}}, "80cf749406124946a01f66d2e8ccdb34": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 3 \u2013 Blows", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": 1, "style": "IPY_MODEL_4907d839a16f4e30b0d2308da08b798f", "value": 25}}, "81e02e3c7fcc42779329d522238f2795": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 1 \u2013 Blows", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": 1, "style": "IPY_MODEL_d716c85c31c94644b50d1a68eed4128d", "value": 15}}, "85961546f6514653a61f831a9aecfc90": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 1 \u2013 Blows", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": 1, "style": "IPY_MODEL_d1934e1188274d1b9860c84697709b1f", "value": 15}}, "85b78ca6b44c4fa8adae0ed6a55d6ddc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "PL Moisture (%) T1", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": null, "style": "IPY_MODEL_67da59cb380c4bb882a54fedaf3320ed", "value": 19}}, "89e4a3a306d949c1ace78d6628535725": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_4d3e5b5a37f54f3dac2ceb759bf387ea", "style": "IPY_MODEL_ccc54852d7d34fc380e07d33ad23b25d", "value": "<h3>\ud83d\udca7 Liquid Limit Inputs (Casagrande)</h3>"}}, "91dc73145ba04d5e82b2c9714a6e754c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}, "92a5c6f646344204a3b8c9912bdb45b8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "PL Moisture (%) T3", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": null, "style": "IPY_MODEL_69c4308a23854c2ea579ecdb47bbc982", "value": 21}}, "9920a40dff98448998ba61a6929cbd53": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 4 \u2013 Blows", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": 1, "style": "IPY_MODEL_433fc884da35429da1b6c97a0ad389fe", "value": 30}}, "996d010b00c141168ddb8aa1e18fbfc3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "9de7b6bddbc540c59af0a9eb202492de": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "9e7b7dcfa1af41bfb8b30d296dba3e2d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_3fdb7a5cc7c34c568bcc18b41fed066c", "style": "IPY_MODEL_5c0d7c5b870147128faa742c554411a6", "value": "<h3>\ud83d\udca7 Liquid Limit Inputs (Casagrande)</h3>"}}, "a4b5a4bc6caf43209bd926f18e7ceafd": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "a56d63277c71429fb6d1eb8ecc0c1f50": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "ButtonModel", "state": {"description": "Compute LL, PL & PI", "layout": "IPY_MODEL_c9d3379a754a456093da76915065f27f", "style": "IPY_MODEL_392beaedddc14c289de57fe00243a859", "tooltip": null}}, "a8aee0ed139f4de083daa99164b0ee17": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ab076dfe2fbd4faab2fd7a0db5bd0fe7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ad05abcf46984d29a4c797f34a3e8ef4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "adfe5d57cc604a52a4395a4d1d282f6b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_d283baa16e534adea76d0f733b2b9200", "IPY_MODEL_85961546f6514653a61f831a9aecfc90", "IPY_MODEL_d6e72a8f39b54250bcbd1b09aa22e58a", "IPY_MODEL_59533d8bedb84809923e1fad8a63968d", "IPY_MODEL_0e0fae68626b41a98cf3394e037f4039", "IPY_MODEL_80cf749406124946a01f66d2e8ccdb34", "IPY_MODEL_1807a81182764ede8a96dbfd6481832e", "IPY_MODEL_c1587cac890f46308efabf4888a1593c"], "layout": "IPY_MODEL_afb6bdb45a7f42eea48b09479018c904"}}, "afb6bdb45a7f42eea48b09479018c904": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "b71c2aeae6784287b0a3e29b969f9eda": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "c1587cac890f46308efabf4888a1593c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntTextModel", "state": {"description": "Trial 4 \u2013 Blows", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": 1, "style": "IPY_MODEL_a4b5a4bc6caf43209bd926f18e7ceafd", "value": 30}}, "c50715695d0145caad68f1331bd88aeb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "c9c4411c17ee45f8822a6cd8cc63bdab": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "PL Moisture (%) T2", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": null, "style": "IPY_MODEL_e946977389c74781b27e93ddae8da779", "value": 20}}, "c9d3379a754a456093da76915065f27f": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "300px"}}, "ccc54852d7d34fc380e07d33ad23b25d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}, "cf44dfe86477461a9f77e9ef1a67bff9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "d1934e1188274d1b9860c84697709b1f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "d283baa16e534adea76d0f733b2b9200": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 1 \u2013 Moisture (%)", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": null, "style": "IPY_MODEL_b71c2aeae6784287b0a3e29b969f9eda", "value": 28}}, "d6e72a8f39b54250bcbd1b09aa22e58a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 2 \u2013 Moisture (%)", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": null, "style": "IPY_MODEL_6d04b81cbe58423295571c1087937b39", "value": 30}}, "d716c85c31c94644b50d1a68eed4128d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "ddcfc628dd134f3cbca46892d213b2f3": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "300px"}}, "e0aeb84059a14037afed719d122e21fa": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "200px"}}, "e6e929039458467b90340eeec8bbe2e8": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_89e4a3a306d949c1ace78d6628535725", "IPY_MODEL_716e64dfa2e84d9cb39d210565e4498d", "IPY_MODEL_3f176c900f5b4525a4ad134d82613b60", "IPY_MODEL_28b9124bf64a448cbc57f4b57fde6b79", "IPY_MODEL_329943bcaf83403bb11fc2fbe25e40f3", "IPY_MODEL_f8eea090e3434b789958f83ce9eeaae9", "IPY_MODEL_a56d63277c71429fb6d1eb8ecc0c1f50"], "layout": "IPY_MODEL_9de7b6bddbc540c59af0a9eb202492de"}}, "e8dc029d68814b89bb75dec01613addc": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "e946977389c74781b27e93ddae8da779": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "200px"}}, "eac059ac439f49cf9465a437e8b01f02": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "ed2b9e7186dc41418e69e5356137df3f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "PL Moisture (%) T3", "layout": "IPY_MODEL_ef37f00ada3a4a409ef969465c61208d", "step": null, "style": "IPY_MODEL_c50715695d0145caad68f1331bd88aeb", "value": 21}}, "ee01c6f5e21f427493ceb741435e1799": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "ef37f00ada3a4a409ef969465c61208d": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"width": "400px"}}, "f2fadd4a5793477ca8b7f7ad69f59168": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "Trial 3 \u2013 Moisture (%)", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": null, "style": "IPY_MODEL_a8aee0ed139f4de083daa99164b0ee17", "value": 32}}, "f3ab5e2b9dfb46e8be0d78a18b775639": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatTextModel", "state": {"description": "PL Moisture (%) T2", "layout": "IPY_MODEL_ee01c6f5e21f427493ceb741435e1799", "step": null, "style": "IPY_MODEL_15c65fdbaf8f45239e30a3fada23b259", "value": 20}}, "f594bfd9e3dd4a9f8b2171c13b33dfa5": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "f8eea090e3434b789958f83ce9eeaae9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_32ae713fdb5b406db3c2e3139d01d8ce", "IPY_MODEL_f3ab5e2b9dfb46e8be0d78a18b775639", "IPY_MODEL_92a5c6f646344204a3b8c9912bdb45b8"], "layout": "IPY_MODEL_15f635bd4f1548efbbefa964d1aab9be"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap4/LiquidPlasticLimit';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Geotech Engineering Laboratory: Soil Density" href="Geotech_DensityTestReporting.html" />
+    <link rel="prev" title="Chapter 4 Geotechnical Engineering: Particle size distribution" href="Interactive_PSD_Tool.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Civil Engineering Toolkit - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Civil Engineering Toolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1. 0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Qualty based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">3.9 Pipe Hydraulics - Pump Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap4/LiquidPlasticLimit.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap4/LiquidPlasticLimit.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap4/LiquidPlasticLimit.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap4/LiquidPlasticLimit.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap4/LiquidPlasticLimit.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Geotech Engineering Laboratory: Liquid and Plastic Limit</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#liquid-limit-plastic-limit-definitions-importance-empirical-use">🧪 Liquid Limit &amp; Plastic Limit – Definitions, Importance &amp; Empirical Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">📘 Definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-geotechnical-engineering">🎯 Importance in Geotechnical Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-standards-for-measurement">🧭 U.S. Standards for Measurement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-equations-using-ll-pl-pi">📐 Empirical Equations Using LL, PL, PI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-settlement">✅ Compression / Settlement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-strength-bearing-capacity">✅ Shear Strength / Bearing Capacity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permeability-hydraulic-conductivity">✅ Permeability / Hydraulic Conductivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-notes">🧭 Interpretation Notes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atterberg-limit-calculator-summary-guide">🧪 Atterberg Limit Calculator – Summary Guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">🧩 How to Use</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📤 Outputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret">🧭 How to Interpret</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atterberg-limits-conceptual-reflective-quiz-questions">🧪 Atterberg Limits – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-classification">Theory &amp; Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-geotech-engineering-laboratory-liquid-and-plastic-limit">
+<h1>Chapter 6 Geotech Engineering Laboratory: Liquid and Plastic Limit<a class="headerlink" href="#chapter-6-geotech-engineering-laboratory-liquid-and-plastic-limit" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Soil Density Lab</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Procter density Test</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="liquid-limit-plastic-limit-definitions-importance-empirical-use">
+<h3>🧪 Liquid Limit &amp; Plastic Limit – Definitions, Importance &amp; Empirical Use<a class="headerlink" href="#liquid-limit-plastic-limit-definitions-importance-empirical-use" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="definitions">
+<h3>📘 Definitions<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Liquid Limit (LL)</strong></p></td>
+<td><p>Moisture content (%) at which soil transitions from plastic to liquid behavior</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Plastic Limit (PL)</strong></p></td>
+<td><p>Moisture content (%) at which soil transitions from semi-solid to plastic state</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Plasticity Index (PI)</strong></p></td>
+<td><p>Difference between LL and PL → ( PI = LL - PL )</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="importance-in-geotechnical-engineering">
+<h3>🎯 Importance in Geotechnical Engineering<a class="headerlink" href="#importance-in-geotechnical-engineering" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Influence of Atterberg Limits</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Soil Classification</strong></p></td>
+<td><p>PI and LL define fine-grained behavior (USCS, AASHTO systems)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Workability</strong></p></td>
+<td><p>Determines ease of handling, compaction, and mixing</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Settlement &amp; Compressibility</strong></p></td>
+<td><p>High PI → greater compressibility in saturated soils</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Foundation Design</strong></p></td>
+<td><p>LL used in estimating undrained shear strength and bearing capacity</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Expansive Behavior</strong></p></td>
+<td><p>High PI indicates swelling potential for clays</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="u-s-standards-for-measurement">
+<h3>🧭 U.S. Standards for Measurement<a class="headerlink" href="#u-s-standards-for-measurement" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>ASTM Standard</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Liquid Limit</strong></p></td>
+<td><p>Casagrande Groove Closure (mechanical device)</p></td>
+<td><p>ASTM D4318</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Plastic Limit</strong></p></td>
+<td><p>Soil thread rolling until crumbling</p></td>
+<td><p>ASTM D4318</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PI Calculation</strong></p></td>
+<td><p>( PI = LL - PL )</p></td>
+<td><p>ASTM D4318</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>🔹 LL is determined by plotting moisture vs. groove closure blows and estimating at 25 blows (log regression).<br />
+🔹 PL is taken as the average moisture content at which rolled soil threads begin to crumble at 3.2 mm diameter.</p>
+</section>
+<hr class="docutils" />
+<section id="empirical-equations-using-ll-pl-pi">
+<h3>📐 Empirical Equations Using LL, PL, PI<a class="headerlink" href="#empirical-equations-using-ll-pl-pi" title="Link to this heading">#</a></h3>
+</section>
+<section id="compression-settlement">
+<h3>✅ Compression / Settlement<a class="headerlink" href="#compression-settlement" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Equation</p></th>
+<th class="head"><p>Expression</p></th>
+<th class="head"><p>Source</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Compression Index (Cc)</p></td>
+<td><p><span class="math notranslate nohighlight">\(( C_c = 0.009 (LL - 10) \)</span>)</p></td>
+<td><p>Terzaghi &amp; Peck</p></td>
+</tr>
+<tr class="row-odd"><td><p>Secondary Compression (Cα)</p></td>
+<td><p><span class="math notranslate nohighlight">\(( C_\alpha = C_c / (1 + e_0) \)</span>)</p></td>
+<td><p>Consolidation Theory</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="shear-strength-bearing-capacity">
+<h3>✅ Shear Strength / Bearing Capacity<a class="headerlink" href="#shear-strength-bearing-capacity" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Equation</p></th>
+<th class="head"><p>Expression</p></th>
+<th class="head"><p>Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Undrained Shear Strength (Su)</p></td>
+<td><p><span class="math notranslate nohighlight">\(( Su = A \cdot PI^{-0.5} \cdot \sigma_v \)</span>)</p></td>
+<td><p>Soft clays</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bearing Capacity Reduction</p></td>
+<td><p><span class="math notranslate nohighlight">\(( q_{ult} = B - C \cdot PI \)</span>)</p></td>
+<td><p>Shallow foundations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="permeability-hydraulic-conductivity">
+<h3>✅ Permeability / Hydraulic Conductivity<a class="headerlink" href="#permeability-hydraulic-conductivity" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Equation</p></th>
+<th class="head"><p>Expression</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Seed et al. (1961)</p></td>
+<td><p><span class="math notranslate nohighlight">\(( K = 10^{-7 + 3.3 \cdot PI/LL} \)</span>)</p></td>
+<td><p>Fine soils</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ferguson &amp; Maxwell</p></td>
+<td><p><span class="math notranslate nohighlight">\(( \log(K) = A - B \cdot LL \)</span>)</p></td>
+<td><p>Empirical estimate</p></td>
+</tr>
+<tr class="row-even"><td><p>Morin &amp; Todorovic</p></td>
+<td><p><span class="math notranslate nohighlight">\(( K = a \cdot e^b \cdot LL^{-c} \)</span>)</p></td>
+<td><p>Silty clays</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="interpretation-notes">
+<h3>🧭 Interpretation Notes<a class="headerlink" href="#interpretation-notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>High LL (&gt;50%)</strong> → Soil may exhibit soft, liquid behavior; careful handling needed</p></li>
+<li><p><strong>High PI (&gt;20%)</strong> → Swelling, shrinkage, and stability concerns in foundations</p></li>
+<li><p><strong>Empirical formulas</strong> help estimate soil behavior when lab tests aren’t available, but must be used cautiously—always validate when possible</p></li>
+</ul>
+<p>Would you like these equations bundled into a worksheet or interactive calculator for preliminary soil profiling?</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+</section>
+<section id="atterberg-limit-calculator-summary-guide">
+<h2>🧪 Atterberg Limit Calculator – Summary Guide<a class="headerlink" href="#atterberg-limit-calculator-summary-guide" title="Link to this heading">#</a></h2>
+</section>
+<section id="what-it-is">
+<h2>📘 What It Is<a class="headerlink" href="#what-it-is" title="Link to this heading">#</a></h2>
+<p>An interactive Python tool using <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> to compute the <strong>Liquid Limit (LL)</strong>, <strong>Plastic Limit (PL)</strong>, and <strong>Plasticity Index (PI)</strong> based on laboratory moisture content measurements.</p>
+<ul class="simple">
+<li><p><strong>LL</strong> estimated from Casagrande groove closure trials (moisture vs. blow count)</p></li>
+<li><p><strong>PL</strong> averaged from plastic thread moisture trials</p></li>
+<li><p><strong>PI</strong> computed as LL − PL, indicating soil plasticity behavior</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-it-does">
+<h2>⚙️ What It Does<a class="headerlink" href="#what-it-does" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Method Used</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Input data for LL (moisture &amp; blows)</p></td>
+<td><p>User-entered values per trial</p></td>
+</tr>
+<tr class="row-odd"><td><p>Input data for PL (moisture only)</p></td>
+<td><p>Averaged across trials</p></td>
+</tr>
+<tr class="row-even"><td><p>Compute LL</p></td>
+<td><p>Regression at 25 blows (log-linear fit)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Compute PL</p></td>
+<td><p>Mean moisture from plastic thread trials</p></td>
+</tr>
+<tr class="row-even"><td><p>Output PI</p></td>
+<td><p>LL − PL</p></td>
+</tr>
+<tr class="row-odd"><td><p>Output Classification</p></td>
+<td><p>Based on PI value range (low, med, high)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-use">
+<h2>🧩 How to Use<a class="headerlink" href="#how-to-use" title="Link to this heading">#</a></h2>
+<section id="inputs">
+<h3>📥 Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>LL trials: moisture content (%) and closure blows per test</p></li>
+<li><p>PL trials: moisture content from rolling soil into threads</p></li>
+</ul>
+</section>
+<section id="outputs">
+<h3>📤 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>LL (%)</strong></p></td>
+<td><p>Water content where clay flows under vibration</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PL (%)</strong></p></td>
+<td><p>Water content at which soil crumbles when rolled</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PI (%)</strong></p></td>
+<td><p>Index of soil plasticity (LL − PL)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Classification</strong></p></td>
+<td><p>Soil behavior: low, medium, or high plasticity</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret">
+<h2>🧭 How to Interpret<a class="headerlink" href="#how-to-interpret" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>PI Value</p></th>
+<th class="head"><p>Plasticity Class</p></th>
+<th class="head"><p>Soil Implication</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PI &lt; 7</p></td>
+<td><p>💡 Low plasticity</p></td>
+<td><p>Easily workable, minimal swelling</p></td>
+</tr>
+<tr class="row-odd"><td><p>PI 7–20</p></td>
+<td><p>💡 Medium plasticity</p></td>
+<td><p>Moderate volume change &amp; handling effort</p></td>
+</tr>
+<tr class="row-even"><td><p>PI &gt; 20</p></td>
+<td><p>💡 High plasticity</p></td>
+<td><p>Sticky, expansive behavior risk</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Use these limits for soil classification under systems like USCS and for selecting compaction, stabilization, and foundation methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># 💡 Styling</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;200px&#39;</span><span class="p">}</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;400px&#39;</span><span class="p">)</span>
+
+<span class="c1"># 📋 Liquid Limit Data Entry</span>
+<span class="n">num_ll_trials</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;LL Trials:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_ll_inputs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="p">(</span>
+            <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">28</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Moisture (%)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">),</span>
+            <span class="n">widgets</span><span class="o">.</span><span class="n">IntText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">15</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Blows&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="p">]</span>
+
+<span class="n">ll_data</span> <span class="o">=</span> <span class="n">create_ll_inputs</span><span class="p">(</span><span class="n">num_ll_trials</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_ll</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">ll_data</span>
+    <span class="n">ll_data</span> <span class="o">=</span> <span class="n">create_ll_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">])</span>
+    <span class="n">ll_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">ll_data</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">]</span>
+
+<span class="n">num_ll_trials</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_ll</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">ll_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">ll_data</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">])</span>
+
+<span class="c1"># 📋 Plastic Limit Data Entry</span>
+<span class="n">num_pl_trials</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;PL Trials:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="n">pl_inputs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">19</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;PL Moisture (%) T</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_pl_trials</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_pl</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">pl_inputs</span>
+    <span class="n">pl_inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">19</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;PL Moisture (%) T</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">])]</span>
+    <span class="n">pl_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">pl_inputs</span>
+
+<span class="n">num_pl_trials</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_pl</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">pl_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span><span class="n">pl_inputs</span><span class="p">)</span>
+
+<span class="c1"># 🧮 Calculation</span>
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Compute LL, PL &amp; PI&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;300px&#39;</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="c1"># LL Regression</span>
+    <span class="n">blows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">moistures</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ll_data</span><span class="p">:</span>
+        <span class="n">moistures</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">blows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">log_blows</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">blows</span><span class="p">]</span>
+    <span class="n">df_ll</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Moisture&#39;</span><span class="p">:</span> <span class="n">moistures</span><span class="p">,</span> <span class="s1">&#39;Log(Blows)&#39;</span><span class="p">:</span> <span class="n">log_blows</span><span class="p">})</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">df_ll</span><span class="p">[</span><span class="s1">&#39;Log(Blows)&#39;</span><span class="p">],</span> <span class="n">df_ll</span><span class="p">[</span><span class="s1">&#39;Moisture&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">LL</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># PL Average</span>
+    <span class="n">pl_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pl_inputs</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">PL</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pl_vals</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">PI</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">LL</span> <span class="o">-</span> <span class="n">PL</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Classification Hint</span>
+    <span class="k">if</span> <span class="n">PI</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;💡 Low plasticity&quot;</span>
+    <span class="k">elif</span> <span class="n">PI</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;💡 Intermediate plasticity&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">desc</span> <span class="o">=</span> <span class="s2">&quot;💡 High plasticity&quot;</span>
+
+    <span class="n">md</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🧪 Atterberg Limit Results</span>
+
+<span class="s2">- **Liquid Limit (LL)**: </span><span class="si">{</span><span class="n">LL</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **Plastic Limit (PL)**: </span><span class="si">{</span><span class="n">PL</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **Plasticity Index (PI)**: </span><span class="si">{</span><span class="n">PI</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **Estimated Classification**: </span><span class="si">{</span><span class="n">desc</span><span class="si">}</span>
+
+<span class="s2">---</span>
+
+<span class="s2">### 📐 Interpretation Notes</span>
+<span class="s2">- LL estimated via regression at 25 blows (Casagrande method)  </span>
+<span class="s2">- PL taken as average of plastic roll moisture  </span>
+<span class="s2">- PI = LL - PL → Indicator of soil plasticity and classification</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">md</span><span class="p">))</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="c1"># 🧩 Display Interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;💧 Liquid Limit Inputs (Casagrande)&lt;/h3&gt;&quot;</span><span class="p">),</span>
+    <span class="n">num_ll_trials</span><span class="p">,</span> <span class="n">ll_box</span><span class="p">,</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;🧂 Plastic Limit Inputs (Roll Method)&lt;/h3&gt;&quot;</span><span class="p">),</span>
+    <span class="n">num_pl_trials</span><span class="p">,</span> <span class="n">pl_box</span><span class="p">,</span>
+    <span class="n">run_btn</span>
+<span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e6e929039458467b90340eeec8bbe2e8", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="atterberg-limits-conceptual-reflective-quiz-questions">
+<h3>🧪 Atterberg Limits – Conceptual, Reflective &amp; Quiz Questions<a class="headerlink" href="#atterberg-limits-conceptual-reflective-quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>🔍 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What does the liquid limit (LL) represent in terms of soil behavior?</p></li>
+<li><p>How does the plastic limit (PL) relate to the consistency and workability of fine-grained soils?</p></li>
+<li><p>Why is plasticity index (PI) a useful metric in geotechnical soil classification?</p></li>
+<li><p>How does moisture content influence the transition between liquid, plastic, and semi-solid states in clayey soils?</p></li>
+<li><p>What are the limitations of using Casagrande’s groove method for determining LL?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>💭 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>In your lab trial, what factors influenced variability in LL and PL measurements?</p></li>
+<li><p>How would soil plasticity affect field handling, compaction, or foundation preparation?</p></li>
+<li><p>If two soils have similar LL but very different PI, how might that influence your design decisions?</p></li>
+<li><p>What human or procedural errors could bias the moisture content used in calculating Atterberg limits?</p></li>
+<li><p>How do Atterberg limits help in understanding swelling potential or shrinkage behavior?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>🧪 Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="theory-classification">
+<h3>Theory &amp; Classification<a class="headerlink" href="#theory-classification" title="Link to this heading">#</a></h3>
+<p><strong>Q1. Plasticity Index (PI) is calculated as:</strong></p>
+<ul class="simple">
+<li><p>A. PI = PL − LL</p></li>
+<li><p>B. PI = LL × PL</p></li>
+<li><p>C. PI = LL − PL ✅</p></li>
+<li><p>D. PI = LL / PL</p></li>
+</ul>
+<p><strong>Q2. A soil with LL = 50% and PL = 22% has:</strong></p>
+<ul class="simple">
+<li><p>A. PI = 28% ✅</p></li>
+<li><p>B. PI = 72%</p></li>
+<li><p>C. PI = 32%</p></li>
+<li><p>D. PI = 4%</p></li>
+</ul>
+<p><strong>Q3. Which statement best describes a high PI soil?</strong></p>
+<ul class="simple">
+<li><p>A. Very brittle and non-plastic</p></li>
+<li><p>B. Highly plastic and expansive ✅</p></li>
+<li><p>C. Low moisture retention</p></li>
+<li><p>D. Ideal for road subgrade</p></li>
+</ul>
+</section>
+<section id="methodology">
+<h3>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h3>
+<p><strong>Q4. Casagrande method uses which feature to determine LL?</strong></p>
+<ul class="simple">
+<li><p>A. Soil roll stiffness</p></li>
+<li><p>B. Closure of groove at 25 blows ✅</p></li>
+<li><p>C. Drop cone penetration</p></li>
+<li><p>D. Weight of sample</p></li>
+</ul>
+<p><strong>Q5. Atterberg limits apply to which soil fraction?</strong></p>
+<ul class="simple">
+<li><p>A. Coarse gravel</p></li>
+<li><p>B. Sand</p></li>
+<li><p>C. Silt and clay-sized particles ✅</p></li>
+<li><p>D. Organic topsoil</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Interactive_PSD_Tool.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: Particle size distribution</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Geotech_DensityTestReporting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Geotech Engineering Laboratory: Soil Density</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#liquid-limit-plastic-limit-definitions-importance-empirical-use">🧪 Liquid Limit &amp; Plastic Limit – Definitions, Importance &amp; Empirical Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">📘 Definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-geotechnical-engineering">🎯 Importance in Geotechnical Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-standards-for-measurement">🧭 U.S. Standards for Measurement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-equations-using-ll-pl-pi">📐 Empirical Equations Using LL, PL, PI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-settlement">✅ Compression / Settlement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-strength-bearing-capacity">✅ Shear Strength / Bearing Capacity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permeability-hydraulic-conductivity">✅ Permeability / Hydraulic Conductivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-notes">🧭 Interpretation Notes</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atterberg-limit-calculator-summary-guide">🧪 Atterberg Limit Calculator – Summary Guide</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">🧩 How to Use</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📤 Outputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret">🧭 How to Interpret</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atterberg-limits-conceptual-reflective-quiz-questions">🧪 Atterberg Limits – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-classification">Theory &amp; Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1450 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 1 Environmental Engineering: Air Quality Modeling &#8212; Civil Engineering Toolkit</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap1/GaussianPlumeDispersionModel';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 2 Hydrology: SpatioTemperoal Rainfall Disaggregation" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html" />
+    <link rel="prev" title="Chapter 1 Environmental Engineering: Indoor Air quality modeling" href="IndoorAirQuality.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Civil Engineering Toolkit - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Civil Engineering Toolkit - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BOD_Modeling.html">1. 0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IndoorAirQuality.html">1.5 Air Quality – Indoor Air Qualty based on CSTR</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">3.9 Pipe Hydraulics - Pump Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap1/GaussianPlumeDispersionModel.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap1/GaussianPlumeDispersionModel.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap1/GaussianPlumeDispersionModel.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap1/GaussianPlumeDispersionModel.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap1/GaussianPlumeDispersionModel.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 1 Environmental Engineering: Air Quality Modeling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-dispersion-model-interactive-visualization">Gaussian Plume Dispersion Model – Interactive Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-reflection">✅ Ground Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-inversion-reflection">✅ Thermal Inversion Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-dispersion-coefficients">Estimating Dispersion Coefficients</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-coefficient-formulas">Dispersion Coefficient Formulas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-stack-height">Effective Stack Height</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-buoyant-plume-rise-stable-conditions">Approximate Buoyant Plume Rise (Stable Conditions)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-air-quality-model-summary-in-markdown">🌬️ Gaussian Plume Air Quality Model – Summary in Markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-components">🔧 Model Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-controls">💡 Inputs and Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-shows">📈 What It Shows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🧠 How to Interpret Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equation-used-simplified">🧪 Equation Used (Simplified)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-gaussian-plume-receptor-concentration-estimator">Objective: Gaussian Plume Receptor Concentration Estimator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-code-does">🔧 What the Code Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-its-useful">Why It’s Useful</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-receptor-point-query-summary">🌬️ Gaussian Plume Receptor Point Query – Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">🧪 How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-dispersion-model-learning-module">Gaussian Plume Dispersion Model – Learning Module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts">Reflective Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions-multiple-choice">✅ Quiz Questions (Multiple Choice)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-environmental-engineering-air-quality-modeling">
+<h1>Chapter 1 Environmental Engineering: Air Quality Modeling<a class="headerlink" href="#chapter-1-environmental-engineering-air-quality-modeling" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Gaussian Plume model</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation_ GPM</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Simulation"><span class="xref myst">Simulation: Compute Concentration</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="gaussian-plume-dispersion-model-interactive-visualization">
+<h3>Gaussian Plume Dispersion Model – Interactive Visualization<a class="headerlink" href="#gaussian-plume-dispersion-model-interactive-visualization" title="Link to this heading">#</a></h3>
+<p>The Gaussian Plume Model is a widely used mathematical model that describes how air pollutants disperse from a point source, such as a smokestack, under steady-state conditions. It assumes that the concentration of a pollutant in the atmosphere follows a normal (Gaussian) distribution in the crosswind and vertical directions, resulting in a “plume” of pollution downwind of the source.</p>
+<hr class="docutils" />
+<p><img alt="image.png" src="Chap1/attachment:873ae1b5-200d-47e3-a0bb-5d89c7513a86.png" /></p>
+<p>The general equation for pollutant concentration ( C(x, y, z) ) at location ( (x, y, z) ) is:</p>
+<div class="math notranslate nohighlight">
+\[
+C(x, y, z) = \frac{Q}{2\pi \sigma_y \sigma_z u}
+\cdot \exp\left( -\frac{y^2}{2\sigma_y^2} \right)
+\cdot \left[
+\exp\left( -\frac{(z - H)^2}{2\sigma_z^2} \right)
++ \exp\left( -\frac{(z + H)^2}{2\sigma_z^2} \right)
+\right]
+\]</div>
+<p><strong>Where:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( C \)</span>): concentration [µg/m³]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( Q \)</span>): emission rate [g/s]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( u \)</span>): wind speed at stack height [m/s]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( H \)</span>): effective stack height [m]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \sigma_y, \sigma_z \)</span>): lateral and vertical dispersion coefficients [m]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( x \)</span>): downwind distance [m]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( y \)</span>): crosswind offset [m]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( z \)</span>): height above ground [m]</p></li>
+</ul>
+</section>
+<section id="ground-reflection">
+<h3>✅ Ground Reflection<a class="headerlink" href="#ground-reflection" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The plume reflects off the ground due to the <strong>no-flux boundary condition</strong>.</p></li>
+<li><p>This is modeled by the <strong>image source</strong> at ( -H ), contributing the second exponential term in the equation.</p></li>
+</ul>
+</section>
+<section id="thermal-inversion-reflection">
+<h3>✅ Thermal Inversion Reflection<a class="headerlink" href="#thermal-inversion-reflection" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A <strong>thermal inversion layer</strong> acts like a lid, trapping pollutants below.</p></li>
+<li><p>Reflection from this layer can be modeled by adding additional <strong>image sources</strong> above the inversion height.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conceptual-insight">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#conceptual-insight" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Reflections <strong>increase concentration</strong> near the ground.</p></li>
+<li><p>Inversion layers <strong>suppress vertical mixing</strong>, leading to <strong>higher ground-level concentrations</strong>.</p></li>
+<li><p>The Gaussian model assumes <strong>steady-state</strong>, <strong>constant wind</strong>, and <strong>uniform terrain</strong>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>❓ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What causes the plume to reflect off the ground?</p></li>
+<li><p>How does a thermal inversion layer affect pollutant dispersion?</p></li>
+<li><p>Why is the second exponential term in the Gaussian equation important?</p></li>
+<li><p>What assumptions does the Gaussian plume model make?</p></li>
+<li><p>How would you modify the model for complex terrain or variable wind?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="estimating-dispersion-coefficients">
+<h3>Estimating Dispersion Coefficients<a class="headerlink" href="#estimating-dispersion-coefficients" title="Link to this heading">#</a></h3>
+<p>The coefficients ( \sigma_y ) and ( \sigma_z ) vary with distance and atmospheric stability. The following empirical formulas are adapted from Pasquill-Gifford curves.</p>
+</section>
+<section id="dispersion-coefficient-formulas">
+<h3>Dispersion Coefficient Formulas<a class="headerlink" href="#dispersion-coefficient-formulas" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\sigma_y(x) = a \cdot x \cdot \left(1 + b \cdot x\right)^{-0.5} \\
+\sigma_z(x) = c \cdot x \cdot \left(1 + d \cdot x\right)^{-0.5}
+\end{split}\]</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Stability Class</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>( a )</p></th>
+<th class="head"><p>( b )</p></th>
+<th class="head"><p>( c )</p></th>
+<th class="head"><p>( d )</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>Very unstable</p></td>
+<td><p>0.22</p></td>
+<td><p>0.0001</p></td>
+<td><p>0.20</p></td>
+<td><p>0.0001</p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>Moderately unstable</p></td>
+<td><p>0.16</p></td>
+<td><p>0.0001</p></td>
+<td><p>0.12</p></td>
+<td><p>0.0001</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>Slightly unstable</p></td>
+<td><p>0.11</p></td>
+<td><p>0.0001</p></td>
+<td><p>0.08</p></td>
+<td><p>0.0001</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>Neutral</p></td>
+<td><p>0.08</p></td>
+<td><p>0.0001</p></td>
+<td><p>0.06</p></td>
+<td><p>0.0001</p></td>
+</tr>
+<tr class="row-even"><td><p>E</p></td>
+<td><p>Slightly stable</p></td>
+<td><p>0.06</p></td>
+<td><p>0.0001</p></td>
+<td><p>0.03</p></td>
+<td><p>0.0001</p></td>
+</tr>
+<tr class="row-odd"><td><p>F</p></td>
+<td><p>Very stable</p></td>
+<td><p>0.04</p></td>
+<td><p>0.0001</p></td>
+<td><p>0.016</p></td>
+<td><p>0.0001</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="effective-stack-height">
+<h3>Effective Stack Height<a class="headerlink" href="#effective-stack-height" title="Link to this heading">#</a></h3>
+<p>The effective stack height ( H ) is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+H = h + \Delta h
+\]</div>
+<p><strong>Where:</strong></p>
+<ul class="simple">
+<li><p>( h ): physical stack height [m]</p></li>
+<li><p>( \Delta h ): plume rise [m] (due to buoyancy and/or momentum)</p></li>
+</ul>
+</section>
+<section id="approximate-buoyant-plume-rise-stable-conditions">
+<h3>Approximate Buoyant Plume Rise (Stable Conditions)<a class="headerlink" href="#approximate-buoyant-plume-rise-stable-conditions" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\Delta h = 1.6 \left( \frac{F^{1/3}}{u} \right)
+\quad \text{with} \quad
+F = \frac{g \cdot V \cdot \Delta T}{T_a}
+\]</div>
+<p><strong>Where:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( F \)</span>): buoyancy flux [m⁴/s³]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( g \)</span>): gravitational acceleration ≈ 9.81 m/s²</p></li>
+<li><p><span class="math notranslate nohighlight">\(( V \)</span>): stack gas exit volume flow rate [m³/s]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \Delta T \)</span>): stack–ambient temperature difference [K]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( T_a \)</span>): ambient temperature [K]</p></li>
+<li><p><span class="math notranslate nohighlight">\(( u \)</span>): wind speed [m/s]</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <strong>stability classes (A–F)</strong> based on surface conditions, solar radiation, and wind speed</p></li>
+<li><p>The <strong>ground reflection term</strong> accounts for pollutant dispersion near the surface</p></li>
+<li><p>The model assumes <strong>steady-state conditions</strong> (constant wind and emissions)</p></li>
+</ul>
+<p>This notebook provides an <strong>interactive visualization</strong> of the ground-level concentration of pollutants based on:</p>
+<ul class="simple">
+<li><p>📍 Source emission rate (Q)</p></li>
+<li><p>🌬️ Wind speed (u)</p></li>
+<li><p>📏 Effective stack height (H)</p></li>
+<li><p>🌡️ Atmospheric stability class (A–F)</p></li>
+</ul>
+</section>
+<section id="key-features">
+<h3>Key Features<a class="headerlink" href="#key-features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Simulate how different environmental and source parameters affect pollutant dispersion</p></li>
+<li><p>Visualize the concentration distribution at ground level as a 2D contour plot</p></li>
+<li><p>Explore six atmospheric stability classes (A = very unstable, F = very stable)</p></li>
+<li><p>Adjustable inputs with interactive sliders for real-time exploration</p></li>
+</ul>
+</section>
+<section id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Air quality impact assessments for industrial stacks</p></li>
+<li><p>Regulatory modeling and compliance</p></li>
+<li><p>Environmental engineering education and plume behavior analysis</p></li>
+</ul>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="gaussian-plume-air-quality-model-summary-in-markdown">
+<h3>🌬️ Gaussian Plume Air Quality Model – Summary in Markdown<a class="headerlink" href="#gaussian-plume-air-quality-model-summary-in-markdown" title="Link to this heading">#</a></h3>
+<p>This Python-based model simulates <strong>pollutant dispersion</strong> from a point source (e.g., smokestack) using the <strong>Gaussian plume equation</strong>. It visualizes how <strong>wind speed</strong>, <strong>atmospheric stability</strong>, <strong>stack height</strong>, and <strong>inversion layer</strong> influence concentration at various downwind distances and heights.</p>
+</section>
+<hr class="docutils" />
+<section id="model-components">
+<h3>🔧 Model Components<a class="headerlink" href="#model-components" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sigma_y(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">sigma_z(x)</span></code></p></td>
+<td><p>Horizontal &amp; vertical dispersion using empirical formulas</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gaussian_plume()</span></code></p></td>
+<td><p>Calculates pollutant concentration with reflections</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rotate_coords()</span></code></p></td>
+<td><p>Rotates coordinates to align plume with wind direction</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plot_plotly()</span></code></p></td>
+<td><p>Interactive 2D heatmap showing concentration distribution</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">interact()</span></code></p></td>
+<td><p>Sliders and dropdowns to adjust model inputs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="inputs-and-controls">
+<h3>💡 Inputs and Controls<a class="headerlink" href="#inputs-and-controls" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Q</span></code></p></td>
+<td><p>Emission rate (µg/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">u</span></code></p></td>
+<td><p>Wind speed (m/s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+<td><p>Stack height (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stability</span></code></p></td>
+<td><p>Atmospheric stability class (A–F)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z_inv</span></code></p></td>
+<td><p>Inversion layer height (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">wind_dir</span></code></p></td>
+<td><p>Wind direction (degrees)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="what-it-shows">
+<h3>📈 What It Shows<a class="headerlink" href="#what-it-shows" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Heatmap of <strong>pollutant concentration</strong> vs. distance and height</p></li>
+<li><p><strong>Plume widening or narrowing</strong> with stability class</p></li>
+<li><p><strong>Inversion effects</strong> when vertical mixing is restricted</p></li>
+<li><p><strong>Wind direction</strong> adjusts plume orientation</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-results">
+<h3>🧠 How to Interpret Results<a class="headerlink" href="#how-to-interpret-results" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Bright plume core</p></td>
+<td><p>High concentration near the stack and ground level</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wider dispersion</p></td>
+<td><p>Occurs in unstable (A–C) conditions with higher turbulence</p></td>
+</tr>
+<tr class="row-even"><td><p>Inversion line</p></td>
+<td><p>Limits vertical mixing; pollutants may pool below it</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wind rotation</p></td>
+<td><p>Plume shifts with prevailing wind direction</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="equation-used-simplified">
+<h3>🧪 Equation Used (Simplified)<a class="headerlink" href="#equation-used-simplified" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+C(x,z) = \frac{Q}{2\pi u \sigma_y \sigma_z} \left[ e^{-\frac{(z - H)^2}{2 \sigma_z^2}} + e^{-\frac{(z + H)^2}{2 \sigma_z^2}} \right]
+\]</div>
+<p>Optional terms account for <strong>reflection from the inversion layer</strong>.</p>
+<hr class="docutils" />
+<blockquote>
+<div><p>This model offers a practical and interactive way to explore how atmospheric conditions affect pollution dispersion — valuable for air quality engineers, planners, and educators.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">Dropdown</span>
+
+<span class="c1"># --- Dispersion functions ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sigma_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stability</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mf">0.22</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mf">0.16</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">0.11</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.08</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mf">0.06</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">}</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="mf">0.0001</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">stability</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">stability</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="o">-</span><span class="mf">0.5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sigma_z</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stability</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mf">0.20</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">0.08</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.06</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="mf">0.016</span><span class="p">}</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="mf">0.0001</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="n">stability</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">stability</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="o">-</span><span class="mf">0.5</span>
+
+<span class="c1"># --- Gaussian plume with reflection ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gaussian_plume</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">stability</span><span class="p">,</span> <span class="n">z_inv</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">sy</span> <span class="o">=</span> <span class="n">sigma_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stability</span><span class="p">)</span>
+    <span class="n">sz</span> <span class="o">=</span> <span class="n">sigma_z</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stability</span><span class="p">)</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">sy</span> <span class="o">*</span> <span class="n">sz</span><span class="p">)</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">z_inv</span> <span class="ow">and</span> <span class="n">z_inv</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">base</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">z_inv</span> <span class="o">-</span> <span class="n">z</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">base</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">z_inv</span> <span class="o">+</span> <span class="n">z</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">term1</span> <span class="o">*</span> <span class="n">base</span>
+
+<span class="c1"># --- Coordinate rotation for wind direction ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rotate_coords</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">angle_deg</span><span class="p">):</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle_deg</span><span class="p">)</span>
+    <span class="n">x_rot</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_rot</span>
+
+<span class="c1"># --- Plotting function with wind direction ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_plotly</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">stability</span><span class="p">,</span> <span class="n">z_inv</span><span class="p">,</span> <span class="n">wind_dir</span><span class="p">):</span>
+    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+    <span class="n">z_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">x_grid</span><span class="p">,</span> <span class="n">z_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">z_vals</span><span class="p">)</span>
+
+    <span class="c1"># Rotate x according to wind direction (assume y = 0 slice)</span>
+    <span class="n">x_rot</span> <span class="o">=</span> <span class="n">rotate_coords</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x_grid</span><span class="p">),</span> <span class="o">-</span><span class="n">wind_dir</span><span class="p">)</span>
+    <span class="n">x_rot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">x_rot</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># prevent division by zero</span>
+
+    <span class="n">C</span> <span class="o">=</span> <span class="n">gaussian_plume</span><span class="p">(</span><span class="n">x_rot</span><span class="p">,</span> <span class="n">z_grid</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">stability</span><span class="p">,</span> <span class="n">z_inv</span><span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Heatmap</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x_vals</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">z_vals</span><span class="p">,</span>
+        <span class="n">z</span><span class="o">=</span><span class="n">C</span><span class="p">,</span>
+        <span class="n">colorscale</span><span class="o">=</span><span class="s1">&#39;Viridis&#39;</span><span class="p">,</span>
+        <span class="n">zmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">zmax</span><span class="o">=</span><span class="mf">0.12</span><span class="p">,</span>  <span class="c1"># Adjust this upper limit as needed</span>
+        <span class="n">colorbar</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Concentration (µg/m³)&#39;</span><span class="p">),</span>
+        <span class="n">hovertemplate</span><span class="o">=</span><span class="s1">&#39;x: %</span><span class="si">{x:.0f}</span><span class="s1"> m&lt;br&gt;z: %</span><span class="si">{y:.0f}</span><span class="s1"> m&lt;br&gt;Conc: %</span><span class="si">{z:.2f}</span><span class="s1"> µg/m³&lt;extra&gt;&lt;/extra&gt;&#39;</span>
+    <span class="p">))</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Gaussian Plume with Wind Direction </span><span class="si">{</span><span class="n">wind_dir</span><span class="si">}</span><span class="s2">°&lt;br&gt;Stability: </span><span class="si">{</span><span class="n">stability</span><span class="si">}</span><span class="s2"> | Inversion: </span><span class="si">{</span><span class="n">z_inv</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;∞&#39;</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">,</span>
+        <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Projected Downwind Distance (m)&#39;</span><span class="p">,</span>
+        <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Height z (m)&#39;</span><span class="p">,</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">500</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">z_inv</span> <span class="ow">and</span> <span class="n">z_inv</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x1</span><span class="o">=</span><span class="n">x_vals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y0</span><span class="o">=</span><span class="n">z_inv</span><span class="p">,</span> <span class="n">y1</span><span class="o">=</span><span class="n">z_inv</span><span class="p">,</span>
+                      <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">dash</span><span class="o">=</span><span class="s2">&quot;dash&quot;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Inversion&quot;</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Widgets with wind direction added ---</span>
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">plot_plotly</span><span class="p">,</span>
+    <span class="n">Q</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Emission Q&quot;</span><span class="p">),</span>
+    <span class="n">u</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Wind Speed&quot;</span><span class="p">),</span>
+    <span class="n">H</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Stack Height&quot;</span><span class="p">),</span>
+    <span class="n">stability</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Stability&quot;</span><span class="p">),</span>
+    <span class="n">z_inv</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Inversion Height&quot;</span><span class="p">),</span>
+    <span class="n">wind_dir</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Wind Dir (°)&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e0649ed642e64329817c5fcf88dfc9ef", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_plotly(Q, u, H, stability, z_inv, wind_dir)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="objective-gaussian-plume-receptor-concentration-estimator">
+<h3>Objective: Gaussian Plume Receptor Concentration Estimator<a class="headerlink" href="#objective-gaussian-plume-receptor-concentration-estimator" title="Link to this heading">#</a></h3>
+<p>The main objective of this code is to provide an <strong>interactive tool</strong> for estimating air pollutant concentration at any specified receptor point ((x, y, z)), using the <strong>Gaussian plume dispersion model</strong> with both <strong>ground</strong> and <strong>inversion layer reflections</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="what-the-code-does">
+<h3>🔧 What the Code Does<a class="headerlink" href="#what-the-code-does" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>📥 <strong>Accepts user inputs</strong> for:</p>
+<ul>
+<li><p>Receptor location:</p>
+<ul>
+<li><p>( x ): Downwind distance (m)</p></li>
+<li><p>( y ): Crosswind offset (m)</p></li>
+<li><p>( z ): Height above ground (m)</p></li>
+</ul>
+</li>
+<li><p><strong>Emission rate</strong> ( Q ) [g/s]</p></li>
+<li><p><strong>Wind speed</strong> ( u ) [m/s]</p></li>
+<li><p><strong>Stack height</strong> ( H ) [m]</p></li>
+<li><p><strong>Stability class</strong> (A–F)</p></li>
+<li><p><strong>Optional inversion layer height</strong> ( z_{\text{inv}} )</p></li>
+</ul>
+</li>
+<li><p>📈 <strong>Calculates concentration</strong> using the Gaussian plume equation:</p>
+<ul>
+<li><p>Incorporates horizontal and vertical dispersion using stability-dependent functions ( \sigma_y(x), \sigma_z(x) )</p></li>
+<li><p>Includes both <strong>ground reflection</strong> and optional <strong>inversion reflection</strong></p></li>
+</ul>
+</li>
+<li><p>🧮 <strong>Core equation</strong>:
+$<span class="math notranslate nohighlight">\(
+C(x, y, z) = \frac{Q}{2\pi u \sigma_y \sigma_z} \cdot \exp\left(-\frac{y^2}{2\sigma_y^2}\right) \cdot 
+\left[
+\exp\left(-\frac{(z - H)^2}{2\sigma_z^2}\right) + \text{(reflections)}
+\right]
+\)</span>$</p></li>
+<li><p><strong>Interactive interface</strong> with <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> in a Jupyter Notebook:</p></li>
+<li><p>Users input values via sliders and text boxes</p></li>
+<li><p>Concentration is calculated and displayed in nicely formatted Markdown output</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="why-its-useful">
+<h3>Why It’s Useful<a class="headerlink" href="#why-its-useful" title="Link to this heading">#</a></h3>
+<p>This tool helps <strong>students</strong>, <strong>engineers</strong>, and <strong>environmental analysts</strong>:</p>
+<ul class="simple">
+<li><p>Explore the influence of stack and meteorological parameters</p></li>
+<li><p>Visualize how concentration varies with location</p></li>
+<li><p>Understand plume reflection mechanisms</p></li>
+<li><p>Get hands-on with a model used in regulatory and industrial settings</p></li>
+</ul>
+<p>Want to enhance it further with a visual heatmap or batch receptor logging?<br />
+Let’s build that into the next version together 🚀</p>
+</section>
+</section>
+<section id="id1">
+<h2>4. Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="gaussian-plume-receptor-point-query-summary">
+<h3>🌬️ Gaussian Plume Receptor Point Query – Summary<a class="headerlink" href="#gaussian-plume-receptor-point-query-summary" title="Link to this heading">#</a></h3>
+<p>This is an interactive <strong>Jupyter-based tool</strong> that estimates <strong>pollutant concentration</strong> at a specific receptor location using a <strong>Gaussian plume dispersion model</strong>. It includes:</p>
+<ul class="simple">
+<li><p>Input widgets for plume parameters and receptor coordinates</p></li>
+<li><p>A button-triggered calculation using the dispersion equation</p></li>
+<li><p>Markdown-based result display with formatted output</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>🧪 How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Inputs via Widgets</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>: receptor location (meters)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Q</span></code>: emission rate (g/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">u</span></code>: wind speed (m/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">H</span></code>: stack height (m)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stability</span></code>: atmospheric turbulence class (A–F)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">z_inv</span></code>: height of inversion layer</p></li>
+</ul>
+</li>
+<li><p><strong>Concentration Calculation</strong>:</p>
+<ul class="simple">
+<li><p>Uses horizontal (<code class="docutils literal notranslate"><span class="pre">σ_y</span></code>) and vertical (<code class="docutils literal notranslate"><span class="pre">σ_z</span></code>) dispersion formulas</p></li>
+<li><p>Applies Gaussian plume equation with reflections for ground and inversion</p></li>
+<li><p>Computes concentration at user-defined point</p></li>
+</ul>
+</li>
+<li><p><strong>Output</strong>:</p>
+<ul>
+<li><p>After clicking <strong>“Get Concentration”</strong>, displays:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>📍 Receptor at (x=..., y=..., z=...):
+<span class="gs">**Estimated Concentration:**</span> <span class="sb">`... µg/m³`</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3>🔍 How to Interpret Results<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Element</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></code></p></td>
+<td><p>Receptor coordinates downwind and vertically from source</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Concentration</span> <span class="pre">(µg/m³)</span></code></p></td>
+<td><p>Estimated pollutant level at the receptor</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Low</span> <span class="pre">value</span> <span class="pre">(~0)</span></code></p></td>
+<td><p>Indicates far distance, poor mixing, or dispersion limits</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">value</span></code></p></td>
+<td><p>Suggests proximity to plume center and limited dispersion</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>This tool is ideal for evaluating <strong>exposure risk</strong>, <strong>site-specific concentration</strong>, and <strong>regulatory compliance</strong> scenarios.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># Compute concentration at specified (x, y, z) using existing dispersion model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concentration_query</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">stability</span><span class="p">,</span> <span class="n">z_inv</span><span class="p">):</span>
+    <span class="n">sy</span> <span class="o">=</span> <span class="n">sigma_y</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stability</span><span class="p">)</span>
+    <span class="n">sz</span> <span class="o">=</span> <span class="n">sigma_z</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stability</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sy</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">sz</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+
+    <span class="n">part1</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">sy</span> <span class="o">*</span> <span class="n">sz</span><span class="p">)</span>
+    <span class="n">part2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sy</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">part3</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">z</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">z_inv</span> <span class="ow">and</span> <span class="n">z_inv</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">part3</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">z_inv</span> <span class="o">-</span> <span class="n">z</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">part3</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">z_inv</span> <span class="o">+</span> <span class="n">z</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sz</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">part1</span> <span class="o">*</span> <span class="n">part2</span> <span class="o">*</span> <span class="n">part3</span>
+
+<span class="c1"># UI elements</span>
+<span class="n">x_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">BoundedFloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;x (m):&#39;</span><span class="p">)</span>
+<span class="n">y_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">BoundedFloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;y (m):&#39;</span><span class="p">)</span>
+<span class="n">z_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">BoundedFloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;z (m):&#39;</span><span class="p">)</span>
+<span class="n">Q_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Q (g/s)&#39;</span><span class="p">)</span>
+<span class="n">u_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wind (m/s)&#39;</span><span class="p">)</span>
+<span class="n">H_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Stack H&#39;</span><span class="p">)</span>
+<span class="n">stab_input</span> <span class="o">=</span> <span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Stability&#39;</span><span class="p">)</span>
+<span class="n">zinv_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Inversion (m)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Action button</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Get Concentration&#39;</span><span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_button_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">z_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">u_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">H_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">stab</span> <span class="o">=</span> <span class="n">stab_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">z_inv</span> <span class="o">=</span> <span class="n">zinv_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">C</span> <span class="o">=</span> <span class="n">concentration_query</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">stab</span><span class="p">,</span> <span class="n">z_inv</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;### 📍 Receptor at (x=</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> m, y=</span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2"> m, z=</span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2"> m):</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;**Estimated Concentration:** `</span><span class="si">{</span><span class="n">C</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> µg/m³`&quot;</span>
+        <span class="p">))</span>
+
+<span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_button_click</span><span class="p">)</span>
+
+<span class="c1"># Display form</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;&lt;h3&gt;🎯 Query Pollutant Concentration at a Receptor Point&lt;/h3&gt;&quot;</span><span class="p">),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">x_input</span><span class="p">,</span> <span class="n">y_input</span><span class="p">,</span> <span class="n">z_input</span><span class="p">]),</span>
+    <span class="n">Q_input</span><span class="p">,</span> <span class="n">u_input</span><span class="p">,</span> <span class="n">H_input</span><span class="p">,</span> <span class="n">stab_input</span><span class="p">,</span> <span class="n">zinv_input</span><span class="p">,</span>
+    <span class="n">button</span><span class="p">,</span> <span class="n">output</span>
+<span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "eb5a79cedeb442629006fa2ae6207c56", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2>5. Self-Assessment<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="gaussian-plume-dispersion-model-learning-module">
+<h3>Gaussian Plume Dispersion Model – Learning Module<a class="headerlink" href="#gaussian-plume-dispersion-model-learning-module" title="Link to this heading">#</a></h3>
+<p>This module supports critical thinking, conceptual understanding, and assessment for students or professionals using the Gaussian plume tool. It includes conceptual questions, reflective prompts, and a quiz to reinforce dispersion modeling fundamentals.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Why do we use different dispersion coefficients (σ<sub>y</sub> and σ<sub>z</sub>) for the horizontal and vertical directions in the Gaussian plume model?</strong></p></li>
+<li><p><strong>What physical factors influence the values of σ<sub>y</sub> and σ<sub>z</sub> at a given downwind distance x?</strong></p></li>
+<li><p><strong>How does wind speed (u) affect the shape and dilution of the plume?</strong></p></li>
+<li><p><strong>What is the purpose of including reflection terms from the ground and inversion layer in the Gaussian plume equation?</strong></p></li>
+<li><p><strong>How does atmospheric stability (Classes A–F) influence pollutant dispersion, and why does a more stable atmosphere result in a narrower plume?</strong></p></li>
+<li><p><strong>Why is effective stack height (H) more than just the physical stack height, and how can plume rise be estimated?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-prompts">
+<h3>Reflective Prompts<a class="headerlink" href="#reflective-prompts" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>When switching from stability class D to class F in your simulation, what changes do you observe in ground-level concentration? Why does this happen?</strong></p></li>
+<li><p><strong>Rotate the wind direction by 90°. How does this alter the shape of the heatmap? What implications does this have for nearby receptors?</strong></p></li>
+<li><p><strong>If a receptor point lies above the inversion layer, how does that affect the estimated concentration? What are the consequences for exposure modeling?</strong></p></li>
+<li><p><strong>Which parameters most influence the location and magnitude of the peak concentration? How could this inform industrial design or siting decisions?</strong></p></li>
+<li><p><strong>Without reducing emissions (Q), what other strategies could reduce the maximum concentration at ground level?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions-multiple-choice">
+<h3>✅ Quiz Questions (Multiple Choice)<a class="headerlink" href="#quiz-questions-multiple-choice" title="Link to this heading">#</a></h3>
+<p><strong>Q1.</strong> What do σ<sub>y</sub> and σ<sub>z</sub> represent in the Gaussian plume model?<br />
+A. Stack height and plume temperature<br />
+B. Wind direction and terrain roughness<br />
+C. Crosswind and vertical dispersion<br />
+D. Wind speed and turbulence intensity<br />
+✅ <strong>Answer:</strong> C</p>
+<hr class="docutils" />
+<p><strong>Q2.</strong> Which condition leads to the greatest spread of a Gaussian plume?<br />
+A. Stability Class F<br />
+B. Stability Class A with strong solar radiation<br />
+C. Calm wind and tall stack<br />
+D. Heavy rain and high humidity<br />
+✅ <strong>Answer:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q3.</strong> Increasing the wind speed (u) typically causes the peak concentration to:<br />
+A. Increase<br />
+B. Decrease<br />
+C. Stay the same<br />
+D. Occur closer to the stack<br />
+✅ <strong>Answer:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q4.</strong> Why are reflection terms included in the vertical concentration expression?<br />
+A. To account for wind shear<br />
+B. To model pollutant absorption into soil<br />
+C. To simulate vertical boundary effects from the ground and atmosphere<br />
+D. To add time dependence to the model<br />
+✅ <strong>Answer:</strong> C</p>
+<hr class="docutils" />
+<p><strong>Q5.</strong> Increasing the stack height (H) will:<br />
+A. Increase ground-level concentrations<br />
+B. Move the concentration peak further downwind and upward<br />
+C. Have no effect on the plume shape<br />
+D. Increase horizontal dispersion<br />
+✅ <strong>Answer:</strong> B</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="IndoorAirQuality.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 1 Environmental Engineering: Indoor Air quality modeling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Chap2/Rainfall_Runoff_PMP_Distribution.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2 Hydrology: SpatioTemperoal Rainfall Disaggregation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-dispersion-model-interactive-visualization">Gaussian Plume Dispersion Model – Interactive Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-reflection">✅ Ground Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-inversion-reflection">✅ Thermal Inversion Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-dispersion-coefficients">Estimating Dispersion Coefficients</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-coefficient-formulas">Dispersion Coefficient Formulas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-stack-height">Effective Stack Height</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximate-buoyant-plume-rise-stable-conditions">Approximate Buoyant Plume Rise (Stable Conditions)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes">Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-air-quality-model-summary-in-markdown">🌬️ Gaussian Plume Air Quality Model – Summary in Markdown</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-components">🔧 Model Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-controls">💡 Inputs and Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-shows">📈 What It Shows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🧠 How to Interpret Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equation-used-simplified">🧪 Equation Used (Simplified)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-gaussian-plume-receptor-concentration-estimator">Objective: Gaussian Plume Receptor Concentration Estimator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-code-does">🔧 What the Code Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-its-useful">Why It’s Useful</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-receptor-point-query-summary">🌬️ Gaussian Plume Receptor Point Query – Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">🧪 How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-plume-dispersion-model-learning-module">Gaussian Plume Dispersion Model – Learning Module</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts">Reflective Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions-multiple-choice">✅ Quiz Questions (Multiple Choice)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
