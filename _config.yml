@@ -86,8 +86,8 @@ launch_buttons:
 
 # Sphinx extensions
 sphinx:
-  config:
-    html_theme: pydata_sphinx_theme
+#  config:
+#    html_theme: pydata_sphinx_theme
   extra_extensions:
     - sphinx.ext.mathjax
     - sphinx.ext.autodoc
