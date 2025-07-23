@@ -7,7 +7,7 @@
 # Book settings
 title                                                        : Civil Engineering Toolkit
 author                                                       : Satish Bastola, UNO # The Author of the Book
-logo                                                         : logo.png
+logo                                                         : JupyterbookLogo.png
 
 # Notebook execution settings
 execute:
