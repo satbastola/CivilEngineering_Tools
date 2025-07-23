@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0">
+  <info>
+    <title>American Psychological Association 7th edition</title>
+    <id>http://www.zotero.org/styles/apa</id>
+    <link href="http://www.zotero.org/styles/apa" rel="self"/>
+    <author>
+      <name>American Psychological Association</name>
+    </author>
+    <category citation-format="author-date"/>
+    <category field="psychology"/>
+    <updated>2020-01-01T00:00:00+00:00</updated>
+    <summary>APA style as defined by the American Psychological Association, 7th edition</summary>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/"/>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name and="symbol" delimiter=", " initialize-with=". " name-as-sort-order="all"/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <macro name="title">
+    <text variable="title" font-style="italic"/>
+  </macro>
+  <macro name="container-title">
+    <text variable="container-title" font-style="italic"/>
+  </macro>
+  <macro name="publisher">
+    <text variable="publisher"/>
+  </macro>
+  <citation>
+    <layout prefix="" suffix="." delimiter="; ">
+      <text macro="author"/>
+      <text macro="issued" prefix=" (" suffix=")."/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout hanging-indent="true" delimiter=". ">
+      <text macro="author"/>
+      <text macro="issued" prefix=" (" suffix=")."/>
+      <text macro="title" suffix="."/>
+      <text macro="container-title" suffix=","/>
+      <text variable="volume" prefix=" " suffix=""/>
+      <text variable="page" prefix=", " suffix="."/>
+      <text macro="publisher" prefix=" " suffix="."/>
+    </layout>
+  </bibliography>
+</style>
