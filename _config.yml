@@ -26,6 +26,7 @@ latex:
 # 📚 Bibliography
 bibtex_bibfiles:
   - references.bib
+citation_style: apa.csl
 
 # 🔗 Repository Info (for GitHub integration)
 repository:
