@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-deploy:
+  pages:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -41,6 +41,6 @@ jobs:
         with:
           path: _build/html
 
-      - name: 🚀 Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
