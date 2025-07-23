@@ -78,7 +78,7 @@ sphinx:
   extra_extensions:
     - sphinx.ext.mathjax
     - sphinx.ext.autodoc
-    - sphinx.ext.napoleon
+#    - sphinx.ext.napoleon
     - sphinx_thebe
 
 # 📤 nbviewer Integration
