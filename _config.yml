@@ -1,15 +1,14 @@
 #######################################################################################
-# A default configuration that will be loaded for all jupyter books
-# See the documentation for help and more options: 
-# https://jupyterbook.org/customize/config.html
-
+# Jupyter Book Configuration
+# For full documentation: https://jupyterbook.org/customize/config.html
 #######################################################################################
-# Book settings
-title                                                        : Civil Engineering Toolkit
-author                                                       : Satish Bastola, UNO # The Author of the Book
-logo                                                         : JupyterbookLogo.png
 
-# Notebook execution settings
+# 📘 Book Metadata
+title: Civil Engineering Toolkit
+author: Satish Bastola, UNO
+logo: JupyterbookLogo.png
+
+# ⚙️ Notebook Execution Settings
 execute:
   execute_notebooks: false
   timeout: 180
@@ -17,64 +16,54 @@ execute:
   run_in_temp: true
   only_build_toc_files: true
 
-# PDF output settings
+# 📄 PDF / LaTeX Output
 latex:
   latex_documents:
     targetname: book.tex
     title: Civil Engineering Toolkit
     author: Satish Bastola
-    theme: "sphinx_book_theme"
 
-# Bibliography
+# 📚 Bibliography
 bibtex_bibfiles:
   - references.bib
 
-# Repository info for GitHub links
+# 🔗 Repository Info (for GitHub integration)
 repository:
   url: https://github.com/satbastola/CivilEngineering_Tools
-  path_to_book: ""  # adjust if your book is not inside 'docs'
+  path_to_book: ""
   branch: HEAD
 
-# HTML settings
+# 🌐 HTML Output Settings
 html:
-#  theme:
-#    name: "sphinx_book_theme"
-#    options:
-#      show_navbar_depth: 2
-#      home_page_in_toc: true
-#  favicon: "path/to/favicon.ico"
-#  extra_css:
-#    - "path/to/custom.css"
-#  extra_js:
-#    - "path/to/custom.js"
+  baseurl: /CivilEngineering_Tools/
   use_issues_button: true
   use_repository_button: true
   use_edit_page_button: true
   navbar_footer_text: "Explore, simulate, and experiment with Civil Engineering"
   navbar_items:
-    - name: "Home"
-      url: "index.html"
-    - name: "About"
-      url: "about.html"
-    - name: "Contact"
-      url: "contact.html"
-    - name: "Twitter"
-      url: "https://twitter.com/yourprofile"
-    - name: "LinkedIn"
-      url: "https://linkedin.com/in/yourprofile"
+    - name: Home
+      url: index.html
+    - name: About
+      url: about.html
+    - name: Contact
+      url: contact.html
+    - name: Twitter
+      url: https://twitter.com/yourprofile
+    - name: LinkedIn
+      url: https://linkedin.com/in/yourprofile
   search:
-    searchbar_position: "navbar"
+    searchbar_position: navbar
     search_placeholder: "Search this book..."
-  google_analytics_id: "UA-XXXXXXX-X"
+  google_analytics_id: UA-XXXXXXX-X
   footer:
     text: "© 2025 Satish Bastola. All rights reserved."
     links:
-      - name: "Privacy Policy"
-        url: "privacy.html"
-      - name: "Terms of Service"
-        url: "terms.html"
+      - name: Privacy Policy
+        url: privacy.html
+      - name: Terms of Service
+        url: terms.html
 
-# Launch buttons for interactive notebooks
+# 🚀 Launch Buttons (Binder, Colab, Thebe)
 launch_buttons:
   binderhub_url: https://mybinder.org
   repository: satbastola/CivilEngineering_Tools
@@ -84,19 +73,17 @@ launch_buttons:
   thebe: true
   colab_url: https://colab.research.google.com
 
-# Sphinx extensions
+# 🧩 Sphinx Extensions
 sphinx:
-#  config:
-#    html_theme: pydata_sphinx_theme
   extra_extensions:
     - sphinx.ext.mathjax
     - sphinx.ext.autodoc
     - sphinx.ext.napoleon
-    - sphinx_thebe 
+    - sphinx_thebe
 
-# nbviewer settings
+# 📤 nbviewer Integration
 nbviewer:
-  base_url: "https://nbviewer.jupyter.org/github/"
+  base_url: https://nbviewer.jupyter.org/github/
   repository: satbastola/CivilEngineering_Tools
   branch: HEAD
   path_to_book: ""
