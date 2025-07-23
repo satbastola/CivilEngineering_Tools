@@ -47,16 +47,16 @@ jobs:
 
       - name: 🚀 Deploy to GitHub Pages
         env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
-        mkdir gh-pages
-        cp -r _build/html/* gh-pages/
-        cd gh-pages
-        git init
-        git checkout -b gh-pages
-       git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
-        git add .
-        git commit -m "Initial deploy of Jupyter Book"
-        git push origin gh-pages --force
+         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+         git config --global user.name "github-actions[bot]"
+         mkdir gh-pages
+         cp -r _build/html/* gh-pages/
+         cd gh-pages
+         git init
+         git checkout -b gh-pages
+         git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+         git add .
+         git commit -m "Initial deploy of Jupyter Book"
+         git push origin gh-pages --force
