@@ -1,6 +1,6 @@
-# Welcome to your Jupyter Book
+# Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
 
-"Welcome to your Jupyter Book ✍️ Author’s Note This book reflects years of practical experience, and academic exploration. Whether you’re a student learning the ropes, an engineer refining your expertise, or a curious mind diving into environmental systems for the first time — I hope this resource empowers your journey. Book includes nearly 100 different tools that I have used in classroom setting for teaching and are divided into six chapters 
+This book is a curated sandbox of nearly 75 interactive tools developed from years of classroom experience and academic exploration. Designed for undergraduate civil and environmental engineering students, it empowers learners to experiment with model sensitivity, estimate design parameters, and deepen their understanding of sustainability, water systems, geotech, and coastal engineering. Whether you're just starting out or refining your expertise, this resource invites you to explore, simulate, and design with purpose.
 
 1. Introduction to Environmental Engineering
 2. Engineering Hydrology
@@ -9,9 +9,9 @@
 5. Ocean and Coastal Engineering
 6. Sustainable Engineering
 
-🙌 Acknowledgments Special thanks to mentors, colleagues, and students whose questions and insights inspired the structure and content of this book. Collaborative knowledge-building is the force behind every page.
+🙌 Acknowledgments Special thanks to Civil and Environmental Engineering, College of Engineering UNO, mentors, colleagues, and students whose questions and insights inspired the structure and content of this book. Collaborative knowledge-building is the force behind every page.
 
-🎯 Mission Statement Our mission is simple: to demystify the complex and bring clarity to engineering systems that shape our world. We believe that good design starts with good understanding, and that learning should be as dynamic and applied as the challenges we face" help me make it better for intro.md for juptyer book
+🎯 Mission Statement: Our mission is to make complex engineering systems clear, accessible, and actionable. We believe good design begins with deep understanding—and that learning should be as dynamic and applied as the challenges we aim to solve. Dive in, experiment, and discover how thoughtful engineering can shape a more sustainable world.
 
 
 Check out the content pages bundled with this sample book to see more.
