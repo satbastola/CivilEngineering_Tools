@@ -8,6 +8,8 @@ This book is a curated sandbox of nearly 75 interactive tools developed from yea
 4. Geotechnical Engineering and Labs
 5. Ocean and Coastal Engineering
 6. Sustainable Engineering
+7. Remote pilot and Drone
+8. Computer Science and Numerical methods
 
 🙌 Acknowledgments Special thanks to Civil and Environmental Engineering, College of Engineering UNO, mentors, colleagues, and students whose questions and insights inspired the structure and content of this book. Collaborative knowledge-building is the force behind every page.
 
