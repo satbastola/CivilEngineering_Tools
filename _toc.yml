@@ -165,3 +165,39 @@ chapters:
     title: 7.5 Remote Pilot and Drone- Part 107 Test
   - file: Chap7/DroneMIssiong
     title: 7.6 Remote Pilot and Drone- Drone Mission
+  - file: Chap8/1NumberSystem
+    title: 8.1- Number System
+  - file: Chap8/2InformationSystem
+    title: 8.2 - Information System
+  - file: Chap8/3ComputerLanguage
+    title: 8.3 - Computer language
+  - file: Chap8/4ImportantConcepts
+    title: 8.4 - Important Concepts
+  - file: Chap8/5DataStructure
+    title: 8.5- Data Stucture
+  - file: Chap8/6SortingSachit
+    title: 8.6 - Data Sorting
+  - file: Chap8/7Searching
+    title: 8.7 - Searching algorithm  
+  - file: Chap8/8LogicGate
+    title: 8.8 - Logic Gate
+  - file: Chap8/9SQLCommand
+    title: 8.9 - SQL Command
+  - file: Chap8/10DataBaseAdminstration
+    title: 8.10 Database Adminstration
+  - file: Chap8/11CyberSecurity
+    title: 8.11 Cyber Security  
+  - file: Chap8/12Network
+    title: 8.12 - Computer Network
+  - file: Chap8/13Statistics
+    title: 8.13 - Statistics
+  - file: Chap8/14NumericalMethod
+    title: 8.14 - Numerical Method
+  - file: Chap8/15MachineLearningAlgorithm
+    title: 8.15 - Machine Learning Algroithm
+  - file: Chap8/16EngineringEconomics
+    title: 8.16 - Enginering Economics
+  - file: Chap8/17ETLProcessing
+    title: 8.17 - ETL processing
+  - file: Chap8/18PowerBI
+    title: 8.18 - Power BI    
