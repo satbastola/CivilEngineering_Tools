@@ -1,0 +1,20 @@
+name: mat244e
+channels:
+  - default
+dependencies:
+  - python=3.8
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - sphinx
+  - scipy
+  - ipywidgets
+  - statsmodels
+  - scikit-learn
+  - seaborn
+  - plotly
+  - session_info
+  - pip:
+    - jupyter-book
+    - ghp-import

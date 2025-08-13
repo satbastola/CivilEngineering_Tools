@@ -1,0 +1,42 @@
+format: jb-book
+root: intro
+chapters:
+  - file: TableOfContents
+  - file: 1NumberSystem
+    title: Chatper 1- Number System
+  - file: 2InformationSystem
+    title: Chapter 2 - Information System
+  - file: 3ComputerLanguage
+    title: Chapter 3 - Computer language
+  - file: 4ImportantConcepts
+    title: Chapter 4 - Important Concepts
+  - file: 5DataStructure
+    title: Chapter 5- Data Stucture
+  - file: 6SortingSachit
+    title: Chapter 6 - Data Sorting
+  - file: 7Searching
+    title: Chapter 7 - Searching algorithm  
+  - file: 8LogicGate
+    title: Chapter 8 - Logic Gate
+  - file: 9SQLCommand
+    title: Chapter 9 - SQL Command
+  - file: 10DataBaseAdminstration
+    title: Chapter 10 Database Adminstration
+  - file: 11CyberSecurity
+    title: Chapter 11 Cyber Security  
+  - file: 12Network
+    title: Chapter 12 - Computer Network
+  - file: 13Statistics
+    title: Computer 13 - Statistics
+  - file: 14NumericalMethod
+    title: Chapter 14 - Numerical Method
+  - file: 15MachineLearningAlgorithm
+    title: Chapter 15 - Machine Learning Algroithm
+  - file: 16EngineringEconomics
+    title: Chapter 16 - Enginering Economics
+  - file: 17ETLProcessing
+    title: Chapter 17 - ETL processing
+  - file: 18PowerBI
+    title: Chapter 18 - Power BI
+
+  
