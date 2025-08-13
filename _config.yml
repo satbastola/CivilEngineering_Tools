@@ -4,7 +4,7 @@
 #######################################################################################
 
 # 📘 Book Metadata
-title: Civil Engineering Toolkit
+title: Jupyter Sandbox for Civil Engineering
 author: Satish Bastola, UNO
 logo: JupyterbookLogo.png
 
@@ -26,6 +26,7 @@ latex:
 # 📚 Bibliography
 bibtex_bibfiles:
   - references.bib
+citation_style: apa.csl
 
 # 🔗 Repository Info (for GitHub integration)
 repository:
@@ -75,15 +76,20 @@ launch_buttons:
 
 # 🧩 Sphinx Extensions
 sphinx:
+  config:
+    bibtex_bibfiles:
+      - references.bib
+    bibtex_reference_style: author_year
+#    myst_footnote_transition: false
   extra_extensions:
     - sphinx.ext.mathjax
     - sphinx.ext.autodoc
     - sphinx.ext.napoleon
     - sphinx_thebe
 
-# 📤 nbviewer Integration
-nbviewer:
-  base_url: https://nbviewer.jupyter.org/github/
-  repository: satbastola/CivilEngineering_Tools
-  branch: HEAD
-  path_to_book: ""
+# # 📤 nbviewer Integration
+# nbviewer:
+#   base_url: https://nbviewer.jupyter.org/github/
+#   repository: satbastola/CivilEngineering_Tools
+#   branch: HEAD
+#   path_to_book: ""

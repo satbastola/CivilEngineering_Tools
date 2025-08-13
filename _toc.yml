@@ -2,7 +2,7 @@ format: jb-book
 root: intro
 chapters:
   - file: Chap1/BOD_Modeling
-    title: 1. 0 Biochemical Oxygen Demand (BOD) Modeling
+    title: 1.0 Biochemical Oxygen Demand (BOD) Modeling
   - file: Chap1/StreeterPhelpsModel
     title: 1.1 Stream Water Quality – Streeter-Phelps Model
   - file: Chap1/Reactor
@@ -12,7 +12,7 @@ chapters:
   - file: Chap1/RunoffSedimentNutrient
     title: 1.4 Stream Water Quality – Sediment and Nutrient
   - file: Chap1/IndoorAirQuality
-    title: 1.5 Air Quality – Indoor Air Qualty based on CSTR
+    title: 1.5 Air Quality – Indoor Air Quality based on CSTR
   - file: Chap1/GaussianPlumeDispersionModel
     title: 1.6 Air Quality – Gaussian Plume Dispersion  
   - file: Chap2/Rainfall_Runoff_PMP_Distribution
@@ -67,7 +67,7 @@ chapters:
     title: 4.2 Atterberts limts test – Lab Tool
   - file: Chap4/Geotech_DensityTestReporting
     title: 4.3 Lab and Field Density test – Lab Tool
-  - file: Chap4/PermeabilityTest
+  - file: Chap4/PermeabiltyTest
     title: 4.4 Soil permeability test – Lab Tool    
   - file: Chap4/UUStrengthTest
     title: 4.5 Soil Strength Triaxial Test – Lab Tool    
@@ -85,7 +85,7 @@ chapters:
     title: 4.11 Slope Stability Analysis
   - file: Chap5/WaveKInematics_AiryWave
     title: 5.0 Wave Kinematics – Airy Wave Theory
-  - file: Chap5/NonlinearWaves
+  - file: Chap5/NonLinearWaves
     title: 5.1 Wave Kinematics – Nonlinear Wave Theory
   - file: Chap5/WaveBreaking
     title: 5.2 Coastal Waves – Breaking waves
@@ -151,3 +151,17 @@ chapters:
     title: 6.13 Environmental Sustainability - Carbonate Cycle
   - file: Chap6/RenewalEnergy
     title: 6.14 Environmental Sustainability- Renewal Energy
+  - file: Chap7/DroneComponents
+    title: 7.0 Remote Pilot and Drone- Components
+  - file: Chap7/FlightControlPerformance
+    title: 7.1 Remote Pilot and Drone- Flight performance
+  - file: Chap7/RemotePilotandGIS
+    title: 7.2 Remote Pilot and Drone- GIS
+  - file: Chap7/Merged_RemoteSensing
+    title: 7.3 Remote Pilot and Drone- Remote Sensing
+  - file: Chap7/Photogrammetry_Output
+    title: 7.4 Remote Pilot and Drone- Photogrammetry
+  - file: Chap7/FAAKnowledgeTest
+    title: 7.5 Remote Pilot and Drone- Part 107 Test
+  - file: Chap7/DroneMIssiong
+    title: 7.6 Remote Pilot and Drone- Drone Mission
