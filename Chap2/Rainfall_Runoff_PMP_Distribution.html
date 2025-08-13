@@ -1,0 +1,2207 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 2 Hydrology: SpatioTemporal Rainfall Disaggregation &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap2/Rainfall_Runoff_PMP_Distribution';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 2 Hydrology: Rainfall frequency analysis" href="RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html" />
+    <link rel="prev" title="Chapter 1 Environmental Engineering: Air Quality Modeling" href="../Chap1/GaussianPlumeDispersionModel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap2/Rainfall_Runoff_PMP_Distribution.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap2/Rainfall_Runoff_PMP_Distribution.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap2/Rainfall_Runoff_PMP_Distribution.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap2/Rainfall_Runoff_PMP_Distribution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap2/Rainfall_Runoff_PMP_Distribution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 2 Hydrology: SpatioTemporal Rainfall Disaggregation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-disaggregation-in-time-and-space">🌧️ Rainfall Disaggregation in Time and Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">📌 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-disaggregation-necessary">❓ Why Is Disaggregation Necessary?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-disaggregation-methods">⏱️ Temporal Disaggregation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-disaggregation-methods">🌍 Spatial Disaggregation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-rainfall-disaggregation">🌧️ Importance of Rainfall Disaggregation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-disaggregation">⏱️ Temporal Disaggregation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-disaggregation">🌍 Spatial Disaggregation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-impact">🧠 Combined Impact</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pmp-and-pmf-definitions">🌧️ PMP and PMF Definitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-maximum-precipitation-pmp">📘 Probable Maximum Precipitation (PMP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-maximum-flood-pmf">📘 Probable Maximum Flood (PMF)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-disaggregation-of-pmp-and-pmf">🗺️ Spatial Disaggregation of PMP and PMF</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pmp-spatial-disaggregation-hmr52">🧭 PMP Spatial Disaggregation <span class="xref cite cite-p">HMR52</span>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pmf-spatial-disaggregation">🌊 PMF Spatial Disaggregation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-disaggregation-using-dimensionless-hyetographs">Rainfall Disaggregation Using Dimensionless Hyetographs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">Mathematical Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-distribution-methods">Available Distribution Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-distribution">1. <strong>Triangular Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scs-type-ii-distribution">2. <strong>SCS Type II Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">3. <strong>Uniform Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-challenges">Limitations and Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-use">Tips for Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-disaggregated-rainfall-in-hydrologic-analysis">Applications of Disaggregated Rainfall in Hydrologic Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-applications">Key Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runoff-modeling">1. <strong>Runoff Modeling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-routing">2. <strong>Flood Routing</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stormwater-infrastructure-design">3. <strong>Stormwater Infrastructure Design</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infiltration-and-soil-moisture-modeling">4. <strong>Infiltration and Soil Moisture Modeling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erosion-and-sediment-transport">5. <strong>Erosion and Sediment Transport</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-workflow">📊 Example Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">Why It Matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-rainfall-distribution-model">Spatial Rainfall Distribution Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Mathematical Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-distribution">1. <strong>Gaussian Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-distribution">2. <strong>Exponential Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3. <strong>Uniform Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-maximum-flood-pmf-estimation-model">Probable Maximum Flood (PMF) Estimation Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-overview">Methodology Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-probable-maximum-precipitation-pmp">1. <strong>Estimate Probable Maximum Precipitation (PMP)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-pmf-volume-using-a-runoff-model">2. <strong>Estimate PMF Volume Using a Runoff Model</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">Interactive Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Limitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">7. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-hyetograph-modeling-quiz-conceptual-reflective-questions">Rainfall Hyetograph Modeling: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-interpretation-prompts">Code Interpretation Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-rainfall-pmp-distribution-quiz-conceptual-reflective-questions">Spatial Rainfall &amp; PMP Distribution: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Code Interpretation Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Reflection Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pmp-pmf-estimation-quiz-conceptual-reflective-questions">PMP &amp; PMF Estimation: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Code Interpretation Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Reflection Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">💡 Design Insight</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-hydrology-spatiotemporal-rainfall-disaggregation">
+<h1>Chapter 2 Hydrology: SpatioTemporal Rainfall Disaggregation<a class="headerlink" href="#chapter-2-hydrology-spatiotemporal-rainfall-disaggregation" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Temporal Disaggregation</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Introduction"><span class="xref myst">Introduction: Spatial Distribuiton</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Simulation"><span class="xref myst">Simulation</span></a></p></li>
+<li><p><a class="reference internal" href="#5.-Introduction"><span class="xref myst">Introduction: Spatial Distribtion of PMF</span></a></p></li>
+<li><p><a class="reference internal" href="#6.-Simulation"><span class="xref myst">Simulation</span></a></p></li>
+<li><p><a class="reference internal" href="#7.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id22">
+<a class="reference internal image-reference" href="../_images/SpatioTemporalDisaggregation.png"><img alt="Descriptive alt text for accessibility" src="../_images/SpatioTemporalDisaggregation.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">**Figure 2.0 **: Spatio-Temporal Disaggregation of Rainfall.</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="rainfall-disaggregation-in-time-and-space">
+<h3>🌧️ Rainfall Disaggregation in Time and Space<a class="headerlink" href="#rainfall-disaggregation-in-time-and-space" title="Link to this heading">#</a></h3>
+</section>
+<section id="definition">
+<h3>📌 Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
+<p><strong>Rainfall disaggregation</strong> is the process of breaking down coarse-resolution precipitation data into finer temporal and spatial scales.</p>
+<ul class="simple">
+<li><p><strong>Temporal disaggregation</strong>: Converts daily or monthly rainfall into hourly or minute-level data.</p></li>
+<li><p><strong>Spatial disaggregation</strong>: Allocates rainfall amounts across different spatial units (e.g., catchments, grids).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="why-is-disaggregation-necessary">
+<h3>❓ Why Is Disaggregation Necessary?<a class="headerlink" href="#why-is-disaggregation-necessary" title="Link to this heading">#</a></h3>
+<p>Disaggregation is essential for:</p>
+<ul class="simple">
+<li><p><strong>Hydrological modeling</strong>: Accurate runoff and flood prediction.</p></li>
+<li><p><strong>Urban drainage design</strong>: Systems respond to short-duration rainfall.</p></li>
+<li><p><strong>Climate impact studies</strong>: Downscaling coarse climate data.</p></li>
+<li><p><strong>Data scarcity</strong>: Generates high-resolution data from limited observations.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="temporal-disaggregation-methods">
+<h3>⏱️ Temporal Disaggregation Methods<a class="headerlink" href="#temporal-disaggregation-methods" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Method of Fragments</strong></p></td>
+<td><p>Uses historical high-resolution data to split daily totals</p></td>
+<td><p>Simple and widely used</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Multiplicative Cascade</strong></p></td>
+<td><p>Breaks rainfall into smaller intervals using scaling laws</p></td>
+<td><p>Preserves variability</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Poisson Cluster Models</strong></p></td>
+<td><p>Simulates rainfall as clusters of events</p></td>
+<td><p>Stochastic rainfall generation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Artificial Neural Networks (ANNs)</strong></p></td>
+<td><p>Learns patterns from data to generate sub-daily rainfall</p></td>
+<td><p>Data-driven and adaptive</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Generative Adversarial Networks (GANs)</strong></p></td>
+<td><p>Learns spatial-temporal patterns from radar data</p></td>
+<td><p>Advanced machine learning</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="spatial-disaggregation-methods">
+<h3>🌍 Spatial Disaggregation Methods<a class="headerlink" href="#spatial-disaggregation-methods" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Inverse Distance Weighting (IDW)</strong></p></td>
+<td><p>Interpolates rainfall based on proximity</p></td>
+<td><p>Simple spatial interpolation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Kriging</strong></p></td>
+<td><p>Geostatistical method using spatial correlation</p></td>
+<td><p>Accurate but computationally intensive</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Copula-based Models</strong></p></td>
+<td><p>Uses joint distributions to simulate spatial rainfall</p></td>
+<td><p>Preserves spatial dependence</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gaussian Markov Random Fields (GMRF)</strong></p></td>
+<td><p>Models rainfall as latent Gaussian fields</p></td>
+<td><p>Efficient for gridded data</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="importance-of-rainfall-disaggregation">
+<h3>🌧️ Importance of Rainfall Disaggregation<a class="headerlink" href="#importance-of-rainfall-disaggregation" title="Link to this heading">#</a></h3>
+<p>Rainfall disaggregation—both in time and space—is essential for accurate hydrological analysis, infrastructure design, and climate adaptation.</p>
+<hr class="docutils" />
+<section id="temporal-disaggregation">
+<h4>⏱️ Temporal Disaggregation<a class="headerlink" href="#temporal-disaggregation" title="Link to this heading">#</a></h4>
+<p>Temporal disaggregation breaks down daily or monthly rainfall into finer intervals (e.g., hourly or minute-level). Its importance includes:</p>
+<ul class="simple">
+<li><p><strong>Hydrological Modeling Accuracy</strong><br />
+Captures short-duration, high-intensity rainfall events that drive runoff and erosion.</p></li>
+<li><p><strong>Flood Prediction</strong><br />
+Enables simulation of flood peaks, especially in small catchments.</p></li>
+<li><p><strong>Urban Drainage Design</strong><br />
+Sub-daily data are critical for designing stormwater systems that respond quickly to rainfall.</p></li>
+<li><p><strong>Climate Change Adaptation</strong><br />
+Translates coarse climate model outputs into actionable local-scale data.</p></li>
+<li><p><strong>Water Quality Modeling</strong><br />
+Intensity-dependent processes like sediment transport require fine temporal resolution.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="spatial-disaggregation">
+<h4>🌍 Spatial Disaggregation<a class="headerlink" href="#spatial-disaggregation" title="Link to this heading">#</a></h4>
+<p>Spatial disaggregation distributes rainfall across different geographic units. Its importance includes:</p>
+<ul class="simple">
+<li><p><strong>Catchment-Scale Hydrology</strong><br />
+Reflects spatial variability in rainfall, improving runoff and flood estimates.</p></li>
+<li><p><strong>Flood Risk Assessment</strong><br />
+Enhances simulation of flood routing, peak flows, and inundation extents.</p></li>
+<li><p><strong>Infrastructure Planning</strong><br />
+Critical for designing dams, reservoirs, and levees under extreme rainfall scenarios.</p></li>
+<li><p><strong>Data Scarcity Compensation</strong><br />
+Generates localized rainfall patterns from coarse-resolution data.</p></li>
+<li><p><strong>Climate Model Downscaling</strong><br />
+Bridges the gap between global climate models and local hydrological applications.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="combined-impact">
+<h4>🧠 Combined Impact<a class="headerlink" href="#combined-impact" title="Link to this heading">#</a></h4>
+<p>Spatial and temporal disaggregation together:</p>
+<ul class="simple">
+<li><p>Enable <strong>continuous simulation</strong> of rainfall-runoff processes.</p></li>
+<li><p>Improve <strong>extreme event modeling</strong> (e.g., PMP and PMF).</p></li>
+<li><p>Support <strong>multi-site analysis</strong> for regional water resource planning.</p></li>
+<li><p>Enhance <strong>resilience planning</strong> under climate uncertainty.</p></li>
+</ul>
+<blockquote>
+<div><p>⚠️ Without disaggregation, hydrological models risk oversimplifying rainfall inputs, leading to poor predictions and unsafe infrastructure designs.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="pmp-and-pmf-definitions">
+<h3>🌧️ PMP and PMF Definitions<a class="headerlink" href="#pmp-and-pmf-definitions" title="Link to this heading">#</a></h3>
+<section id="probable-maximum-precipitation-pmp">
+<h4>📘 Probable Maximum Precipitation (PMP)<a class="headerlink" href="#probable-maximum-precipitation-pmp" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Definition</strong>: The greatest depth of precipitation for a given duration that is physically possible over a particular area.</p></li>
+<li><p><strong>Use</strong>: Design of critical infrastructure (e.g., dams, nuclear plants).</p></li>
+</ul>
+</section>
+<section id="probable-maximum-flood-pmf">
+<h4>📘 Probable Maximum Flood (PMF)<a class="headerlink" href="#probable-maximum-flood-pmf" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Definition</strong>: The flood resulting from PMP under worst-case hydrological conditions.</p></li>
+<li><p><strong>Use</strong>: Safety assessment for extreme flood events.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="spatial-disaggregation-of-pmp-and-pmf">
+<h3>🗺️ Spatial Disaggregation of PMP and PMF<a class="headerlink" href="#spatial-disaggregation-of-pmp-and-pmf" title="Link to this heading">#</a></h3>
+<section id="pmp-spatial-disaggregation-hmr52">
+<h4>🧭 PMP Spatial Disaggregation <span id="id1">[<a class="reference internal" href="../markdown.html#id21">Hansen <em>et al.</em>, 1982</a>]</span>.<a class="headerlink" href="#pmp-spatial-disaggregation-hmr52" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Objective</strong>: Distribute PMP across a basin or catchment.</p></li>
+<li><p><strong>Methods</strong>:</p>
+<ul>
+<li><p>Isohyetal mapping</p></li>
+<li><p>Storm transposition and maximization</p></li>
+<li><p>Radar-based spatial analysis</p></li>
+<li><p>Hydrometeorological reports</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="pmf-spatial-disaggregation">
+<h4>🌊 PMF Spatial Disaggregation<a class="headerlink" href="#pmf-spatial-disaggregation" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Objective</strong>: Simulate flood hydrographs across sub-basins.</p></li>
+<li><p><strong>Methods</strong>:</p>
+<ul>
+<li><p>Unit hydrograph modeling</p></li>
+<li><p>Reservoir and channel routing</p></li>
+<li><p>Monte Carlo simulations</p></li>
+<li><p>Sensitivity analysis of antecedent conditions</p></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><p>⚠️ Ensure volume consistency and reflect topographic and meteorological variability.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="foundational-literature">
+<h3>Foundational Literature<a class="headerlink" href="#foundational-literature" title="Link to this heading">#</a></h3>
+<p><span id="id2">[]</span> is widely recognized as a pioneering study in the United States for estimating Probable Maximum Precipitation (PMP) and, by extension, Probable Maximum Flood (PMF). The method introduced a statistical approach using envelope curves derived from thousands of rainfall records, which became a standard for PMP estimation endorsed by agencies like the World Meteorological Organization (WMO). While Hershfield’s method does not explicitly model storm dynamics or spatial rainfall fields, it laid the groundwork for later spatio-temporal disaggregation techniques by establishing statistical bounds and regional variability in extreme precipitation. <span id="id3">[]</span> World Meteorological Organization (WMO) Manual on Estimation of Probable Maximum Precipitation (WMO-No. 1045) is the most foundational and globally recognized reference for PMP and PMF estimation. Provides standardized procedures for estimating Probable Maximum Precipitation (PMP) and Probable Maximum Flood (PMF), and covers storm transposition, moisture maximization, and spatial distribution techniques. The manual includes regional applications from China, USA, Australia, and India.</p>
+</section>
+<section id="rainfall-disaggregation-using-dimensionless-hyetographs">
+<h3>Rainfall Disaggregation Using Dimensionless Hyetographs<a class="headerlink" href="#rainfall-disaggregation-using-dimensionless-hyetographs" title="Link to this heading">#</a></h3>
+<p>This interactive model generates <strong>sub-hourly rainfall time series</strong> from a given <strong>total storm depth</strong> and <strong>duration</strong>, using selected <strong>dimensionless hyetograph methods</strong>. It is commonly used in hydrologic modeling to prepare rainfall inputs for runoff simulations, flood analysis, and stormwater design.</p>
+</section>
+<hr class="docutils" />
+<section id="mathematical-formulation">
+<h3>Mathematical Formulation<a class="headerlink" href="#mathematical-formulation" title="Link to this heading">#</a></h3>
+<p>Let:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( D \)</span>) = total rainfall depth (mm)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( T \)</span>) = total storm duration (hr)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \Delta t \)</span>) = time interval (min)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( N = \frac{T \times 60}{\Delta t} \)</span>) = number of time steps</p></li>
+<li><p><span class="math notranslate nohighlight">\(( f_i \)</span>) = normalized intensity at time step <span class="math notranslate nohighlight">\(( i \)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( R_i = D \cdot f_i \)</span>) = rainfall depth at time step <span class="math notranslate nohighlight">\(( i \)</span>)</p></li>
+</ul>
+<p>The model computes:
+$<span class="math notranslate nohighlight">\(
+\sum_{i=1}^{N} f_i = 1 \quad \Rightarrow \quad R_i = D \cdot f_i
+\)</span>$</p>
+</section>
+<hr class="docutils" />
+<section id="available-distribution-methods">
+<h3>Available Distribution Methods<a class="headerlink" href="#available-distribution-methods" title="Link to this heading">#</a></h3>
+</section>
+<section id="triangular-distribution">
+<h3>1. <strong>Triangular Distribution</strong><a class="headerlink" href="#triangular-distribution" title="Link to this heading">#</a></h3>
+<p>A simple peak-centered or skewed distribution:
+$<span class="math notranslate nohighlight">\(
+f(t) = 
+\begin{cases}
+\frac{t}{p}, &amp; t \leq p \\
+\frac{1 - t}{1 - p}, &amp; t &gt; p
+\end{cases}
+\)</span>$
+Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( t \in [0, 1] \)</span>) is normalized time</p></li>
+<li><p><span class="math notranslate nohighlight">\(( p \in (0, 1) \)</span>) is the <strong>peak ratio</strong> (time of peak intensity)</p></li>
+</ul>
+</section>
+<section id="scs-type-ii-distribution">
+<h3>2. <strong>SCS Type II Distribution</strong><a class="headerlink" href="#scs-type-ii-distribution" title="Link to this heading">#</a></h3>
+<p>Approximated using a skewed beta-like shape:
+$<span class="math notranslate nohighlight">\(
+f(t) = 16 \cdot t^2 \cdot (1 - t)^2
+\)</span>$
+This mimics the <strong>Soil Conservation Service Type II</strong> storm used in TR-55 and HEC-HMS.</p>
+</section>
+<section id="uniform-distribution">
+<h3>3. <strong>Uniform Distribution</strong><a class="headerlink" href="#uniform-distribution" title="Link to this heading">#</a></h3>
+<p>Assumes constant intensity:
+$<span class="math notranslate nohighlight">\(
+f(t) = \frac{1}{N}
+\)</span>$</p>
+</section>
+<hr class="docutils" />
+<section id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Hydrologic modeling</strong> (e.g., Rational Method, HEC-HMS, SWMM)</p></li>
+<li><p><strong>Stormwater design</strong> (e.g., detention sizing, peak flow estimation)</p></li>
+<li><p><strong>Flood risk analysis</strong></p></li>
+<li><p><strong>Synthetic storm generation</strong> for sensitivity testing</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="limitations-and-challenges">
+<h3>Limitations and Challenges<a class="headerlink" href="#limitations-and-challenges" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Simplified intensity profiles</strong> may not reflect real storm variability</p></li>
+<li><p><strong>No spatial variation</strong> — assumes uniform rainfall over the catchment</p></li>
+<li><p><strong>No antecedent moisture or infiltration effects</strong></p></li>
+<li><p><strong>Peak ratio tuning</strong> may require calibration to match observed data</p></li>
+<li><p><strong>SCS approximation</strong> is not exact — lacks regional calibration</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="tips-for-use">
+<h3>Tips for Use<a class="headerlink" href="#tips-for-use" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <strong>Triangular</strong> for exploratory or conceptual modeling</p></li>
+<li><p>Use <strong>SCS Type II</strong> for regulatory or design compliance</p></li>
+<li><p>Use <strong>Uniform</strong> for baseline or control comparisons</p></li>
+<li><p>Adjust <strong>interval</strong> and <strong>duration</strong> to match model resolution and catchment response time</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>U.S. Soil Conservation Service (1986). <em>Urban Hydrology for Small Watersheds (TR-55)</em></p></li>
+<li><p>Chow, V.T., Maidment, D.R., Mays, L.W. (1988). <em>Applied Hydrology</em></p></li>
+<li><p>Rossman, L.A. (2010). <em>Storm Water Management Model (SWMM) User’s Manual</em></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="applications-of-disaggregated-rainfall-in-hydrologic-analysis">
+<h3>Applications of Disaggregated Rainfall in Hydrologic Analysis<a class="headerlink" href="#applications-of-disaggregated-rainfall-in-hydrologic-analysis" title="Link to this heading">#</a></h3>
+<p>Disaggregated rainfall — rainfall broken into fine time intervals — is essential for dynamic hydrologic modeling. It allows engineers and scientists to simulate how rainfall intensity and timing affect runoff, infiltration, flooding, and infrastructure performance.</p>
+</section>
+<hr class="docutils" />
+<section id="key-applications">
+<h3>Key Applications<a class="headerlink" href="#key-applications" title="Link to this heading">#</a></h3>
+</section>
+<section id="runoff-modeling">
+<h3>1. <strong>Runoff Modeling</strong><a class="headerlink" href="#runoff-modeling" title="Link to this heading">#</a></h3>
+<p>Disaggregated rainfall is used to generate time-varying runoff in models like:</p>
+<ul class="simple">
+<li><p><strong>Rational Method</strong>: Peak runoff ( Q = CiA ) depends on rainfall intensity ( i ) over the time of concentration.</p></li>
+<li><p><strong>HEC-HMS</strong>, <strong>SWMM</strong>: Use rainfall time series to produce hydrographs showing flow over time.</p></li>
+</ul>
+</section>
+<section id="flood-routing">
+<h3>2. <strong>Flood Routing</strong><a class="headerlink" href="#flood-routing" title="Link to this heading">#</a></h3>
+<p>Inflow hydrographs derived from disaggregated rainfall are routed through:</p>
+<ul class="simple">
+<li><p><strong>Reservoirs</strong> (e.g., level pool routing)</p></li>
+<li><p><strong>Channels</strong> (e.g., Muskingum method)</p></li>
+</ul>
+<p>This helps simulate <strong>lag</strong>, <strong>attenuation</strong>, and <strong>peak timing</strong> of flood waves.</p>
+</section>
+<section id="stormwater-infrastructure-design">
+<h3>3. <strong>Stormwater Infrastructure Design</strong><a class="headerlink" href="#stormwater-infrastructure-design" title="Link to this heading">#</a></h3>
+<p>Designing detention basins, culverts, and storm sewers requires:</p>
+<ul class="simple">
+<li><p>Estimating <strong>peak inflow rate</strong></p></li>
+<li><p>Calculating <strong>required storage volume</strong></p></li>
+<li><p>Evaluating <strong>duration of overflow events</strong></p></li>
+</ul>
+<p>Disaggregated rainfall provides the temporal detail needed for these calculations.</p>
+</section>
+<section id="infiltration-and-soil-moisture-modeling">
+<h3>4. <strong>Infiltration and Soil Moisture Modeling</strong><a class="headerlink" href="#infiltration-and-soil-moisture-modeling" title="Link to this heading">#</a></h3>
+<p>Rainfall intensity affects infiltration in models like:</p>
+<ul class="simple">
+<li><p><strong>Green-Ampt</strong></p></li>
+<li><p><strong>Horton</strong></p></li>
+</ul>
+<p>Disaggregated rainfall helps simulate:</p>
+<ul class="simple">
+<li><p><strong>Ponding</strong></p></li>
+<li><p><strong>Saturation</strong></p></li>
+<li><p><strong>Excess runoff generation</strong></p></li>
+</ul>
+</section>
+<section id="erosion-and-sediment-transport">
+<h3>5. <strong>Erosion and Sediment Transport</strong><a class="headerlink" href="#erosion-and-sediment-transport" title="Link to this heading">#</a></h3>
+<p>High-intensity rainfall drives:</p>
+<ul class="simple">
+<li><p><strong>Soil detachment</strong></p></li>
+<li><p><strong>Sediment yield</strong></p></li>
+</ul>
+<p>Used in models like:</p>
+<ul class="simple">
+<li><p><strong>WEPP</strong></p></li>
+<li><p><strong>SWAT</strong></p></li>
+</ul>
+<p>Disaggregated rainfall identifies <strong>erosive bursts</strong> and <strong>transport thresholds</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="example-workflow">
+<h3>📊 Example Workflow<a class="headerlink" href="#example-workflow" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Input:</strong> Total rainfall depth = 50 mm, duration = 3 hours</p></li>
+<li><p><strong>Disaggregation:</strong> Break into 10-minute intervals using a triangular or SCS distribution</p></li>
+<li><p><strong>Hydrologic Model:</strong> Use rainfall time series in SWMM to simulate urban runoff</p></li>
+<li><p><strong>Output:</strong> Hydrograph showing peak flow at 1.2 hours, total runoff volume = 35 mm</p></li>
+<li><p><strong>Design Decision:</strong> Size detention basin to handle peak flow and store excess volume</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="why-it-matters">
+<h3>Why It Matters<a class="headerlink" href="#why-it-matters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Temporal resolution</strong> affects the accuracy of peak flow estimates</p></li>
+<li><p><strong>Design storms</strong> must reflect realistic rainfall patterns</p></li>
+<li><p><strong>Regulatory compliance</strong> often requires specific distributions (e.g., SCS Type II)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Dimensionless hyetograph generators</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">triangular_distribution</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">peak_ratio</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="n">peak_ratio</span><span class="p">,</span>
+                    <span class="n">t</span> <span class="o">/</span> <span class="n">peak_ratio</span><span class="p">,</span>
+                    <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">peak_ratio</span><span class="p">))</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dist</span> <span class="o">/</span> <span class="n">dist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">scs_type_ii_distribution</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="c1"># Approximate SCS Type II using a skewed beta-like shape</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># bell-shaped, peak near center</span>
+    <span class="k">return</span> <span class="n">dist</span> <span class="o">/</span> <span class="n">dist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">uniform_distribution</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_steps</span>
+
+<span class="c1"># 📊 Disaggregation function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">disaggregate_rainfall</span><span class="p">(</span><span class="n">total_depth</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">,</span> <span class="n">interval_min</span><span class="p">,</span> <span class="n">peak_ratio</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+    <span class="n">n_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">duration_hr</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span> <span class="o">/</span> <span class="n">interval_min</span><span class="p">)</span>
+
+    <span class="c1"># Select method</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;Triangular&#39;</span><span class="p">:</span>
+        <span class="n">distribution</span> <span class="o">=</span> <span class="n">triangular_distribution</span><span class="p">(</span><span class="n">n_steps</span><span class="p">,</span> <span class="n">peak_ratio</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;SCS Type II&#39;</span><span class="p">:</span>
+        <span class="n">distribution</span> <span class="o">=</span> <span class="n">scs_type_ii_distribution</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;Uniform&#39;</span><span class="p">:</span>
+        <span class="n">distribution</span> <span class="o">=</span> <span class="n">uniform_distribution</span><span class="p">(</span><span class="n">n_steps</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown method selected.&quot;</span><span class="p">)</span>
+
+    <span class="n">rainfall_series</span> <span class="o">=</span> <span class="n">total_depth</span> <span class="o">*</span> <span class="n">distribution</span>
+    <span class="n">time_series</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">,</span> <span class="n">n_steps</span><span class="p">)</span>
+
+    <span class="c1"># Plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">rainfall_series</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">interval_min</span> <span class="o">/</span> <span class="mi">60</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (hours)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Rainfall (mm)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1"> Rainfall Distribution</span><span class="se">\n</span><span class="s1">Total Depth = </span><span class="si">{</span><span class="n">total_depth</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm, Duration = </span><span class="si">{</span><span class="n">duration_hr</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> hr&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">time_series</span><span class="p">,</span> <span class="n">rainfall_series</span>
+
+<span class="c1"># 🎚️ Interactive controls</span>
+<span class="n">depth_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Total Rainfall (mm)&#39;</span><span class="p">)</span>
+<span class="n">duration_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Storm Duration (hr)&#39;</span><span class="p">)</span>
+<span class="n">interval_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Interval (min)&#39;</span><span class="p">)</span>
+<span class="n">peak_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Peak Ratio&#39;</span><span class="p">)</span>
+<span class="n">method_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Triangular&#39;</span><span class="p">,</span> <span class="s1">&#39;SCS Type II&#39;</span><span class="p">,</span> <span class="s1">&#39;Uniform&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Triangular&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Method&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># 🔄 Display interactive plot</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">disaggregate_rainfall</span><span class="p">,</span>
+    <span class="n">total_depth</span><span class="o">=</span><span class="n">depth_slider</span><span class="p">,</span>
+    <span class="n">duration_hr</span><span class="o">=</span><span class="n">duration_slider</span><span class="p">,</span>
+    <span class="n">interval_min</span><span class="o">=</span><span class="n">interval_slider</span><span class="p">,</span>
+    <span class="n">peak_ratio</span><span class="o">=</span><span class="n">peak_slider</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="n">method_dropdown</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f8c3e2f142d34667a2ca75e35cb269b1", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="id4">
+<h2>3. Introduction<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="spatial-rainfall-distribution-model">
+<h3>Spatial Rainfall Distribution Model<a class="headerlink" href="#spatial-rainfall-distribution-model" title="Link to this heading">#</a></h3>
+<p>This interactive tool simulates the <strong>spatial variation of rainfall intensity</strong> across a 2D domain, such as a watershed or urban catchment. It helps visualize how rainfall intensity changes with distance from the storm center, using different distribution methods.</p>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h3>Mathematical Formulation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Let:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( R(x, y) \)</span>) = distance from storm center to point ( (x, y) )</p></li>
+<li><p><span class="math notranslate nohighlight">\(( P \)</span>) = peak rainfall intensity at the storm center (mm)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( r \)</span>) = storm radius or decay scale (km)</p></li>
+</ul>
+</section>
+<section id="gaussian-distribution">
+<h3>1. <strong>Gaussian Distribution</strong><a class="headerlink" href="#gaussian-distribution" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+I(x, y) = P \cdot \exp\left(-\frac{R(x, y)^2}{2r^2}\right)
+\]</div>
+</section>
+<section id="exponential-distribution">
+<h3>2. <strong>Exponential Distribution</strong><a class="headerlink" href="#exponential-distribution" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+I(x, y) = P \cdot \exp\left(-\frac{R(x, y)}{r}\right)
+\]</div>
+</section>
+<section id="id6">
+<h3>3. <strong>Uniform Distribution</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+I(x, y) = P \quad \text{(constant across domain)}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="interactive-controls">
+<h3>Interactive Controls<a class="headerlink" href="#interactive-controls" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Grid</span> <span class="pre">Size</span> <span class="pre">(km)</span></code></p></td>
+<td><p>Size of the spatial domain</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Resolution</span></code></p></td>
+<td><p>Number of grid points (controls detail)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Peak</span> <span class="pre">Rainfall</span> <span class="pre">(mm)</span></code></p></td>
+<td><p>Maximum intensity at storm center</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Storm</span> <span class="pre">Radius</span> <span class="pre">(km)</span></code></p></td>
+<td><p>Controls decay rate of rainfall</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Center</span> <span class="pre">X,</span> <span class="pre">Y</span> <span class="pre">(km)</span></code></p></td>
+<td><p>Location of storm center</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Method</span></code></p></td>
+<td><p>Distribution type (Gaussian, Exponential, Uniform)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h3>Applications<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Watershed modeling</strong>: Simulate non-uniform rainfall over large basins</p></li>
+<li><p><strong>Urban hydrology</strong>: Assess localized flooding from intense cells</p></li>
+<li><p><strong>Flood forecasting</strong>: Visualize the spatial extent of rainfall input</p></li>
+<li><p><strong>Design storms</strong>: Create synthetic rainfall fields for infrastructure testing</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Assumes <strong>radial symmetry</strong> around storm center</p></li>
+<li><p>No temporal variation — purely spatial snapshot</p></li>
+<li><p>Does not account for <strong>terrain effects</strong>, <strong>wind drift</strong>, or <strong>storm movement</strong></p></li>
+<li><p>Idealized distributions may differ from observed radar data</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="use-cases">
+<h3>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Combine with <strong>temporal disaggregation</strong> to simulate full spatiotemporal storms</p></li>
+<li><p>Overlay with <strong>watershed boundaries</strong> to compute spatially weighted rainfall</p></li>
+<li><p>Use as input for <strong>distributed hydrologic models</strong> (e.g., SWAT, GSSHA)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h2>4. Simulation<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Spatial rainfall distribution function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_spatial_rainfall</span><span class="p">(</span><span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">peak_mm</span><span class="p">,</span> <span class="n">radius_km</span><span class="p">,</span> <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Grid setup</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># Distance from storm center</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X</span> <span class="o">-</span> <span class="n">center_x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y</span> <span class="o">-</span> <span class="n">center_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Distribution methods</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;Gaussian&#39;</span><span class="p">:</span>
+        <span class="n">rainfall</span> <span class="o">=</span> <span class="n">peak_mm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">radius_km</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;Exponential&#39;</span><span class="p">:</span>
+        <span class="n">rainfall</span> <span class="o">=</span> <span class="n">peak_mm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">R</span> <span class="o">/</span> <span class="n">radius_km</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;Uniform&#39;</span><span class="p">:</span>
+        <span class="n">rainfall</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">peak_mm</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unknown method selected.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">contour</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">rainfall</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rainfall (mm)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Distance (km)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Distance (km)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spatial Rainfall Distribution (</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">Peak = </span><span class="si">{</span><span class="n">peak_mm</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm, Radius = </span><span class="si">{</span><span class="n">radius_km</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> km&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Storm Center&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎚️ Interactive controls</span>
+<span class="n">grid_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Grid Size (km)&#39;</span><span class="p">)</span>
+<span class="n">resolution_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Resolution&#39;</span><span class="p">)</span>
+<span class="n">peak_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Peak Rainfall (mm)&#39;</span><span class="p">)</span>
+<span class="n">radius_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Storm Radius (km)&#39;</span><span class="p">)</span>
+<span class="n">center_x_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Center X (km)&#39;</span><span class="p">)</span>
+<span class="n">center_y_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Center Y (km)&#39;</span><span class="p">)</span>
+<span class="n">method_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">,</span> <span class="s1">&#39;Exponential&#39;</span><span class="p">,</span> <span class="s1">&#39;Uniform&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Method&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># 🔄 Display interactive plot</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">generate_spatial_rainfall</span><span class="p">,</span>
+    <span class="n">grid_size_km</span><span class="o">=</span><span class="n">grid_slider</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="n">resolution_slider</span><span class="p">,</span>
+    <span class="n">peak_mm</span><span class="o">=</span><span class="n">peak_slider</span><span class="p">,</span>
+    <span class="n">radius_km</span><span class="o">=</span><span class="n">radius_slider</span><span class="p">,</span>
+    <span class="n">center_x</span><span class="o">=</span><span class="n">center_x_slider</span><span class="p">,</span>
+    <span class="n">center_y</span><span class="o">=</span><span class="n">center_y_slider</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="n">method_dropdown</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4d79f32e251d4778b96ad132052b9797", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Step 1: Estimate PMP based on location and duration</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_pmp</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simplified empirical PMP estimator.</span>
+<span class="sd">    Real-world use should rely on NOAA HMR or regional PMP datasets.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">base_pmp</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">30</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>  <span class="c1"># latitude effect</span>
+    <span class="n">coastal_boost</span> <span class="o">=</span> <span class="mi">50</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="k">else</span> <span class="mi">0</span>  <span class="c1"># crude coastal proximity</span>
+    <span class="n">duration_factor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">duration_hr</span><span class="p">)</span>
+    <span class="n">pmp_mm</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_pmp</span> <span class="o">+</span> <span class="n">coastal_boost</span><span class="p">)</span> <span class="o">*</span> <span class="n">duration_factor</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">pmp_mm</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 📐 Step 2: Generate spatial distribution of PMP</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_pmp_distribution</span><span class="p">(</span><span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">pmp_peak_mm</span><span class="p">,</span> <span class="n">storm_radius_km</span><span class="p">,</span> <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">X</span> <span class="o">-</span> <span class="n">center_x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y</span> <span class="o">-</span> <span class="n">center_y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">PMP</span> <span class="o">=</span> <span class="n">pmp_peak_mm</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">storm_radius_km</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">PMP</span>
+
+<span class="c1"># 📊 Combined interactive function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_and_plot_pmp</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">,</span> <span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">storm_radius_km</span><span class="p">,</span> <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Step 1: Estimate PMP</span>
+    <span class="n">pmp_peak_mm</span> <span class="o">=</span> <span class="n">estimate_pmp</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">)</span>
+
+    <span class="c1"># Step 2: Generate spatial field</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">PMP</span> <span class="o">=</span> <span class="n">generate_pmp_distribution</span><span class="p">(</span><span class="n">grid_size_km</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">pmp_peak_mm</span><span class="p">,</span> <span class="n">storm_radius_km</span><span class="p">,</span> <span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">)</span>
+
+    <span class="c1"># Display info</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📍 Location: Latitude </span><span class="si">{</span><span class="n">lat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°, Longitude </span><span class="si">{</span><span class="n">lon</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🕒 Duration: </span><span class="si">{</span><span class="n">duration_hr</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> hours&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌧️ Estimated PMP Peak: </span><span class="si">{</span><span class="n">pmp_peak_mm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mm&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">contour</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">PMP</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PMP (mm)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Distance (km)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Distance (km)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spatial Distribution of PMP</span><span class="se">\n</span><span class="s1">Peak = </span><span class="si">{</span><span class="n">pmp_peak_mm</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm, Radius = </span><span class="si">{</span><span class="n">storm_radius_km</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> km&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Storm Center&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎚️ Interactive controls</span>
+<span class="n">lat_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">60.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Latitude (°)&#39;</span><span class="p">)</span>
+<span class="n">lon_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=-</span><span class="mf">90.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">180.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">180.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Longitude (°)&#39;</span><span class="p">)</span>
+<span class="n">duration_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">72.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Duration (hr)&#39;</span><span class="p">)</span>
+<span class="n">grid_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Grid Size (km)&#39;</span><span class="p">)</span>
+<span class="n">resolution_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Resolution&#39;</span><span class="p">)</span>
+<span class="n">radius_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Storm Radius (km)&#39;</span><span class="p">)</span>
+<span class="n">center_x_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Center X (km)&#39;</span><span class="p">)</span>
+<span class="n">center_y_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Center Y (km)&#39;</span><span class="p">)</span>
+
+<span class="c1"># 🔄 Display interactive plot</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">estimate_and_plot_pmp</span><span class="p">,</span>
+    <span class="n">lat</span><span class="o">=</span><span class="n">lat_slider</span><span class="p">,</span>
+    <span class="n">lon</span><span class="o">=</span><span class="n">lon_slider</span><span class="p">,</span>
+    <span class="n">duration_hr</span><span class="o">=</span><span class="n">duration_slider</span><span class="p">,</span>
+    <span class="n">grid_size_km</span><span class="o">=</span><span class="n">grid_slider</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="n">resolution_slider</span><span class="p">,</span>
+    <span class="n">storm_radius_km</span><span class="o">=</span><span class="n">radius_slider</span><span class="p">,</span>
+    <span class="n">center_x</span><span class="o">=</span><span class="n">center_x_slider</span><span class="p">,</span>
+    <span class="n">center_y</span><span class="o">=</span><span class="n">center_y_slider</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1e570e55d8df4974a89b2d284e8f0f35", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="id9">
+<h2>5. Introduction<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<section id="probable-maximum-flood-pmf-estimation-model">
+<h3>Probable Maximum Flood (PMF) Estimation Model<a class="headerlink" href="#probable-maximum-flood-pmf-estimation-model" title="Link to this heading">#</a></h3>
+<p>This interactive tool estimates the <strong>Probable Maximum Flood (PMF)</strong> volume for a given location using a simplified conceptual approach. PMF represents the <strong>largest flood that could conceivably occur</strong> at a location, based on the most severe combination of meteorological and hydrologic conditions.</p>
+</section>
+<hr class="docutils" />
+<section id="methodology-overview">
+<h3>Methodology Overview<a class="headerlink" href="#methodology-overview" title="Link to this heading">#</a></h3>
+<p>The model follows a two-step process:</p>
+</section>
+<section id="estimate-probable-maximum-precipitation-pmp">
+<h3>1. <strong>Estimate Probable Maximum Precipitation (PMP)</strong><a class="headerlink" href="#estimate-probable-maximum-precipitation-pmp" title="Link to this heading">#</a></h3>
+<p>Based on:</p>
+<ul class="simple">
+<li><p><strong>Latitude</strong> and <strong>longitude</strong> (to simulate climatic variation)</p></li>
+<li><p><strong>Storm duration</strong> (longer storms yield more precipitation)</p></li>
+</ul>
+<p>A simplified empirical formula is used:
+$<span class="math notranslate nohighlight">\(
+\text{PMP} = \left[100 + 2 \cdot (30 - |\text{latitude}|) + \text{coastal boost}\right] \cdot \sqrt{\text{duration (hr)}}
+\)</span>$
+Where:</p>
+<ul class="simple">
+<li><p>Coastal boost = 50 mm if longitude suggests proximity to coast (|lon| &lt; 90°)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="estimate-pmf-volume-using-a-runoff-model">
+<h3>2. <strong>Estimate PMF Volume Using a Runoff Model</strong><a class="headerlink" href="#estimate-pmf-volume-using-a-runoff-model" title="Link to this heading">#</a></h3>
+<p>A Rational-like formula is applied:
+$<span class="math notranslate nohighlight">\(
+\text{PMF Volume} = C \cdot P \cdot A
+\)</span>$
+Where:</p>
+<ul class="simple">
+<li><p>( C ) = runoff coefficient (0–1)</p></li>
+<li><p>( P ) = PMP depth (converted to meters)</p></li>
+<li><p>( A ) = watershed area (km²)</p></li>
+</ul>
+<p>Converted to cubic meters:
+[
+\text{PMF Volume (m³)} = C \cdot \left(\frac{P}{1000}\right) \cdot A \cdot 10^6
+]</p>
+</section>
+<hr class="docutils" />
+<section id="interactive-inputs">
+<h3>Interactive Inputs<a class="headerlink" href="#interactive-inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Latitude</span> <span class="pre">(°)</span></code></p></td>
+<td><p>Location latitude</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Longitude</span> <span class="pre">(°)</span></code></p></td>
+<td><p>Location longitude</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Storm</span> <span class="pre">Duration</span> <span class="pre">(hr)</span></code></p></td>
+<td><p>Duration of PMP-producing storm</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Watershed</span> <span class="pre">Area</span> <span class="pre">(km²)</span></code></p></td>
+<td><p>Size of the catchment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Runoff</span> <span class="pre">Coefficient</span></code></p></td>
+<td><p>Fraction of rainfall converted to runoff (0–1)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="output">
+<h3>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Estimated PMP (mm)</strong></p></li>
+<li><p><strong>Estimated PMF Volume (m³)</strong></p></li>
+<li><p><strong>Bar chart</strong> visualizing flood volume</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h3>Applications<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Dam safety analysis</strong></p></li>
+<li><p><strong>Floodplain mapping</strong></p></li>
+<li><p><strong>Emergency spillway design</strong></p></li>
+<li><p><strong>Extreme event scenario planning</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h3>Limitations<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>This is a <strong>conceptual model</strong> — not suitable for final design</p></li>
+<li><p>Does not include:</p>
+<ul>
+<li><p><strong>Watershed routing</strong></p></li>
+<li><p><strong>Storage effects</strong></p></li>
+<li><p><strong>Soil infiltration</strong></p></li>
+<li><p><strong>Temporal rainfall distribution</strong></p></li>
+</ul>
+</li>
+<li><p>Real PMF estimation requires:</p>
+<ul>
+<li><p><strong>HEC-HMS</strong>, <strong>SWMM</strong>, or similar tools</p></li>
+<li><p><strong>Topographic data</strong></p></li>
+<li><p><strong>Calibrated hydrologic parameters</strong></p></li>
+<li><p><strong>Official PMP datasets (e.g., NOAA HMR reports)</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h3>References<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>WMO (2009). <em>Manual on Estimation of Probable Maximum Precipitation</em></p></li>
+<li><p>FEMA (2020). <em>Guidelines for PMF Determination for Dam Safety</em></p></li>
+<li><p>NOAA HMR Reports (e.g., HMR 52, HMR 55A)</p></li>
+<li><p>USACE (2016). <em>Hydrologic Engineering Center – HEC-HMS User’s Manual</em></p></li>
+</ul>
+</section>
+</section>
+<section id="id13">
+<h2>6. Simulation<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Step 1: Estimate PMP based on location and duration</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_pmp</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">):</span>
+    <span class="n">base_pmp</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">30</span> <span class="o">-</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>  <span class="c1"># latitude effect</span>
+    <span class="n">coastal_boost</span> <span class="o">=</span> <span class="mi">50</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">lon</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">90</span> <span class="k">else</span> <span class="mi">0</span>  <span class="c1"># crude coastal proximity</span>
+    <span class="n">duration_factor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">duration_hr</span><span class="p">)</span>
+    <span class="n">pmp_mm</span> <span class="o">=</span> <span class="p">(</span><span class="n">base_pmp</span> <span class="o">+</span> <span class="n">coastal_boost</span><span class="p">)</span> <span class="o">*</span> <span class="n">duration_factor</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">pmp_mm</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 📐 Step 2: Estimate PMF using Rational-like method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_pmf</span><span class="p">(</span><span class="n">pmp_mm</span><span class="p">,</span> <span class="n">area_km2</span><span class="p">,</span> <span class="n">runoff_coeff</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    PMF = C * P * A</span>
+<span class="sd">    Where:</span>
+<span class="sd">    - C = runoff coefficient (0–1)</span>
+<span class="sd">    - P = PMP (mm)</span>
+<span class="sd">    - A = watershed area (km²)</span>
+<span class="sd">    Output: PMF volume in cubic meters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">depth_m</span> <span class="o">=</span> <span class="n">pmp_mm</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert mm to meters</span>
+    <span class="n">volume_m3</span> <span class="o">=</span> <span class="n">runoff_coeff</span> <span class="o">*</span> <span class="n">depth_m</span> <span class="o">*</span> <span class="n">area_km2</span> <span class="o">*</span> <span class="mf">1e6</span>  <span class="c1"># km² to m²</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">volume_m3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 📊 Combined estimator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_and_plot_pmf</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">,</span> <span class="n">area_km2</span><span class="p">,</span> <span class="n">runoff_coeff</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Step 1: Estimate PMP</span>
+    <span class="n">pmp_mm</span> <span class="o">=</span> <span class="n">estimate_pmp</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">duration_hr</span><span class="p">)</span>
+
+    <span class="c1"># Step 2: Estimate PMF</span>
+    <span class="n">pmf_volume</span> <span class="o">=</span> <span class="n">estimate_pmf</span><span class="p">(</span><span class="n">pmp_mm</span><span class="p">,</span> <span class="n">area_km2</span><span class="p">,</span> <span class="n">runoff_coeff</span><span class="p">)</span>
+
+    <span class="c1"># Display results</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📍 Location: Latitude </span><span class="si">{</span><span class="n">lat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°, Longitude </span><span class="si">{</span><span class="n">lon</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🕒 Duration: </span><span class="si">{</span><span class="n">duration_hr</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> hours&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌧️ Estimated PMP: </span><span class="si">{</span><span class="n">pmp_mm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mm&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🗺️ Watershed Area: </span><span class="si">{</span><span class="n">area_km2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km²&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💧 Runoff Coefficient: </span><span class="si">{</span><span class="n">runoff_coeff</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌊 Estimated PMF Volume: </span><span class="si">{</span><span class="n">pmf_volume</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> m³&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># 🎚️ Interactive controls</span>
+<span class="n">lat_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">60.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Latitude (°)&#39;</span><span class="p">)</span>
+<span class="n">lon_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=-</span><span class="mf">90.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">180.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">180.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Longitude (°)&#39;</span><span class="p">)</span>
+<span class="n">duration_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">72.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Duration (hr)&#39;</span><span class="p">)</span>
+<span class="n">area_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Area (km²)&#39;</span><span class="p">)</span>
+<span class="n">runoff_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Runoff Coeff&#39;</span><span class="p">)</span>
+
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">estimate_and_plot_pmf</span><span class="p">,</span>
+    <span class="n">lat</span><span class="o">=</span><span class="n">lat_slider</span><span class="p">,</span>
+    <span class="n">lon</span><span class="o">=</span><span class="n">lon_slider</span><span class="p">,</span>
+    <span class="n">duration_hr</span><span class="o">=</span><span class="n">duration_slider</span><span class="p">,</span>
+    <span class="n">area_km2</span><span class="o">=</span><span class="n">area_slider</span><span class="p">,</span>
+    <span class="n">runoff_coeff</span><span class="o">=</span><span class="n">runoff_slider</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f74bb0a36fee4c32ac8c2dadf5eec5ce", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>7. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="rainfall-hyetograph-modeling-quiz-conceptual-reflective-questions">
+<h3>Rainfall Hyetograph Modeling: Quiz, Conceptual &amp; Reflective Questions<a class="headerlink" href="#rainfall-hyetograph-modeling-quiz-conceptual-reflective-questions" title="Link to this heading">#</a></h3>
+<p>This module supports understanding of rainfall disaggregation using dimensionless hyetographs. It explores how different distribution shapes affect runoff modeling and storm design.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What does a hyetograph represent in hydrologic modeling?</strong></p>
+<ul class="simple">
+<li><p>A. Cumulative rainfall over time</p></li>
+<li><p>B. Rainfall intensity vs. time</p></li>
+<li><p>C. Runoff depth vs. time</p></li>
+<li><p>D. Evaporation rate over a storm event</p></li>
+</ul>
+</li>
+<li><p><strong>In a triangular distribution, the peak ratio controls:</strong></p>
+<ul class="simple">
+<li><p>A. Total rainfall depth</p></li>
+<li><p>B. Duration of the storm</p></li>
+<li><p>C. Timing of peak intensity</p></li>
+<li><p>D. Rainfall uniformity</p></li>
+</ul>
+</li>
+<li><p><strong>Which distribution is most appropriate for simulating intense mid-storm rainfall?</strong></p>
+<ul class="simple">
+<li><p>A. Uniform</p></li>
+<li><p>B. Triangular with peak ratio = 0.5</p></li>
+<li><p>C. SCS Type II</p></li>
+<li><p>D. Triangular with peak ratio = 0.1</p></li>
+</ul>
+</li>
+<li><p><strong>Why is rainfall disaggregation important in runoff modeling?</strong></p>
+<ul class="simple">
+<li><p>A. It reduces total rainfall depth</p></li>
+<li><p>B. It allows time-based simulation of flow</p></li>
+<li><p>C. It simplifies infiltration calculations</p></li>
+<li><p>D. It eliminates the need for hydrograph routing</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="code-interpretation-prompts">
+<h3>Code Interpretation Prompts<a class="headerlink" href="#code-interpretation-prompts" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What does <code class="docutils literal notranslate"><span class="pre">distribution</span> <span class="pre">/</span> <span class="pre">distribution.sum()</span></code> ensure in each method?</p></li>
+<li><p>How does changing <code class="docutils literal notranslate"><span class="pre">interval_min</span></code> affect the resolution of the hyetograph?</p></li>
+<li><p>Why does the SCS Type II distribution use a bell-shaped curve?</p></li>
+<li><p>What happens to the rainfall series if <code class="docutils literal notranslate"><span class="pre">peak_ratio</span></code> is close to 0.9 in the triangular method?</p></li>
+<li><p>How would you modify the code to include a real-world storm profile from observed data?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflection-questions">
+<h3>Reflection Questions<a class="headerlink" href="#reflection-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>How do different rainfall distributions affect peak runoff and time to peak in a watershed?</strong></p></li>
+<li><p><strong>Why might engineers choose a conservative distribution like SCS Type II for urban drainage design?</strong></p></li>
+<li><p><strong>What are the limitations of using synthetic hyetographs in flood forecasting?</strong></p></li>
+<li><p><strong>How could this model be extended to include spatial variability or radar-based rainfall inputs?</strong></p></li>
+<li><p><strong>What insights can be gained by interactively adjusting storm depth, duration, and peak timing?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="design-insight">
+<h3>Design Insight<a class="headerlink" href="#design-insight" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>“The shape of a hyetograph influences not just how much water falls, but when and how fast it runs off. Understanding these patterns is key to designing resilient drainage systems and predicting flood behavior.”</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="spatial-rainfall-pmp-distribution-quiz-conceptual-reflective-questions">
+<h3>Spatial Rainfall &amp; PMP Distribution: Quiz, Conceptual &amp; Reflective Questions<a class="headerlink" href="#spatial-rainfall-pmp-distribution-quiz-conceptual-reflective-questions" title="Link to this heading">#</a></h3>
+<p>This module supports understanding of spatial rainfall modeling using synthetic distributions such as Gaussian, Exponential, and Uniform. It is especially relevant for <strong>Probable Maximum Precipitation (PMP)</strong> analysis and storm-centered design.</p>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h3>Conceptual Questions<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What does a spatial rainfall distribution represent?</strong></p>
+<ul class="simple">
+<li><p>A. Rainfall intensity over time</p></li>
+<li><p>B. Rainfall depth across a geographic area</p></li>
+<li><p>C. Evaporation rate across a basin</p></li>
+<li><p>D. Runoff volume at a point</p></li>
+</ul>
+</li>
+<li><p><strong>In a Gaussian distribution, rainfall intensity is highest:</strong></p>
+<ul class="simple">
+<li><p>A. At the edges of the grid</p></li>
+<li><p>B. At the storm center</p></li>
+<li><p>C. At the midpoint between center and edge</p></li>
+<li><p>D. Uniformly across the grid</p></li>
+</ul>
+</li>
+<li><p><strong>Which method best simulates a convective storm with rapid decay from the center?</strong></p>
+<ul class="simple">
+<li><p>A. Uniform</p></li>
+<li><p>B. Exponential</p></li>
+<li><p>C. Gaussian</p></li>
+<li><p>D. Linear</p></li>
+</ul>
+</li>
+<li><p><strong>Why is spatial variability important in PMP estimation?</strong></p>
+<ul class="simple">
+<li><p>A. It reduces total rainfall volume</p></li>
+<li><p>B. It helps identify flood-prone zones</p></li>
+<li><p>C. It allows time-based simulation</p></li>
+<li><p>D. It simplifies runoff routing</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id15">
+<h3>Code Interpretation Prompts<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What does the <code class="docutils literal notranslate"><span class="pre">radius_km</span></code> parameter control in the Gaussian and Exponential methods?</p></li>
+<li><p>How does changing <code class="docutils literal notranslate"><span class="pre">center_x</span></code> and <code class="docutils literal notranslate"><span class="pre">center_y</span></code> affect the rainfall pattern?</p></li>
+<li><p>Why is <code class="docutils literal notranslate"><span class="pre">rainfall</span> <span class="pre">=</span> <span class="pre">peak_mm</span> <span class="pre">*</span> <span class="pre">exp(-R²</span> <span class="pre">/</span> <span class="pre">2σ²)</span></code> used in the Gaussian method?</p></li>
+<li><p>What happens to the contour plot if <code class="docutils literal notranslate"><span class="pre">radius_km</span></code> is very small?</p></li>
+<li><p>How would you modify the code to simulate multiple storm cells or moving storms?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id16">
+<h3>Reflection Questions<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>How do different spatial distributions affect runoff concentration and peak flow timing?</strong></p></li>
+<li><p><strong>Why might engineers use a conservative Gaussian distribution for dam safety analysis?</strong></p></li>
+<li><p><strong>What are the limitations of using synthetic spatial rainfall in real-world flood modeling?</strong></p></li>
+<li><p><strong>How could radar or satellite data be integrated into this model for real-time forecasting?</strong></p></li>
+<li><p><strong>What insights can be gained by interactively adjusting storm radius, peak intensity, and location?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id17">
+<h3>Design Insight<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>“Spatial rainfall modeling is essential for understanding how storms impact watersheds. It helps engineers design resilient infrastructure, estimate PMP, and simulate flood scenarios with geographic precision.”</p>
+</div></blockquote>
+</section>
+<section id="pmp-pmf-estimation-quiz-conceptual-reflective-questions">
+<h3>PMP &amp; PMF Estimation: Quiz, Conceptual &amp; Reflective Questions<a class="headerlink" href="#pmp-pmf-estimation-quiz-conceptual-reflective-questions" title="Link to this heading">#</a></h3>
+<p>This module supports understanding of <strong>Probable Maximum Precipitation (PMP)</strong> and <strong>Probable Maximum Flood (PMF)</strong> estimation using location, storm duration, watershed area, and runoff characteristics.</p>
+</section>
+<hr class="docutils" />
+<section id="id18">
+<h3>Conceptual Questions<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What does PMP represent in hydrologic design?</strong></p>
+<ul class="simple">
+<li><p>A. Average annual rainfall</p></li>
+<li><p>B. Rainfall depth with 100-year return period</p></li>
+<li><p>C. Theoretical maximum precipitation for a location</p></li>
+<li><p>D. Rainfall depth during a hurricane</p></li>
+</ul>
+</li>
+<li><p><strong>Which factor most directly increases PMP in the code model?</strong></p>
+<ul class="simple">
+<li><p>A. Latitude closer to poles</p></li>
+<li><p>B. Coastal proximity</p></li>
+<li><p>C. Smaller watershed area</p></li>
+<li><p>D. Lower runoff coefficient</p></li>
+</ul>
+</li>
+<li><p><strong>The PMF is calculated using a Rational-like formula. What does the runoff coefficient represent?</strong></p>
+<ul class="simple">
+<li><p>A. Soil infiltration rate</p></li>
+<li><p>B. Fraction of rainfall converted to runoff</p></li>
+<li><p>C. Rainfall intensity</p></li>
+<li><p>D. Evaporation loss</p></li>
+</ul>
+</li>
+<li><p><strong>Why is PMF volume expressed in cubic meters?</strong></p>
+<ul class="simple">
+<li><p>A. To match rainfall depth units</p></li>
+<li><p>B. To allow comparison with reservoir capacity</p></li>
+<li><p>C. To simplify hydrograph routing</p></li>
+<li><p>D. To convert runoff coefficient to percent</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id19">
+<h3>Code Interpretation Prompts<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Why is PMP scaled by ( \sqrt{\text{duration}} ) in the estimation?</p></li>
+<li><p>What does the <code class="docutils literal notranslate"><span class="pre">coastal_boost</span></code> term simulate in the PMP model?</p></li>
+<li><p>How does increasing watershed area affect PMF volume?</p></li>
+<li><p>Why is rainfall depth converted from mm to meters before computing PMF?</p></li>
+<li><p>How would you modify the code to include elevation or orographic effects?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id20">
+<h3>Reflection Questions<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>How do PMP and PMF estimates guide dam safety and spillway design?</strong></p></li>
+<li><p><strong>Why is it important to use conservative assumptions in PMP estimation?</strong></p></li>
+<li><p><strong>What are the limitations of using simplified formulas for PMF in complex watersheds?</strong></p></li>
+<li><p><strong>How could climate change or land use shifts affect PMP and PMF values over time?</strong></p></li>
+<li><p><strong>What insights can be gained by interactively adjusting latitude, duration, and runoff coefficient?</strong></p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id21">
+<h2>💡 Design Insight<a class="headerlink" href="#id21" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>“PMP and PMF are cornerstone concepts in hydrologic safety analysis. They represent worst-case scenarios that help engineers design resilient infrastructure and protect lives and property.”</p>
+</div></blockquote>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Chap1/GaussianPlumeDispersionModel.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 1 Environmental Engineering: Air Quality Modeling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2 Hydrology: Rainfall frequency analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-disaggregation-in-time-and-space">🌧️ Rainfall Disaggregation in Time and Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">📌 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-disaggregation-necessary">❓ Why Is Disaggregation Necessary?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-disaggregation-methods">⏱️ Temporal Disaggregation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-disaggregation-methods">🌍 Spatial Disaggregation Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-rainfall-disaggregation">🌧️ Importance of Rainfall Disaggregation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-disaggregation">⏱️ Temporal Disaggregation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-disaggregation">🌍 Spatial Disaggregation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-impact">🧠 Combined Impact</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pmp-and-pmf-definitions">🌧️ PMP and PMF Definitions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-maximum-precipitation-pmp">📘 Probable Maximum Precipitation (PMP)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-maximum-flood-pmf">📘 Probable Maximum Flood (PMF)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-disaggregation-of-pmp-and-pmf">🗺️ Spatial Disaggregation of PMP and PMF</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pmp-spatial-disaggregation-hmr52">🧭 PMP Spatial Disaggregation <span class="xref cite cite-p">HMR52</span>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pmf-spatial-disaggregation">🌊 PMF Spatial Disaggregation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-disaggregation-using-dimensionless-hyetographs">Rainfall Disaggregation Using Dimensionless Hyetographs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation">Mathematical Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-distribution-methods">Available Distribution Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-distribution">1. <strong>Triangular Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scs-type-ii-distribution">2. <strong>SCS Type II Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">3. <strong>Uniform Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-challenges">Limitations and Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-use">Tips for Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-disaggregated-rainfall-in-hydrologic-analysis">Applications of Disaggregated Rainfall in Hydrologic Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-applications">Key Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runoff-modeling">1. <strong>Runoff Modeling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-routing">2. <strong>Flood Routing</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stormwater-infrastructure-design">3. <strong>Stormwater Infrastructure Design</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infiltration-and-soil-moisture-modeling">4. <strong>Infiltration and Soil Moisture Modeling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erosion-and-sediment-transport">5. <strong>Erosion and Sediment Transport</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-workflow">📊 Example Workflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">Why It Matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-rainfall-distribution-model">Spatial Rainfall Distribution Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Mathematical Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-distribution">1. <strong>Gaussian Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-distribution">2. <strong>Exponential Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3. <strong>Uniform Distribution</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probable-maximum-flood-pmf-estimation-model">Probable Maximum Flood (PMF) Estimation Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-overview">Methodology Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-probable-maximum-precipitation-pmp">1. <strong>Estimate Probable Maximum Precipitation (PMP)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate-pmf-volume-using-a-runoff-model">2. <strong>Estimate PMF Volume Using a Runoff Model</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">Interactive Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Limitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">7. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rainfall-hyetograph-modeling-quiz-conceptual-reflective-questions">Rainfall Hyetograph Modeling: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-interpretation-prompts">Code Interpretation Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-rainfall-pmp-distribution-quiz-conceptual-reflective-questions">Spatial Rainfall &amp; PMP Distribution: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Code Interpretation Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Reflection Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pmp-pmf-estimation-quiz-conceptual-reflective-questions">PMP &amp; PMF Estimation: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Code Interpretation Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Reflection Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">💡 Design Insight</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

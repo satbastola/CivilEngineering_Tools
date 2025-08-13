@@ -1,0 +1,1586 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Enginereing Sustainability: Evapotranspiraiton &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/PETmodel';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Enginereing Sustainability: House Orientation" href="HouseOrientation.html" />
+    <link rel="prev" title="Chapter 6 Sustainabilty and Engineering: Carbon Calculator" href="CarbonCalculator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/PETmodel.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/PETmodel.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/PETmodel.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/PETmodel.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/PETmodel.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Enginereing Sustainability: Evapotranspiraiton</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evapotranspiration-et-definition-importance-and-measurement">💧 Evapotranspiration (ET): Definition, Importance, and Measurement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">🧭 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-in-the-hydrological-cycle">🌍 Role in the Hydrological Cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-sustainable-development">🌱 Importance in Sustainable Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-et-is-measured">🧪 How ET Is Measured</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-methods">🔬 Direct Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-et-with-meteorological-and-satellite-data">🧠 Modeling ET with Meteorological and Satellite Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meteorological-models">📊 Meteorological Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-based-models">🛰️ Satellite-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openet-satellite-based-et-estimation">🚀 OPENET: Satellite-Based ET Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-openet">🔍 What Is OPENET?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms-used">🧮 Algorithms Used</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📈 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#features">📌 Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-insight">🧠 Summary Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background-potential-evapotranspiration-pet-models">🌿 Theoretical Background: Potential Evapotranspiration (PET) Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-method-models">🔀 Mixed-Method Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penman-1948">1. <strong>Penman (1948)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turc-1961">2. <strong>Turc (1961)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation-based-models">🌞 Radiation-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#priestley-taylor-1972">3. <strong>Priestley-Taylor (1972)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#makkink-1957">4. <strong>Makkink (1957)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-based-models">🌡️ Temperature-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thornthwaite-1948">5. <strong>Thornthwaite (1948)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hamon-1963">6. <strong>Hamon (1963)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-radiation-hybrid-models">📉 Temperature-Radiation Hybrid Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hargreaves-samani-1985">7. <strong>Hargreaves-Samani (1985)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-empirical-model">🧠 Simplified Empirical Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oudin-2005">8. <strong>Oudin (2005)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-selection-considerations">🧪 Model Selection Considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-conceptual-and-quiz-questions-potential-evapotranspiration-pet-models">🌿 Reflective, Conceptual, and Quiz Questions: Potential Evapotranspiration (PET) Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-concepts">General Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-structure">Model Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-requirements">Data Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-enginereing-sustainability-evapotranspiraiton">
+<h1>Chapter 6 Enginereing Sustainability: Evapotranspiraiton<a class="headerlink" href="#chapter-6-enginereing-sustainability-evapotranspiraiton" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Evapotranspiration</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Evapotranspiration</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/PET.png"><img alt="Descriptive alt text for accessibility" src="../_images/PET.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">**Figure 6.5 **: Potential Evpotranspiration</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="evapotranspiration-et-definition-importance-and-measurement">
+<h3>💧 Evapotranspiration (ET): Definition, Importance, and Measurement<a class="headerlink" href="#evapotranspiration-et-definition-importance-and-measurement" title="Link to this heading">#</a></h3>
+</section>
+<section id="definition">
+<h3>🧭 Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
+<p><strong>Evapotranspiration (ET)</strong> is the combined process of:</p>
+<ul class="simple">
+<li><p><strong>Evaporation</strong>: Water loss from soil, water bodies, and surfaces to the atmosphere</p></li>
+<li><p><strong>Transpiration</strong>: Water movement from plant roots to leaves and release as vapor through stomata</p></li>
+</ul>
+<p>Together, ET represents the <strong>total water flux from land to atmosphere</strong>, and is a key component of the <strong>hydrological cycle</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="role-in-the-hydrological-cycle">
+<h3>🌍 Role in the Hydrological Cycle<a class="headerlink" href="#role-in-the-hydrological-cycle" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>ET returns <strong>60–75% of terrestrial precipitation</strong> back to the atmosphere</p></li>
+<li><p>Drives <strong>soil moisture depletion</strong>, <strong>plant water use</strong>, and <strong>climate feedbacks</strong></p></li>
+<li><p>Influences <strong>groundwater recharge</strong>, <strong>runoff</strong>, and <strong>crop water demand</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="importance-in-sustainable-development">
+<h3>🌱 Importance in Sustainable Development<a class="headerlink" href="#importance-in-sustainable-development" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>🛰️ ET is a <strong>proxy for irrigation demand</strong> and crop water use</p></li>
+<li><p>🌾 Helps optimize <strong>agricultural water management</strong></p></li>
+<li><p>🌡️ Critical for <strong>drought monitoring</strong>, <strong>climate modeling</strong>, and <strong>ecosystem health</strong></p></li>
+<li><p>📈 Supports <strong>SDG 6</strong> (Clean Water) and <strong>SDG 13</strong> (Climate Action)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-et-is-measured">
+<h3>🧪 How ET Is Measured<a class="headerlink" href="#how-et-is-measured" title="Link to this heading">#</a></h3>
+</section>
+<section id="direct-methods">
+<h3>🔬 Direct Methods<a class="headerlink" href="#direct-methods" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Lysimeter</strong></p></td>
+<td><p>Measures weight change of soil-plant system to estimate water loss</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pan Evaporation</strong></p></td>
+<td><p>Uses open water pans to estimate potential evaporation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Eddy Covariance</strong></p></td>
+<td><p>Measures vapor flux using wind and humidity sensors</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>⚠️ Direct methods are accurate but expensive and limited in spatial coverage.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="modeling-et-with-meteorological-and-satellite-data">
+<h3>🧠 Modeling ET with Meteorological and Satellite Data<a class="headerlink" href="#modeling-et-with-meteorological-and-satellite-data" title="Link to this heading">#</a></h3>
+</section>
+<section id="meteorological-models">
+<h3>📊 Meteorological Models<a class="headerlink" href="#meteorological-models" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <strong>solar radiation, temperature, humidity, wind</strong></p></li>
+<li><p>Apply equations like <strong>Penman-Monteith</strong>, <strong>Hargreaves</strong>, or <strong>Blaney-Criddle</strong></p></li>
+</ul>
+</section>
+<section id="satellite-based-models">
+<h3>🛰️ Satellite-Based Models<a class="headerlink" href="#satellite-based-models" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <strong>thermal and optical imagery</strong> + <strong>weather data</strong></p></li>
+<li><p>Estimate <strong>actual ET</strong> over large areas with high resolution</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="openet-satellite-based-et-estimation">
+<h3>🚀 OPENET: Satellite-Based ET Estimation<a class="headerlink" href="#openet-satellite-based-et-estimation" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-is-openet">
+<h3>🔍 What Is OPENET?<a class="headerlink" href="#what-is-openet" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A NASA-led platform providing <strong>field-scale ET data</strong> across the western U.S.</p></li>
+<li><p>Uses <strong>Landsat imagery</strong>, <strong>meteorological grids</strong>, and <strong>ensemble modeling</strong></p></li>
+</ul>
+</section>
+<section id="algorithms-used">
+<h3>🧮 Algorithms Used<a class="headerlink" href="#algorithms-used" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Approach</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>METRIC</p></td>
+<td><p>Surface energy balance</p></td>
+<td><p>Allen et al. (2007)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEBAL</p></td>
+<td><p>Energy balance with calibration</p></td>
+<td><p>Bastiaanssen et al. (1998)</p></td>
+</tr>
+<tr class="row-even"><td><p>PT-JPL</p></td>
+<td><p>Priestley-Taylor with constraints</p></td>
+<td><p>Fisher et al. (2008)</p></td>
+</tr>
+<tr class="row-odd"><td><p>SSEBop</p></td>
+<td><p>Simplified energy balance</p></td>
+<td><p>Senay et al. (2013)</p></td>
+</tr>
+<tr class="row-even"><td><p>SIMS</p></td>
+<td><p>Crop coefficient from NDVI</p></td>
+<td><p>Melton et al. (2012)</p></td>
+</tr>
+<tr class="row-odd"><td><p>DisALEXI</p></td>
+<td><p>Two-source energy balance</p></td>
+<td><p>Anderson et al. (2018)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="inputs">
+<h3>📈 Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Landsat thermal and optical data</p></li>
+<li><p>Gridded weather datasets (e.g., gridMET, PRISM)</p></li>
+<li><p>Crop type, land use, soil data</p></li>
+</ul>
+</section>
+<section id="features">
+<h3>📌 Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>30m resolution ET maps</p></li>
+<li><p>Daily, monthly, annual ET estimates</p></li>
+<li><p>Ensemble averaging across models</p></li>
+<li><p>Used by water agencies for <strong>irrigation planning</strong>, <strong>water rights</strong>, and <strong>conservation</strong></p></li>
+</ul>
+<p>🔗 <a class="reference external" href="https://etdata.org/methodologies/">OPENET Methodologies</a></p>
+</section>
+<hr class="docutils" />
+<section id="summary-insight">
+<h3>🧠 Summary Insight<a class="headerlink" href="#summary-insight" title="Link to this heading">#</a></h3>
+<p>Evapotranspiration is a <strong>critical link</strong> between land, vegetation, and atmosphere. While direct measurement is costly, modern satellite platforms like <strong>OPENET</strong> enable scalable, accurate, and timely ET estimation—empowering sustainable water management and climate resilience.</p>
+</section>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h3>
+<p><span id="id1">[]</span> developed a scalable monthly ET model using FAO-56 reference ET (ETo), precipitation (P), and leaf area index (LAI), explaining ~85% of ET variability across 13 ecosystems. They emphasized the value of remote sensing and weather data, noting that wet forests often exceed ETo while arid regions fall below it. <span id="id2">[]</span> evaluated 127 potential evapotranspiration (PET) models across Mediterranean urban green sites, classifying them into temperature-, radiation-, mass-transfer, and combination-based methods. Temperature-based models performed best in data-scarce environments, with 22 models showing &lt;10% deviation from the FAO-56 Penman-Monteith benchmark. They stressed the need for site-specific calibration. <span id="id3">[<a class="reference internal" href="../markdown.html#id81" title="M. Weiß and L. Menzel. A global comparison of four potential evapotranspiration equations and their relevance to stream flow modelling in semi-arid environments. Advances in Geosciences, 18:15–23, 2008.">Weiß and Menzel, 2008</a>]</span> reviewed empirical PET models and their meteorological drivers, highlighting Hargreaves-Samani (temperature), Priestley-Taylor (radiation), and Penman-Monteith (full suite).</p>
+</section>
+<section id="theoretical-background-potential-evapotranspiration-pet-models">
+<h3>🌿 Theoretical Background: Potential Evapotranspiration (PET) Models<a class="headerlink" href="#theoretical-background-potential-evapotranspiration-pet-models" title="Link to this heading">#</a></h3>
+<p>Evapotranspiration (ET) represents the combined loss of water from soil evaporation and plant transpiration. Estimating <strong>potential evapotranspiration (PET)</strong> is essential for hydrological modeling, irrigation planning, and climate impact assessment. The models below vary in complexity, data requirements, and physical assumptions.</p>
+</section>
+<hr class="docutils" />
+<section id="mixed-method-models">
+<h3>🔀 Mixed-Method Models<a class="headerlink" href="#mixed-method-models" title="Link to this heading">#</a></h3>
+</section>
+<section id="penman-1948">
+<h3>1. <strong>Penman (1948)</strong><a class="headerlink" href="#penman-1948" title="Link to this heading">#</a></h3>
+<p>Combines energy balance and aerodynamic principles. Requires temperature, radiation, humidity, and wind speed.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = \frac{\Delta R_n + \gamma \frac{900}{T + 273} u (e_s - e_a)}{\Delta + \gamma (1 + 0.34u)}
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( R_n \)</span>): net radiation (MJ/m²/day)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( T \)</span>): mean air temperature (°C)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( u \)</span>): wind speed (m/s)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( e_s \)</span>), <span class="math notranslate nohighlight">\(( e_a \)</span>): saturation and actual vapor pressure (kPa)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \Delta \)</span>): slope of vapor pressure curve</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \gamma \)</span>): psychrometric constant</p></li>
+</ul>
+</section>
+<section id="turc-1961">
+<h3>2. <strong>Turc (1961)</strong><a class="headerlink" href="#turc-1961" title="Link to this heading">#</a></h3>
+<p>Empirical model using temperature, solar radiation, and relative humidity.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = \frac{0.013 \cdot (T / (T + 15)) \cdot (Rs + 50)}{\sqrt{RH / 100}}
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( T \)</span>): mean temperature (°C)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( Rs \)</span>): solar radiation (MJ/m²/day)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( RH \)</span>): relative humidity (%)</p></li>
+</ul>
+</section>
+<section id="radiation-based-models">
+<h3>🌞 Radiation-Based Models<a class="headerlink" href="#radiation-based-models" title="Link to this heading">#</a></h3>
+</section>
+<section id="priestley-taylor-1972">
+<h3>3. <strong>Priestley-Taylor (1972)</strong><a class="headerlink" href="#priestley-taylor-1972" title="Link to this heading">#</a></h3>
+<p>Simplified energy balance model assuming minimal aerodynamic influence.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = \alpha \cdot \frac{\Delta}{\Delta + \gamma} \cdot R_n
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \alpha \)</span>): empirical coefficient (~1.26)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( R_n \)</span>): net radiation</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \Delta \)</span>), <span class="math notranslate nohighlight">\(( \gamma \)</span>): as above</p></li>
+</ul>
+</section>
+<section id="makkink-1957">
+<h3>4. <strong>Makkink (1957)</strong><a class="headerlink" href="#makkink-1957" title="Link to this heading">#</a></h3>
+<p>Uses temperature and radiation, calibrated for temperate climates.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = 0.61 \cdot \frac{\Delta}{\Delta + \gamma} \cdot Rs
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( Rs \)</span>): solar radiation</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \Delta \)</span>), <span class="math notranslate nohighlight">\(( \gamma \)</span>): as above</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="temperature-based-models">
+<h3>🌡️ Temperature-Based Models<a class="headerlink" href="#temperature-based-models" title="Link to this heading">#</a></h3>
+</section>
+<section id="thornthwaite-1948">
+<h3>5. <strong>Thornthwaite (1948)</strong><a class="headerlink" href="#thornthwaite-1948" title="Link to this heading">#</a></h3>
+<p>Empirical model based solely on temperature and latitude.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = 16 \cdot \left(\frac{10T}{I}\right)^a
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( T \)</span>): mean monthly temperature (°C)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( I \)</span>): annual heat index</p></li>
+<li><p><span class="math notranslate nohighlight">\(( a \)</span>): empirical exponent based on <span class="math notranslate nohighlight">\(( I \)</span>)</p></li>
+</ul>
+</section>
+<section id="hamon-1963">
+<h3>6. <strong>Hamon (1963)</strong><a class="headerlink" href="#hamon-1963" title="Link to this heading">#</a></h3>
+<p>Estimates ET using temperature and day length.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = 0.1651 \cdot D \cdot \frac{e_s}{T + 273.2}
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( D \)</span>): day length (hours)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( e_s \)</span>): saturation vapor pressure</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="temperature-radiation-hybrid-models">
+<h3>📉 Temperature-Radiation Hybrid Models<a class="headerlink" href="#temperature-radiation-hybrid-models" title="Link to this heading">#</a></h3>
+</section>
+<section id="hargreaves-samani-1985">
+<h3>7. <strong>Hargreaves-Samani (1985)</strong><a class="headerlink" href="#hargreaves-samani-1985" title="Link to this heading">#</a></h3>
+<p>Uses temperature range and extraterrestrial radiation.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = 0.0023 \cdot (T_{mean} + 17.8) \cdot (T_{max} - T_{min})^{0.5} \cdot R_a
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( R_a \)</span>): extraterrestrial radiation</p></li>
+<li><p><span class="math notranslate nohighlight">\(( T_{mean} \)</span>), <span class="math notranslate nohighlight">\(( T_{max} \)</span>), <span class="math notranslate nohighlight">\(( T_{min} \)</span>): temperatures</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="simplified-empirical-model">
+<h3>🧠 Simplified Empirical Model<a class="headerlink" href="#simplified-empirical-model" title="Link to this heading">#</a></h3>
+</section>
+<section id="oudin-2005">
+<h3>8. <strong>Oudin (2005)</strong><a class="headerlink" href="#oudin-2005" title="Link to this heading">#</a></h3>
+<p>Minimalist model using temperature and latitude.</p>
+<p><strong>Equation:</strong>
+$<span class="math notranslate nohighlight">\(
+ET = \frac{Rs}{100} \cdot \left(\frac{T + 5}{100}\right)
+\)</span>$</p>
+<ul class="simple">
+<li><p>Often reformulated using temperature and latitude-based radiation estimates.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="model-selection-considerations">
+<h2>🧪 Model Selection Considerations<a class="headerlink" href="#model-selection-considerations" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Inputs Required</p></th>
+<th class="head"><p>Complexity</p></th>
+<th class="head"><p>Best Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Penman</p></td>
+<td><p>T, RH, Rs, wind</p></td>
+<td><p>High</p></td>
+<td><p>Detailed hydrological modeling</p></td>
+</tr>
+<tr class="row-odd"><td><p>Priestley-Taylor</p></td>
+<td><p>T, Rs</p></td>
+<td><p>Medium</p></td>
+<td><p>Energy-dominated environments</p></td>
+</tr>
+<tr class="row-even"><td><p>Hargreaves-Samani</p></td>
+<td><p>T_max, T_min, latitude</p></td>
+<td><p>Medium</p></td>
+<td><p>Data-sparse regions</p></td>
+</tr>
+<tr class="row-odd"><td><p>Thornthwaite</p></td>
+<td><p>T, latitude</p></td>
+<td><p>Low</p></td>
+<td><p>Long-term climate analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>Turc</p></td>
+<td><p>T, Rs, RH</p></td>
+<td><p>Medium</p></td>
+<td><p>Mediterranean climates</p></td>
+</tr>
+<tr class="row-odd"><td><p>Makkink</p></td>
+<td><p>T, Rs</p></td>
+<td><p>Medium</p></td>
+<td><p>Temperate zones</p></td>
+</tr>
+<tr class="row-even"><td><p>Hamon</p></td>
+<td><p>T, latitude</p></td>
+<td><p>Low</p></td>
+<td><p>Simpler water balance models</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oudin</p></td>
+<td><p>T, latitude</p></td>
+<td><p>Very Low</p></td>
+<td><p>Quick screening or large datasets</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyet</span>
+
+<span class="c1"># 📥 Load and preprocess data</span>
+
+<span class="c1"># data = pd.read_csv(&quot;WR_alexandria.csv&quot;, parse_dates=True, index_col=&quot;date&quot;)</span>
+<span class="c1"># data = pd.read_csv(&quot;WR_alexandria.csv&quot;, parse_dates=True, index_col=&quot;date&quot;)</span>
+
+<span class="c1"># # 🌤️ Meteorological inputs</span>
+<span class="c1"># meteo = pd.DataFrame({</span>
+<span class="c1">#     &quot;tmax&quot;: data[&quot;tmax&quot;],</span>
+<span class="c1">#     &quot;tmin&quot;: data[&quot;tmin&quot;],</span>
+<span class="c1">#     &quot;rain&quot;: data[&quot;rain&quot;],</span>
+<span class="c1">#     &quot;umax&quot;: data[&quot;maxu2&quot;] * 0.447,  # convert to m/s</span>
+<span class="c1">#     &quot;u&quot;: data[&quot;u2&quot;] * 0.447,</span>
+<span class="c1">#     &quot;rhmax&quot;: data[&quot;rhmax&quot;] / 100,</span>
+<span class="c1">#     &quot;rhmin&quot;: data[&quot;rhmin&quot;] / 100,</span>
+<span class="c1">#     &quot;sol&quot;: data[&quot;solar&quot;],</span>
+<span class="c1">#     &quot;tsmax&quot;: data[&quot;tsmax&quot;],</span>
+<span class="c1">#     &quot;tsmin&quot;: data[&quot;tsmin&quot;]</span>
+<span class="c1"># })</span>
+
+
+<span class="c1"># 📥 Read the tab-separated file</span>
+<span class="c1">#df = pd.read_csv(&#39;WR_Alexandria.csv&#39;, parse_dates = True, parse_dates=[&#39;date&#39;])</span>
+<span class="c1">#df = pd.read_csv(&#39;WR_Alexandria.csv&#39;, sep=&#39;\t&#39;, parse_dates=[&#39;date&#39;])</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;WR_Alexandria.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="c1">#with open(&#39;WR_Alexandria.csv&#39;, &#39;r&#39;) as f:</span>
+<span class="c1">#    print(f.readline())</span>
+<span class="c1">#date,tmax,tmin,rain,maxu2,u2,u2dir,rhmax,rhmin,solar,tsmax,tsmin</span>
+
+<span class="c1"># 🧼 Clean and convert numeric columns</span>
+<span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>  <span class="c1"># all except date</span>
+
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+    <span class="c1"># Strip whitespace, convert to numeric, coerce errors to NaN</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="c1"># 🧹 Optional: Handle missing values (if any)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># forward fill</span>
+<span class="c1"># Or: df.dropna(inplace=True)</span>
+
+<span class="c1"># ✅ Display summary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1">#print(&quot;\nData types:\n&quot;, df.dtypes)</span>
+
+<span class="c1"># 🌍 Site parameters</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mi">39</span> <span class="o">*</span> <span class="mf">3.1416</span> <span class="o">/</span> <span class="mi">180</span>  <span class="c1"># radians</span>
+<span class="n">elevation</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># meters</span>
+
+<span class="c1"># 🌡️ Derived variables</span>
+<span class="n">tmean</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;tmax&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;tmin&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+<span class="n">rh</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;rhmax&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;rhmin&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mf">2.0</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;solar&quot;</span><span class="p">]</span>
+<span class="n">tmax</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;tmax&quot;</span><span class="p">]</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;tmin&quot;</span><span class="p">]</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;u2&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.447</span>  <span class="c1"># wind speed in m/s</span>
+<span class="c1">#print(tmean)</span>
+<span class="c1">#plt.plot(u)</span>
+<span class="c1"># 🧮 Evapotranspiration Models</span>
+
+<span class="c1"># 🔀 Mixed-methods</span>
+<span class="c1">#et_penman = pyet.penman(tmean, u, rs=sol, elevation=elevation, lat=lat, tmax=tmax, tmin=tmin, rh=rh)</span>
+<span class="n">et_oudin</span> <span class="o">=</span> <span class="n">pyet</span><span class="o">.</span><span class="n">oudin</span><span class="p">(</span><span class="n">tmean</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span>
+<span class="c1">#et_makkink = pyet.makkink(tmean, rs=sol, elevation=elevation)</span>
+<span class="n">et_turc</span> <span class="o">=</span> <span class="n">pyet</span><span class="o">.</span><span class="n">turc</span><span class="p">(</span><span class="n">tmean</span><span class="p">,</span> <span class="n">rs</span><span class="o">=</span><span class="n">sol</span><span class="p">,</span> <span class="n">rh</span><span class="o">=</span><span class="n">rh</span><span class="p">)</span>
+
+<span class="c1"># 🌞 Radiation-based</span>
+<span class="c1">#et_priestley_taylor = pyet.priestley_taylor(tmean, rs=sol, elevation=elevation)</span>
+<span class="c1">#et_hargreaves = pyet.hargreaves(tmean, tmax, tmin, lat)</span>
+
+<span class="c1"># 🌡️ Temperature-based</span>
+<span class="c1">#et_thornthwaite = pyet.thornthwaite(tmean, lat)</span>
+<span class="c1">#et_hamon = pyet.hamon(tmean, lat)</span>
+
+<span class="c1"># 📊 Plot comparison</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">et_penman</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Penman&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">et_priestley_taylor</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Priestley-Taylor&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">et_hargreaves</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hargreaves-Samani&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">et_thornthwaite</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Thornthwaite&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+<span class="n">et_hamon</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hamon&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;brown&quot;</span><span class="p">)</span>
+<span class="n">et_oudin</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Oudin&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">et_makkink</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Makkink&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;teal&quot;</span><span class="p">)</span>
+<span class="n">et_turc</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Turc&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Evapotranspiration Estimates — Multiple Models&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;ET (mm/day)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">29</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pyet</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># 📥 Load and preprocess data</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># data = pd.read_csv(&quot;WR_alexandria.csv&quot;, parse_dates=True, index_col=&quot;date&quot;)</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="c1">#df = pd.read_csv(&#39;WR_Alexandria.csv&#39;, parse_dates = True, parse_dates=[&#39;date&#39;])</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="c1">#df = pd.read_csv(&#39;WR_Alexandria.csv&#39;, sep=&#39;\t&#39;, parse_dates=[&#39;date&#39;])</span>
+<span class="ne">---&gt; </span><span class="mi">29</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;WR_Alexandria.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="c1">#with open(&#39;WR_Alexandria.csv&#39;, &#39;r&#39;) as f:</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="c1">#    print(f.readline())</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="c1">#date,tmax,tmin,rain,maxu2,u2,u2dir,rhmax,rhmin,solar,tsmax,tsmin</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> 
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="c1"># 🧼 Clean and convert numeric columns</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>  <span class="c1"># all except date</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\io\parsers\readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\io\common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;WR_Alexandria.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="reflective-conceptual-and-quiz-questions-potential-evapotranspiration-pet-models">
+<h3>🌿 Reflective, Conceptual, and Quiz Questions: Potential Evapotranspiration (PET) Models<a class="headerlink" href="#reflective-conceptual-and-quiz-questions-potential-evapotranspiration-pet-models" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>📘 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<p>These questions explore the physical principles, assumptions, and structure of the PET models.</p>
+</section>
+<section id="general-concepts">
+<h3>General Concepts<a class="headerlink" href="#general-concepts" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What is the difference between actual evapotranspiration (ET) and potential evapotranspiration (PET)?</p></li>
+<li><p>Why is PET a critical variable in hydrology, agriculture, and climate modeling?</p></li>
+<li><p>How do meteorological inputs like temperature, radiation, humidity, and wind influence PET?</p></li>
+</ul>
+</section>
+<section id="model-structure">
+<h3>Model Structure<a class="headerlink" href="#model-structure" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What distinguishes mixed-method models (e.g., Penman) from purely empirical or temperature-based models?</p></li>
+<li><p>Why do radiation-based models often assume minimal aerodynamic influence?</p></li>
+<li><p>How does latitude affect temperature-based models like Thornthwaite and Hamon?</p></li>
+</ul>
+</section>
+<section id="data-requirements">
+<h3>Data Requirements<a class="headerlink" href="#data-requirements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Which models are best suited for data-scarce environments, and why?</p></li>
+<li><p>How does the complexity of a model relate to its input requirements and accuracy?</p></li>
+<li><p>What are the trade-offs between using a simplified model like Oudin versus a physically-based model like Penman?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>🔍 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<p>These questions encourage critical thinking and application to real-world modeling decisions.</p>
+<ul class="simple">
+<li><p>If you were modeling PET for a remote watershed with limited data, which model would you choose and why?</p></li>
+<li><p>How might climate change (e.g., increased temperature, altered radiation patterns) affect the reliability of temperature-based PET models?</p></li>
+<li><p>What are the implications of overestimating PET in irrigation planning or drought forecasting?</p></li>
+<li><p>How could you validate the performance of different PET models using observed ET data?</p></li>
+<li><p>In what scenarios might a medium-complexity model like Hargreaves-Samani outperform a high-complexity model like Penman?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>❓ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="multiple-choice">
+<h3>Multiple Choice<a class="headerlink" href="#multiple-choice" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which PET model requires the most meteorological inputs?</strong><br />
+A. Oudin<br />
+B. Hamon<br />
+C. Penman<br />
+D. Thornthwaite<br />
+<strong>Answer:</strong> C</p></li>
+<li><p><strong>Which model is most appropriate for long-term climate analysis using only temperature and latitude?</strong><br />
+A. Priestley-Taylor<br />
+B. Thornthwaite<br />
+C. Turc<br />
+D. Makkink<br />
+<strong>Answer:</strong> B</p></li>
+<li><p><strong>In the Hargreaves-Samani model, which variable represents extraterrestrial radiation?</strong><br />
+A. ( R_s )<br />
+B. ( R_n )<br />
+C. ( R_a )<br />
+D. ( e_s )<br />
+<strong>Answer:</strong> C</p></li>
+</ol>
+</section>
+<section id="true-false">
+<h3>True/False<a class="headerlink" href="#true-false" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>The Priestley-Taylor model assumes minimal influence from wind and humidity.</strong><br />
+<strong>Answer:</strong> True</p></li>
+<li><p><strong>The Oudin model requires solar radiation and wind speed as inputs.</strong><br />
+<strong>Answer:</strong> False</p></li>
+<li><p><strong>All PET models estimate actual evapotranspiration under field conditions.</strong><br />
+<strong>Answer:</strong> False</p></li>
+</ol>
+</section>
+<section id="short-answer">
+<h3>Short Answer<a class="headerlink" href="#short-answer" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="7">
+<li><p><strong>Explain why the Penman model is considered physically rigorous.</strong><br />
+<em>Answer:</em> It integrates both energy balance and aerodynamic components, accounting for radiation, temperature, humidity, and wind speed.</p></li>
+<li><p><strong>What are the limitations of using temperature-only models like Thornthwaite in arid regions?</strong><br />
+<em>Answer:</em> They may underestimate PET due to lack of radiation and humidity inputs, which are critical in dry climates.</p></li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="CarbonCalculator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Sustainabilty and Engineering: Carbon Calculator</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HouseOrientation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: House Orientation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evapotranspiration-et-definition-importance-and-measurement">💧 Evapotranspiration (ET): Definition, Importance, and Measurement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">🧭 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-in-the-hydrological-cycle">🌍 Role in the Hydrological Cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-sustainable-development">🌱 Importance in Sustainable Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-et-is-measured">🧪 How ET Is Measured</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-methods">🔬 Direct Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-et-with-meteorological-and-satellite-data">🧠 Modeling ET with Meteorological and Satellite Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meteorological-models">📊 Meteorological Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#satellite-based-models">🛰️ Satellite-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openet-satellite-based-et-estimation">🚀 OPENET: Satellite-Based ET Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-openet">🔍 What Is OPENET?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms-used">🧮 Algorithms Used</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📈 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#features">📌 Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-insight">🧠 Summary Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background-potential-evapotranspiration-pet-models">🌿 Theoretical Background: Potential Evapotranspiration (PET) Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-method-models">🔀 Mixed-Method Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penman-1948">1. <strong>Penman (1948)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#turc-1961">2. <strong>Turc (1961)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation-based-models">🌞 Radiation-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#priestley-taylor-1972">3. <strong>Priestley-Taylor (1972)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#makkink-1957">4. <strong>Makkink (1957)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-based-models">🌡️ Temperature-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thornthwaite-1948">5. <strong>Thornthwaite (1948)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hamon-1963">6. <strong>Hamon (1963)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-radiation-hybrid-models">📉 Temperature-Radiation Hybrid Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hargreaves-samani-1985">7. <strong>Hargreaves-Samani (1985)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-empirical-model">🧠 Simplified Empirical Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oudin-2005">8. <strong>Oudin (2005)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-selection-considerations">🧪 Model Selection Considerations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-conceptual-and-quiz-questions-potential-evapotranspiration-pet-models">🌿 Reflective, Conceptual, and Quiz Questions: Potential Evapotranspiration (PET) Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-concepts">General Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-structure">Model Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-requirements">Data Requirements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

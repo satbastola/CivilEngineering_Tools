@@ -1,0 +1,1496 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 7 Drone Remote Pilot: Drone Flight control and Performance &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"095f28db86594361851b1c306b6cf30b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "10f9d4d60c344c23a03aa5cba863f15f": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "13fd8ad683b24ced8f20be96681b16ac": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "2489cf8698bf4bfcb9d0ab78cc4b397e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_c97e183411f84d749cd440fcdfb57145", "IPY_MODEL_b856aa7c2f664d46b6d4c0dc5cb26168", "IPY_MODEL_d0ded887a64c4263ab513fbb15226d82", "IPY_MODEL_4e17193932e445dd8f0aa0fadfead931", "IPY_MODEL_48ce91d95ccc471e959f46755de9f222", "IPY_MODEL_883d821370354b94a983d53a2b41e3e3"], "layout": "IPY_MODEL_719f5c232a33485fbf51ada5c6510a76"}}, "30e204b17512478eaee623b754b794e3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "31745c7d333d41bca74694cf931c0afb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Payload (grams):", "layout": "IPY_MODEL_69d0e4d71269474ea261221b4ffd6372", "max": 2000, "min": 100, "step": 50, "style": "IPY_MODEL_cc18dfd3f6594f9ba5ae13124b1a67af", "value": 500}}, "3f12171bdbcc457fabcd19073c2f6b3d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Altitude (m):", "layout": "IPY_MODEL_4b9cbd0da1f94218b10c3f361bf1c699", "max": 3000, "step": 100, "style": "IPY_MODEL_13fd8ad683b24ced8f20be96681b16ac"}}, "48ce91d95ccc471e959f46755de9f222": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Banking Angle (\u00b0):", "layout": "IPY_MODEL_c96d45ee96c94dcb9c33c4417fce8516", "max": 80, "style": "IPY_MODEL_095f28db86594361851b1c306b6cf30b"}}, "4ae5715164c0471ca8ae907aba7f59d9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SelectMultipleModel", "state": {"_options_labels": ["Hover", "Yaw", "Roll", "Pitch"], "description": "Maneuver(s):", "index": [0], "layout": "IPY_MODEL_9021d23607124de584dc80ab60f4bb21", "rows": 5, "style": "IPY_MODEL_ce12f9c5b0e4449ab81949096bd9d345"}}, "4b9cbd0da1f94218b10c3f361bf1c699": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "4e17193932e445dd8f0aa0fadfead931": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Wing Area (m\u00b2):", "layout": "IPY_MODEL_10f9d4d60c344c23a03aa5cba863f15f", "max": 2, "min": 0.1, "step": 0.1, "style": "IPY_MODEL_30e204b17512478eaee623b754b794e3", "value": 0.5}}, "53a7ab94457d45b293eb7b3d82fe5953": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "663e6594f7394cb6ba4391782d87282c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DropdownModel", "state": {"_options_labels": ["3 inch", "4 inch", "5 inch", "6 inch"], "description": "Propeller Pitch:", "index": 1, "layout": "IPY_MODEL_c44dee8b8f26423fbcf5a57424a8a515", "style": "IPY_MODEL_77d3babaa8e74fc1893500dd730aeafe"}}, "69d0e4d71269474ea261221b4ffd6372": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "6f8251a92a8645ca890e3933d0312366": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_31745c7d333d41bca74694cf931c0afb", "IPY_MODEL_7303ceb346804cd5a0998977a2ecfb57", "IPY_MODEL_663e6594f7394cb6ba4391782d87282c", "IPY_MODEL_3f12171bdbcc457fabcd19073c2f6b3d", "IPY_MODEL_4ae5715164c0471ca8ae907aba7f59d9"], "layout": "IPY_MODEL_7f191dd8aa59494fbf66c53a9c4603d1"}}, "719f5c232a33485fbf51ada5c6510a76": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "7303ceb346804cd5a0998977a2ecfb57": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DropdownModel", "state": {"_options_labels": ["4 inch", "5 inch", "6 inch", "7 inch", "8 inch"], "description": "Propeller Size:", "index": 2, "layout": "IPY_MODEL_9425a96ac3fb48f9b347ea0b51557600", "style": "IPY_MODEL_e1cc9cc94718468bb51f439303fa209d"}}, "77d3babaa8e74fc1893500dd730aeafe": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": ""}}, "7bbad61090b142779f10b05a91f9410a": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "7ca1b79d4cd940ec9bdcdafc4a54b1f7": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "7f191dd8aa59494fbf66c53a9c4603d1": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "87146e651733416bbed61c888264fc5c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "883d821370354b94a983d53a2b41e3e3": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"layout": "IPY_MODEL_53a7ab94457d45b293eb7b3d82fe5953", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\u2708\ufe0f Airfoil Force Analysis\n\ud83d\udcd0 Angle of Attack: 5.0\u00b0\n\ud83c\udf2c\ufe0f Airspeed: 30.0 m/s\n\ud83c\udf21\ufe0f Air Density: 1.230 kg/m\u00b3\n\ud83e\uddee Wing Area: 0.50 m\u00b2\n\ud83d\udd01 Banking Angle: 0.0\u00b0\n\ud83d\udd3c Lift Coefficient (Cl): 0.500\n\u23ec Drag Coefficient (Cd): 0.120\n\ud83e\ude81 Lift Force: 138.37 N\n\ud83d\uded1 Drag Force: 33.21 N\n\ud83d\udcce Vertical Lift (L\u00b7cos\u03c6): 138.37 N\n\ud83d\udcc8 Load Factor (1/cos\u03c6): 1.00 g\n"}]}}, "9021d23607124de584dc80ab60f4bb21": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "91d760387b35473788350683ae7e7918": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "93c74a2b51f548c8a43f079be0902a17": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"layout": "IPY_MODEL_7ca1b79d4cd940ec9bdcdafc4a54b1f7", "outputs": [{"name": "stdout", "output_type": "stream", "text": "\ud83d\ude81 Estimated Thrust Needed:\n\u27a1\ufe0f 4905.00 Newtons for selected conditions\n"}]}}, "9425a96ac3fb48f9b347ea0b51557600": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "a1e91d2802bf42149e84c5f1d65e2016": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "b856aa7c2f664d46b6d4c0dc5cb26168": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Airspeed (m/s):", "layout": "IPY_MODEL_a1e91d2802bf42149e84c5f1d65e2016", "min": 5, "style": "IPY_MODEL_87146e651733416bbed61c888264fc5c", "value": 30}}, "bf9211ed73fe4e7a8f153e7532892ecb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "c44dee8b8f26423fbcf5a57424a8a515": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "c96d45ee96c94dcb9c33c4417fce8516": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "c97e183411f84d749cd440fcdfb57145": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Angle of Attack (\u00b0):", "layout": "IPY_MODEL_91d760387b35473788350683ae7e7918", "max": 50, "min": -5, "step": 0.5, "style": "IPY_MODEL_7bbad61090b142779f10b05a91f9410a", "value": 4.999999999999998}}, "cc18dfd3f6594f9ba5ae13124b1a67af": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "ce12f9c5b0e4449ab81949096bd9d345": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "initial"}}, "d0ded887a64c4263ab513fbb15226d82": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "FloatSliderModel", "state": {"behavior": "drag-tap", "description": "Air Density (kg/m\u00b3):", "layout": "IPY_MODEL_db4bab0644be4b0b94e04d5f70b10cd0", "max": 1.3, "min": 0.8, "step": 0.01, "style": "IPY_MODEL_bf9211ed73fe4e7a8f153e7532892ecb", "value": 1.23}}, "db4bab0644be4b0b94e04d5f70b10cd0": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "e1cc9cc94718468bb51f439303fa209d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": ""}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap7/FlightControlPerformance';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 7 Drone Remote Pilot: Geographic Information System" href="RemotePilotandGIS.html" />
+    <link rel="prev" title="Chapter 7 Remote Pilot: Drone Components and Design" href="DroneComponents.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap7/FlightControlPerformance.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap7/FlightControlPerformance.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap7/FlightControlPerformance.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap7/FlightControlPerformance.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap7/FlightControlPerformance.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 7 Drone Remote Pilot: Drone Flight control and Performance</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drone-flight-control-and-aerodynamic-forces">🛫 Drone Flight Control and Aerodynamic Forces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-drones-controlled">🎮 How Are Drones Controlled?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#most-limiting-factors-in-drone-control">⚠️ Most Limiting Factors in Drone Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#related-concepts">📘 Related Concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#density-altitude">🏔️ Density Altitude</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#angle-of-attack-aoa">📐 Angle of Attack (AoA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quadcopter-thrust-estimator-summary">🚀 Quadcopter Thrust Estimator – Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">✅ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">📊 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#airfoil-force-simulator-lift-drag-bank-load-factor-interactive-tool">✈️ Airfoil Force Simulator: Lift, Drag, Bank &amp; Load Factor Interactive Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">⚙️ How It Works</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aerodynamics-equations">Aerodynamics Equations:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-models">Coefficient Models:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-it">📊 How to Use It</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#airfoil-force-simulator-quiz">✈️ Airfoil Force Simulator Quiz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-conceptual-questions">🧠 Reflective &amp; Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-7-drone-remote-pilot-drone-flight-control-and-performance">
+<h1>Chapter 7 Drone Remote Pilot: Drone Flight control and Performance<a class="headerlink" href="#chapter-7-drone-remote-pilot-drone-flight-control-and-performance" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Drone Components </span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Quadcopter Thrust Estimator</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Simulation"><span class="xref myst">Simulation: Airfoil Force Simulator</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="drone-flight-control-and-aerodynamic-forces">
+<h3>🛫 Drone Flight Control and Aerodynamic Forces<a class="headerlink" href="#drone-flight-control-and-aerodynamic-forces" title="Link to this heading">#</a></h3>
+<p>A <strong>drone</strong> (Unmanned Aerial Vehicle or UAV) is a flying robot that operates either autonomously or via remote control. In quadcopters:</p>
+<ul class="simple">
+<li><p>Four rotors generate lift and enable 3D maneuverability.</p></li>
+<li><p>Components include motors, propellers, batteries, sensors, and flight controllers.</p></li>
+<li><p>Drones may carry payloads such as cameras, sensors, or delivery packages.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-are-drones-controlled">
+<h3>🎮 How Are Drones Controlled?<a class="headerlink" href="#how-are-drones-controlled" title="Link to this heading">#</a></h3>
+<p>Quadcopters manipulate thrust across four motors to control movement along four axes:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Control Axis</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hover</strong></p></td>
+<td><p>Maintain altitude by balancing thrust and gravity</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pitch</strong></p></td>
+<td><p>Tilt forward/backward by adjusting front/rear motor speeds</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Roll</strong></p></td>
+<td><p>Tilt left/right by adjusting left/right motor speeds</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Yaw</strong></p></td>
+<td><p>Rotate clockwise/counterclockwise by varying diagonal motor pairs</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Control inputs are delivered via:</p>
+<ul class="simple">
+<li><p><strong>Remote controllers</strong> (manual piloting)</p></li>
+<li><p><strong>Autopilot systems</strong> (GPS-based navigation)</p></li>
+<li><p><strong>Flight control software</strong> (e.g., PID controllers for stability)</p></li>
+</ul>
+</section>
+<section id="most-limiting-factors-in-drone-control">
+<h3>⚠️ Most Limiting Factors in Drone Control<a class="headerlink" href="#most-limiting-factors-in-drone-control" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Limiting Factor</p></th>
+<th class="head"><p>Impact on Control</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Thrust-to-Weight Ratio</strong></p></td>
+<td><p>Insufficient thrust prevents hovering or climbing</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Air Density (Altitude)</strong></p></td>
+<td><p>Reduced lift efficiency at high altitudes due to lower air density</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Battery Capacity</strong></p></td>
+<td><p>Limits flight time and available power for maneuvers</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Propeller Efficiency</strong></p></td>
+<td><p>Poor matching of size/pitch reduces lift and responsiveness</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Environmental Conditions</strong></p></td>
+<td><p>Wind, turbulence, and temperature affect stability and control precision</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sensor Accuracy</strong></p></td>
+<td><p>GPS drift, IMU noise, or barometer errors degrade autonomous control</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="related-concepts">
+<h3>📘 Related Concepts<a class="headerlink" href="#related-concepts" title="Link to this heading">#</a></h3>
+<section id="density-altitude">
+<h4>🏔️ Density Altitude<a class="headerlink" href="#density-altitude" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Definition</strong>: Altitude relative to air density, not physical elevation</p></li>
+<li><p><strong>Impact</strong>: Higher density altitude (e.g., hot, humid, high elevation) reduces air density → less lift</p></li>
+<li><p><strong>Relevance</strong>: Drones require more thrust to operate effectively at high density altitudes</p></li>
+</ul>
+</section>
+<section id="angle-of-attack-aoa">
+<h4>📐 Angle of Attack (AoA)<a class="headerlink" href="#angle-of-attack-aoa" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Definition</strong>: Angle between the chord line of the propeller blade and the oncoming airflow</p></li>
+<li><p><strong>Impact</strong>:</p>
+<ul>
+<li><p>Higher AoA increases lift — up to a point</p></li>
+<li><p>Excessive AoA causes <strong>stall</strong>, reducing lift and increasing drag</p></li>
+</ul>
+</li>
+<li><p><strong>Relevance</strong>: Critical in propeller design and maneuver efficiency</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="quadcopter-thrust-estimator-summary">
+<h3>🚀 Quadcopter Thrust Estimator – Summary<a class="headerlink" href="#quadcopter-thrust-estimator-summary" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="what-it-does">
+<h3>✅ What It Does<a class="headerlink" href="#what-it-does" title="Link to this heading">#</a></h3>
+<p>Creates an interactive simulation using <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> to estimate the thrust required for a quadcopter based on:</p>
+<ul class="simple">
+<li><p>Payload weight</p></li>
+<li><p>Propeller size</p></li>
+<li><p>Propeller pitch</p></li>
+<li><p>Altitude</p></li>
+<li><p>Selected flight maneuver(s)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses sliders and dropdowns for user input</p></li>
+<li><p>Calculates thrust based on:</p>
+<ul>
+<li><p>Gravity-adjusted payload</p></li>
+<li><p>Air density reduction with altitude</p></li>
+<li><p>Propeller diameter and pitch efficiency</p></li>
+<li><p>Maneuver-specific multipliers (e.g., Hover, Roll)</p></li>
+</ul>
+</li>
+<li><p>Outputs the required thrust in Newtons for chosen conditions</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-results">
+<h3>📊 How to Interpret Results<a class="headerlink" href="#how-to-interpret-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The printed thrust value represents <strong>total force needed per quad</strong> to maintain stability or execute maneuvers</p></li>
+<li><p>Higher payload, altitude, pitch, or aggressive movements (e.g., Roll/Pitch) increase required thrust</p></li>
+<li><p>Use this estimate to size motors and propellers appropriately for performance and power management</p></li>
+</ul>
+<p>Perfect for prototyping flight physics or building dynamic educational tools!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Define widgets</span>
+<span class="n">payload_weight</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Payload (grams):&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">propeller_size</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;4 inch&#39;</span><span class="p">,</span> <span class="s1">&#39;5 inch&#39;</span><span class="p">,</span> <span class="s1">&#39;6 inch&#39;</span><span class="p">,</span> <span class="s1">&#39;7 inch&#39;</span><span class="p">,</span> <span class="s1">&#39;8 inch&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;6 inch&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Propeller Size:&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">propeller_pitch</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;3 inch&#39;</span><span class="p">,</span> <span class="s1">&#39;4 inch&#39;</span><span class="p">,</span> <span class="s1">&#39;5 inch&#39;</span><span class="p">,</span> <span class="s1">&#39;6 inch&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;4 inch&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Propeller Pitch:&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">altitude</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Altitude (m):&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">maneuver</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">SelectMultiple</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Hover&#39;</span><span class="p">,</span> <span class="s1">&#39;Yaw&#39;</span><span class="p">,</span> <span class="s1">&#39;Roll&#39;</span><span class="p">,</span> <span class="s1">&#39;Pitch&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Hover&#39;</span><span class="p">],</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Maneuver(s):&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_thrust</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">prop_size</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">alt</span><span class="p">,</span> <span class="n">maneuvers</span><span class="p">):</span>
+    <span class="n">base_factor</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Hover&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">,</span>
+        <span class="s1">&#39;Yaw&#39;</span><span class="p">:</span> <span class="mf">1.05</span><span class="p">,</span>
+        <span class="s1">&#39;Roll&#39;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+        <span class="s1">&#39;Pitch&#39;</span><span class="p">:</span> <span class="mf">1.2</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Prop size and pitch together affect thrust potential</span>
+    <span class="n">size_factor</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;4 inch&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="s1">&#39;5 inch&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s1">&#39;6 inch&#39;</span><span class="p">:</span> <span class="mf">1.1</span><span class="p">,</span>
+        <span class="s1">&#39;7 inch&#39;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span>
+        <span class="s1">&#39;8 inch&#39;</span><span class="p">:</span> <span class="mf">1.3</span>
+    <span class="p">}</span>
+
+    <span class="n">pitch_factor</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;3 inch&#39;</span><span class="p">:</span> <span class="mf">0.95</span><span class="p">,</span>
+        <span class="s1">&#39;4 inch&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s1">&#39;5 inch&#39;</span><span class="p">:</span> <span class="mf">1.05</span><span class="p">,</span>
+        <span class="s1">&#39;6 inch&#39;</span><span class="p">:</span> <span class="mf">1.1</span>
+    <span class="p">}</span>
+
+    <span class="n">air_density_sea_level</span> <span class="o">=</span> <span class="mf">1.225</span>
+    <span class="n">air_density</span> <span class="o">=</span> <span class="n">air_density_sea_level</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">alt</span> <span class="o">/</span> <span class="mi">8500</span><span class="p">)</span>
+
+    <span class="n">maneuver_factor</span> <span class="o">=</span> <span class="nb">max</span><span class="p">([</span><span class="n">base_factor</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">maneuvers</span><span class="p">])</span>
+    <span class="n">adjusted_payload</span> <span class="o">=</span> <span class="n">payload</span> <span class="o">*</span> <span class="mf">9.81</span> <span class="o">*</span> <span class="n">maneuver_factor</span>
+    <span class="n">thrust_factor</span> <span class="o">=</span> <span class="n">size_factor</span><span class="p">[</span><span class="n">prop_size</span><span class="p">]</span> <span class="o">*</span> <span class="n">pitch_factor</span><span class="p">[</span><span class="n">pitch</span><span class="p">]</span>
+    <span class="n">density_adjustment</span> <span class="o">=</span> <span class="n">air_density</span> <span class="o">/</span> <span class="n">air_density_sea_level</span>
+
+    <span class="n">total_thrust</span> <span class="o">=</span> <span class="n">adjusted_payload</span> <span class="o">/</span> <span class="p">(</span><span class="n">thrust_factor</span> <span class="o">*</span> <span class="n">density_adjustment</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">total_thrust</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_output</span><span class="p">(</span><span class="n">change</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">thrust</span> <span class="o">=</span> <span class="n">estimate_thrust</span><span class="p">(</span>
+            <span class="n">payload_weight</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">propeller_size</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">propeller_pitch</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">altitude</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">maneuver</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🚁 Estimated Thrust Needed:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;➡️ </span><span class="si">{</span><span class="n">thrust</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Newtons for selected conditions&quot;</span><span class="p">)</span>
+
+<span class="c1"># Observe changes</span>
+<span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="p">[</span><span class="n">payload_weight</span><span class="p">,</span> <span class="n">propeller_size</span><span class="p">,</span> <span class="n">propeller_pitch</span><span class="p">,</span> <span class="n">altitude</span><span class="p">,</span> <span class="n">maneuver</span><span class="p">]:</span>
+    <span class="n">widget</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_output</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">update_output</span><span class="p">()</span>
+
+<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">payload_weight</span><span class="p">,</span>
+    <span class="n">propeller_size</span><span class="p">,</span>
+    <span class="n">propeller_pitch</span><span class="p">,</span>
+    <span class="n">altitude</span><span class="p">,</span>
+    <span class="n">maneuver</span>
+<span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6f8251a92a8645ca890e3933d0312366", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "93c74a2b51f548c8a43f079be0902a17", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>3. Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="airfoil-force-simulator-lift-drag-bank-load-factor-interactive-tool">
+<h3>✈️ Airfoil Force Simulator: Lift, Drag, Bank &amp; Load Factor Interactive Tool<a class="headerlink" href="#airfoil-force-simulator-lift-drag-bank-load-factor-interactive-tool" title="Link to this heading">#</a></h3>
+<p>This Python widget tool models how an airfoil generates <strong>lift</strong> and experiences <strong>drag</strong> under varying flight conditions, while also accounting for <strong>banking angle</strong> and calculating the <strong>load factor</strong>. It offers hands-on visualization of essential aerodynamic concepts for enhanced flight analysis.</p>
+<hr class="docutils" />
+<p>An interactive simulation built using <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> that calculates and displays:</p>
+<ul class="simple">
+<li><p>🪁 <strong>Lift Force</strong></p></li>
+<li><p>🛑 <strong>Drag Force</strong></p></li>
+<li><p>🔼 <strong>Lift Coefficient (Cl)</strong></p></li>
+<li><p>⏬ <strong>Drag Coefficient (Cd)</strong></p></li>
+<li><p>📎 <strong>Vertical Lift</strong> (effective lift during bank)</p></li>
+<li><p>📈 <strong>Load Factor</strong> (g-force in coordinated turn)</p></li>
+</ul>
+<p>Based on the following adjustable inputs:</p>
+<ul class="simple">
+<li><p>📐 <strong>Angle of Attack (°)</strong></p></li>
+<li><p>🌬️ <strong>Airspeed (m/s)</strong></p></li>
+<li><p>🌡️ <strong>Air Density (kg/m³)</strong></p></li>
+<li><p>🧮 <strong>Wing Area (m²)</strong></p></li>
+<li><p>🔁 <strong>Banking Angle (°)</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3>⚙️ How It Works<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="aerodynamics-equations">
+<h4>Aerodynamics Equations:<a class="headerlink" href="#aerodynamics-equations" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Lift:</strong><br />
+$<span class="math notranslate nohighlight">\(L = 0.5 \cdot \rho \cdot V^2 \cdot S \cdot C_L\)</span>$</p></li>
+<li><p><strong>Drag:</strong><br />
+$<span class="math notranslate nohighlight">\(D = 0.5 \cdot \rho \cdot V^2 \cdot S \cdot C_D\)</span>$</p></li>
+<li><p><strong>Vertical Lift:</strong><br />
+$<span class="math notranslate nohighlight">\(L_v = L \cdot \cos(\phi)\)</span>$</p></li>
+<li><p><strong>Load Factor:</strong><br />
+$<span class="math notranslate nohighlight">\(n = \frac{1}{\cos(\phi)}\)</span>$</p></li>
+</ul>
+</section>
+<section id="coefficient-models">
+<h4>Coefficient Models:<a class="headerlink" href="#coefficient-models" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Cl (Lift Coefficient):</strong><br />
+Linearly increases with AoA up to 15°, then decays exponentially to simulate stall.</p></li>
+<li><p><strong>Cd (Drag Coefficient):</strong><br />
+Grows quadratically with AoA, capturing both parasitic and induced drag components.</p></li>
+</ul>
+<p>All calculations refresh instantly with slider updates, making it ideal for interactive exploration.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-to-use-it">
+<h3>📊 How to Use It<a class="headerlink" href="#how-to-use-it" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Adjust the sliders to simulate different flight conditions.</p></li>
+<li><p>Monitor output values for lift, drag, vertical lift, and load factor.</p></li>
+<li><p>Explore dynamics such as:</p>
+<ul class="simple">
+<li><p>✅ Lift vs. drag trade-offs</p></li>
+<li><p>⚠️ Stall behavior beyond critical AoA</p></li>
+<li><p>🎯 Impact of banking on vertical lift and load factor</p></li>
+<li><p>💨 Influence of speed, density, and wing geometry</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Widget inputs</span>
+<span class="n">angle_of_attack</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Angle of Attack (°):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">airspeed</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Airspeed (m/s):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">air_density</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">1.225</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Air Density (kg/m³):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">wing_area</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wing Area (m²):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">bank_angle</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Banking Angle (°):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="c1"># Coefficient models</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_lift_coefficient</span><span class="p">(</span><span class="n">aoa</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">aoa</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">aoa</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">aoa</span> <span class="o">-</span> <span class="mi">15</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_drag_coefficient</span><span class="p">(</span><span class="n">aoa</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.02</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">aoa</span> <span class="o">+</span> <span class="mf">0.002</span> <span class="o">*</span> <span class="n">aoa</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Force &amp; factor calculations</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_forces</span><span class="p">(</span><span class="n">aoa</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">phi_deg</span><span class="p">):</span>
+    <span class="n">cl</span> <span class="o">=</span> <span class="n">compute_lift_coefficient</span><span class="p">(</span><span class="n">aoa</span><span class="p">)</span>
+    <span class="n">cd</span> <span class="o">=</span> <span class="n">compute_drag_coefficient</span><span class="p">(</span><span class="n">aoa</span><span class="p">)</span>
+    <span class="n">lift</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">*</span> <span class="n">cl</span>
+    <span class="n">drag</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">s</span> <span class="o">*</span> <span class="n">cd</span>
+    <span class="n">phi_rad</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">phi_deg</span><span class="p">)</span>
+    <span class="n">vertical_lift</span> <span class="o">=</span> <span class="n">lift</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_rad</span><span class="p">)</span>
+    <span class="n">load_factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_rad</span><span class="p">)</span> <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_rad</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lift</span><span class="p">,</span> <span class="n">drag</span><span class="p">,</span> <span class="n">vertical_lift</span><span class="p">,</span> <span class="n">load_factor</span><span class="p">,</span> <span class="n">cl</span><span class="p">,</span> <span class="n">cd</span>
+
+<span class="c1"># Update function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">change</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">lift</span><span class="p">,</span> <span class="n">drag</span><span class="p">,</span> <span class="n">vertical_lift</span><span class="p">,</span> <span class="n">load_factor</span><span class="p">,</span> <span class="n">cl</span><span class="p">,</span> <span class="n">cd</span> <span class="o">=</span> <span class="n">compute_forces</span><span class="p">(</span>
+            <span class="n">angle_of_attack</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">airspeed</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">air_density</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">wing_area</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">bank_angle</span><span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✈️ Airfoil Force Analysis&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📐 Angle of Attack: </span><span class="si">{</span><span class="n">angle_of_attack</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌬️ Airspeed: </span><span class="si">{</span><span class="n">airspeed</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌡️ Air Density: </span><span class="si">{</span><span class="n">air_density</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> kg/m³&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧮 Wing Area: </span><span class="si">{</span><span class="n">wing_area</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m²&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔁 Banking Angle: </span><span class="si">{</span><span class="n">bank_angle</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔼 Lift Coefficient (Cl): </span><span class="si">{</span><span class="n">cl</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⏬ Drag Coefficient (Cd): </span><span class="si">{</span><span class="n">cd</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🪁 Lift Force: </span><span class="si">{</span><span class="n">lift</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> N&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🛑 Drag Force: </span><span class="si">{</span><span class="n">drag</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> N&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📎 Vertical Lift (L·cosφ): </span><span class="si">{</span><span class="n">vertical_lift</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> N&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📈 Load Factor (1/cosφ): </span><span class="si">{</span><span class="n">load_factor</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> g&quot;</span><span class="p">)</span>
+
+<span class="c1"># Observe changes</span>
+<span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="p">[</span><span class="n">angle_of_attack</span><span class="p">,</span> <span class="n">airspeed</span><span class="p">,</span> <span class="n">air_density</span><span class="p">,</span> <span class="n">wing_area</span><span class="p">,</span> <span class="n">bank_angle</span><span class="p">]:</span>
+    <span class="n">widget</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">update</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">angle_of_attack</span><span class="p">,</span> <span class="n">airspeed</span><span class="p">,</span> <span class="n">air_density</span><span class="p">,</span> <span class="n">wing_area</span><span class="p">,</span> <span class="n">bank_angle</span><span class="p">,</span> <span class="n">output</span>
+<span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2489cf8698bf4bfcb9d0ab78cc4b397e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>4. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="airfoil-force-simulator-quiz">
+<h3>✈️ Airfoil Force Simulator Quiz<a class="headerlink" href="#airfoil-force-simulator-quiz" title="Link to this heading">#</a></h3>
+<p>Test your understanding of aerodynamic forces and simulation principles!</p>
+</section>
+<hr class="docutils" />
+<section id="reflective-conceptual-questions">
+<h3>🧠 Reflective &amp; Conceptual Questions<a class="headerlink" href="#reflective-conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What is the primary purpose of the Airfoil Force Simulator?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To calculate the thrust required for a quadcopter</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> To model how an airfoil generates lift and experiences drag under varying conditions</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To simulate the effects of propeller size on drone performance</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To estimate battery capacity for flight endurance</p></li>
+</ul>
+</li>
+<li><p><strong>Which equation is used to calculate lift in the simulator?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( L = 0.5 \cdot \rho \cdot V^2 \cdot S \cdot C_D \)</span>)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( L = 0.5 \cdot \rho \cdot V^2 \cdot S \cdot C_L \)</span>)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( L = \rho \cdot V \cdot S \cdot C_L \)</span>)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( L = 0.5 \cdot \rho \cdot V \cdot S \cdot C_D \)</span>)</p></li>
+</ul>
+</li>
+<li><p><strong>What happens to the lift coefficient ( <span class="math notranslate nohighlight">\(( C_L \)</span>) ) when the angle of attack exceeds 15°?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> It continues to increase linearly</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> It decreases exponentially to simulate stall</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> It remains constant</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> It decreases quadratically</p></li>
+</ul>
+</li>
+<li><p><strong>How is the load factor ( <span class="math notranslate nohighlight">\(( n \)</span>) ) calculated during a banked turn?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( n = \)</span>cos(\phi) $)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( n = \)</span>frac{1}{\cos(\phi)} $)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( n = \)</span>sin(\phi) $)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( n = \)</span>frac{1}{\sin(\phi)} $)</p></li>
+</ul>
+</li>
+<li><p><strong>What is the effect of increasing the banking angle ( <span class="math notranslate nohighlight">\(( \phi \)</span>) ) on vertical lift ( <span class="math notranslate nohighlight">\(( L_v \)</span>) )?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Vertical lift increases</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Vertical lift decreases</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Vertical lift remains constant</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Vertical lift becomes zero</p></li>
+</ul>
+</li>
+<li><p><strong>What is the relationship between drag coefficient ( <span class="math notranslate nohighlight">\(( C_D \)</span>) ) and AoA?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( C_D \)</span>) increases linearly with AoA</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( C_D \)</span>) decreases linearly with AoA</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( C_D \)</span>) grows quadratically with AoA</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( C_D \)</span>) remains constant regardless of AoA</p></li>
+</ul>
+</li>
+<li><p><strong>Which parameter directly affects both lift and drag forces?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Banking angle ( <span class="math notranslate nohighlight">\(( \phi \)</span>) )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Airspeed ( <span class="math notranslate nohighlight">\(( V \)</span>) )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Load factor ( <span class="math notranslate nohighlight">\(( n \)</span>) )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Wing area ( <span class="math notranslate nohighlight">\(( S \)</span>) )</p></li>
+</ul>
+</li>
+<li><p><strong>What happens to the load factor ( <span class="math notranslate nohighlight">\(( n \)</span>) ) as the banking angle approaches 90°?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Load factor approaches 0</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Load factor approaches infinity</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Load factor remains constant</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Load factor decreases linearly</p></li>
+</ul>
+</li>
+<li><p><strong>What is the primary aerodynamic trade-off explored in the simulator?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Lift vs. banking angle</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Lift vs. drag</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Drag vs. air density</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Load factor vs. wing area</p></li>
+</ul>
+</li>
+<li><p><strong>Why does the simulator model <span class="math notranslate nohighlight">\(( C_L \)</span>) decay exponentially beyond 15° AoA?</strong></p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To simulate the effects of increased drag</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> To simulate the effects of stall</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To simulate the effects of reduced air density</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To simulate the effects of increased banking angle</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>❓ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which force opposes thrust during forward motion?</strong></p>
+<ul class="simple">
+<li><p>A. Lift</p></li>
+<li><p>B. Drag</p></li>
+<li><p>C. Weight</p></li>
+<li><p>D. Pitch<br />
+<strong>✅ Answer</strong>: B</p></li>
+</ul>
+</li>
+<li><p><strong>What happens when thrust is less than weight?</strong></p>
+<ul class="simple">
+<li><p>A. The drone hovers</p></li>
+<li><p>B. The drone ascends</p></li>
+<li><p>C. The drone descends</p></li>
+<li><p>D. The drone rolls<br />
+<strong>✅ Answer</strong>: C</p></li>
+</ul>
+</li>
+<li><p><strong>Which maneuver adjusts diagonal motor pairs to rotate the drone?</strong></p>
+<ul class="simple">
+<li><p>A. Pitch</p></li>
+<li><p>B. Roll</p></li>
+<li><p>C. Yaw</p></li>
+<li><p>D. Hover<br />
+<strong>✅ Answer</strong>: C</p></li>
+</ul>
+</li>
+<li><p><strong>What does a high angle of attack risk causing?</strong></p>
+<ul class="simple">
+<li><p>A. Increased lift</p></li>
+<li><p>B. Stall</p></li>
+<li><p>C. Reduced drag</p></li>
+<li><p>D. Better agility<br />
+<strong>✅ Answer</strong>: B</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap7"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DroneComponents.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 7 Remote Pilot: Drone Components and Design</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="RemotePilotandGIS.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 7 Drone Remote Pilot: Geographic Information System</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drone-flight-control-and-aerodynamic-forces">🛫 Drone Flight Control and Aerodynamic Forces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-drones-controlled">🎮 How Are Drones Controlled?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#most-limiting-factors-in-drone-control">⚠️ Most Limiting Factors in Drone Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#related-concepts">📘 Related Concepts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#density-altitude">🏔️ Density Altitude</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#angle-of-attack-aoa">📐 Angle of Attack (AoA)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quadcopter-thrust-estimator-summary">🚀 Quadcopter Thrust Estimator – Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">✅ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">📊 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#airfoil-force-simulator-lift-drag-bank-load-factor-interactive-tool">✈️ Airfoil Force Simulator: Lift, Drag, Bank &amp; Load Factor Interactive Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">⚙️ How It Works</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#aerodynamics-equations">Aerodynamics Equations:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-models">Coefficient Models:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-it">📊 How to Use It</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#airfoil-force-simulator-quiz">✈️ Airfoil Force Simulator Quiz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-conceptual-questions">🧠 Reflective &amp; Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1299 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>🌐 Computer Networks: Overview and Analysis &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap8/12Network';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="📊 Sampling and Descriptive Statistics" href="13Statistics.html" />
+    <link rel="prev" title="🛡️ Cybersecurity Fundamentals Learning Module" href="11CyberSecurity.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap8/12Network.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap8/12Network.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap8/12Network.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap8/12Network.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap8/12Network.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>🌐 Computer Networks: Overview and Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🌐 Computer Networks: Overview and Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-computer-network">1️⃣ What Is a Computer Network?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-computer-networks">2️⃣ Types of Computer Networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-network-protocols">3️⃣ Comparison of Network Protocols</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-skills-for-network-analysis">4️⃣ Tools and Skills for Network Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">🛠️ Tools</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#skills">🧠 Skills</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">📘 Summary Table</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-simulation-simulate-how-different-protocols-behave-e-g-tcp-vs-udp">1. Protocol Simulation: Simulate how different protocols behave (e.g., TCP vs. UDP):</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-address-and-subnet-calculaton-students-input-ip-and-subnet-mask-to-compute-network-details">IP Address and Subnet Calculaton: Students input IP and subnet mask to compute network details:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model-explorer-interactive-dropdown-to-explore-each-osi-layer">3. OSI Model Explorer: Interactive dropdown to explore each OSI layer:</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="computer-networks-overview-and-analysis">
+<h1>🌐 Computer Networks: Overview and Analysis<a class="headerlink" href="#computer-networks-overview-and-analysis" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+</section>
+<section id="what-is-a-computer-network">
+<h1>1️⃣ What Is a Computer Network?<a class="headerlink" href="#what-is-a-computer-network" title="Link to this heading">#</a></h1>
+<p>A <strong>computer network</strong> is a system of interconnected devices (computers, servers, routers, etc.) that communicate and share resources using transmission protocols. Networks enable data exchange, remote access, and distributed computing.</p>
+<p><strong>Key Components</strong>:</p>
+<ul class="simple">
+<li><p>Nodes (devices)</p></li>
+<li><p>Transmission medium (wired/wireless)</p></li>
+<li><p>Protocols (rules for communication)</p></li>
+<li><p>Network interfaces (NICs, routers, switches)</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="types-of-computer-networks">
+<h1>2️⃣ Types of Computer Networks<a class="headerlink" href="#types-of-computer-networks" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Scope</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LAN</p></td>
+<td><p>Local Area</p></td>
+<td><p>Covers small geographic area (e.g., office)</p></td>
+<td><p>Home Wi-Fi, school network</p></td>
+</tr>
+<tr class="row-odd"><td><p>WAN</p></td>
+<td><p>Wide Area</p></td>
+<td><p>Covers large geographic area</p></td>
+<td><p>Internet, corporate networks</p></td>
+</tr>
+<tr class="row-even"><td><p>MAN</p></td>
+<td><p>Metropolitan</p></td>
+<td><p>Spans a city or campus</p></td>
+<td><p>City-wide broadband</p></td>
+</tr>
+<tr class="row-odd"><td><p>PAN</p></td>
+<td><p>Personal Area</p></td>
+<td><p>Short-range, personal devices</p></td>
+<td><p>Bluetooth, wearable tech</p></td>
+</tr>
+<tr class="row-even"><td><p>WLAN</p></td>
+<td><p>Wireless LAN</p></td>
+<td><p>Wireless version of LAN</p></td>
+<td><p>Wi-Fi hotspots</p></td>
+</tr>
+<tr class="row-odd"><td><p>CAN</p></td>
+<td><p>Campus Area</p></td>
+<td><p>Connects buildings within a campus</p></td>
+<td><p>University network</p></td>
+</tr>
+<tr class="row-even"><td><p>SAN</p></td>
+<td><p>Storage Area</p></td>
+<td><p>Dedicated to data storage and retrieval</p></td>
+<td><p>Data centers</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+<section id="comparison-of-network-protocols">
+<h1>3️⃣ Comparison of Network Protocols<a class="headerlink" href="#comparison-of-network-protocols" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Protocol</p></th>
+<th class="head"><p>Layer</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Characteristics</p></th>
+<th class="head"><p>Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TCP</p></td>
+<td><p>Transport</p></td>
+<td><p>Reliable, ordered data delivery</p></td>
+<td><p>Connection-oriented, error-checked</p></td>
+<td><p>Web browsing, email</p></td>
+</tr>
+<tr class="row-odd"><td><p>UDP</p></td>
+<td><p>Transport</p></td>
+<td><p>Fast, connectionless transmission</p></td>
+<td><p>No guarantee of delivery or order</p></td>
+<td><p>Streaming, gaming</p></td>
+</tr>
+<tr class="row-even"><td><p>IP</p></td>
+<td><p>Network</p></td>
+<td><p>Routing and addressing</p></td>
+<td><p>Stateless, best-effort delivery</p></td>
+<td><p>Internet backbone</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTTP/HTTPS</p></td>
+<td><p>Application</p></td>
+<td><p>Web communication</p></td>
+<td><p>Text-based, secure with HTTPS</p></td>
+<td><p>Websites, APIs</p></td>
+</tr>
+<tr class="row-even"><td><p>FTP</p></td>
+<td><p>Application</p></td>
+<td><p>File transfer</p></td>
+<td><p>Authenticated, supports large files</p></td>
+<td><p>File sharing</p></td>
+</tr>
+<tr class="row-odd"><td><p>SMTP</p></td>
+<td><p>Application</p></td>
+<td><p>Email transmission</p></td>
+<td><p>Push-based, used with POP/IMAP</p></td>
+<td><p>Email servers</p></td>
+</tr>
+<tr class="row-even"><td><p>DNS</p></td>
+<td><p>Application</p></td>
+<td><p>Domain name resolution</p></td>
+<td><p>Converts domain names to IP addresses</p></td>
+<td><p>Web access</p></td>
+</tr>
+<tr class="row-odd"><td><p>ICMP</p></td>
+<td><p>Network</p></td>
+<td><p>Diagnostics and error reporting</p></td>
+<td><p>Used for ping/traceroute</p></td>
+<td><p>Network troubleshooting</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+<section id="tools-and-skills-for-network-analysis">
+<h1>4️⃣ Tools and Skills for Network Analysis<a class="headerlink" href="#tools-and-skills-for-network-analysis" title="Link to this heading">#</a></h1>
+</section>
+<section id="tools">
+<h1>🛠️ Tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Wireshark</strong>: Packet capture and protocol analysis</p></li>
+<li><p><strong>Nmap</strong>: Network scanning and host discovery</p></li>
+<li><p><strong>Ping/Traceroute</strong>: Connectivity and path tracing</p></li>
+<li><p><strong>Netstat</strong>: Displays active connections and ports</p></li>
+<li><p><strong>Tcpdump</strong>: Command-line packet analyzer</p></li>
+<li><p><strong>NSLookup/Dig</strong>: DNS query tools</p></li>
+<li><p><strong>NetworkMiner</strong>: Passive packet sniffing and forensic analysis</p></li>
+</ul>
+</section>
+<section id="skills">
+<h1>🧠 Skills<a class="headerlink" href="#skills" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Understanding of OSI and TCP/IP models</p></li>
+<li><p>Protocol behavior and packet structure</p></li>
+<li><p>IP addressing and subnetting</p></li>
+<li><p>Firewall and routing configuration</p></li>
+<li><p>Intrusion detection and traffic filtering</p></li>
+<li><p>Performance monitoring and bottleneck analysis</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="summary-table">
+<h1>📘 Summary Table<a class="headerlink" href="#summary-table" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Key Elements</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Network Types</p></td>
+<td><p>LAN, WAN, MAN, PAN, WLAN, CAN, SAN</p></td>
+</tr>
+<tr class="row-odd"><td><p>Protocols</p></td>
+<td><p>TCP, UDP, IP, HTTP/HTTPS, FTP, SMTP, DNS, ICMP</p></td>
+</tr>
+<tr class="row-even"><td><p>Analysis Tools</p></td>
+<td><p>Wireshark, Nmap, Netstat, Tcpdump, NSLookup</p></td>
+</tr>
+<tr class="row-odd"><td><p>Required Skills</p></td>
+<td><p>Protocol analysis, subnetting, diagnostics</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p>Computer networks are the backbone of modern communication. Mastery of protocols, tools, and diagnostic techniques is essential for careers in <strong>network engineering</strong>, <strong>cybersecurity</strong>, and <strong>IT infrastructure</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📘 Topics with Descriptions, Components, Skills, and Quizzes</span>
+<span class="n">topics</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;What is a Computer Network&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">A **computer network** is a system of interconnected devices that communicate and share resources.</span>
+
+<span class="s2">### 🔧 Key Components:</span>
+<span class="s2">- Nodes (computers, routers, switches)</span>
+<span class="s2">- Transmission media (cables, wireless)</span>
+<span class="s2">- Protocols (rules for communication)</span>
+<span class="s2">- Network interfaces (NICs)</span>
+
+<span class="s2">### 🧠 Skills to Master:</span>
+<span class="s2">- OSI and TCP/IP models</span>
+<span class="s2">- IP addressing and routing</span>
+<span class="s2">- Network hardware and topology</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quiz&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;What is the primary purpose of a computer network?&quot;</span><span class="p">,</span> <span class="s2">&quot;To share resources and enable communication&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Which component defines the rules for data exchange?&quot;</span><span class="p">,</span> <span class="s2">&quot;Protocol&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;What does NIC stand for?&quot;</span><span class="p">,</span> <span class="s2">&quot;Network Interface Card&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="s2">&quot;Types of Networks&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Networks vary by size and scope.</span>
+
+<span class="s2">### 🌐 Common Types:</span>
+<span class="s2">- LAN: Local Area Network</span>
+<span class="s2">- WAN: Wide Area Network</span>
+<span class="s2">- PAN: Personal Area Network</span>
+<span class="s2">- MAN: Metropolitan Area Network</span>
+<span class="s2">- SAN: Storage Area Network</span>
+<span class="s2">- WLAN: Wireless LAN</span>
+
+<span class="s2">### 🧠 Skills to Master:</span>
+<span class="s2">- Network design and topology</span>
+<span class="s2">- Wireless vs. wired configurations</span>
+<span class="s2">- Security and scalability</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quiz&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Which network type is used in homes and small offices?&quot;</span><span class="p">,</span> <span class="s2">&quot;LAN&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Which network spans a city or campus?&quot;</span><span class="p">,</span> <span class="s2">&quot;MAN&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Which type is used for Bluetooth devices?&quot;</span><span class="p">,</span> <span class="s2">&quot;PAN&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="s2">&quot;Network Protocols&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Protocols define how data is transmitted.</span>
+
+<span class="s2">### 🔗 Key Protocols:</span>
+<span class="s2">- TCP: Reliable, ordered delivery</span>
+<span class="s2">- UDP: Fast, connectionless</span>
+<span class="s2">- IP: Routing and addressing</span>
+<span class="s2">- HTTP/HTTPS: Web communication</span>
+<span class="s2">- FTP: File transfer</span>
+<span class="s2">- DNS: Domain name resolution</span>
+<span class="s2">- ICMP: Diagnostics</span>
+
+<span class="s2">### 🧠 Skills to Master:</span>
+<span class="s2">- Packet structure and headers</span>
+<span class="s2">- Port numbers and services</span>
+<span class="s2">- Protocol behavior and use cases</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quiz&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Which protocol ensures reliable delivery?&quot;</span><span class="p">,</span> <span class="s2">&quot;TCP&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Which protocol is used for domain name resolution?&quot;</span><span class="p">,</span> <span class="s2">&quot;DNS&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Which protocol is commonly used for streaming?&quot;</span><span class="p">,</span> <span class="s2">&quot;UDP&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="s2">&quot;Network Analysis Tools&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Tools help monitor and troubleshoot networks.</span>
+
+<span class="s2">### 🛠️ Tools:</span>
+<span class="s2">- Wireshark: Packet analysis</span>
+<span class="s2">- Nmap: Network scanning</span>
+<span class="s2">- Ping/Traceroute: Connectivity testing</span>
+<span class="s2">- Netstat: Active connections</span>
+<span class="s2">- Tcpdump: CLI packet capture</span>
+<span class="s2">- NSLookup/Dig: DNS queries</span>
+
+<span class="s2">### 🧠 Skills to Master:</span>
+<span class="s2">- Packet inspection and filtering</span>
+<span class="s2">- Host discovery and scanning</span>
+<span class="s2">- DNS resolution and traffic tracing</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quiz&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">&quot;Which tool captures and analyzes packets?&quot;</span><span class="p">,</span> <span class="s2">&quot;Wireshark&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Which tool is used to scan for open ports?&quot;</span><span class="p">,</span> <span class="s2">&quot;Nmap&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">&quot;Which tool helps trace the path to a remote host?&quot;</span><span class="p">,</span> <span class="s2">&quot;Traceroute&quot;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># 🔘 Topic Selector</span>
+<span class="n">topic_selector</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">topics</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;📚 Select Topic:&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">},</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;400px&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">output_area</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="c1"># 🔄 Update Display</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_topic</span><span class="p">(</span><span class="n">change</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">output_area</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">topic_selector</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">topics</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
+    <span class="k">with</span> <span class="n">output_area</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 🧠 </span><span class="si">{</span><span class="n">selected</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;### ❓ Quiz&quot;</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">content</span><span class="p">[</span><span class="s2">&quot;quiz&quot;</span><span class="p">]:</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- **Q:** </span><span class="si">{</span><span class="n">q</span><span class="si">}</span><span class="s2">  </span><span class="se">\n</span><span class="s2">  **A:** </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+<span class="c1"># 🔁 Observe Changes</span>
+<span class="n">topic_selector</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_topic</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="c1"># 🚀 Display Interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">topic_selector</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">output_area</span><span class="p">)</span>
+<span class="n">update_topic</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "57d711e04a29445a84f463c9ac058067", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ef1340632e0e4022b704ef875dbbc3bf", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="protocol-simulation-simulate-how-different-protocols-behave-e-g-tcp-vs-udp">
+<h1>1. Protocol Simulation: Simulate how different protocols behave (e.g., TCP vs. UDP):<a class="headerlink" href="#protocol-simulation-simulate-how-different-protocols-behave-e-g-tcp-vs-udp" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_tcp</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔗 TCP: Establishing connection...&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📦 Sending: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ TCP: Delivery confirmed with ACK&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_udp</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📦 UDP: Sending </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2"> without confirmation&quot;</span><span class="p">)</span>
+
+<span class="n">simulate_tcp</span><span class="p">(</span><span class="s2">&quot;Hello, TCP!&quot;</span><span class="p">)</span>
+<span class="n">simulate_udp</span><span class="p">(</span><span class="s2">&quot;Hello, UDP!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🔗 TCP: Establishing connection...
+📦 Sending: Hello, TCP!
+✅ TCP: Delivery confirmed with ACK
+📦 UDP: Sending Hello, UDP! without confirmation
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ip-address-and-subnet-calculaton-students-input-ip-and-subnet-mask-to-compute-network-details">
+<h1>IP Address and Subnet Calculaton: Students input IP and subnet mask to compute network details:<a class="headerlink" href="#ip-address-and-subnet-calculaton-students-input-ip-and-subnet-mask-to-compute-network-details" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipaddress</span>
+<span class="n">ip_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;192.168.1.10/24&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Enter IP/Subnet:&#39;</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_network</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">net</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_interface</span><span class="p">(</span><span class="n">ip_input</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Network:** </span><span class="si">{</span><span class="n">net</span><span class="o">.</span><span class="n">network</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Host IP:** </span><span class="si">{</span><span class="n">net</span><span class="o">.</span><span class="n">ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Netmask:** </span><span class="si">{</span><span class="n">net</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">netmask</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+<span class="n">ip_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">calculate_network</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ip_input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+<span class="n">calculate_network</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8f01a6bea6ac4e4db10183e4fa4a6a0a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e9c2cff5fc614f78b14e332cbbb3a248", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="osi-model-explorer-interactive-dropdown-to-explore-each-osi-layer">
+<h1>3. OSI Model Explorer: Interactive dropdown to explore each OSI layer:<a class="headerlink" href="#osi-model-explorer-interactive-dropdown-to-explore-each-osi-layer" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">osi_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Application&quot;</span><span class="p">:</span> <span class="s2">&quot;User-facing services (HTTP, FTP, SMTP)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Presentation&quot;</span><span class="p">:</span> <span class="s2">&quot;Data formatting, encryption (SSL, JPEG)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Session&quot;</span><span class="p">:</span> <span class="s2">&quot;Connection management (API sessions)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Transport&quot;</span><span class="p">:</span> <span class="s2">&quot;Reliable delivery (TCP, UDP)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Network&quot;</span><span class="p">:</span> <span class="s2">&quot;Routing and addressing (IP)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Data Link&quot;</span><span class="p">:</span> <span class="s2">&quot;MAC addressing, switches&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Physical&quot;</span><span class="p">:</span> <span class="s2">&quot;Cables, signals, hardware&quot;</span>
+<span class="p">}</span>
+
+<span class="n">layer_selector</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">osi_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;OSI Layer:&quot;</span><span class="p">)</span>
+<span class="n">layer_output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_layer</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="n">layer_output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">layer_output</span><span class="p">:</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### </span><span class="si">{</span><span class="n">layer_selector</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> Layer&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">osi_layers</span><span class="p">[</span><span class="n">layer_selector</span><span class="o">.</span><span class="n">value</span><span class="p">]))</span>
+
+<span class="n">layer_selector</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">show_layer</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">layer_selector</span><span class="p">,</span> <span class="n">layer_output</span><span class="p">)</span>
+<span class="n">show_layer</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "81bafc53ef18470293bece77de83bb95", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a0ca3845b57e4e31a348611d0beedd35", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11CyberSecurity.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">🛡️ Cybersecurity Fundamentals Learning Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="13Statistics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">📊 Sampling and Descriptive Statistics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">🌐 Computer Networks: Overview and Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-computer-network">1️⃣ What Is a Computer Network?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-computer-networks">2️⃣ Types of Computer Networks</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-network-protocols">3️⃣ Comparison of Network Protocols</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-skills-for-network-analysis">4️⃣ Tools and Skills for Network Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">🛠️ Tools</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#skills">🧠 Skills</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">📘 Summary Table</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-simulation-simulate-how-different-protocols-behave-e-g-tcp-vs-udp">1. Protocol Simulation: Simulate how different protocols behave (e.g., TCP vs. UDP):</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ip-address-and-subnet-calculaton-students-input-ip-and-subnet-mask-to-compute-network-details">IP Address and Subnet Calculaton: Students input IP and subnet mask to compute network details:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#osi-model-explorer-interactive-dropdown-to-explore-each-osi-layer">3. OSI Model Explorer: Interactive dropdown to explore each OSI layer:</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

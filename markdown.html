@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Citations &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/markdown.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2Fmarkdown.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/markdown.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Citations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="citations">
+<h1>Citations<a class="headerlink" href="#citations" title="Link to this heading">#</a></h1>
+<p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
+the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
+this: <span id="id1">[]</span>.</p>
+<p>Moreover, you can insert a bibliography into your page with this syntax:
+The <code class="docutils literal notranslate"><span class="pre">{bibliography}</span></code> directive must be used for all the <code class="docutils literal notranslate"><span class="pre">{cite}</span></code> roles to
+render properly.
+For example, if the references for your book are stored in <code class="docutils literal notranslate"><span class="pre">references.bib</span></code>,
+then the bibliography is inserted with:</p>
+<div class="docutils container" id="id2">
+<div role="list" class="citation-list">
+<div class="citation" id="id120" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bah25<span class="fn-bracket">]</span></span>
+<p>Alireza Bahrami, editor. <em>Advances in Sustainable Concrete for Construction</em>. Springer Nature Switzerland, Cham, 2025. ISBN 9783031850516. Covers climate-improved concrete, SCMs, ECCs, internal curing, and empirical performance models. URL: <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-031-85052-3">https://link.springer.com/book/10.1007/978-3-031-85052-3</a>, <a class="reference external" href="https://doi.org/10.1007/978-3-031-85052-3">doi:10.1007/978-3-031-85052-3</a>.</p>
+</div>
+<div class="citation" id="id20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bau74<span class="fn-bracket">]</span></span>
+<p>Sebastian W. Bauer. A modified horton equation for infiltration during intermittent rainfall. <em>Hydrological Sciences Bulletin</em>, 19(2):219–230, 1974. <a class="reference external" href="https://doi.org/10.1080/02626667409493900">doi:10.1080/02626667409493900</a>.</p>
+</div>
+<div class="citation" id="id121" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BM06<span class="fn-bracket">]</span></span>
+<p>Mark A. Benedict and Edward T. McMahon. <em>Green Infrastructure: Linking Landscapes and Communities</em>. Island Press, Washington, DC, 2006. ISBN 978-1559635585.</p>
+</div>
+<div class="citation" id="id55" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BW13<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in bent2013regional</strong></p>
+</div>
+<div class="citation" id="id71" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BCS10<span class="fn-bracket">]</span></span>
+<p>Ryan R. Berg, Barry R. Christopher, and Naresh C. Samtani. <em>Design and Construction of Mechanically Stabilized Earth Walls and Reinforced Soil Slopes</em>. Washington, D.C., 2010. FHWA GEC 011 – Volume I; includes retaining wall design guidelines and LRFD procedures.</p>
+</div>
+<div class="citation" id="id118" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BL22<span class="fn-bracket">]</span></span>
+<p>Mike Berners-Lee. <em>The Carbon Footprint of Everything</em>. Greystone Books Ltd, 2022. ISBN 9781771645775. URL: <a class="reference external" href="https://books.google.com/books/about/The_Carbon_Footprint_of_Everything.html?id=CkBUEAAAQBAJ">https://books.google.com/books/about/The_Carbon_Footprint_of_Everything.html?id=CkBUEAAAQBAJ</a>.</p>
+</div>
+<div class="citation" id="id101" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>BL+84<span class="fn-bracket">]</span></span>
+<p>P. Bettess, S. C. Liang, and others. Wave diffraction around breakwaters. In <em>Proceedings of the International Conference on Coastal Engineering</em>. Houston, Texas, 1984. ASCE. Finite element modeling of wave diffraction using Berkhoff's mild-slope equation. URL: <a class="reference external" href="https://icce-ojs-tamu.tdl.org/icce/index.php/icce/article/view/4151">https://icce-ojs-tamu.tdl.org/icce/index.php/icce/article/view/4151</a>.</p>
+</div>
+<div class="citation" id="id143" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bol19<span class="fn-bracket">]</span></span>
+<p>Paul Bolstad. <em>GIS Fundamentals: A First Text on Geographic Information Systems</em>. XanEdu Publishing Inc, 6th edition, 2019. ISBN 9781593995522.</p>
+</div>
+<div class="citation" id="id80" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bov86<span class="fn-bracket">]</span></span>
+<p>Ken D. Bovee. <em>Development and Evaluation of Habitat Suitability Criteria for Use in the Instream Flow Incremental Methodology</em>. U.S. Fish and Wildlife Service, Fort Collins, CO, 1986.</p>
+</div>
+<div class="citation" id="id72" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bow96<span class="fn-bracket">]</span></span>
+<p>Joseph E. Bowles. <em>Foundation Analysis and Design</em>. McGraw-Hill, New York, 5th edition, 1996. ISBN 9780079122476. Extensive treatment of bearing capacity, settlement, lateral earth pressure, and pile design.</p>
+</div>
+<div class="citation" id="id104" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Bru62<span class="fn-bracket">]</span></span>
+<p>Per Bruun. Sea-level rise as a cause of shore erosion. <em>Journal of the Waterways and Harbors Division, ASCE</em>, 88(WW1):117–130, 1962. Original derivation of the Bruun Rule.</p>
+</div>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cha04<span class="fn-bracket">]</span></span>
+<p>Hubert Chanson. <em>Hydraulics of Open Channel Flow</em>. Butterworth-Heinemann, 2 edition, 2004. ISBN 9780750659789.</p>
+</div>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cho59<span class="fn-bracket">]</span></span>
+<p>Ven Te Chow. <em>Open-Channel Hydraulics</em>. McGraw-Hill, New York, NY, 1959. ISBN 9781932846188. A foundational text covering uniform, varied, and unsteady flow in open channels.</p>
+</div>
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CMM88<span class="fn-bracket">]</span></span>
+<p>Ven Te Chow, David R. Maidment, and Larry W. Mays. <em>Applied Hydrology</em>. McGraw-Hill, 1988. Includes φ-index method for estimating infiltration losses.</p>
+</div>
+<div class="citation" id="id70" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cod11<span class="fn-bracket">]</span></span>
+<p>Donald P. Coduto. <em>Foundation Design: Principles and Practices</em>. Prentice Hall, Upper Saddle River, NJ, 2nd edition, 2011. ISBN 9780135897065. Comprehensive coverage of shallow and deep foundations, lateral earth pressure, and retaining structures.</p>
+</div>
+<div class="citation" id="id61" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Cun89<span class="fn-bracket">]</span></span>
+<p>C. Cunnane. <em>Statistical Distributions for Flood Frequency Analysis</em>. Number 33 in Operational Hydrology Report. Secretariat of the World Meteorological Organization, Geneva, 1989.</p>
+</div>
+<div class="citation" id="id97" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DP86<span class="fn-bracket">]</span></span>
+<p>William R. Dally and Joan Pope. Detached breakwaters for shore protection. Technical Report, U.S. Army Engineer Waterways Experiment Station, Coastal Engineering Research Center, Vicksburg, Mississippi, 1986. Final report prepared for the Department of the Army, US Army Corps of Engineers.</p>
+</div>
+<div class="citation" id="id43" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Das10a<span class="fn-bracket">]</span></span>
+<p>Braja M. Das. <em>Principles of Foundation Engineering</em>. Cengage Learning, Stamford, CT, 7th edition, 2010. ISBN 9780495411307.</p>
+</div>
+<div class="citation" id="id67" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Das10b<span class="fn-bracket">]</span></span>
+<p>Braja M. Das. <em>Principles of Foundation Engineering</em>. Cengage Learning, Stamford, CT, 7th edition, 2010.</p>
+</div>
+<div class="citation" id="id52" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Das21<span class="fn-bracket">]</span></span>
+<p>Braja M. Das. <em>Principles of Geotechnical Engineering</em>. Cengage Learning, Boston, MA, 10th edition, 2021. ISBN 9780357420485.</p>
+</div>
+<div class="citation" id="id23" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DC13<span class="fn-bracket">]</span></span>
+<p>Mackenzie L. Davis and David A. Cornwell. <em>Principles of Environmental Engineering and Science</em>. McGraw-Hill Education, 3rd edition, 2013. ISBN 9780073397900.</p>
+</div>
+<div class="citation" id="id136" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>dSGL24<span class="fn-bracket">]</span></span>
+<p>Michael J. de Smith, Michael F. Goodchild, and Paul A. Longley. <em>Geospatial Analysis: A Comprehensive Guide to Principles, Techniques and Software Tools</em>. Winchelsea Press, 7th edition, 2024. URL: <a class="reference external" href="https://www.spatialanalysisonline.com/extractv7.pdf">https://www.spatialanalysisonline.com/extractv7.pdf</a>.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DD01a<span class="fn-bracket">]</span></span>
+<p>Robert G. Dean and Robert A. Dalrymple. <em>Coastal Processes with Engineering Applications</em>. Cambridge University Press, Cambridge, UK, 2001. ISBN 9780521645641.</p>
+</div>
+<div class="citation" id="id74" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DD01b<span class="fn-bracket">]</span></span>
+<p>Robert G. Dean and Robert A. Dalrymple. <em>Coastal Processes with Engineering Applications</em>. Cambridge University Press, Cambridge, UK, 2001. ISBN 9780521602754. <a class="reference external" href="https://doi.org/10.1017/CBO9780511754500">doi:10.1017/CBO9780511754500</a>.</p>
+</div>
+<div class="citation" id="id27" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DM03<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in delzer2003bod</strong></p>
+</div>
+<div class="citation" id="id129" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Dol19<span class="fn-bracket">]</span></span>
+<p>A. J. Dolman. <em>Biogeochemical Cycles and Climate</em>. Oxford University Press, 2019. ISBN 9780198779308. Explores the interaction of Earth's biogeochemical cycles with climate physics, including carbon, nitrogen, phosphorus, and water cycles. URL: <a class="reference external" href="https://academic.oup.com/book/35103">https://academic.oup.com/book/35103</a>, <a class="reference external" href="https://doi.org/10.1093/oso/9780198779308.001.0001">doi:10.1093/oso/9780198779308.001.0001</a>.</p>
+</div>
+<div class="citation" id="id39" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DUDFCD20<span class="fn-bracket">]</span></span>
+<p>Urban Drainage and Flood Control District (UDFCD). Chapter 7: streets, inlets, and storm drains. 2020. Comprehensive guidance on inlet types, design procedures, and storm drain hydraulics.</p>
+</div>
+<div class="citation" id="id116" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>FvCB80<span class="fn-bracket">]</span></span>
+<p>G. D. Farquhar, S. von Caemmerer, and J. A. Berry. A biochemical model of photosynthetic co₂ assimilation in leaves of c₃ species. <em>Planta</em>, 149(1):78–90, 1980. URL: <a class="reference external" href="https://doi.org/10.1007/BF00386231">https://doi.org/10.1007/BF00386231</a>, <a class="reference external" href="https://doi.org/10.1007/BF00386231">doi:10.1007/BF00386231</a>.</p>
+</div>
+<div class="citation" id="id107" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Fen99<span class="fn-bracket">]</span></span>
+<p>John D. Fenton. <em>Numerical Methods for Nonlinear Waves</em>. Volume 5. World Scientific, Singapore, 1999. ISBN 9789810237073. Comprehensive treatment of Stokes, cnoidal, solitary, and stream function wave theories with numerical methods. URL: <a class="reference external" href="https://johndfenton.com/Papers/Fenton99Liu-Numerical-methods-for-nonlinear-waves.pdf">https://johndfenton.com/Papers/Fenton99Liu-Numerical-methods-for-nonlinear-waves.pdf</a>.</p>
+</div>
+<div class="citation" id="id28" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Fet01<span class="fn-bracket">]</span></span>
+<p>C. W. Fetter. <em>Applied Hydrogeology</em>. Prentice Hall, Upper Saddle River, NJ, 4th edition, 2001.</p>
+</div>
+<div class="citation" id="id115" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>FG82<span class="fn-bracket">]</span></span>
+<p>J. R. Freney and I. E. Galbally, editors. <em>Cycling of Carbon, Nitrogen, Sulfur and Phosphorus in Terrestrial and Aquatic Ecosystems</em>. Springer-Verlag Berlin Heidelberg, 1982. ISBN 978-3-642-68431-9. URL: <a class="reference external" href="https://link.springer.com/book/9783642684319">https://link.springer.com/book/9783642684319</a>.</p>
+</div>
+<div class="citation" id="id18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GA11<span class="fn-bracket">]</span></span>
+<p>W.H. Green and G.A. Ampt. Studies on soil physics: 1. the flow of air and water through soils. <em>Journal of Agricultural Science</em>, 4(1):1–24, 1911. <a class="reference external" href="https://doi.org/10.1017/S0021859600001441">doi:10.1017/S0021859600001441</a>.</p>
+</div>
+<div class="citation" id="id37" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Gup17<span class="fn-bracket">]</span></span>
+<p>Ram S. Gupta. <em>Hydrology and Hydraulic Systems</em>. Waveland Press, Long Grove, IL, 4th edition, 2017. ISBN 9781478630913.</p>
+</div>
+<div class="citation" id="id36" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HS23<span class="fn-bracket">]</span></span>
+<p>Jiahuan Han and Vijay P. Singh. A review of widely used drought indices and the challenges of drought assessment under climate change. <em>Environmental Monitoring and Assessment</em>, 2023. <a class="reference external" href="https://doi.org/10.1007/s10661-023-12062-3">doi:10.1007/s10661-023-12062-3</a>.</p>
+</div>
+<div class="citation" id="id21" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HSM82<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in HMR52</strong></p>
+</div>
+<div class="citation" id="id123" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HRO18<span class="fn-bracket">]</span></span>
+<p>Michael Z. Hauschild, Ralph K. Rosenbaum, and Stig Irving Olsen, editors. <em>Life Cycle Assessment: Theory and Practice</em>. Springer, 2018. ISBN 978-3-319-56474-6. Comprehensive primer covering LCA theory, methodology, and applications across sectors. URL: <a class="reference external" href="https://link.springer.com/book/10.1007/978-3-319-56475-3">https://link.springer.com/book/10.1007/978-3-319-56475-3</a>, <a class="reference external" href="https://doi.org/10.1007/978-3-319-56475-3">doi:10.1007/978-3-319-56475-3</a>.</p>
+</div>
+<div class="citation" id="id56" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>HHA16<span class="fn-bracket">]</span></span>
+<p>P. G. Holland, R. W. Herschy, and David Archer. Flood frequency analysis. In <em>Encyclopedia of Hydrology and Water Resources</em>, pages 279–288. Springer, 2016. <a class="reference external" href="https://doi.org/10.1007/978-1-4020-4497-7_86">doi:10.1007/978-1-4020-4497-7_86</a>.</p>
+</div>
+<div class="citation" id="id17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Hor40<span class="fn-bracket">]</span></span>
+<p>Robert E. Horton. The infiltration-formation of runoff volume. <em>Transactions of the American Geophysical Union</em>, 21:693–711, 1940.</p>
+</div>
+<div class="citation" id="id91" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Hud59<span class="fn-bracket">]</span></span>
+<p>Robert Y. Hudson. Laboratory investigation of rubble-mound breakwaters. Technical Report, U.S. Army Corps of Engineers, Waterways Experiment Station, 1959. Introduced the Hudson formula for armor unit stability under wave attack. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Hudson%27s_equation">https://en.wikipedia.org/wiki/Hudson%27s_equation</a>.</p>
+</div>
+<div class="citation" id="id34" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>IJJr+81<span class="fn-bracket">]</span></span>
+<p>Sherwood B. Idso, Richard D. Jackson, Paul J. Pinter Jr., Robert J. Reginato, and John L. Hatfield. Normalizing the stress degree day parameter for environmental variability. <em>Agricultural Meteorology</em>, 24:45–55, 1981. <a class="reference external" href="https://doi.org/10.1016/0002-1571(81)90032-7">doi:10.1016/0002-1571(81)90032-7</a>.</p>
+</div>
+<div class="citation" id="id133" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ji17<span class="fn-bracket">]</span></span>
+<p>Zhen-Gang Ji. <em>Hydrodynamics and Water Quality: Modeling Rivers, Lakes, and Estuaries</em>. John Wiley &amp; Sons, Hoboken, NJ, 2nd edition, 2017. ISBN 9781118877155. URL: <a class="reference external" href="https://www.wiley.com/en-us/Hydrodynamics+and+Water+Quality%3A+Modeling+Rivers%2C+Lakes%2C+and+Estuaries%2C+2nd+Edition-p-9781118877155">https://www.wiley.com/en-us/Hydrodynamics+and+Water+Quality%3A+Modeling+Rivers%2C+Lakes%2C+and+Estuaries%2C+2nd+Edition-p-9781118877155</a>.</p>
+</div>
+<div class="citation" id="id54" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>JrCF+18<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in england2018bulletin17c</strong></p>
+</div>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Kam91<span class="fn-bracket">]</span></span>
+<p>J. W. Kamphuis. Alongshore sediment transport rate. <em>Journal of Waterway, Port, Coastal, and Ocean Engineering</em>, 117(6):624–640, 1991. <a class="reference external" href="https://doi.org/10.1061/(ASCE)0733-950X(1991)117:6(624)">doi:10.1061/(ASCE)0733-950X(1991)117:6(624)</a>.</p>
+</div>
+<div class="citation" id="id38" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KAH24<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in fhwa2024hec22</strong></p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Kom98<span class="fn-bracket">]</span></span>
+<p>Paul D. Komar. <em>Beach Processes and Sedimentation</em>. Prentice Hall, Upper Saddle River, NJ, 2nd edition, 1998. ISBN 9780130839061.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KI70<span class="fn-bracket">]</span></span>
+<p>Paul D. Komar and Douglas L. Inman. Longshore sand transport on beaches. <em>Journal of Geophysical Research</em>, 75(30):5914–5927, 1970. <a class="reference external" href="https://doi.org/10.1029/JC075i030p05914">doi:10.1029/JC075i030p05914</a>.</p>
+</div>
+<div class="citation" id="id57" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LM53<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in leopold1953hydraulic</strong></p>
+</div>
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ME08<span class="fn-bracket">]</span></span>
+<p>Gilbert M. Masters and Wendell P. Ela. <em>Introduction to Environmental Engineering and Science</em>. Prentice Hall, Upper Saddle River, NJ, 3rd edition, 2008. ISBN 9780131481930.</p>
+</div>
+<div class="citation" id="id100" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>McC93<span class="fn-bracket">]</span></span>
+<p>J. W. McCormick. Design guidelines for detached breakwaters. Technical Report, U.S. Army Corps of Engineers, 1993. Example citation; actual metadata may vary.</p>
+</div>
+<div class="citation" id="id26" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MDK93<span class="fn-bracket">]</span></span>
+<p>Thomas B. McKee, Nolan J. Doesken, and John Kleist. The relationship of drought frequency and duration to time scales. In <em>Proceedings of the 8th Conference on Applied Climatology</em>, 179–184. Anaheim, California, 1993. American Meteorological Society.</p>
+</div>
+<div class="citation" id="id89" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Mih99<span class="fn-bracket">]</span></span>
+<p>James R. Mihelcic. <em>Fundamentals of Environmental Engineering</em>. John Wiley &amp; Sons, New York, 1st edition, 1999. ISBN 9780471243137. Provides foundational concepts in environmental engineering, including chemical, physical, and biological processes relevant to air, water, and soil systems.</p>
+</div>
+<div class="citation" id="id105" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MOBrienJS50<span class="fn-bracket">]</span></span>
+<p>J.R. Morison, M.P. O'Brien, J.W. Johnson, and S.A. Schaaf. The force exerted by surface waves on piles. <em>Journal of Petroleum Technology</em>, 2(5):149–154, 1950. <a class="reference external" href="https://doi.org/10.2118/950149-G">doi:10.2118/950149-G</a>.</p>
+</div>
+<div class="citation" id="id117" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MM90<span class="fn-bracket">]</span></span>
+<p>J. W. Morse and F. T. Mackenzie. <em>Geochemistry of Sedimentary Carbonates</em>. Volume 48 of Developments in Sedimentology. Elsevier, 1990. ISBN 9780080869629. URL: <a class="reference external" href="https://books.google.com/books/about/Geochemistry_of_Sedimentary_Carbonates.html?id=3Cvk2lkukgEC">https://books.google.com/books/about/Geochemistry_of_Sedimentary_Carbonates.html?id=3Cvk2lkukgEC</a>.</p>
+</div>
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>NHJ01<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in norman2001culvert</strong></p>
+</div>
+<div class="citation" id="id41" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>NMNN07<span class="fn-bracket">]</span></span>
+<p>P. Novak, A.I.B. Moffat, C. Nalluri, and R. Narayanan. <em>Hydraulic Structures</em>. CRC Press, London, 4th edition, 2007. ISBN 9780415386265.</p>
+</div>
+<div class="citation" id="id96" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>oE84<span class="fn-bracket">]</span></span>
+<p>United States Army Corps of Engineers. <em>Shore Protection Manual</em>. Volume I and II. Waterways Experiment Station, Coastal Engineering Research Center, Vicksburg, Mississippi, 4th edition, 1984. Prepared for the Department of the Army, US Army Corps of Engineers, Washington, DC.</p>
+</div>
+<div class="citation" id="id30" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>oT20<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in TxDOT_Rational</strong></p>
+</div>
+<div class="citation" id="id24" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Pal65<span class="fn-bracket">]</span></span>
+<p><strong>missing institution in palmer1965pdsi</strong></p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Pet78<span class="fn-bracket">]</span></span>
+<p>A. J. Peterka. <em>Hydraulic Design of Stilling Basins and Energy Dissipators</em>. Engineering Monograph No. 25. U.S. Department of the Interior, Bureau of Reclamation, Denver, Colorado, 1978. Revised edition.</p>
+</div>
+<div class="citation" id="id142" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PP16<span class="fn-bracket">]</span></span>
+<p>Scott D. Pitta and David G. Price. <em>Professional Drone Pilot's Handbook &amp; FAA Remote Pilot Test Guide</em>. CreateSpace Independent Publishing Platform, United States, 2016. ISBN 978-1535567305. Comprehensive guide for drone flight control, performance, and FAA Part 107 certification.</p>
+</div>
+<div class="citation" id="id78" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PZ10<span class="fn-bracket">]</span></span>
+<p>N. LeRoy Poff and Julie K. H. Zimmerman. Ecological responses to altered flow regimes: a literature review to inform the science and management of environmental flos. <em>Freshwater Biology</em>, 55(1):194–205, 2010. Accessed July 2025. <a class="reference external" href="https://doi.org/10.1111/j.1365-2427.2009.02272.x">doi:10.1111/j.1365-2427.2009.02272.x</a>.</p>
+</div>
+<div class="citation" id="id110" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Pug87<span class="fn-bracket">]</span></span>
+<p>David T. Pugh. <em>Tides, Surges and Mean Sea-Level</em>. John Wiley &amp; Sons, Chichester, UK, 1987. ISBN 9780471915058. A handbook for engineers and scientists covering tidal theory, storm surges, and sea-level dynamics.</p>
+</div>
+<div class="citation" id="id68" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ran57a<span class="fn-bracket">]</span></span>
+<p>William J.M. Rankine. On the stability of retaining walls. <em>Philosophical Transactions of the Royal Society</em>, 1857.</p>
+</div>
+<div class="citation" id="id69" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Ran57b<span class="fn-bracket">]</span></span>
+<p>William John Macquorn Rankine. On the stability of loose earth. 1857. Introduces Rankine's Earth Pressure Theory for active and passive lateral soil pressures.</p>
+</div>
+<div class="citation" id="id134" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RBS80<span class="fn-bracket">]</span></span>
+<p>Kenneth H. Reckhow, Michael N. Beaulac, and Jonathan T. Simpson. Modeling phosphorus loading and lake response under uncertainty: a manual and compilation of export coefficients. Technical Report EPA 440/5-80-011, U.S. Environmental Protection Agency, Washington, D.C., 1980. Prepared by Michigan State University for the Clean Lakes Program. URL: <a class="reference external" href="https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=00001KWE.TXT">https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=00001KWE.TXT</a>.</p>
+</div>
+<div class="citation" id="id32" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>RFW+97<span class="fn-bracket">]</span></span>
+<p>Kenneth G. Renard, George R. Foster, Glenn A. Weesies, David K. McCool, and Daniel C. Yoder. <em>Predicting Soil Erosion by Water: A Guide to Conservation Planning with the Revised Universal Soil Loss Equation (RUSLE)</em>. United States Department of Agriculture, Agricultural Research Service, Washington, DC, 1997.</p>
+</div>
+<div class="citation" id="id144" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SA25<span class="fn-bracket">]</span></span>
+<p>Pix4D SA. Drone and terrestrial mapping: pix4d vs dronedeploy. <a class="reference external" href="https://www.pix4d.com/drone-and-terrestrial-mapping-pix4d-vs-dronedeploy/">https://www.pix4d.com/drone-and-terrestrial-mapping-pix4d-vs-dronedeploy/</a>, 2025. Comparison and workflow overview for Pix4Dcapture and Pix4Dmapper in mission planning.</p>
+</div>
+<div class="citation" id="id35" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SD82<span class="fn-bracket">]</span></span>
+<p>B.A. Shafer and L.E. Dezman. Development of a surface water supply index (swsi) to assess the severity of drought conditions in snowpack runoff areas. In <em>Proceedings of the 50th Annual Western Snow Conference</em>, 164–175. Fort Collins, Colorado, 1982.</p>
+</div>
+<div class="citation" id="id58" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Sin03<span class="fn-bracket">]</span></span>
+<p>Vijay P. Singh. A review of theories of hydraulic geometry relations. <em>Unpublished Class Resource</em>, 2003. Accessed July 2025.</p>
+</div>
+<div class="citation" id="id98" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>SD87<span class="fn-bracket">]</span></span>
+<p>Kyungduck Suh and Robert A. Dalrymple. Offshore breakwaters in laboratory and field. <em>Journal of Waterway, Port, Coastal and Ocean Engineering</em>, 113(2):105–121, 1987. <a class="reference external" href="https://doi.org/10.1061/(ASCE)0733-950X(1987)113:2(105)">doi:10.1061/(ASCE)0733-950X(1987)113:2(105)</a>.</p>
+</div>
+<div class="citation" id="id106" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>TW08<span class="fn-bracket">]</span></span>
+<p>Michael Tomlinson and John Woodward. <em>Pile Design and Construction Practice</em>. CRC Press, 5th edition, 2008. ISBN 9780415465772. Includes wave force calculations using Morison equation.</p>
+</div>
+<div class="citation" id="id79" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VdM92<span class="fn-bracket">]</span></span>
+<p>J. W. Van der Meer. Conceptual design of rubble mound breakwaters. In <em>Design and Reliability of Coastal Structures</em>, pages 447–510. Springer, Venice, 1992.</p>
+</div>
+<div class="citation" id="id93" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VdMS16<span class="fn-bracket">]</span></span>
+<p>Jentsje Van der Meer and Sigurdur Sigurdarson. <em>Design and Construction of Berm Breakwaters</em>. World Scientific Publishing, Singapore, 2016. ISBN 9789814749602. Comprehensive guide to Van der Meer stability formulae and berm breakwater design.</p>
+</div>
+<div class="citation" id="id92" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VdM90<span class="fn-bracket">]</span></span>
+<p>Jentsje W. Van der Meer. Rock slopes and gravel beaches under wave attack. In <em>Proceedings of the 22nd International Conference on Coastal Engineering</em>, 2624–2637. ASCE, 1990. Introduced Van der Meer stability formulae for armor layers under plunging and surging wave conditions. URL: <a class="reference external" href="https://www.vandermeerconsulting.nl/downloads/stability_b/1998_vandermeer_ch11.pdf">https://www.vandermeerconsulting.nl/downloads/stability_b/1998_vandermeer_ch11.pdf</a>.</p>
+</div>
+<div class="citation" id="id10" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>vR84<span class="fn-bracket">]</span></span>
+<p>Leo C. van Rijn. Sediment transport, part i: bed load transport. <em>Journal of Hydraulic Engineering</em>, 110(10):1431–1456, 1984. <a class="reference external" href="https://doi.org/10.1061/(ASCE)0733-9429(1984)110:10(1431)">doi:10.1061/(ASCE)0733-9429(1984)110:10(1431)</a>.</p>
+</div>
+<div class="citation" id="id132" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VT03<span class="fn-bracket">]</span></span>
+<p>Akula Venkatram and Jesse Thé. Introduction to gaussian plume models. In P. Zannetti, editor, <em>Air Quality Modeling: Theories, Methodologies, Computational Techniques, and Available Databases and Software</em>, volume I, chapter 7A, pages 185–222. The EnviroComp Institute and the Air &amp; Waste Management Association, Pittsburgh, PA, 2003. URL: <a class="reference external" href="https://www.apsi.tech/material/modeling/IntroductiontoGaussianPlumeModels.pdf">https://www.apsi.tech/material/modeling/IntroductiontoGaussianPlumeModels.pdf</a>.</p>
+</div>
+<div class="citation" id="id25" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>VSBLM10<span class="fn-bracket">]</span></span>
+<p>Sergio M. Vicente-Serrano, Santiago Beguería, and Juan I. López-Moreno. A multiscalar drought index sensitive to global warming: the standardized precipitation evapotranspiration index. <em>Journal of Climate</em>, 23(7):1696–1718, 2010. <a class="reference external" href="https://doi.org/10.1175/2009JCLI2909.1">doi:10.1175/2009JCLI2909.1</a>.</p>
+</div>
+<div class="citation" id="id81" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WM08<span class="fn-bracket">]</span></span>
+<p>M. Weiß and L. Menzel. A global comparison of four potential evapotranspiration equations and their relevance to stream flow modelling in semi-arid environments. <em>Advances in Geosciences</em>, 18:15–23, 2008.</p>
+</div>
+<div class="citation" id="id16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Whi11<span class="fn-bracket">]</span></span>
+<p>Frank M. White. <em>Fluid Mechanics</em>. McGraw-Hill, New York, NY, 7th edition, 2011. ISBN 9780077422417.</p>
+</div>
+<div class="citation" id="id33" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Wil75<span class="fn-bracket">]</span></span>
+<p>J.R. Williams. Sediment yield prediction with universal equation using runoff energy. <em>Journal of the Hydraulics Division, ASCE</em>, 101(HY3):438–446, 1975.</p>
+</div>
+<div class="citation" id="id95" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Wis98<span class="fn-bracket">]</span></span>
+<p>Randall A. Wise. Depth of closure in beach-fill design. Coastal Engineering Technical Note CETN II-40, U.S. Army Engineer Waterways Experiment Station, Coastal and Hydraulics Laboratory, Vicksburg, Mississippi, March 1998. Provides operational definition and estimation procedures for depth of closure in beach nourishment projects. URL: <a class="reference external" href="https://erdc-library.erdc.dren.mil/bitstream/11681/2120/1/CETN-II-40.pdf">https://erdc-library.erdc.dren.mil/bitstream/11681/2120/1/CETN-II-40.pdf</a>.</p>
+</div>
+<div class="citation" id="id137" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WD00<span class="fn-bracket">]</span></span>
+<p>Paul R. Wolf and Bon A. Dewitt. <em>Elements of Photogrammetry with Applications in GIS</em>. McGraw-Hill, 3rd edition, 2000. ISBN 9780072924541. Widely used in civil engineering and surveying programs for its comprehensive coverage of photogrammetric principles and GIS integration.</p>
+</div>
+<div class="citation" id="id42" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>AmericanPInstitute14<span class="fn-bracket">]</span></span>
+<p>American Petroleum Institute. <em>Recommended Practice for Planning, Designing and Constructing Fixed Offshore Platforms</em>. Washington, D.C., 22nd edition, 2014. Offshore Pile Design Guidelines.</p>
+</div>
+<div class="citation" id="id135" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>AmericanSoHeatingRaACEngineers21<span class="fn-bracket">]</span></span>
+<p>American Society of Heating, Refrigerating and Air-Conditioning Engineers. <em>2021 ASHRAE Handbook—Fundamentals</em>. ASHRAE, Atlanta, GA, 2021. ISBN 9781939200910. Chapter 26: Heat, Air, and Moisture Control in Building Assemblies. URL: <a class="reference external" href="https://www.ashrae.org/technical-resources/ashrae-handbook">https://www.ashrae.org/technical-resources/ashrae-handbook</a>.</p>
+</div>
+<div class="citation" id="id44" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational63<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d422 - standard test method for particle-size analysis of soils. 1963. Withdrawn and replaced by D6913 and D7928.</p>
+</div>
+<div class="citation" id="id49" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational04<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d6913 - standard test methods for particle-size distribution (gradation) of soils using sieve analysis. 2004.</p>
+</div>
+<div class="citation" id="id47" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational16<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d5084-16a: standard test methods for measurement of hydraulic conductivity of saturated porous materials using a flexible wall permeameter. 2016. Includes falling head and constant head methods for fine-grained soils under controlled stress conditions.</p>
+</div>
+<div class="citation" id="id48" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational17<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d4318-17e1: standard test methods for liquid limit, plastic limit, and plasticity index of soils. 2017. Covers procedures for Atterberg limits including multipoint and one-point liquid limit methods, plastic limit rolling, and plasticity index calculation.</p>
+</div>
+<div class="citation" id="id63" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational20a<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d4767-11(2020): standard test method for consolidated undrained triaxial compression test for cohesive soils. 2020. ASTM International, West Conshohocken, PA.</p>
+</div>
+<div class="citation" id="id64" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational20b<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d7181-20: standard test method for consolidated drained triaxial compression test for soils. 2020. ASTM International, West Conshohocken, PA.</p>
+</div>
+<div class="citation" id="id128" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational20c<span class="fn-bracket">]</span></span>
+<p>ASTM International. Standard test method for one-dimensional consolidation properties of saturated cohesive soils using controlled-strain loading. <a class="reference external" href="https://www.astm.org/d4186-20.html">https://www.astm.org/d4186-20.html</a>, 2020. ASTM D4186/D4186M-20 — CRS consolidation testing method for low-permeability soils.</p>
+</div>
+<div class="citation" id="id46" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational22<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d2434-22: standard test methods for measurement of hydraulic conductivity of coarse-grained soils. 2022. Covers constant head method for saturated coarse-grained soils using rigid or flexible wall permeameters.</p>
+</div>
+<div class="citation" id="id62" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ASTMInternational23<span class="fn-bracket">]</span></span>
+<p>ASTM International. Astm d2850-23: standard test method for unconsolidated-undrained triaxial compression test on cohesive soils. 2023. ASTM International, West Conshohocken, PA. URL: <a class="reference external" href="https://www.astm.org/d2850-23.html">https://www.astm.org/d2850-23.html</a>.</p>
+</div>
+<div class="citation" id="id131" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>EuropeanFoFCEFFCDeepFIDFI22<span class="fn-bracket">]</span></span>
+<p>European Federation of Foundation Contractors (EFFC) and Deep Foundations Institute (DFI). Effc-dfi geotechnical carbon calculator. <a class="reference external" href="http://www.geotechnicalcarboncalculator.com">http://www.geotechnicalcarboncalculator.com</a>, 2022. Web-based tool for calculating CO₂ emissions of foundation and geotechnical works, enabling design comparisons and benchmarking.</p>
+</div>
+<div class="citation" id="id102" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>FederalEMAgency21<span class="fn-bracket">]</span></span>
+<p>Federal Emergency Management Agency. Wave runup and overtopping: guidance for flood risk analysis and mapping. Technical Report FEMA P-55 Supplement, FEMA, 2021. Comprehensive guidance on empirical and numerical runup models for coastal flood risk mapping. URL: <a class="reference external" href="https://www.fema.gov/sites/default/files/documents/fema_rm-coastal-wave-runup-overtopping_112021.pdf">https://www.fema.gov/sites/default/files/documents/fema_rm-coastal-wave-runup-overtopping_112021.pdf</a>.</p>
+</div>
+<div class="citation" id="id130" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>GeoISiGECommittee22<span class="fn-bracket">]</span></span>
+<p>Geo-Institute Sustainability in Geotechnical Engineering Committee. Sustainability in geotechnical engineering. Technical Report, American Society of Civil Engineers (ASCE) Geo-Institute, 2022. Technical module outlining sustainability principles, assessment tools, and case studies for geotechnical engineering practice. URL: <a class="reference external" href="https://www.geoinstitute.org/sites/default/files/inline-files/SM_GTT_Final_12122022.pdf">https://www.geoinstitute.org/sites/default/files/inline-files/SM_GTT_Final_12122022.pdf</a>.</p>
+</div>
+<div class="citation" id="id109" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>IntergovernmentalPoCChange21<span class="fn-bracket">]</span></span>
+<p>Intergovernmental Panel on Climate Change. Ipcc sixth assessment report: sea level rise projections. 2021. Provides global and regional sea level rise projections from 2020 to 2150 under multiple SSP scenarios, based on CMIP6, ice sheet, and glacier models. URL: <a class="reference external" href="https://sealevel.nasa.gov/data_tools/17">https://sealevel.nasa.gov/data_tools/17</a>.</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USACERCenter84<span class="fn-bracket">]</span></span>
+<p>U.S. Army Coastal Engineering Research Center. <em>Shore Protection Manual</em>. Washington, D.C., 4th edition, 1984. Volumes 1 and 2.</p>
+</div>
+<div class="citation" id="id73" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USACoEngineers84<span class="fn-bracket">]</span></span>
+<p>U.S. Army Corps of Engineers. <em>Shore Protection Manual</em>. Coastal Engineering Research Center, Waterways Experiment Station, Vicksburg, MS, 1984.</p>
+</div>
+<div class="citation" id="id12" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USACoEngineers95<span class="fn-bracket">]</span></span>
+<p>U.S. Army Corps of Engineers. <em>Gravity Dam Design</em>. Washington, D.C., 1995. Accessed July 2025.</p>
+</div>
+<div class="citation" id="id77" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USACoEngineers02<span class="fn-bracket">]</span></span>
+<p>U.S. Army Corps of Engineers. <em>Coastal Engineering Manual</em>. Washington, DC, 2002.</p>
+</div>
+<div class="citation" id="id108" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USACoEngineers08<span class="fn-bracket">]</span></span>
+<p>U.S. Army Corps of Engineers. <em>Coastal Engineering Manual, Part II, Chapter 7: Harbor Hydrodynamics</em>. U.S. Army Engineer Research and Development Center, Vicksburg, MS, 2008. Includes detailed theory and design guidance on harbor oscillations, resonance, Helmholtz modes, and wave-structure interactions. URL: <a class="reference external" href="http://www1.frm.utn.edu.ar/laboratorio_hidraulica/Biblioteca_Virtual/Coastal%20Engineering%20Manual%20-%20Part%20II/Part_II-Chap_7.pdf">http://www1.frm.utn.edu.ar/laboratorio_hidraulica/Biblioteca_Virtual/Coastal%20Engineering%20Manual%20-%20Part%20II/Part_II-Chap_7.pdf</a>.</p>
+</div>
+<div class="citation" id="id94" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USACoEngineers11<span class="fn-bracket">]</span></span>
+<p>U.S. Army Corps of Engineers. <em>Coastal Engineering Manual</em>. Washington, D.C., revised edition, 2011. Part VI: Design of Coastal Structures. URL: <a class="reference external" href="https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-1100_PartVI.pdf">https://www.publications.usace.army.mil/Portals/76/Publications/EngineerManuals/EM_1110-2-1100_PartVI.pdf</a>.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USACoEngineers25<span class="fn-bracket">]</span></span>
+<p>U.S. Army Corps of Engineers. National inventory of dams (nid). 2025. Accessed July 2025.</p>
+</div>
+<div class="citation" id="id122" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>USEPAgency20<span class="fn-bracket">]</span></span>
+<p>U.S. Environmental Protection Agency. Watersense water budget tool. 2020. Version 1.04 (Excel), released June 2020. Used to comply with WaterSense New Home Specification for landscape water efficiency. URL: <a class="reference external" href="https://www.epa.gov/watersense/water-budget-tool">https://www.epa.gov/watersense/water-budget-tool</a>.</p>
+</div>
+<div class="citation" id="id119" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UnitedNCCLPartnership09<span class="fn-bracket">]</span></span>
+<p>United Nations Climate Change Learning Partnership. Un greenhouse gas calculator manual. UN CC:Learn Knowledge Sharing Platform, 2009. Guidance document for calculating carbon footprints in UN agencies and educational contexts. URL: <a class="reference external" href="https://www.uncclearn.org/resources/library/un-greenhouse-gas-calculator-manual/">https://www.uncclearn.org/resources/library/un-greenhouse-gas-calculator-manual/</a>.</p>
+</div>
+<div class="citation" id="id11" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UnitedSBoReclamation76<span class="fn-bracket">]</span></span>
+<p>United States Bureau of Reclamation. <em>Design of Gravity Dams: Design Manual for Concrete Gravity Dams</em>. U.S. Government Printing Office, Washington, D.C., 1976. Accessed July 2025.</p>
+</div>
+<div class="citation" id="id29" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UnitedSDoAgricultureNRCService21<span class="fn-bracket">]</span></span>
+<p>United States Department of Agriculture, Natural Resources Conservation Service. <em>Chapter 2: Estimating Runoff Volume and Peak Discharge</em>. Engineering Field Handbook. USDA NRCS, 2021. Comprehensive guide to the NRCS Curve Number method, including rainfall distributions, hydrologic soil groups, and land use factors.</p>
+</div>
+<div class="citation" id="id90" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UnitedSEPAgency72<span class="fn-bracket">]</span></span>
+<p>United States Environmental Protection Agency. Clean water act. 1972. Federal law establishing the framework for regulating discharges of pollutants into U.S. waters. Accessed July 24, 2025.</p>
+</div>
+<div class="citation" id="id88" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UnitedSEPAgency90<span class="fn-bracket">]</span></span>
+<p>United States Environmental Protection Agency. Clean air act amendments of 1990. 1990. Federal law defining EPA's responsibilities for protecting and improving air quality. Accessed July 24, 2025.</p>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

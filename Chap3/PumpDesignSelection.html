@@ -1,0 +1,1897 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 3 Hydraulics: Hydraulic Pumps &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap3/PumpDesignSelection';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 3 Hydraulics: Storm Drain Inet Design" href="StormDrainInletDesign.html" />
+    <link rel="prev" title="Chapter 3 Hydraulics: Design of Culverts" href="CulvertDesign.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap3/PumpDesignSelection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap3/PumpDesignSelection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap3/PumpDesignSelection.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap3/PumpDesignSelection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap3/PumpDesignSelection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 3 Hydraulics: Hydraulic Pumps</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 3 Hydraulics: Hydraulic Pumps</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydraulic-pumps-concepts-design-and-system-integration">💧 Hydraulic Pumps: Concepts, Design, and System Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">📘 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-parameters">⚙️ Design Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-hydraulic-pumps">🔍 Types of Hydraulic Pumps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selection-guidelines">🧪 Pump Selection Guidelines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-characteristic-curve">📈 Pump Characteristic Curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-curve">📊 System Curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-of-operating-point">🎯 Selection of Operating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net-positive-suction-head-npsh">🧮 Net Positive Suction Head (NPSH)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pumps-in-series-vs-pumps-in-parallel">🔗 Pumps in Series vs. Pumps in Parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-hydraulic-pump-design-selection-tool">💧 Summary: Interactive Hydraulic Pump Design &amp; Selection Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-calculator">🔧 Design Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selector">🔍 Pump Selector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-parameters">🧭 Inputs and Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-output">📊 Interpreting Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-pump-flow-capacity-estimator-interactive-tool">💧 Summary: Pump Flow Capacity Estimator (Interactive Tool)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧮 How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-parameters">📊 Input Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📈 How to Interpret Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-visualization-of-pump-performance-curves">⚙️ Interactive Visualization of Pump Performance Curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-shows">📈 What It Shows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">🔧 Interactive Inputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-curve-generator-simplified-characteristic-shapes">📐 Pump curve generator (simplified characteristic shapes)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-curves">📊 Plot curves</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛️ Interactive Controls</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydraulic-pump-design-selection-reflective-conceptual-quiz-questions">🧠 Hydraulic Pump Design &amp; Selection: Reflective, Conceptual &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-fundamentals">Pump Fundamentals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selection-logic">Pump Selection Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-calculations">Design Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-conditions">Selection Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-power-calculation">💧 Problem 1: Power Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-npsh-evaluation">🔍 Problem 2: NPSH Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-operating-point-selection">📈 Problem 3: Operating Point Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-pump-configuration-comparison">🔗 Problem 4: Pump Configuration Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-scenario">🧠 Challenge Scenario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-prompt">✍️ Reflection Prompt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-hydraulics-hydraulic-pumps">
+<h1>Chapter 3 Hydraulics: Hydraulic Pumps<a class="headerlink" href="#chapter-3-hydraulics-hydraulic-pumps" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Hydraulic Pumps</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Pump Selection</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Simulation"><span class="xref myst">Simulation: Pump Design</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="breaking-wave">
+<a class="reference internal image-reference" href="../_images/HydraulicPump.png"><img alt="Descriptive alt text for accessibility" src="../_images/HydraulicPump.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">**Figure 3.9 **: Breaking Wave.</span><a class="headerlink" href="#breaking-wave" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="hydraulic-pumps-concepts-design-and-system-integration">
+<h3>💧 Hydraulic Pumps: Concepts, Design, and System Integration<a class="headerlink" href="#hydraulic-pumps-concepts-design-and-system-integration" title="Link to this heading">#</a></h3>
+</section>
+<section id="definition">
+<h3>📘 Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
+<p>A <strong>hydraulic pump</strong> converts mechanical energy into hydraulic energy by generating flow and pressure within a fluid system. It is a core component in applications such as water delivery, energy dissipation, and fluid power systems.</p>
+</section>
+<hr class="docutils" />
+<section id="design-parameters">
+<h3>⚙️ Design Parameters<a class="headerlink" href="#design-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Flow Rate (Q)</strong></p></td>
+<td><p>Volume of fluid moved per unit time (e.g., L/min or m³/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Head (H)</strong></p></td>
+<td><p>Energy per unit weight of fluid, typically expressed in meters</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Power (Pₖ)</strong></p></td>
+<td><p>Mechanical energy required to drive the pump</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Efficiency (η)</strong></p></td>
+<td><p>Ratio of hydraulic power to shaft input power</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Fluid Properties</strong></p></td>
+<td><p>Density, viscosity, temperature, and presence of solids</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NPSH</strong></p></td>
+<td><p>Net Positive Suction Head required to avoid cavitation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="types-of-hydraulic-pumps">
+<h3>🔍 Types of Hydraulic Pumps<a class="headerlink" href="#types-of-hydraulic-pumps" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pump Type</p></th>
+<th class="head"><p>Description &amp; Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Centrifugal Pump</strong></p></td>
+<td><p>Rotodynamic; high flow, low pressure; ideal for clean water</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gear Pump</strong></p></td>
+<td><p>Positive displacement; suitable for viscous fluids</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Vane Pump</strong></p></td>
+<td><p>Moderate pressure and compact footprint</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Piston Pump</strong></p></td>
+<td><p>High pressure applications; variable displacement</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Diaphragm Pump</strong></p></td>
+<td><p>For slurries, chemicals, and solids-laden fluids</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="pump-selection-guidelines">
+<h3>🧪 Pump Selection Guidelines<a class="headerlink" href="#pump-selection-guidelines" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Match pump type with fluid characteristics and system duty</p></li>
+<li><p>Consider pressure, flow rate, efficiency, and spatial constraints</p></li>
+<li><p>Use manufacturer curves and selection charts</p></li>
+<li><p>Verify compatibility with solids, viscosity, and corrosion</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pump-characteristic-curve">
+<h3>📈 Pump Characteristic Curve<a class="headerlink" href="#pump-characteristic-curve" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Plot of <strong>Head vs. Flow Rate</strong> for a pump at constant speed</p></li>
+<li><p>Includes:</p>
+<ul>
+<li><p><strong>Best Efficiency Point (BEP)</strong></p></li>
+<li><p><strong>Power consumption</strong></p></li>
+<li><p><strong>NPSHr (required)</strong></p></li>
+</ul>
+</li>
+<li><p>Shape: head decreases as flow increases</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="system-curve">
+<h3>📊 System Curve<a class="headerlink" href="#system-curve" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Represents total <strong>head loss</strong> in the system as a function of flow</p></li>
+<li><p>Components:</p>
+<ul>
+<li><p><strong>Static head</strong> (elevation gain/loss)</p></li>
+<li><p><strong>Friction head</strong> (pipe and fittings resistance)</p></li>
+</ul>
+</li>
+<li><p>Curve rises with increasing flow</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="selection-of-operating-point">
+<h3>🎯 Selection of Operating Point<a class="headerlink" href="#selection-of-operating-point" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Found at the <strong>intersection</strong> of pump curve and system curve</p></li>
+<li><p>Should be near <strong>BEP</strong> for optimal:</p>
+<ul>
+<li><p>Efficiency</p></li>
+<li><p>Longevity</p></li>
+<li><p>Noise/vibration control</p></li>
+</ul>
+</li>
+<li><p>Consider <strong>POR</strong> and <strong>AOR</strong> per ANSI/HI guidelines</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="net-positive-suction-head-npsh">
+<h3>🧮 Net Positive Suction Head (NPSH)<a class="headerlink" href="#net-positive-suction-head-npsh" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Term</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>NPSHa</strong></p></td>
+<td><p>Available suction head in the system</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NPSHr</strong></p></td>
+<td><p>Minimum required NPSH by the pump to prevent cavitation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cavitation Risk</strong></p></td>
+<td><p>Occurs if NPSHa &lt; NPSHr — leads to vapor bubbles &amp; damage</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Ensure NPSHa ≥ NPSHr + margin for safe operation.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="pumps-in-series-vs-pumps-in-parallel">
+<h3>🔗 Pumps in Series vs. Pumps in Parallel<a class="headerlink" href="#pumps-in-series-vs-pumps-in-parallel" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Combined Effect</p></th>
+<th class="head"><p>Typical Application</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Series</strong></p></td>
+<td><p>Adds <strong>head</strong>, flow remains constant</p></td>
+<td><p>High elevation or pressure requirements</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Parallel</strong></p></td>
+<td><p>Adds <strong>flow</strong>, head remains constant</p></td>
+<td><p>High demand or variable flow systems</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>In <strong>series</strong>: <span class="math notranslate nohighlight">\(( H_{total} = H_1 + H_2 \)</span>)</p></li>
+<li><p>In <strong>parallel</strong>: <span class="math notranslate nohighlight">\(( Q_{total} = Q_1 + Q_2 \)</span>)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id37" title="Ram S. Gupta. Hydrology and Hydraulic Systems. Waveland Press, Long Grove, IL, 4th edition, 2017. ISBN 9781478630913.">Gupta, 2017</a>]</span> provides fundamental coverage of hydraulic machinery and pumps, suitable for civil and mechanical engineering students.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="summary-interactive-hydraulic-pump-design-selection-tool">
+<h3>💧 Summary: Interactive Hydraulic Pump Design &amp; Selection Tool<a class="headerlink" href="#summary-interactive-hydraulic-pump-design-selection-tool" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-it-is">
+<h3>📘 What It Is<a class="headerlink" href="#what-it-is" title="Link to this heading">#</a></h3>
+<p>This Jupyter-based Python tool estimates hydraulic pump power requirements and suggests suitable pump types. It uses <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> for interactive input and real-time output display.</p>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+</section>
+<section id="design-calculator">
+<h3>🔧 Design Calculator<a class="headerlink" href="#design-calculator" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Computes <strong>flow rate</strong> in m³/s from user input (L/min)</p></li>
+<li><p>Calculates <strong>required power</strong> in kW based on flow rate, head, fluid density, gravity, and efficiency</p></li>
+<li><p>Optionally estimates <strong>outlet pressure</strong> in kPa</p></li>
+</ul>
+</section>
+<section id="pump-selector">
+<h3>🔍 Pump Selector<a class="headerlink" href="#pump-selector" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Recommends pump type based on:</p>
+<ul>
+<li><p>Flow rate and head</p></li>
+<li><p>Fluid type and viscosity</p></li>
+<li><p>Presence of solids</p></li>
+<li><p>Space constraints</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="inputs-and-parameters">
+<h3>🧭 Inputs and Parameters<a class="headerlink" href="#inputs-and-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Q (L/min)</p></td>
+<td><p>Flow rate input</p></td>
+</tr>
+<tr class="row-odd"><td><p>H (m)</p></td>
+<td><p>Head (elevation gain)</p></td>
+</tr>
+<tr class="row-even"><td><p>Efficiency</p></td>
+<td><p>Pump efficiency (0.5–0.95)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Density (ρ)</p></td>
+<td><p>Fluid density (kg/m³)</p></td>
+</tr>
+<tr class="row-even"><td><p>Gravity (g)</p></td>
+<td><p>Gravitational constant (m/s²)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fluid Type</p></td>
+<td><p>Water, Oil, Coolant</p></td>
+</tr>
+<tr class="row-even"><td><p>Viscosity (cP)</p></td>
+<td><p>Fluid viscosity</p></td>
+</tr>
+<tr class="row-odd"><td><p>Solids Present</p></td>
+<td><p>Checkbox for abrasive or particulate flow</p></td>
+</tr>
+<tr class="row-even"><td><p>Space Limited</p></td>
+<td><p>Checkbox for vertical installation logic</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="interpreting-output">
+<h3>📊 Interpreting Output<a class="headerlink" href="#interpreting-output" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Flow Rate (m³/s)</p></td>
+<td><p>Converted flow for power calculation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Required Power (kW)</p></td>
+<td><p>Energy needed to deliver fluid at defined head</p></td>
+</tr>
+<tr class="row-even"><td><p>Outlet Pressure (kPa)</p></td>
+<td><p>Estimated static pressure at pump outlet</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pump Selection Advice</p></td>
+<td><p>Suggests most suitable pump type for given scenario</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p>This tool is useful for teaching design principles, guiding preliminary selection in water systems, or exploring parametric impacts on pump sizing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># 🔧 Design calculator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hydraulic_pump_design</span><span class="p">(</span><span class="n">Q_lpm</span><span class="p">,</span> <span class="n">H_m</span><span class="p">,</span> <span class="n">efficiency</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mf">9.81</span><span class="p">,</span> <span class="n">include_pressure</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">Q_m3s</span> <span class="o">=</span> <span class="n">Q_lpm</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">60</span>
+    <span class="n">power_kW</span> <span class="o">=</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">Q_m3s</span> <span class="o">*</span> <span class="n">H_m</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">efficiency</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">pressure_kPa</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">H_m</span> <span class="o">/</span> <span class="mi">1000</span> <span class="k">if</span> <span class="n">include_pressure</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="n">md</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 💡 Hydraulic Pump Design Results</span>
+
+<span class="s2">- **Flow Rate**: </span><span class="si">{</span><span class="n">Q_lpm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> L/min → </span><span class="si">{</span><span class="n">Q_m3s</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> m³/s  </span>
+<span class="s2">- **Head**: </span><span class="si">{</span><span class="n">H_m</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Efficiency**: </span><span class="si">{</span><span class="n">efficiency</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Fluid Density (ρ)**: </span><span class="si">{</span><span class="n">rho</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³  </span>
+<span class="s2">- **Gravity (g)**: </span><span class="si">{</span><span class="n">g</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s²  </span>
+<span class="s2">- ⚡ **Required Power**: </span><span class="si">{</span><span class="n">power_kW</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kW  </span>
+<span class="s2">- 🧪 **Outlet Pressure**: </span><span class="si">{</span><span class="n">pressure_kPa</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kPa</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">md</span><span class="p">))</span>
+
+<span class="c1"># 🔍 Pump selector</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">recommend_pump_type</span><span class="p">(</span><span class="n">flow_lpm</span><span class="p">,</span> <span class="n">head_m</span><span class="p">,</span> <span class="n">fluid_type</span><span class="o">=</span><span class="s1">&#39;Water&#39;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+                        <span class="n">viscosity_cP</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">solids</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">space_limited</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">viscosity_cP</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="ow">or</span> <span class="n">fluid_type</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;oil&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;🔧 Recommend: Screw or Gear Pump (Viscous Fluids)&quot;</span>
+    <span class="k">elif</span> <span class="n">head_m</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;🔧 Recommend: Multistage Centrifugal Pump (High Head)&quot;</span>
+    <span class="k">elif</span> <span class="n">solids</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;🔧 Recommend: Slurry or Diaphragm Pump (Solids Handling)&quot;</span>
+    <span class="k">elif</span> <span class="n">flow_lpm</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;🔧 Recommend: Peristaltic or Piston Pump (Low Flow)&quot;</span>
+    <span class="k">elif</span> <span class="n">space_limited</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;🔧 Recommend: Vertical Inline Pump (Compact Footprint)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;🔧 Recommend: Standard Centrifugal Pump (General Use)&quot;</span>
+
+<span class="c1"># 🎛️ Widgets</span>
+<span class="n">Q_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Flow Q (L/min):&#39;</span><span class="p">)</span>
+<span class="n">H_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Head H (m):&#39;</span><span class="p">)</span>
+<span class="n">eff_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Efficiency:&#39;</span><span class="p">)</span>
+<span class="n">rho_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">950</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Density ρ:&#39;</span><span class="p">)</span>
+<span class="n">g_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">9.81</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Gravity g:&#39;</span><span class="p">)</span>
+
+<span class="n">fluid_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Water&#39;</span><span class="p">,</span> <span class="s1">&#39;Oil&#39;</span><span class="p">,</span> <span class="s1">&#39;Coolant&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Water&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Fluid:&#39;</span><span class="p">)</span>
+<span class="n">viscosity_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Viscosity (cP):&#39;</span><span class="p">)</span>
+<span class="n">solids_toggle</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Solids Present&#39;</span><span class="p">)</span>
+<span class="n">space_toggle</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Space Limited&#39;</span><span class="p">)</span>
+
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Calculate &amp; Recommend&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">hydraulic_pump_design</span><span class="p">(</span><span class="n">Q_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">H_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">eff_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                          <span class="n">rho_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">g_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">recommendation</span> <span class="o">=</span> <span class="n">recommend_pump_type</span><span class="p">(</span><span class="n">flow_lpm</span><span class="o">=</span><span class="n">Q_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                         <span class="n">head_m</span><span class="o">=</span><span class="n">H_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                         <span class="n">fluid_type</span><span class="o">=</span><span class="n">fluid_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                         <span class="n">viscosity_cP</span><span class="o">=</span><span class="n">viscosity_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                         <span class="n">solids</span><span class="o">=</span><span class="n">solids_toggle</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                                         <span class="n">space_limited</span><span class="o">=</span><span class="n">space_toggle</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 🧭 Pump Selection Advice</span><span class="se">\n</span><span class="si">{</span><span class="n">recommendation</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_click</span><span class="p">)</span>
+
+<span class="c1"># 📦 Display interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Q_slider</span><span class="p">,</span> <span class="n">H_slider</span><span class="p">,</span> <span class="n">eff_slider</span><span class="p">,</span> <span class="n">rho_slider</span><span class="p">,</span> <span class="n">g_slider</span><span class="p">,</span>
+        <span class="n">fluid_dropdown</span><span class="p">,</span> <span class="n">viscosity_slider</span><span class="p">,</span> <span class="n">solids_toggle</span><span class="p">,</span> <span class="n">space_toggle</span><span class="p">,</span> <span class="n">run_btn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b403b8fdc5fd43368b02a8aec15c7d64", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9535ba32ac2d49398304901c63ea243f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "4c5accbcc2bf4b938949a102865082fc", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "05981db8b003435fa55430e050dfb7c9", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "c9d0380892e44066bf685930ea05ef46", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f400471e09bc49c6af6bda584a6524cf", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e125ae00e77548058189f7ec9c55a58c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d3a637ae5bc740e7b86f8ed7e5a228d2", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e04e0c06ae7f4a478610b2473767a0aa", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "2b6f0a675fd142dabab831f9c921fad0", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id2">
+<h2>3. Simulation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="summary-pump-flow-capacity-estimator-interactive-tool">
+<h3>💧 Summary: Pump Flow Capacity Estimator (Interactive Tool)<a class="headerlink" href="#summary-pump-flow-capacity-estimator-interactive-tool" title="Link to this heading">#</a></h3>
+</section>
+<section id="id3">
+<h3>📘 What It Is<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>This Python-based Jupyter tool estimates flow capacity and evaluates suction safety for typical pumps based on embedded performance curves. It allows users to interactively define system elevation, pipe conditions, and fluid properties.</p>
+</section>
+<hr class="docutils" />
+<section id="what-it-does">
+<h3>⚙️ What It Does<a class="headerlink" href="#what-it-does" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses embedded pump models with head–flow equations ( H = a - bQ^2 )</p></li>
+<li><p>Computes static head based on suction and discharge elevations</p></li>
+<li><p>Solves for operating flow rate where pump head equals system head</p></li>
+<li><p>Assesses NPSH safety by comparing NPSHa vs. NPSHr</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3>🧮 How It Works<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Module</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pump_models</span></code></p></td>
+<td><p>Defines typical pumps with parameters <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">NPSHr</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">find_operating_point()</span></code></p></td>
+<td><p>Calculates flow rate ( Q_{opt} ) that satisfies ( H_{pump} = H_{system} )</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check_npsh()</span></code></p></td>
+<td><p>Computes Net Positive Suction Head Available (NPSHa) and checks safety margin</p></td>
+</tr>
+<tr class="row-odd"><td><p>Widgets</p></td>
+<td><p>Let users input suction/discharge elevations, pipe diameter, losses, vapor head</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="input-parameters">
+<h3>📊 Input Parameters<a class="headerlink" href="#input-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pump Model</strong></p></td>
+<td><p>Selects curve parameters for a predefined pump</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Suction Elevation</strong></p></td>
+<td><p>Elevation of fluid source (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Discharge Elevation</strong></p></td>
+<td><p>Elevation of output point (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pipe Diameter</strong></p></td>
+<td><p>Size of delivery pipe (used for display)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Vapor Head</strong></p></td>
+<td><p>Vapor pressure head of fluid (used in NPSH calc)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pipe Loss</strong></p></td>
+<td><p>Suction-side head loss (m)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-outputs">
+<h3>📈 How to Interpret Outputs<a class="headerlink" href="#how-to-interpret-outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Static Head</strong></p></td>
+<td><p>Elevation difference driving system resistance</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pump Head at Operating Point</strong></p></td>
+<td><p>Required pump head when flow equals system head</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Flow Capacity</strong></p></td>
+<td><p>Calculated flow rate where pump matches system resistance (L/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NPSHa vs. NPSHr</strong></p></td>
+<td><p>Compares available and required suction head for cavitation safety</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Safety Margin</strong></p></td>
+<td><p>Buffer zone above NPSHr; ≥0.5 m is typically safe</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p>✅ Use this tool to determine feasibility, pump suitability, and suction safety across design scenarios. You can easily extend it with real pump catalog data, friction losses, or visual curve plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Sample pump models with H_pump = a - b*Q²</span>
+<span class="n">pump_models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Model A - Centrifugal&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mf">0.004</span><span class="p">,</span> <span class="s1">&#39;NPSHr&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">},</span>
+    <span class="s1">&#39;Model B - Multistage&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mf">0.002</span><span class="p">,</span> <span class="s1">&#39;NPSHr&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">},</span>
+    <span class="s1">&#39;Model C - Low Head, High Flow&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mf">0.006</span><span class="p">,</span> <span class="s1">&#39;NPSHr&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># System curve: Static head only</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">system_head</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">suction_elev</span><span class="p">,</span> <span class="n">discharge_elev</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">discharge_elev</span> <span class="o">-</span> <span class="n">suction_elev</span>
+
+<span class="c1"># Solve for operating point Q_opt (H_pump = H_system)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">find_operating_point</span><span class="p">(</span><span class="n">pump</span><span class="p">,</span> <span class="n">suction_elev</span><span class="p">,</span> <span class="n">discharge_elev</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">pump</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">],</span> <span class="n">pump</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
+    <span class="n">static_head</span> <span class="o">=</span> <span class="n">discharge_elev</span> <span class="o">-</span> <span class="n">suction_elev</span>
+    <span class="n">delta_H</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">static_head</span>
+    <span class="k">if</span> <span class="n">delta_H</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">static_head</span><span class="p">,</span> <span class="kc">False</span>
+    <span class="n">Q_opt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">delta_H</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">H_pump</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">Q_opt</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">Q_opt</span><span class="p">,</span> <span class="n">H_pump</span><span class="p">,</span> <span class="n">static_head</span><span class="p">,</span> <span class="kc">True</span>
+
+<span class="c1"># NPSH safety check</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_npsh</span><span class="p">(</span><span class="n">pump</span><span class="p">,</span> <span class="n">vapor_head</span><span class="p">,</span> <span class="n">suction_elev</span><span class="p">,</span> <span class="n">pipe_loss</span><span class="p">,</span> <span class="n">atm_head</span><span class="o">=</span><span class="mf">10.3</span><span class="p">):</span>
+    <span class="n">NPSHa</span> <span class="o">=</span> <span class="n">atm_head</span> <span class="o">+</span> <span class="n">suction_elev</span> <span class="o">-</span> <span class="n">pipe_loss</span> <span class="o">-</span> <span class="n">vapor_head</span>
+    <span class="n">margin</span> <span class="o">=</span> <span class="n">NPSHa</span> <span class="o">-</span> <span class="n">pump</span><span class="p">[</span><span class="s1">&#39;NPSHr&#39;</span><span class="p">]</span>
+    <span class="n">safe</span> <span class="o">=</span> <span class="n">margin</span> <span class="o">&gt;=</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">NPSHa</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">pump</span><span class="p">[</span><span class="s1">&#39;NPSHr&#39;</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">margin</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">safe</span>
+
+<span class="c1"># Widgets</span>
+<span class="n">pump_selector</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">pump_models</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Pump Model:&#39;</span><span class="p">)</span>
+<span class="n">suction_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Suction Elev (m):&#39;</span><span class="p">)</span>
+<span class="n">discharge_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Discharge Elev (m):&#39;</span><span class="p">)</span>
+<span class="n">pipe_diam_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Pipe Diameter (m):&#39;</span><span class="p">)</span>
+<span class="n">vapor_head_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Vapor Head (m):&#39;</span><span class="p">)</span>
+<span class="n">pipe_loss_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Suction Pipe Loss (m):&#39;</span><span class="p">)</span>
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Estimate Flow Capacity&#39;</span><span class="p">)</span>
+
+<span class="c1"># Callback</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">pump</span> <span class="o">=</span> <span class="n">pump_models</span><span class="p">[</span><span class="n">pump_selector</span><span class="o">.</span><span class="n">value</span><span class="p">]</span>
+    <span class="n">Q_opt</span><span class="p">,</span> <span class="n">H_pump</span><span class="p">,</span> <span class="n">H_sys</span><span class="p">,</span> <span class="n">feasible</span> <span class="o">=</span> <span class="n">find_operating_point</span><span class="p">(</span><span class="n">pump</span><span class="p">,</span> <span class="n">suction_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">discharge_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">NPSHa</span><span class="p">,</span> <span class="n">NPSHr</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">safe</span> <span class="o">=</span> <span class="n">check_npsh</span><span class="p">(</span><span class="n">pump</span><span class="p">,</span> <span class="n">vapor_head_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">suction_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">pipe_loss_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">feasible</span><span class="p">:</span>
+        <span class="n">md</span> <span class="o">=</span> <span class="s2">&quot;### ❌ No feasible operating point — system head exceeds pump capability.&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">md</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🚰 Estimated Pump Flow Capacity</span>
+
+<span class="s2">- **Pump Model**: </span><span class="si">{</span><span class="n">pump_selector</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Static Head**: </span><span class="si">{</span><span class="n">H_sys</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Pump Head at Operating Point**: </span><span class="si">{</span><span class="n">H_pump</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Flow Capacity**: </span><span class="si">{</span><span class="n">Q_opt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> L/s  </span>
+<span class="s2">- **Pipe Diameter**: </span><span class="si">{</span><span class="n">pipe_diam_slider</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m  </span>
+
+<span class="s2">### 🧪 NPSH Check</span>
+
+<span class="s2">- **NPSHa**: </span><span class="si">{</span><span class="n">NPSHa</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **NPSHr**: </span><span class="si">{</span><span class="n">NPSHr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Safety Margin**: </span><span class="si">{</span><span class="n">margin</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- </span><span class="si">{</span><span class="s1">&#39;✅ Cavitation risk is low&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">safe</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;⚠️ Cavitation risk detected — redesign advised&#39;</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">md</span><span class="p">))</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_click</span><span class="p">)</span>
+
+<span class="c1"># Display UI</span>
+<span class="n">display</span><span class="p">(</span><span class="n">pump_selector</span><span class="p">,</span> <span class="n">suction_slider</span><span class="p">,</span> <span class="n">discharge_slider</span><span class="p">,</span>
+        <span class="n">pipe_diam_slider</span><span class="p">,</span> <span class="n">vapor_head_slider</span><span class="p">,</span> <span class="n">pipe_loss_slider</span><span class="p">,</span> <span class="n">run_btn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e5e210073dda42a095cede874948583f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "7ca2b6ef71ce4156995ce8ec69327a7d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "051b2851e1ad4d9b8b45c0a275df8e5e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a95e4e9f8255476aad9f08fa29a7566b", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "72a6157e45474b319ce83d4b046a3b06", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "52705833732d456f975e0392817be0ea", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8c769b6e459b430fb7bba4a4f936c5b6", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="interactive-visualization-of-pump-performance-curves">
+<h3>⚙️ Interactive Visualization of Pump Performance Curves<a class="headerlink" href="#interactive-visualization-of-pump-performance-curves" title="Link to this heading">#</a></h3>
+<p>This Python tool uses <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> to display characteristic pump curves for various types, sizes, and speeds. It is useful for analyzing how impeller diameter and rotation speed affect pump behavior across flow rates.</p>
+</section>
+<hr class="docutils" />
+<section id="what-it-shows">
+<h3>📈 What It Shows<a class="headerlink" href="#what-it-shows" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Head vs. Flow Rate (Q-H Curve)</strong><br />
+How the pressure head varies as flow increases. Different pump types exhibit distinct head profiles.</p></li>
+<li><p><strong>Efficiency vs. Flow Rate</strong><br />
+Visualization of optimal operating regions where pump efficiency peaks.</p></li>
+<li><p><strong>Power Requirement vs. Flow Rate</strong><br />
+Illustrates the energy consumption relative to throughput.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="interactive-inputs">
+<h3>🔧 Interactive Inputs<a class="headerlink" href="#interactive-inputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Pump Type</strong><br />
+Select from Centrifugal, Axial, or Mixed-flow.</p></li>
+<li><p><strong>Impeller Diameter [m]</strong><br />
+Adjust the size of the rotating impeller, which influences flow and head.</p></li>
+<li><p><strong>Rotational Speed [RPM]</strong><br />
+Change pump shaft speed to see its effect on flow characteristics.</p></li>
+</ul>
+<hr class="docutils" />
+<p>import numpy as np
+import matplotlib.pyplot as plt
+from ipywidgets import interact, FloatSlider, Dropdown</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pump-curve-generator-simplified-characteristic-shapes">
+<h1>📐 Pump curve generator (simplified characteristic shapes)<a class="headerlink" href="#pump-curve-generator-simplified-characteristic-shapes" title="Link to this heading">#</a></h1>
+<p>def pump_curve(Q, pump_type, D, N):
+# Normalize flow based on impeller diameter and speed
+Q_norm = Q / (D**2 * N)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if pump_type == &#39;Centrifugal&#39;:
+    H = 60 * (1 - (Q_norm)**2)  # Head drops sharply
+    Eff = 0.6 + 0.3 * np.exp(-((Q_norm - 0.6)**2) / 0.1)
+    P = Q * H / (Eff + 1e-5)
+
+elif pump_type == &#39;Axial&#39;:
+    H = 20 * (1 - 0.4 * Q_norm)  # Flatter head
+    Eff = 0.75 + 0.1 * np.sin(np.pi * Q_norm)
+    P = Q * H / (Eff + 1e-5)
+
+elif pump_type == &#39;Mixed-flow&#39;:
+    H = 40 * (1 - 0.6 * Q_norm)
+    Eff = 0.7 + 0.15 * np.exp(-((Q_norm - 0.5)**2) / 0.2)
+    P = Q * H / (Eff + 1e-5)
+
+else:
+    H = np.zeros_like(Q)
+    Eff = np.zeros_like(Q)
+    P = np.zeros_like(Q)
+
+return H, Eff, P
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="plot-curves">
+<h1>📊 Plot curves<a class="headerlink" href="#plot-curves" title="Link to this heading">#</a></h1>
+<p>def update(pump_type, D, N):
+Q = np.linspace(1, 100, 100)
+H, Eff, P = pump_curve(Q, pump_type, D, N)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>fig, axs = plt.subplots(3, 1, figsize=(7, 10))
+
+axs[0].plot(Q, H, &#39;b&#39;)
+axs[0].set_ylabel(&#39;Head [m]&#39;)
+axs[0].set_title(f&#39;Pump Type: {pump_type} | D: {D} m | N: {N} RPM&#39;)
+axs[0].grid(True)
+
+axs[1].plot(Q, Eff, &#39;g&#39;)
+axs[1].set_ylabel(&#39;Efficiency [-]&#39;)
+axs[1].grid(True)
+
+axs[2].plot(Q, P, &#39;r&#39;)
+axs[2].set_ylabel(&#39;Power [W]&#39;)
+axs[2].set_xlabel(&#39;Flow Rate Q [m³/h]&#39;)
+axs[2].grid(True)
+
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="interactive-controls">
+<h1>🎛️ Interactive Controls<a class="headerlink" href="#interactive-controls" title="Link to this heading">#</a></h1>
+<p>interact(update,
+pump_type=Dropdown(
+options=[‘Centrifugal’, ‘Axial’, ‘Mixed-flow’],
+value=’Centrifugal’,
+description=’Pump Design’
+),
+D=FloatSlider(
+value=0.5, min=0.2, max=2.0, step=0.1,
+description=’Impeller Diameter [m]’
+),
+N=FloatSlider(
+value=1800, min=500, max=3600, step=100,
+description=’Rotational Speed [RPM]’
+)
+)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">Dropdown</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">Label</span>
+
+<span class="c1"># 🌊 Fluid properties</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># kg/m³</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>    <span class="c1"># m/s²</span>
+
+<span class="c1"># ⚙️ Suggest pump type based on scenario</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">suggest_pump</span><span class="p">(</span><span class="n">application</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">application</span> <span class="o">==</span> <span class="s1">&#39;Wastewater Treatment&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Submersible or Progressive Cavity Pump&#39;</span>
+    <span class="k">elif</span> <span class="n">application</span> <span class="o">==</span> <span class="s1">&#39;River Withdrawal&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Mixed-Flow or Vertical Turbine Pump&#39;</span>
+    <span class="k">elif</span> <span class="n">application</span> <span class="o">==</span> <span class="s1">&#39;Stormwater Discharge&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Axial or Propeller Pump&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;General Centrifugal Pump&#39;</span>
+
+<span class="c1"># 🔌 Estimate Power Requirement</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_power</span><span class="p">(</span><span class="n">Q_m3hr</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">Eff</span><span class="p">):</span>
+    <span class="n">Q_m3s</span> <span class="o">=</span> <span class="n">Q_m3hr</span> <span class="o">/</span> <span class="mi">3600</span>
+    <span class="n">P_kW</span> <span class="o">=</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">Q_m3s</span> <span class="o">*</span> <span class="n">H</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Eff</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">P_kW</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 💬 Output calculator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">Eff</span><span class="p">):</span>
+    <span class="n">pump</span> <span class="o">=</span> <span class="n">suggest_pump</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+    <span class="n">power</span> <span class="o">=</span> <span class="n">calculate_power</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">Eff</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🏗️ Application Scenario:&quot;</span><span class="p">,</span> <span class="n">application</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🔧 Recommended Pump Type:&quot;</span><span class="p">,</span> <span class="n">pump</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💦 Design Flow Rate: </span><span class="si">{</span><span class="n">Q</span><span class="si">}</span><span class="s2"> m³/hr&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📐 Design Head: </span><span class="si">{</span><span class="n">H</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚙️ Assumed Efficiency: </span><span class="si">{</span><span class="n">Eff</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔌 Estimated Shaft Power Requirement: </span><span class="si">{</span><span class="n">power</span><span class="si">}</span><span class="s2"> kW&quot;</span><span class="p">)</span>
+
+<span class="c1"># 🎛️ Interactive Controls with Descriptive Labels</span>
+<span class="n">display</span><span class="p">(</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">Label</span><span class="p">(</span><span class="s2">&quot;🏗️ Application Scenario: Select the operational context where pumping is needed.&quot;</span><span class="p">),</span>
+    <span class="n">Label</span><span class="p">(</span><span class="s2">&quot;💦 Design Flow Rate [m³/hr]: Total volume of fluid to be pumped per hour.&quot;</span><span class="p">),</span>
+    <span class="n">Label</span><span class="p">(</span><span class="s2">&quot;📐 Design Head [m]: Vertical height the fluid must be lifted or overcome due to system pressure.&quot;</span><span class="p">),</span>
+    <span class="n">Label</span><span class="p">(</span><span class="s2">&quot;⚙️ Pump Efficiency [-]: Estimated mechanical efficiency of the pump used for conversion of shaft power.&quot;</span><span class="p">)</span>
+<span class="p">]))</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">update</span><span class="p">,</span>
+    <span class="n">application</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+            <span class="s1">&#39;Wastewater Treatment&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;River Withdrawal&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Stormwater Discharge&#39;</span>
+        <span class="p">],</span>
+        <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Wastewater Treatment&#39;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;🌍 Select Application&#39;</span>
+    <span class="p">),</span>
+    <span class="n">Q</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;💦 Flow Rate [m³/hr]&#39;</span>
+    <span class="p">),</span>
+    <span class="n">H</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;📐 Head [m]&#39;</span>
+    <span class="p">),</span>
+    <span class="n">Eff</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;⚙️ Pump Efficiency&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "88302f46cfed4fc494c9e17732429a7b", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "dac5d20a1bfa4481aeb308c8c6bbdcca", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.update(application, Q, H, Eff)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="self-assessment">
+<h2>4. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="hydraulic-pump-design-selection-reflective-conceptual-quiz-questions">
+<h3>🧠 Hydraulic Pump Design &amp; Selection: Reflective, Conceptual &amp; Quiz Questions<a class="headerlink" href="#hydraulic-pump-design-selection-reflective-conceptual-quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="pump-fundamentals">
+<h3>Pump Fundamentals<a class="headerlink" href="#pump-fundamentals" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What is the physical relationship between flow rate, head, and power in hydraulic systems?</p></li>
+<li><p>Why does fluid density and gravity influence both pressure and power requirements?</p></li>
+<li><p>How does efficiency affect the total energy demand of a hydraulic pump?</p></li>
+</ul>
+</section>
+<section id="pump-selection-logic">
+<h3>Pump Selection Logic<a class="headerlink" href="#pump-selection-logic" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What conditions would justify the use of a positive displacement pump instead of a centrifugal pump?</p></li>
+<li><p>Why is head-based selection critical for identifying multistage vs. standard centrifugal pumps?</p></li>
+<li><p>In what scenarios are peristaltic or piston pumps preferred?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>💭 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>As you manipulated the sliders, which input parameter had the most impact on calculated power? Why?</p></li>
+<li><p>How does fluid viscosity affect pump type selection in practical field applications?</p></li>
+<li><p>Have you ever worked on a system with limited installation space? What trade-offs were necessary in pump selection?</p></li>
+<li><p>Think of a field situation where cavitation was observed—how might NPSH considerations have prevented it?</p></li>
+<li><p>How confident do you feel explaining the link between design parameters and system efficiency to learners?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="design-calculations">
+<h3>Design Calculations<a class="headerlink" href="#design-calculations" title="Link to this heading">#</a></h3>
+<p><strong>Q1. Increasing flow rate while keeping head and efficiency constant will:</strong></p>
+<ul class="simple">
+<li><p>A. Decrease required power</p></li>
+<li><p>B. Increase required power ✅</p></li>
+<li><p>C. Not affect power</p></li>
+<li><p>D. Reduce outlet pressure</p></li>
+</ul>
+<p><strong>Q2. If head = 30 m and fluid density = 1000 kg/m³, what is approximate outlet pressure?</strong></p>
+<ul class="simple">
+<li><p>A. 2.94 kPa</p></li>
+<li><p>B. 29.43 kPa ✅</p></li>
+<li><p>C. 3.00 Pa</p></li>
+<li><p>D. 294.3 kPa</p></li>
+</ul>
+<p><strong>Q3. Which combination of properties suggests use of a screw or gear pump?</strong></p>
+<ul class="simple">
+<li><p>A. High head and low flow</p></li>
+<li><p>B. Water and low viscosity</p></li>
+<li><p>C. Oil and viscosity &gt; 100 cP ✅</p></li>
+<li><p>D. Large solids and space constraints</p></li>
+</ul>
+</section>
+<section id="selection-conditions">
+<h3>Selection Conditions<a class="headerlink" href="#selection-conditions" title="Link to this heading">#</a></h3>
+<p><strong>Q4. A system with 45 L/min flow and solids present would best use:</strong></p>
+<ul class="simple">
+<li><p>A. Vertical Inline Pump</p></li>
+<li><p>B. Standard Centrifugal Pump</p></li>
+<li><p>C. Diaphragm or Slurry Pump ✅</p></li>
+<li><p>D. Multistage Centrifugal Pump</p></li>
+</ul>
+<p><strong>Q5. Which parameter does NOT influence outlet pressure directly?</strong></p>
+<ul class="simple">
+<li><p>A. Fluid density</p></li>
+<li><p>B. Head</p></li>
+<li><p>C. Viscosity ✅</p></li>
+<li><p>D. Gravity</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="problem-1-power-calculation">
+<h3>💧 Problem 1: Power Calculation<a class="headerlink" href="#problem-1-power-calculation" title="Link to this heading">#</a></h3>
+<p>A water distribution system requires a flow of <strong>750 L/min</strong> and an elevation gain of <strong>22 m</strong>. The pump operates at <strong>78% efficiency</strong>.</p>
+<p><strong>Tasks:</strong></p>
+<ul class="simple">
+<li><p>Convert flow rate to m³/s</p></li>
+<li><p>Estimate required input power in kW using:<br />
+<span class="math notranslate nohighlight">\(( P = \frac{ρgQH}{η} \)</span>)</p></li>
+<li><p>Compute outlet pressure in kPa assuming ρ = 1000 kg/m³</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="problem-2-npsh-evaluation">
+<h3>🔍 Problem 2: NPSH Evaluation<a class="headerlink" href="#problem-2-npsh-evaluation" title="Link to this heading">#</a></h3>
+<p>For the same system:</p>
+<ul class="simple">
+<li><p>Suction tank is 3.5 m above pump centerline</p></li>
+<li><p>Pipe losses before pump = 1.2 m</p></li>
+<li><p>Vapor pressure head at 25°C = 0.3 m</p></li>
+</ul>
+<p><strong>Tasks:</strong></p>
+<ul class="simple">
+<li><p>Calculate NPSHa:<br />
+<span class="math notranslate nohighlight">\(( NPSHa = Z + P_{atm} - h_{loss} - h_{vapor} \)</span>)</p></li>
+<li><p>If pump’s NPSHr = 2.8 m, will cavitation occur?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="problem-3-operating-point-selection">
+<h3>📈 Problem 3: Operating Point Selection<a class="headerlink" href="#problem-3-operating-point-selection" title="Link to this heading">#</a></h3>
+<p>Use the simplified system curve:<br />
+<span class="math notranslate nohighlight">\(( H_{sys} = 10 + 0.002Q^2 \)</span>)</p>
+<p>Pump curve:<br />
+<span class="math notranslate nohighlight">\(( H_{pump} = 30 - 0.0015Q^2 \)</span>)</p>
+<p><strong>Tasks:</strong></p>
+<ul class="simple">
+<li><p>Graph both curves on the same axis (Q vs. H)</p></li>
+<li><p>Determine operating point (intersection)</p></li>
+<li><p>Identify if operating point falls near BEP</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="problem-4-pump-configuration-comparison">
+<h3>🔗 Problem 4: Pump Configuration Comparison<a class="headerlink" href="#problem-4-pump-configuration-comparison" title="Link to this heading">#</a></h3>
+<p>Design two configurations for a site needing <strong>1800 L/min</strong> and <strong>65 m</strong> head.</p>
+<p><strong>Tasks:</strong></p>
+<ol class="arabic simple">
+<li><p>Choose pump type(s) for each configuration:</p>
+<ul class="simple">
+<li><p><strong>Single pump</strong></p></li>
+<li><p><strong>Two pumps in series</strong></p></li>
+<li><p><strong>Two pumps in parallel</strong></p></li>
+</ul>
+</li>
+<li><p>Compute head and flow for each configuration</p></li>
+<li><p>Compare power requirements and NPSH conditions</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="challenge-scenario">
+<h3>🧠 Challenge Scenario<a class="headerlink" href="#challenge-scenario" title="Link to this heading">#</a></h3>
+<p>You are designing a pump station for a slurry discharge line with:</p>
+<ul class="simple">
+<li><p>Flow: 45 L/min</p></li>
+<li><p>Head: 12 m</p></li>
+<li><p>Fluid: Viscous + solid particles</p></li>
+<li><p>Limited installation space</p></li>
+</ul>
+<p><strong>Tasks:</strong></p>
+<ul class="simple">
+<li><p>Select pump type and justify choice</p></li>
+<li><p>Describe expected pump curve shape</p></li>
+<li><p>Identify risks to operation and mitigation strategies</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflection-prompt">
+<h3>✍️ Reflection Prompt<a class="headerlink" href="#reflection-prompt" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How does fluid type influence pump selection and operating safety?</p></li>
+<li><p>What trade-offs do you make between energy efficiency and system flexibility?</p></li>
+<li><p>Where might you prioritize NPSH safety over pump cost?</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="CulvertDesign.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 3 Hydraulics: Design of Culverts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="StormDrainInletDesign.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3 Hydraulics: Storm Drain Inet Design</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 3 Hydraulics: Hydraulic Pumps</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydraulic-pumps-concepts-design-and-system-integration">💧 Hydraulic Pumps: Concepts, Design, and System Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">📘 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-parameters">⚙️ Design Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-hydraulic-pumps">🔍 Types of Hydraulic Pumps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selection-guidelines">🧪 Pump Selection Guidelines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-characteristic-curve">📈 Pump Characteristic Curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#system-curve">📊 System Curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-of-operating-point">🎯 Selection of Operating Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#net-positive-suction-head-npsh">🧮 Net Positive Suction Head (NPSH)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pumps-in-series-vs-pumps-in-parallel">🔗 Pumps in Series vs. Pumps in Parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-hydraulic-pump-design-selection-tool">💧 Summary: Interactive Hydraulic Pump Design &amp; Selection Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-calculator">🔧 Design Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selector">🔍 Pump Selector</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-parameters">🧭 Inputs and Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-output">📊 Interpreting Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-pump-flow-capacity-estimator-interactive-tool">💧 Summary: Pump Flow Capacity Estimator (Interactive Tool)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧮 How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-parameters">📊 Input Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📈 How to Interpret Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-visualization-of-pump-performance-curves">⚙️ Interactive Visualization of Pump Performance Curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-shows">📈 What It Shows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">🔧 Interactive Inputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-curve-generator-simplified-characteristic-shapes">📐 Pump curve generator (simplified characteristic shapes)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-curves">📊 Plot curves</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛️ Interactive Controls</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydraulic-pump-design-selection-reflective-conceptual-quiz-questions">🧠 Hydraulic Pump Design &amp; Selection: Reflective, Conceptual &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-fundamentals">Pump Fundamentals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selection-logic">Pump Selection Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-calculations">Design Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-conditions">Selection Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-power-calculation">💧 Problem 1: Power Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-npsh-evaluation">🔍 Problem 2: NPSH Evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-operating-point-selection">📈 Problem 3: Operating Point Selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-pump-configuration-comparison">🔗 Problem 4: Pump Configuration Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-scenario">🧠 Challenge Scenario</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-prompt">✍️ Reflection Prompt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

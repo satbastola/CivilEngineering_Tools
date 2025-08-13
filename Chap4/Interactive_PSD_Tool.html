@@ -1,0 +1,1440 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4 Geotechnical Engineering: Particle size distribution &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap4/Interactive_PSD_Tool';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Geotech Engineering Laboratory: Liquid and Plastic Limit" href="LiquidPlasticLimit.html" />
+    <link rel="prev" title="Chapter 4 Geotechnical Engineering: USCS Soil Classification" href="USCS_Soil_Classification_Tool.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap4/Interactive_PSD_Tool.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap4/Interactive_PSD_Tool.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap4/Interactive_PSD_Tool.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap4/Interactive_PSD_Tool.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap4/Interactive_PSD_Tool.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4 Geotechnical Engineering: Particle size distribution</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-size-and-distribution-in-geotechnical-properties">🧱 Particle Size and Distribution in Geotechnical Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-methods-for-particle-size-distribution-psd">🔬 Alternative Methods for Particle Size Distribution (PSD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-from-psd">📐 Key Parameters from PSD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-particle-size-distribution-is-important">🧠 Why Particle Size Distribution Is Important</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">1. <strong>Classification</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permeability">2. <strong>Permeability</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compaction-and-density">3. <strong>Compaction and Density</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-strength">4. <strong>Shear Strength</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#frost-susceptibility">5. <strong>Frost Susceptibility</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-design-and-drainage">6. <strong>Filter Design and Drainage</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-particle-size-in-geotechnical-properties">📊 Role of Particle Size in Geotechnical Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-particle-size-distribution-psd-tool">Interactive Particle Size Distribution (PSD) Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-steps">🔧 Computational Steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧠 Conceptual Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz">Quiz</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-geotechnical-engineering-particle-size-distribution">
+<h1>Chapter 4 Geotechnical Engineering: Particle size distribution<a class="headerlink" href="#chapter-4-geotechnical-engineering-particle-size-distribution" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Particle size distribution</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: PSD</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="particle-size-distribution">
+<a class="reference internal image-reference" href="Chap4/ParticleSizeDistribution.png"><img alt="Descriptive alt text for accessibility" src="Chap4/ParticleSizeDistribution.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">**Figure 4.1 **: Particle Size Distribution.</span><a class="headerlink" href="#particle-size-distribution" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="particle-size-and-distribution-in-geotechnical-properties">
+<h3>🧱 Particle Size and Distribution in Geotechnical Properties<a class="headerlink" href="#particle-size-and-distribution-in-geotechnical-properties" title="Link to this heading">#</a></h3>
+<p><strong>Particle Size Distribution (PSD)</strong> refers to the <strong>proportion of different grain sizes</strong> present in a soil sample. It is typically determined through:</p>
+<ul class="simple">
+<li><p><strong>Sieve analysis</strong> for coarse-grained soils (sand, gravel)</p></li>
+<li><p><strong>Hydrometer analysis</strong> for fine-grained soils (silt, clay): Based on sedimentation and Stokes’ Law; - Suitable for fine-grained soils (silt and clay)- Measures settling velocity in a fluid column</p></li>
+</ul>
+<p>The results are plotted as a <strong>gradation curve</strong>, showing the percentage of material finer than a given size.</p>
+</section>
+<section id="alternative-methods-for-particle-size-distribution-psd">
+<h3>🔬 Alternative Methods for Particle Size Distribution (PSD)<a class="headerlink" href="#alternative-methods-for-particle-size-distribution-psd" title="Link to this heading">#</a></h3>
+<p>Beyond traditional sieve analysis, several advanced techniques are used to characterize particle size across a wide range of materials and scales:</p>
+<ul class="simple">
+<li><p><strong>Laser Diffraction (LD)</strong></p>
+<ul>
+<li><p>Uses light scattering to estimate particle size - Covers ~0.01 µm to 2000 µm range - Assumes spherical particles; rapid and automated</p></li>
+</ul>
+</li>
+<li><p><strong>Dynamic Light Scattering (DLS)</strong></p>
+<ul>
+<li><p>Measures Brownian motion of particles in suspension - Ideal for nanoparticles (0.3 nm to ~10 µm) - Provides hydrodynamic diameter</p></li>
+</ul>
+</li>
+<li><p><strong>Dynamic Image Analysis (DIA)</strong></p>
+<ul>
+<li><p>Captures real-time images of particles in motion - Measures both size and shape - Useful for multimodal and irregular distributions</p></li>
+</ul>
+</li>
+<li><p><strong>Scanning Electron Microscopy (SEM)</strong></p>
+<ul>
+<li><p>Direct imaging of particle morphology and size - Suitable for particles &gt;10 nm - Offers detailed surface texture analysis</p></li>
+</ul>
+</li>
+<li><p><strong>Coulter Counter (Electrical Sensing Zone Method)</strong></p>
+<ul>
+<li><p>Detects changes in electrical resistance as particles pass through an orifice - Effective for sizing and counting particles in suspension</p></li>
+</ul>
+</li>
+</ul>
+<p>These methods vary in resolution, cost, and assumptions about particle shape, making them complementary tools depending on the material and engineering context.</p>
+</section>
+<hr class="docutils" />
+<section id="key-parameters-from-psd">
+<h3>📐 Key Parameters from PSD<a class="headerlink" href="#key-parameters-from-psd" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D10</strong></p></td>
+<td><p>Diameter at which 10% of soil is finer (effective size)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D30, D60</strong></p></td>
+<td><p>Diameters at 30% and 60% finer; used in uniformity and gradation calculations</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cu (Uniformity Coefficient)</strong></p></td>
+<td><p>( Cu = \frac{D60}{D10} ); indicates soil gradation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cc (Coefficient of Curvature)</strong></p></td>
+<td><p>( Cc = \frac{D30^2}{D10 \cdot D60} ); indicates shape of curve</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="why-particle-size-distribution-is-important">
+<h3>🧠 Why Particle Size Distribution Is Important<a class="headerlink" href="#why-particle-size-distribution-is-important" title="Link to this heading">#</a></h3>
+<section id="classification">
+<h4>1. <strong>Classification</strong><a class="headerlink" href="#classification" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Determines whether soil is <strong>coarse-grained</strong> (sand, gravel) or <strong>fine-grained</strong> (silt, clay)</p></li>
+<li><p>Used in systems like <strong>USCS</strong> and <strong>AASHTO</strong></p></li>
+</ul>
+</section>
+<section id="permeability">
+<h4>2. <strong>Permeability</strong><a class="headerlink" href="#permeability" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Well-graded soils (wide range of sizes) have <strong>lower permeability</strong></p></li>
+<li><p>Uniform soils (similar sizes) allow <strong>faster drainage</strong></p></li>
+</ul>
+</section>
+<section id="compaction-and-density">
+<h4>3. <strong>Compaction and Density</strong><a class="headerlink" href="#compaction-and-density" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>PSD affects <strong>maximum dry density</strong> and <strong>optimum moisture content</strong></p></li>
+<li><p>Well-graded soils compact better and achieve higher strength</p></li>
+</ul>
+</section>
+<section id="shear-strength">
+<h4>4. <strong>Shear Strength</strong><a class="headerlink" href="#shear-strength" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Coarse particles provide <strong>frictional resistance</strong></p></li>
+<li><p>Fines influence <strong>cohesion and plasticity</strong></p></li>
+</ul>
+</section>
+<section id="frost-susceptibility">
+<h4>5. <strong>Frost Susceptibility</strong><a class="headerlink" href="#frost-susceptibility" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Fine soils (especially silts) are more prone to <strong>frost heave</strong></p></li>
+</ul>
+</section>
+<section id="filter-design-and-drainage">
+<h4>6. <strong>Filter Design and Drainage</strong><a class="headerlink" href="#filter-design-and-drainage" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>PSD ensures proper <strong>filter compatibility</strong> to prevent piping and clogging</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="role-of-particle-size-in-geotechnical-properties">
+<h3>📊 Role of Particle Size in Geotechnical Properties<a class="headerlink" href="#role-of-particle-size-in-geotechnical-properties" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Influence of Particle Size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Strength</strong></p></td>
+<td><p>Larger particles increase friction; fines add cohesion</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Compressibility</strong></p></td>
+<td><p>Fine soils compress more under load</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Permeability</strong></p></td>
+<td><p>Coarse soils drain faster; fines retain water</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Plasticity</strong></p></td>
+<td><p>Controlled by clay content and mineralogy</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stability</strong></p></td>
+<td><p>Well-graded soils resist erosion and settlement</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="conceptual-insight">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#conceptual-insight" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Particle size distribution is the <strong>foundation of soil classification and behavior prediction</strong> —<br />
+it governs how soil responds to <strong>loading, drainage, compaction, and environmental changes</strong>.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id43" title="Braja M. Das. Principles of Foundation Engineering. Cengage Learning, Stamford, CT, 7th edition, 2010. ISBN 9780495411307.">Das, 2010</a>]</span> provides a clear and pedagogically rich explanation of particle size distribution (PSD). Furthermore, the three ASTM standards for particle size distribution (PSD) testing provide complementary methods for analyzing soil gradation. ASTM D422 <span id="id2">[<a class="reference internal" href="../markdown.html#id44" title="ASTM International. Astm d422 - standard test method for particle-size analysis of soils. 1963. Withdrawn and replaced by D6913 and D7928.">ASTM International, 1963</a>]</span>, now withdrawn, historically combined sieve and hydrometer techniques to assess both coarse and fine fractions in a single procedure. It has since been replaced by two more specialized standards: ASTM D6913 <span id="id3">[<a class="reference internal" href="../markdown.html#id49" title="ASTM International. Astm d6913 - standard test methods for particle-size distribution (gradation) of soils using sieve analysis. 2004.">ASTM International, 2004</a>]</span>, which covers sieve analysis for coarse-grained soils such as sand and gravel, and ASTM D7928 {cite: p}<code class="docutils literal notranslate"><span class="pre">ASTM_D7928</span></code>, which details hydrometer analysis for fine-grained soils like silt and clay. D6913 outlines procedures for dry sieving, including calculations for the coefficient of uniformity and curvature, while D7928 applies sedimentation principles based on Stokes’ Law, incorporating corrections for temperature and dispersant effects. Together, D6913 and D7928 form the current ASTM framework for accurately characterizing soil gradation across the full particle size spectrum.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="interactive-particle-size-distribution-psd-tool">
+<h3>Interactive Particle Size Distribution (PSD) Tool<a class="headerlink" href="#interactive-particle-size-distribution-psd-tool" title="Link to this heading">#</a></h3>
+<p>This notebook provides an interactive tool for analyzing <strong>Particle Size Distribution (PSD)</strong> in soil mechanics. It is designed for educational use and includes:</p>
+<p>This tool:</p>
+<ul class="simple">
+<li><p>Computes key PSD parameters: <strong>D10</strong>, <strong>D30</strong>, <strong>D60</strong></p></li>
+<li><p>Calculates <strong>Uniformity Coefficient (Cu)</strong> and <strong>Curvature Coefficient (Cc)</strong></p></li>
+<li><p>Classifies soil gradation (e.g., <strong>GW</strong>, <strong>SW</strong>, <strong>GP</strong>, <strong>SP</strong>) based on empirical criteria</p></li>
+<li><p>Visualizes the <strong>gradation curve</strong> using Plotly</p></li>
+<li><p>Interprets soil type based on fines content and PSD shape</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="computational-steps">
+<h3>🔧 Computational Steps<a class="headerlink" href="#computational-steps" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>User Inputs</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Sieve</span> <span class="pre">Sizes</span> <span class="pre">(mm)</span></code>: Grain diameters used in sieve analysis</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Percent</span> <span class="pre">Passing</span> <span class="pre">(%)</span></code>: Cumulative percentage of soil passing each sieve</p></li>
+</ul>
+</li>
+<li><p><strong>Calculations</strong>:</p>
+<ul class="simple">
+<li><p>Interpolates D10, D30, D60 from the gradation curve</p></li>
+<li><p>Computes:
+<span class="math notranslate nohighlight">\(
+Cu = \frac{D60}{D10}, \quad Cc = \frac{D30^2}{D10 \cdot D60}
+\)</span></p></li>
+<li><p>Determines fines content (percent passing 0.075 mm)</p></li>
+<li><p>Applies classification rules based on Cu, Cc, and fines</p></li>
+</ul>
+</li>
+<li><p><strong>Visualization</strong>:</p>
+<ul class="simple">
+<li><p>Plots PSD curve with D-values highlighted</p></li>
+<li><p>Uses log scale and reversed axes for standard soil gradation format</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-inputs">
+<h2>📊 How to Interpret Inputs<a class="headerlink" href="#how-to-interpret-inputs" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Sieve</span> <span class="pre">Sizes</span> <span class="pre">(mm)</span></code></p></td>
+<td><p>Grain sizes used in sieve analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Percent</span> <span class="pre">Passing</span> <span class="pre">(%)</span></code></p></td>
+<td><p>Cumulative percent of soil finer than each sieve size</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-outputs">
+<h2>📋 How to Interpret Outputs<a class="headerlink" href="#how-to-interpret-outputs" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Parameter</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D10</span></code>, <code class="docutils literal notranslate"><span class="pre">D30</span></code>, <code class="docutils literal notranslate"><span class="pre">D60</span></code></p></td>
+<td><p>Key grain sizes used in classification and permeability estimation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cu</span></code></p></td>
+<td><p>Indicates soil gradation; Cu ≥ 4 (gravel), Cu ≥ 6 (sand) = well-graded</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Cc</span></code></p></td>
+<td><p>Indicates curve shape; 1 ≤ Cc ≤ 3 = well-graded</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Percent</span> <span class="pre">Fines</span></code></p></td>
+<td><p>Helps distinguish coarse vs. fine-grained soils</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Classification</span></code></p></td>
+<td><p>Soil type based on gradation and fines (e.g., GW, SW, SP, SC, SM)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PSD</span> <span class="pre">Curve</span></code></p></td>
+<td><p>Visual representation of soil gradation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>🧠 Conceptual Insight<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>This tool links <strong>grain size distribution</strong> to <strong>soil classification and engineering behavior</strong> —<br />
+helping geotechnical engineers assess <strong>drainage, compaction, and stability</strong> characteristics.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">plotly.graph_objects</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">go</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_d_values</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">):</span>
+    <span class="n">D10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sieve_sizes</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">D30</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sieve_sizes</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">D60</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sieve_sizes</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">D10</span><span class="p">,</span> <span class="n">D30</span><span class="p">,</span> <span class="n">D60</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_psd</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">,</span> <span class="n">D10</span><span class="p">,</span> <span class="n">D30</span><span class="p">,</span> <span class="n">D60</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">sieve_sizes</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">percent_passing</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines+markers&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PSD Curve&#39;</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">D10</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers+text&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;D10&#39;</span><span class="p">,</span>
+                             <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;D10&quot;</span><span class="p">],</span> <span class="n">textposition</span><span class="o">=</span><span class="s2">&quot;top center&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">D30</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers+text&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;D30&#39;</span><span class="p">,</span>
+                             <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;D30&quot;</span><span class="p">],</span> <span class="n">textposition</span><span class="o">=</span><span class="s2">&quot;top center&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="n">D60</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;markers+text&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;D60&#39;</span><span class="p">,</span>
+                             <span class="n">text</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;D60&quot;</span><span class="p">],</span> <span class="n">textposition</span><span class="o">=</span><span class="s2">&quot;top center&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Particle Size Distribution Curve&#39;</span><span class="p">,</span>
+                      <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Sieve Size (mm)&#39;</span><span class="p">,</span>
+                      <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Percent Passing (%)&#39;</span><span class="p">,</span>
+                      <span class="n">xaxis_type</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span>
+                      <span class="n">xaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">autorange</span><span class="o">=</span><span class="s1">&#39;reversed&#39;</span><span class="p">),</span>
+                      <span class="n">yaxis</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">autorange</span><span class="o">=</span><span class="s1">&#39;reversed&#39;</span><span class="p">),</span>
+                      <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">classify_soil_by_gradation</span><span class="p">(</span><span class="n">Cu</span><span class="p">,</span> <span class="n">Cc</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">Cu</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">Cc</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Well-graded gravel (GW)&quot;</span>
+    <span class="k">elif</span> <span class="n">Cu</span> <span class="o">&gt;=</span> <span class="mi">6</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">Cc</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Well-graded sand (SW)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;Poorly graded soil (GP/SP)&quot;</span>
+
+<span class="n">sieve_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;4.75, 2.0, 1.0, 0.425, 0.25, 0.075&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Sieve Sizes (mm):&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">passing_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;100, 90, 70, 50, 30, 10&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Percent Passing (%):&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_plot</span><span class="p">(</span><span class="n">change</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sieve_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sieve_input</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)])</span>
+            <span class="n">percent_passing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">passing_input</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)])</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">percent_passing</span><span class="p">):</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;❌ **Error:** Number of sieve sizes and percent passing values must match.&quot;</span><span class="p">))</span>
+                <span class="k">return</span>
+            <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">sieve_sizes</span> <span class="o">=</span> <span class="n">sieve_sizes</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+            <span class="n">percent_passing</span> <span class="o">=</span> <span class="n">percent_passing</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+            <span class="n">D10</span><span class="p">,</span> <span class="n">D30</span><span class="p">,</span> <span class="n">D60</span> <span class="o">=</span> <span class="n">compute_d_values</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">)</span>
+            <span class="n">Cu</span> <span class="o">=</span> <span class="n">D60</span> <span class="o">/</span> <span class="n">D10</span> <span class="k">if</span> <span class="n">D10</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">Cc</span> <span class="o">=</span> <span class="p">(</span><span class="n">D30</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">D10</span> <span class="o">*</span> <span class="n">D60</span><span class="p">)</span> <span class="k">if</span> <span class="n">D10</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">D60</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="n">classification</span> <span class="o">=</span> <span class="n">classify_soil_by_gradation</span><span class="p">(</span><span class="n">Cu</span><span class="p">,</span> <span class="n">Cc</span><span class="p">)</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 📐 Calculated Parameters&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- **D10:** </span><span class="si">{</span><span class="n">D10</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mm  - **D30:** </span><span class="si">{</span><span class="n">D30</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mm  - **D60:** </span><span class="si">{</span><span class="n">D60</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mm&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- **Coefficient of Uniformity (Cu):** </span><span class="si">{</span><span class="n">Cu</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  - **Coefficient of Curvature (Cc):** </span><span class="si">{</span><span class="n">Cc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 🧠 Soil Gradation Hint: **</span><span class="si">{</span><span class="n">classification</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">))</span>
+            <span class="n">plot_psd</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">,</span> <span class="n">D10</span><span class="p">,</span> <span class="n">D30</span><span class="p">,</span> <span class="n">D60</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ **Error:** </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+<span class="n">sieve_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">passing_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">sieve_input</span><span class="p">,</span> <span class="n">passing_input</span><span class="p">]),</span> <span class="n">output</span><span class="p">)</span>
+<span class="n">update_plot</span><span class="p">()</span>
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">classify_soil_from_psd</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">):</span>
+    <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">sieve_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">)[</span><span class="n">sorted_indices</span><span class="p">]</span>
+    <span class="n">percent_passing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">percent_passing</span><span class="p">)[</span><span class="n">sorted_indices</span><span class="p">]</span>
+
+    <span class="n">D10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sieve_sizes</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">D30</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sieve_sizes</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">D60</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">sieve_sizes</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">Cu</span> <span class="o">=</span> <span class="n">D60</span> <span class="o">/</span> <span class="n">D10</span> <span class="k">if</span> <span class="n">D10</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">Cc</span> <span class="o">=</span> <span class="p">(</span><span class="n">D30</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">D10</span> <span class="o">*</span> <span class="n">D60</span><span class="p">)</span> <span class="k">if</span> <span class="n">D10</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">D60</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="n">fines_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.075</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">percent_fines</span> <span class="o">=</span> <span class="n">percent_passing</span><span class="p">[</span><span class="n">fines_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="k">if</span> <span class="n">fines_index</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">percent_fines</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="n">classification</span> <span class="o">=</span> <span class="s2">&quot;Fine-grained soil (Use Atterberg limits for further classification)&quot;</span>
+    <span class="k">elif</span> <span class="n">percent_fines</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="n">classification</span> <span class="o">=</span> <span class="s2">&quot;Coarse-grained soil with fines (e.g., SC, SM, GC, GM)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">D10</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">D60</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">classification</span> <span class="o">=</span> <span class="s2">&quot;Insufficient data for classification&quot;</span>
+        <span class="k">elif</span> <span class="n">Cu</span> <span class="o">&gt;=</span> <span class="mi">4</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">Cc</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">classification</span> <span class="o">=</span> <span class="s2">&quot;Well-graded gravel (GW)&quot;</span> <span class="k">if</span> <span class="n">sieve_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">4.75</span> <span class="k">else</span> <span class="s2">&quot;Well-graded sand (SW)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">classification</span> <span class="o">=</span> <span class="s2">&quot;Poorly graded gravel (GP)&quot;</span> <span class="k">if</span> <span class="n">sieve_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">4.75</span> <span class="k">else</span> <span class="s2">&quot;Poorly graded sand (SP)&quot;</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;D10 (mm)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">D10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="s1">&#39;D30 (mm)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">D30</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="s1">&#39;D60 (mm)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">D60</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="s1">&#39;Cu&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">Cu</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Cc&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">Cc</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Percent Fines&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">percent_fines</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="s1">&#39;Classification&#39;</span><span class="p">:</span> <span class="n">classification</span>
+    <span class="p">}</span>
+
+<span class="c1"># Example dataset</span>
+<span class="n">sieve_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">4.75</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.425</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.075</span><span class="p">]</span>
+<span class="n">percent_passing</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># Run classification</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">classify_soil_from_psd</span><span class="p">(</span><span class="n">sieve_sizes</span><span class="p">,</span> <span class="n">percent_passing</span><span class="p">)</span>
+
+<span class="c1"># Display results</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c795892f57f947a4a1b7d35f06698fbe", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "75a2742d500e448da6f16210e2175f55", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D10 (mm): 0.075
+D30 (mm): 0.25
+D60 (mm): 0.712
+Cu: 9.5
+Cc: 1.17
+Percent Fines: 10
+Classification: Well-graded sand (SW)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+</section>
+<section id="reflective-questions">
+<h2>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>How does particle size distribution affect the properties of materials in different industries?</strong></p></li>
+<li><p><strong>What are the advantages and limitations of different particle size measurement techniques?</strong></p></li>
+<li><p><strong>How can understanding particle size distribution improve product quality and performance?</strong></p></li>
+<li><p><strong>What challenges might arise when interpreting particle size distribution data?</strong></p></li>
+</ol>
+</section>
+<section id="conceptual-questions">
+<h2>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Define particle size distribution and explain its significance in material science.</strong></p></li>
+<li><p><strong>Describe the process of laser diffraction and how it is used to measure particle size.</strong></p></li>
+<li><p><strong>Explain the importance of D10, D30, and D60 values in particle size distribution analysis.</strong></p></li>
+<li><p><strong>What is the difference between well-graded and poorly graded soils? How are these classifications determined?</strong></p></li>
+</ol>
+</section>
+<section id="quiz">
+<h2>Quiz<a class="headerlink" href="#quiz" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Quiz Questions</span>
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What does D10 represent in particle size distribution?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;The diameter at which 10</span><span class="si">% o</span><span class="s2">f the sample&#39;s mass is finer&quot;</span><span class="p">,</span> <span class="s2">&quot;The diameter at which 10</span><span class="si">% o</span><span class="s2">f the sample&#39;s mass is coarser&quot;</span><span class="p">,</span> <span class="s2">&quot;The average particle size&quot;</span><span class="p">,</span> <span class="s2">&quot;The largest particle size&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;The diameter at which 10</span><span class="si">% o</span><span class="s2">f the sample&#39;s mass is finer&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Which technique uses laser light scattering to measure particle size?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Dynamic Light Scattering&quot;</span><span class="p">,</span> <span class="s2">&quot;Laser Diffraction&quot;</span><span class="p">,</span> <span class="s2">&quot;Image Analysis&quot;</span><span class="p">,</span> <span class="s2">&quot;Centrifugal Sedimentation&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Laser Diffraction&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the Coefficient of Uniformity (Cu) used for?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;To determine the average particle size&quot;</span><span class="p">,</span> <span class="s2">&quot;To classify the soil gradation&quot;</span><span class="p">,</span> <span class="s2">&quot;To measure the particle shape&quot;</span><span class="p">,</span> <span class="s2">&quot;To calculate the particle density&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;To classify the soil gradation&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What does a high percentage of fines indicate about the soil?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;The soil is well-graded&quot;</span><span class="p">,</span> <span class="s2">&quot;The soil is poorly graded&quot;</span><span class="p">,</span> <span class="s2">&quot;The soil is fine-grained&quot;</span><span class="p">,</span> <span class="s2">&quot;The soil is coarse-grained&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;The soil is fine-grained&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Function to create quiz</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_quiz</span><span class="p">(</span><span class="n">questions</span><span class="p">):</span>
+    <span class="n">quiz_widgets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">questions</span><span class="p">:</span>
+        <span class="n">question_widget</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+            <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;&lt;b&gt;</span><span class="si">{</span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/b&gt;&quot;</span><span class="p">),</span>
+            <span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">q</span><span class="p">[</span><span class="s1">&#39;options&#39;</span><span class="p">],</span> <span class="n">layout</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;max-content&#39;</span><span class="p">})</span>
+        <span class="p">])</span>
+        <span class="n">quiz_widgets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">question_widget</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quiz_widgets</span>
+
+<span class="c1"># Function to check answers</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_answers</span><span class="p">(</span><span class="n">quiz_widgets</span><span class="p">,</span> <span class="n">questions</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">widget</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">quiz_widgets</span><span class="p">):</span>
+        <span class="n">selected</span> <span class="o">=</span> <span class="n">widget</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">if</span> <span class="n">selected</span> <span class="o">==</span> <span class="n">questions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;answer&#39;</span><span class="p">]:</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+<span class="c1"># Display quiz</span>
+<span class="n">quiz_widgets</span> <span class="o">=</span> <span class="n">create_quiz</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span><span class="n">quiz_widgets</span><span class="p">))</span>
+
+<span class="c1"># Button to submit answers</span>
+<span class="n">submit_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Submit Answers&quot;</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_submit</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">check_answers</span><span class="p">(</span><span class="n">quiz_widgets</span><span class="p">,</span> <span class="n">questions</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### Your Score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">questions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+<span class="n">submit_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_submit</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">submit_button</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a4b673524c6d492abb45c58eca0063c4", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "68bcc9ade6d642ab9cee32f3bb69c883", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "2d4c444ae3534309b4b206d4ec7c8820", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="USCS_Soil_Classification_Tool.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: USCS Soil Classification</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="LiquidPlasticLimit.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Geotech Engineering Laboratory: Liquid and Plastic Limit</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-size-and-distribution-in-geotechnical-properties">🧱 Particle Size and Distribution in Geotechnical Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-methods-for-particle-size-distribution-psd">🔬 Alternative Methods for Particle Size Distribution (PSD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-from-psd">📐 Key Parameters from PSD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-particle-size-distribution-is-important">🧠 Why Particle Size Distribution Is Important</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">1. <strong>Classification</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#permeability">2. <strong>Permeability</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compaction-and-density">3. <strong>Compaction and Density</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shear-strength">4. <strong>Shear Strength</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#frost-susceptibility">5. <strong>Frost Susceptibility</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-design-and-drainage">6. <strong>Filter Design and Drainage</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-particle-size-in-geotechnical-properties">📊 Role of Particle Size in Geotechnical Properties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-particle-size-distribution-psd-tool">Interactive Particle Size Distribution (PSD) Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-steps">🔧 Computational Steps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧠 Conceptual Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz">Quiz</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

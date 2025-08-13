@@ -1,0 +1,1892 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Sustainable Engineering: Renewal Energy &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/RenewalEnergy';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 7 Remote Pilot: Drone Components and Design" href="../Chap7/DroneComponents.html" />
+    <link rel="prev" title="Chapter 6 Enginereing Sustainability: CarbonateCycleClimate" href="CarbonateCycleClimate.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/RenewalEnergy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/RenewalEnergy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/RenewalEnergy.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/RenewalEnergy.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/RenewalEnergy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Sustainable Engineering: Renewal Energy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renewable-energy-definition-role-in-energy-security-regional-potential">🌱 Renewable Energy: Definition, Role in Energy Security &amp; Regional Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-renewable-energy">📘 What Is Renewable Energy?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-renewables-enhance-energy-security">🛡️ How Renewables Enhance Energy Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-specific-sources">🔋 Role of Specific Sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-potential-of-wind-solar-wave-energy">🌍 Regional Potential of Wind, Solar &amp; Wave Energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-energy-potential">🌬️ Wind Energy Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solar-energy-potential">☀️ Solar Energy Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-energy-potential">🌊 Wave Energy Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renewable-energy-potential-in-the-united-states">🇺🇸 Renewable Energy Potential in the United States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-overview-wind-solar-wave-energy">⚡ Comparative Overview: Wind, Solar &amp; Wave Energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-matching-by-region-u-s-context">🧭 Use Case Matching by Region (U.S. Context)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-prompts-for-planning-worksheets">🔮 Scenario Prompts for Planning Worksheets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-of-renewable-energy">🔮 Future of Renewable Energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-outlook">📈 Global Outlook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-outlook">🇺🇸 U.S. Outlook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-trends">🌐 Strategic Trends</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-wind-turbine-power-calculator-interactive-notebook">💡 Summary: Wind Turbine Power Calculator (Interactive Notebook)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🛠️ Inputs:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">⚡ Computations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">📊 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-solar-energy-potential-calculator">☀️ Summary: Interactive Solar Energy Potential Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">🔧 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-logic">🔢 Calculation Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📊 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-ocean-wave-energy-converter-u-s-coastal-estimator">🌊 Summary: Interactive Ocean Wave Energy Converter (U.S. Coastal Estimator)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-controls">🔧 Inputs &amp; Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-logic">🧮 Computation Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-outputs">📊 Interpreting Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-insights">✅ Example Insights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">5. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-physics-turbine-design">Wind Physics &amp; Turbine Design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hub-height-adjustment">Hub Height Adjustment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-reflective-questions">💭 Self-Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-equation-sensitivity">Power Equation &amp; Sensitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#air-properties-turbine-types">Air Properties &amp; Turbine Types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-properties">🌍 Regional Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technology-adjustment">⚙️ Technology &amp; Adjustment</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-sustainable-engineering-renewal-energy">
+<h1>Chapter 6 Sustainable Engineering: Renewal Energy<a class="headerlink" href="#chapter-6-sustainable-engineering-renewal-energy" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Renewal Energy</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Wind Energy</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Simulation"><span class="xref myst">Simulation: Solar Energy</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Simulation"><span class="xref myst">Simulation: Wave Energy</span></a></p></li>
+<li><p><a class="reference internal" href="#5.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="renewal-energy">
+<a class="reference internal image-reference" href="../_images/RenewalEnergy.png"><img alt="Descriptive alt text for accessibility" src="../_images/RenewalEnergy.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">**Figure 6.14 **: Renewal Energy</span><a class="headerlink" href="#renewal-energy" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="renewable-energy-definition-role-in-energy-security-regional-potential">
+<h3>🌱 Renewable Energy: Definition, Role in Energy Security &amp; Regional Potential<a class="headerlink" href="#renewable-energy-definition-role-in-energy-security-regional-potential" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-is-renewable-energy">
+<h3>📘 What Is Renewable Energy?<a class="headerlink" href="#what-is-renewable-energy" title="Link to this heading">#</a></h3>
+<p><strong>Renewable energy</strong> refers to power derived from natural sources that are continuously replenished. These include:</p>
+<ul class="simple">
+<li><p><strong>Solar energy</strong> (sunlight)</p></li>
+<li><p><strong>Wind energy</strong> (air movement)</p></li>
+<li><p><strong>Wave energy</strong> (ocean surface motion)</p></li>
+<li><p><strong>Hydropower</strong>, <strong>geothermal</strong>, and <strong>biomass</strong> are also part of the renewable family.</p></li>
+</ul>
+<p>Unlike fossil fuels, renewables do not deplete over time and produce minimal greenhouse gas emissions.</p>
+</section>
+<hr class="docutils" />
+<section id="how-renewables-enhance-energy-security">
+<h3>🛡️ How Renewables Enhance Energy Security<a class="headerlink" href="#how-renewables-enhance-energy-security" title="Link to this heading">#</a></h3>
+<p>Energy security means <strong>reliable, affordable, and uninterrupted access to energy</strong>. Renewables contribute by:</p>
+<ul class="simple">
+<li><p><strong>Reducing dependence on imported fossil fuels</strong></p></li>
+<li><p><strong>Diversifying the energy mix</strong>, making grids more resilient</p></li>
+<li><p><strong>Decentralizing generation</strong>, which protects against geopolitical and supply chain disruptions</p></li>
+<li><p><strong>Improving grid stability</strong> through distributed systems and storage</p></li>
+</ul>
+</section>
+<section id="role-of-specific-sources">
+<h3>🔋 Role of Specific Sources<a class="headerlink" href="#role-of-specific-sources" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Source</p></th>
+<th class="head"><p>Contribution to Energy Security</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Solar</strong></p></td>
+<td><p>Localized generation (rooftops, farms), predictable output</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wind</strong></p></td>
+<td><p>Large-scale generation, especially in windy regions</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wave</strong></p></td>
+<td><p>Coastal resilience, consistent energy from ocean motion</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="regional-potential-of-wind-solar-wave-energy">
+<h3>🌍 Regional Potential of Wind, Solar &amp; Wave Energy<a class="headerlink" href="#regional-potential-of-wind-solar-wave-energy" title="Link to this heading">#</a></h3>
+</section>
+<section id="wind-energy-potential">
+<h3>🌬️ Wind Energy Potential<a class="headerlink" href="#wind-energy-potential" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Highlights</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>United States</strong></p></td>
+<td><p>Over 136 GW installed; Texas leads with 19,000+ turbines</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Europe</strong></p></td>
+<td><p>Denmark, Germany, and UK are leaders in onshore/offshore wind</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>China</strong></p></td>
+<td><p>Largest global wind capacity; aggressive offshore expansion</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>India</strong></p></td>
+<td><p>Strong potential in Tamil Nadu and Gujarat</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="solar-energy-potential">
+<h3>☀️ Solar Energy Potential<a class="headerlink" href="#solar-energy-potential" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Highlights</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Southwest US</strong></p></td>
+<td><p>Nevada, Arizona, and New Mexico have highest solar irradiance</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>California</strong></p></td>
+<td><p>Leading solar installations; rooftop and utility-scale</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>India</strong></p></td>
+<td><p>High solar potential across most states; major national initiatives</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Middle East</strong></p></td>
+<td><p>Desert regions ideal for large-scale solar farms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="wave-energy-potential">
+<h3>🌊 Wave Energy Potential<a class="headerlink" href="#wave-energy-potential" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Highlights</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Alaska (US)</strong></p></td>
+<td><p>Highest recoverable wave energy: ~620 TWh/year</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>West Coast (US)</strong></p></td>
+<td><p>Oregon, California, Washington have strong wave resources</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hawaii &amp; Puerto Rico</strong></p></td>
+<td><p>Consistent wave patterns; ideal for island resilience</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Europe</strong></p></td>
+<td><p>UK, Ireland, and Portugal exploring commercial wave projects</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="renewable-energy-potential-in-the-united-states">
+<h3>🇺🇸 Renewable Energy Potential in the United States<a class="headerlink" href="#renewable-energy-potential-in-the-united-states" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Source</p></th>
+<th class="head"><p>Estimated Recoverable Potential (TWh/year)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Wind</strong></p></td>
+<td><p>&gt;10,000 TWh/year (onshore + offshore)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Solar</strong></p></td>
+<td><p>Varies by region; Southwest exceeds 6 kWh/m²/day</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wave</strong></p></td>
+<td><p>~1,170 TWh/year (West Coast, Alaska, Hawaii, East Coast)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="comparative-overview-wind-solar-wave-energy">
+<h3>⚡ Comparative Overview: Wind, Solar &amp; Wave Energy<a class="headerlink" href="#comparative-overview-wind-solar-wave-energy" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>🌬️ Wind Energy</p></th>
+<th class="head"><p>☀️ Solar Energy</p></th>
+<th class="head"><p>🌊 Wave Energy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Intermittency</strong></p></td>
+<td><p>Medium — seasonal &amp; diurnal variability</p></td>
+<td><p>High — affected by clouds/night cycles</p></td>
+<td><p>Low — ocean motion is fairly consistent</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cost (per kWh)</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(0.02–\)</span>0.05 (onshore)</p></td>
+<td><p><span class="math notranslate nohighlight">\(0.03–\)</span>0.06 (utility-scale solar)</p></td>
+<td><p>~<span class="math notranslate nohighlight">\(0.15–\)</span>0.30 (pilot-scale)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CapEx / OpEx</strong></p></td>
+<td><p>High upfront, low maintenance</p></td>
+<td><p>Medium upfront, low operating costs</p></td>
+<td><p>Very high upfront, emerging maintenance needs</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Scalability</strong></p></td>
+<td><p>Excellent — utility-scale, offshore farms</p></td>
+<td><p>Excellent — utility &amp; distributed systems</p></td>
+<td><p>Good — coastal deployments, island grids</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maturity</strong></p></td>
+<td><p>Mature — proven tech &amp; economies of scale</p></td>
+<td><p>Mature — widely deployed &amp; improving</p></td>
+<td><p>Emerging — mostly demo/pilot projects</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Land Use</strong></p></td>
+<td><p>Land-friendly (above crops, offshore)</p></td>
+<td><p>Moderate — rooftops, solar farms</p></td>
+<td><p>Minimal — ocean surface use</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Grid Integration</strong></p></td>
+<td><p>Requires storage or backup</p></td>
+<td><p>Requires storage &amp; smart grid</p></td>
+<td><p>Compatible with coastal microgrids</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="use-case-matching-by-region-u-s-context">
+<h3>🧭 Use Case Matching by Region (U.S. Context)<a class="headerlink" href="#use-case-matching-by-region-u-s-context" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Best Fit Source(s)</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Southwest (AZ, NM)</strong></p></td>
+<td><p>☀️ Solar</p></td>
+<td><p>Highest solar irradiance in U.S.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Great Plains (TX, OK, KS)</strong></p></td>
+<td><p>🌬️ Wind</p></td>
+<td><p>Strong, consistent wind patterns</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pacific Coast (CA, OR, WA)</strong></p></td>
+<td><p>🌬️ Wind + 🌊 Wave</p></td>
+<td><p>Wind-rich plus viable wave testing areas</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Alaska</strong></p></td>
+<td><p>🌊 Wave + 🌬️ Wind</p></td>
+<td><p>Wave energy potential &gt; 600 TWh/year</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Southeast (FL, GA)</strong></p></td>
+<td><p>☀️ Solar + 🌬️ Wind (offshore)</p></td>
+<td><p>Solar coverage year-round; coastal wind</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Urban Northeast (NY, MA)</strong></p></td>
+<td><p>☀️ Rooftop Solar + 🌬️ Small Wind</p></td>
+<td><p>Urban mix with community grid integration</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Islands (HI, PR)</strong></p></td>
+<td><p>🌊 Wave + ☀️ Solar</p></td>
+<td><p>Resilience from multiple local sources</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="scenario-prompts-for-planning-worksheets">
+<h3>🔮 Scenario Prompts for Planning Worksheets<a class="headerlink" href="#scenario-prompts-for-planning-worksheets" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Urban Planning</strong>: What renewable mix optimizes roof space and grid resilience?</p></li>
+<li><p><strong>Rural Utility</strong>: Should community wind or solar farms lead the development?</p></li>
+<li><p><strong>Island Systems</strong>: What is the role of wave energy in grid-independent regions?</p></li>
+<li><p><strong>Disaster Preparedness</strong>: Which renewable source offers most reliability in storms?</p></li>
+<li><p><strong>Seasonal Optimization</strong>: How do regional wind and solar cycles affect design?</p></li>
+</ul>
+</section>
+<section id="future-of-renewable-energy">
+<h3>🔮 Future of Renewable Energy<a class="headerlink" href="#future-of-renewable-energy" title="Link to this heading">#</a></h3>
+</section>
+<section id="global-outlook">
+<h3>📈 Global Outlook<a class="headerlink" href="#global-outlook" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Renewables expected to supply <strong>nearly 50% of global electricity by 2030</strong></p></li>
+<li><p>Solar and wind dominate new capacity additions</p></li>
+<li><p>Battery storage and smart grids will enable 24/7 clean power</p></li>
+</ul>
+</section>
+<section id="u-s-outlook">
+<h3>🇺🇸 U.S. Outlook<a class="headerlink" href="#u-s-outlook" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Renewables already supply <strong>44% of electricity</strong> (including nuclear)</p></li>
+<li><p>Over <strong>160 clean energy manufacturing facilities</strong> announced since 2022</p></li>
+<li><p>EVs, data centers, and AI driving demand for clean electricity</p></li>
+</ul>
+</section>
+<section id="strategic-trends">
+<h3>🌐 Strategic Trends<a class="headerlink" href="#strategic-trends" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Decentralization</strong>: Rooftop solar, microgrids, community wind</p></li>
+<li><p><strong>Electrification</strong>: Transport, heating, industry shifting to electric</p></li>
+<li><p><strong>Resilience</strong>: Renewables reduce vulnerability to fuel price shocks and cyber threats</p></li>
+<li><p><strong>Innovation</strong>: AI, green hydrogen, and advanced storage accelerating adoption</p></li>
+</ul>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="summary-wind-turbine-power-calculator-interactive-notebook">
+<h3>💡 Summary: Wind Turbine Power Calculator (Interactive Notebook)<a class="headerlink" href="#summary-wind-turbine-power-calculator-interactive-notebook" title="Link to this heading">#</a></h3>
+<p>This Python-based tool simulates wind power generation from a turbine based on user inputs, incorporating realistic parameters for U.S. regions. It uses <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> for interactivity and calculates both theoretical and practical power outputs.</p>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+</section>
+<section id="inputs">
+<h3>🛠️ Inputs:<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Region</strong>: Dropdown with average wind speed (at 10 m) and air density values for 7 U.S. regions.</p></li>
+<li><p><strong>Turbine Type</strong>: Preset power coefficient (Cp) values for HAWT, VAWT, and urban turbines.</p></li>
+<li><p><strong>Rotor Diameter (m)</strong>: Determines swept area.</p></li>
+<li><p><strong>Hub Height (m)</strong>: Adjusts wind speed using power-law scaling.</p></li>
+</ul>
+</section>
+<section id="computations">
+<h3>⚡ Computations:<a class="headerlink" href="#computations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Adjusted Wind Speed</strong>: Wind speed at hub height using power law with default exponent (α = 0.14).</p></li>
+<li><p><strong>Swept Area</strong>: <span class="math notranslate nohighlight">\(( A = \pi \cdot (D/2)^2 \)</span>)</p></li>
+<li><p><strong>Theoretical Power</strong>: <span class="math notranslate nohighlight">\(( P = \frac{1}{2} \cdot \rho \cdot A \cdot v^3 \)</span>)</p></li>
+<li><p><strong>Actual Output</strong>: <span class="math notranslate nohighlight">\(( P_{\text{actual}} = P \cdot C_p \)</span>)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-results">
+<h3>📊 How to Interpret Results<a class="headerlink" href="#how-to-interpret-results" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Metric</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Adjusted Wind Speed</strong></p></td>
+<td><p>Wind speed at selected hub height</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Air Density</strong></p></td>
+<td><p>Affects energy content of wind</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Swept Area</strong></p></td>
+<td><p>Larger area captures more wind</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Power Coefficient (Cp)</strong></p></td>
+<td><p>Efficiency of turbine at converting wind energy</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Theoretical Power</strong></p></td>
+<td><p>Max extractable power from wind (Betz limit ≈ 0.59)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Actual Power Output</strong></p></td>
+<td><p>Realistic power based on turbine type &amp; efficiency</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p>This tool is ideal for exploring turbine design tradeoffs, regional feasibility, and instructional demonstrations of wind energy physics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Regional wind data (average conditions)</span>
+<span class="n">region_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Great Plains&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;v_10m&#39;</span><span class="p">:</span> <span class="mf">7.5</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">1.22</span><span class="p">},</span>
+    <span class="s1">&#39;Midwest&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;v_10m&#39;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">1.225</span><span class="p">},</span>
+    <span class="s1">&#39;Pacific Northwest&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;v_10m&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">},</span>
+    <span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;v_10m&#39;</span><span class="p">:</span> <span class="mf">6.7</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">1.18</span><span class="p">},</span>
+    <span class="s1">&#39;Southwest&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;v_10m&#39;</span><span class="p">:</span> <span class="mf">5.8</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">1.19</span><span class="p">},</span>
+    <span class="s1">&#39;Southeast&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;v_10m&#39;</span><span class="p">:</span> <span class="mf">5.5</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">1.21</span><span class="p">},</span>
+    <span class="s1">&#39;Northeast&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;v_10m&#39;</span><span class="p">:</span> <span class="mf">6.2</span><span class="p">,</span> <span class="s1">&#39;rho&#39;</span><span class="p">:</span> <span class="mf">1.22</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Turbine type presets for Cp values</span>
+<span class="n">turbine_cp_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Horizontal Axis (HAWT)&#39;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">,</span>
+    <span class="s1">&#39;Vertical Axis (VAWT)&#39;</span><span class="p">:</span> <span class="mf">0.30</span><span class="p">,</span>
+    <span class="s1">&#39;Small Urban Turbine&#39;</span><span class="p">:</span> <span class="mf">0.25</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">adjust_wind_speed</span><span class="p">(</span><span class="n">v_ref</span><span class="p">,</span> <span class="n">h_ref</span><span class="p">,</span> <span class="n">h_target</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.14</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">v_ref</span> <span class="o">*</span> <span class="p">(</span><span class="n">h_target</span> <span class="o">/</span> <span class="n">h_ref</span><span class="p">)</span> <span class="o">**</span> <span class="n">alpha</span>  <span class="c1"># Power law adjustment</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_wind_power</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">diameter</span><span class="p">,</span> <span class="n">turbine_type</span><span class="p">,</span> <span class="n">hub_height</span><span class="p">):</span>
+    <span class="n">v_ref</span> <span class="o">=</span> <span class="n">region_data</span><span class="p">[</span><span class="n">region</span><span class="p">][</span><span class="s1">&#39;v_10m&#39;</span><span class="p">]</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">region_data</span><span class="p">[</span><span class="n">region</span><span class="p">][</span><span class="s1">&#39;rho&#39;</span><span class="p">]</span>
+    <span class="n">Cp</span> <span class="o">=</span> <span class="n">turbine_cp_map</span><span class="p">[</span><span class="n">turbine_type</span><span class="p">]</span>
+    
+    <span class="c1"># Adjust wind speed to user-defined hub height</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">adjust_wind_speed</span><span class="p">(</span><span class="n">v_ref</span><span class="p">,</span> <span class="n">h_ref</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">h_target</span><span class="o">=</span><span class="n">hub_height</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">diameter</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    
+    <span class="n">P_theoretical</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">v</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">P_actual</span> <span class="o">=</span> <span class="n">P_theoretical</span> <span class="o">*</span> <span class="n">Cp</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🌬️ Wind Turbine Power Estimate</span>
+
+<span class="s2">- **Region**: </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Turbine Type**: </span><span class="si">{</span><span class="n">turbine_type</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Hub Height**: </span><span class="si">{</span><span class="n">hub_height</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Adjusted Wind Speed**: </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s  </span>
+<span class="s2">- **Air Density**: </span><span class="si">{</span><span class="n">rho</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> kg/m³  </span>
+<span class="s2">- **Rotor Diameter**: </span><span class="si">{</span><span class="n">diameter</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Swept Area**: </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m²  </span>
+<span class="s2">- **Power Coefficient (Cp)**: </span><span class="si">{</span><span class="n">Cp</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **⚡ Theoretical Power**: </span><span class="si">{</span><span class="n">P_theoretical</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W  </span>
+<span class="s2">- **✅ Estimated Actual Power Output**: </span><span class="si">{</span><span class="n">P_actual</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> W</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+<span class="c1"># Interactive Widgets</span>
+<span class="n">region_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">region_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Midwest&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Region:&#39;</span>
+<span class="p">)</span>
+
+<span class="n">turbine_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">turbine_cp_map</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Horizontal Axis (HAWT)&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Turbine Type:&#39;</span>
+<span class="p">)</span>
+
+<span class="n">diameter_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Rotor Diameter (m):&#39;</span>
+<span class="p">)</span>
+
+<span class="n">height_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Hub Height (m):&#39;</span>
+<span class="p">)</span>
+
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Calculate Wind Power&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">calculate_wind_power</span><span class="p">(</span><span class="n">region_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">diameter_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">turbine_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">height_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_click</span><span class="p">)</span>
+
+<span class="c1"># Display interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">region_dropdown</span><span class="p">,</span> <span class="n">turbine_dropdown</span><span class="p">,</span> <span class="n">diameter_slider</span><span class="p">,</span> <span class="n">height_slider</span><span class="p">,</span> <span class="n">run_button</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6d235f4704e14fd6aabc7a2cc2909274", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "c704d36eda914df58715732be8d2bf0c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "79b99f90fc69491d9316b1f87220e9f5", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "4c2d79915a89451cbe746eb7367428db", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "53bde7a9712446a2b4c7f3a1bc0487f4", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>3. Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="summary-interactive-solar-energy-potential-calculator">
+<h3>☀️ Summary: Interactive Solar Energy Potential Calculator<a class="headerlink" href="#summary-interactive-solar-energy-potential-calculator" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-it-is">
+<h3>📘 What It Is<a class="headerlink" href="#what-it-is" title="Link to this heading">#</a></h3>
+<p>This Jupyter-based Python tool estimates potential solar energy generation using region-specific irradiance data. It’s designed for educational modeling or quick feasibility assessments using adjustable inputs via <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3>⚙️ How It Works<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+</section>
+<section id="id3">
+<h3>🔧 Inputs<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Region</strong>: Selected from U.S. regions with average irradiance values (kWh/m²/day)</p></li>
+<li><p><strong>Panel Area</strong>: Total surface area available for solar panels (m²)</p></li>
+<li><p><strong>System Efficiency</strong>: Conversion efficiency of solar panels (typically 10–25%)</p></li>
+<li><p><strong>Duration</strong>: Time period in days for which energy output is calculated</p></li>
+</ul>
+</section>
+<section id="calculation-logic">
+<h3>🔢 Calculation Logic<a class="headerlink" href="#calculation-logic" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Retrieves irradiance for the selected region</p></li>
+<li><p>Computes daily output:<br />
+<span class="math notranslate nohighlight">\(( \text{Daily Output} = \text{Irradiance} \times \text{Area} \times \text{Efficiency} \)</span>)</p></li>
+<li><p>Computes total output over selected duration:<br />
+<span class="math notranslate nohighlight">\(( \text{Total Output} = \text{Daily Output} \times \text{Days} \)</span>)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3>📊 How to Interpret Results<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Solar Irradiance</strong></p></td>
+<td><p>Average sunlight energy available per m² per day</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Estimated Daily Output</strong></p></td>
+<td><p>Energy produced daily (kWh/day) based on current inputs</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Estimated Total Output</strong></p></td>
+<td><p>Cumulative energy over time (kWh) — useful for budgeting, forecasting</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Efficiency</strong></p></td>
+<td><p>Percentage of sunlight converted into usable electricity</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p>This tool helps visualize how geographic location and system design affect solar yield. It’s great for scenario testing, comparing installation scale, and understanding regional solar performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># ☀️ Regional solar irradiance (approximate values from NREL data)</span>
+<span class="n">region_irradiance</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Southwest (AZ, NM)&#39;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">,</span>
+    <span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="mf">6.2</span><span class="p">,</span>
+    <span class="s1">&#39;Midwest&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s1">&#39;Northeast&#39;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
+    <span class="s1">&#39;Southeast&#39;</span><span class="p">:</span> <span class="mf">5.2</span><span class="p">,</span>
+    <span class="s1">&#39;Pacific Northwest&#39;</span><span class="p">:</span> <span class="mf">4.0</span><span class="p">,</span>
+    <span class="s1">&#39;Texas&#39;</span><span class="p">:</span> <span class="mf">5.8</span><span class="p">,</span>
+    <span class="s1">&#39;Florida&#39;</span><span class="p">:</span> <span class="mf">5.7</span><span class="p">,</span>
+    <span class="s1">&#39;Great Plains&#39;</span><span class="p">:</span> <span class="mf">5.4</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_solar_energy</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">,</span> <span class="n">days</span><span class="p">):</span>
+    <span class="n">irradiance</span> <span class="o">=</span> <span class="n">region_irradiance</span><span class="p">[</span><span class="n">region</span><span class="p">]</span>  <span class="c1"># kWh/m²/day</span>
+    <span class="n">daily_output</span> <span class="o">=</span> <span class="n">irradiance</span> <span class="o">*</span> <span class="n">area</span> <span class="o">*</span> <span class="n">efficiency</span>
+    <span class="n">total_output</span> <span class="o">=</span> <span class="n">daily_output</span> <span class="o">*</span> <span class="n">days</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### ☀️ Solar Energy Potential</span>
+
+<span class="s2">- **Region**: </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Solar Irradiance**: </span><span class="si">{</span><span class="n">irradiance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kWh/m²/day  </span>
+<span class="s2">- **Panel Area**: </span><span class="si">{</span><span class="n">area</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m²  </span>
+<span class="s2">- **System Efficiency**: </span><span class="si">{</span><span class="n">efficiency</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Time Frame**: </span><span class="si">{</span><span class="n">days</span><span class="si">}</span><span class="s2"> days  </span>
+
+<span class="s2">⚡ **Estimated Daily Output**: </span><span class="si">{</span><span class="n">daily_output</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kWh/day  </span>
+<span class="s2">🔋 **Estimated Total Output**: </span><span class="si">{</span><span class="n">total_output</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kWh</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+<span class="c1"># 🎛️ Widgets</span>
+<span class="n">region_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">region_irradiance</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Southwest (AZ, NM)&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Region:&#39;</span>
+<span class="p">)</span>
+
+<span class="n">area_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Panel Area (m²):&#39;</span>
+<span class="p">)</span>
+
+<span class="n">efficiency_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">0.18</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Efficiency:&#39;</span>
+<span class="p">)</span>
+
+<span class="n">days_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">365</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Duration (days):&#39;</span>
+<span class="p">)</span>
+
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Calculate Solar Potential&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">estimate_solar_energy</span><span class="p">(</span><span class="n">region_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                          <span class="n">area_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                          <span class="n">efficiency_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                          <span class="n">days_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_click</span><span class="p">)</span>
+
+<span class="c1"># 🔧 Display interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">region_dropdown</span><span class="p">,</span> <span class="n">area_slider</span><span class="p">,</span> <span class="n">efficiency_slider</span><span class="p">,</span> <span class="n">days_slider</span><span class="p">,</span> <span class="n">run_button</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1f8c7de0d39d42d5817e1b48f04d0416", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "6c2e59c21889463d863667a17d2471b3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9cd289d3a3394bceb25dc8d22cdb9f41", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "51e0b6423185417695f25b7bb901bd91", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "56868409e0bf4d0f96fd69648fd69903", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>4. Simulation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="summary-interactive-ocean-wave-energy-converter-u-s-coastal-estimator">
+<h3>🌊 Summary: Interactive Ocean Wave Energy Converter (U.S. Coastal Estimator)<a class="headerlink" href="#summary-interactive-ocean-wave-energy-converter-u-s-coastal-estimator" title="Link to this heading">#</a></h3>
+<p>This Python-based widget simulates wave energy conversion for selected <strong>U.S. coastal regions</strong>, using average wave data or custom inputs. It allows learners and planners to explore how wave parameters—such as height, period, density, and converter width—affect the energy output of a wave energy system.</p>
+</section>
+<hr class="docutils" />
+<section id="inputs-controls">
+<h3>🔧 Inputs &amp; Controls<a class="headerlink" href="#inputs-controls" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input Widget</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Region</span> <span class="pre">Dropdown</span></code></p></td>
+<td><p>Selects a coastal location with typical NOAA wave data</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Width</span> <span class="pre">(m)</span></code></p></td>
+<td><p>Physical width of the wave energy converter system</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Efficiency</span></code></p></td>
+<td><p>Conversion efficiency (0.10 to 0.60)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Custom</span> <span class="pre">H</span> <span class="pre">&amp;</span> <span class="pre">T</span></code></p></td>
+<td><p>Checkbox to override regional data with manual input</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wave</span> <span class="pre">Height</span> <span class="pre">(H)</span></code></p></td>
+<td><p>Custom wave height in meters</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Wave</span> <span class="pre">Period</span> <span class="pre">(T)</span></code></p></td>
+<td><p>Custom wave period in seconds</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ρ</span> <span class="pre">(kg/m³)</span></code></p></td>
+<td><p>Water density (can be adjusted for salinity or education)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">g</span> <span class="pre">(m/s²)</span></code></p></td>
+<td><p>Gravitational acceleration (defaults to Earth value)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Units</span></code></p></td>
+<td><p>Choose whether output is shown in kW or MW</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Calculate</span> <span class="pre">Wave</span> <span class="pre">Power</span></code></p></td>
+<td><p>Executes the computation and displays results</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="computation-logic">
+<h3>🧮 Computation Logic<a class="headerlink" href="#computation-logic" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wave Energy Flux per Meter (kW/m)</strong>:<br />
+<span class="math notranslate nohighlight">\(( P = \frac{ρg^2 H^2 T}{64π \cdot 1000} \)</span>)</p></li>
+<li><p><strong>Total Power Output</strong>:<br />
+<span class="math notranslate nohighlight">\(( P_{\text{total}} = P_{\text{wave}} \times \text{Width} \times \text{Efficiency} \)</span>)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="interpreting-outputs">
+<h3>📊 Interpreting Outputs<a class="headerlink" href="#interpreting-outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Field</p></th>
+<th class="head"><p>What It Tells You</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Wave Height (H)</strong></p></td>
+<td><p>Amplitude of the wave; higher waves contain more energy</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wave Period (T)</strong></p></td>
+<td><p>Time between wave crests; affects energy flux</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Energy Flux</strong></p></td>
+<td><p>Theoretical energy available per meter of wave front</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Estimated Extracted Power</strong></p></td>
+<td><p>Realistic power accounting for system width and efficiency</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="example-insights">
+<h3>✅ Example Insights<a class="headerlink" href="#example-insights" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Switching from <strong>default regional data</strong> to <strong>custom wave conditions</strong> lets you model seasonal or storm scenarios.</p></li>
+<li><p><strong>Higher H and T</strong> = more energy potential, but also design challenges.</p></li>
+<li><p><strong>Efficiency and width</strong> directly scale output—these are key for economic feasibility.</p></li>
+</ul>
+<hr class="docutils" />
+<p>This estimator is ideal for conceptual design, site selection, or classroom exploration. You can adapt it to show plots over time, compare device designs, or layer in environmental constraints for real-world scenarios.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Default wave data from NOAA &amp; DOE reports</span>
+<span class="n">coastal_wave_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Pacific Northwest (OR, WA)&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">8.5</span><span class="p">},</span>
+    <span class="s1">&#39;California&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">7.5</span><span class="p">},</span>
+    <span class="s1">&#39;Hawaii&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">2.2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">},</span>
+    <span class="s1">&#39;Alaska&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">9.0</span><span class="p">},</span>
+    <span class="s1">&#39;Puerto Rico&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">6.5</span><span class="p">},</span>
+    <span class="s1">&#39;East Coast (NY, MA)&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">},</span>
+    <span class="s1">&#39;Gulf Coast (FL, TX)&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mf">1.2</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">5.5</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_wave_energy</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">use_custom</span><span class="p">,</span> <span class="n">H_custom</span><span class="p">,</span> <span class="n">T_custom</span><span class="p">,</span> <span class="n">unit</span><span class="p">):</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">H_custom</span> <span class="k">if</span> <span class="n">use_custom</span> <span class="k">else</span> <span class="n">coastal_wave_data</span><span class="p">[</span><span class="n">region</span><span class="p">][</span><span class="s1">&#39;H&#39;</span><span class="p">]</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">T_custom</span> <span class="k">if</span> <span class="n">use_custom</span> <span class="k">else</span> <span class="n">coastal_wave_data</span><span class="p">[</span><span class="n">region</span><span class="p">][</span><span class="s1">&#39;T&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Deep water wave energy flux per meter crest length</span>
+    <span class="n">P_wave</span> <span class="o">=</span> <span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">64</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># in kW/m</span>
+    <span class="n">P_total</span> <span class="o">=</span> <span class="n">P_wave</span> <span class="o">*</span> <span class="n">width</span> <span class="o">*</span> <span class="n">efficiency</span>
+
+    <span class="c1"># Unit conversion</span>
+    <span class="k">if</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;MW&#39;</span><span class="p">:</span>
+        <span class="n">P_wave</span> <span class="o">/=</span> <span class="mi">1000</span>
+        <span class="n">P_total</span> <span class="o">/=</span> <span class="mi">1000</span>
+
+    <span class="n">result_md</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🌊 Wave Energy Conversion Estimate</span>
+
+<span class="s2">- **Region**: </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- </span><span class="si">{</span><span class="s1">&#39;**Custom Input Enabled**&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">use_custom</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;**Using Default NOAA/DOE Parameters**&#39;</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Wave Height (H)**: </span><span class="si">{</span><span class="n">H</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Wave Period (T)**: </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s  </span>
+<span class="s2">- **Water Density (ρ)**: </span><span class="si">{</span><span class="n">rho</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³  </span>
+<span class="s2">- **Gravity (g)**: </span><span class="si">{</span><span class="n">g</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s²  </span>
+<span class="s2">- **Converter Width**: </span><span class="si">{</span><span class="n">width</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Efficiency**: </span><span class="si">{</span><span class="n">efficiency</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Energy Flux**: </span><span class="si">{</span><span class="n">P_wave</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">/m  </span>
+<span class="s2">- ⚡ **Estimated Extracted Power**: </span><span class="si">{</span><span class="n">P_total</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">result_md</span><span class="p">))</span>
+
+<span class="c1"># Interactive inputs</span>
+<span class="n">region_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">coastal_wave_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Pacific Northwest (OR, WA)&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Region:&#39;</span>
+<span class="p">)</span>
+
+<span class="n">width_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Width (m):&#39;</span><span class="p">)</span>
+<span class="n">eff_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Efficiency:&#39;</span><span class="p">)</span>
+
+<span class="n">use_custom_toggle</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Use Custom H &amp; T&#39;</span><span class="p">)</span>
+
+<span class="n">H_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave H (m):&#39;</span><span class="p">)</span>
+<span class="n">T_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">7.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave T (s):&#39;</span><span class="p">)</span>
+
+<span class="n">rho_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1025</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1060</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;ρ (kg/m³):&#39;</span><span class="p">)</span>
+<span class="n">g_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">9.81</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">9.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;g (m/s²):&#39;</span><span class="p">)</span>
+
+<span class="n">unit_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;kW&#39;</span><span class="p">,</span> <span class="s1">&#39;MW&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;kW&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Units:&#39;</span><span class="p">)</span>
+
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Calculate Wave Power&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">estimate_wave_energy</span><span class="p">(</span><span class="n">region_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">width_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">eff_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">rho_input</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">g_input</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">use_custom_toggle</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">H_input</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">T_input</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                         <span class="n">unit_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_click</span><span class="p">)</span>
+
+<span class="c1"># Display layout</span>
+<span class="n">display</span><span class="p">(</span><span class="n">region_dropdown</span><span class="p">,</span> <span class="n">width_slider</span><span class="p">,</span> <span class="n">eff_slider</span><span class="p">,</span> <span class="n">use_custom_toggle</span><span class="p">,</span>
+        <span class="n">H_input</span><span class="p">,</span> <span class="n">T_input</span><span class="p">,</span> <span class="n">rho_input</span><span class="p">,</span> <span class="n">g_input</span><span class="p">,</span> <span class="n">unit_dropdown</span><span class="p">,</span> <span class="n">run_button</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f0f5f8438ad945f6aba137532ea41523", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "25e91367ca864dcf90c8f36c4eec7385", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "15c52d99435145de88f800e1dccf8478", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "2ba5285c895748849ad89d836e7b72e0", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "2120b7cf5ebf4340809bb461309244b0", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "da176fab7f194885b596a9f2ef8d2138", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "66240f94443b47fa945fda459f2e2f3b", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "2af86faad14e4122b01e11cd239a851e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "cae0f4dec9664ad7ab25c23d91536f2c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9803e07ee1c64cb68b753a2c6487e7f8", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>5. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="wind-physics-turbine-design">
+<h3>Wind Physics &amp; Turbine Design<a class="headerlink" href="#wind-physics-turbine-design" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What is the mathematical relationship between wind speed and power output in a wind turbine?</p></li>
+<li><p>How does rotor diameter influence the energy captured by a turbine?</p></li>
+<li><p>Why is the power coefficient (Cp) limited by physics (Betz limit) and design constraints?</p></li>
+<li><p>How does air density vary by region and altitude—and why does this matter for turbine output?</p></li>
+</ul>
+</section>
+<section id="hub-height-adjustment">
+<h3>Hub Height Adjustment<a class="headerlink" href="#hub-height-adjustment" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What assumptions underlie the use of the power law for wind speed adjustment?</p></li>
+<li><p>How does increasing hub height affect turbine performance in regions with moderate wind speeds?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="self-reflective-questions">
+<h3>💭 Self-Reflective Questions<a class="headerlink" href="#self-reflective-questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How would you explain the trade-off between rotor size and hub height to a non-technical audience?</p></li>
+<li><p>Which region’s wind characteristics surprised you most during interactive exploration?</p></li>
+<li><p>If tasked with placing a wind turbine in your region, which turbine type and hub height would you choose? Why?</p></li>
+<li><p>Reflect on how regional wind data informs renewable infrastructure decisions—and what data gaps could affect accuracy.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>🧪 Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="power-equation-sensitivity">
+<h3>Power Equation &amp; Sensitivity<a class="headerlink" href="#power-equation-sensitivity" title="Link to this heading">#</a></h3>
+<p><strong>Q1. Wind power output is proportional to which expression?</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(( v \)</span>)</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(( v^2 \)</span>)</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(( v^3 \)</span>) ✅</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(( \sqrt{v} \)</span>)</p></li>
+</ul>
+<p><strong>Q2. Increasing rotor diameter from 40 m to 80 m will approximately:</strong></p>
+<ul class="simple">
+<li><p>A. Double the swept area</p></li>
+<li><p>B. Quadruple the swept area ✅</p></li>
+<li><p>C. Halve the output</p></li>
+<li><p>D. Not change power generation</p></li>
+</ul>
+</section>
+<section id="air-properties-turbine-types">
+<h3>Air Properties &amp; Turbine Types<a class="headerlink" href="#air-properties-turbine-types" title="Link to this heading">#</a></h3>
+<p><strong>Q3. Air density is typically highest in which U.S. region?</strong></p>
+<ul class="simple">
+<li><p>A. California</p></li>
+<li><p>B. Great Plains</p></li>
+<li><p>C. Southeast</p></li>
+<li><p>D. Midwest ✅</p></li>
+</ul>
+<p><strong>Q4. Which turbine type generally has the lowest Cp value?</strong></p>
+<ul class="simple">
+<li><p>A. Horizontal Axis (HAWT)</p></li>
+<li><p>B. Small Urban Turbine ✅</p></li>
+<li><p>C. Vertical Axis (VAWT)</p></li>
+<li><p>D. Offshore Turbine</p></li>
+</ul>
+<p><strong>Q5. The power law exponent (α = 0.14) is commonly used for:</strong></p>
+<ul class="simple">
+<li><p>A. Forested terrain</p></li>
+<li><p>B. Rural open land ✅</p></li>
+<li><p>C. Mountainous zones</p></li>
+<li><p>D. Urban canyons</p></li>
+</ul>
+<p><strong>Q6. Solar power output is proportional to which combination of inputs?</strong></p>
+<ul class="simple">
+<li><p>A. Irradiance × Area × Efficiency ✅</p></li>
+<li><p>B. Wind speed × Efficiency</p></li>
+<li><p>C. Temperature × Efficiency</p></li>
+<li><p>D. Air density × Panel angle</p></li>
+</ul>
+<p><strong>Q7. If a solar panel has an area of 10 m², irradiance of 5.5 kWh/m²/day, and efficiency of 20%, estimated daily energy is:</strong></p>
+<ul class="simple">
+<li><p>A. 5.5 kWh</p></li>
+<li><p>B. 11.0 kWh</p></li>
+<li><p>C. 8.8 kWh ✅</p></li>
+<li><p>D. 20.0 kWh</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="regional-properties">
+<h2>🌍 Regional Properties<a class="headerlink" href="#regional-properties" title="Link to this heading">#</a></h2>
+<p><strong>Q8. Air density is typically highest in which U.S. region?</strong></p>
+<ul class="simple">
+<li><p>A. California</p></li>
+<li><p>B. Great Plains</p></li>
+<li><p>C. Southeast</p></li>
+<li><p>D. Midwest ✅</p></li>
+</ul>
+<p><strong>Q9. Which U.S. region has the highest solar irradiance on average?</strong></p>
+<ul class="simple">
+<li><p>A. Northeast</p></li>
+<li><p>B. Pacific Northwest</p></li>
+<li><p>C. Southwest (AZ, NM) ✅</p></li>
+<li><p>D. Midwest</p></li>
+</ul>
+<hr class="docutils" />
+<section id="technology-adjustment">
+<h3>⚙️ Technology &amp; Adjustment<a class="headerlink" href="#technology-adjustment" title="Link to this heading">#</a></h3>
+<p><strong>Q10. Which turbine type generally has the lowest Cp (efficiency) value?</strong></p>
+<ul class="simple">
+<li><p>A. Horizontal Axis (HAWT)</p></li>
+<li><p>B. Small Urban Turbine ✅</p></li>
+<li><p>C. Vertical Axis (VAWT)</p></li>
+<li><p>D. Offshore Turbine</p></li>
+</ul>
+<p><strong>Q11. The power law exponent (α = 0.14) is commonly used for:</strong></p>
+<ul class="simple">
+<li><p>A. Forested terrain</p></li>
+<li><p>B. Rural open land ✅</p></li>
+<li><p>C. Mountainous zones</p></li>
+<li><p>D. Urban canyons</p></li>
+</ul>
+<p><strong>Q12. Solar panel efficiency is typically affected by which factor?</strong></p>
+<ul class="simple">
+<li><p>A. Air pressure</p></li>
+<li><p>B. Cloud cover ✅</p></li>
+<li><p>C. Wind direction</p></li>
+<li><p>D. Rotor diameter</p></li>
+</ul>
+<p><strong>Q13. Which of the following conditions would decrease solar output most significantly?</strong></p>
+<ul class="simple">
+<li><p>A. High elevation</p></li>
+<li><p>B. Low air density</p></li>
+<li><p>C. Overcast skies ✅</p></li>
+<li><p>D. Tilt angle of 25°</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="CarbonateCycleClimate.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: CarbonateCycleClimate</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Chap7/DroneComponents.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 7 Remote Pilot: Drone Components and Design</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renewable-energy-definition-role-in-energy-security-regional-potential">🌱 Renewable Energy: Definition, Role in Energy Security &amp; Regional Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-renewable-energy">📘 What Is Renewable Energy?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-renewables-enhance-energy-security">🛡️ How Renewables Enhance Energy Security</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-specific-sources">🔋 Role of Specific Sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-potential-of-wind-solar-wave-energy">🌍 Regional Potential of Wind, Solar &amp; Wave Energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-energy-potential">🌬️ Wind Energy Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solar-energy-potential">☀️ Solar Energy Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-energy-potential">🌊 Wave Energy Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renewable-energy-potential-in-the-united-states">🇺🇸 Renewable Energy Potential in the United States</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-overview-wind-solar-wave-energy">⚡ Comparative Overview: Wind, Solar &amp; Wave Energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-matching-by-region-u-s-context">🧭 Use Case Matching by Region (U.S. Context)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-prompts-for-planning-worksheets">🔮 Scenario Prompts for Planning Worksheets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-of-renewable-energy">🔮 Future of Renewable Energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-outlook">📈 Global Outlook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-outlook">🇺🇸 U.S. Outlook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-trends">🌐 Strategic Trends</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-wind-turbine-power-calculator-interactive-notebook">💡 Summary: Wind Turbine Power Calculator (Interactive Notebook)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🛠️ Inputs:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">⚡ Computations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">📊 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-solar-energy-potential-calculator">☀️ Summary: Interactive Solar Energy Potential Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">🔧 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-logic">🔢 Calculation Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📊 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-interactive-ocean-wave-energy-converter-u-s-coastal-estimator">🌊 Summary: Interactive Ocean Wave Energy Converter (U.S. Coastal Estimator)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-controls">🔧 Inputs &amp; Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-logic">🧮 Computation Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-outputs">📊 Interpreting Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-insights">✅ Example Insights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">5. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-physics-turbine-design">Wind Physics &amp; Turbine Design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hub-height-adjustment">Hub Height Adjustment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-reflective-questions">💭 Self-Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-equation-sensitivity">Power Equation &amp; Sensitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#air-properties-turbine-types">Air Properties &amp; Turbine Types</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-properties">🌍 Regional Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#technology-adjustment">⚙️ Technology &amp; Adjustment</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
