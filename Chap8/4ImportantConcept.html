@@ -1,0 +1,1010 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>25 Important Concept in Computer Science &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap8/4ImportantConcept';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap8/4ImportantConcept.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap8/4ImportantConcept.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap8/4ImportantConcept.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap8/4ImportantConcept.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap8/4ImportantConcept.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>25 Important Concept in Computer Science</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="important-concept-in-computer-science">
+<h1>25 Important Concept in Computer Science<a class="headerlink" href="#important-concept-in-computer-science" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">Code</span>
+
+<span class="c1">### 🔑 25 Core CS Concepts with Summary, Advantage, Application, and Demo</span>
+<span class="n">concepts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;1. Algorithms&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Step-by-step procedures for solving problems efficiently.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Improves performance and scalability.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in search engines and route planning.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;def binary_search(arr, target):</span><span class="se">\n</span><span class="s2">    low, high = 0, len(arr) - 1</span><span class="se">\n</span><span class="s2">    while low &lt;= high:</span><span class="se">\n</span><span class="s2">        mid = (low + high) // 2</span><span class="se">\n</span><span class="s2">        if arr[mid] == target:</span><span class="se">\n</span><span class="s2">            return mid</span><span class="se">\n</span><span class="s2">        elif arr[mid] &lt; target:</span><span class="se">\n</span><span class="s2">            low = mid + 1</span><span class="se">\n</span><span class="s2">        else:</span><span class="se">\n</span><span class="s2">            high = mid - 1</span><span class="se">\n</span><span class="s2">    return -1&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;2. Data Structures&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Organized formats for storing and managing data.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Enables efficient access and modification.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in databases and compilers.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;stack = []</span><span class="se">\n</span><span class="s2">stack.append(10)</span><span class="se">\n</span><span class="s2">stack.append(20)</span><span class="se">\n</span><span class="s2">print(stack.pop())&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;3. Time and Space Complexity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Measures of algorithm efficiency using Big-O notation.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Helps choose optimal algorithms.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in system design and performance tuning.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;# O(n^2) example</span><span class="se">\n</span><span class="s2">for i in range(5):</span><span class="se">\n</span><span class="s2">    for j in range(5):</span><span class="se">\n</span><span class="s2">        print(i, j)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;4. Recursion&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;A function calling itself to solve subproblems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Simplifies divide-and-conquer logic.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in tree traversal and backtracking.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;def factorial(n):</span><span class="se">\n</span><span class="s2">    return 1 if n == 0 else n * factorial(n - 1)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;5. Dynamic Programming&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Solves overlapping subproblems using memoization.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Avoids redundant computation.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in optimization problems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;def fib(n, memo=</span><span class="si">{}</span><span class="s2">):</span><span class="se">\n</span><span class="s2">    if n in memo: return memo[n]</span><span class="se">\n</span><span class="s2">    if n &lt;= 1: return n</span><span class="se">\n</span><span class="s2">    memo[n] = fib(n-1, memo) + fib(n-2, memo)</span><span class="se">\n</span><span class="s2">    return memo[n]&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;6. Object-Oriented Programming&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Programming paradigm using objects and classes.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Encourages modular and reusable code.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in GUI apps and enterprise software.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;class Car:</span><span class="se">\n</span><span class="s2">    def __init__(self, brand):</span><span class="se">\n</span><span class="s2">        self.brand = brand</span><span class="se">\n</span><span class="s2">    def drive(self):</span><span class="se">\n</span><span class="s2">        print(f</span><span class="se">\&quot;</span><span class="s2">Driving a </span><span class="si">{self.brand}</span><span class="se">\&quot;</span><span class="s2">)</span><span class="se">\n</span><span class="s2">car = Car(</span><span class="se">\&quot;</span><span class="s2">Toyota</span><span class="se">\&quot;</span><span class="s2">)</span><span class="se">\n</span><span class="s2">car.drive()&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;7. Memory Management&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Managing allocation and deallocation of memory.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Prevents leaks and improves performance.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in OS kernels and embedded systems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;a = [1, 2, 3]</span><span class="se">\n</span><span class="s2">del a  # Memory freed by garbage collector&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;8. Graph Theory&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Study of nodes and edges for modeling relationships.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Models complex connectivity.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in GPS routing and social networks.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;graph = {</span><span class="se">\n</span><span class="s2">    &#39;A&#39;: [&#39;B&#39;, &#39;C&#39;],</span><span class="se">\n</span><span class="s2">    &#39;B&#39;: [&#39;D&#39;],</span><span class="se">\n</span><span class="s2">    &#39;C&#39;: [&#39;D&#39;],</span><span class="se">\n</span><span class="s2">    &#39;D&#39;: []</span><span class="se">\n</span><span class="s2">}</span><span class="se">\n</span><span class="s2">print(graph[&#39;A&#39;])&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;9. Operating Systems&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Manages hardware and software resources.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Provides abstraction and multitasking.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in desktops, servers, and mobile devices.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;import os</span><span class="se">\n</span><span class="s2">print(os.name)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;10. Databases and SQL&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Structured storage and querying of data.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Efficient data retrieval and integrity.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in web apps and inventory systems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;import sqlite3</span><span class="se">\n</span><span class="s2">conn = sqlite3.connect(&#39;:memory:&#39;)</span><span class="se">\n</span><span class="s2">c = conn.cursor()</span><span class="se">\n</span><span class="s2">c.execute(&#39;CREATE TABLE users (id INT, name TEXT)&#39;)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;11. Computer Architecture&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Design of CPU, memory, and instruction sets.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Optimizes hardware-software interaction.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in processor design and embedded systems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;register = 0</span><span class="se">\n</span><span class="s2">register += 5</span><span class="se">\n</span><span class="s2">print(register)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;12. Networking&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Communication between systems using protocols.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Enables distributed computing.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in cloud platforms and IoT.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;import socket</span><span class="se">\n</span><span class="s2">print(socket.gethostname())&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;13. Software Engineering&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Systematic approach to software development.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Improves reliability and collaboration.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in agile and DevOps workflows.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;# Version control example</span><span class="se">\n</span><span class="s2"># git init</span><span class="se">\n</span><span class="s2"># git commit -m &#39;Initial commit&#39;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;14. Functional Programming&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Uses pure functions and avoids state.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Improves testability and concurrency.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in data pipelines and reactive systems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;def square(x): return x * x</span><span class="se">\n</span><span class="s2">print(list(map(square, [1, 2, 3])))&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;15. Compilers&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Translate source code into executable programs.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Enables portability and optimization.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in IDEs and build systems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;import dis</span><span class="se">\n</span><span class="s2">def hello(): print(</span><span class="se">\&quot;</span><span class="s2">Hi</span><span class="se">\&quot;</span><span class="s2">)</span><span class="se">\n</span><span class="s2">dis.dis(hello)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;16. Cybersecurity&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Protects systems from unauthorized access.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Ensures confidentiality and integrity.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in secure communication and banking.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;import hashlib</span><span class="se">\n</span><span class="s2">print(hashlib.sha256(b&#39;secret&#39;).hexdigest())&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;17. Machine Learning&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Algorithms that learn from data.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Enables prediction and automation.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in fraud detection and recommendation engines.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;from sklearn.linear_model import LinearRegression</span><span class="se">\n</span><span class="s2">model = LinearRegression()&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;18. Artificial Intelligence&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Simulates human intelligence.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Solves complex tasks autonomously.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in robotics and virtual assistants.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;user_input = </span><span class="se">\&quot;</span><span class="s2">hello</span><span class="se">\&quot;\n</span><span class="s2">if </span><span class="se">\&quot;</span><span class="s2">hello</span><span class="se">\&quot;</span><span class="s2"> in user_input:</span><span class="se">\n</span><span class="s2">    print(</span><span class="se">\&quot;</span><span class="s2">Hi there!</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;19. Parallel Computing&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Executes multiple tasks simultaneously.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Improves performance and scalability.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in simulations and big data.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;import multiprocessing</span><span class="se">\n</span><span class="s2">print(multiprocessing.cpu_count())&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;20. Cloud Computing&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;On-demand access to computing resources.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Scalable and cost-effective.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in SaaS and serverless apps.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;# import boto3</span><span class="se">\n</span><span class="s2"># s3 = boto3.client(&#39;s3&#39;)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;21. Human-Computer Interaction&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Designing intuitive user interfaces.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Improves usability and accessibility.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in mobile apps and web design.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;from ipywidgets import Button</span><span class="se">\n</span><span class="s2">Button(description=&#39;Click Me&#39;)&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;22. File Systems&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Organizes and stores data on disk.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Efficient data retrieval and management.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in OS and backup systems.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;import os</span><span class="se">\n</span><span class="s2">print(os.listdir(&#39;.&#39;))&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;23. Virtualization&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Runs multiple OS environments on one machine.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Improves resource utilization.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in cloud infrastructure and containers.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;# docker run hello-world&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;24. Software Testing&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Verifies software correctness.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Reduces bugs and improves reliability.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in CI/CD and QA workflows.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;def add(a, b): return a + b</span><span class="se">\n</span><span class="s2">assert add(2, 3) == 5&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;25. Ethics in Computing&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s2">&quot;Addresses moral and social impact of technology.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;advantage&quot;</span><span class="p">:</span> <span class="s2">&quot;Promotes responsible innovation.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="s2">&quot;Used in AI governance and privacy policies.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;demo&quot;</span><span class="p">:</span> <span class="s2">&quot;# Ethical design principle</span><span class="se">\n</span><span class="s2">print(</span><span class="se">\&quot;</span><span class="s2">Respect user privacy and ensure transparency.</span><span class="se">\&quot;</span><span class="s2">)&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># 🎛️ Widgets</span>
+<span class="n">concept_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">concepts</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;🧠 Choose Concept:&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">},</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;600px&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_concept</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">concept</span> <span class="o">=</span> <span class="n">change</span><span class="o">.</span><span class="n">new</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">concepts</span><span class="p">[</span><span class="n">concept</span><span class="p">]</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 📘 Concept: </span><span class="si">{</span><span class="n">concept</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Summary**: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Advantage**: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;advantage&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Application**: </span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;application&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;**🧪 Demonstration Code:**&quot;</span><span class="p">))</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Code</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;demo&#39;</span><span class="p">],</span> <span class="n">language</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">))</span>
+
+<span class="n">concept_dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">show_concept</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="c1"># 🚀 Display UI</span>
+<span class="n">display</span><span class="p">(</span><span class="n">concept_dropdown</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5372c1f641a944c8b862ea9cce255c1f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "de07c90d49e2411692c9db12c51eebba", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

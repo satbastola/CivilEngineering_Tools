@@ -1,0 +1,1297 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>💰 Investment Decision Metrics: Definitions and Applications &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap8/16EngineerngEconomics';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap8/16EngineerngEconomics.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap8/16EngineerngEconomics.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap8/16EngineerngEconomics.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap8/16EngineerngEconomics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap8/16EngineerngEconomics.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>💰 Investment Decision Metrics: Definitions and Applications</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💰 Investment Decision Metrics: Definitions and Applications</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-metrics-for-investment-evaluation">📊 Key Metrics for Investment Evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-guidelines">🧠 Interpretation Guidelines</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">🧪 Use Cases</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-code-does-present-value-calculations-for-investment-planning">📘 What This Code Does: Present Value Calculations for Investment Planning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-value-target">🎯 1. <strong>Future Value Target</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-annuity-target">💵 2. <strong>Monthly Annuity Target</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#display">🧮 Display</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mortgage-calculator-with-widgets-and-visualization">🧮 Mortgage Calculator with Widgets and Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#components">🔧 Components</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#functionality">📊 Functionality</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">📈 Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction">🖱️ Interaction</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="investment-decision-metrics-definitions-and-applications">
+<h1>💰 Investment Decision Metrics: Definitions and Applications<a class="headerlink" href="#investment-decision-metrics-definitions-and-applications" title="Link to this heading">#</a></h1>
+<p>When evaluating engineering or financial projects, we often compare <strong>initial costs</strong> with <strong>future benefits</strong>. The following tools help quantify profitability, efficiency, and timing of returns.</p>
+<hr class="docutils" />
+</section>
+<section id="key-metrics-for-investment-evaluation">
+<h1>📊 Key Metrics for Investment Evaluation<a class="headerlink" href="#key-metrics-for-investment-evaluation" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Benefit/Cost Ratio (BCR)</strong></p></td>
+<td><p>$<span class="math notranslate nohighlight">\( \text{BCR} = \frac{\text{Present Value of Benefits}}{\text{Present Value of Costs}} \)</span>$</p></td>
+<td><p>BCR &gt; 1 indicates a profitable investment</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Payback Period</strong></p></td>
+<td><p>Time required to recover initial investment from net cash flows</p></td>
+<td><p>Shorter payback = quicker recovery; ignores time value of money</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Net Present Value (NPV)</strong></p></td>
+<td><p>$<span class="math notranslate nohighlight">\( \text{NPV} = \sum \frac{B_t - C_t}{(1 + r)^t} \)</span>$</p></td>
+<td><p>Total value added by project; NPV &gt; 0 is desirable</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Discounted Cash Flow (DCF)</strong></p></td>
+<td><p>Present value of future cash flows discounted at a chosen rate</p></td>
+<td><p>Captures time value of money; used in NPV and IRR calculations</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Internal Rate of Return (IRR)</strong></p></td>
+<td><p>Discount rate that makes NPV = 0</p></td>
+<td><p>IRR &gt; required rate of return → acceptable investment</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Opportunity Cost</strong></p></td>
+<td><p>Value of the best alternative foregone when a decision is made</p></td>
+<td><p>Helps assess trade-offs and hidden costs of choosing one option over another</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+</section>
+<section id="interpretation-guidelines">
+<h1>🧠 Interpretation Guidelines<a class="headerlink" href="#interpretation-guidelines" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>BCR &gt; 1</strong>: Benefits outweigh costs → project is economically viable</p></li>
+<li><p><strong>NPV &gt; 0</strong>: Investment adds value → accept the project</p></li>
+<li><p><strong>IRR &gt; discount rate</strong>: Return exceeds cost of capital → favorable</p></li>
+<li><p><strong>Payback period &lt; project horizon</strong>: Investment recovers in time</p></li>
+<li><p><strong>Opportunity cost</strong>: Critical for comparing mutually exclusive options</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="use-cases">
+<h1>🧪 Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Scenario</p></th>
+<th class="head"><p>Recommended Metric(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Public infrastructure projects</p></td>
+<td><p>BCR, NPV, IRR</p></td>
+</tr>
+<tr class="row-odd"><td><p>Startup or R&amp;D investment</p></td>
+<td><p>IRR, Payback Period, Opportunity Cost</p></td>
+</tr>
+<tr class="row-even"><td><p>Environmental or social impact</p></td>
+<td><p>NPV, BCR (with externalities included)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Capital budgeting</p></td>
+<td><p>NPV, DCF, IRR</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">newton</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># Widget to set number of years</span>
+<span class="n">years_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Years:&#39;</span><span class="p">)</span>
+
+<span class="c1"># Discount rate slider</span>
+<span class="n">discount_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Discount Rate:&#39;</span><span class="p">)</span>
+
+<span class="c1"># Button to trigger calculation</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Calculate Metrics&#39;</span><span class="p">)</span>
+
+<span class="c1"># Function to generate cash flow inputs</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_cashflow_inputs</span><span class="p">(</span><span class="n">n_years</span><span class="p">):</span>
+    <span class="n">default_values</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1000</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">200</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_years</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">default_values</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Year </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_years</span><span class="p">)]</span>
+
+<span class="c1"># Container for dynamic cash flow widgets</span>
+<span class="n">cashflow_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">()</span>
+
+<span class="c1"># Update cash flow inputs when number of years changes</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_cashflows</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="n">cashflow_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">generate_cashflow_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">])</span>
+
+<span class="n">years_slider</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_cashflows</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">update_cashflows</span><span class="p">({</span><span class="s1">&#39;new&#39;</span><span class="p">:</span> <span class="n">years_slider</span><span class="o">.</span><span class="n">value</span><span class="p">})</span>  <span class="c1"># Initial setup</span>
+
+<span class="c1"># Main calculation and visualization function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_metrics</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">years_slider</span><span class="p">,</span> <span class="n">discount_slider</span><span class="p">,</span> <span class="n">cashflow_box</span><span class="p">,</span> <span class="n">run_button</span><span class="p">)</span>
+    
+    <span class="n">cash_flows</span> <span class="o">=</span> <span class="p">[</span><span class="n">cf</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">cf</span> <span class="ow">in</span> <span class="n">cashflow_box</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+    <span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cash_flows</span><span class="p">))</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">discount_slider</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="c1"># NPV</span>
+    <span class="n">npv</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cf</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">cf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cash_flows</span><span class="p">))</span>
+
+    <span class="c1"># BCR</span>
+    <span class="n">present_benefits</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cf</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">cf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cash_flows</span><span class="p">)</span> <span class="k">if</span> <span class="n">cf</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">present_costs</span> <span class="o">=</span> <span class="o">-</span><span class="n">cash_flows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">bcr</span> <span class="o">=</span> <span class="n">present_benefits</span> <span class="o">/</span> <span class="n">present_costs</span> <span class="k">if</span> <span class="n">present_costs</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="c1"># Payback Period</span>
+    <span class="n">cumulative_cash</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">cash_flows</span><span class="p">)</span>
+    <span class="n">payback_period</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cumulative_cash</span><span class="p">)</span> <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># IRR</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">npv_func</span><span class="p">(</span><span class="n">rate</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cf</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">rate</span><span class="p">)</span><span class="o">**</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">cf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cash_flows</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">irr</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">npv_func</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+        <span class="n">irr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="c1"># Plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">cash_flows</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cash Flow&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">cumulative_cash</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cumulative Cash Flow&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Investment Cash Flows and Cumulative Return&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amount ($)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Output metrics</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📌 Net Present Value (NPV): $</span><span class="si">{</span><span class="n">npv</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📌 Benefit/Cost Ratio (BCR): </span><span class="si">{</span><span class="n">bcr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📌 Payback Period: </span><span class="si">{</span><span class="n">payback_period</span><span class="si">}</span><span class="s2"> years&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📌 Internal Rate of Return (IRR): </span><span class="si">{</span><span class="n">irr</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">irr</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;📌 IRR: Could not be computed&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bind button</span>
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">calculate_metrics</span><span class="p">)</span>
+
+<span class="c1"># Initial display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">years_slider</span><span class="p">,</span> <span class="n">discount_slider</span><span class="p">,</span> <span class="n">cashflow_box</span><span class="p">,</span> <span class="n">run_button</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d9d101554fa65df51121234499f9bac6d0236b53800c2febc80230b63ec506c5.png" src="../_images/d9d101554fa65df51121234499f9bac6d0236b53800c2febc80230b63ec506c5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Net Present Value (NPV): $535.78
+Benefit/Cost Ratio (BCR): 1.54
+Payback Period: 4 years
+Internal Rate of Return (IRR): 23.29%
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-this-code-does-present-value-calculations-for-investment-planning">
+<h1>📘 What This Code Does: Present Value Calculations for Investment Planning<a class="headerlink" href="#what-this-code-does-present-value-calculations-for-investment-planning" title="Link to this heading">#</a></h1>
+<p>This Python code calculates how much money you need to invest today to meet two future financial goals:</p>
+<hr class="docutils" />
+</section>
+<section id="future-value-target">
+<h1>🎯 1. <strong>Future Value Target</strong><a class="headerlink" href="#future-value-target" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Goal:</strong> Receive a lump sum of $10,000 in 10 years.</p></li>
+<li><p><strong>Interest Rate:</strong> 5% annually.</p></li>
+<li><p><strong>Calculation:</strong><br />
+Uses the <strong>present value formula</strong> for a single future amount:
+$<span class="math notranslate nohighlight">\(
+PV = \frac{FV}{(1 + r)^n}
+\)</span>$
+Where:</p>
+<ul>
+<li><p>( FV ): Future value ($10,000)</p></li>
+<li><p>( r ): Annual interest rate (5%)</p></li>
+<li><p>( n ): Number of years (10)</p></li>
+</ul>
+</li>
+<li><p><strong>Result:</strong> Displays how much you must deposit today to reach that goal.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="monthly-annuity-target">
+<h1>💵 2. <strong>Monthly Annuity Target</strong><a class="headerlink" href="#monthly-annuity-target" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Goal:</strong> Receive $200 per month for 10 years.</p></li>
+<li><p><strong>Interest Rate:</strong> 5% annually (converted to monthly).</p></li>
+<li><p><strong>Calculation:</strong><br />
+Uses the <strong>present value of an annuity formula</strong>:
+$<span class="math notranslate nohighlight">\(
+PV = PMT \times \left( \frac{1 - (1 + r)^{-n}}{r} \right)
+\)</span>$
+Where:</p>
+<ul>
+<li><p>( PMT ): Monthly payment ($200)</p></li>
+<li><p>( r ): Monthly interest rate (5% ÷ 12)</p></li>
+<li><p>( n ): Total number of months (10 × 12)</p></li>
+</ul>
+</li>
+<li><p><strong>Result:</strong> Displays how much you must deposit today to fund the monthly payments.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="display">
+<h1>🧮 Display<a class="headerlink" href="#display" title="Link to this heading">#</a></h1>
+<p>Both results are shown using formatted Markdown with embedded LaTeX equations for clarity and instructional value.</p>
+<p>This code is ideal for teaching the difference between lump-sum and annuity-based investment planning, and how time and interest rates affect present value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Widgets</span>
+<span class="n">mode_selector</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Future Value Target&#39;</span><span class="p">,</span> <span class="s1">&#39;Monthly Annuity Target&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Future Value Target&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Goal Type:&#39;</span>
+<span class="p">)</span>
+
+<span class="n">future_value_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Target Amount ($):&#39;</span><span class="p">)</span>
+<span class="n">monthly_payment_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Monthly Payment ($):&#39;</span><span class="p">)</span>
+<span class="n">years_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Years:&#39;</span><span class="p">)</span>
+<span class="n">rate_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Annual Rate:&#39;</span><span class="p">)</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Calculate Investment&#39;</span><span class="p">)</span>
+<span class="n">output_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+<span class="n">input_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">()</span>
+
+<span class="c1"># Update visible inputs based on goal type</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_inputs</span><span class="p">(</span><span class="n">change</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">mode_selector</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;Future Value Target&#39;</span><span class="p">:</span>
+        <span class="n">input_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">future_value_input</span><span class="p">,</span> <span class="n">years_input</span><span class="p">,</span> <span class="n">rate_input</span><span class="p">,</span> <span class="n">run_button</span><span class="p">,</span> <span class="n">output_box</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">mode_selector</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;Monthly Annuity Target&#39;</span><span class="p">:</span>
+        <span class="n">input_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">monthly_payment_input</span><span class="p">,</span> <span class="n">years_input</span><span class="p">,</span> <span class="n">rate_input</span><span class="p">,</span> <span class="n">run_button</span><span class="p">,</span> <span class="n">output_box</span><span class="p">]</span>
+
+<span class="n">mode_selector</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_inputs</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">update_inputs</span><span class="p">()</span>
+
+<span class="c1"># Calculation and interpretation</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_investment</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">output_box</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">output_box</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">rate_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">n_years</span> <span class="o">=</span> <span class="n">years_input</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">n_months</span> <span class="o">=</span> <span class="n">n_years</span> <span class="o">*</span> <span class="mi">12</span>
+        <span class="n">monthly_rate</span> <span class="o">=</span> <span class="n">r</span> <span class="o">/</span> <span class="mi">12</span>
+
+        <span class="k">if</span> <span class="n">mode_selector</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;Future Value Target&#39;</span><span class="p">:</span>
+            <span class="n">FV</span> <span class="o">=</span> <span class="n">future_value_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">PV</span> <span class="o">=</span> <span class="n">FV</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span><span class="o">**</span><span class="n">n_years</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🎯 Future Value Target</span>
+<span class="s2">To receive **$</span><span class="si">{</span><span class="n">FV</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">** in **</span><span class="si">{</span><span class="n">n_years</span><span class="si">}</span><span class="s2"> years** at an annual interest rate of **</span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">**,  </span>
+<span class="s2">you must deposit **$</span><span class="si">{</span><span class="n">PV</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">** today.</span>
+
+<span class="s2">**Formula Used:**  </span>
+<span class="s2">$$ PV = \frac</span><span class="se">{{</span><span class="s2">FV</span><span class="se">}}{{</span><span class="s2">(1 + r)^n</span><span class="se">}}</span><span class="s2"> $$  </span>
+<span class="s2">Where:  </span>
+<span class="s2">- \( FV \): Future value  </span>
+<span class="s2">- \( r \): Annual interest rate  </span>
+<span class="s2">- \( n \): Number of years  </span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="n">mode_selector</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s1">&#39;Monthly Annuity Target&#39;</span><span class="p">:</span>
+            <span class="n">PMT</span> <span class="o">=</span> <span class="n">monthly_payment_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">PV_annuity</span> <span class="o">=</span> <span class="n">PMT</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">monthly_rate</span><span class="p">)</span><span class="o">**-</span><span class="n">n_months</span><span class="p">)</span> <span class="o">/</span> <span class="n">monthly_rate</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 💵 Monthly Annuity Target</span>
+<span class="s2">To receive **$</span><span class="si">{</span><span class="n">PMT</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2"> per month** for **</span><span class="si">{</span><span class="n">n_years</span><span class="si">}</span><span class="s2"> years** at an annual interest rate of **</span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">**,  </span>
+<span class="s2">you must deposit **$</span><span class="si">{</span><span class="n">PV_annuity</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">** today.</span>
+
+<span class="s2">**Formula Used:**  </span>
+<span class="s2">$$ PV = PMT \times \left( \frac</span><span class="se">{{</span><span class="s2">1 - (1 + r)^</span><span class="si">{</span><span class="o">-</span><span class="n">n</span><span class="si">}</span><span class="se">}}</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2"> \right) $$  </span>
+<span class="s2">Where:  </span>
+<span class="s2">- \( PMT \): Monthly payment  </span>
+<span class="s2">- \( r \): Monthly interest rate  </span>
+<span class="s2">- \( n \): Number of months  </span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+
+<span class="c1"># Bind button</span>
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">calculate_investment</span><span class="p">)</span>
+
+<span class="c1"># Display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;## 🧮 Investment Calculator with Interpretation&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">mode_selector</span><span class="p">,</span> <span class="n">input_box</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<h2 class="rubric" id="investment-calculator-with-interpretation">🧮 Investment Calculator with Interpretation</h2>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "dab4ffe5a75949de8f2ace8baa7c92bc", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e0b3edae6daf458a8cc5da111f884f31", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="mortgage-calculator-with-widgets-and-visualization">
+<h1>🧮 Mortgage Calculator with Widgets and Visualization<a class="headerlink" href="#mortgage-calculator-with-widgets-and-visualization" title="Link to this heading">#</a></h1>
+<p>This interactive Python tool calculates monthly mortgage payments and visualizes the breakdown of principal vs. interest over time.</p>
+<hr class="docutils" />
+</section>
+<section id="components">
+<h1>🔧 Components<a class="headerlink" href="#components" title="Link to this heading">#</a></h1>
+<p>User inputs are collected via interactive widgets:</p>
+<ul class="simple">
+<li><p><strong>Loan Amount ($)</strong></p></li>
+<li><p><strong>Term (Years)</strong></p></li>
+<li><p><strong>Annual Interest Rate</strong></p></li>
+<li><p><strong>Calculate Mortgage</strong> button</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="functionality">
+<h1>📊 Functionality<a class="headerlink" href="#functionality" title="Link to this heading">#</a></h1>
+<p>The monthly mortgage payment is computed using the standard amortization formula:</p>
+<div class="math notranslate nohighlight">
+\[
+M = P \cdot \frac{r(1 + r)^n}{(1 + r)^n - 1}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p>( P ): Loan amount</p></li>
+<li><p>( r ): Monthly interest rate</p></li>
+<li><p>( n ): Total number of payments (months)</p></li>
+</ul>
+<p>The output includes:</p>
+<ul class="simple">
+<li><p>Loan details</p></li>
+<li><p>Monthly payment amount</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="visualization">
+<h1>📈 Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h1>
+<p>A plot shows the monthly breakdown of:</p>
+<ul class="simple">
+<li><p><strong>Principal paid</strong></p></li>
+<li><p><strong>Interest paid</strong></p></li>
+</ul>
+<p>This helps users understand how payments shift over time.</p>
+<hr class="docutils" />
+</section>
+<section id="interaction">
+<h1>🖱️ Interaction<a class="headerlink" href="#interaction" title="Link to this heading">#</a></h1>
+<p>Clicking the <strong>Calculate Mortgage</strong> button triggers the computation and updates the output and plot dynamically.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Widgets</span>
+<span class="n">loan_amount</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">300000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Loan Amount ($):&#39;</span><span class="p">)</span>
+<span class="n">loan_years</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Term (Years):&#39;</span><span class="p">)</span>
+<span class="n">interest_rate</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Annual Rate:&#39;</span><span class="p">)</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Calculate Mortgage&#39;</span><span class="p">)</span>
+<span class="n">output_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="c1"># Mortgage calculation function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_mortgage</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">output_box</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">output_box</span><span class="p">:</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">loan_amount</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">r_annual</span> <span class="o">=</span> <span class="n">interest_rate</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">n_years</span> <span class="o">=</span> <span class="n">loan_years</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">n_months</span> <span class="o">=</span> <span class="n">n_years</span> <span class="o">*</span> <span class="mi">12</span>
+        <span class="n">r_monthly</span> <span class="o">=</span> <span class="n">r_annual</span> <span class="o">/</span> <span class="mi">12</span>
+
+        <span class="c1"># Monthly payment formula</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="n">P</span> <span class="o">*</span> <span class="n">r_monthly</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r_monthly</span><span class="p">)</span><span class="o">**</span><span class="n">n_months</span> <span class="o">/</span> <span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r_monthly</span><span class="p">)</span><span class="o">**</span><span class="n">n_months</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🏠 Loan Amount: $</span><span class="si">{</span><span class="n">P</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📆 Term: </span><span class="si">{</span><span class="n">n_years</span><span class="si">}</span><span class="s2"> years (</span><span class="si">{</span><span class="n">n_months</span><span class="si">}</span><span class="s2"> months)&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📈 Interest Rate: </span><span class="si">{</span><span class="n">r_annual</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> annually&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💵 Monthly Payment: $</span><span class="si">{</span><span class="n">M</span><span class="si">:</span><span class="s2">,.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Optional: Amortization breakdown</span>
+        <span class="n">balance</span> <span class="o">=</span> <span class="n">P</span>
+        <span class="n">principal_paid</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">interest_paid</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_months</span><span class="p">):</span>
+            <span class="n">interest</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">*</span> <span class="n">r_monthly</span>
+            <span class="n">principal</span> <span class="o">=</span> <span class="n">M</span> <span class="o">-</span> <span class="n">interest</span>
+            <span class="n">balance</span> <span class="o">-=</span> <span class="n">principal</span>
+            <span class="n">principal_paid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">principal</span><span class="p">)</span>
+            <span class="n">interest_paid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interest</span><span class="p">)</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">principal_paid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Principal&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">interest_paid</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Interest&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Monthly Payment Breakdown&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amount ($)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Bind button</span>
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">calculate_mortgage</span><span class="p">)</span>
+
+<span class="c1"># Display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">loan_amount</span><span class="p">,</span> <span class="n">loan_years</span><span class="p">,</span> <span class="n">interest_rate</span><span class="p">,</span> <span class="n">run_button</span><span class="p">,</span> <span class="n">output_box</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "10147340f1bf45acbdac3cc31abc221d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8086ba4d456f413dbf7f9bb3e727ffc7", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e9901ed7bca14fd18f7dc93f946ff398", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e251b57b93ae4558a4935025bdbf73f0", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "165650af2c87470ab7dfb32cc87f6af6", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap8"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">💰 Investment Decision Metrics: Definitions and Applications</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-metrics-for-investment-evaluation">📊 Key Metrics for Investment Evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-guidelines">🧠 Interpretation Guidelines</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">🧪 Use Cases</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-this-code-does-present-value-calculations-for-investment-planning">📘 What This Code Does: Present Value Calculations for Investment Planning</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-value-target">🎯 1. <strong>Future Value Target</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-annuity-target">💵 2. <strong>Monthly Annuity Target</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#display">🧮 Display</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mortgage-calculator-with-widgets-and-visualization">🧮 Mortgage Calculator with Widgets and Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#components">🔧 Components</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#functionality">📊 Functionality</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">📈 Visualization</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interaction">🖱️ Interaction</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1568 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4 Geotechnical Engineering: Bearing Capacity of Soil &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap4/FoundationDesign';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 4 Geotechnical Engineering: Pile Capacity Estimation" href="PileCapacity.html" />
+    <link rel="prev" title="Chapter 4 Geotechnical Engineering: 1D Consolidation Theory" href="1DConsolidationAnalysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap4/FoundationDesign.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap4/FoundationDesign.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap4/FoundationDesign.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap4/FoundationDesign.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap4/FoundationDesign.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4 Geotechnical Engineering: Bearing Capacity of Soil</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-methods">Bearing Capacity Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-table-of-bearing-capacity-theories">📊 Comparative Table of Bearing Capacity Theories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terzaghi-s-method"><strong>1. Terzaghi’s Method</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meyerhof-s-method"><strong>2. Meyerhof’s Method</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hansen-s-method"><strong>3. Hansen’s Method</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-results"><strong>Interpreting the Results</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations"><strong>Recommendations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-factors-table"><strong>Bearing Capacity Factors Table</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-calculator-terzaghi-meyerhof-hansen">🧱 Bearing Capacity Calculator (Terzaghi, Meyerhof, Hansen)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-steps">🔧 Calculation Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-geotechnical-engineering-bearing-capacity-of-soil">
+<h1>Chapter 4 Geotechnical Engineering: Bearing Capacity of Soil<a class="headerlink" href="#chapter-4-geotechnical-engineering-bearing-capacity-of-soil" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Bearing Capacity</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Parameter Sensitivity</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="bearing-capacity-estimation-for-shallow-foundation">
+<a class="reference internal image-reference" href="../_images/SoilFoundation.png"><img alt="Descriptive alt text for accessibility" src="../_images/SoilFoundation.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">**Figure 4.8 **: Bearing capacity estimation for shallow foundation.</span><a class="headerlink" href="#bearing-capacity-estimation-for-shallow-foundation" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="bearing-capacity-methods">
+<h3>Bearing Capacity Methods<a class="headerlink" href="#bearing-capacity-methods" title="Link to this heading">#</a></h3>
+<p>Several classical and extended theories have been developed to estimate the bearing capacity of foundations under various soil conditions. Each theory introduces assumptions and parameters tailored to specific scenarios:</p>
+</section>
+<section id="comparative-table-of-bearing-capacity-theories">
+<h3>📊 Comparative Table of Bearing Capacity Theories<a class="headerlink" href="#comparative-table-of-bearing-capacity-theories" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Theory</strong></p></th>
+<th class="head"><p><strong>Applicable Conditions</strong></p></th>
+<th class="head"><p><strong>Key Assumptions / Features</strong></p></th>
+<th class="head"><p><strong>Best Use Cases</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Terzaghi</strong></p></td>
+<td><p>Strip, square, circular footings; general soils</p></td>
+<td><p>Three-zone shear resistance; includes cohesion <span class="math notranslate nohighlight">\(( c' \)</span>), overburden <span class="math notranslate nohighlight">\(( q = \gamma D \)</span>), and width <span class="math notranslate nohighlight">\(( B \)</span>)</p></td>
+<td><p>Shallow foundations in cohesive/granular soils</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Rankine</strong></p></td>
+<td><p>Cohesionless soils; passive earth pressure</p></td>
+<td><p>Frictionless wall; planar failure surface; resultant force parallel to backfill</p></td>
+<td><p>Granular soils; pile foundations</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Skempton</strong></p></td>
+<td><p>Undrained cohesive soils</p></td>
+<td><p>Depth-dependent bearing capacity factors; saturated clays; short-term loading</p></td>
+<td><p>Deep foundations in saturated clays</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Meyerhof</strong></p></td>
+<td><p>General soils; shallow and deep foundations</p></td>
+<td><p>Logarithmic failure surface; includes resistance above pile base; shape and depth factors</p></td>
+<td><p>Footings with complex geometries</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hansen</strong></p></td>
+<td><p>Cohesionless soils; plane strain conditions</p></td>
+<td><p>Better experimental correlation; conservative estimates; offshore applicability</p></td>
+<td><p>Marine and offshore foundations</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Vesic</strong></p></td>
+<td><p>Sloped or inclined surfaces; offshore environments</p></td>
+<td><p>Extends Terzaghi; accounts for slope effects and inclined loading</p></td>
+<td><p>Most used in offshore and sloped terrains</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="terzaghi-s-method">
+<h3><strong>1. Terzaghi’s Method</strong><a class="headerlink" href="#terzaghi-s-method" title="Link to this heading">#</a></h3>
+<p><strong>Overview</strong>: Terzaghi’s method is one of the earliest and most widely used methods for calculating the bearing capacity of shallow foundations. It is based on the theory of plastic equilibrium in soils.</p>
+<p><strong>Equation</strong>:
+$<span class="math notranslate nohighlight">\(
+q_{ult} = cN_c + qN_q + 0.5\gamma BN_\gamma
+\)</span>$
+where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( q_{ult} \)</span>) = ultimate bearing capacity</p></li>
+<li><p><span class="math notranslate nohighlight">\(( c \)</span>) = cohesion of the soil</p></li>
+<li><p><span class="math notranslate nohighlight">\(( q \)</span>) = overburden pressure at the foundation level</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \gamma \)</span>) = unit weight of the soil</p></li>
+<li><p><span class="math notranslate nohighlight">\(( B \)</span>) = width of the foundation</p></li>
+<li><p><span class="math notranslate nohighlight">\(( N_c, N_q, N_\gamma \)</span>) = bearing capacity factors, which depend on the internal friction angle ((\phi))</p></li>
+</ul>
+<p><strong>Assumptions</strong>:</p>
+<ul class="simple">
+<li><p>The soil is homogeneous and isotropic.</p></li>
+<li><p>The foundation is shallow.</p></li>
+<li><p>The load is applied vertically and centrally.</p></li>
+</ul>
+</section>
+<section id="meyerhof-s-method">
+<h3><strong>2. Meyerhof’s Method</strong><a class="headerlink" href="#meyerhof-s-method" title="Link to this heading">#</a></h3>
+<p><strong>Overview</strong>: Meyerhof’s method extends Terzaghi’s theory by considering the shape and depth of the foundation, as well as the inclination of the load.</p>
+<p><strong>Equation</strong>:
+$<span class="math notranslate nohighlight">\(
+q_{ult} = cN_c + qN_q + 0.5\gamma BN_\gamma \left(1 + 0.3 \frac{B}{L}\right)
+\)</span>$
+where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( L \)</span>) = length of the foundation</p></li>
+<li><p>Other terms are as defined in Terzaghi’s method.</p></li>
+</ul>
+<p><strong>Assumptions</strong>:</p>
+<ul class="simple">
+<li><p>Similar to Terzaghi’s method, but includes adjustments for foundation shape and load inclination.</p></li>
+</ul>
+</section>
+<section id="hansen-s-method">
+<h3><strong>3. Hansen’s Method</strong><a class="headerlink" href="#hansen-s-method" title="Link to this heading">#</a></h3>
+<p><strong>Overview</strong>: Hansen’s method further refines the bearing capacity calculation by including shape, depth, and inclination factors for each term in the bearing capacity equation.</p>
+<p><strong>Equation</strong>:
+$<span class="math notranslate nohighlight">\(
+q_{ult} = cN_c s_c d_c i_c + qN_q s_q d_q i_q + 0.5\gamma BN_\gamma s_\gamma d_\gamma i_\gamma
+\)</span>$
+where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( s_c, s_q, s_\gamma \)</span>) = shape factors</p></li>
+<li><p><span class="math notranslate nohighlight">\(( d_c, d_q, d_\gamma \)</span>) = depth factors</p></li>
+<li><p><span class="math notranslate nohighlight">\(( i_c, i_q, i_\gamma \)</span>) = inclination factors</p></li>
+<li><p>Other terms are as defined in Terzaghi’s method.</p></li>
+</ul>
+<p><strong>Assumptions</strong>:</p>
+<ul class="simple">
+<li><p>More comprehensive than Terzaghi’s and Meyerhof’s methods, accounting for various factors affecting bearing capacity.</p></li>
+</ul>
+</section>
+<section id="interpreting-the-results">
+<h3><strong>Interpreting the Results</strong><a class="headerlink" href="#interpreting-the-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Terzaghi’s Method</strong>: Provides a basic estimate of bearing capacity, suitable for simple cases with shallow foundations and uniform soil conditions.</p></li>
+<li><p><strong>Meyerhof’s Method</strong>: Offers a more refined estimate by considering the shape and depth of the foundation, making it suitable for a wider range of conditions.</p></li>
+<li><p><strong>Hansen’s Method</strong>: Provides the most comprehensive estimate by including additional factors, making it suitable for complex conditions with varying soil properties and load inclinations.</p></li>
+</ul>
+</section>
+<section id="recommendations">
+<h3><strong>Recommendations</strong><a class="headerlink" href="#recommendations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Consistency</strong>: If the bearing capacities calculated by the different methods are similar, it indicates consistency in the results, and any method can be used based on convenience.</p></li>
+<li><p><strong>Significant Differences</strong>: If there are significant differences between the methods, further investigation and validation of soil parameters are recommended to ensure accurate design.</p></li>
+</ul>
+</section>
+<section id="bearing-capacity-factors-table">
+<h3><strong>Bearing Capacity Factors Table</strong><a class="headerlink" href="#bearing-capacity-factors-table" title="Link to this heading">#</a></h3>
+<p>The following table provides typical values for the bearing capacity factors ((N_c), (N_q), (N_\gamma)) based on the internal friction angle ((\phi)):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>(\phi) (degrees)</p></th>
+<th class="head"><p>(N_c)</p></th>
+<th class="head"><p>(N_q)</p></th>
+<th class="head"><p>(N_\gamma)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>5.14</p></td>
+<td><p>1.00</p></td>
+<td><p>0.00</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>6.50</p></td>
+<td><p>1.57</p></td>
+<td><p>0.21</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>8.34</p></td>
+<td><p>2.47</p></td>
+<td><p>0.67</p></td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p>11.00</p></td>
+<td><p>3.90</p></td>
+<td><p>1.41</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>15.00</p></td>
+<td><p>6.40</p></td>
+<td><p>2.56</p></td>
+</tr>
+<tr class="row-odd"><td><p>25</p></td>
+<td><p>20.70</p></td>
+<td><p>10.60</p></td>
+<td><p>4.40</p></td>
+</tr>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>27.70</p></td>
+<td><p>18.40</p></td>
+<td><p>7.40</p></td>
+</tr>
+<tr class="row-odd"><td><p>35</p></td>
+<td><p>37.20</p></td>
+<td><p>31.00</p></td>
+<td><p>11.80</p></td>
+</tr>
+<tr class="row-even"><td><p>40</p></td>
+<td><p>50.60</p></td>
+<td><p>52.00</p></td>
+<td><p>18.40</p></td>
+</tr>
+<tr class="row-odd"><td><p>45</p></td>
+<td><p>69.30</p></td>
+<td><p>100.00</p></td>
+<td><p>32.40</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These methods are essential tools in geotechnical engineering for designing safe and stable foundations. Understanding their assumptions and limitations helps engineers choose the appropriate method for their specific project conditions.</p>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p>The <strong>theoretical background</strong> and foundational principles of the brearing capacity estimation methods are sufficiently described in <span id="id1">[<a class="reference internal" href="../markdown.html#id52" title="Braja M. Das. Principles of Geotechnical Engineering. Cengage Learning, Boston, MA, 10th edition, 2021. ISBN 9780357420485.">Das, 2021</a>]</span> and <span id="id2">[]</span>, making them a valuable reference for understanding the assumptions, governing equations.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="bearing-capacity-calculator-terzaghi-meyerhof-hansen">
+<h3>🧱 Bearing Capacity Calculator (Terzaghi, Meyerhof, Hansen)<a class="headerlink" href="#bearing-capacity-calculator-terzaghi-meyerhof-hansen" title="Link to this heading">#</a></h3>
+<p>This tool estimates the <strong>ultimate bearing capacity of soil</strong> using three classical methods:</p>
+<ul class="simple">
+<li><p><strong>Terzaghi’s Method</strong></p></li>
+<li><p><strong>Meyerhof’s Method</strong></p></li>
+<li><p><strong>Hansen’s Method</strong></p></li>
+</ul>
+<p>It allows users to input soil and foundation parameters interactively and compares the results across methods with interpretive guidance.</p>
+</section>
+<hr class="docutils" />
+<section id="calculation-steps">
+<h3>🔧 Calculation Steps<a class="headerlink" href="#calculation-steps" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Inputs</strong>:</p>
+<ul class="simple">
+<li><p>Soil properties: cohesion <span class="math notranslate nohighlight">\(( c \)</span>), unit weight <span class="math notranslate nohighlight">\(( \gamma \)</span>), overburden pressure <span class="math notranslate nohighlight">\(( q \)</span>)</p></li>
+<li><p>Foundation dimensions: width <span class="math notranslate nohighlight">\(( B \)</span>), length <span class="math notranslate nohighlight">\(( L \)</span>)</p></li>
+<li><p>Bearing capacity factors: <span class="math notranslate nohighlight">\(( N_c \)</span>), <span class="math notranslate nohighlight">\(( N_q \)</span>), <span class="math notranslate nohighlight">\(( N_\gamma \)</span>)</p></li>
+</ul>
+</li>
+<li><p><strong>Equations Used</strong>:</p>
+<ul class="simple">
+<li><p><strong>Terzaghi</strong>:
+<span class="math notranslate nohighlight">\(
+q_u = c N_c + q N_q + 0.5 \gamma B N_\gamma
+\)</span></p></li>
+<li><p><strong>Meyerhof</strong>:
+<span class="math notranslate nohighlight">\(
+q_u = c N_c + q N_q + 0.5 \gamma B N_\gamma \left(1 + 0.3 \frac{B}{L}\right)
+\)</span></p></li>
+<li><p><strong>Hansen</strong>:
+<span class="math notranslate nohighlight">\(
+q_u = c N_c s_c + q N_q s_q + 0.5 \gamma B N_\gamma s_\gamma
+\)</span>
+where shape factors <span class="math notranslate nohighlight">\(( s_c, s_q, s_\gamma \)</span>) depend on <span class="math notranslate nohighlight">\(( B/L \)</span>)</p></li>
+</ul>
+</li>
+<li><p><strong>Interpretation Logic</strong>:</p>
+<ul class="simple">
+<li><p>Compares results from all three methods</p></li>
+<li><p>Identifies which method gives highest and lowest capacity</p></li>
+<li><p>Provides recommendations based on consistency of results</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-inputs">
+<h3>📊 How to Interpret Inputs<a class="headerlink" href="#how-to-interpret-inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">c</span></code></p></td>
+<td><p>Soil cohesion (kPa)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">γ</span></code></p></td>
+<td><p>Unit weight of soil (kN/m³)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">q</span></code></p></td>
+<td><p>Overburden pressure at foundation depth (kPa)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">L</span></code></p></td>
+<td><p>Width and length of foundation (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Nc</span></code>, <code class="docutils literal notranslate"><span class="pre">Nq</span></code>, <code class="docutils literal notranslate"><span class="pre">Ngamma</span></code></p></td>
+<td><p>Bearing capacity factors based on soil friction angle</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-outputs">
+<h2>📋 How to Interpret Outputs<a class="headerlink" href="#how-to-interpret-outputs" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Terzaghi</span></code>, <code class="docutils literal notranslate"><span class="pre">Meyerhof</span></code>, <code class="docutils literal notranslate"><span class="pre">Hansen</span></code></p></td>
+<td><p>Ultimate bearing capacity estimates (kPa)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interpretation Section</strong></p></td>
+<td><p>Highlights which method gives highest/lowest values and whether results are consistent</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Recommendations</strong></p></td>
+<td><p>Suggests further investigation if methods diverge significantly (&gt;50%)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="conceptual-insight">
+<h2>🧠 Conceptual Insight<a class="headerlink" href="#conceptual-insight" title="Link to this heading">#</a></h2>
+<blockquote>
+<div><p>This tool helps compare <strong>classic bearing capacity methods</strong> and guides foundation design decisions<br />
+by integrating <strong>soil mechanics theory</strong> with <strong>interactive analysis</strong>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Function to calculate bearing capacity using Terzaghi&#39;s method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">terzaghi_bearing_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">Nq</span><span class="p">,</span> <span class="n">Nc</span><span class="p">,</span> <span class="n">Ngamma</span><span class="p">):</span>
+    <span class="n">q_ult</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">Nc</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">Nq</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">B</span> <span class="o">*</span> <span class="n">Ngamma</span>
+    <span class="k">return</span> <span class="n">q_ult</span>
+
+<span class="c1"># Function to calculate bearing capacity using Meyerhof&#39;s method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">meyerhof_bearing_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">Nq</span><span class="p">,</span> <span class="n">Nc</span><span class="p">,</span> <span class="n">Ngamma</span><span class="p">):</span>
+    <span class="n">q_ult</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">Nc</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">Nq</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">B</span> <span class="o">*</span> <span class="n">Ngamma</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">/</span> <span class="n">L</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">q_ult</span>
+
+<span class="c1"># Function to calculate bearing capacity using Hansen&#39;s method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hansen_bearing_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">Nq</span><span class="p">,</span> <span class="n">Nc</span><span class="p">,</span> <span class="n">Ngamma</span><span class="p">):</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="n">sq</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="n">sgamma</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="p">(</span><span class="n">B</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
+    <span class="n">q_ult</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">Nc</span> <span class="o">*</span> <span class="n">sc</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">Nq</span> <span class="o">*</span> <span class="n">sq</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">B</span> <span class="o">*</span> <span class="n">Ngamma</span> <span class="o">*</span> <span class="n">sgamma</span>
+    <span class="k">return</span> <span class="n">q_ult</span>
+
+<span class="c1"># Function to interpret bearing capacity results and guide users</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">interpret_results</span><span class="p">(</span><span class="n">terzaghi_q_ult</span><span class="p">,</span> <span class="n">meyerhof_q_ult</span><span class="p">,</span> <span class="n">hansen_q_ult</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Terzaghi&quot;</span><span class="p">:</span> <span class="n">terzaghi_q_ult</span><span class="p">,</span>
+        <span class="s2">&quot;Meyerhof&quot;</span><span class="p">:</span> <span class="n">meyerhof_q_ult</span><span class="p">,</span>
+        <span class="s2">&quot;Hansen&quot;</span><span class="p">:</span> <span class="n">hansen_q_ult</span>
+    <span class="p">}</span>
+    
+    <span class="n">max_capacity</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">min_capacity</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    
+    <span class="n">interpretation</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="n">max_capacity</span> <span class="o">==</span> <span class="n">terzaghi_q_ult</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;Terzaghi&#39;s method provides the highest bearing capacity.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="n">max_capacity</span> <span class="o">==</span> <span class="n">meyerhof_q_ult</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;Meyerhof&#39;s method provides the highest bearing capacity.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="n">max_capacity</span> <span class="o">==</span> <span class="n">hansen_q_ult</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;Hansen&#39;s method provides the highest bearing capacity.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="k">if</span> <span class="n">min_capacity</span> <span class="o">==</span> <span class="n">terzaghi_q_ult</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;Terzaghi&#39;s method provides the lowest bearing capacity.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="n">min_capacity</span> <span class="o">==</span> <span class="n">meyerhof_q_ult</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;Meyerhof&#39;s method provides the lowest bearing capacity.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">elif</span> <span class="n">min_capacity</span> <span class="o">==</span> <span class="n">hansen_q_ult</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;Hansen&#39;s method provides the lowest bearing capacity.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">### Recommendations:</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="k">if</span> <span class="n">max_capacity</span> <span class="o">/</span> <span class="n">min_capacity</span> <span class="o">&gt;</span> <span class="mf">1.5</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;- There is a significant difference between the methods. Consider further investigation and validation of soil parameters.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">interpretation</span> <span class="o">+=</span> <span class="s2">&quot;- The methods provide similar results. You can choose any method based on convenience and familiarity.</span><span class="se">\n</span><span class="s2">&quot;</span>
+    
+    <span class="k">return</span> <span class="n">interpretation</span>
+<span class="c1"># Interactive widgets for input parameters</span>
+<span class="n">c_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Cohesion (kPa):&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">gamma_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Unit Weight (kN/m³):&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">q_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Overburden Pressure (kPa):&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">B_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Width of Foundation (m):&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">L_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Length of Foundation (m):&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">Nq_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Nq:&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">Nc_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Nc:&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">Ngamma_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Ngamma:&#39;</span><span class="p">,</span>
+    <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;50%&#39;</span><span class="p">),</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_plot</span><span class="p">(</span><span class="n">change</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">c_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">q_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">B_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">L</span> <span class="o">=</span> <span class="n">L_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">Nq</span> <span class="o">=</span> <span class="n">Nq_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">Nc</span> <span class="o">=</span> <span class="n">Nc_input</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">Ngamma</span> <span class="o">=</span> <span class="n">Ngamma_input</span><span class="o">.</span><span class="n">value</span>
+            
+            <span class="c1"># Calculate bearing capacities using different methods</span>
+            <span class="n">terzaghi_q_ult</span> <span class="o">=</span> <span class="n">terzaghi_bearing_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">Nq</span><span class="p">,</span> <span class="n">Nc</span><span class="p">,</span> <span class="n">Ngamma</span><span class="p">)</span>
+            <span class="n">meyerhof_q_ult</span> <span class="o">=</span> <span class="n">meyerhof_bearing_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">Nq</span><span class="p">,</span> <span class="n">Nc</span><span class="p">,</span> <span class="n">Ngamma</span><span class="p">)</span>
+            <span class="n">hansen_q_ult</span> <span class="o">=</span> <span class="n">hansen_bearing_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">Nq</span><span class="p">,</span> <span class="n">Nc</span><span class="p">,</span> <span class="n">Ngamma</span><span class="p">)</span>
+            
+            <span class="c1"># Interpret results and guide users</span>
+            <span class="n">interpretation</span> <span class="o">=</span> <span class="n">interpret_results</span><span class="p">(</span><span class="n">terzaghi_q_ult</span><span class="p">,</span> <span class="n">meyerhof_q_ult</span><span class="p">,</span> <span class="n">hansen_q_ult</span><span class="p">)</span>
+            
+            <span class="c1"># Display results and interpretation</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### Bearing Capacity Results&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- **Terzaghi&#39;s Method:** </span><span class="si">{</span><span class="n">terzaghi_q_ult</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kPa&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- **Meyerhof&#39;s Method:** </span><span class="si">{</span><span class="n">meyerhof_q_ult</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kPa&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- **Hansen&#39;s Method:** </span><span class="si">{</span><span class="n">hansen_q_ult</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kPa&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### Interpretation and Recommendations&quot;</span><span class="p">))</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">interpretation</span><span class="p">))</span>
+            
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ **Error:** </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+<span class="n">c_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">gamma_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">q_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">B_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">L_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">Nq_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">Nc_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">Ngamma_input</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_plot</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">c_input</span><span class="p">,</span> <span class="n">gamma_input</span><span class="p">,</span> <span class="n">q_input</span><span class="p">,</span> <span class="n">B_input</span><span class="p">,</span> <span class="n">L_input</span><span class="p">,</span> <span class="n">Nq_input</span><span class="p">,</span> <span class="n">Nc_input</span><span class="p">,</span> <span class="n">Ngamma_input</span><span class="p">]),</span> <span class="n">output</span><span class="p">)</span>
+<span class="n">update_plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "56f1c25f2eff4f1c8fed75faba7cb267", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "38da30ca58764dffbc73a1b2c6ee5a9c", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># Define quiz questions, options, and correct answers</span>
+<span class="n">quiz_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Which of the following parameters is **not** included in Terzaghi’s original bearing capacity equation?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Cohesion (c)&quot;</span><span class="p">,</span> <span class="s2">&quot;Overburden pressure (q)&quot;</span><span class="p">,</span> <span class="s2">&quot;Length of foundation (L)&quot;</span><span class="p">,</span> <span class="s2">&quot;Unit weight of soil (γ)&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Length of foundation (L)&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What additional factor does Meyerhof’s method introduce compared to Terzaghi’s?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Soil compressibility&quot;</span><span class="p">,</span> <span class="s2">&quot;Foundation shape and depth&quot;</span><span class="p">,</span> <span class="s2">&quot;Water table correction&quot;</span><span class="p">,</span> <span class="s2">&quot;Soil anisotropy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Foundation shape and depth&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Hansen’s method includes which of the following factors in the bearing capacity equation?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Shape, depth, and inclination factors&quot;</span><span class="p">,</span> <span class="s2">&quot;Only shape and depth factors&quot;</span><span class="p">,</span> <span class="s2">&quot;Only inclination factors&quot;</span><span class="p">,</span> <span class="s2">&quot;None of the above&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Shape, depth, and inclination factors&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;According to the bearing capacity factor table, what is the value of Nq when the internal friction angle φ = 30°?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;10.6&quot;</span><span class="p">,</span> <span class="s2">&quot;18.4&quot;</span><span class="p">,</span> <span class="s2">&quot;27.7&quot;</span><span class="p">,</span> <span class="s2">&quot;7.4&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;18.4&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;In the Python code, what does the function interpret_results() primarily do?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Calculates the average bearing capacity&quot;</span><span class="p">,</span> <span class="s2">&quot;Compares results from different methods and provides recommendations&quot;</span><span class="p">,</span> <span class="s2">&quot;Plots the bearing capacity values&quot;</span><span class="p">,</span> <span class="s2">&quot;Adjusts the input parameters&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Compares results from different methods and provides recommendations&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;In the simplified Hansen’s method in the code, how is the shape factor sc calculated?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1 + 0.3 B/L&quot;</span><span class="p">,</span> <span class="s2">&quot;1 - 0.4 B/L&quot;</span><span class="p">,</span> <span class="s2">&quot;1 + 0.2 B/L&quot;</span><span class="p">,</span> <span class="s2">&quot;1 + 0.5 B/L&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;1 + 0.2 B/L&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;According to the interpretation logic, when is further investigation recommended?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;When all methods give the same result&quot;</span><span class="p">,</span> <span class="s2">&quot;When max/min &gt; 1.5&quot;</span><span class="p">,</span> <span class="s2">&quot;When max/min &lt; 1.5&quot;</span><span class="p">,</span> <span class="s2">&quot;When Terzaghi’s method is the lowest&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;When max/min &gt; 1.5&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the effect of increasing the foundation width B on the bearing capacity?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;It decreases the bearing capacity&quot;</span><span class="p">,</span> <span class="s2">&quot;It has no effect&quot;</span><span class="p">,</span> <span class="s2">&quot;It increases the bearing capacity&quot;</span><span class="p">,</span> <span class="s2">&quot;It only affects Hansen’s method&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;It increases the bearing capacity&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Which of the following is **not** an assumption of Terzaghi’s method?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Soil is homogeneous and isotropic&quot;</span><span class="p">,</span> <span class="s2">&quot;Load is applied eccentrically&quot;</span><span class="p">,</span> <span class="s2">&quot;Foundation is shallow&quot;</span><span class="p">,</span> <span class="s2">&quot;Load is vertical and central&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Load is applied eccentrically&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;Which method is most suitable for complex soil conditions and inclined loads?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Terzaghi’s Method&quot;</span><span class="p">,</span> <span class="s2">&quot;Meyerhof’s Method&quot;</span><span class="p">,</span> <span class="s2">&quot;Hansen’s Method&quot;</span><span class="p">,</span> <span class="s2">&quot;None of the above&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="s2">&quot;Hansen’s Method&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="c1"># Function to create a widget for each quiz question</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_quiz_widget</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">correct_answer</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+    <span class="n">radio</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;max-content&#39;</span><span class="p">})</span>
+    <span class="n">check_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Check Answer&quot;</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;info&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_check_clicked</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">clear_output</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">radio</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">correct_answer</span><span class="p">:</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;✅ **Correct!**&quot;</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ **Incorrect.** The correct answer is: **</span><span class="si">{</span><span class="n">correct_answer</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">))</span>
+
+    <span class="n">check_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_check_clicked</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### </span><span class="si">{</span><span class="n">question</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">radio</span><span class="p">,</span> <span class="n">check_button</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+
+<span class="c1"># Display all quiz widgets</span>
+<span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quiz_data</span><span class="p">:</span>
+    <span class="n">create_quiz_widget</span><span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<h3 class="rubric" id="which-of-the-following-parameters-is-not-included-in-terzaghis-original-bearing-capacity-equation">Which of the following parameters is <strong>not</strong> included in Terzaghi’s original bearing capacity equation?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "298254ea7aa2458398567c4ad8343e62", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "eb0cbe0ab1834c9b9ea88abe412e1fea", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "cdcaf53b0bb54ac49f2502a0f3370c0f", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="what-additional-factor-does-meyerhofs-method-introduce-compared-to-terzaghis">What additional factor does Meyerhof’s method introduce compared to Terzaghi’s?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d7d4bf728a3544d48106fec888c543a5", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "c07674111ea34b91a98874e4c04e7750", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "6cf3c3d7c3124673a002234f413a47a7", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="hansens-method-includes-which-of-the-following-factors-in-the-bearing-capacity-equation">Hansen’s method includes which of the following factors in the bearing capacity equation?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5031a978851f44bdac7666f6a63ff062", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "d8809a3690eb43ccb00330f4a6176202", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "1bf649e911b74ebaae6c747bfe963fc7", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="according-to-the-bearing-capacity-factor-table-what-is-the-value-of-nq-when-the-internal-friction-angle-30">According to the bearing capacity factor table, what is the value of Nq when the internal friction angle φ = 30°?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "78a3141c62294453ad4c244f084a8403", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "42bb0adda3f847e2bce5d047c0924344", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "b53099c4d0094ddcbc2c5fa35d3f01cc", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="in-the-python-code-what-does-the-function-interpret-results-primarily-do">In the Python code, what does the function interpret_results() primarily do?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "43947abdef6e4821be3202a3b2e501ed", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f4cba0e55fe94bc3ade7c3dccb5fdeb1", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ac27dbab6d1442ab9670c0f18db79ba9", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="in-the-simplified-hansens-method-in-the-code-how-is-the-shape-factor-sc-calculated">In the simplified Hansen’s method in the code, how is the shape factor sc calculated?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "de051669c2f5471a9bfc88caff82e93d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "87d135188be64806ac8618b23a8b1f76", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "0627d26fc4384fe5b24449ed40cc0f17", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="according-to-the-interpretation-logic-when-is-further-investigation-recommended">According to the interpretation logic, when is further investigation recommended?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3acaea84e35b4f1597f5ea855c82d27e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e88269802d354ae08848451290ca7b8e", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "062e218d1c3e442eb6c81039d1b07a72", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="what-is-the-effect-of-increasing-the-foundation-width-b-on-the-bearing-capacity">What is the effect of increasing the foundation width B on the bearing capacity?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ccd34012c1e743a09c2509ba2ffde616", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ca4f4b112bad49ecba223637b71e84ba", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8b93acfc66e148998424cdafd486bf32", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="which-of-the-following-is-not-an-assumption-of-terzaghis-method">Which of the following is <strong>not</strong> an assumption of Terzaghi’s method?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "87cb697f4b264b8ab7b3a80b3a731315", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ad7ffea147de463896018ef5f9db9c92", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a92aa2cb673f427eb259c7cdb58d2583", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="which-method-is-most-suitable-for-complex-soil-conditions-and-inclined-loads">Which method is most suitable for complex soil conditions and inclined loads?</h3>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "84d44aad87574eb5bfd470b2de1aa44a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "0588170dcb874581991788d522741dd7", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "eee7bd7bebbd4f58bc2b271903eef0f1", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Define reflective and conceptual questions</span>
+<span class="n">questions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Why do different bearing capacity methods (Terzaghi, Meyerhof, Hansen) yield different results for the same soil and foundation conditions?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;How would you decide which method to use in a real-world project?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;What are the potential consequences of overestimating vs. underestimating bearing capacity in foundation design?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;How does the inclusion of shape, depth, and inclination factors in Hansen’s method improve the accuracy of bearing capacity predictions?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;How would you validate the soil parameters (e.g., cohesion, unit weight, friction angle) used in bearing capacity calculations?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Explain the physical meaning of each term in Terzaghi’s bearing capacity equation.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;What is the role of the bearing capacity factors Nc, Nq, and Nγ? How do they relate to the internal friction angle φ?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Why is the width of the foundation (B) included in the bearing capacity equations?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Compare the assumptions made in Terzaghi’s method with those in Meyerhof’s and Hansen’s.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;How would the presence of groundwater near the foundation level affect bearing capacity?&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Display each question with a text area for user input</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">questions</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### Reflective Question </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">q</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">Textarea</span><span class="p">(</span>
+        <span class="n">placeholder</span><span class="o">=</span><span class="s1">&#39;Type your answer here...&#39;</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;100%&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;100px&#39;</span><span class="p">)</span>
+    <span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<h3 class="rubric" id="reflective-question-1">Reflective Question 1</h3>
+<p>Why do different bearing capacity methods (Terzaghi, Meyerhof, Hansen) yield different results for the same soil and foundation conditions?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7f3715886b27432dbe1b05c3f508172e", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-2">Reflective Question 2</h3>
+<p>How would you decide which method to use in a real-world project?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "beb31c7d104b4f0a820875c12cf721a7", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-3">Reflective Question 3</h3>
+<p>What are the potential consequences of overestimating vs. underestimating bearing capacity in foundation design?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "be3bea1837e340a59d075e81ebd36bee", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-4">Reflective Question 4</h3>
+<p>How does the inclusion of shape, depth, and inclination factors in Hansen’s method improve the accuracy of bearing capacity predictions?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3a85f6674d534ac68ba886ec2391ccad", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-5">Reflective Question 5</h3>
+<p>How would you validate the soil parameters (e.g., cohesion, unit weight, friction angle) used in bearing capacity calculations?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c61acdbc25e2453fba7c532c35ebf29b", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-6">Reflective Question 6</h3>
+<p>Explain the physical meaning of each term in Terzaghi’s bearing capacity equation.</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5f40ab04bdce4ebbb92b9d3086478688", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-7">Reflective Question 7</h3>
+<p>What is the role of the bearing capacity factors Nc, Nq, and Nγ? How do they relate to the internal friction angle φ?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c8cf12b16664406fad27fc714336a3b9", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-8">Reflective Question 8</h3>
+<p>Why is the width of the foundation (B) included in the bearing capacity equations?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6e68a33394b844868194c454bd4f00c9", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-9">Reflective Question 9</h3>
+<p>Compare the assumptions made in Terzaghi’s method with those in Meyerhof’s and Hansen’s.</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "fe1a32d3421f49ddaf4e3b534aefd330", "version_major": 2, "version_minor": 0}</script><h3 class="rubric" id="reflective-question-10">Reflective Question 10</h3>
+<p>How would the presence of groundwater near the foundation level affect bearing capacity?</p>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "95e4b30e4c6e4fbc95fb3f4da7576fbe", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1DConsolidationAnalysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: 1D Consolidation Theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="PileCapacity.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: Pile Capacity Estimation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-methods">Bearing Capacity Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-table-of-bearing-capacity-theories">📊 Comparative Table of Bearing Capacity Theories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terzaghi-s-method"><strong>1. Terzaghi’s Method</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meyerhof-s-method"><strong>2. Meyerhof’s Method</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hansen-s-method"><strong>3. Hansen’s Method</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-results"><strong>Interpreting the Results</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recommendations"><strong>Recommendations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-factors-table"><strong>Bearing Capacity Factors Table</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-calculator-terzaghi-meyerhof-hansen">🧱 Bearing Capacity Calculator (Terzaghi, Meyerhof, Hansen)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-steps">🔧 Calculation Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

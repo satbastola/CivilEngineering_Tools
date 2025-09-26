@@ -1,0 +1,1239 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Enginereing Sustainability: Landscape Water Conservation &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/LandscapeWaterSim';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Sustainabilty and Engineering: Green Infrastructure" href="GreenInfrastructureSimulation.html" />
+    <link rel="prev" title="Chapter 6 Sustainabilty and Engineering: Sustainable Water" href="SustainableWaterSoln.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/LandscapeWaterSim.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/LandscapeWaterSim.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/LandscapeWaterSim.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/LandscapeWaterSim.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/LandscapeWaterSim.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Enginereing Sustainability: Landscape Water Conservation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-water-conservation-for-water-sustainability">💧 Landscape Water Conservation for Water Sustainability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-purpose">🌱 Definition and Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">🧠 Why It Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epa-watersense-water-budget-tool">🧰 EPA WaterSense Water Budget Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">🔎 Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-equation">🧮 Core Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-water-conservation-simulation">🌿 Landscape Water Conservation Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">📘 Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-assumptions">🧮 Model Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-evapotranspiration-et0">🔹 Reference Evapotranspiration (ET₀)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-coefficients-kc">🔹 Landscape Coefficients (Kc)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irrigation-requirement">💧 Irrigation Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-output">📊 Simulation Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛️ Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">📚 Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">🔗 Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evapotranspiration-crop-coefficient">Evapotranspiration &amp; Crop Coefficient</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water-budget-units">Water Budget &amp; Units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-comparison">Sustainability Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-enginereing-sustainability-landscape-water-conservation">
+<h1>Chapter 6 Enginereing Sustainability: Landscape Water Conservation<a class="headerlink" href="#chapter-6-enginereing-sustainability-landscape-water-conservation" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Landscape Water conservation</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Landscape Water Conservation</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="landscape-water-conservation-for-water-sustainability">
+<h3>💧 Landscape Water Conservation for Water Sustainability<a class="headerlink" href="#landscape-water-conservation-for-water-sustainability" title="Link to this heading">#</a></h3>
+</section>
+<section id="definition-and-purpose">
+<h3>🌱 Definition and Purpose<a class="headerlink" href="#definition-and-purpose" title="Link to this heading">#</a></h3>
+<p><strong>Landscape water conservation</strong> refers to the strategic design, management, and maintenance of outdoor spaces to <strong>minimize water use</strong> while maintaining healthy vegetation and ecosystem services. It plays a critical role in <strong>urban water sustainability</strong>, especially in regions with seasonal drought or limited freshwater resources.</p>
+</section>
+<hr class="docutils" />
+<section id="why-it-matters">
+<h3>🧠 Why It Matters<a class="headerlink" href="#why-it-matters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>🌍 Outdoor irrigation accounts for <strong>9+ billion gallons/day</strong> in the U.S.</p></li>
+<li><p>💸 Up to <strong>50% of residential outdoor water</strong> is wasted due to poor design and maintenance</p></li>
+<li><p>🌿 Sustainable landscapes reduce runoff, improve soil health, and support biodiversity</p></li>
+<li><p>🏡 Water-efficient landscapes increase property value and reduce utility costs</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="epa-watersense-water-budget-tool">
+<h3>🧰 EPA WaterSense Water Budget Tool<a class="headerlink" href="#epa-watersense-water-budget-tool" title="Link to this heading">#</a></h3>
+</section>
+<section id="overview">
+<h3>🔎 Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p>The <strong>WaterSense Water Budget Tool</strong> is a free, site-specific calculator developed by the <strong>U.S. EPA</strong> to help builders, landscape designers, and irrigation professionals:</p>
+<ul class="simple">
+<li><p>Estimate allowable water use for landscapes</p></li>
+<li><p>Design landscapes that meet <strong>WaterSense New Home Specification</strong></p></li>
+<li><p>Promote <strong>regionally appropriate plantings</strong> and irrigation systems</p></li>
+</ul>
+</section>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id122" title="U.S. Environmental Protection Agency. Watersense water budget tool. 2020. Version 1.04 (Excel), released June 2020. Used to comply with WaterSense New Home Specification for landscape water efficiency. URL: https://www.epa.gov/watersense/water-budget-tool.">U.S. Environmental Protection Agency, 2020</a>]</span> helps landscape designers, builders, and irrigation professionals:</p>
+<ul class="simple">
+<li><p>Estimate allowable water use for landscapes based on climate and plant types</p></li>
+<li><p>Comply with Section 4.1.1 of the WaterSense New Home Specification (Version 1.2)</p></li>
+<li><p>Promote regionally appropriate, water-efficient landscape design</p></li>
+</ul>
+</section>
+<section id="core-equation">
+<h3>🧮 Core Equation<a class="headerlink" href="#core-equation" title="Link to this heading">#</a></h3>
+<div class="highlight-math notranslate"><div class="highlight"><pre><span></span>Baseline = ETo × A × Cu
+</pre></div>
+</div>
+</section>
+<section id="landscape-water-conservation-simulation">
+<h3>🌿 Landscape Water Conservation Simulation<a class="headerlink" href="#landscape-water-conservation-simulation" title="Link to this heading">#</a></h3>
+</section>
+<section id="id2">
+<h3>📘 Overview<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>This interactive model estimates <strong>monthly irrigation requirements</strong> and <strong>potential water savings</strong> for different landscape types based on:</p>
+<ul class="simple">
+<li><p>🌧️ Local rainfall</p></li>
+<li><p>🌱 Plant water needs (landscape coefficient)</p></li>
+<li><p>📏 Landscape area</p></li>
+</ul>
+<p>It is inspired by the <strong>EPA WaterSense Water Budget Tool</strong>, which helps homeowners and planners design water-efficient landscapes.</p>
+</section>
+<hr class="docutils" />
+<section id="model-assumptions">
+<h3>🧮 Model Assumptions<a class="headerlink" href="#model-assumptions" title="Link to this heading">#</a></h3>
+</section>
+<section id="reference-evapotranspiration-et0">
+<h3>🔹 Reference Evapotranspiration (ET₀)<a class="headerlink" href="#reference-evapotranspiration-et0" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Assumed constant at <strong>150 mm/month</strong>, typical for summer in many U.S. regions.</p></li>
+<li><p>Represents the water demand of a well-watered cool-season grass under standard conditions.</p></li>
+</ul>
+</section>
+<section id="landscape-coefficients-kc">
+<h3>🔹 Landscape Coefficients (Kc)<a class="headerlink" href="#landscape-coefficients-kc" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Landscape Type</p></th>
+<th class="head"><p>Coefficient (Kc)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cool-season grass</p></td>
+<td><p>0.8</p></td>
+<td><p>High water demand</p></td>
+</tr>
+<tr class="row-odd"><td><p>Warm-season grass</p></td>
+<td><p>0.6</p></td>
+<td><p>Moderate water demand</p></td>
+</tr>
+<tr class="row-even"><td><p>Native plants</p></td>
+<td><p>0.4</p></td>
+<td><p>Adapted to local climate</p></td>
+</tr>
+<tr class="row-odd"><td><p>Drought-tolerant groundcover</p></td>
+<td><p>0.3</p></td>
+<td><p>Minimal irrigation required</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Water need is calculated as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Water Need (mm)} = ET₀ \times K_c
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="irrigation-requirement">
+<h3>💧 Irrigation Requirement<a class="headerlink" href="#irrigation-requirement" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\text{Irrigation (mm)} = \max(ET₀ \times K_c - \text{Rainfall}, 0)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{Irrigation Volume (m³)} = \frac{\text{Irrigation (mm)} \times \text{Area (m²)}}{1000}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="simulation-output">
+<h3>📊 Simulation Output<a class="headerlink" href="#simulation-output" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Bar chart</strong> comparing rainfall contribution vs irrigation need</p></li>
+<li><p><strong>Monthly irrigation volume</strong> required for selected landscape</p></li>
+<li><p><strong>Water savings</strong> compared to cool-season grass baseline</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="interactive-controls">
+<h3>🎛️ Interactive Controls<a class="headerlink" href="#interactive-controls" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Landscape Area</strong>: size of irrigated zone (10–1000 m²)</p></li>
+<li><p><strong>Rainfall</strong>: monthly precipitation (0–150 mm)</p></li>
+<li><p><strong>Landscape Type</strong>: choose from grass, native plants, or groundcover</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="use-cases">
+<h3>📚 Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Residential and commercial landscape planning</p></li>
+<li><p>Water conservation education</p></li>
+<li><p>Estimating irrigation costs and savings</p></li>
+<li><p>Supporting LEED or WaterSense certification</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h3>🔗 Reference<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.epa.gov/watersense/water-budget-tool">EPA WaterSense Water Budget Tool</a></p></li>
+</ul>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">interact</span>
+
+<span class="c1"># 🌿 Landscape types and coefficients (Kc × ET adjustment)</span>
+<span class="n">landscape_types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Cool-season grass&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="s2">&quot;Warm-season grass&quot;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span>
+    <span class="s2">&quot;Native plants&quot;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span>
+    <span class="s2">&quot;Drought-tolerant groundcover&quot;</span><span class="p">:</span> <span class="mf">0.3</span>
+<span class="p">}</span>
+
+<span class="c1"># 💧 Reference evapotranspiration (ET₀) in mm/month (typical summer value)</span>
+<span class="n">ET0_mm</span> <span class="o">=</span> <span class="mi">150</span>
+
+<span class="c1"># 🌱 Main simulation function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_irrigation</span><span class="p">(</span><span class="n">area_m2</span><span class="p">,</span> <span class="n">rainfall_mm</span><span class="p">,</span> <span class="n">landscape_type</span><span class="p">):</span>
+    <span class="n">Kc</span> <span class="o">=</span> <span class="n">landscape_types</span><span class="p">[</span><span class="n">landscape_type</span><span class="p">]</span>
+    
+    <span class="c1"># 🌿 Landscape water requirement</span>
+    <span class="n">water_need_mm</span> <span class="o">=</span> <span class="n">ET0_mm</span> <span class="o">*</span> <span class="n">Kc</span>
+    <span class="n">irrigation_mm</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">water_need_mm</span> <span class="o">-</span> <span class="n">rainfall_mm</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">irrigation_m3</span> <span class="o">=</span> <span class="n">irrigation_mm</span> <span class="o">*</span> <span class="n">area_m2</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert mm to m³</span>
+
+    <span class="c1"># 💧 Water savings compared to cool-season grass baseline</span>
+    <span class="n">baseline_mm</span> <span class="o">=</span> <span class="n">ET0_mm</span> <span class="o">*</span> <span class="n">landscape_types</span><span class="p">[</span><span class="s2">&quot;Cool-season grass&quot;</span><span class="p">]</span>
+    <span class="n">baseline_m3</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">baseline_mm</span> <span class="o">-</span> <span class="n">rainfall_mm</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">area_m2</span> <span class="o">/</span> <span class="mi">1000</span>
+    <span class="n">savings_m3</span> <span class="o">=</span> <span class="n">baseline_m3</span> <span class="o">-</span> <span class="n">irrigation_m3</span>
+
+    <span class="c1"># 📊 Plot</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rainfall Contribution&#39;</span><span class="p">,</span> <span class="s1">&#39;Irrigation Needed&#39;</span><span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">rainfall_mm</span><span class="p">,</span> <span class="n">irrigation_mm</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;skyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;darkgreen&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Water Depth (mm)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Irrigation Need for </span><span class="si">{</span><span class="n">landscape_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌱 Landscape Type: </span><span class="si">{</span><span class="n">landscape_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📏 Area: </span><span class="si">{</span><span class="n">area_m2</span><span class="si">}</span><span class="s2"> m²&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌧️ Monthly Rainfall: </span><span class="si">{</span><span class="n">rainfall_mm</span><span class="si">}</span><span class="s2"> mm&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💦 Irrigation Required: </span><span class="si">{</span><span class="n">irrigation_m3</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m³/month&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💰 Water Saved vs Cool-season Grass: </span><span class="si">{</span><span class="n">savings_m3</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m³/month&quot;</span><span class="p">)</span>
+
+<span class="c1"># 🎛️ Interactive controls</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">simulate_irrigation</span><span class="p">,</span>
+         <span class="n">area_m2</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Landscape Area (m²)&#39;</span><span class="p">),</span>
+         <span class="n">rainfall_mm</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Rainfall (mm/month)&#39;</span><span class="p">),</span>
+         <span class="n">landscape_type</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">landscape_types</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Cool-season grass&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Landscape&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3edc7cf23d0f49eab24c4de6c4f93bfc", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="conceptual-questions">
+<h3>📘 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<p>These questions explore the physical principles and modeling logic behind the simulation.</p>
+</section>
+<section id="evapotranspiration-crop-coefficient">
+<h3>Evapotranspiration &amp; Crop Coefficient<a class="headerlink" href="#evapotranspiration-crop-coefficient" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What does reference evapotranspiration (ET₀) represent in landscape water modeling?</p></li>
+<li><p>How does the crop coefficient (Kc) modify ET₀ for different vegetation types?</p></li>
+<li><p>Why is irrigation need calculated as ( \text{ET₀} \times \text{Kc} - \text{Rainfall} )?</p></li>
+</ul>
+</section>
+<section id="water-budget-units">
+<h3>Water Budget &amp; Units<a class="headerlink" href="#water-budget-units" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Why is water depth (mm) converted to volume (m³) using landscape area?</p></li>
+<li><p>What assumptions are made about uniform rainfall and evapotranspiration across the area?</p></li>
+<li><p>How does rainfall offset irrigation demand in the model?</p></li>
+</ul>
+</section>
+<section id="sustainability-comparison">
+<h3>Sustainability Comparison<a class="headerlink" href="#sustainability-comparison" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Why is cool-season grass used as the baseline for water savings?</p></li>
+<li><p>How do native or drought-tolerant plants reduce irrigation needs?</p></li>
+<li><p>What are the trade-offs between aesthetic preferences and water efficiency?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>🔍 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<p>These questions encourage critical thinking and application to real-world landscape design and water conservation.</p>
+<ul class="simple">
+<li><p>Which landscape type would be most suitable for your region’s climate and water availability?</p></li>
+<li><p>How would the irrigation need change during a drought or unusually wet month?</p></li>
+<li><p>What are the long-term benefits of switching to drought-tolerant groundcover?</p></li>
+<li><p>How could this model be extended to include soil type, slope, or irrigation system efficiency?</p></li>
+<li><p>What policy incentives could encourage homeowners to adopt low-water landscapes?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>❓ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="multiple-choice">
+<h3>Multiple Choice<a class="headerlink" href="#multiple-choice" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which landscape type has the lowest crop coefficient (Kc)?</strong><br />
+A. Cool-season grass<br />
+B. Warm-season grass<br />
+C. Native plants<br />
+D. Drought-tolerant groundcover<br />
+<strong>Answer:</strong> D</p></li>
+<li><p><strong>If ET₀ is 150 mm and Kc is 0.6, what is the water need before rainfall?</strong><br />
+A. 60 mm<br />
+B. 90 mm<br />
+C. 120 mm<br />
+D. 150 mm<br />
+<strong>Answer:</strong> B</p></li>
+<li><p><strong>What does the irrigation volume depend on?</strong><br />
+A. Rainfall and landscape type only<br />
+B. ET₀, Kc, rainfall, and area<br />
+C. Soil moisture and slope<br />
+D. Irrigation system type<br />
+<strong>Answer:</strong> B</p></li>
+</ol>
+</section>
+<section id="true-false">
+<h3>True/False<a class="headerlink" href="#true-false" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>Rainfall reduces the irrigation requirement in the model.</strong><br />
+<strong>Answer:</strong> True</p></li>
+<li><p><strong>Native plants require more water than cool-season grass.</strong><br />
+<strong>Answer:</strong> False</p></li>
+<li><p><strong>The model assumes irrigation is needed even if rainfall exceeds water need.</strong><br />
+<strong>Answer:</strong> False</p></li>
+</ol>
+</section>
+<section id="short-answer">
+<h3>Short Answer<a class="headerlink" href="#short-answer" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="7">
+<li><p><strong>Explain how the model calculates irrigation volume in cubic meters.</strong><br />
+<em>Answer:</em> It multiplies the irrigation depth (mm) by the landscape area (m²) and divides by 1000 to convert to m³.</p></li>
+<li><p><strong>Why might actual irrigation needs differ from the model’s estimate?</strong><br />
+<em>Answer:</em> Factors like microclimate, soil type, plant maturity, and irrigation system efficiency can affect real-world water demand.</p></li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="SustainableWaterSoln.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Sustainabilty and Engineering: Sustainable Water</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GreenInfrastructureSimulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Sustainabilty and Engineering: Green Infrastructure</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-water-conservation-for-water-sustainability">💧 Landscape Water Conservation for Water Sustainability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-purpose">🌱 Definition and Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">🧠 Why It Matters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epa-watersense-water-budget-tool">🧰 EPA WaterSense Water Budget Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">🔎 Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-equation">🧮 Core Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-water-conservation-simulation">🌿 Landscape Water Conservation Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">📘 Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-assumptions">🧮 Model Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-evapotranspiration-et0">🔹 Reference Evapotranspiration (ET₀)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-coefficients-kc">🔹 Landscape Coefficients (Kc)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#irrigation-requirement">💧 Irrigation Requirement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-output">📊 Simulation Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛️ Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">📚 Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">🔗 Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evapotranspiration-crop-coefficient">Evapotranspiration &amp; Crop Coefficient</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water-budget-units">Water Budget &amp; Units</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-comparison">Sustainability Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

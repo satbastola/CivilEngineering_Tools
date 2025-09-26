@@ -1,0 +1,1557 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 1 Environmental Engineering: Chemical Reactors &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap1/Reactor';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 1 Environmental Engineering: Lake water quality model" href="LakeModel.html" />
+    <link rel="prev" title="Chapter 1 Environmental Engineering: Water Quality Modelling" href="StreeterPhelpsModel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap1/Reactor.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap1/Reactor.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap1/Reactor.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap1/Reactor.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap1/Reactor.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 1 Environmental Engineering: Chemical Reactors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-reactors-in-environmental-systems-concepts-applications">⚗️ Chemical Reactors in Environmental Systems – Concepts &amp; Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-reactors-are-idealized-systems-used-to-model-the-transformation-of-chemical-constituents-through-reaction-mixing-inflow-and-outflow-these-models-are-widely-applied-in-environmental-engineering-to-simulate-biogeochemical-processes-such-as-pollutant-decay-nutrient-cycling-and-oxygen-dynamics">Chemical reactors are idealized systems used to model the transformation of chemical constituents through <strong>reaction</strong>, <strong>mixing</strong>, <strong>inflow</strong>, and <strong>outflow</strong>. These models are widely applied in environmental engineering to simulate <strong>biogeochemical processes</strong> such as <strong>pollutant decay</strong>, <strong>nutrient cycling</strong>, and <strong>oxygen dynamics</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-chemical-reactors">🧪 Types of Chemical Reactors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-reactor">1. <strong>Batch Reactor</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#continuously-stirred-tank-reactor-cstr">2. <strong>Continuously Stirred Tank Reactor (CSTR)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plug-flow-reactor-pfr">3. <strong>Plug Flow Reactor (PFR)</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-types">🔬 Reaction Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-reaction-orders-equations-parameter-estimation">⚗️ Chemical Reaction Orders – Equations &amp; Parameter Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-order-reaction">📘 1. Zero-Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#description">✅ Description</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-equation">📐 Rate Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-form">📊 Integrated Form</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">📈 Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-reaction">📘 2. First-Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">✅ Description</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📐 Rate Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📊 Integrated Form</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">📈 Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-reaction">📘 3. Second-Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">✅ Description</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">📐 Rate Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">📊 Integrated Form</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">📈 Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-n-th-order-reaction">📘 General n-th Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">📐 Rate Equation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation-summary">🧪 Parameter Estimation Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-analogs">🌎 Environmental Analogs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-modeling">📐 Mathematical Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-first-order-decay-in-cstr">Example: First-Order Decay in CSTR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plug-flow-reactor-pfr-vs-continuous-stirred-tank-reactor-cstr">Plug Flow Reactor (PFR) vs Continuous Stirred Tank Reactor (CSTR)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-assumptions">Reaction Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cstr-continuous-stirred-tank-reactor">CSTR (Continuous Stirred Tank Reactor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-plug-flow-reactor">PFR (Plug Flow Reactor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Characteristics:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-comparison-1st-order-reaction">Performance Comparison (1st Order Reaction)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">🧪 Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reactor-design-quiz-cstr-vs-pfr">Reactor Design Quiz: CSTR vs PFR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-defines-the-flow-behavior-in-a-plug-flow-reactor-pfr">1. What defines the flow behavior in a Plug Flow Reactor (PFR)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-a-cstr-differ-from-a-pfr-in-terms-of-conversion-for-a-first-order-reaction">2. How does a CSTR differ from a PFR in terms of conversion for a first-order reaction?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-expression-for-conversion-in-a-cstr-first-order-reaction">3. What is the expression for conversion in a CSTR (first-order reaction)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-pfr-what-is-the-driving-mechanism-for-conversion-increase-along-the-reactor-length">4. In a PFR, what is the driving mechanism for conversion increase along the reactor length?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-operational-advantage-does-a-cstr-have-over-a-pfr">5. What operational advantage does a CSTR have over a PFR?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-equations">Reference Equations</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-environmental-engineering-chemical-reactors">
+<h1>Chapter 1 Environmental Engineering: Chemical Reactors<a class="headerlink" href="#chapter-1-environmental-engineering-chemical-reactors" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Chemical Reactors</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Reactors</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="chemical-reactors-in-environmental-systems-concepts-applications">
+<h3>⚗️ Chemical Reactors in Environmental Systems – Concepts &amp; Applications<a class="headerlink" href="#chemical-reactors-in-environmental-systems-concepts-applications" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="chemical-reactors-are-idealized-systems-used-to-model-the-transformation-of-chemical-constituents-through-reaction-mixing-inflow-and-outflow-these-models-are-widely-applied-in-environmental-engineering-to-simulate-biogeochemical-processes-such-as-pollutant-decay-nutrient-cycling-and-oxygen-dynamics">
+<h2>Chemical reactors are idealized systems used to model the transformation of chemical constituents through <strong>reaction</strong>, <strong>mixing</strong>, <strong>inflow</strong>, and <strong>outflow</strong>. These models are widely applied in environmental engineering to simulate <strong>biogeochemical processes</strong> such as <strong>pollutant decay</strong>, <strong>nutrient cycling</strong>, and <strong>oxygen dynamics</strong><a class="headerlink" href="#chemical-reactors-are-idealized-systems-used-to-model-the-transformation-of-chemical-constituents-through-reaction-mixing-inflow-and-outflow-these-models-are-widely-applied-in-environmental-engineering-to-simulate-biogeochemical-processes-such-as-pollutant-decay-nutrient-cycling-and-oxygen-dynamics" title="Link to this heading">#</a></h2>
+<section id="types-of-chemical-reactors">
+<h3>🧪 Types of Chemical Reactors<a class="headerlink" href="#types-of-chemical-reactors" title="Link to this heading">#</a></h3>
+<section id="batch-reactor">
+<h4>1. <strong>Batch Reactor</strong><a class="headerlink" href="#batch-reactor" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>No inflow or outflow during the reaction period</p></li>
+<li><p>Well-mixed and closed system</p></li>
+<li><p>Reaction occurs over time with changing concentration</p></li>
+</ul>
+</section>
+<section id="continuously-stirred-tank-reactor-cstr">
+<h4>2. <strong>Continuously Stirred Tank Reactor (CSTR)</strong><a class="headerlink" href="#continuously-stirred-tank-reactor-cstr" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Continuous inflow and outflow</p></li>
+<li><p>Perfect mixing: output concentration equals reactor concentration</p></li>
+<li><p>Steady-state or dynamic behavior</p></li>
+</ul>
+</section>
+<section id="plug-flow-reactor-pfr">
+<h4>3. <strong>Plug Flow Reactor (PFR)</strong><a class="headerlink" href="#plug-flow-reactor-pfr" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Continuous flow with no mixing along the flow path</p></li>
+<li><p>Concentration changes along the reactor length</p></li>
+<li><p>Ideal for modeling transport-dominated systems</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id1">
+<h2><img alt="image.png" src="Chap1/attachment:70d6bff6-e2af-43a9-8c87-9abdfabd98df.png" /><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="reaction-types">
+<h3>🔬 Reaction Types<a class="headerlink" href="#reaction-types" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Decay reactions</strong>: pollutant breakdown (e.g., BOD, ammonia)</p></li>
+<li><p><strong>Production reactions</strong>: generation of compounds (e.g., nitrate from nitrification)</p></li>
+</ul>
+</section>
+<section id="chemical-reaction-orders-equations-parameter-estimation">
+<h3>⚗️ Chemical Reaction Orders – Equations &amp; Parameter Estimation<a class="headerlink" href="#chemical-reaction-orders-equations-parameter-estimation" title="Link to this heading">#</a></h3>
+<p>Chemical reactions are classified by their <strong>order</strong>, which reflects how the reaction rate depends on the concentration of reactants. Understanding reaction order is essential for modeling pollutant decay, nutrient cycling, and designing treatment systems.</p>
+</section>
+<hr class="docutils" />
+<section id="zero-order-reaction">
+<h3>📘 1. Zero-Order Reaction<a class="headerlink" href="#zero-order-reaction" title="Link to this heading">#</a></h3>
+<section id="description">
+<h4>✅ Description<a class="headerlink" href="#description" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Reaction rate is <strong>independent</strong> of reactant concentration.</p></li>
+<li><p>Common in systems with <strong>saturated enzymes</strong> or <strong>surface-limited reactions</strong>.</p></li>
+</ul>
+</section>
+<section id="rate-equation">
+<h4>📐 Rate Equation<a class="headerlink" href="#rate-equation" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\frac{dC}{dt} = -k
+\]</div>
+</section>
+<section id="integrated-form">
+<h4>📊 Integrated Form<a class="headerlink" href="#integrated-form" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+C(t) = C_0 - kt
+\]</div>
+</section>
+<section id="estimation">
+<h4>📈 Estimation<a class="headerlink" href="#estimation" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Plot <span class="math notranslate nohighlight">\(( C \)</span>) vs. <span class="math notranslate nohighlight">\(( t \)</span>)</p></li>
+<li><p>Slope = <span class="math notranslate nohighlight">\(( -k \)</span>)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="first-order-reaction">
+<h3>📘 2. First-Order Reaction<a class="headerlink" href="#first-order-reaction" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h4>✅ Description<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Reaction rate is <strong>proportional</strong> to the concentration.</p></li>
+<li><p>Common in <strong>biodegradation</strong>, <strong>radioactive decay</strong>, and <strong>BOD modeling</strong>.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>📐 Rate Equation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\frac{dC}{dt} = -kC
+\]</div>
+</section>
+<section id="id4">
+<h4>📊 Integrated Form<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+C(t) = C_0 e^{-kt}
+\]</div>
+</section>
+<section id="id5">
+<h4>📈 Estimation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Plot <span class="math notranslate nohighlight">\(( \ln(C) \)</span>) vs. <span class="math notranslate nohighlight">\(( t \)</span>)</p></li>
+<li><p>Slope = <span class="math notranslate nohighlight">\(( -k \)</span>)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="second-order-reaction">
+<h3>📘 3. Second-Order Reaction<a class="headerlink" href="#second-order-reaction" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h4>✅ Description<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Reaction rate is <strong>proportional to the square</strong> of concentration or to the product of two reactants.</p></li>
+<li><p>Occurs in <strong>chemical oxidation</strong>, <strong>precipitation</strong>, and <strong>complex formation</strong>.</p></li>
+</ul>
+</section>
+<section id="id7">
+<h4>📐 Rate Equation<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\frac{dC}{dt} = -kC^2
+\]</div>
+</section>
+<section id="id8">
+<h4>📊 Integrated Form<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{C(t)} = \frac{1}{C_0} + kt
+\]</div>
+</section>
+<section id="id9">
+<h4>📈 Estimation<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Plot <span class="math notranslate nohighlight">\(( 1/C \)</span>) vs. <span class="math notranslate nohighlight">\(( t \)</span>)</p></li>
+<li><p>Slope = <span class="math notranslate nohighlight">\(( k \)</span>)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="general-n-th-order-reaction">
+<h3>📘 General n-th Order Reaction<a class="headerlink" href="#general-n-th-order-reaction" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h4>📐 Rate Equation<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\frac{dC}{dt} = -kC^n
+\]</div>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(( n \neq 1 \)</span>), integration yields:
+$<span class="math notranslate nohighlight">\(
+C(t) = \left[ C_0^{1-n} - (1-n)kt \right]^{\frac{1}{1-n}}
+\)</span>$</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="parameter-estimation-summary">
+<h3>🧪 Parameter Estimation Summary<a class="headerlink" href="#parameter-estimation-summary" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reaction Order</p></th>
+<th class="head"><p>Plot Type</p></th>
+<th class="head"><p>Slope or Intercept</p></th>
+<th class="head"><p>Estimated Parameter</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Zero-order</p></td>
+<td><p><span class="math notranslate nohighlight">\(( C \)</span>) vs. <span class="math notranslate nohighlight">\(( t \)</span>)</p></td>
+<td><p>Slope = <span class="math notranslate nohighlight">\(( -k \)</span>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(( k \)</span>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>First-order</p></td>
+<td><p><span class="math notranslate nohighlight">\(( \ln(C) \)</span>) vs. <span class="math notranslate nohighlight">\(( t \)</span>)</p></td>
+<td><p>Slope = <span class="math notranslate nohighlight">\(( -k \)</span>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(( k \)</span>)</p></td>
+</tr>
+<tr class="row-even"><td><p>Second-order</p></td>
+<td><p><span class="math notranslate nohighlight">\(( 1/C \)</span>) vs. <span class="math notranslate nohighlight">\(( t \)</span>)</p></td>
+<td><p>Slope = <span class="math notranslate nohighlight">\(( k \)</span>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(( k \)</span>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="conceptual-insight">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#conceptual-insight" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Reaction order reflects <strong>sensitivity to concentration</strong>.</p></li>
+<li><p>Higher-order reactions are <strong>nonlinear</strong> and more sensitive to changes in ( C ).</p></li>
+<li><p>Accurate estimation of <span class="math notranslate nohighlight">\(( k \)</span>) is essential for <strong>predictive modeling</strong>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>❓ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What does a zero-order reaction imply about concentration dependence?</p></li>
+<li><p>How do you estimate the rate constant for a first-order reaction?</p></li>
+<li><p>Why are second-order reactions more sensitive to concentration?</p></li>
+<li><p>What plot would you use to identify a second-order reaction?</p></li>
+<li><p>How does reaction order affect pollutant removal in reactors?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="environmental-analogs">
+<h3>🌎 Environmental Analogs<a class="headerlink" href="#environmental-analogs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Natural System</p></th>
+<th class="head"><p>Reactor Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Lakes, reservoirs</p></td>
+<td><p>CSTR</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rivers, floodplains</p></td>
+<td><p>PFR</p></td>
+</tr>
+<tr class="row-even"><td><p>Wetlands, ponds</p></td>
+<td><p>Hybrid</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These systems mimic reactor behavior through <strong>flow</strong>, <strong>mixing</strong>, and <strong>reaction kinetics</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="mathematical-modeling">
+<h3>📐 Mathematical Modeling<a class="headerlink" href="#mathematical-modeling" title="Link to this heading">#</a></h3>
+<p>Understanding reaction kinetics allows us to construct models that simulate:</p>
+<ul class="simple">
+<li><p><strong>Pollutant removal efficiency</strong></p></li>
+<li><p><strong>Sensitivity to inflow concentration</strong></p></li>
+<li><p><strong>Residence time effects</strong></p></li>
+<li><p><strong>Design of treatment systems</strong></p></li>
+</ul>
+</section>
+<section id="example-first-order-decay-in-cstr">
+<h3>Example: First-Order Decay in CSTR<a class="headerlink" href="#example-first-order-decay-in-cstr" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+C_{\text{out}} = \frac{C_{\text{in}}}{1 + k \tau}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( C_{\text{in}} \)</span>): inflow concentration</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C_{\text{out}} \)</span>): outflow concentration</p></li>
+<li><p><span class="math notranslate nohighlight">\(( k \)</span>): reaction rate constant</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \tau \)</span>): hydraulic residence time</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>CSTRs</strong> are good for modeling systems with strong mixing (e.g., lakes)</p></li>
+<li><p><strong>PFRs</strong> are ideal for transport-dominated systems (e.g., rivers)</p></li>
+<li><p>Combining reactor models helps simulate <strong>complex natural systems</strong> like wetlands and floodplains</p></li>
+</ul>
+</section>
+<section id="foundational-literature">
+<h3>Foundational Literature<a class="headerlink" href="#foundational-literature" title="Link to this heading">#</a></h3>
+<p><span id="id12">[<a class="reference internal" href="../markdown.html#id23" title="Mackenzie L. Davis and David A. Cornwell. Principles of Environmental Engineering and Science. McGraw-Hill Education, 3rd edition, 2013. ISBN 9780073397900.">Davis and Cornwell, 2013</a>, <a class="reference internal" href="../markdown.html#id22" title="Gilbert M. Masters and Wendell P. Ela. Introduction to Environmental Engineering and Science. Prentice Hall, Upper Saddle River, NJ, 3rd edition, 2008. ISBN 9780131481930.">Masters and Ela, 2008</a>, <a class="reference internal" href="../markdown.html#id89" title="James R. Mihelcic. Fundamentals of Environmental Engineering. John Wiley &amp; Sons, New York, 1st edition, 1999. ISBN 9780471243137. Provides foundational concepts in environmental engineering, including chemical, physical, and biological processes relevant to air, water, and soil systems.">Mihelcic, 1999</a>]</span> collectively provide a robust foundation in environmental reaction kinetics and water quality modeling. Each text introduces core concepts, such as reaction rate laws, first-order decay, and reactor dynamics, and applies them to pollutant transformation, biodegradation, and contaminant fate in natural systems. These resources emphasize both theoretical derivation and practical application, making them essential for understanding the kinetics of environmental processes and for designing systems to manage water quality.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="plug-flow-reactor-pfr-vs-continuous-stirred-tank-reactor-cstr">
+<h3>Plug Flow Reactor (PFR) vs Continuous Stirred Tank Reactor (CSTR)<a class="headerlink" href="#plug-flow-reactor-pfr-vs-continuous-stirred-tank-reactor-cstr" title="Link to this heading">#</a></h3>
+<p>This guide outlines the key features, equations, and performance characteristics of two foundational reactor models in chemical engineering: <strong>Plug Flow Reactor (PFR)</strong> and <strong>Continuous Stirred Tank Reactor (CSTR)</strong>. Both are used to model conversion of reactants into products under different flow and mixing assumptions.</p>
+</section>
+<hr class="docutils" />
+<section id="reaction-assumptions">
+<h3>Reaction Assumptions<a class="headerlink" href="#reaction-assumptions" title="Link to this heading">#</a></h3>
+<p>We assume a <strong>single irreversible reaction</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+A \rightarrow B
+\]</div>
+<p>With rate law:</p>
+<div class="math notranslate nohighlight">
+\[
+r_A = k C_A^n
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( r_A \)</span>): reaction rate (mol/L·min)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( k \)</span>): rate constant (1/min or L/mol·min)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C_A \)</span>): concentration of A (mol/L)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( n \)</span>): reaction order</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="cstr-continuous-stirred-tank-reactor">
+<h3>CSTR (Continuous Stirred Tank Reactor)<a class="headerlink" href="#cstr-continuous-stirred-tank-reactor" title="Link to this heading">#</a></h3>
+<p>At steady-state, molar balance:</p>
+<p><span class="math notranslate nohighlight">\(
+F_{A0} - F_A = V \cdot r_A
+\)</span></p>
+<p>In terms of conversion <span class="math notranslate nohighlight">\(( X \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+X = \frac{k \tau}{1 + k \tau} \quad \text{(1st order)}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \tau = \frac{V}{Q} \)</span>): residence time (min)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( V \)</span>): reactor volume (L)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( Q \)</span>): volumetric flow rate (L/min)</p></li>
+</ul>
+</section>
+<section id="characteristics">
+<h3>Characteristics:<a class="headerlink" href="#characteristics" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Complete mixing → uniform concentration throughout</p></li>
+<li><p>Lowest conversion for given ( \tau ) among ideal reactors</p></li>
+<li><p>Easy to scale and operate continuously</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="pfr-plug-flow-reactor">
+<h3>PFR (Plug Flow Reactor)<a class="headerlink" href="#pfr-plug-flow-reactor" title="Link to this heading">#</a></h3>
+<p>Differential form of molar balance:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dF_A}{dV} = r_A
+\]</div>
+<p>In terms of conversion <span class="math notranslate nohighlight">\(( X \)</span>) for 1st order:</p>
+<div class="math notranslate nohighlight">
+\[
+X = 1 - e^{-k \tau}
+\]</div>
+</section>
+<section id="id13">
+<h3>Characteristics:<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>No axial mixing → concentration varies along length</p></li>
+<li><p>Higher conversion than CSTR for same residence time</p></li>
+<li><p>Mimics tubular reactor flow</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="performance-comparison-1st-order-reaction">
+<h3>Performance Comparison (1st Order Reaction)<a class="headerlink" href="#performance-comparison-1st-order-reaction" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Reactor Type</p></th>
+<th class="head"><p>Conversion Equation</p></th>
+<th class="head"><p>Conversion vs <span class="math notranslate nohighlight">\(( \tau \)</span>) Behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CSTR</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( X = \frac{k \tau}{1 + k \tau} \)</span>)</p></td>
+<td><p>Slower rise, saturates at 1</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PFR</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( X = 1 - e^{-k \tau} \)</span>)</p></td>
+<td><p>Faster rise, reaches 1 more quickly</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="design-insight">
+<h3>Design Insight<a class="headerlink" href="#design-insight" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>PFR is more volume-efficient</strong> for achieving high conversion.</p></li>
+<li><p><strong>CSTR is better for control</strong> and handling fluctuations.</p></li>
+<li><p>For <strong>n &gt; 1 reactions</strong>, difference in conversion widens even more.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h3>❓ Quiz Questions<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What distinguishes a CSTR from a PFR?</p></li>
+<li><p>Why are lakes often modeled as CSTRs?</p></li>
+<li><p>How does residence time affect pollutant removal?</p></li>
+<li><p>What type of reactor best represents a river reach?</p></li>
+<li><p>How can reactor models help design wastewater treatment systems?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="applications">
+<h3>🧪 Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Designing <strong>wastewater treatment reactors</strong></p></li>
+<li><p>Modeling <strong>nutrient removal</strong> in wetlands</p></li>
+<li><p>Simulating <strong>oxygen dynamics</strong> in lakes and rivers</p></li>
+<li><p>Assessing <strong>pollutant fate</strong> in floodplains</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">interact</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="k">def</span><span class="w"> </span><span class="nf">cstr_conversion</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">k</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;First&#39;</span> <span class="k">else</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">C0</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pfr_conversion</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="s1">&#39;First&#39;</span> <span class="k">else</span> <span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">C0</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">k</span> <span class="o">*</span> <span class="n">C0</span> <span class="o">*</span> <span class="n">tau</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_reactors</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">order</span><span class="p">):</span>
+    <span class="n">tau</span> <span class="o">=</span> <span class="n">V</span> <span class="o">/</span> <span class="n">Q</span>
+    <span class="n">tau_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">tau</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_vals</span><span class="p">,</span> <span class="n">cstr_conversion</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">tau_vals</span><span class="p">,</span> <span class="n">order</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;CSTR&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_vals</span><span class="p">,</span> <span class="n">pfr_conversion</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">tau_vals</span><span class="p">,</span> <span class="n">order</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;PFR&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Reactor τ = </span><span class="si">{</span><span class="n">tau</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Residence Time (min)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Conversion of A (X)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s2">-Order Reaction | V=</span><span class="si">{</span><span class="n">V</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> L, Q=</span><span class="si">{</span><span class="n">Q</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> L/min, k=</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, C₀=</span><span class="si">{</span><span class="n">C0</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Conversion at τ = </span><span class="si">{</span><span class="n">tau</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> min:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • CSTR = </span><span class="si">{</span><span class="n">cstr_conversion</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">C0</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • PFR  = </span><span class="si">{</span><span class="n">pfr_conversion</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">C0</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">order</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_reactors</span><span class="p">,</span>
+         <span class="n">k</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Rate k&#39;</span><span class="p">),</span>
+         <span class="n">C0</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;C₀&#39;</span><span class="p">),</span>
+         <span class="n">V</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Volume V&#39;</span><span class="p">),</span>
+         <span class="n">Q</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Flow Q&#39;</span><span class="p">),</span>
+         <span class="n">order</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;First&#39;</span><span class="p">,</span> <span class="s1">&#39;Second&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;First&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Order&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6bf96f9b6838419c9a909dd734a7612e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="reactor-design-quiz-cstr-vs-pfr">
+<h3>Reactor Design Quiz: CSTR vs PFR<a class="headerlink" href="#reactor-design-quiz-cstr-vs-pfr" title="Link to this heading">#</a></h3>
+<p>This markdown format includes multiple-choice quiz questions, answers, and explanations to reinforce core concepts and applications of plug flow and stirred tank reactors.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-defines-the-flow-behavior-in-a-plug-flow-reactor-pfr">
+<h3>1. What defines the flow behavior in a Plug Flow Reactor (PFR)?<a class="headerlink" href="#what-defines-the-flow-behavior-in-a-plug-flow-reactor-pfr" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Complete mixing throughout the reactor</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Unmixed flow with axial concentration gradient</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Recirculation zones for better heat transfer</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Turbulent flow that simulates stirring<br />
+<strong>Explanation</strong>: In a PFR, there is no axial mixing. Reactants flow in a plug-like fashion with changing concentration and reaction rate along the reactor length.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-does-a-cstr-differ-from-a-pfr-in-terms-of-conversion-for-a-first-order-reaction">
+<h3>2. How does a CSTR differ from a PFR in terms of conversion for a first-order reaction?<a class="headerlink" href="#how-does-a-cstr-differ-from-a-pfr-in-terms-of-conversion-for-a-first-order-reaction" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> CSTR achieves lower conversion than a PFR for the same residence time</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> CSTR achieves higher conversion due to continuous stirring</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> PFR and CSTR give identical conversion</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> PFR has more temperature control<br />
+<strong>Explanation</strong>: PFRs outperform CSTRs in conversion for first-order reactions due to the gradient in reactant concentration, which maintains higher reaction rates along the reactor.</p></li>
+</ul>
+</section>
+<section id="what-is-the-expression-for-conversion-in-a-cstr-first-order-reaction">
+<h3>3. What is the expression for conversion in a CSTR (first-order reaction)?<a class="headerlink" href="#what-is-the-expression-for-conversion-in-a-cstr-first-order-reaction" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( X = \frac{k \tau}{1 + k \tau} \)</span>)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( X = 1 - e^{-k \tau} \)</span>)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( X = \frac{C_A}{C_{A0}} \)</span>)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> <span class="math notranslate nohighlight">\(( X = 1 - \frac{C_{A0}}{C_A} \)</span>)<br />
+<strong>Explanation</strong>: The CSTR conversion expression for a first-order reaction is derived from the steady-state mass balance, assuming complete mixing.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="in-a-pfr-what-is-the-driving-mechanism-for-conversion-increase-along-the-reactor-length">
+<h3>4. In a PFR, what is the driving mechanism for conversion increase along the reactor length?<a class="headerlink" href="#in-a-pfr-what-is-the-driving-mechanism-for-conversion-increase-along-the-reactor-length" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Continuous decrease in reactant concentration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Uniform reactant concentration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Recirculation induced by paddle mixing</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Feed recycling<br />
+<strong>Explanation</strong>: In a PFR, reactant concentration decreases along the length, allowing the rate to remain relatively high, leading to improved conversion.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-operational-advantage-does-a-cstr-have-over-a-pfr">
+<h3>5. What operational advantage does a CSTR have over a PFR?<a class="headerlink" href="#what-operational-advantage-does-a-cstr-have-over-a-pfr" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Easier to control and maintain steady operation</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Higher conversion per volume</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Lower space requirement</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Temperature remains constant throughout PFR<br />
+<strong>Explanation</strong>: CSTRs are preferred for processes needing consistent conditions and easy control, especially when dealing with varying feed or reaction dynamics.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>💭 How does reactor geometry affect residence time and mixing behavior?</p></li>
+<li><p>💭 What challenges might arise when scaling up PFRs in industrial setups?</p></li>
+<li><p>💭 How would the performance shift if reaction kinetics were second-order or autocatalytic?</p></li>
+<li><p>💭 In what conditions would combining a PFR and CSTR in series be more effective than either alone?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reference-equations">
+<h3>Reference Equations<a class="headerlink" href="#reference-equations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>CSTR (1st-order):</strong> <span class="math notranslate nohighlight">\(( X = \frac{k \tau}{1 + k \tau} \)</span>)</p></li>
+<li><p><strong>PFR (1st-order):</strong> <span class="math notranslate nohighlight">\(( X = 1 - e^{-k \tau} \)</span>)</p></li>
+</ul>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( X \)</span>): conversion</p></li>
+<li><p><span class="math notranslate nohighlight">\(( k \)</span>): rate constant</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \tau = \frac{V}{Q} \)</span>): residence time</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="StreeterPhelpsModel.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 1 Environmental Engineering: Water Quality Modelling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="LakeModel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 1 Environmental Engineering: Lake water quality model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-reactors-in-environmental-systems-concepts-applications">⚗️ Chemical Reactors in Environmental Systems – Concepts &amp; Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-reactors-are-idealized-systems-used-to-model-the-transformation-of-chemical-constituents-through-reaction-mixing-inflow-and-outflow-these-models-are-widely-applied-in-environmental-engineering-to-simulate-biogeochemical-processes-such-as-pollutant-decay-nutrient-cycling-and-oxygen-dynamics">Chemical reactors are idealized systems used to model the transformation of chemical constituents through <strong>reaction</strong>, <strong>mixing</strong>, <strong>inflow</strong>, and <strong>outflow</strong>. These models are widely applied in environmental engineering to simulate <strong>biogeochemical processes</strong> such as <strong>pollutant decay</strong>, <strong>nutrient cycling</strong>, and <strong>oxygen dynamics</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-chemical-reactors">🧪 Types of Chemical Reactors</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-reactor">1. <strong>Batch Reactor</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#continuously-stirred-tank-reactor-cstr">2. <strong>Continuously Stirred Tank Reactor (CSTR)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plug-flow-reactor-pfr">3. <strong>Plug Flow Reactor (PFR)</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-types">🔬 Reaction Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemical-reaction-orders-equations-parameter-estimation">⚗️ Chemical Reaction Orders – Equations &amp; Parameter Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-order-reaction">📘 1. Zero-Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#description">✅ Description</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rate-equation">📐 Rate Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integrated-form">📊 Integrated Form</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation">📈 Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-reaction">📘 2. First-Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">✅ Description</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📐 Rate Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📊 Integrated Form</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">📈 Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-order-reaction">📘 3. Second-Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">✅ Description</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">📐 Rate Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">📊 Integrated Form</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">📈 Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-n-th-order-reaction">📘 General n-th Order Reaction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">📐 Rate Equation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-estimation-summary">🧪 Parameter Estimation Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-analogs">🌎 Environmental Analogs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-modeling">📐 Mathematical Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-first-order-decay-in-cstr">Example: First-Order Decay in CSTR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plug-flow-reactor-pfr-vs-continuous-stirred-tank-reactor-cstr">Plug Flow Reactor (PFR) vs Continuous Stirred Tank Reactor (CSTR)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reaction-assumptions">Reaction Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cstr-continuous-stirred-tank-reactor">CSTR (Continuous Stirred Tank Reactor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-plug-flow-reactor">PFR (Plug Flow Reactor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Characteristics:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-comparison-1st-order-reaction">Performance Comparison (1st Order Reaction)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">🧪 Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reactor-design-quiz-cstr-vs-pfr">Reactor Design Quiz: CSTR vs PFR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-defines-the-flow-behavior-in-a-plug-flow-reactor-pfr">1. What defines the flow behavior in a Plug Flow Reactor (PFR)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-a-cstr-differ-from-a-pfr-in-terms-of-conversion-for-a-first-order-reaction">2. How does a CSTR differ from a PFR in terms of conversion for a first-order reaction?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-expression-for-conversion-in-a-cstr-first-order-reaction">3. What is the expression for conversion in a CSTR (first-order reaction)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-pfr-what-is-the-driving-mechanism-for-conversion-increase-along-the-reactor-length">4. In a PFR, what is the driving mechanism for conversion increase along the reactor length?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-operational-advantage-does-a-cstr-have-over-a-pfr">5. What operational advantage does a CSTR have over a PFR?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-equations">Reference Equations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

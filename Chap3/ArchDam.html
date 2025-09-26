@@ -1,0 +1,1502 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 3 Hydraulics: Arch Dam Design &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap3/ArchDam';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 4 Geotechnical Engineering: USCS Soil Classification" href="../Chap4/USCS_Soil_Classification_Tool.html" />
+    <link rel="prev" title="Chapter 3 Hydraulics: Gravity Dam Design" href="GravityDamAnalysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap3/ArchDam.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap3/ArchDam.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap3/ArchDam.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap3/ArchDam.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap3/ArchDam.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 3 Hydraulics: Arch Dam Design</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-dam-design-theory-equations-types">Arch Dam Design: Theory, Equations &amp; Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-philosophy">Design Philosophy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-arch-dams">Types of Arch Dams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-curvature-arch-dam">1. <strong>Single Curvature Arch Dam</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#double-curvature-arch-dam">2. <strong>Double Curvature Arch Dam</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-equations">Key Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrostatic-pressure">1. <strong>Hydrostatic Pressure</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-action-horizontal-load-transfer">2. <strong>Arch Action (Horizontal Load Transfer)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hoop-stress-in-arch-ring">3. <strong>Hoop Stress in Arch Ring</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-checks">4. <strong>Stability Checks</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-parameters">Design Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#world-famous-arch-dams-geometry-location-structural-type">🌍 World-Famous Arch Dams: Geometry, Location &amp; Structural Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table-famous-arch-dams">Summary Table: Famous Arch Dams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-notes">Geometry Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-selection-criteria">Site Selection Criteria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">📚 Foundational Literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-code-does">✅ What the Code Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">▶️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-and-calculations">🔧 Geometry and Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-panels">📊 Visualization Panels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">📘 Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-dam-analysis-quiz-conceptual-reflective-questions">Arch Dam Analysis: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-hydraulics-arch-dam-design">
+<h1>Chapter 3 Hydraulics: Arch Dam Design<a class="headerlink" href="#chapter-3-hydraulics-arch-dam-design" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Arch Dam</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Arch Dam</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="types-of-arch-dam">
+<a class="reference internal image-reference" href="../_images/ArchDamTypes.png"><img alt="Descriptive alt text for accessibility" src="../_images/ArchDamTypes.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">**Figrue 3.13 **: Types of Arch Dam.</span><a class="headerlink" href="#types-of-arch-dam" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="arch-dam-design-theory-equations-types">
+<h3>Arch Dam Design: Theory, Equations &amp; Types<a class="headerlink" href="#arch-dam-design-theory-equations-types" title="Link to this heading">#</a></h3>
+<p>Arch dams are curved concrete structures that transfer water pressure laterally into the abutments. Their efficiency comes from their ability to use arch action rather than relying solely on gravity.</p>
+</section>
+<hr class="docutils" />
+<section id="design-philosophy">
+<h3>Design Philosophy<a class="headerlink" href="#design-philosophy" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Arch dams are best suited for <strong>narrow, steep-sided valleys</strong>.</p></li>
+<li><p>The dam’s curvature allows it to <strong>transfer hydrostatic pressure</strong> into the canyon walls.</p></li>
+<li><p>Structural behavior depends on <strong>arch geometry</strong>, <strong>thickness</strong>, and <strong>abutment strength</strong>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="types-of-arch-dams">
+<h3>Types of Arch Dams<a class="headerlink" href="#types-of-arch-dams" title="Link to this heading">#</a></h3>
+</section>
+<section id="single-curvature-arch-dam">
+<h3>1. <strong>Single Curvature Arch Dam</strong><a class="headerlink" href="#single-curvature-arch-dam" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Curved only in the <strong>horizontal plane</strong>.</p></li>
+<li><p>Vertical profile is straight or slightly tapered.</p></li>
+<li><p>Simpler to construct but less efficient in load distribution.</p></li>
+</ul>
+</section>
+<section id="double-curvature-arch-dam">
+<h3>2. <strong>Double Curvature Arch Dam</strong><a class="headerlink" href="#double-curvature-arch-dam" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Curved in both <strong>horizontal and vertical planes</strong>.</p></li>
+<li><p>Forms a shell-like structure (like a dome).</p></li>
+<li><p>More efficient in resisting loads and minimizing concrete volume.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Single Curvature</p></th>
+<th class="head"><p>Double Curvature</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Curvature</p></td>
+<td><p>Horizontal only</p></td>
+<td><p>Horizontal + Vertical</p></td>
+</tr>
+<tr class="row-odd"><td><p>Structural Efficiency</p></td>
+<td><p>Moderate</p></td>
+<td><p>High</p></td>
+</tr>
+<tr class="row-even"><td><p>Concrete Volume</p></td>
+<td><p>Higher</p></td>
+<td><p>Lower</p></td>
+</tr>
+<tr class="row-odd"><td><p>Construction</p></td>
+<td><p>Simpler</p></td>
+<td><p>Complex</p></td>
+</tr>
+<tr class="row-even"><td><p>Load Distribution</p></td>
+<td><p>Arch action only</p></td>
+<td><p>Arch + shell action</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="key-equations">
+<h3>Key Equations<a class="headerlink" href="#key-equations" title="Link to this heading">#</a></h3>
+</section>
+<section id="hydrostatic-pressure">
+<h3>1. <strong>Hydrostatic Pressure</strong><a class="headerlink" href="#hydrostatic-pressure" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+p = \gamma_w \cdot h
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( p \)</span>) = pressure at depth <span class="math notranslate nohighlight">\(( h \)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \gamma_w \)</span>) = unit weight of water (≈ 9.81 kN/m³)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="arch-action-horizontal-load-transfer">
+<h3>2. <strong>Arch Action (Horizontal Load Transfer)</strong><a class="headerlink" href="#arch-action-horizontal-load-transfer" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+F = \frac{p \cdot r \cdot t}{L}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( F \)</span>) = force transferred to abutments</p></li>
+<li><p><span class="math notranslate nohighlight">\(( p \)</span>) = water pressure</p></li>
+<li><p><span class="math notranslate nohighlight">\(( r \)</span>) = radius of curvature</p></li>
+<li><p><span class="math notranslate nohighlight">\(( t \)</span>) = thickness of arch</p></li>
+<li><p><span class="math notranslate nohighlight">\(( L \)</span>) = span of arch</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="hoop-stress-in-arch-ring">
+<h3>3. <strong>Hoop Stress in Arch Ring</strong><a class="headerlink" href="#hoop-stress-in-arch-ring" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\sigma = \frac{p \cdot r}{t}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \sigma \)</span>) = hoop stress</p></li>
+<li><p><span class="math notranslate nohighlight">\(( p \)</span>) = pressure</p></li>
+<li><p><span class="math notranslate nohighlight">\(( r \)</span>) = radius</p></li>
+<li><p><span class="math notranslate nohighlight">\(( t \)</span>) = thickness</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="stability-checks">
+<h3>4. <strong>Stability Checks</strong><a class="headerlink" href="#stability-checks" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Sliding</strong>: Check horizontal thrust vs. friction at base</p></li>
+<li><p><strong>Overturning</strong>: Evaluate moment equilibrium</p></li>
+<li><p><strong>Bearing Pressure</strong>: Ensure stress on foundation &lt; allowable</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="design-parameters">
+<h3>Design Parameters<a class="headerlink" href="#design-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typical Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Radius of Curvature</p></td>
+<td><p>2–5 × dam height</p></td>
+</tr>
+<tr class="row-odd"><td><p>Arch Thickness</p></td>
+<td><p>3–10 m (varies with height)</p></td>
+</tr>
+<tr class="row-even"><td><p>Height</p></td>
+<td><p>50–300 m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Abutment Angle</p></td>
+<td><p>&gt; 60°</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="world-famous-arch-dams-geometry-location-structural-type">
+<h3>🌍 World-Famous Arch Dams: Geometry, Location &amp; Structural Type<a class="headerlink" href="#world-famous-arch-dams-geometry-location-structural-type" title="Link to this heading">#</a></h3>
+<p>Arch dams are marvels of structural engineering, using curvature to transfer hydrostatic pressure into abutments. Below is a summary of some of the most iconic arch dams around the world.</p>
+</section>
+<hr class="docutils" />
+<section id="summary-table-famous-arch-dams">
+<h3>Summary Table: Famous Arch Dams<a class="headerlink" href="#summary-table-famous-arch-dams" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dam Name</p></th>
+<th class="head"><p>Country</p></th>
+<th class="head"><p>Height (m)</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Curvature</p></th>
+<th class="head"><p>Notable Features</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hoover Dam</strong></p></td>
+<td><p>USA</p></td>
+<td><p>221</p></td>
+<td><p>Arch-Gravity</p></td>
+<td><p>Single Curvature</p></td>
+<td><p>Iconic structure; spans Black Canyon</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Jingping-I Dam</strong></p></td>
+<td><p>China</p></td>
+<td><p>305</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Double Curvature</p></td>
+<td><p>Tallest arch dam in the world</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Enguri Dam</strong></p></td>
+<td><p>Georgia</p></td>
+<td><p>272</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Double Curvature</p></td>
+<td><p>One of the highest dams in Europe</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Katse Dam</strong></p></td>
+<td><p>Lesotho</p></td>
+<td><p>185</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Double Curvature</p></td>
+<td><p>Key part of Lesotho Highlands Project</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gordon Dam</strong></p></td>
+<td><p>Australia</p></td>
+<td><p>140</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Double Curvature</p></td>
+<td><p>Largest double-curved dam in Australia</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Monticello Dam</strong></p></td>
+<td><p>USA (California)</p></td>
+<td><p>93</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Single Curvature</p></td>
+<td><p>Famous for its morning glory spillway</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Contra Dam</strong></p></td>
+<td><p>Switzerland</p></td>
+<td><p>220</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Single Curvature</p></td>
+<td><p>Featured in James Bond’s <em>GoldenEye</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Morrow Point Dam</strong></p></td>
+<td><p>USA (Colorado)</p></td>
+<td><p>143</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Double Curvature</p></td>
+<td><p>USBR-designed; slender and efficient</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Idukki Dam</strong></p></td>
+<td><p>India (Kerala)</p></td>
+<td><p>168</p></td>
+<td><p>Concrete Arch</p></td>
+<td><p>Double Curvature</p></td>
+<td><p>One of Asia’s largest arch dams</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Daniel-Johnson Dam</strong></p></td>
+<td><p>Canada</p></td>
+<td><p>214</p></td>
+<td><p>Multiple Arch</p></td>
+<td><p>Multi-Plane</p></td>
+<td><p>Largest multiple-arch dam in the world</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="geometry-notes">
+<h3>Geometry Notes<a class="headerlink" href="#geometry-notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Single Curvature</strong>: Curved in horizontal plane only; simpler but less efficient.</p></li>
+<li><p><strong>Double Curvature</strong>: Curved in both horizontal and vertical planes; shell-like behavior.</p></li>
+<li><p><strong>Multiple Arch</strong>: Series of contiguous arches supported by buttresses; rare today due to complexity.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="site-selection-criteria">
+<h3>Site Selection Criteria<a class="headerlink" href="#site-selection-criteria" title="Link to this heading">#</a></h3>
+<p>Arch dams are typically built in:</p>
+<ul class="simple">
+<li><p>Narrow, V-shaped valleys</p></li>
+<li><p>Strong rock abutments</p></li>
+<li><p>Locations requiring minimal concrete volume</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="foundational-literature">
+<h3>📚 Foundational Literature<a class="headerlink" href="#foundational-literature" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id41" title="P. Novak, A.I.B. Moffat, C. Nalluri, and R. Narayanan. Hydraulic Structures. CRC Press, London, 4th edition, 2007. ISBN 9780415386265.">Novak <em>et al.</em>, 2007</a>]</span> emphasizes the structural efficiency of arch dams in narrow valleys with strong abutments (e.g., constant radius, constant angle, and double curvature), highlighting how arch action transfers loads to abutments. The book also discusses optimal geometry, load conditions, and material economy, making arch dams a technically elegant but site-specific solution.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="what-the-code-does">
+<h3>✅ What the Code Does<a class="headerlink" href="#what-the-code-does" title="Link to this heading">#</a></h3>
+<p>This tool:</p>
+<ul class="simple">
+<li><p>Calculates and visualizes the <strong>horizontal curvature</strong>, <strong>thickness profile</strong>, and <strong>stress distribution</strong> of an arch dam</p></li>
+<li><p>Uses geometric and hydrostatic principles to estimate:</p>
+<ul>
+<li><p>Radius of curvature</p></li>
+<li><p>Water pressure distribution</p></li>
+<li><p>Stress along the dam height</p></li>
+</ul>
+</li>
+<li><p>Provides <strong>interactive sliders</strong> to explore how design parameters affect dam performance</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>▶️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+</section>
+<section id="geometry-and-calculations">
+<h3>🔧 Geometry and Calculations<a class="headerlink" href="#geometry-and-calculations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Radius of Curvature</strong>:
+<span class="math notranslate nohighlight">\(
+R = \frac{L}{2 \cdot \sin(\theta / 2)}
+\)</span>
+where <span class="math notranslate nohighlight">\(( L \)</span>) is crest width and <span class="math notranslate nohighlight">\(( \theta \)</span>) is central angle in radians</p></li>
+<li><p><strong>Arch Profile</strong>: Calculated using circular geometry</p></li>
+<li><p><strong>Thickness Profile</strong>: Linearly interpolated from crest to base</p></li>
+<li><p><strong>Hydrostatic Pressure</strong>:
+<span class="math notranslate nohighlight">\(
+p = \rho g h
+\)</span>
+where <span class="math notranslate nohighlight">\(( h \)</span>) is depth from water surface</p></li>
+<li><p><strong>Stress Distribution</strong>:
+$<span class="math notranslate nohighlight">\(
+\sigma = \frac{p}{t}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>( t $) is local thickness</p></li>
+</ul>
+</section>
+<section id="visualization-panels">
+<h3>📊 Visualization Panels<a class="headerlink" href="#visualization-panels" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Arch Cross-Section</strong>: Shows dam curvature and thickness</p></li>
+<li><p><strong>Vertical Thickness Profile</strong>: Displays how thickness varies with height</p></li>
+<li><p><strong>Stress Distribution</strong>: Plots hydrostatic stress along dam height</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-inputs">
+<h3>📊 How to Interpret Inputs<a class="headerlink" href="#how-to-interpret-inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code> (Dam Height)</p></td>
+<td><p>Total vertical height of the dam</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">L</span></code> (Crest Width)</p></td>
+<td><p>Horizontal span of the dam at the crest</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">θ</span></code> (Central Angle)</p></td>
+<td><p>Horizontal curvature angle; affects radius and arch shape</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">t_base</span></code></p></td>
+<td><p>Thickness of the dam at the base</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">t_crest</span></code></p></td>
+<td><p>Thickness of the dam at the crest</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-outputs">
+<h3>📋 How to Interpret Outputs<a class="headerlink" href="#how-to-interpret-outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Panel</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Arch Cross-Section</strong></p></td>
+<td><p>Visualizes dam curvature and thickness envelope</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Vertical Thickness Profile</strong></p></td>
+<td><p>Shows how dam thickness increases from crest to base</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stress Distribution</strong></p></td>
+<td><p>Indicates hydrostatic stress variation; higher near base due to water depth</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="design-insight">
+<h3>📘 Design Insight<a class="headerlink" href="#design-insight" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Thicker base</strong> helps resist higher pressure and stress</p></li>
+<li><p><strong>Curvature</strong> improves structural efficiency by transferring loads to abutments</p></li>
+<li><p><strong>Stress plot</strong> helps assess potential overstress zones and guide reinforcement</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conceptual-insight">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#conceptual-insight" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>This tool supports <strong>preliminary arch dam design</strong> by linking geometry, hydrostatics, and stress analysis —<br />
+enabling designers to explore curvature, thickness, and pressure effects interactively.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+
+<span class="c1"># 📐 Arch dam geometry calculator (horizontal curvature only)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">arch_dam_geometry</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">theta_deg</span><span class="p">,</span> <span class="n">t_base</span><span class="p">,</span> <span class="n">t_crest</span><span class="p">):</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta_deg</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># radius of curvature</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">R</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># arch profile</span>
+
+    <span class="c1"># Dam thickness profile (linear from crest to base)</span>
+    <span class="n">thickness</span> <span class="o">=</span> <span class="n">t_crest</span> <span class="o">+</span> <span class="p">(</span><span class="n">t_base</span> <span class="o">-</span> <span class="n">t_crest</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+
+    <span class="c1"># Water pressure distribution (hydrostatic)</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">y</span>  <span class="c1"># Pa</span>
+
+    <span class="c1"># Stress distribution (simplified: pressure / thickness)</span>
+    <span class="n">stress</span> <span class="o">=</span> <span class="n">pressure</span> <span class="o">/</span> <span class="n">thickness</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># MPa</span>
+
+    <span class="c1"># Vertical profile (from base to crest)</span>
+    <span class="n">y_vert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">thickness_vert</span> <span class="o">=</span> <span class="n">t_crest</span> <span class="o">+</span> <span class="p">(</span><span class="n">t_base</span> <span class="o">-</span> <span class="n">t_crest</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_vert</span> <span class="o">/</span> <span class="n">H</span><span class="p">)</span>
+    <span class="n">pressure_vert</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">y_vert</span>
+    <span class="n">stress_vert</span> <span class="o">=</span> <span class="n">pressure_vert</span> <span class="o">/</span> <span class="n">thickness_vert</span> <span class="o">/</span> <span class="mf">1e6</span>  <span class="c1"># MPa</span>
+
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">pressure</span><span class="p">,</span> <span class="n">stress</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">y_vert</span><span class="p">,</span> <span class="n">thickness_vert</span><span class="p">,</span> <span class="n">stress_vert</span>
+
+<span class="c1"># 📊 Plot function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_arch_dam</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">theta_deg</span><span class="p">,</span> <span class="n">t_base</span><span class="p">,</span> <span class="n">t_crest</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">pressure</span><span class="p">,</span> <span class="n">stress</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">y_vert</span><span class="p">,</span> <span class="n">thickness_vert</span><span class="p">,</span> <span class="n">stress_vert</span> <span class="o">=</span> <span class="n">arch_dam_geometry</span><span class="p">(</span>
+        <span class="n">H</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">theta_deg</span><span class="p">,</span> <span class="n">t_base</span><span class="p">,</span> <span class="n">t_crest</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># ✂️ Cross-section (horizontal curvature)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dam Profile&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkblue&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">thickness</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Dam Thickness&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Horizontal Distance (m)&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Height from Base (m)&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arch Dam Cross-Section — Radius = </span><span class="si">{</span><span class="n">R</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+    <span class="c1"># 📐 Vertical profile (thickness vs height)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thickness_vert</span><span class="p">,</span> <span class="n">y_vert</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">y_vert</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">thickness_vert</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Thickness (m)&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Height from Base (m)&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Vertical Profile of Dam Thickness&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+    <span class="c1"># 💥 Stress distribution</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">stress_vert</span><span class="p">,</span> <span class="n">y_vert</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;crimson&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">y_vert</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">stress_vert</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;mistyrose&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Stress (MPa)&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Height from Base (m)&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Stress Distribution Along Height&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎛️ Interactive controls</span>
+<span class="n">H_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Dam Height H (m)&#39;</span><span class="p">)</span>
+<span class="n">L_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Crest Width L (m)&#39;</span><span class="p">)</span>
+<span class="n">theta_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Central Angle θ (°)&#39;</span><span class="p">)</span>
+<span class="n">t_base_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Base Thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">t_crest_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Crest Thickness (m)&#39;</span><span class="p">)</span>
+
+<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">H_slider</span><span class="p">,</span> <span class="n">L_slider</span><span class="p">,</span> <span class="n">theta_slider</span><span class="p">,</span> <span class="n">t_base_slider</span><span class="p">,</span> <span class="n">t_crest_slider</span>
+<span class="p">])</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">plot_arch_dam</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="n">H_slider</span><span class="p">,</span>
+    <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="n">L_slider</span><span class="p">,</span>
+    <span class="s1">&#39;theta_deg&#39;</span><span class="p">:</span> <span class="n">theta_slider</span><span class="p">,</span>
+    <span class="s1">&#39;t_base&#39;</span><span class="p">:</span> <span class="n">t_base_slider</span><span class="p">,</span>
+    <span class="s1">&#39;t_crest&#39;</span><span class="p">:</span> <span class="n">t_crest_slider</span>
+<span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "44aa51d4edb744dd80e9956c271499ad", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8c878ec18d4c443ca1c3a239e14d4561", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="arch-dam-analysis-quiz-conceptual-reflective-questions">
+<h3>Arch Dam Analysis: Quiz, Conceptual &amp; Reflective Questions<a class="headerlink" href="#arch-dam-analysis-quiz-conceptual-reflective-questions" title="Link to this heading">#</a></h3>
+<p>This module reinforces understanding of arch dam geometry, hydrostatic pressure, and stress distribution using interactive simulation. It supports learning through multiple-choice questions, conceptual prompts, and reflective challenges.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What does the central angle ( \theta ) control in an arch dam?</strong></p>
+<ul class="simple">
+<li><p>A. The height of the dam</p></li>
+<li><p>B. The radius of curvature</p></li>
+<li><p>C. The base thickness</p></li>
+<li><p>D. The water pressure</p></li>
+</ul>
+</li>
+<li><p><strong>Why is the radius of curvature ( R ) calculated using the crest width and central angle?</strong></p>
+<ul class="simple">
+<li><p>A. To determine the dam’s vertical profile</p></li>
+<li><p>B. To estimate hydrostatic pressure</p></li>
+<li><p>C. To define the horizontal arch geometry</p></li>
+<li><p>D. To calculate stress at the base</p></li>
+</ul>
+</li>
+<li><p><strong>Which parameter most directly affects hydrostatic pressure at a given point?</strong></p>
+<ul class="simple">
+<li><p>A. Crest width</p></li>
+<li><p>B. Dam thickness</p></li>
+<li><p>C. Water depth</p></li>
+<li><p>D. Central angle</p></li>
+</ul>
+</li>
+<li><p><strong>Why does stress increase toward the base of the dam?</strong></p>
+<ul class="simple">
+<li><p>A. Because pressure increases with depth</p></li>
+<li><p>B. Because thickness decreases</p></li>
+<li><p>C. Because curvature is tighter</p></li>
+<li><p>D. Because the radius increases</p></li>
+</ul>
+</li>
+<li><p><strong>What is the primary structural advantage of an arch dam?</strong></p>
+<ul class="simple">
+<li><p>A. It resists uplift pressure</p></li>
+<li><p>B. It transfers load to abutments</p></li>
+<li><p>C. It stores more water than gravity dams</p></li>
+<li><p>D. It requires no foundation</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="interpretation">
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Why is the arch profile computed using a circular segment formula?</p></li>
+<li><p>How does the linear thickness gradient from crest to base influence stress distribution?</p></li>
+<li><p>Why is stress calculated as pressure divided by thickness? What assumptions are implicit?</p></li>
+<li><p>How would increasing the central angle affect the radius and structural behavior?</p></li>
+<li><p>What simplifications are made in this model compared to full 3D finite element analysis?</p></li>
+</ol>
+<hr class="docutils" />
+<p>###Reflective Questions</p>
+<ol class="arabic simple">
+<li><p><strong>How does curvature help an arch dam resist hydrostatic pressure more efficiently than a gravity dam?</strong></p></li>
+<li><p><strong>Why is it important to visualize stress distribution along the dam height?</strong></p></li>
+<li><p><strong>What are the trade-offs between increasing base thickness and increasing curvature?</strong></p></li>
+<li><p><strong>How could this model be extended to include uplift pressure, temperature effects, or seismic loads?</strong></p></li>
+<li><p><strong>In what scenarios would an arch dam be preferred over other dam types (e.g., buttress, gravity, embankment)?</strong></p></li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GravityDamAnalysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 3 Hydraulics: Gravity Dam Design</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Chap4/USCS_Soil_Classification_Tool.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: USCS Soil Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-dam-design-theory-equations-types">Arch Dam Design: Theory, Equations &amp; Types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-philosophy">Design Philosophy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-arch-dams">Types of Arch Dams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-curvature-arch-dam">1. <strong>Single Curvature Arch Dam</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#double-curvature-arch-dam">2. <strong>Double Curvature Arch Dam</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-equations">Key Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrostatic-pressure">1. <strong>Hydrostatic Pressure</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-action-horizontal-load-transfer">2. <strong>Arch Action (Horizontal Load Transfer)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hoop-stress-in-arch-ring">3. <strong>Hoop Stress in Arch Ring</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-checks">4. <strong>Stability Checks</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-parameters">Design Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#world-famous-arch-dams-geometry-location-structural-type">🌍 World-Famous Arch Dams: Geometry, Location &amp; Structural Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table-famous-arch-dams">Summary Table: Famous Arch Dams</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-notes">Geometry Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#site-selection-criteria">Site Selection Criteria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">📚 Foundational Literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-code-does">✅ What the Code Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">▶️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-and-calculations">🔧 Geometry and Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-panels">📊 Visualization Panels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">📘 Design Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arch-dam-analysis-quiz-conceptual-reflective-questions">Arch Dam Analysis: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

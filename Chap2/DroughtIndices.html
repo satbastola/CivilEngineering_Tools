@@ -1,0 +1,1494 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 2 Hydrology: Drought Analysis &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap2/DroughtIndices';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 2 Hydrology: Infiltration Models" href="SoilInfiltration.html" />
+    <link rel="prev" title="Chapter 2 Hydrology: Rainfall frequency analysis" href="RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap2/DroughtIndices.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap2/DroughtIndices.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap2/DroughtIndices.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap2/DroughtIndices.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap2/DroughtIndices.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 2 Hydrology: Drought Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drought-indices">Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-drought-indices-and-equations">🌵 Common Drought Indices and Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🌵 Common Drought Indices and Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-drought-indices">Limitations of Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-uses-and-applications">Potential Uses and Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-future-climate-projections-on-drought-indices">Influence of Future Climate Projections on Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-influences-on-drought-indices">Key Influences on Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index-specific-impacts">Index-Specific Impacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-applications">Strategic Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-1">3.1 Self-Assessment_1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-drought-indices-using-python">Exploring Drought Indices Using Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions-pre-coding-discussion">Conceptual Questions (Pre-coding Discussion)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-coding-activity">In-Class Coding Activity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts-post-coding">Reflective Prompts (Post-coding)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-ideas">Extension Ideas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-2">3.2 Self-Assessment_2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-time-scale-drought-index-visualization-and-analysis">Multi-Time Scale Drought Index Visualization and Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-scales-analyzed">Time Scales Analyzed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drought-indicators">Drought Indicators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-metrics">Summary Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-output">Visualization Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">How to Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-3">3.3 Self-Assessment_3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-and-reflective-questions-on-multi-time-scale-drought-indices">Conceptual and Reflective Questions on Multi-Time Scale Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-hydrology-drought-analysis">
+<h1>Chapter 2 Hydrology: Drought Analysis<a class="headerlink" href="#chapter-2-hydrology-drought-analysis" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a>
+3.1 <a class="reference internal" href="#3.1-Self-Assessment_1"><span class="xref myst">Self-Assessment_1</span></a>
+3.2 <a class="reference internal" href="#3.2-Self-Assessment_2"><span class="xref myst">Self-Assessment_2</span></a>
+3.3 <a class="reference internal" href="#3.3-Self-Assessment_3"><span class="xref myst">Self-Assessment_3</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1.Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id14">
+<a class="reference internal image-reference" href="../_images/DroughtIndex.png"><img alt="Descriptive alt text for accessibility" src="../_images/DroughtIndex.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">**Figure 2.2 **: Drought Analysis.</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="drought-indices">
+<h3>Drought Indices<a class="headerlink" href="#drought-indices" title="Link to this heading">#</a></h3>
+<p>Drought indices are quantitative tools that synthesize complex hydrometeorological data into a single value to assess the severity, duration, and spatial extent of droughts. These indices are essential for monitoring drought conditions, informing water resource management, and guiding policy decisions.</p>
+</section>
+<section id="common-drought-indices-and-equations">
+<h3>🌵 Common Drought Indices and Equations<a class="headerlink" href="#common-drought-indices-and-equations" title="Link to this heading">#</a></h3>
+</section>
+<section id="id1">
+<h3>🌵 Common Drought Indices and Equations<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Index</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+<th class="head"><p><strong>Key Equation / Basis</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SPI (Standardized Precipitation Index)</strong></p></td>
+<td><p>Measures precipitation anomalies over multiple timescales.</p></td>
+<td><p><span class="math notranslate nohighlight">\(SPI = \frac{X - \mu}{\sigma}\)</span> where <span class="math notranslate nohighlight">\(X\)</span> is precipitation, <span class="math notranslate nohighlight">\(\mu\)</span> is mean, and <span class="math notranslate nohighlight">\(\sigma\)</span> is standard deviation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PDSI (Palmer Drought Severity Index)</strong></p></td>
+<td><p>Evaluates long-term drought using temperature and precipitation data.</p></td>
+<td><p>Based on a water balance model incorporating evapotranspiration, soil moisture, and runoff.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SPEI (Standardized Precipitation Evapotranspiration Index)</strong></p></td>
+<td><p>Extends SPI by including temperature-driven evapotranspiration.</p></td>
+<td><p>Climatic water balance: <span class="math notranslate nohighlight">\(Precipitation - PET\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CWSI (Crop Water Stress Index)</strong></p></td>
+<td><p>Assesses plant water stress using canopy temperature.</p></td>
+<td><p><span class="math notranslate nohighlight">\(CWSI = \frac{T_c - T_{wet}}{T_{dry} - T_{wet}}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SWSI (Surface Water Supply Index)</strong></p></td>
+<td><p>Integrates snowpack, streamflow, and reservoir storage.</p></td>
+<td><p>Weighted average of hydrologic components normalized to historical data.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The SPEI index was introduced by <span id="id2">[<a class="reference internal" href="../markdown.html#id25" title="Sergio M. Vicente-Serrano, Santiago Beguería, and Juan I. López-Moreno. A multiscalar drought index sensitive to global warming: the standardized precipitation evapotranspiration index. Journal of Climate, 23(7):1696–1718, 2010. doi:10.1175/2009JCLI2909.1.">Vicente-Serrano <em>et al.</em>, 2010</a>]</span>. The SPI index was introduced by <span id="id3">[<a class="reference internal" href="../markdown.html#id26" title="Thomas B. McKee, Nolan J. Doesken, and John Kleist. The relationship of drought frequency and duration to time scales. In Proceedings of the 8th Conference on Applied Climatology, 179–184. Anaheim, California, 1993. American Meteorological Society.">McKee <em>et al.</em>, 1993</a>]</span>; The Palmer index was introduced by <span id="id4">[<a class="reference internal" href="../markdown.html#id24">Palmer, 1965</a>]</span>; The CWSI method was proposed by <span id="id5">[<a class="reference internal" href="../markdown.html#id34" title="Sherwood B. Idso, Richard D. Jackson, Paul J. Pinter Jr., Robert J. Reginato, and John L. Hatfield. Normalizing the stress degree day parameter for environmental variability. Agricultural Meteorology, 24:45–55, 1981. doi:10.1016/0002-1571(81)90032-7.">Idso <em>et al.</em>, 1981</a>]</span>, while SWSI was introduced by <span id="id6">[<a class="reference internal" href="../markdown.html#id35" title="B.A. Shafer and L.E. Dezman. Development of a surface water supply index (swsi) to assess the severity of drought conditions in snowpack runoff areas. In Proceedings of the 50th Annual Western Snow Conference, 164–175. Fort Collins, Colorado, 1982.">Shafer and Dezman, 1982</a>]</span>.A comprehensive overview of drought indices — including SPI, PDSI, and SWSI — and the evolving challenges of drought assessment under climate change is provided by Han and Singh <span id="id7">Han and Singh [<a class="reference internal" href="../markdown.html#id36" title="Jiahuan Han and Vijay P. Singh. A review of widely used drought indices and the challenges of drought assessment under climate change. Environmental Monitoring and Assessment, 2023. doi:10.1007/s10661-023-12062-3.">2023</a>]</span>.</p>
+</section>
+<section id="limitations-of-drought-indices">
+<h3>Limitations of Drought Indices<a class="headerlink" href="#limitations-of-drought-indices" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Single-variable focus</strong>: Many indices, like SPI, only account for precipitation.</p></li>
+<li><p><strong>Regional calibration issues</strong>: Indices such as PDSI may underperform in areas with complex terrain or unusual soils.</p></li>
+<li><p><strong>Baseline dependency</strong>: Results can be sensitive to the reference period used for standardization.</p></li>
+<li><p><strong>Time lag</strong>: Some indices may not respond immediately to drought onset or cessation.</p></li>
+<li><p><strong>Data demands</strong>: Require high-quality, long-term climate data for accuracy.</p></li>
+</ul>
+</section>
+<section id="potential-uses-and-applications">
+<h3>Potential Uses and Applications<a class="headerlink" href="#potential-uses-and-applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Early warning systems</strong>: Trigger alerts for proactive drought management.</p></li>
+<li><p><strong>Agriculture</strong>: Support irrigation planning and crop decisions.</p></li>
+<li><p><strong>Water resource management</strong>: Guide reservoir operations and allocation.</p></li>
+<li><p><strong>Climate research</strong>: Evaluate long-term drought trends and projections.</p></li>
+<li><p><strong>Policy making and insurance</strong>: Define thresholds for drought declarations and impact-based payouts.</p></li>
+</ul>
+</section>
+<section id="influence-of-future-climate-projections-on-drought-indices">
+<h3>Influence of Future Climate Projections on Drought Indices<a class="headerlink" href="#influence-of-future-climate-projections-on-drought-indices" title="Link to this heading">#</a></h3>
+<p>As the climate continues to evolve, drought indices must adapt to changing temperature and precipitation patterns. Future projections alter how we interpret drought severity and frequency, highlighting the need for more responsive and climate-aware tools.</p>
+</section>
+<section id="key-influences-on-drought-indices">
+<h3>Key Influences on Drought Indices<a class="headerlink" href="#key-influences-on-drought-indices" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Changing Baselines</strong><br />
+Most indices use historical averages to define “normal” conditions. As precipitation and temperature patterns shift, these baselines become outdated, potentially masking the true severity of future droughts.</p></li>
+<li><p><strong>Rising Evapotranspiration</strong><br />
+Higher temperatures increase evapotranspiration, reducing soil moisture even without a decrease in precipitation. Indices that ignore temperature (e.g., SPI) may underestimate future drought risk.</p></li>
+<li><p><strong>Precipitation Variability</strong><br />
+Future climates are expected to experience more erratic rainfall, characterized by dry spells followed by intense storms. This variability challenges assumptions of consistency built into traditional drought models.</p></li>
+<li><p><strong>Regional Disparities</strong><br />
+Different regions will experience varying types of drought. For instance, chronic drought in the Southwest versus flash droughts in the Midwest. Indices need regional calibration to remain meaningful.</p></li>
+<li><p><strong>Scenario Sensitivity</strong><br />
+Drought forecasts vary under different greenhouse gas pathways (e.g., SSP1-2.6 vs. SSP5-8.5), introducing uncertainty into long-term planning.</p></li>
+</ol>
+</section>
+<section id="index-specific-impacts">
+<h3>Index-Specific Impacts<a class="headerlink" href="#index-specific-impacts" title="Link to this heading">#</a></h3>
+<p>| <strong>Drought Index</strong> | <strong>Projected Climate Impacts</strong> |</p>
+<p>| <strong>SPI</strong>           | May understate drought under warming due to lack of temperature sensitivity. |
+| <strong>SPEI</strong>          | Better captures future drought risk by incorporating PET; more climate-resilient. |
+| <strong>PDSI</strong>          | Can overestimate drought in arid areas; sensitive to model assumptions. |
+| <strong>CWSI</strong>          | Limited by the availability of high-resolution remote sensing for future projections. |
+| <strong>SWSI</strong>          | Highly variable due to uncertain snowpack and hydrologic inputs under climate change. |</p>
+</section>
+<section id="strategic-applications">
+<h3>Strategic Applications<a class="headerlink" href="#strategic-applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Adaptive Baselines</strong>: Use rolling averages or model-based baselines to reflect evolving climatic norms.</p></li>
+<li><p><strong>Forecast Integration</strong>: Combine drought indices with seasonal forecasts or climate model outputs.</p></li>
+<li><p><strong>Decision-Making Support</strong>: Inform water allocation, land-use policy, and emergency preparedness.</p></li>
+<li><p><strong>Enhanced Monitoring</strong>: Integrate with remote sensing and AI-based tools for more timely detection.</p></li>
+</ul>
+</section>
+<section id="foundational-literature">
+<h3>Foundational Literature<a class="headerlink" href="#foundational-literature" title="Link to this heading">#</a></h3>
+<p><span id="id8">[<a class="reference internal" href="../markdown.html#id25" title="Sergio M. Vicente-Serrano, Santiago Beguería, and Juan I. López-Moreno. A multiscalar drought index sensitive to global warming: the standardized precipitation evapotranspiration index. Journal of Climate, 23(7):1696–1718, 2010. doi:10.1175/2009JCLI2909.1.">Vicente-Serrano <em>et al.</em>, 2010</a>]</span>, <span id="id9">[<a class="reference internal" href="../markdown.html#id26" title="Thomas B. McKee, Nolan J. Doesken, and John Kleist. The relationship of drought frequency and duration to time scales. In Proceedings of the 8th Conference on Applied Climatology, 179–184. Anaheim, California, 1993. American Meteorological Society.">McKee <em>et al.</em>, 1993</a>]</span>,<span id="id10">[<a class="reference internal" href="../markdown.html#id24">Palmer, 1965</a>]</span>, <span id="id11">[<a class="reference internal" href="../markdown.html#id34" title="Sherwood B. Idso, Richard D. Jackson, Paul J. Pinter Jr., Robert J. Reginato, and John L. Hatfield. Normalizing the stress degree day parameter for environmental variability. Agricultural Meteorology, 24:45–55, 1981. doi:10.1016/0002-1571(81)90032-7.">Idso <em>et al.</em>, 1981</a>]</span>, <span id="id12">[<a class="reference internal" href="../markdown.html#id35" title="B.A. Shafer and L.E. Dezman. Development of a surface water supply index (swsi) to assess the severity of drought conditions in snowpack runoff areas. In Proceedings of the 50th Annual Western Snow Conference, 164–175. Fort Collins, Colorado, 1982.">Shafer and Dezman, 1982</a>]</span>, represent key literature on the development of drought indices. <span id="id13">Han and Singh [<a class="reference internal" href="../markdown.html#id36" title="Jiahuan Han and Vijay P. Singh. A review of widely used drought indices and the challenges of drought assessment under climate change. Environmental Monitoring and Assessment, 2023. doi:10.1007/s10661-023-12062-3.">2023</a>]</span> provides a comprehensive synthesis of these indices and their evolving relevance under climate change. These sources provide a fundamental understanding of drought assessment frameworks.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="c1">#from daymetpy import get_daymet_singlepixel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="c1">#pip install pandas matplotlib requests daymetpy</span>
+<span class="c1"># pip install pandas matplotlib requests daymetpy</span>
+<span class="c1"># Coordinates and year</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="mf">30.25</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">90.07</span>
+<span class="n">year</span> <span class="o">=</span> <span class="mi">2020</span>
+<span class="c1"># Request URL</span>
+<span class="c1">#url = f&quot;https://daymet.ornl.gov/single-pixel/api/data?lat={lat}&amp;lon={lon}&amp;year={year}&amp;format=csv&quot;</span>
+<span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;https://daymet.ornl.gov/single-pixel/api/data?lat=33.1&amp;lon=-88&amp;vars=CommaSeparatedVariables&amp;years=CommaSeparated2020&quot;</span>
+
+<span class="c1"># Make authenticated request</span>
+<span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+    <span class="c1">#s.auth = (USERNAME, PASSWORD)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Failed: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> – </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">),</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tmin (deg c)&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tmax (deg c)&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;yday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y%j&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;prcp (mm/day)&#39;</span><span class="p">,</span> <span class="s1">&#39;temperature&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;prcp (mm/day)&#39;</span><span class="p">:</span> <span class="s1">&#39;precipitation&#39;</span><span class="p">})</span>
+    
+<span class="c1"># Plot example</span>
+<span class="c1"># Create DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># Calculate Standardized Precipitation Index (SPI)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_spi</span><span class="p">(</span><span class="n">precipitation</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">rolling_precip</span> <span class="o">=</span> <span class="n">precipitation</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">spi</span> <span class="o">=</span> <span class="p">(</span><span class="n">rolling_precip</span> <span class="o">-</span> <span class="n">rolling_precip</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">rolling_precip</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">spi</span>
+
+<span class="c1"># Calculate Palmer Drought Severity Index (PDSI)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_pdsi</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">precipitation</span><span class="p">):</span>
+    <span class="c1"># Simplified PDSI calculation</span>
+    <span class="n">pdsi</span> <span class="o">=</span> <span class="p">(</span><span class="n">temperature</span> <span class="o">-</span> <span class="n">temperature</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">-</span> <span class="p">(</span><span class="n">precipitation</span> <span class="o">-</span> <span class="n">precipitation</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">pdsi</span>
+
+<span class="c1"># Calculate Reconnaissance Drought Index (RDI)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_rdi</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">precipitation</span><span class="p">):</span>
+    <span class="n">rdi</span> <span class="o">=</span> <span class="n">precipitation</span> <span class="o">/</span> <span class="p">(</span><span class="n">temperature</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">rdi</span>
+
+<span class="c1"># Calculate Standardized Precipitation Evapotranspiration Index (SPEI)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_spei</span><span class="p">(</span><span class="n">precipitation</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">evapotranspiration</span> <span class="o">=</span> <span class="mf">0.0023</span> <span class="o">*</span> <span class="p">(</span><span class="n">temperature</span> <span class="o">+</span> <span class="mf">17.8</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.02</span> <span class="o">*</span> <span class="n">precipitation</span><span class="p">))</span>
+    <span class="n">water_balance</span> <span class="o">=</span> <span class="n">precipitation</span> <span class="o">-</span> <span class="n">evapotranspiration</span>
+    <span class="n">rolling_balance</span> <span class="o">=</span> <span class="n">water_balance</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">spei</span> <span class="o">=</span> <span class="p">(</span><span class="n">rolling_balance</span> <span class="o">-</span> <span class="n">rolling_balance</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">rolling_balance</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">spei</span>
+
+<span class="c1"># Calculate Effective Drought Index (EDI)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_edi</span><span class="p">(</span><span class="n">precipitation</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">rolling_precip</span> <span class="o">=</span> <span class="n">precipitation</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">mean_precip</span> <span class="o">=</span> <span class="n">rolling_precip</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">std_precip</span> <span class="o">=</span> <span class="n">rolling_precip</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">edi</span> <span class="o">=</span> <span class="p">(</span><span class="n">rolling_precip</span> <span class="o">-</span> <span class="n">mean_precip</span><span class="p">)</span> <span class="o">/</span> <span class="n">std_precip</span>
+    <span class="k">return</span> <span class="n">edi</span>
+
+<span class="c1"># Add drought indices to DataFrame</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;spi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_spi</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;precipitation&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;pdsi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_pdsi</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;precipitation&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;rdi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_rdi</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;precipitation&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;spei&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_spei</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;precipitation&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;edi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_edi</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;precipitation&#39;</span><span class="p">])</span>
+
+<span class="c1"># Plot drought indices</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;spi&#39;</span><span class="p">,</span> <span class="s1">&#39;pdsi&#39;</span><span class="p">,</span> <span class="s1">&#39;rdi&#39;</span><span class="p">,</span> <span class="s1">&#39;spei&#39;</span><span class="p">,</span> <span class="s1">&#39;edi&#39;</span><span class="p">]</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SPI&#39;</span><span class="p">,</span> <span class="s1">&#39;PDSI&#39;</span><span class="p">,</span> <span class="s1">&#39;RDI&#39;</span><span class="p">,</span> <span class="s1">&#39;SPEI&#39;</span><span class="p">,</span> <span class="s1">&#39;EDI&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">titles</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># # Plot drought indices</span>
+<span class="c1"># plt.figure(figsize=(15, 15))</span>
+
+<span class="c1"># plt.subplot(5, 1, 1)</span>
+<span class="c1"># plt.plot(df[&#39;date&#39;], df[&#39;spi&#39;], label=&#39;SPI&#39;)</span>
+<span class="c1"># plt.axhline(0, color=&#39;red&#39;, linestyle=&#39;--&#39;)</span>
+<span class="c1"># plt.title(&#39;Standardized Precipitation Index (SPI)&#39;)</span>
+<span class="c1"># plt.legend()</span>
+
+<span class="c1"># plt.subplot(5, 1, 2)</span>
+<span class="c1"># plt.plot(df[&#39;date&#39;], df[&#39;pdsi&#39;], label=&#39;PDSI&#39;)</span>
+<span class="c1"># plt.axhline(0, color=&#39;red&#39;, linestyle=&#39;--&#39;)</span>
+<span class="c1"># plt.title(&#39;Palmer Drought Severity Index (PDSI)&#39;)</span>
+<span class="c1"># plt.legend()</span>
+
+<span class="c1"># plt.subplot(5, 1, 3)</span>
+<span class="c1"># plt.plot(df[&#39;date&#39;], df[&#39;rdi&#39;], label=&#39;RDI&#39;)</span>
+<span class="c1"># plt.axhline(0, color=&#39;red&#39;, linestyle=&#39;--&#39;)</span>
+<span class="c1"># plt.title(&#39;Reconnaissance Drought Index (RDI)&#39;)</span>
+<span class="c1"># plt.legend()</span>
+
+<span class="c1"># plt.subplot(5, 1, 4)</span>
+<span class="c1"># plt.plot(df[&#39;date&#39;], df[&#39;spei&#39;], label=&#39;SPEI&#39;)</span>
+<span class="c1"># plt.axhline(0, color=&#39;red&#39;, linestyle=&#39;--&#39;)</span>
+<span class="c1"># plt.title(&#39;Standardized Precipitation Evapotranspiration Index (SPEI)&#39;)</span>
+<span class="c1"># plt.legend()</span>
+
+<span class="c1"># plt.subplot(5, 1, 5)</span>
+<span class="c1"># plt.plot(df[&#39;date&#39;], df[&#39;edi&#39;], label=&#39;EDI&#39;)</span>
+<span class="c1"># plt.axhline(0, color=&#39;red&#39;, linestyle=&#39;--&#39;)</span>
+<span class="c1"># plt.title(&#39;Effective Drought Index (EDI)&#39;)</span>
+<span class="c1"># plt.legend()</span>
+
+<span class="c1"># plt.tight_layout()</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\satis\anaconda3\Lib\site-packages\pandas\core\arraylike.py:399: RuntimeWarning: invalid value encountered in sqrt
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+</pre></div>
+</div>
+<img alt="../_images/53219832452a186fef7a906e425f9ac2e469e90185ffd15036974821e693861c.png" src="../_images/53219832452a186fef7a906e425f9ac2e469e90185ffd15036974821e693861c.png" />
+</div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="self-assessment-1">
+<h3>3.1 Self-Assessment_1<a class="headerlink" href="#self-assessment-1" title="Link to this heading">#</a></h3>
+</section>
+<section id="exploring-drought-indices-using-python">
+<h3>Exploring Drought Indices Using Python<a class="headerlink" href="#exploring-drought-indices-using-python" title="Link to this heading">#</a></h3>
+<p>By the end of this module, students will be able to:</p>
+<ul class="simple">
+<li><p>Understand the purpose and mechanics of common drought indices.</p></li>
+<li><p>Analyze climate data using Python to calculate indices such as SPI, SPEI, PDSI, RDI, and EDI.</p></li>
+<li><p>Visualize and compare how different drought indices behave over time.</p></li>
+<li><p>Reflect on the limitations and appropriate applications of each index in real-world scenarios.</p></li>
+</ul>
+</section>
+<section id="conceptual-questions-pre-coding-discussion">
+<h3>Conceptual Questions (Pre-coding Discussion)<a class="headerlink" href="#conceptual-questions-pre-coding-discussion" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What is a drought index, and why might we need more than one to capture drought behavior?</p></li>
+<li><p>In what ways does temperature influence how we assess drought severity?</p></li>
+<li><p>What are the benefits and limitations of using randomized climate data versus observed records?</p></li>
+<li><p>How does using a rolling window (e.g., 30-day mean) influence the interpretation of drought onset and duration?</p></li>
+</ol>
+</section>
+<section id="in-class-coding-activity">
+<h3>In-Class Coding Activity<a class="headerlink" href="#in-class-coding-activity" title="Link to this heading">#</a></h3>
+<p>Students will:</p>
+<ul class="simple">
+<li><p>Implement code to compute five drought indices using synthetic precipitation and temperature data.</p></li>
+<li><p>Modify the rolling window scale (e.g., from 30 days to 90 days) and observe the differences.</p></li>
+<li><p>Simulate a synthetic drought period (e.g., reduce precipitation between June and August) and examine each index’s response.</p></li>
+<li><p>Visualize all indices and interpret which are more responsive or stable over time.</p></li>
+</ul>
+</section>
+<section id="reflective-prompts-post-coding">
+<h3>Reflective Prompts (Post-coding)<a class="headerlink" href="#reflective-prompts-post-coding" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Which index was most responsive to short-term changes in precipitation or temperature?</p></li>
+<li><p>Which index provided a more stable long-term view of drought progression?</p></li>
+<li><p>If you were tasked with designing a drought monitoring system for your region, which index would you prioritize, and why?</p></li>
+<li><p>What additional environmental variables (e.g., soil moisture, wind speed) would enhance your drought assessment?</p></li>
+</ul>
+</section>
+<section id="extension-ideas">
+<h3>Extension Ideas<a class="headerlink" href="#extension-ideas" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Load real-world climate data from GRIDMET or ERA5.</p></li>
+<li><p>Develop an interactive dashboard using <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> or <code class="docutils literal notranslate"><span class="pre">Plotly</span> <span class="pre">Dash</span></code>.</p></li>
+<li><p>Perform ensemble simulations using synthetic climate scenarios to evaluate index robustness.</p></li>
+<li><p>Compare observed droughts (e.g., 2011 Texas drought) to modeled indices.</p></li>
+</ul>
+</section>
+<section id="self-assessment-2">
+<h3>3.2 Self-Assessment_2<a class="headerlink" href="#self-assessment-2" title="Link to this heading">#</a></h3>
+<section id="multi-time-scale-drought-index-visualization-and-analysis">
+<h4>Multi-Time Scale Drought Index Visualization and Analysis<a class="headerlink" href="#multi-time-scale-drought-index-visualization-and-analysis" title="Link to this heading">#</a></h4>
+<p>This interactive tool provides a dynamic visualization and statistical summary of drought behavior across multiple time scales using widely recognized drought indices—<strong>SPI</strong>, <strong>SPEI</strong>, and <strong>EDI</strong>. The goal is to analyze the <strong>temporal dynamics</strong> of drought conditions at varying aggregation periods and quantify both the <strong>severity</strong> and <strong>duration</strong> of dry spells.</p>
+</section>
+<hr class="docutils" />
+<section id="features">
+<h4>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Interactive dropdown menu</strong> to select a drought index (<code class="docutils literal notranslate"><span class="pre">SPI</span></code>, <code class="docutils literal notranslate"><span class="pre">SPEI</span></code>, <code class="docutils literal notranslate"><span class="pre">EDI</span></code>)</p></li>
+<li><p><strong>Heatmap</strong> displaying index values across different time scales (30, 60, 90, 120 days)</p></li>
+<li><p><strong>Annual x-axis ticks</strong> for clean temporal interpretation</p></li>
+<li><p><strong>Summary table</strong> highlighting:</p>
+<ul>
+<li><p>Mean drought severity (average index value during drought periods)</p></li>
+<li><p>Mean drought duration (average length of consecutive drought days)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="methodology">
+<h3>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h3>
+</section>
+<section id="time-scales-analyzed">
+<h3>Time Scales Analyzed<a class="headerlink" href="#time-scales-analyzed" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>30 days</strong>: captures short-term droughts and rapid shifts in weather</p></li>
+<li><p><strong>60 days</strong>: balances short- and medium-term anomalies</p></li>
+<li><p><strong>90 days</strong>: reveals seasonal-scale dryness</p></li>
+<li><p><strong>120 days</strong>: identifies persistent or long-term droughts</p></li>
+</ul>
+</section>
+<section id="drought-indicators">
+<h3>Drought Indicators<a class="headerlink" href="#drought-indicators" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>SPI (Standardized Precipitation Index)</strong>: based on precipitation anomalies</p></li>
+<li><p><strong>SPEI (Standardized Precipitation Evapotranspiration Index)</strong>: considers both precipitation and temperature-induced evapotranspiration</p></li>
+<li><p><strong>EDI (Effective Drought Index)</strong>: captures effective rainfall anomalies over time</p></li>
+</ul>
+</section>
+<section id="summary-metrics">
+<h3>Summary Metrics<a class="headerlink" href="#summary-metrics" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Metric</p></th>
+<th class="head"><p>Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Mean Severity</strong></p></td>
+<td><p>Average index value <strong>below 0</strong>, indicating how intense typical drought periods are</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mean Duration</strong></p></td>
+<td><p>Average length (in days) of <strong>consecutive drought periods</strong> (i.e., runs of index &lt; 0)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The table updates automatically based on the selected drought index and time scale combination, providing insight into the temporal characteristics of drought persistence and depth.</p>
+</section>
+<hr class="docutils" />
+<section id="visualization-output">
+<h3>Visualization Output<a class="headerlink" href="#visualization-output" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Heatmap:</p>
+<ul>
+<li><p><strong>Rows</strong> = time scales (days)</p></li>
+<li><p><strong>Columns</strong> = dates</p></li>
+<li><p><strong>Colors</strong>:</p>
+<ul>
+<li><p>🔵 Blue = wet periods</p></li>
+<li><p>⚪ Neutral = normal conditions</p></li>
+<li><p>🔴 Red = drought periods</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Summary Table:</p>
+<ul>
+<li><p>Tabular report of <strong>mean drought severity and duration</strong> for each selected scale.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-use">
+<h3>How to Use<a class="headerlink" href="#how-to-use" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Run the code in a Jupyter Notebook with pandas, matplotlib, seaborn, ipywidgets.</p></li>
+<li><p>Ensure that the functions <code class="docutils literal notranslate"><span class="pre">calculate_spi</span></code>, <code class="docutils literal notranslate"><span class="pre">calculate_spei</span></code>, and <code class="docutils literal notranslate"><span class="pre">calculate_edi</span></code> are defined.</p></li>
+<li><p>Load a <code class="docutils literal notranslate"><span class="pre">df</span></code> DataFrame with columns:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code> (datetime)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">precipitation</span></code> (mm)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">temperature</span></code> (°C)</p></li>
+</ul>
+</li>
+<li><p>Choose a drought index from the dropdown to explore multi-scale behavior.</p></li>
+<li><p>Interpret both the <strong>visual trends</strong> and the <strong>quantitative summary</strong> for informed drought diagnostics.</p></li>
+</ol>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># Define time scales to evaluate</span>
+<span class="n">scales</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+
+<span class="c1"># Define drought index functions beforehand</span>
+<span class="n">index_functions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;SPI&#39;</span><span class="p">:</span> <span class="n">calculate_spi</span><span class="p">,</span>
+    <span class="s1">&#39;SPEI&#39;</span><span class="p">:</span> <span class="n">calculate_spei</span><span class="p">,</span>
+    <span class="s1">&#39;EDI&#39;</span><span class="p">:</span> <span class="n">calculate_edi</span>
+<span class="p">}</span>
+
+<span class="c1"># Create dropdown widget</span>
+<span class="n">index_selector</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">index_functions</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;SPI&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Drought Index:&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Output area</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_drought_duration</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns mean duration of droughts (runs of consecutive values &lt; 0)&quot;&quot;&quot;</span>
+    <span class="n">drought_lengths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">series</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">drought_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">drought_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">drought_lengths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">drought_lengths</span><span class="p">)</span> <span class="k">if</span> <span class="n">drought_lengths</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_index_heatmap</span><span class="p">(</span><span class="n">index_name</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">heat_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]})</span>
+        <span class="n">summaries</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">scales</span><span class="p">:</span>
+            <span class="c1"># Compute drought index</span>
+            <span class="k">if</span> <span class="n">index_name</span> <span class="o">==</span> <span class="s1">&#39;SPEI&#39;</span><span class="p">:</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">calculate_spei</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;precipitation&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">],</span> <span class="n">scale</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">values</span> <span class="o">=</span> <span class="n">index_functions</span><span class="p">[</span><span class="n">index_name</span><span class="p">](</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;precipitation&#39;</span><span class="p">],</span> <span class="n">scale</span><span class="p">)</span>
+
+            <span class="n">heat_df</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">index_name</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">scale</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+
+            <span class="c1"># Mean severity (only values &lt; 0) and mean duration</span>
+            <span class="n">mean_severity</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">values</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">mean_duration</span> <span class="o">=</span> <span class="n">compute_drought_duration</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="n">summaries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Time Scale (days)&#39;</span><span class="p">:</span> <span class="n">scale</span><span class="p">,</span>
+                              <span class="s1">&#39;Mean Severity&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_severity</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+                              <span class="s1">&#39;Mean Duration (days)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">mean_duration</span><span class="p">,</span> <span class="mi">1</span><span class="p">)})</span>
+
+        <span class="c1"># Reshape for heatmap</span>
+        <span class="n">melted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">heat_df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+        <span class="n">melted</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">melted</span><span class="p">[</span><span class="s1">&#39;scale&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">heatmap_df</span> <span class="o">=</span> <span class="n">melted</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+        <span class="n">heatmap_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">heatmap_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+        <span class="c1"># Set tick positions</span>
+        <span class="n">tick_spacing</span> <span class="o">=</span> <span class="mi">365</span>
+        <span class="n">tick_positions</span> <span class="o">=</span> <span class="n">heatmap_df</span><span class="o">.</span><span class="n">columns</span><span class="p">[::</span><span class="n">tick_spacing</span><span class="p">]</span>
+        <span class="n">tick_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tick_positions</span><span class="p">]</span>
+
+        <span class="c1"># Plot heatmap</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">heatmap_df</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="n">cbar_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">index_name</span><span class="si">}</span><span class="s1"> Value&#39;</span><span class="p">},</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">index_name</span><span class="si">}</span><span class="s1"> Heatmap Across Time Scales&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time Scale (Days)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">heatmap_df</span><span class="o">.</span><span class="n">columns</span><span class="p">),</span> <span class="n">tick_spacing</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">tick_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="c1"># Print summary table</span>
+        <span class="n">summary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summaries</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 </span><span class="si">{</span><span class="n">index_name</span><span class="si">}</span><span class="s2"> Summary by Time Scale:&quot;</span><span class="p">)</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">summary_df</span><span class="p">)</span>
+
+<span class="c1"># Display interactive widget</span>
+<span class="n">widgets</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">plot_index_heatmap</span><span class="p">,</span> <span class="n">index_name</span><span class="o">=</span><span class="n">index_selector</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "bd3e635a4689461cae206f66fd85ba9d", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9443027d8bee4b7b8c05768e8d3a8f67", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment-3">
+<h3>3.3 Self-Assessment_3<a class="headerlink" href="#self-assessment-3" title="Link to this heading">#</a></h3>
+</section>
+<section id="conceptual-and-reflective-questions-on-multi-time-scale-drought-indices">
+<h3>Conceptual and Reflective Questions on Multi-Time Scale Drought Indices<a class="headerlink" href="#conceptual-and-reflective-questions-on-multi-time-scale-drought-indices" title="Link to this heading">#</a></h3>
+<p>This section complements the interactive visualization and analysis of drought indices (SPI, SPEI, EDI) across multiple time scales. Use these questions to deepen understanding, guide discussion, or frame assessments in an educational or analytical setting.</p>
+</section>
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Why is it important to analyze drought indices across multiple time scales instead of using a fixed window?</strong></p></li>
+<li><p><strong>How does increasing the rolling window (e.g., from 30 to 120 days) affect the responsiveness of drought detection?</strong></p></li>
+<li><p><strong>In what scenarios might short-term drought indices (e.g., 30-day SPI) be misleading or insufficient?</strong></p></li>
+<li><p><strong>What are the key differences between SPI, SPEI, and EDI in how they represent drought processes?</strong></p></li>
+<li><p><strong>How might incorporating temperature (e.g., in SPEI) change the interpretation of drought under climate change?</strong></p></li>
+<li><p><strong>What assumptions underlie the use of rolling averages in drought computation, and how might these affect accuracy?</strong></p></li>
+<li><p><strong>Why is the value zero commonly used as the threshold between drought and non-drought conditions in indices?</strong></p></li>
+</ol>
+</section>
+<section id="reflective-questions">
+<h3>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which drought index (SPI, SPEI, or EDI) provided the most intuitive interpretation of drought in your region, and why?</strong></p></li>
+<li><p><strong>How did mean severity and mean duration shift as the time scale increased? Were the results consistent with expectations?</strong></p></li>
+<li><p><strong>Were there drought events detected at short time scales but not visible at longer ones? What does this suggest about index sensitivity?</strong></p></li>
+<li><p><strong>How might your drought response strategy differ if based on 30-day vs. 120-day index values?</strong></p></li>
+<li><p><strong>Which time scale seemed to best align with observed seasonal dry periods? Explain how this influenced your interpretation.</strong></p></li>
+<li><p><strong>If you were advising a policymaker, which index and scale would you recommend for early warning versus long-term planning?</strong></p></li>
+<li><p><strong>What might be the consequences of overestimating or underestimating drought intensity when using only a single time scale?</strong></p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 2 Hydrology: Rainfall frequency analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SoilInfiltration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2 Hydrology: Infiltration Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1.Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drought-indices">Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-drought-indices-and-equations">🌵 Common Drought Indices and Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">🌵 Common Drought Indices and Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-drought-indices">Limitations of Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-uses-and-applications">Potential Uses and Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-future-climate-projections-on-drought-indices">Influence of Future Climate Projections on Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-influences-on-drought-indices">Key Influences on Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#index-specific-impacts">Index-Specific Impacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strategic-applications">Strategic Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-1">3.1 Self-Assessment_1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-drought-indices-using-python">Exploring Drought Indices Using Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions-pre-coding-discussion">Conceptual Questions (Pre-coding Discussion)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-coding-activity">In-Class Coding Activity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts-post-coding">Reflective Prompts (Post-coding)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-ideas">Extension Ideas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-2">3.2 Self-Assessment_2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-time-scale-drought-index-visualization-and-analysis">Multi-Time Scale Drought Index Visualization and Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-scales-analyzed">Time Scales Analyzed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#drought-indicators">Drought Indicators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-metrics">Summary Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-output">Visualization Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">How to Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-3">3.3 Self-Assessment_3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-and-reflective-questions-on-multi-time-scale-drought-indices">Conceptual and Reflective Questions on Multi-Time Scale Drought Indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

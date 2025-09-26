@@ -1,0 +1,1385 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 1 Environmental Engineering: Sediment and Nutrient &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap1/RunoffSedimentNutrient';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 1 Environmental Engineering: Indoor Air quality modeling" href="IndoorAirQuality.html" />
+    <link rel="prev" title="Chapter 1 Environmental Engineering: Lake water quality model" href="LakeModel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap1/RunoffSedimentNutrient.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap1/RunoffSedimentNutrient.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap1/RunoffSedimentNutrient.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap1/RunoffSedimentNutrient.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap1/RunoffSedimentNutrient.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 1 Environmental Engineering: Sediment and Nutrient</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-and-nutrient-characterization-in-water-systems">💧 Sediment and Nutrient Characterization in Water Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-measure-or-model-sediment-and-nutrients">🧭 Why Measure or Model Sediment and Nutrients?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-they-measured">🧪 How Are They Measured?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-they-modeled">🧮 How Are They Modeled?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-and-nutrient-estimation-models-comparison-table">🧮 Sediment and Nutrient Estimation Models – Comparison Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-transport-models">🏞️ Sediment Transport Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nutrient-load-estimation-runoff-based-models">💧 Nutrient Load Estimation – Runoff-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insight">🧠 Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">🔗 Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-watershed-runoff-sediment-and-nutrient-simulation">Methodology: Watershed Runoff, Sediment, and Nutrient Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runoff-estimation-nrcs-curve-number-method">1. 🌧️ Runoff Estimation: NRCS Curve Number Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-yield-modified-universal-soil-loss-equation-musle">2. Sediment Yield: Modified Universal Soil Loss Equation (MUSLE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nutrient-load-estimation">🧪 Nutrient Load Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-simulation-quiz-conceptual-reflective-questions">Watershed Simulation: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-environmental-engineering-sediment-and-nutrient">
+<h1>Chapter 1 Environmental Engineering: Sediment and Nutrient<a class="headerlink" href="#chapter-1-environmental-engineering-sediment-and-nutrient" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Sediment and Nutrient</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: MUSLE</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="sediment-and-nutrient-characterization-in-water-systems">
+<h3>💧 Sediment and Nutrient Characterization in Water Systems<a class="headerlink" href="#sediment-and-nutrient-characterization-in-water-systems" title="Link to this heading">#</a></h3>
+<p>Understanding sediment and nutrient dynamics is essential for protecting water quality, managing ecosystems, and designing effective watershed interventions. Here’s a breakdown of <strong>why</strong>, <strong>how</strong>, and <strong>what</strong> we measure and model. -</p>
+<p><img alt="image.png" src="Chap1/attachment:a6230d2f-1139-4d87-8df0-37bb2e9bb996.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="why-measure-or-model-sediment-and-nutrients">
+<h3>🧭 Why Measure or Model Sediment and Nutrients?<a class="headerlink" href="#why-measure-or-model-sediment-and-nutrients" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Purpose</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>🌿 Ecosystem Health</p></td>
+<td><p>Excess nutrients (N, P) cause eutrophication, algal blooms, and oxygen loss</p></td>
+</tr>
+<tr class="row-odd"><td><p>🚰 Drinking Water Safety</p></td>
+<td><p>Sediment and nutrients affect filtration, taste, and treatment costs</p></td>
+</tr>
+<tr class="row-even"><td><p>🏞️ Watershed Management</p></td>
+<td><p>Helps target pollution sources and prioritize restoration efforts</p></td>
+</tr>
+<tr class="row-odd"><td><p>📈 Regulatory Compliance</p></td>
+<td><p>Supports TMDLs, nutrient criteria, and Clean Water Act goals</p></td>
+</tr>
+<tr class="row-even"><td><p>🔬 Scientific Understanding</p></td>
+<td><p>Reveals biogeochemical cycling and land–water interactions</p></td>
+</tr>
+<tr class="row-odd"><td><p>📉 Climate &amp; Land Use Impact</p></td>
+<td><p>Tracks changes due to urbanization, agriculture, and climate variability</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Modeling supports <strong>policy</strong>, <strong>restoration</strong>, and <strong>climate adaptation</strong></p></li>
+<li><p>Characterization enables <strong>targeted interventions</strong> like buffer strips, wetland restoration, and nutrient trading</p></li>
+<li></li>
+</ul>
+</section>
+<section id="how-are-they-measured">
+<h3>🧪 How Are They Measured?<a class="headerlink" href="#how-are-they-measured" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Measurement Method</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Total Phosphorus (TP)</strong></p></td>
+<td><p>Digestion + spectrophotometry</p></td>
+<td><p>Includes dissolved and particulate P</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total Nitrogen (TN)</strong></p></td>
+<td><p>Kjeldahl method or combustion analysis</p></td>
+<td><p>Includes organic and inorganic N</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Nitrate / Ammonium</strong></p></td>
+<td><p>Ion chromatography, colorimetry</p></td>
+<td><p>Key forms of bioavailable nitrogen</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Suspended Sediment (TSS)</strong></p></td>
+<td><p>Filtration + gravimetric analysis</p></td>
+<td><p>Measures solids in water column</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Sediment-bound Nutrients</strong></p></td>
+<td><p>Core sampling + extraction</p></td>
+<td><p>Assesses nutrient storage in sediments</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-are-they-modeled">
+<h3>🧮 How Are They Modeled?<a class="headerlink" href="#how-are-they-modeled" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model / Tool</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Application Scope</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SPARROW</strong></p></td>
+<td><p>Statistical regression</p></td>
+<td><p>Regional nutrient and sediment transport</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SWAT</strong></p></td>
+<td><p>Process-based</p></td>
+<td><p>Watershed-scale hydrology and nutrient cycling</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>InVEST SDR</strong></p></td>
+<td><p>Spatial retention</p></td>
+<td><p>Ecosystem service valuation and BMP targeting</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CAST / STEPL</strong></p></td>
+<td><p>Scenario tools</p></td>
+<td><p>Load reduction planning and cost estimation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CSTR Equation</strong></p></td>
+<td><p>Conceptual</p></td>
+<td><p>Lake nutrient retention and residence time</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Models help simulate <strong>sources</strong>, <strong>transport</strong>, and <strong>fate</strong> of nutrients and sediments — especially when direct measurement is limited or costly.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="sediment-and-nutrient-estimation-models-comparison-table">
+<h3>🧮 Sediment and Nutrient Estimation Models – Comparison Table<a class="headerlink" href="#sediment-and-nutrient-estimation-models-comparison-table" title="Link to this heading">#</a></h3>
+<p>Sediment transport and nutrient loading are often estimated using empirical models that relate landscape characteristics and hydrology to erosion and pollutant export. Here’s a comparative summary of key models:</p>
+</section>
+<hr class="docutils" />
+<section id="sediment-transport-models">
+<h3>🏞️ Sediment Transport Models<a class="headerlink" href="#sediment-transport-models" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Equation Formulation</p></th>
+<th class="head"><p>Key Inputs</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>RUSLE</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( A = R \cdot K \cdot L \cdot S \cdot C \cdot P \)</span>)</p></td>
+<td><p>Rainfall (R), soil (K), slope (LS), cover (C), practices (P)</p></td>
+<td><p>Estimates <strong>annual average soil loss</strong> (tons/acre/year)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MUSLE</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( S = 11.8 \cdot (Q \cdot q_p)^{0.56} \cdot K \cdot C \cdot P \cdot LS \)</span>)</p></td>
+<td><p>Runoff volume (Q), peak flow (qₚ), soil, slope, land use</p></td>
+<td><p>Estimates <strong>event-based sediment yield</strong> (tons/event)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>MUSLE replaces rainfall erosivity (R) with <strong>runoff and peak flow</strong>, making it more suitable for storm-event modeling and hydrologic simulations.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="nutrient-load-estimation-runoff-based-models">
+<h3>💧 Nutrient Load Estimation – Runoff-Based Models<a class="headerlink" href="#nutrient-load-estimation-runoff-based-models" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model Type</p></th>
+<th class="head"><p>Equation Formulation</p></th>
+<th class="head"><p>Inputs</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Log-Linear Nutrient Model</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( \log(N) = a + b \cdot \log(Q) \)</span>)</p></td>
+<td><p>Nutrient load (N), runoff (Q)</p></td>
+<td><p>Empirical correlation between runoff and nutrient export</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Export Coefficient Model</strong></p></td>
+<td><p>$( N = \sum (EC_i \cdot A_i) #)</p></td>
+<td><p>Land use area (A), coefficients (EC)</p></td>
+<td><p>Simple land-use-based nutrient estimation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SWAT / SPARROW</strong></p></td>
+<td><p>Process-based or statistical</p></td>
+<td><p>Climate, land use, soils, hydrology</p></td>
+<td><p>Used for regional nutrient modeling and scenario analysis</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>Nutrient loads (especially phosphorus and nitrogen) are often <strong>correlated with runoff volume</strong>, land use type, and soil characteristics. Log-linear models are useful for <strong>quick estimation</strong>, while export coefficient and process-based models offer more detail.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="insight">
+<h3>🧠 Insight<a class="headerlink" href="#insight" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>RUSLE</strong> <span id="id1">[<a class="reference internal" href="../markdown.html#id32" title="Kenneth G. Renard, George R. Foster, Glenn A. Weesies, David K. McCool, and Daniel C. Yoder. Predicting Soil Erosion by Water: A Guide to Conservation Planning with the Revised Universal Soil Loss Equation (RUSLE). United States Department of Agriculture, Agricultural Research Service, Washington, DC, 1997.">Renard <em>et al.</em>, 1997</a>]</span> is ideal for long-term erosion planning; <strong>MUSLE</strong> <span id="id2">[<a class="reference internal" href="../markdown.html#id33" title="J.R. Williams. Sediment yield prediction with universal equation using runoff energy. Journal of the Hydraulics Division, ASCE, 101(HY3):438–446, 1975.">Williams, 1975</a>]</span> is better for storm-event sediment modeling.</p></li>
+<li><p>Nutrient export is often <strong>nonlinear</strong> and <strong>land-use dependent</strong>, requiring calibration or regional coefficients.</p></li>
+<li><p>Combining sediment and nutrient models helps assess <strong>water quality impacts</strong>, <strong>BMP effectiveness</strong>, and <strong>TMDL compliance</strong>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="resources">
+<h3>🔗 Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.usgs.gov/mission-areas/water-resources/science/sparrow-modeling-estimating-nutrient-sediment-and-dissolved">USGS SPARROW Modeling Overview</a></p></li>
+<li><p><a class="reference external" href="https://www.epa.gov/sites/production/files/2018-08/documents/loadreductionmodels2018.pdf">EPA Nutrient &amp; Sediment Estimation Tools</a></p></li>
+<li><p><a class="reference external" href="https://swat.tamu.edu/">SWAT Model Documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.ars.usda.gov/southeast-area/oxford-ms/national-sedimentation-laboratory/watershed-physical-processes-research/docs/revised-universal-soil-loss-equation-rusle-welcome-to-rusle-1-and-rusle-2/">USDA RUSLE Overview</a></p></li>
+<li><p><a class="reference external" href="https://link.springer.com/article/10.1007/s40808-018-0562-6">RUSLE/MUSLE Comparison Study</a></p></li>
+<li><p>[SPARROW Nutrient Modeling](<a class="reference external" href="https://www.usgs.gov/mission-areas/water-resources/science/sparrow-modeling-estimating-nutrient-sediment-and-dissolved">https://www.usgs.gov/mission-areas/water-resources/science/sparrow-modeling-estimating-nutrient-sediment-and-dissolved</a></p></li>
+</ul>
+</section>
+<section id="foundational-literature">
+<h3>Foundational literature<a class="headerlink" href="#foundational-literature" title="Link to this heading">#</a></h3>
+<p><span id="id3">[<a class="reference internal" href="../markdown.html#id32" title="Kenneth G. Renard, George R. Foster, Glenn A. Weesies, David K. McCool, and Daniel C. Yoder. Predicting Soil Erosion by Water: A Guide to Conservation Planning with the Revised Universal Soil Loss Equation (RUSLE). United States Department of Agriculture, Agricultural Research Service, Washington, DC, 1997.">Renard <em>et al.</em>, 1997</a>]</span> (ideal for long-term erosion planning) and <span id="id4">[<a class="reference internal" href="../markdown.html#id33" title="J.R. Williams. Sediment yield prediction with universal equation using runoff energy. Journal of the Hydraulics Division, ASCE, 101(HY3):438–446, 1975.">Williams, 1975</a>]</span> (storm-event sediemnt modeling) are widely recognized as fundamental literature for watershed-scale sediment modeling, each serving distinct modeling purposes. <span id="id5">[<a class="reference internal" href="../markdown.html#id134" title="Kenneth H. Reckhow, Michael N. Beaulac, and Jonathan T. Simpson. Modeling phosphorus loading and lake response under uncertainty: a manual and compilation of export coefficients. Technical Report EPA 440/5-80-011, U.S. Environmental Protection Agency, Washington, D.C., 1980. Prepared by Michigan State University for the Clean Lakes Program. URL: https://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=00001KWE.TXT.">Reckhow <em>et al.</em>, 1980</a>]</span> is the foundational source for export coefficient modeling, introducing the Export Coefficient Model (ECM) for estimating nutrient loads from land use. It is widely used in lake and watershed nutrient modeling. The literature provides tabulated coefficients for nitrogen and phosphorus across land uses and is ideal for long-term nutrient planning and TMDL development.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="methodology-watershed-runoff-sediment-and-nutrient-simulation">
+<h3>Methodology: Watershed Runoff, Sediment, and Nutrient Simulation<a class="headerlink" href="#methodology-watershed-runoff-sediment-and-nutrient-simulation" title="Link to this heading">#</a></h3>
+<p>This simulation estimates hydrologic and water quality responses of a watershed under different land use scenarios. It integrates rainfall, land use type, slope, area, and drainage density to compute:</p>
+<ul class="simple">
+<li><p>Surface runoff (mm and m³)</p></li>
+<li><p>Sediment yield (tons)</p></li>
+<li><p>Nutrient loads (Nitrogen and Phosphorus in kg)</p></li>
+<li><p>Change analysis between baseline and future land use</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="runoff-estimation-nrcs-curve-number-method">
+<h3>1. 🌧️ Runoff Estimation: NRCS Curve Number Method<a class="headerlink" href="#runoff-estimation-nrcs-curve-number-method" title="Link to this heading">#</a></h3>
+<p>Runoff is calculated using the <strong>NRCS-CN method</strong> <span id="id6">[<a class="reference internal" href="../markdown.html#id29" title="United States Department of Agriculture, Natural Resources Conservation Service. Chapter 2: Estimating Runoff Volume and Peak Discharge. Engineering Field Handbook. USDA NRCS, 2021. Comprehensive guide to the NRCS Curve Number method, including rainfall distributions, hydrologic soil groups, and land use factors.">United States Department of Agriculture, Natural Resources Conservation Service, 2021</a>]</span>, which relates land use and soil conditions to rainfall retention:</p>
+<div class="math notranslate nohighlight">
+\[
+S = \frac{25400}{CN} - 254
+\quad ; \quad
+I_a = 0.2 \cdot S
+\quad ; \quad
+Q = \frac{(P - I_a)^2}{P + 0.8 \cdot S}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( CN \)</span>): Curve Number (based on land use)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( P \)</span>): Rainfall (mm)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( Q \)</span>): Runoff depth (mm)</p></li>
+</ul>
+<p>Runoff volume is then computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+Q_{\text{vol}} = Q \cdot \frac{\text{Area}_{\text{ha}} \cdot 10,000}{1000}
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="sediment-yield-modified-universal-soil-loss-equation-musle">
+<h3>2. Sediment Yield: Modified Universal Soil Loss Equation (MUSLE)<a class="headerlink" href="#sediment-yield-modified-universal-soil-loss-equation-musle" title="Link to this heading">#</a></h3>
+<p>Sediment yield is estimated using a simplified form of <strong>MUSLE</strong> <span id="id7">[<a class="reference internal" href="../markdown.html#id33" title="J.R. Williams. Sediment yield prediction with universal equation using runoff energy. Journal of the Hydraulics Division, ASCE, 101(HY3):438–446, 1975.">Williams, 1975</a>]</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+S = 11.8 \cdot Q \cdot A \cdot K \cdot C \cdot P \cdot LS
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( Q \)</span>): Runoff (mm)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( A \)</span>): Area (ha)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( K \)</span>): Soil erodibility factor (default 0.3)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C \)</span>): Cover factor (default 0.2)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( P \)</span>): Practice factor (default 1.0)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( LS \)</span>): Slope length and steepness factor (approximated as slope % / 100)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="nutrient-load-estimation">
+<h3>🧪 Nutrient Load Estimation<a class="headerlink" href="#nutrient-load-estimation" title="Link to this heading">#</a></h3>
+<p>Nutrient loads are estimated using **land use-specific export coefficients</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Curve Number lookup</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_curve_number</span><span class="p">(</span><span class="n">landuse</span><span class="p">):</span>
+    <span class="n">cn_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Forest&#39;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>
+        <span class="s1">&#39;Urban&#39;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>
+        <span class="s1">&#39;Agriculture&#39;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>
+        <span class="s1">&#39;Wetland&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="s1">&#39;Grassland&#39;</span><span class="p">:</span> <span class="mi">60</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">cn_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">landuse</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="c1"># 📐 Nutrient export coefficients (kg/ha/year)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_nutrient_coeffs</span><span class="p">(</span><span class="n">landuse</span><span class="p">):</span>
+    <span class="n">coeffs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Forest&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">},</span>
+        <span class="s1">&#39;Urban&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">},</span>
+        <span class="s1">&#39;Agriculture&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">15.0</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">},</span>
+        <span class="s1">&#39;Wetland&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
+        <span class="s1">&#39;Grassland&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">coeffs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">landuse</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+
+<span class="c1"># 📐 Runoff estimation using NRCS-CN method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_runoff</span><span class="p">(</span><span class="n">rainfall_mm</span><span class="p">,</span> <span class="n">CN</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="p">(</span><span class="mi">25400</span> <span class="o">/</span> <span class="n">CN</span><span class="p">)</span> <span class="o">-</span> <span class="mi">254</span>
+    <span class="n">Ia</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">S</span>
+    <span class="k">if</span> <span class="n">rainfall_mm</span> <span class="o">&lt;=</span> <span class="n">Ia</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="p">((</span><span class="n">rainfall_mm</span> <span class="o">-</span> <span class="n">Ia</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">rainfall_mm</span> <span class="o">+</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">S</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 📐 Sediment yield using MUSLE (simplified)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_sediment</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">area_ha</span><span class="p">,</span> <span class="n">slope_percent</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">LS</span> <span class="o">=</span> <span class="n">slope_percent</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">sediment_tons</span> <span class="o">=</span> <span class="mf">11.8</span> <span class="o">*</span> <span class="n">Q</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="o">*</span> <span class="n">K</span> <span class="o">*</span> <span class="n">C</span> <span class="o">*</span> <span class="n">P</span> <span class="o">*</span> <span class="n">LS</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">sediment_tons</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 📐 Nutrient loads</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_nutrients</span><span class="p">(</span><span class="n">area_ha</span><span class="p">,</span> <span class="n">landuse</span><span class="p">):</span>
+    <span class="n">coeffs</span> <span class="o">=</span> <span class="n">get_nutrient_coeffs</span><span class="p">(</span><span class="n">landuse</span><span class="p">)</span>
+    <span class="n">N_load</span> <span class="o">=</span> <span class="n">coeffs</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">area_ha</span>
+    <span class="n">P_load</span> <span class="o">=</span> <span class="n">coeffs</span><span class="p">[</span><span class="s1">&#39;P&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">area_ha</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">N_load</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">P_load</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># 📊 Simulation function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">watershed_comparison</span><span class="p">(</span><span class="n">rainfall_mm</span><span class="p">,</span> <span class="n">landuse_base</span><span class="p">,</span> <span class="n">landuse_future</span><span class="p">,</span> <span class="n">area_km2</span><span class="p">,</span> <span class="n">slope_percent</span><span class="p">,</span> <span class="n">drainage_density</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">area_ha</span> <span class="o">=</span> <span class="n">area_km2</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">simulate</span><span class="p">(</span><span class="n">landuse</span><span class="p">):</span>
+        <span class="n">CN</span> <span class="o">=</span> <span class="n">get_curve_number</span><span class="p">(</span><span class="n">landuse</span><span class="p">)</span>
+        <span class="n">runoff_mm</span> <span class="o">=</span> <span class="n">estimate_runoff</span><span class="p">(</span><span class="n">rainfall_mm</span><span class="p">,</span> <span class="n">CN</span><span class="p">)</span>
+        <span class="n">runoff_m3</span> <span class="o">=</span> <span class="n">runoff_mm</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">area_ha</span> <span class="o">*</span> <span class="mi">10000</span>
+        <span class="n">sediment</span> <span class="o">=</span> <span class="n">estimate_sediment</span><span class="p">(</span><span class="n">runoff_mm</span><span class="p">,</span> <span class="n">area_ha</span><span class="p">,</span> <span class="n">slope_percent</span><span class="p">)</span>
+        <span class="n">N_load</span><span class="p">,</span> <span class="n">P_load</span> <span class="o">=</span> <span class="n">estimate_nutrients</span><span class="p">(</span><span class="n">area_ha</span><span class="p">,</span> <span class="n">landuse</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">runoff_m3</span><span class="p">,</span> <span class="n">sediment</span><span class="p">,</span> <span class="n">N_load</span><span class="p">,</span> <span class="n">P_load</span>
+
+    <span class="n">base</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">landuse_base</span><span class="p">)</span>
+    <span class="n">future</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">landuse_future</span><span class="p">)</span>
+
+    <span class="c1"># 📋 Output summary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌧️ Rainfall: </span><span class="si">{</span><span class="n">rainfall_mm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> mm&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📐 Area: </span><span class="si">{</span><span class="n">area_km2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km² | Slope: </span><span class="si">{</span><span class="n">slope_percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% | Drainage Density: </span><span class="si">{</span><span class="n">drainage_density</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km/km²</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔄 Baseline Land Use: </span><span class="si">{</span><span class="n">landuse_base</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💧 Runoff: </span><span class="si">{</span><span class="n">base</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> m³ | Sediment: </span><span class="si">{</span><span class="n">base</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> tons | N: </span><span class="si">{</span><span class="n">base</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg | P: </span><span class="si">{</span><span class="n">base</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔁 Future Land Use: </span><span class="si">{</span><span class="n">landuse_future</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💧 Runoff: </span><span class="si">{</span><span class="n">future</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">,.0f</span><span class="si">}</span><span class="s2"> m³ | Sediment: </span><span class="si">{</span><span class="n">future</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> tons | N: </span><span class="si">{</span><span class="n">future</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg | P: </span><span class="si">{</span><span class="n">future</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 Change Summary:&quot;</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Runoff (m³)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sediment (tons)&#39;</span><span class="p">,</span> <span class="s1">&#39;Nitrogen (kg)&#39;</span><span class="p">,</span> <span class="s1">&#39;Phosphorus (kg)&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">future</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">base</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">pct</span> <span class="o">=</span> <span class="p">(</span><span class="n">delta</span> <span class="o">/</span> <span class="n">base</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">base</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: Δ = </span><span class="si">{</span><span class="n">delta</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">pct</span><span class="si">:</span><span class="s2">+.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 📈 Visualization</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mf">0.35</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Baseline&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">future</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Future&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;salmon&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Watershed Output Comparison&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎚️ Interactive controls</span>
+<span class="n">rainfall_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Rainfall (mm)&#39;</span><span class="p">)</span>
+<span class="n">landuse_base_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Forest&#39;</span><span class="p">,</span> <span class="s1">&#39;Urban&#39;</span><span class="p">,</span> <span class="s1">&#39;Agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Wetland&#39;</span><span class="p">,</span> <span class="s1">&#39;Grassland&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Agriculture&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Baseline Land Use&#39;</span><span class="p">)</span>
+<span class="n">landuse_future_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Forest&#39;</span><span class="p">,</span> <span class="s1">&#39;Urban&#39;</span><span class="p">,</span> <span class="s1">&#39;Agriculture&#39;</span><span class="p">,</span> <span class="s1">&#39;Wetland&#39;</span><span class="p">,</span> <span class="s1">&#39;Grassland&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Urban&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Future Land Use&#39;</span><span class="p">)</span>
+<span class="n">area_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Area (km²)&#39;</span><span class="p">)</span>
+<span class="n">slope_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Slope (%)&#39;</span><span class="p">)</span>
+<span class="n">drainage_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Drainage Density&#39;</span><span class="p">)</span>
+
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">watershed_comparison</span><span class="p">,</span>
+    <span class="n">rainfall_mm</span><span class="o">=</span><span class="n">rainfall_slider</span><span class="p">,</span>
+    <span class="n">landuse_base</span><span class="o">=</span><span class="n">landuse_base_dropdown</span><span class="p">,</span>
+    <span class="n">landuse_future</span><span class="o">=</span><span class="n">landuse_future_dropdown</span><span class="p">,</span>
+    <span class="n">area_km2</span><span class="o">=</span><span class="n">area_slider</span><span class="p">,</span>
+    <span class="n">slope_percent</span><span class="o">=</span><span class="n">slope_slider</span><span class="p">,</span>
+    <span class="n">drainage_density</span><span class="o">=</span><span class="n">drainage_slider</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c0d68b7d56524a9496b8ec9c45e52e64", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="watershed-simulation-quiz-conceptual-reflective-questions">
+<h3>Watershed Simulation: Quiz, Conceptual &amp; Reflective Questions<a class="headerlink" href="#watershed-simulation-quiz-conceptual-reflective-questions" title="Link to this heading">#</a></h3>
+<p>This module reinforces understanding of watershed runoff, sediment yield, and nutrient loading using NRCS-CN, MUSLE, and export coefficient methods. It supports learning through multiple-choice questions, conceptual prompts, and reflective challenges.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What does the Curve Number (CN) primarily represent?</strong></p>
+<ul class="simple">
+<li><p>A. Soil erosion potential</p></li>
+<li><p>B. Land use and soil infiltration characteristics</p></li>
+<li><p>C. Nutrient export rate</p></li>
+<li><p>D. Slope steepness</p></li>
+</ul>
+</li>
+<li><p><strong>Which factor most directly increases sediment yield in the MUSLE equation?</strong></p>
+<ul class="simple">
+<li><p>A. Rainfall intensity</p></li>
+<li><p>B. Slope percentage</p></li>
+<li><p>C. Drainage density</p></li>
+<li><p>D. Phosphorus coefficient</p></li>
+</ul>
+</li>
+<li><p><strong>What is the role of the initial abstraction ( I_a ) in the NRCS-CN method?</strong></p>
+<ul class="simple">
+<li><p>A. It represents the maximum runoff</p></li>
+<li><p>B. It accounts for infiltration and surface storage before runoff begins</p></li>
+<li><p>C. It adjusts nutrient loading</p></li>
+<li><p>D. It scales sediment transport</p></li>
+</ul>
+</li>
+<li><p><strong>Which land use type typically has the highest nitrogen export coefficient?</strong></p>
+<ul class="simple">
+<li><p>A. Forest</p></li>
+<li><p>B. Urban</p></li>
+<li><p>C. Agriculture</p></li>
+<li><p>D. Wetland</p></li>
+</ul>
+</li>
+<li><p><strong>What does the LS factor in MUSLE represent?</strong></p>
+<ul class="simple">
+<li><p>A. Land use and slope</p></li>
+<li><p>B. Length and steepness of slope</p></li>
+<li><p>C. Load and sediment transport</p></li>
+<li><p>D. Land surface roughness</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="interpretation">
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Why is runoff volume converted from mm to cubic meters using area and unit conversions?</p></li>
+<li><p>How does changing slope percentage affect sediment yield in the MUSLE calculation?</p></li>
+<li><p>Why are nutrient loads estimated using static coefficients rather than dynamic concentration models?</p></li>
+<li><p>What assumptions are made when comparing baseline and future land use scenarios?</p></li>
+<li><p>How could drainage density be incorporated more directly into sediment or runoff estimation?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>How do land use changes influence both water quantity and quality in a watershed?</strong></p></li>
+<li><p><strong>Why is it important to simulate both runoff and sediment/nutrient loads when planning restoration?</strong></p></li>
+<li><p><strong>What are the limitations of using empirical coefficients for nutrient export?</strong></p></li>
+<li><p><strong>How could this model be adapted to include BMPs (e.g., buffer strips, retention ponds)?</strong></p></li>
+<li><p><strong>What insights can be gained by visualizing the percent change between baseline and future scenarios?</strong></p></li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LakeModel.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 1 Environmental Engineering: Lake water quality model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="IndoorAirQuality.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 1 Environmental Engineering: Indoor Air quality modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-and-nutrient-characterization-in-water-systems">💧 Sediment and Nutrient Characterization in Water Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-measure-or-model-sediment-and-nutrients">🧭 Why Measure or Model Sediment and Nutrients?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-they-measured">🧪 How Are They Measured?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-are-they-modeled">🧮 How Are They Modeled?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-and-nutrient-estimation-models-comparison-table">🧮 Sediment and Nutrient Estimation Models – Comparison Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-transport-models">🏞️ Sediment Transport Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nutrient-load-estimation-runoff-based-models">💧 Nutrient Load Estimation – Runoff-Based Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insight">🧠 Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">🔗 Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational literature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-watershed-runoff-sediment-and-nutrient-simulation">Methodology: Watershed Runoff, Sediment, and Nutrient Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#runoff-estimation-nrcs-curve-number-method">1. 🌧️ Runoff Estimation: NRCS Curve Number Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-yield-modified-universal-soil-loss-equation-musle">2. Sediment Yield: Modified Universal Soil Loss Equation (MUSLE)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nutrient-load-estimation">🧪 Nutrient Load Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#watershed-simulation-quiz-conceptual-reflective-questions">Watershed Simulation: Quiz, Conceptual &amp; Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

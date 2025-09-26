@@ -1,0 +1,1413 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4 Geotechnical Engineering: 1D Consolidation Test &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap4/SoilConsolidationTest';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 4 Geotechnical Engineering: 1D Consolidation Theory" href="1DConsolidationAnalysis.html" />
+    <link rel="prev" title="Chapter 4 Geotechnical Engineering: Unconsolidated Undrained (UU) Triaxial Test" href="UUStrengthTest.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap4/SoilConsolidationTest.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap4/SoilConsolidationTest.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4 Geotechnical Engineering: 1D Consolidation Test</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-consolidation">🧱 Soil Consolidation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186">🧱 1D Consolidation Test – Key Steps per U.S. Standard (ASTM D2435/D4186)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astm-d2435-incremental-loading-procedure-astm-d2435">📘 ASTM D2435 – Incremental Loading Procedure <span class="xref cite cite-p">ASTM_D2435</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-measured">🧪 Key Parameters Measured</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📐 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-checklist-of-test-steps-astm-d2435">✅ Visual Checklist of Test Steps (ASTM D2435)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module">🧱 Summary of the 1D Consolidation Test App (ASTM D2435 Interactive Module)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-output">🧮 How to Interpret the Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-results">Key Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-in-design">Use in Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-conceptual-reflective-quiz-questions">🧱 1D Consolidation Test – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-interpretation">Theory &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reasoning">Data &amp; Reasoning</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-geotechnical-engineering-1d-consolidation-test">
+<h1>Chapter 4 Geotechnical Engineering: 1D Consolidation Test<a class="headerlink" href="#chapter-4-geotechnical-engineering-1d-consolidation-test" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Soil Consolidation Test</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Soil Consolidation Test</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="d-consolidation-test">
+<a class="reference internal image-reference" href="../_images/One-dimensional.png"><img alt="Descriptive alt text for accessibility" src="../_images/One-dimensional.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">**Figure 4.7 **: 1D Consolidation Test.</span><a class="headerlink" href="#d-consolidation-test" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="soil-consolidation">
+<h3>🧱 Soil Consolidation:<a class="headerlink" href="#soil-consolidation" title="Link to this heading">#</a></h3>
+<p><strong>Soil consolidation</strong> is the process by which <strong>soil volume decreases over time</strong> due to the <strong>expulsion of pore water</strong> under sustained loading. It primarily occurs in <strong>saturated cohesive soils</strong> (e.g., clay) and is governed by the gradual transfer of stress from water to soil particles.</p>
+<ul class="simple">
+<li><p>When a load (e.g., building, embankment, dam) is applied to saturated soil:</p>
+<ul>
+<li><p>Initially, the load is carried by <strong>pore water pressure</strong></p></li>
+<li><p>Over time, water drains out, and the load is transferred to the <strong>soil skeleton</strong></p></li>
+<li><p>This causes <strong>settlement</strong> and <strong>reduction in void ratio</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186">
+<h3>🧱 1D Consolidation Test – Key Steps per U.S. Standard (ASTM D2435/D4186)<a class="headerlink" href="#d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186" title="Link to this heading">#</a></h3>
+<p>The <strong>1D Consolidation Test</strong> evaluates the compressibility and rate of consolidation of cohesive soils under axial load, as defined by <strong><span id="id1">[]</span></strong> (incremental loading method) and <strong><span id="id2">[]</span></strong> (continuous loading method). Here’s a summary of the standard measurement steps:</p>
+</section>
+<hr class="docutils" />
+<section id="astm-d2435-incremental-loading-procedure-astm-d2435">
+<h3>📘 ASTM D2435 – Incremental Loading Procedure <span id="id3">[]</span><a class="headerlink" href="#astm-d2435-incremental-loading-procedure-astm-d2435" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1️⃣</p></td>
+<td><p>Prepare soil specimen (typically 20–25 mm thick)</p></td>
+<td><p>Saturate with water, trim uniformly</p></td>
+</tr>
+<tr class="row-odd"><td><p>2️⃣</p></td>
+<td><p>Assemble specimen in consolidation ring</p></td>
+<td><p>Ensure drainage top and bottom</p></td>
+</tr>
+<tr class="row-even"><td><p>3️⃣</p></td>
+<td><p>Place in load frame and saturate sample</p></td>
+<td><p>Record initial height and area</p></td>
+</tr>
+<tr class="row-odd"><td><p>4️⃣</p></td>
+<td><p>Apply incremental loads (e.g. 12.5, 25, 50, … kPa)</p></td>
+<td><p>Typically double per step</p></td>
+</tr>
+<tr class="row-even"><td><p>5️⃣</p></td>
+<td><p>Record dial gauge readings over time</p></td>
+<td><p>Track deformation at intervals (0.25, 1, 2, 4, 8… mins)</p></td>
+</tr>
+<tr class="row-odd"><td><p>6️⃣</p></td>
+<td><p>Maintain each load for 24 hours or until deformation rate is negligible</p></td>
+<td><p>Use time–deformation curve</p></td>
+</tr>
+<tr class="row-even"><td><p>7️⃣</p></td>
+<td><p>Unload incrementally and monitor rebound</p></td>
+<td><p>Observe elastic recovery</p></td>
+</tr>
+<tr class="row-odd"><td><p>8️⃣</p></td>
+<td><p>Oven-dry sample to determine moisture content</p></td>
+<td><p>Required for calculating void ratio</p></td>
+</tr>
+<tr class="row-even"><td><p>9️⃣</p></td>
+<td><p>Calculate compression index (Cc) and coefficient of consolidation (Cv)</p></td>
+<td><p>Use log–strain regression and time factor (Tv)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="key-parameters-measured">
+<h3>🧪 Key Parameters Measured<a class="headerlink" href="#key-parameters-measured" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Dial Deflection</strong> → vertical deformation</p></li>
+<li><p><strong>Elapsed Time (t)</strong> → rate of settlement</p></li>
+<li><p><strong>Applied Stress (σ)</strong> → total vertical load</p></li>
+<li><p><strong>Specimen Dimensions</strong> → area and initial height</p></li>
+<li><p><strong>Moisture Content</strong> → for calculating void ratio and strain</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📐 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Formula</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cc</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( C_c = \frac{\Delta e}{\log(\sigma_2/\sigma_1)} \)</span>)</p></td>
+<td><p>Compressibility of soil</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cv</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( C_v = \frac{T_v \cdot H^2}{t_{50}} \)</span>)</p></td>
+<td><p>Settlement rate prediction</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Strain (%)</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(( \Delta H / H_0 \times 100 \)</span>)</p></td>
+<td><p>Deformation under load</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Void Ratio (e)</strong></p></td>
+<td><p>Based on moisture and unit weight</p></td>
+<td><p>Required for settlement calculations</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="visual-checklist-of-test-steps-astm-d2435">
+<h3>✅ Visual Checklist of Test Steps (ASTM D2435)<a class="headerlink" href="#visual-checklist-of-test-steps-astm-d2435" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Task</p></th>
+<th class="head"><p>Observation Point</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1️⃣</p></td>
+<td><p>Prepare saturated, trimmed specimen</p></td>
+<td><p>Uniform dimensions; full saturation</p></td>
+</tr>
+<tr class="row-odd"><td><p>2️⃣</p></td>
+<td><p>Place specimen in ring with porous stones</p></td>
+<td><p>No trapped air; drainage enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>3️⃣</p></td>
+<td><p>Position assembly in loading frame</p></td>
+<td><p>Ensure proper alignment and contact</p></td>
+</tr>
+<tr class="row-odd"><td><p>4️⃣</p></td>
+<td><p>Attach dial gauge or LVDT</p></td>
+<td><p>Zero reading; full-range accessibility</p></td>
+</tr>
+<tr class="row-even"><td><p>5️⃣</p></td>
+<td><p>Apply first load increment</p></td>
+<td><p>Record initial dial deflection</p></td>
+</tr>
+<tr class="row-odd"><td><p>6️⃣</p></td>
+<td><p>Capture dial readings over time</p></td>
+<td><p>Recommended intervals: <br>0.25, 1, 2, 4, 8, 15, 30 min… up to 24 hr</p></td>
+</tr>
+<tr class="row-even"><td><p>7️⃣</p></td>
+<td><p>Increase load incrementally</p></td>
+<td><p>Typically double each step (e.g., 12.5 → 25 → 50 kPa…)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8️⃣</p></td>
+<td><p>Monitor rebound on unloading</p></td>
+<td><p>Elastic recovery noted</p></td>
+</tr>
+<tr class="row-even"><td><p>9️⃣</p></td>
+<td><p>Oven-dry sample for moisture content</p></td>
+<td><p>For void ratio and compressibility</p></td>
+</tr>
+<tr class="row-odd"><td><p>🔟</p></td>
+<td><p>Analyze strain–log(stress), t₅₀, and compute Cc and Cv</p></td>
+<td><p>Graphs and regression output</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><strong><span id="id4">[]</span></strong>: Standard method for determining one-dimensional consolidation properties of saturated soils using <strong>incremental loading</strong>. Widely used in geotechnical practice for estimating settlement and compression characteristics of cohesive soils. <strong><span id="id5">[<a class="reference internal" href="../markdown.html#id128" title="ASTM International. Standard test method for one-dimensional consolidation properties of saturated cohesive soils using controlled-strain loading. https://www.astm.org/d4186-20.html, 2020. ASTM D4186/D4186M-20 — CRS consolidation testing method for low-permeability soils.">ASTM International, 2020</a>]</span></strong>: Standard method using <strong>controlled-strain (CRS) loading</strong> to evaluate consolidation behavior. Offers faster testing and continuous data acquisition, suitable for advanced lab setups and detailed soil behavior analysis. Both standards are recognized in U.S. geotechnical engineering for characterizing settlement potential and time-rate of consolidation in foundation design.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module">
+<h3>🧱 Summary of the 1D Consolidation Test App (ASTM D2435 Interactive Module)<a class="headerlink" href="#summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module" title="Link to this heading">#</a></h3>
+<p>An interactive Python app built with <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> that simulates the <strong>1D Consolidation test</strong> for soil samples. It allows users to input lab data and automatically computes:</p>
+<ul class="simple">
+<li><p>Vertical strain under stepwise loading</p></li>
+<li><p><strong>Compression Index (Cc)</strong> for estimating compressibility</p></li>
+<li><p><strong>Consolidation Coefficient (Cv)</strong> for predicting settlement rate</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-it-does">
+<h3>⚙️ What It Does<a class="headerlink" href="#what-it-does" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Input dial readings</p></td>
+<td><p>Accepts initial/final dial gauge values per load increment</p></td>
+</tr>
+<tr class="row-odd"><td><p>Computes strain</p></td>
+<td><p>Calculates vertical strain (%) from dial compression</p></td>
+</tr>
+<tr class="row-even"><td><p>Regression for Cc</p></td>
+<td><p>Fits a line to strain vs. log stress for compression index</p></td>
+</tr>
+<tr class="row-odd"><td><p>Computes Cv</p></td>
+<td><p>Uses t₅₀ and specimen height to calculate consolidation rate</p></td>
+</tr>
+<tr class="row-even"><td><p>Generates report</p></td>
+<td><p>Summarizes data in Markdown with optional plot visualization</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-the-output">
+<h3>🧮 How to Interpret the Output<a class="headerlink" href="#how-to-interpret-the-output" title="Link to this heading">#</a></h3>
+</section>
+<section id="key-results">
+<h3>Key Results<a class="headerlink" href="#key-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Strain (%)</strong>: Relative vertical deformation from load</p></li>
+<li><p><strong>Cc</strong>: Compression Index<br />
+↳ Higher Cc ⇒ more compressible soil<br />
+↳ Used to estimate settlement from effective stress change</p></li>
+<li><p><strong>Cv (m²/s)</strong>: Coefficient of Consolidation<br />
+↳ Larger Cv ⇒ faster dissipation of pore water<br />
+↳ Important for evaluating settlement duration and stability</p></li>
+</ul>
+</section>
+<section id="use-in-design">
+<h3>Use in Design<a class="headerlink" href="#use-in-design" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cc and Cv are foundational parameters for predicting:</p>
+<ul>
+<li><p>Primary consolidation settlement</p></li>
+<li><p>Time-dependent deformation</p></li>
+<li><p>Earthwork and foundation stability over time</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 📐 Style</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;200px&#39;</span><span class="p">}</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;400px&#39;</span><span class="p">)</span>
+
+<span class="c1"># 📋 Specimen Parameters</span>
+<span class="n">specimen_area</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.00785</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Specimen Area (m²):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">specimen_height</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Initial Height (m):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">load_increment</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">12.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Load Increment (kPa):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">num_increments</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Load Steps:&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">t50_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;t₅₀ Time (min):&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="c1"># 🧪 Atterberg Limits for USCS</span>
+<span class="n">LL_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">45.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Liquid Limit (LL%)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">PL_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Plastic Limit (PL%)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+
+<span class="c1"># 📥 Generate Reading Inputs</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_reading_inputs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">d0</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.00</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Dial Initial (mm)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Dial Final (mm)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">240</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Time (min)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+        <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">d0</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">duration</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">inputs</span>
+
+<span class="n">reading_inputs</span> <span class="o">=</span> <span class="n">create_reading_inputs</span><span class="p">(</span><span class="n">num_increments</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">reading_inputs</span>
+    <span class="n">reading_inputs</span> <span class="o">=</span> <span class="n">create_reading_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">])</span>
+    <span class="n">input_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">specimen_area</span><span class="p">,</span> <span class="n">specimen_height</span><span class="p">,</span> <span class="n">load_increment</span><span class="p">,</span> <span class="n">t50_input</span><span class="p">,</span>
+        <span class="n">LL_input</span><span class="p">,</span> <span class="n">PL_input</span>
+    <span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">reading_inputs</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">]</span>
+
+<span class="n">num_increments</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_inputs</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">input_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">specimen_area</span><span class="p">,</span> <span class="n">specimen_height</span><span class="p">,</span> <span class="n">load_increment</span><span class="p">,</span> <span class="n">t50_input</span><span class="p">,</span>
+    <span class="n">LL_input</span><span class="p">,</span> <span class="n">PL_input</span>
+<span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">reading_inputs</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">])</span>
+
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Generate Full Report&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;260px&#39;</span><span class="p">))</span>
+
+<span class="c1"># 🧭 USCS Classification Logic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">classify_uscs</span><span class="p">(</span><span class="n">ll</span><span class="p">,</span> <span class="n">pl</span><span class="p">):</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="n">ll</span> <span class="o">-</span> <span class="n">pl</span>
+    <span class="k">if</span> <span class="n">ll</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pi</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;ML – Low plasticity silt&quot;</span>
+        <span class="k">elif</span> <span class="n">pi</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CL or ML – Borderline low plasticity&quot;</span>
+        <span class="k">elif</span> <span class="n">pi</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CL – Lean clay&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CL – Medium plasticity clay&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pi</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;MH – Elastic silt&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;CH – Fat clay&quot;</span>
+
+<span class="c1"># 🧮 Main Logic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">specimen_area</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">H0</span> <span class="o">=</span> <span class="n">specimen_height</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">dP</span> <span class="o">=</span> <span class="n">load_increment</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">t50</span> <span class="o">=</span> <span class="n">t50_input</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="mi">60</span>
+    <span class="n">LL</span> <span class="o">=</span> <span class="n">LL_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">PL</span> <span class="o">=</span> <span class="n">PL_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">PI</span> <span class="o">=</span> <span class="n">LL</span> <span class="o">-</span> <span class="n">PL</span>
+    <span class="n">classification</span> <span class="o">=</span> <span class="n">classify_uscs</span><span class="p">(</span><span class="n">LL</span><span class="p">,</span> <span class="n">PL</span><span class="p">)</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">cumulative_load</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d_init</span><span class="p">,</span> <span class="n">d_final</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reading_inputs</span><span class="p">):</span>
+        <span class="n">cumulative_load</span> <span class="o">+=</span> <span class="n">dP</span>
+        <span class="n">d1</span> <span class="o">=</span> <span class="n">d_init</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">1000</span>
+        <span class="n">d2</span> <span class="o">=</span> <span class="n">d_final</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">1000</span>
+        <span class="n">strain</span> <span class="o">=</span> <span class="p">(</span><span class="n">d2</span> <span class="o">-</span> <span class="n">d1</span><span class="p">)</span> <span class="o">/</span> <span class="n">H0</span> <span class="k">if</span> <span class="n">H0</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;Step&#39;</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">:</span> <span class="n">cumulative_load</span><span class="p">,</span>
+            <span class="s1">&#39;Dial Initial (mm)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">d_init</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;Dial Final (mm)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">d_final</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;Strain (%)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">strain</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="s1">&#39;Time (min)&#39;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="s1">&#39;Log(Stress)&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">cumulative_load</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="p">})</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+    <span class="c1"># 📊 Report Markdown</span>
+    <span class="n">report_md</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">### 🧱 Consolidation Report – ASTM D2435</span>
+
+<span class="s2">| Step | Stress (kPa) | Dial Init (mm) | Dial Final (mm) | Strain (%) | Time (min) |</span>
+<span class="s2">|------|--------------|----------------|------------------|-------------|------------|</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Step&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Dial Initial (mm)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Dial Final (mm)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Time (min)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> |</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">#### 📌 Specimen Details</span>
+<span class="s2">- **Area**: </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> m²  </span>
+<span class="s2">- **Initial Height**: </span><span class="si">{</span><span class="n">H0</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">- **Load Increment**: </span><span class="si">{</span><span class="n">dP</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kPa  </span>
+<span class="s2">- **t₅₀ Time**: </span><span class="si">{</span><span class="n">t50</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min</span>
+
+<span class="s2">---</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="c1"># 📈 Cc Calculation &amp; Plot</span>
+    <span class="n">df_fit</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Applied Stress (kPa)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_fit</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">df_fit</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">df_fit</span><span class="p">[</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">]</span>
+        <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">fit_line</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">intercept</span>
+        <span class="n">Cc</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">slope</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">],</span> <span class="s1">&#39;bo-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Measured Strain&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Log(Stress)&#39;</span><span class="p">],</span> <span class="n">fit_line</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Cc Regression&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Log(Stress) [log(kPa)]&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Strain (%)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Strain vs. Log(Stress) – Cc Fit&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 📊 Compression Index (Cc)</span>
+
+<span class="s2">- **Cc** = </span><span class="si">{</span><span class="n">Cc</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- Based on strain–log(σ′) regression for final increments</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">report_md</span> <span class="o">+=</span> <span class="s2">&quot;⚠️ Insufficient data to compute compression index (Cc).</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="c1"># ⏳ Cv Calculation</span>
+    <span class="n">Tv</span> <span class="o">=</span> <span class="mf">0.197</span>
+    <span class="n">Hdr</span> <span class="o">=</span> <span class="n">H0</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">Cv</span> <span class="o">=</span> <span class="p">(</span><span class="n">Tv</span> <span class="o">*</span> <span class="n">Hdr</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">t50</span> <span class="k">if</span> <span class="n">t50</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### ⏳ Coefficient of Consolidation (Cv)</span>
+
+<span class="s2">- **Cv** = </span><span class="si">{</span><span class="n">Cv</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> m²/s  </span>
+<span class="s2">- Based on t₅₀ = </span><span class="si">{</span><span class="n">t50</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> min and Hdr = </span><span class="si">{</span><span class="n">Hdr</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m  </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="c1"># 📘 USCS Output</span>
+    <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🧭 USCS Classification (Atterberg Limits)</span>
+
+<span class="s2">- **Liquid Limit (LL)** = </span><span class="si">{</span><span class="n">LL</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **Plastic Limit (PL)** = </span><span class="si">{</span><span class="n">PL</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **Plasticity Index (PI)** = </span><span class="si">{</span><span class="n">PI</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %  </span>
+<span class="s2">- **USCS Group** = </span><span class="si">{</span><span class="n">classification</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">report_md</span><span class="p">))</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="c1"># 📦 Display Interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">num_increments</span><span class="p">,</span> <span class="n">input_box</span><span class="p">,</span> <span class="n">run_btn</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5971c7b0beb34efcb2ded24cfa8739a6", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="d-consolidation-test-conceptual-reflective-quiz-questions">
+<h3>🧱 1D Consolidation Test – Conceptual, Reflective &amp; Quiz Questions<a class="headerlink" href="#d-consolidation-test-conceptual-reflective-quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="conceptual-questions">
+<h3>🔍 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What does the compression index (Cc) indicate about the compressibility of soil under load?</p></li>
+<li><p>Why is strain plotted against log of vertical stress in evaluating soil consolidation behavior?</p></li>
+<li><p>How does the coefficient of consolidation (Cv) influence the rate at which pore water dissipates?</p></li>
+<li><p>What is the significance of determining the time for 50% consolidation (t₅₀)?</p></li>
+<li><p>How do specimen geometry and drainage path affect the interpretation of Cv?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>💭 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>While reviewing your test data, which load steps showed nonlinear strain responses—and what might that imply?</p></li>
+<li><p>What factors in a lab setup could influence the accuracy of dial readings or strain measurements?</p></li>
+<li><p>If you observed a sudden drop in strain between two stress increments, how would you explain it?</p></li>
+<li><p>How would you communicate the meaning of Cc and Cv to a field engineer overseeing embankment construction?</p></li>
+<li><p>What challenges might arise when translating lab-calculated Cv into field-scale predictions?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="theory-interpretation">
+<h3>Theory &amp; Interpretation<a class="headerlink" href="#theory-interpretation" title="Link to this heading">#</a></h3>
+<p><strong>Q1. What is the formula used to calculate the compression index (Cc)?</strong><br />
+A. <span class="math notranslate nohighlight">\(( C_c = \Delta e / \log(\sigma_2 / \sigma_1) \)</span>) ✅<br />
+B. <span class="math notranslate nohighlight">\(( C_c = \Delta H / H_0 \)</span>)<br />
+C. <span class="math notranslate nohighlight">\(( C_c = \gamma_w \cdot t / H_0^2 \)</span>)<br />
+D. <span class="math notranslate nohighlight">\(( C_c = \sigma_2 - \sigma_1 \)</span>)</p>
+<p><strong>Q2. The time factor (Tv) for 50% consolidation using the square-root method is approximately:</strong><br />
+A. 0.5<br />
+B. 0.197 ✅<br />
+C. 1.0<br />
+D. 0.10</p>
+<p><strong>Q3. Cv is computed from which variables?</strong><br />
+A. Load and compression index<br />
+B. Time and specimen diameter<br />
+C. Drainage path length and time to 50% consolidation ✅<br />
+D. Moisture content and bulk density</p>
+</section>
+<section id="data-reasoning">
+<h3>Data &amp; Reasoning<a class="headerlink" href="#data-reasoning" title="Link to this heading">#</a></h3>
+<p><strong>Q4. A higher Cv value generally indicates:</strong><br />
+A. Slower water dissipation<br />
+B. Faster consolidation rate ✅<br />
+C. More clay content<br />
+D. Higher shrinkage</p>
+<p><strong>Q5. Why is the drainage path taken as H₀/2 in double-drainage setups?</strong><br />
+A. Because water exits only one face<br />
+B. Because soil drains vertically and horizontally<br />
+C. Because both top and bottom surfaces allow drainage ✅<br />
+D. Because initial strain is halved</p>
+<hr class="docutils" />
+<p>Would you like these embedded into the app as interactive explanations or formatted as a worksheet for learner assessment?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="UUStrengthTest.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: Unconsolidated Undrained (UU) Triaxial Test</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="1DConsolidationAnalysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: 1D Consolidation Theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-consolidation">🧱 Soil Consolidation:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-key-steps-per-u-s-standard-astm-d2435-d4186">🧱 1D Consolidation Test – Key Steps per U.S. Standard (ASTM D2435/D4186)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#astm-d2435-incremental-loading-procedure-astm-d2435">📘 ASTM D2435 – Incremental Loading Procedure <span class="xref cite cite-p">ASTM_D2435</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-measured">🧪 Key Parameters Measured</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📐 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-checklist-of-test-steps-astm-d2435">✅ Visual Checklist of Test Steps (ASTM D2435)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-the-1d-consolidation-test-app-astm-d2435-interactive-module">🧱 Summary of the 1D Consolidation Test App (ASTM D2435 Interactive Module)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">⚙️ What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-output">🧮 How to Interpret the Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-results">Key Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-in-design">Use in Design</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-consolidation-test-conceptual-reflective-quiz-questions">🧱 1D Consolidation Test – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-interpretation">Theory &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-reasoning">Data &amp; Reasoning</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
