@@ -1,0 +1,1700 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 2 Hydrology: Flood Frequency &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap2/ExtremeValueDistribution_ModelSelection';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 2 Hydrology: Habitat Analysis" href="HabitatSuitabilityIndex.html" />
+    <link rel="prev" title="Chapter 2 Hydrology: Infiltration Models" href="SoilInfiltration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap2/ExtremeValueDistribution_ModelSelection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap2/ExtremeValueDistribution_ModelSelection.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap2/ExtremeValueDistribution_ModelSelection.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap2/ExtremeValueDistribution_ModelSelection.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap2/ExtremeValueDistribution_ModelSelection.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 2 Hydrology: Flood Frequency</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-frequency-analysis">🌊 Flood Frequency Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">🔍 Key Concepts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-observational-data">📊 Importance of Observational Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits">✅ Benefits:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-with-sparse-data">⚠️ Limitations with Sparse Data:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-distributions-for-extreme-events">📐 Theoretical Distributions for Extreme Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-distributions">🧠 Common Distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-vs-theoretical-distributions-in-extreme-value-analysis">📊 Empirical vs. Theoretical Distributions in Extreme Value Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-distribution">🔍 Empirical Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-distribution">📐 Theoretical Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-theoretical-distributions-for-extreme-events">🌊 Why Use Theoretical Distributions for Extreme Events?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#most-popular-distributions-for-extremes">📈 Most Popular Distributions for Extremes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-flood-frequency-analysis-rffa">🌐 Regional Flood Frequency Analysis (RFFA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">🗺️ Key Features:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#most-widely-used">🌍 Most Widely Used:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-approaches">🧩 Hybrid Approaches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🌐 Regional Flood Frequency Analysis (RFFA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-steps">🗺️ Key Steps:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usgs-practice">📘 USGS Practice:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">🧠 Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-frequency-analysis-tool">Flood frequency analysis tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-tool-does">What the Tool Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">How to Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background-distributions-used">Theoretical Background: Distributions Used</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-evaluation-criteria">Performance Evaluation Criteria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-summary">Output Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-flood-frequency-analysis-tool">Self-Assessment: Flood Frequency Analysis Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts">Reflective Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">Quiz Questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-2-hydrology-flood-frequency">
+<h1>Chapter 2 Hydrology: Flood Frequency<a class="headerlink" href="#chapter-2-hydrology-flood-frequency" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Flood frequency</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: EVD performance</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+</section>
+<section id="flood-frequency-analysis">
+<h2>🌊 Flood Frequency Analysis<a class="headerlink" href="#flood-frequency-analysis" title="Link to this heading">#</a></h2>
+<p>Flood Frequency Analysis (FFA) is a statistical method used to estimate the probability of different magnitudes of flood events occurring at a specific location over time <span id="id1">[<a class="reference internal" href="../markdown.html#id61" title="C. Cunnane. Statistical Distributions for Flood Frequency Analysis. Number 33 in Operational Hydrology Report. Secretariat of the World Meteorological Organization, Geneva, 1989.">Cunnane, 1989</a>, <a class="reference internal" href="../markdown.html#id56" title="P. G. Holland, R. W. Herschy, and David Archer. Flood frequency analysis. In Encyclopedia of Hydrology and Water Resources, pages 279–288. Springer, 2016. doi:10.1007/978-1-4020-4497-7_86.">Holland <em>et al.</em>, 2016</a>, <a class="reference internal" href="../markdown.html#id54">Jr. <em>et al.</em>, 2018</a>]</span>.</p>
+<section id="key-concepts">
+<h3>🔍 Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Annual Maximum Series (AMS):</strong> Uses the highest flow recorded each year.</p></li>
+<li><p><strong>Return Period (T):</strong> Average interval between floods of a given magnitude.</p></li>
+<li><p><strong>Exceedance Probability (p):</strong><br />
+$<span class="math notranslate nohighlight">\( p = \frac{1}{T} \)</span><span class="math notranslate nohighlight">\(  
+where \)</span>T$ is the return period.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="importance-of-observational-data">
+<h2>📊 Importance of Observational Data<a class="headerlink" href="#importance-of-observational-data" title="Link to this heading">#</a></h2>
+<p>Observational data are crucial for conducting reliable flood frequency analyses.</p>
+<section id="benefits">
+<h3>✅ Benefits:<a class="headerlink" href="#benefits" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Long-term records improve statistical reliability.</p></li>
+<li><p>Site-specific data reflect local hydrologic behavior.</p></li>
+<li><p>Empirical distributions can be fitted directly.</p></li>
+</ul>
+</section>
+<section id="limitations-with-sparse-data">
+<h3>⚠️ Limitations with Sparse Data:<a class="headerlink" href="#limitations-with-sparse-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>High uncertainty in flood quantile estimates.</p></li>
+<li><p>Poor representation of rare, extreme events.</p></li>
+<li><p>Skewness and variance may be biased.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="theoretical-distributions-for-extreme-events">
+<h3>📐 Theoretical Distributions for Extreme Events<a class="headerlink" href="#theoretical-distributions-for-extreme-events" title="Link to this heading">#</a></h3>
+<p>When data are limited, theoretical distributions help extrapolate flood probabilities.</p>
+</section>
+<section id="common-distributions">
+<h3>🧠 Common Distributions<a class="headerlink" href="#common-distributions" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Distribution</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Use Case</strong></p></th>
+<th class="head"><p><strong>Notes</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Gumbel (EV1)</strong></p></td>
+<td><p>Extreme Value</p></td>
+<td><p>AMS floods</p></td>
+<td><p>Assumes exponential tail</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Log-Pearson Type III</strong></p></td>
+<td><p>Skewed</p></td>
+<td><p>US standard (Bulletin 17C)</p></td>
+<td><p>Handles skewness well</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Generalized Extreme Value (GEV)</strong></p></td>
+<td><p>Flexible</p></td>
+<td><p>Global use</p></td>
+<td><p>Includes Gumbel, Fréchet, Weibull</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weibull</strong></p></td>
+<td><p>Empirical</p></td>
+<td><p>Plotting positions</p></td>
+<td><p>Used for ranking floods</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="empirical-vs-theoretical-distributions-in-extreme-value-analysis">
+<h3>📊 Empirical vs. Theoretical Distributions in Extreme Value Analysis<a class="headerlink" href="#empirical-vs-theoretical-distributions-in-extreme-value-analysis" title="Link to this heading">#</a></h3>
+</section>
+<section id="empirical-distribution">
+<h3>🔍 Empirical Distribution<a class="headerlink" href="#empirical-distribution" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Definition</strong>: Based directly on observed data (e.g., annual peak discharges).</p></li>
+<li><p><strong>Construction</strong>: Uses ranking and plotting positions (e.g., Weibull formula) to estimate exceedance probabilities.</p></li>
+<li><p><strong>Strengths</strong>:</p>
+<ul>
+<li><p>Reflects site-specific behavior.</p></li>
+<li><p>No assumptions about underlying distribution.</p></li>
+</ul>
+</li>
+<li><p><strong>Limitations</strong>:</p>
+<ul>
+<li><p>Requires long-term data for reliability.</p></li>
+<li><p>Poor extrapolation for rare/extreme events.</p></li>
+<li><p>Sensitive to outliers and sampling variability.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="theoretical-distribution">
+<h3>📐 Theoretical Distribution<a class="headerlink" href="#theoretical-distribution" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Definition</strong>: Assumes data follow a known probability distribution (e.g., Gumbel, Log-Pearson III, GEV).</p></li>
+<li><p><strong>Construction</strong>: Fits a parametric model to data using methods like Maximum Likelihood Estimation (MLE).</p></li>
+<li><p><strong>Strengths</strong>:</p>
+<ul>
+<li><p>Enables extrapolation beyond observed range.</p></li>
+<li><p>Provides analytical expressions for return periods and quantiles.</p></li>
+</ul>
+</li>
+<li><p><strong>Limitations</strong>:</p>
+<ul>
+<li><p>Requires assumptions about distribution type.</p></li>
+<li><p>Sensitive to parameter estimation, especially with sparse data.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="why-use-theoretical-distributions-for-extreme-events">
+<h3>🌊 Why Use Theoretical Distributions for Extreme Events?<a class="headerlink" href="#why-use-theoretical-distributions-for-extreme-events" title="Link to this heading">#</a></h3>
+<p>Extreme events (e.g., 100-year floods) are rare and often absent from short observational records. Theoretical distributions allow us to estimate their magnitude and frequency by modeling the tail behavior of the data.</p>
+</section>
+<section id="most-popular-distributions-for-extremes">
+<h3>📈 Most Popular Distributions for Extremes<a class="headerlink" href="#most-popular-distributions-for-extremes" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Distribution</strong></p></th>
+<th class="head"><p><strong>Type</strong></p></th>
+<th class="head"><p><strong>Notes</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Generalized Extreme Value (GEV)</strong></p></td>
+<td><p>Block maxima</p></td>
+<td><p>Unifies Gumbel, Fréchet, Weibull; widely used globally</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Log-Pearson Type III</strong></p></td>
+<td><p>Skewed</p></td>
+<td><p>Official standard in the U.S. (Bulletin 17C)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gumbel (EV1)</strong></p></td>
+<td><p>Light-tailed</p></td>
+<td><p>Historically common for flood peaks</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="regional-flood-frequency-analysis-rffa">
+<h3>🌐 Regional Flood Frequency Analysis (RFFA)<a class="headerlink" href="#regional-flood-frequency-analysis-rffa" title="Link to this heading">#</a></h3>
+<p>Used when site-specific data are sparse or unavailable.</p>
+</section>
+<section id="key-features">
+<h3>🗺️ Key Features:<a class="headerlink" href="#key-features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Homogeneous Region</strong>: Group sites with similar hydrologic characteristics.</p></li>
+<li><p><strong>Index Flood Method</strong>: Normalize data by a regional index (e.g., mean annual flood).</p></li>
+<li><p><strong>Regional Regression</strong>: Use basin attributes to estimate flood quantiles.</p></li>
+<li><p><strong>L-Moments or Bayesian Methods</strong>: Improve parameter estimation across sites.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="most-widely-used">
+<h3>🌍 Most Widely Used:<a class="headerlink" href="#most-widely-used" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>United States:</strong> Log-Pearson Type III (per USGS Bulletin 17C)</p></li>
+<li><p><strong>Globally:</strong> Generalized Extreme Value (GEV)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="hybrid-approaches">
+<h3>🧩 Hybrid Approaches<a class="headerlink" href="#hybrid-approaches" title="Link to this heading">#</a></h3>
+<p>When observational data are sparse:</p>
+<ul class="simple">
+<li><p><strong>Bayesian Estimation:</strong> Combines prior knowledge with observed data.</p></li>
+<li><p><strong>Regional Skew Adjustment:</strong> Blends site-specific and regional skew.</p></li>
+<li><p><strong>Expected Moments Algorithm (EMA):</strong> Handles censored and interval data.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h3>🌐 Regional Flood Frequency Analysis (RFFA)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Used when site-specific data are insufficient.</p>
+</section>
+<section id="key-steps">
+<h3>🗺️ Key Steps:<a class="headerlink" href="#key-steps" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Define Homogeneous Region:</strong> Based on climate, physiography, land use.</p></li>
+<li><p><strong>Index Flood Method:</strong> Normalize peak flows by a regional index.</p></li>
+<li><p><strong>Regional Regression Models:</strong> Use basin characteristics to estimate flood quantiles.</p></li>
+<li><p><strong>L-Moments or GAMLSS:</strong> For parameter estimation across sites.</p></li>
+</ol>
+</section>
+<section id="usgs-practice">
+<h3>📘 USGS Practice:<a class="headerlink" href="#usgs-practice" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses regional skewness maps and regression equations.</p></li>
+<li><p>Bulletin 17C recommends combining at-site and regional skew.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h3>🧠 Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<p>Flood frequency analysis is essential for infrastructure design and risk management. While observational data are ideal, theoretical distributions—especially GEV and Log-Pearson Type III—enable extrapolation when data are sparse. Regional methods fill gaps for ungauged sites, ensuring robust flood risk estimates.</p>
+</section>
+<section id="foundational-literature">
+<h3>Foundational Literature<a class="headerlink" href="#foundational-literature" title="Link to this heading">#</a></h3>
+<p>Flood Frequency Analysis (FFA) is a statistical method used to estimate the probability of different magnitudes of flood events occurring at a specific location over time and <span id="id3">[<a class="reference internal" href="../markdown.html#id61" title="C. Cunnane. Statistical Distributions for Flood Frequency Analysis. Number 33 in Operational Hydrology Report. Secretariat of the World Meteorological Organization, Geneva, 1989.">Cunnane, 1989</a>, <a class="reference internal" href="../markdown.html#id56" title="P. G. Holland, R. W. Herschy, and David Archer. Flood frequency analysis. In Encyclopedia of Hydrology and Water Resources, pages 279–288. Springer, 2016. doi:10.1007/978-1-4020-4497-7_86.">Holland <em>et al.</em>, 2016</a>, <a class="reference internal" href="../markdown.html#id54">Jr. <em>et al.</em>, 2018</a>]</span> provides foundational knowledge on extreme FFA. These works collectively establish the statistical frameworks, methodological advancements, and practical guidelines for estimating the probability of flood events of varying magnitudes at specific locations over time. <span id="id4">[<a class="reference internal" href="../markdown.html#id61" title="C. Cunnane. Statistical Distributions for Flood Frequency Analysis. Number 33 in Operational Hydrology Report. Secretariat of the World Meteorological Organization, Geneva, 1989.">Cunnane, 1989</a>]</span> provides a comprehensive review of statistical distributions used in FFA, including selection criteria for distribution, and serves as a global reference for hydrologists conducting design flood estimation. <span id="id5">[<a class="reference internal" href="../markdown.html#id56" title="P. G. Holland, R. W. Herschy, and David Archer. Flood frequency analysis. In Encyclopedia of Hydrology and Water Resources, pages 279–288. Springer, 2016. doi:10.1007/978-1-4020-4497-7_86.">Holland <em>et al.</em>, 2016</a>]</span>- Evaluates the relevance of at-site FFA methods for extreme events using a simulation-based approach to improve reliability in estimating extreme flood probabilities. <span id="id6">[<a class="reference internal" href="../markdown.html#id54">Jr. <em>et al.</em>, 2018</a>]</span> is an update to Bulletin 17B; it addresses challenges in estimating rare floods and supports risk-informed design, and represents the U.S. national standard for flood frequency estimation. Together, these sources form the core methodological and practical basis for assessing extreme flood risk and designing infrastructure.</p>
+</section>
+<section id="flood-frequency-analysis-tool">
+<h3>Flood frequency analysis tool<a class="headerlink" href="#flood-frequency-analysis-tool" title="Link to this heading">#</a></h3>
+<p>This tool reads peak flow data from the USGS NWIS database and fits 10 commonly used extreme value probability distributions to estimate flood magnitudes associated with various return periods (e.g., 2-year, 100-year). It performs statistical goodness-of-fit evaluation and provides an interactive interface to visualize the flood frequency curve for each distribution.</p>
+</section>
+<hr class="docutils" />
+<section id="what-the-tool-does">
+<h3>What the Tool Does<a class="headerlink" href="#what-the-tool-does" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>✅ Reads annual peak discharge data from a NWIS <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file</p></li>
+<li><p>✅ Fits multiple statistical distributions to the observed peak flows</p></li>
+<li><p>✅ Computes estimated flood quantiles for specific return periods (2, 5, 10, 25, 50, 100 years)</p></li>
+<li><p>✅ Calculates RMSE and Kolmogorov–Smirnov (KS) goodness-of-fit metrics</p></li>
+<li><p>✅ Allows the user to interactively select a distribution and view:</p>
+<ul>
+<li><p>Estimated peak flows</p></li>
+<li><p>Distribution parameters</p></li>
+<li><p>GOF statistics</p></li>
+<li><p>A flood frequency curve plotted in log scale</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-use">
+<h3>How to Use<a class="headerlink" href="#how-to-use" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Prepare Input File</strong></p>
+<ul class="simple">
+<li><p>Download annual peak streamflow data from the <a class="reference external" href="https://waterdata.usgs.gov/nwis/peak">USGS NWIS Peak Flow site</a></p></li>
+<li><p>Save as a tab-delimited <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file (e.g., <code class="docutils literal notranslate"><span class="pre">07022500_nwis_peak.txt</span></code>)</p></li>
+</ul>
+</li>
+<li><p><strong>Run the Script in Jupyter Notebook</strong></p>
+<ul class="simple">
+<li><p>Place the file in your working directory</p></li>
+<li><p>Modify the line <code class="docutils literal notranslate"><span class="pre">usgs_file</span> <span class="pre">=</span> <span class="pre">&quot;07022500_nwis_peak.txt&quot;</span></code> to match your filename</p></li>
+<li><p>Run the script cell-by-cell</p></li>
+</ul>
+</li>
+<li><p><strong>Explore Results</strong></p>
+<ul class="simple">
+<li><p>View the summary table of fitted distribution parameters and their statistical performance</p></li>
+<li><p>Use the dropdown selector to compare estimated flood flows and curves for each distribution</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="theoretical-background-distributions-used">
+<h3>Theoretical Background: Distributions Used<a class="headerlink" href="#theoretical-background-distributions-used" title="Link to this heading">#</a></h3>
+<p>Each distribution estimates the probability of rare flood events based on historical data. Here’s a quick reference:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Distribution</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Parameters</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Gumbel (EV1)</strong></p></td>
+<td><p>Models block maxima (e.g., annual max). Skewed right.</p></td>
+<td><p>Location (μ), Scale (β)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Log-Pearson III</strong></p></td>
+<td><p>Log-transformed Pearson Type III. Used in U.S. federal flood studies.</p></td>
+<td><p>Shape (α), Location (μ), Scale</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GEV</strong></p></td>
+<td><p>General form for extremes. Includes Gumbel, Frechet, Weibull as cases.</p></td>
+<td><p>Shape (ξ), Location, Scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Normal</strong></p></td>
+<td><p>Symmetric bell curve. May misrepresent skewed flood data.</p></td>
+<td><p>Mean (μ), Std. dev. (σ)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Lognormal</strong></p></td>
+<td><p>Data is normally distributed after log transform. Skewed right.</p></td>
+<td><p>Shape (σ), Location, Scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weibull (Type III)</strong></p></td>
+<td><p>Useful for extreme minimums or upper tails.</p></td>
+<td><p>Shape (k), Location, Scale</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Exponential</strong></p></td>
+<td><p>Special case of Weibull; constant failure rate (rarely used for floods).</p></td>
+<td><p>Rate (λ) or Scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Gamma</strong></p></td>
+<td><p>General skewed distribution, flexible fit for hydrology</p></td>
+<td><p>Shape (k), Scale (θ), Location</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Loglogistic (Fisk)</strong></p></td>
+<td><p>Skewed right, like lognormal but heavier tail.</p></td>
+<td><p>Shape (c), Location, Scale</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Generalized Pareto</strong></p></td>
+<td><p>Models excesses over a threshold (POT approach).</p></td>
+<td><p>Shape, Location, Scale</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="performance-evaluation-criteria">
+<h3>Performance Evaluation Criteria<a class="headerlink" href="#performance-evaluation-criteria" title="Link to this heading">#</a></h3>
+<p>Two statistical metrics assess how well each distribution fits the observed data:</p>
+<ul>
+<li><h3 class="rubric" id="root-mean-squared-error-rmse">🔹 Root Mean Squared Error (RMSE)</h3>
+<p>Measures average error between observed peak flows and estimated quantiles from the distribution:
+$<span class="math notranslate nohighlight">\(
+\text{RMSE} = \sqrt{ \frac{1}{n} \sum (Q_{\text{obs}} - Q_{\text{est}})^2 }
+\)</span>$
+Lower values indicate a better fit.</p>
+</li>
+<li><h3 class="rubric" id="kolmogorovsmirnov-ks-statistic">🔹 Kolmogorov–Smirnov (KS) Statistic</h3>
+<p>Measures the maximum difference between the empirical cumulative distribution function (ECDF) and the theoretical CDF:
+$<span class="math notranslate nohighlight">\(
+D = \sup_x |F_n(x) - F(x)|
+\)</span>$</p>
+<ul class="simple">
+<li><p>Returns both the <strong>KS statistic</strong> and a <strong>p-value</strong></p></li>
+<li><p>If p-value &gt; 0.05: distribution is a statistically valid fit (✅ Pass)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="output-summary">
+<h3>Output Summary<a class="headerlink" href="#output-summary" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A sorted summary table of all distributions including:</p>
+<ul>
+<li><p>Fitted parameters</p></li>
+<li><p>RMSE</p></li>
+<li><p>KS statistic and p-value</p></li>
+<li><p>Pass/fail interpretation</p></li>
+</ul>
+</li>
+<li><p>Interactive flood frequency plots for return periods on a log-x axis</p></li>
+<li><p>Ability to choose which distribution best represents the dataset</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Floodplain mapping</p></li>
+<li><p>Hydraulic structure design (culverts, bridges, dams)</p></li>
+<li><p>Return period–based risk estimation</p></li>
+<li><p>Hydrologic modeling calibration</p></li>
+</ul>
+<hr class="docutils" />
+<p>Let me know if you’d like this tool extended with confidence intervals, percentile shading, or exported reports in Excel or PDF!</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">StringIO</span>
+
+<span class="c1"># Simulate the file content as a string</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">agency_cd   site_no peak_dt peak_va</span>
+<span class="s2">USGS    7022500 3/3/1953    780</span>
+<span class="s2">USGS    7022500 1/20/1954   520</span>
+<span class="s2">USGS    7022500 3/20/1955   846</span>
+<span class="s2">USGS    7022500 2/2/1956    440</span>
+<span class="s2">USGS    7022500 1/22/1957   707</span>
+<span class="s2">USGS    7022500 11/18/1957  763</span>
+<span class="s2">USGS    7022500 8/6/1959    514</span>
+<span class="s2">USGS    7022500 7/3/1960    602</span>
+<span class="s2">USGS    7022500 3/12/1961   304</span>
+<span class="s2">USGS    7022500 9/16/1962   833</span>
+<span class="s2">USGS    7022500 3/4/1963    228</span>
+<span class="s2">USGS    7022500 3/4/1964    690</span>
+<span class="s2">USGS    7022500 3/29/1965   1870</span>
+<span class="s2">USGS    7022500 3/20/1968   545</span>
+<span class="s2">USGS    7022500 4/9/1969    702</span>
+<span class="s2">USGS    7022500 6/13/1970   295</span>
+<span class="s2">USGS    7022500 8/21/1971   987</span>
+<span class="s2">USGS    7022500 7/28/1972   350</span>
+<span class="s2">USGS    7022500 5/1/1973    816</span>
+<span class="s2">USGS    7022500 11/24/1973  900</span>
+<span class="s2">USGS    7022500 3/29/1975   1160</span>
+<span class="s2">USGS    7022500 2/17/1976   800</span>
+<span class="s2">USGS    7022500 6/26/1977   748</span>
+<span class="s2">USGS    7022500 3/14/1978   728</span>
+<span class="s2">USGS    7022500 12/3/1978   1460</span>
+<span class="s2">USGS    7022500 3/17/1980   364</span>
+<span class="s2">USGS    7022500 6/6/1981    975</span>
+<span class="s2">USGS    7022500 1/4/1982    1080</span>
+<span class="s2">USGS    7022500 6/3/1983    2760</span>
+<span class="s2">USGS    7022500 4/29/1984   954</span>
+<span class="s2">USGS    7022500 9/5/1985    660</span>
+<span class="s2">USGS    7022500 5/24/1986   360</span>
+<span class="s2">USGS    7022500 2/28/1987   415</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Read it as a DataFrame using tab separator</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1">#df = pd.read_csv(StringIO(data), delim_whitespace=True)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># Display the first few rows</span>
+<span class="c1">#df.head()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;peak_va&#39;</span><span class="p">])</span>
+
+<span class="c1">#peak_df[&quot;peak_va&quot;]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>agency_cd   site_no peak_dt peak_va</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USGS    7022500 3/3/1953    780</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>USGS    7022500 1/20/1954   520</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>USGS    7022500 3/20/1955   846</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>USGS    7022500 2/2/1956    440</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>USGS    7022500 1/22/1957   707</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\core\indexes\base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3805</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File index.pyx:167,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File index.pyx:196,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas\\_libs\\hashtable_class_helper.pxi:7081,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas\\_libs\\hashtable_class_helper.pxi:7089,</span> in <span class="ni">pandas._libs.hashtable.PyObjectHashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: &#39;peak_va&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">51</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="c1"># Display the first few rows</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="c1">#df.head()</span>
+<span class="ne">---&gt; </span><span class="mi">51</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;peak_va&#39;</span><span class="p">])</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\core\frame.py:4102,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4100</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">4101</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">4102</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4103</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">4104</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\pandas\core\indexes\base.py:3812,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">3808</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3809</span>         <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3810</span>     <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">3811</span>         <span class="k">raise</span> <span class="n">InvalidIndexError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3812</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3813</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3814</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3815</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3816</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3817</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &#39;peak_va&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Required Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">kstest</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">Dropdown</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="c1">#pip install scipy</span>
+<span class="c1">### Load NWIS Peak Flow Data</span>
+<span class="c1"># def read_nwis_peak_file(file_path):</span>
+<span class="c1">#     try:</span>
+<span class="c1">#         with open(file_path, &#39;r&#39;) as f:</span>
+<span class="c1">#             lines = f.readlines()</span>
+<span class="c1">#         start_line = next(i for i, line in enumerate(lines) if not line.startswith(&#39;#&#39;))</span>
+<span class="c1">#         df = pd.read_csv(</span>
+<span class="c1">#             file_path,</span>
+<span class="c1">#             sep=&#39;\t&#39;,</span>
+<span class="c1">#             comment=&#39;#&#39;,</span>
+<span class="c1">#             header=0,</span>
+<span class="c1">#             dtype=str,</span>
+<span class="c1">#             engine=&#39;python&#39;</span>
+<span class="c1">#         )</span>
+<span class="c1">#         df.columns = df.columns.str.strip()</span>
+<span class="c1">#         df[&#39;peak_dt&#39;] = pd.to_datetime(df[&#39;peak_dt&#39;], errors=&#39;coerce&#39;)</span>
+<span class="c1">#         df[&#39;peak_va&#39;] = pd.to_numeric(df[&#39;peak_va&#39;], errors=&#39;coerce&#39;)</span>
+<span class="c1">#         df_clean = df[[&#39;site_no&#39;, &#39;peak_dt&#39;, &#39;peak_va&#39;]].dropna()</span>
+<span class="c1">#         return df_clean</span>
+<span class="c1">#     except Exception as e:</span>
+<span class="c1">#         print(f&quot;❌ Error reading file: {e}&quot;)</span>
+<span class="c1">#         return pd.DataFrame()</span>
+
+<span class="c1">### Load &amp; Preview Data</span>
+<span class="c1"># usgs_file = &quot;07022500_nwis_peak.txt&quot;</span>
+<span class="c1"># peak_df = read_nwis_peak_file(usgs_file)</span>
+<span class="c1"># display(peak_df.head())</span>
+
+<span class="c1">### Set Up Distribution Parameters</span>
+<span class="n">distributions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Gumbel (EV1)&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">gumbel_r</span><span class="p">,</span>
+    <span class="s2">&quot;Log-Pearson III&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">pearson3</span><span class="p">,</span>
+    <span class="s2">&quot;GEV&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="p">,</span>
+    <span class="s2">&quot;Normal&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span>
+    <span class="s2">&quot;Lognormal&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="p">,</span>
+    <span class="s2">&quot;Weibull&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">weibull_min</span><span class="p">,</span>
+    <span class="s2">&quot;Exponential&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">expon</span><span class="p">,</span>
+    <span class="s2">&quot;Gamma&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="p">,</span>
+    <span class="s2">&quot;Loglogistic&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">fisk</span><span class="p">,</span>
+    <span class="s2">&quot;Generalized Pareto&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="o">.</span><span class="n">genpareto</span>
+<span class="p">}</span>
+
+<span class="c1">###  Define Probability Array</span>
+<span class="c1">#peak_values = peak_df[&#39;peak_va&#39;] #peak_df[&#39;peak_va&#39;].dropna()</span>
+<span class="n">peak_values</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;peak_va&#39;</span><span class="p">]</span>
+<span class="n">sorted_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">peak_values</span><span class="p">)</span>
+<span class="n">prob_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">return_periods</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prob_plot</span><span class="p">)</span>
+<span class="n">prob_exceed</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># For 100-year flood estimate</span>
+
+<span class="c1">###  Fit Distributions</span>
+<span class="n">summary_rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">fit_results</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">dist</span> <span class="ow">in</span> <span class="n">distributions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">peak_values</span><span class="p">)</span>
+        <span class="n">flood_q</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prob_exceed</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
+<span class="c1">#        q_estimates = dist.ppf(prob_plot, *params)</span>
+        <span class="c1"># Generate quantiles from same size as data</span>
+        <span class="n">prob_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sorted_data</span><span class="p">))</span>  <span class="c1"># now it&#39;s 33 points</span>
+        <span class="n">q_estimates</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">prob_plot</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">)</span>
+
+        
+        <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">sorted_data</span><span class="p">,</span> <span class="n">q_estimates</span><span class="p">))</span>
+        <span class="n">ks_stat</span><span class="p">,</span> <span class="n">ks_pval</span> <span class="o">=</span> <span class="n">kstest</span><span class="p">(</span><span class="n">peak_values</span><span class="p">,</span> <span class="n">dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="n">fit_results</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span>
+            <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">dist</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">return_periods</span><span class="p">,</span> <span class="o">*</span><span class="n">params</span><span class="p">),</span>
+            <span class="s2">&quot;rmse&quot;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">,</span>
+            <span class="s2">&quot;ks_stat&quot;</span><span class="p">:</span> <span class="n">ks_stat</span><span class="p">,</span>
+            <span class="s2">&quot;ks_pval&quot;</span><span class="p">:</span> <span class="n">ks_pval</span>
+        <span class="p">}</span>
+
+        <span class="n">param_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">])</span>
+        <span class="n">summary_rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s2">&quot;Distribution&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;Parameters&quot;</span><span class="p">:</span> <span class="n">param_str</span><span class="p">,</span>
+            <span class="s2">&quot;RMSE (cfs)&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">rmse</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s2">&quot;KS Stat&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">ks_stat</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="s2">&quot;KS p-value&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">ks_pval</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="s2">&quot;KS Result&quot;</span><span class="p">:</span> <span class="s2">&quot;✅ Pass&quot;</span> <span class="k">if</span> <span class="n">ks_pval</span> <span class="o">&gt;</span> <span class="mf">0.05</span> <span class="k">else</span> <span class="s2">&quot;❌ Reject&quot;</span>
+        <span class="p">})</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ Could not fit </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">### Summary Table</span>
+<span class="n">summary_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">summary_rows</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;RMSE (cfs)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 Goodness-of-Fit Summary for All Distributions:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">summary_df</span><span class="p">)</span>
+
+<span class="c1">### Interactive Plotting</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_selected_distribution</span><span class="p">(</span><span class="n">dist_name</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">fit_results</span><span class="p">[</span><span class="n">dist_name</span><span class="p">]</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">]</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">]</span>
+    <span class="n">param_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">return_periods</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Estimated Peak Flow&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years, log scale)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Estimated Peak Flow (cfs)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dist_name</span><span class="si">}</span><span class="s2"> Flood Frequency Curve</span><span class="se">\n</span><span class="s2">Parameters: </span><span class="si">{</span><span class="n">param_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Tabular Output</span>
+    <span class="n">df_plot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">&quot;Return Period (yr)&quot;</span><span class="p">:</span> <span class="n">return_periods</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="s2">&quot;Estimated Peak Flow (cfs)&quot;</span><span class="p">:</span> <span class="n">q</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📌 Parameters: </span><span class="si">{</span><span class="n">param_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;rmse&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, KS stat: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;ks_stat&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, p-value: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;ks_pval&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_plot</span><span class="p">)</span>
+
+<span class="c1">### Launch Widget</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_selected_distribution</span><span class="p">,</span> <span class="n">dist_name</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">fit_results</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Distribution&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="self-assessment-flood-frequency-analysis-tool">
+<h3>Self-Assessment: Flood Frequency Analysis Tool<a class="headerlink" href="#self-assessment-flood-frequency-analysis-tool" title="Link to this heading">#</a></h3>
+<p>Use these prompts and questions to evaluate your understanding of the tool and its underlying hydrologic and statistical concepts.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Why are return periods plotted on a logarithmic scale in flood frequency analysis?</strong></p>
+<ul class="simple">
+<li><p><em>Hint: Think about how frequent vs. rare events are distributed.</em></p></li>
+</ul>
+</li>
+<li><p><strong>What is the purpose of fitting multiple distributions to the same peak flow dataset?</strong></p>
+<ul class="simple">
+<li><p><em>Hint: No single distribution fits all scenarios equally well.</em></p></li>
+</ul>
+</li>
+<li><p><strong>How do Gringorten plotting positions help in flood frequency analysis?</strong></p>
+<ul class="simple">
+<li><p><em>Hint: They’re used to assign empirical probabilities to ordered data.</em></p></li>
+</ul>
+</li>
+<li><p><strong>What assumptions underlie the use of the Gumbel distribution in hydrology?</strong></p>
+<ul class="simple">
+<li><p><em>Hint: It’s designed to model block maxima like annual peak flows.</em></p></li>
+</ul>
+</li>
+<li><p><strong>How do parametric and non-parametric flood frequency methods differ in their approach?</strong></p>
+<ul class="simple">
+<li><p><em>Hint: Consider how the data distribution is treated.</em></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-prompts">
+<h3>Reflective Prompts<a class="headerlink" href="#reflective-prompts" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>If two distributions yield similar RMSE but different KS p-values, which metric is more important for selecting a model—and why?</strong></p></li>
+<li><p><strong>Can a statistically good-fitting distribution be inappropriate for design applications? Provide an example.</strong></p></li>
+<li><p><strong>How would you adapt this tool to process data from multiple gage stations simultaneously?</strong></p></li>
+<li><p><strong>What limitations might this tool face when applied to future climate-affected streamflow patterns?</strong></p></li>
+<li><p><strong>How would the analysis change if you used partial-duration series instead of annual maxima?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+<p><strong>Q1.</strong> The Gumbel distribution is commonly used to model:<br />
+A. Rainfall intensity<br />
+B. Annual maximum values<br />
+C. Median flow durations<br />
+D. Baseflow during drought<br />
+✅ <strong>Correct:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q2.</strong> The Kolmogorov–Smirnov test compares:<br />
+A. Log and normal distributions<br />
+B. ECDF and theoretical CDF<br />
+C. Mean annual rainfall<br />
+D. Number of peaks above threshold<br />
+✅ <strong>Correct:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q3.</strong> In the Generalized Extreme Value distribution, the shape parameter controls:<br />
+A. Peak discharge<br />
+B. Tail behavior<br />
+C. Cumulative runoff<br />
+D. Frequency of low flows<br />
+✅ <strong>Correct:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q4.</strong> A high KS p-value and low RMSE suggest:<br />
+A. Overfitting<br />
+B. Good model fit<br />
+C. Poor data resolution<br />
+D. Statistical bias<br />
+✅ <strong>Correct:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q5.</strong> Which distribution is least appropriate for positively skewed hydrologic data?<br />
+A. Gumbel<br />
+B. Lognormal<br />
+C. Normal<br />
+D. Log-Pearson III<br />
+✅ <strong>Correct:</strong> C</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="SoilInfiltration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 2 Hydrology: Infiltration Models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HabitatSuitabilityIndex.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 2 Hydrology: Habitat Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-frequency-analysis">🌊 Flood Frequency Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">🔍 Key Concepts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-observational-data">📊 Importance of Observational Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits">✅ Benefits:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-with-sparse-data">⚠️ Limitations with Sparse Data:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-distributions-for-extreme-events">📐 Theoretical Distributions for Extreme Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-distributions">🧠 Common Distributions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-vs-theoretical-distributions-in-extreme-value-analysis">📊 Empirical vs. Theoretical Distributions in Extreme Value Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-distribution">🔍 Empirical Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-distribution">📐 Theoretical Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-theoretical-distributions-for-extreme-events">🌊 Why Use Theoretical Distributions for Extreme Events?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#most-popular-distributions-for-extremes">📈 Most Popular Distributions for Extremes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-flood-frequency-analysis-rffa">🌐 Regional Flood Frequency Analysis (RFFA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">🗺️ Key Features:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#most-widely-used">🌍 Most Widely Used:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-approaches">🧩 Hybrid Approaches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🌐 Regional Flood Frequency Analysis (RFFA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-steps">🗺️ Key Steps:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usgs-practice">📘 USGS Practice:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">🧠 Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-literature">Foundational Literature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-frequency-analysis-tool">Flood frequency analysis tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-tool-does">What the Tool Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use">How to Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background-distributions-used">Theoretical Background: Distributions Used</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-evaluation-criteria">Performance Evaluation Criteria</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-summary">Output Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment-flood-frequency-analysis-tool">Self-Assessment: Flood Frequency Analysis Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts">Reflective Prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">Quiz Questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

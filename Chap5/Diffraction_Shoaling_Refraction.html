@@ -1,0 +1,1632 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 5 Coastal Engineering: Wave Transformation (Shoaling, Refraction and Diffraction) &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap5/Diffraction_Shoaling_Refraction';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 5 Coastal Engineering: Wave Reflection from coastal structure" href="Reflection.html" />
+    <link rel="prev" title="Chapter 5 Coastal Engineering: Wave Kinematics" href="WaveBreaking.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap5/Diffraction_Shoaling_Refraction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap5/Diffraction_Shoaling_Refraction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap5/Diffraction_Shoaling_Refraction.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap5/Diffraction_Shoaling_Refraction.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap5/Diffraction_Shoaling_Refraction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5 Coastal Engineering: Wave Transformation (Shoaling, Refraction and Diffraction)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-diffraction-in-coastal-engineering">Wave Diffraction in Coastal Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-framework">Analytical Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-significance">Engineering Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-diffraction-modeling">Challenges in Diffraction Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffraction-model-behind-finite-breakwater-bettess-method">Diffraction Model Behind Finite Breakwater (Bettess Method)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-functions">Key Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-features">Visualization Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-shoaling">📘 Wave Shoaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shoaling-coefficient-equation">Shoaling Coefficient Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-refraction">Wave Refraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snells-law-for-waves">Snell’s Law for Waves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refraction-coefficient-equation">Refraction Coefficient Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-matter">Why These Matter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-coastline-examples">U.S. Coastline Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-breakwater-diffraction-simulator-bettess-method">🌊 Finite Breakwater Diffraction Simulator (Bettess Method)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-slider-controls">🎛️ Inputs (Slider Controls)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-plot">🧭 How to Interpret the Plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-wave-transformation-explorer-shoaling-refraction-coefficients">🌊 Interactive Wave Transformation Explorer — Shoaling &amp; Refraction Coefficients</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs">🎛️ User Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret">🧭 How to Interpret</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions-click-to-reveal-answers">Quiz Questions (Click to Reveal Answers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-to-the-shoaling-coefficient-k-s-as-water-depth-decreases">1. What happens to the shoaling coefficient ( K_s ) as water depth decreases?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-coefficient-accounts-for-wave-direction-change-due-to-depth-variation">2. Which coefficient accounts for wave direction change due to depth variation?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-diffraction-model-what-does-a-value-of-k-d-approx-1-indicate">3. In the diffraction model, what does a value of ( K_d \approx 1 ) indicate?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-parameter-most-directly-controls-the-symmetry-of-the-diffraction-field">4. Which parameter most directly controls the symmetry of the diffraction field?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-primary-reason-for-computing-diffraction-from-both-breakwater-tips">5. What is the primary reason for computing diffraction from both breakwater tips?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-coastal-engineering-wave-transformation-shoaling-refraction-and-diffraction">
+<h1>Chapter 5 Coastal Engineering: Wave Transformation (Shoaling, Refraction and Diffraction)<a class="headerlink" href="#chapter-5-coastal-engineering-wave-transformation-shoaling-refraction-and-diffraction" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Diffraction</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Diffraction</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Simulation"><span class="xref myst">Simulation: Shoaling and Referaction</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="wave-diffraction-in-coastal-engineering">
+<h3>Wave Diffraction in Coastal Engineering<a class="headerlink" href="#wave-diffraction-in-coastal-engineering" title="Link to this heading">#</a></h3>
+<p>Wave diffraction refers to the process where wave energy bends and spreads into the sheltered region behind structures like breakwaters, headlands, or artificial islands. It’s a key factor in designing maritime infrastructure, reducing wave agitation in harbors, and predicting shoreline changes.</p>
+</section>
+<section id="analytical-framework">
+<h3>Analytical Framework<a class="headerlink" href="#analytical-framework" title="Link to this heading">#</a></h3>
+<p>The behavior of wave diffraction in gently sloping coastal zones is governed by the <strong>Mild-Slope Equation</strong> (MSE):</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla \cdot (CC_g \nabla \eta) + k^2 CC_g \eta = 0
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \eta \)</span>): surface elevation due to wave motion</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C \)</span>): phase velocity</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C_g \)</span>): group velocity</p></li>
+<li><p><span class="math notranslate nohighlight">\(( k \)</span>): wave number <span class="math notranslate nohighlight">\(( = \dfrac{2\pi}{L} \)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( L \)</span>): wavelength</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \nabla \)</span>): horizontal gradient operator</p></li>
+</ul>
+<p>For simplified cases—such as wave diffraction behind a semi-infinite breakwater—the <strong>diffraction coefficient <span class="math notranslate nohighlight">\(( K_d \)</span>)</strong> is approximated as:</p>
+<div class="math notranslate nohighlight">
+\[
+K_d(r, \theta) = \left| F(\sigma_1) e^{-i k r \cos(\theta - \theta_0)} + F(\sigma_2) e^{-i k r \cos(\theta + \theta_0)} \right|
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( r \)</span>): radial distance from the structure</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \theta \)</span>): observation angle</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \theta_0 \)</span>): wave approach angle</p></li>
+<li><p><span class="math notranslate nohighlight">\(( k = \dfrac{2\pi}{L} \)</span>): wave number</p></li>
+<li><p><span class="math notranslate nohighlight">\(( F(\sigma) \)</span>): Fresnel integral approximation</p></li>
+</ul>
+<p>Fresnel parameters:
+$<span class="math notranslate nohighlight">\(
+\sigma_1 = 2 \sqrt{\dfrac{k r}{\pi}} \sin \left( \dfrac{\theta - \theta_0}{2} \right), \quad
+\sigma_2 = -2 \sqrt{\dfrac{k r}{\pi}} \sin \left( \dfrac{\theta + \theta_0}{2} \right)
+\)</span>$</p>
+</section>
+<section id="engineering-significance">
+<h3>Engineering Significance<a class="headerlink" href="#engineering-significance" title="Link to this heading">#</a></h3>
+<p>Wave diffraction modeling is essential for:</p>
+<ul class="simple">
+<li><p><strong>Harbor Design:</strong> Ensuring calm zones for vessel mooring</p></li>
+<li><p><strong>Shoreline Protection:</strong> Shielding coastal areas from excess wave energy</p></li>
+<li><p><strong>Sediment Management:</strong> Understanding longshore transport mechanisms</p></li>
+</ul>
+<p>Your simulation visualizes how wave energy distributes behind an idealized breakwater using diffraction coefficients.</p>
+</section>
+<section id="challenges-in-diffraction-modeling">
+<h3>Challenges in Diffraction Modeling<a class="headerlink" href="#challenges-in-diffraction-modeling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Realistic Geometry:</strong> Most structures aren’t infinite or straight</p></li>
+<li><p><strong>Multidirectional Waves:</strong> Natural wave fields require spectrum-based modeling</p></li>
+<li><p><strong>Coupled Dynamics:</strong> Must consider refraction, reflection, and shoaling</p></li>
+<li><p><strong>Computational Demand:</strong> High resolution simulations can be intensive</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="diffraction-model-behind-finite-breakwater-bettess-method">
+<h3>Diffraction Model Behind Finite Breakwater (Bettess Method)<a class="headerlink" href="#diffraction-model-behind-finite-breakwater-bettess-method" title="Link to this heading">#</a></h3>
+<p>This Jupyter Notebook cell simulates the <strong>spatial variation of wave diffraction</strong> behind a <strong>finite breakwater</strong> using the <strong>Bettess et al. (1984)</strong> method. It calculates the <strong>diffraction coefficient ( K_d(x, y) )</strong> at each point in a 2D domain, accounting for:</p>
+<ul class="simple">
+<li><p><strong>Wave wavelength</strong></p></li>
+<li><p><strong>Breakwater length</strong></p></li>
+<li><p><strong>Wave approach angle</strong></p></li>
+<li><p><strong>Spatial resolution and domain size</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="methodology">
+<h3>Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The diffraction coefficient is computed using <strong>complex Fresnel-type integrals</strong> and exponential phase terms.</p></li>
+<li><p>The model accounts for <strong>diffraction from both breakwater tips</strong>, using superposition.</p></li>
+<li><p>The wave approach angle ( \beta ) rotates the incident wave direction, affecting the diffraction pattern asymmetrically.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="key-functions">
+<h3>Key Functions<a class="headerlink" href="#key-functions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fresnel_ff(sigma)</span></code>: Computes Fresnel-type integrals used in the Bettess formulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kd_bettess(r,</span> <span class="pre">θ,</span> <span class="pre">L,</span> <span class="pre">β)</span></code>: Calculates the diffraction coefficient from a single breakwater tip.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_finite_breakwater_diffraction(...)</span></code>: Generates the full spatial field by summing contributions from both tips.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="interactive-controls">
+<h3>Interactive Controls<a class="headerlink" href="#interactive-controls" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wavelength</span> <span class="pre">(m)</span></code></p></td>
+<td><p>Incident wave wavelength</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Domain</span> <span class="pre">Size</span> <span class="pre">(m)</span></code></p></td>
+<td><p>Size of the simulation grid</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Resolution</span></code></p></td>
+<td><p>Grid resolution (number of points)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Breakwater</span> <span class="pre">Length</span> <span class="pre">(m)</span></code></p></td>
+<td><p>Total length of the breakwater</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wave</span> <span class="pre">Angle</span> <span class="pre">β</span> <span class="pre">(°)</span></code></p></td>
+<td><p>Angle of wave approach (from x-axis)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="visualization-features">
+<h3>Visualization Features<a class="headerlink" href="#visualization-features" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Contour plot</strong> of ( K_d(x, y) ) showing energy distribution</p></li>
+<li><p><strong>Black line</strong> representing the breakwater</p></li>
+<li><p><strong>Red arrow</strong> indicating wave approach direction</p></li>
+<li><p><strong>Colorbar</strong> showing magnitude of diffraction coefficient</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="physical-interpretation">
+<h3>Physical Interpretation<a class="headerlink" href="#physical-interpretation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Transmission zone</strong> (aligned with wave direction): ( K_d \approx 1 )</p></li>
+<li><p><strong>Shadow zone</strong> (behind breakwater): ( K_d &lt; 1 ), decreasing with distance</p></li>
+<li><p><strong>Oblique wave incidence</strong> causes asymmetry in the diffraction field</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="wave-shoaling">
+<h3>📘 Wave Shoaling<a class="headerlink" href="#wave-shoaling" title="Link to this heading">#</a></h3>
+<p><strong>Wave shoaling</strong> refers to the increase in wave height as ocean waves travel from deep to shallow water. As depth decreases, wave speed slows and wave energy becomes concentrated, causing wave height to rise.</p>
+</section>
+<section id="shoaling-coefficient-equation">
+<h3>Shoaling Coefficient Equation<a class="headerlink" href="#shoaling-coefficient-equation" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+K_s = \sqrt{ \frac{C_0}{C} } \cdot \sqrt{ \frac{n_0}{n} }
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( C_0 \)</span>): deep-water wave celerity</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C \)</span>): wave celerity in shallow water</p></li>
+<li><p><span class="math notranslate nohighlight">\(( n_0 \)</span>), <span class="math notranslate nohighlight">\(( n \)</span>): group velocity factors (e.g., <span class="math notranslate nohighlight">\(( n_0 \approx 0.5 \)</span>) in deep water)</p></li>
+</ul>
+<p><strong>Simplified for small amplitude waves:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+K_s \approx \sqrt{ \frac{C_0}{C} }
+\]</div>
+</section>
+<section id="id1">
+<h3>Physical Interpretation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>As depth decreases, wave speed decreases.</p></li>
+<li><p>To conserve energy flux, wave height increases.</p></li>
+</ul>
+</section>
+<section id="wave-refraction">
+<h3>Wave Refraction<a class="headerlink" href="#wave-refraction" title="Link to this heading">#</a></h3>
+<p><strong>Wave refraction</strong> occurs when wave crests bend as different parts of the wave travel through varying depths (and thus different speeds). This leads to wave rays converging or diverging.</p>
+</section>
+<section id="snells-law-for-waves">
+<h3>Snell’s Law for Waves<a class="headerlink" href="#snells-law-for-waves" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\frac{ \sin \theta }{ C } = \text{constant}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \theta \)</span>): angle between wave crest and depth contour</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C \)</span>): wave celerity</p></li>
+</ul>
+</section>
+<section id="refraction-coefficient-equation">
+<h3>Refraction Coefficient Equation<a class="headerlink" href="#refraction-coefficient-equation" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+K_r = \sqrt{ \frac{ \cos \theta_0 }{ \cos \theta } }
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \theta_0 \)</span>): deep-water wave angle</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \theta \)</span>): wave angle in shallow water</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Physical Interpretation<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Wave angle decreases as wave slows down.</p></li>
+<li><p>Waves bend toward the shore or around features (headlands, shoals).</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="why-these-matter">
+<h3>Why These Matter<a class="headerlink" href="#why-these-matter" title="Link to this heading">#</a></h3>
+<p>Shoaling and refraction are critical in:</p>
+<ul class="simple">
+<li><p>📐 Coastal engineering</p></li>
+<li><p>🏖️ Beach erosion studies</p></li>
+<li><p>🌀 Surf forecasting</p></li>
+<li><p>🧭 Sediment transport modeling</p></li>
+</ul>
+<p>They affect wave height, energy concentration, and nearshore wave direction.</p>
+</section>
+<hr class="docutils" />
+<section id="u-s-coastline-examples">
+<h3>U.S. Coastline Examples<a class="headerlink" href="#u-s-coastline-examples" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>East Coast (e.g., Outer Banks, NC)</strong>:</p>
+<ul>
+<li><p>Gentle slope → strong shoaling</p></li>
+<li><p>Refraction intensifies erosion near inlets</p></li>
+</ul>
+</li>
+<li><p><strong>West Coast (e.g., California)</strong>:</p>
+<ul>
+<li><p>Steep slope → rapid shoaling</p></li>
+<li><p>Refraction around canyons like La Jolla spreads energy</p></li>
+</ul>
+</li>
+<li><p><strong>Gulf Coast (e.g., Florida Panhandle)</strong>:</p>
+<ul>
+<li><p>Wide continental shelf → gradual shoaling</p></li>
+<li><p>Refraction influences barrier island formation</p></li>
+</ul>
+</li>
+</ul>
+<p>Typical shoaling coefficients: <span class="math notranslate nohighlight">\(( K_s \approx 1.5 \text{ to } 2.5 \)</span>)<br />
+Refraction impact: 20–50% variation in wave height depending on bathymetry</p>
+</section>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h3>
+<p><span id="id3">[<a class="reference internal" href="../markdown.html#id101" title="P. Bettess, S. C. Liang, and others. Wave diffraction around breakwaters. In Proceedings of the International Conference on Coastal Engineering. Houston, Texas, 1984. ASCE. Finite element modeling of wave diffraction using Berkhoff's mild-slope equation. URL: https://icce-ojs-tamu.tdl.org/icce/index.php/icce/article/view/4151.">Bettess <em>et al.</em>, 1984</a>]</span> presents a finite element approach to modeling wave diffraction around breakwaters using Berkhoff’s mild-slope equation, a governing equation that accounts for both refraction and diffraction in varying bathymetry. <span id="id4">[<a class="reference internal" href="../markdown.html#id8" title="U.S. Army Coastal Engineering Research Center. Shore Protection Manual. Washington, D.C., 4th edition, 1984. Volumes 1 and 2.">U.S. Army Coastal Engineering Research Center, 1984</a>]</span> uses the diffraction coefficient (derived for a semi-infinite impermeable breakwater) defined as the ratio of diffracted wave height to incident wave height. The diffraction diagrams in the Shore Protection Manual are derived from a Fresnel-type solution (simplified and adapted for practical coastal engineering use) for semi-infinite breakwaters.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="finite-breakwater-diffraction-simulator-bettess-method">
+<h3>🌊 Finite Breakwater Diffraction Simulator (Bettess Method)<a class="headerlink" href="#finite-breakwater-diffraction-simulator-bettess-method" title="Link to this heading">#</a></h3>
+<p>This interactive Jupyter-based tool calculates and visualizes <strong>wave diffraction fields</strong> behind a finite breakwater using the <strong>Bettess (1980) Fresnel integral approach</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="what-it-does">
+<h3>🧠 What It Does<a class="headerlink" href="#what-it-does" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses Fresnel-type integrals to simulate wave diffraction from each breakwater tip</p></li>
+<li><p>Computes total <strong>diffraction coefficient (<span class="math notranslate nohighlight">\(K_d\)</span>)</strong> by superposing both tip contributions</p></li>
+<li><p>Visualizes 2D spatial field of <span class="math notranslate nohighlight">\(K_d(x, y)\)</span> across a user-defined domain</p></li>
+<li><p>Updates dynamically using slider-based widgets</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="inputs-slider-controls">
+<h3>🎛️ Inputs (Slider Controls)<a class="headerlink" href="#inputs-slider-controls" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wavelength</span> <span class="pre">(L)</span></code></p></td>
+<td><p>Incoming wave wavelength (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Domain</span> <span class="pre">Size</span></code></p></td>
+<td><p>Horizontal span of the simulation grid (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Resolution</span></code></p></td>
+<td><p>Grid density (# of steps per axis)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Breakwater</span> <span class="pre">Length</span></code></p></td>
+<td><p>Physical breakwater extent (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wave</span> <span class="pre">Angle</span> <span class="pre">β</span></code></p></td>
+<td><p>Incident wave angle from shore-normal (°)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📊 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Contour plot of <span class="math notranslate nohighlight">\(K_d(x, y)\)</span></strong> showing diffraction zones</p></li>
+<li><p><strong>Breakwater geometry</strong> and <strong>wave approach direction</strong> rendered</p></li>
+<li><p><strong>Color scale</strong> visualizes relative energy transmission (e.g. <span class="math notranslate nohighlight">\(K_d = 0\)</span> = full shadow; <span class="math notranslate nohighlight">\(K_d = 1\)</span> = no shadow)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-the-plot">
+<h3>🧭 How to Interpret the Plot<a class="headerlink" href="#how-to-interpret-the-plot" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>High <span class="math notranslate nohighlight">\(K_d\)</span> values</strong> indicate areas where waves are transmitted or diffracted strongly</p></li>
+<li><p><strong>Low <span class="math notranslate nohighlight">\(K_d\)</span> zones</strong> suggest sheltered areas with reduced wave energy</p></li>
+<li><p>Use these maps for:</p>
+<ul>
+<li><p>Breakwater design evaluations</p></li>
+<li><p>Harbor tranquility analysis</p></li>
+<li><p>Sediment transport and mooring safety considerations</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p><em>This tool links Fresnel theory with coastal engineering practice—making wave diffraction visible, scalable, and interactive.</em></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Fresnel-type integrals used in Bettess method</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fresnel_ff</span><span class="p">(</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="n">Mf</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">Nf</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">M</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">Mf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">Nf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span>
+    <span class="n">ff</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">M</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ff</span>
+
+<span class="c1"># 📐 Diffraction coefficient from one breakwater tip</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">kd_bettess</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta_deg</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">beta_deg</span><span class="p">):</span>
+    <span class="n">theta0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta_deg</span> <span class="o">-</span> <span class="n">beta_deg</span><span class="p">)</span>  <span class="c1"># relative to wave direction</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">L</span>
+    <span class="n">sigma1</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">theta0</span><span class="p">))</span>
+    <span class="n">sigma2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">+</span> <span class="n">theta0</span><span class="p">))</span>
+    <span class="n">term1</span> <span class="o">=</span> <span class="n">fresnel_ff</span><span class="p">(</span><span class="n">sigma1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">theta0</span><span class="p">))</span>
+    <span class="n">term2</span> <span class="o">=</span> <span class="n">fresnel_ff</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span> <span class="o">+</span> <span class="n">theta0</span><span class="p">))</span>
+    <span class="n">kd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">term1</span> <span class="o">+</span> <span class="n">term2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">kd</span>
+
+<span class="c1"># 📐 Interactive spatial field generator</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_finite_breakwater_diffraction</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">domain_size</span><span class="p">,</span> <span class="n">resolution</span><span class="p">,</span> <span class="n">breakwater_length</span><span class="p">,</span> <span class="n">wave_angle</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">domain_size</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">domain_size</span><span class="p">,</span> <span class="n">domain_size</span><span class="p">,</span> <span class="n">resolution</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">Kd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># Breakwater tip coordinates</span>
+    <span class="n">tip1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">breakwater_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">tip2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="n">breakwater_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+
+    <span class="c1"># Compute diffraction from both tips</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="n">px</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">py</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+
+            <span class="c1"># Distance and angle from tip 1</span>
+            <span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">tip1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">py</span> <span class="o">-</span> <span class="n">tip1</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">theta1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">py</span> <span class="o">-</span> <span class="n">tip1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">px</span> <span class="o">-</span> <span class="n">tip1</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+            <span class="c1"># Distance and angle from tip 2</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">px</span> <span class="o">-</span> <span class="n">tip2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">py</span> <span class="o">-</span> <span class="n">tip2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">theta2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">py</span> <span class="o">-</span> <span class="n">tip2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">px</span> <span class="o">-</span> <span class="n">tip2</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+            <span class="c1"># Total diffraction coefficient (superposition)</span>
+            <span class="n">kd1</span> <span class="o">=</span> <span class="n">kd_bettess</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">theta1</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">wave_angle</span><span class="p">)</span>
+            <span class="n">kd2</span> <span class="o">=</span> <span class="n">kd_bettess</span><span class="p">(</span><span class="n">r2</span><span class="p">,</span> <span class="n">theta2</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">wave_angle</span><span class="p">)</span>
+            <span class="n">Kd</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">kd1</span> <span class="o">+</span> <span class="n">kd2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+
+    <span class="c1"># 🖼️ Plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">contour</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Kd</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Diffraction Coefficient $K_d(x, y)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Distance Offshore (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Distance Along Breakwater (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Diffraction Field (λ = </span><span class="si">{</span><span class="n">L</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m, Breakwater = </span><span class="si">{</span><span class="n">breakwater_length</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m, Wave Angle = </span><span class="si">{</span><span class="n">wave_angle</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">°)&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Draw breakwater</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">breakwater_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">breakwater_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Breakwater&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Draw wave approach arrow</span>
+    <span class="n">arrow_length</span> <span class="o">=</span> <span class="n">domain_size</span> <span class="o">*</span> <span class="mf">0.4</span>
+    <span class="n">beta_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">wave_angle</span><span class="p">)</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">arrow_length</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">beta_rad</span><span class="p">)</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">arrow_length</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">beta_rad</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="o">-</span><span class="n">domain_size</span> <span class="o">*</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">head_length</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="n">domain_size</span> <span class="o">*</span> <span class="mf">0.6</span> <span class="o">+</span> <span class="n">dx</span> <span class="o">*</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">dy</span> <span class="o">*</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s1">&#39;Wave Approach&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎚️ Widgets</span>
+<span class="n">L_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wavelength (m)&#39;</span><span class="p">)</span>
+<span class="n">domain_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Domain Size (m)&#39;</span><span class="p">)</span>
+<span class="n">resolution_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Resolution&#39;</span><span class="p">)</span>
+<span class="n">breakwater_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Breakwater Length (m)&#39;</span><span class="p">)</span>
+<span class="n">wave_angle_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=-</span><span class="mf">60.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave Angle β (°)&#39;</span><span class="p">)</span>
+
+<span class="c1"># 🔄 Display interactive plot</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">plot_finite_breakwater_diffraction</span><span class="p">,</span>
+    <span class="n">L</span><span class="o">=</span><span class="n">L_slider</span><span class="p">,</span>
+    <span class="n">domain_size</span><span class="o">=</span><span class="n">domain_slider</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="n">resolution_slider</span><span class="p">,</span>
+    <span class="n">breakwater_length</span><span class="o">=</span><span class="n">breakwater_slider</span><span class="p">,</span>
+    <span class="n">wave_angle</span><span class="o">=</span><span class="n">wave_angle_slider</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "809d7df43e764d6ab178ccfc04a1f415", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2>3. Simulation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+</section>
+<section id="interactive-wave-transformation-explorer-shoaling-refraction-coefficients">
+<h2>🌊 Interactive Wave Transformation Explorer — Shoaling &amp; Refraction Coefficients<a class="headerlink" href="#interactive-wave-transformation-explorer-shoaling-refraction-coefficients" title="Link to this heading">#</a></h2>
+<p>This Python-based Jupyter widget tool visualizes how <strong>wave energy changes</strong> as waves move into shallower water, using principles of <strong>shoaling and refraction</strong>.</p>
+<p>Wave refraction and shoaling are thoroughly described in the <span id="id6">[]</span> (Volume 1). The wave refraction is modeled based on Snell’s Law and conservation of energy. For shoaling transformation, the manual uses the shoaling coefficient tables for various depths and wave periods. The combined refraction-shaling nomograms are available for rapid estimation.</p>
+<hr class="docutils" />
+<section id="id7">
+<h3>🧠 What It Does<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Computes:</p>
+<ul>
+<li><p><strong>Wave celerity (<span class="math notranslate nohighlight">\(C\)</span>)</strong>: speed of wave propagation at varying depths</p></li>
+<li><p><strong>Shoaling coefficient (<span class="math notranslate nohighlight">\(K_s\)</span>)</strong>: change in wave height due to depth-induced slowing</p></li>
+<li><p><strong>Refraction coefficient (<span class="math notranslate nohighlight">\(K_r\)</span>)</strong>: angular redistribution of wave energy due to changing wave direction in shallower depths</p></li>
+</ul>
+</li>
+<li><p>Produces dynamic plots of <span class="math notranslate nohighlight">\(K_s\)</span> and <span class="math notranslate nohighlight">\(K_r\)</span> vs. water depth</p></li>
+<li><p>Provides real-time control via sliders for wave period and wave angle</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="user-inputs">
+<h3>🎛️ User Inputs<a class="headerlink" href="#user-inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wave</span> <span class="pre">Period</span> <span class="pre">(T)</span></code></p></td>
+<td><p>Time between wave crests (s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Wave</span> <span class="pre">Angle</span> <span class="pre">(θ₀)</span></code></p></td>
+<td><p>Incident angle of incoming wave (°)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h3>📊 Outputs<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Plots showing:</p>
+<ul>
+<li><p><strong>Shoaling coefficient <span class="math notranslate nohighlight">\(K_s\)</span></strong> — increases as depth decreases, amplifying wave height</p></li>
+<li><p><strong>Refraction coefficient <span class="math notranslate nohighlight">\(K_r\)</span></strong> — varies with wave angle, showing energy focusing or dispersion</p></li>
+</ul>
+</li>
+<li><p>Both coefficients plotted against water depth from 30m to 1m</p></li>
+<li><p>Depth axis reversed to emphasize shoreline approach</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret">
+<h3>🧭 How to Interpret<a class="headerlink" href="#how-to-interpret" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>High <span class="math notranslate nohighlight">\(K_s\)</span> at shallow depths</strong> → wave height increases, stronger surf</p></li>
+<li><p><strong>Variable <span class="math notranslate nohighlight">\(K_r\)</span></strong> → shows influence of wave angle on energy concentration</p></li>
+<li><p>Tool helps explore coastal wave transformations relevant to beach design, sediment transport, and surf forecasting</p></li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p><em>This tool brings textbook theory to life—ideal for visualizing nearshore wave dynamics and their impact on coastal morphology.</em></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 🌊 Wave celerity function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">wave_celerity</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mf">9.81</span><span class="p">):</span>
+    <span class="n">kh</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">h</span> <span class="o">/</span> <span class="n">g</span><span class="p">)</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">kh</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">C</span>
+
+<span class="c1"># 🎯 Shoaling coefficient</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">shoaling_coefficient</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">C0</span> <span class="o">/</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="c1"># 🎯 Refraction coefficient</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">refraction_coefficient</span><span class="p">(</span><span class="n">theta0_rad</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="n">sin_theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">C</span> <span class="o">/</span> <span class="n">C0</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta0_rad</span><span class="p">)</span>
+    <span class="n">theta_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">sin_theta</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta0_rad</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_rad</span><span class="p">))</span>
+
+<span class="c1"># 📊 Update function for widgets</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_coefficients</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">theta0_deg</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">theta0_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta0_deg</span><span class="p">)</span>
+    <span class="n">h_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">h0</span> <span class="o">=</span> <span class="n">h_vals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">C0</span> <span class="o">=</span> <span class="n">wave_celerity</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">h0</span><span class="p">)</span>
+    <span class="n">C_vals</span> <span class="o">=</span> <span class="n">wave_celerity</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">h_vals</span><span class="p">)</span>
+    <span class="n">Ks_vals</span> <span class="o">=</span> <span class="n">shoaling_coefficient</span><span class="p">(</span><span class="n">C0</span><span class="p">,</span> <span class="n">C_vals</span><span class="p">)</span>
+    <span class="n">Kr_vals</span> <span class="o">=</span> <span class="n">refraction_coefficient</span><span class="p">(</span><span class="n">theta0_rad</span><span class="p">,</span> <span class="n">C0</span><span class="p">,</span> <span class="n">C_vals</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h_vals</span><span class="p">,</span> <span class="n">Ks_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Shoaling Coefficient $K_s$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h_vals</span><span class="p">,</span> <span class="n">Kr_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Refraction Coefficient $K_r$&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Water Depth (m)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Coefficient Value&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Wave Transformation: T = </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">s, Angle = </span><span class="si">{</span><span class="n">theta0_deg</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">°&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎚️ Interactive widgets</span>
+<span class="n">T_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave Period (s)&#39;</span><span class="p">)</span>
+<span class="n">theta_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave Angle (°)&#39;</span><span class="p">)</span>
+
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">plot_coefficients</span><span class="p">,</span>
+    <span class="n">T</span><span class="o">=</span><span class="n">T_slider</span><span class="p">,</span>
+    <span class="n">theta0_deg</span><span class="o">=</span><span class="n">theta_slider</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_plot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ce48b5fe2ad44a6ea74cf344a805f5fe", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>4. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="conceptual-questions">
+<h3>📘 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What physical processes are represented by the shoaling coefficient ( K_s ) and the refraction coefficient ( K_r )? How do they affect wave height as waves approach shore?</strong></p></li>
+<li><p><strong>Why does wave celerity decrease with decreasing water depth, and how does this influence both shoaling and refraction?</strong></p></li>
+<li><p><strong>In the diffraction model, why is the wave energy behind the breakwater lower than in the transmission zone? What causes the spatial decay of the diffraction coefficient <span class="math notranslate nohighlight">\(( K_d \)</span>)?</strong></p></li>
+<li><p><strong>How does the wave approach angle <span class="math notranslate nohighlight">\(( \beta \)</span>) influence the symmetry of the diffraction field? What happens when waves approach obliquely versus perpendicularly?</strong></p></li>
+<li><p><strong>Why is the diffraction coefficient computed using contributions from both breakwater tips in the finite breakwater model? What would change if only one tip were considered?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>When adjusting wave period <span class="math notranslate nohighlight">\(( T \)</span>) in the shoaling/refraction model, how do the coefficients change? What does this tell you about wave transformation for long-period swell versus short-period wind waves?</strong></p></li>
+<li><p><strong>In the diffraction model, how does increasing the breakwater length affect the size and shape of the shadow zone?</strong></p></li>
+<li><p><strong>What are the limitations of using linear wave theory and Fresnel-type integrals in modeling real-world diffraction? How might nonlinear effects or wave breaking alter the results?</strong></p></li>
+<li><p><strong>If you were designing a harbor entrance, how would you use these models to optimize wave sheltering while maintaining navigability?</strong></p></li>
+<li><p><strong>How would sediment transport patterns be influenced by the diffraction field behind a breakwater? Where would you expect erosion or deposition to occur?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions-click-to-reveal-answers">
+<h3>Quiz Questions (Click to Reveal Answers)<a class="headerlink" href="#quiz-questions-click-to-reveal-answers" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-happens-to-the-shoaling-coefficient-k-s-as-water-depth-decreases">
+<h3>1. What happens to the shoaling coefficient ( K_s ) as water depth decreases?<a class="headerlink" href="#what-happens-to-the-shoaling-coefficient-k-s-as-water-depth-decreases" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A) It decreases</p></li>
+<li><p>B) It increases</p></li>
+<li><p>C) It remains constant</p></li>
+<li><p>D) It oscillates</p></li>
+</ul>
+<details>
+  <summary>✅ Show Answer</summary>
+  **Answer: B — It increases**  
+  Shoaling causes wave height to increase as waves slow down in shallower water.
+</details>
+</section>
+<hr class="docutils" />
+<section id="which-coefficient-accounts-for-wave-direction-change-due-to-depth-variation">
+<h3>2. Which coefficient accounts for wave direction change due to depth variation?<a class="headerlink" href="#which-coefficient-accounts-for-wave-direction-change-due-to-depth-variation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A) Shoaling coefficient</p></li>
+<li><p>B) Refraction coefficient</p></li>
+<li><p>C) Diffraction coefficient</p></li>
+<li><p>D) Celerity coefficient</p></li>
+</ul>
+<details>
+  <summary>✅ Show Answer</summary>
+  **Answer: B — Refraction coefficient**  
+  Refraction bends wave rays due to depth-dependent celerity.
+</details>
+</section>
+<hr class="docutils" />
+<section id="in-the-diffraction-model-what-does-a-value-of-k-d-approx-1-indicate">
+<h3>3. In the diffraction model, what does a value of ( K_d \approx 1 ) indicate?<a class="headerlink" href="#in-the-diffraction-model-what-does-a-value-of-k-d-approx-1-indicate" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A) Complete wave blocking</p></li>
+<li><p>B) Maximum diffraction</p></li>
+<li><p>C) Full transmission</p></li>
+<li><p>D) Wave breaking</p></li>
+</ul>
+<details>
+  <summary>✅ Show Answer</summary>
+  **Answer: C — Full transmission**  
+  This occurs in the transmission zone, aligned with the wave direction.
+</details>
+</section>
+<hr class="docutils" />
+<section id="which-parameter-most-directly-controls-the-symmetry-of-the-diffraction-field">
+<h3>4. Which parameter most directly controls the symmetry of the diffraction field?<a class="headerlink" href="#which-parameter-most-directly-controls-the-symmetry-of-the-diffraction-field" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A) Wavelength</p></li>
+<li><p>B) Breakwater length</p></li>
+<li><p>C) Wave angle ( \beta )</p></li>
+<li><p>D) Domain size</p></li>
+</ul>
+<details>
+  <summary>✅ Show Answer</summary>
+  **Answer: C — Wave angle \( \beta \)**  
+  Oblique wave incidence causes asymmetry in the diffraction pattern.
+</details>
+</section>
+<hr class="docutils" />
+<section id="what-is-the-primary-reason-for-computing-diffraction-from-both-breakwater-tips">
+<h3>5. What is the primary reason for computing diffraction from both breakwater tips?<a class="headerlink" href="#what-is-the-primary-reason-for-computing-diffraction-from-both-breakwater-tips" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A) To simulate wave breaking</p></li>
+<li><p>B) To model sediment transport</p></li>
+<li><p>C) To capture interference and shadowing</p></li>
+<li><p>D) To calculate wave runup</p></li>
+</ul>
+<details>
+  <summary>✅ Show Answer</summary>
+  **Answer: C — To capture interference and shadowing**  
+  Both tips contribute to the spatial diffraction field behind a finite breakwater.
+</details></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="WaveBreaking.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Wave Kinematics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Reflection.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Wave Reflection from coastal structure</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-diffraction-in-coastal-engineering">Wave Diffraction in Coastal Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-framework">Analytical Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-significance">Engineering Significance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-diffraction-modeling">Challenges in Diffraction Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffraction-model-behind-finite-breakwater-bettess-method">Diffraction Model Behind Finite Breakwater (Bettess Method)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-functions">Key Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-features">Visualization Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-interpretation">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-shoaling">📘 Wave Shoaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shoaling-coefficient-equation">Shoaling Coefficient Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-refraction">Wave Refraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snells-law-for-waves">Snell’s Law for Waves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refraction-coefficient-equation">Refraction Coefficient Equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Physical Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-matter">Why These Matter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-coastline-examples">U.S. Coastline Examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-breakwater-diffraction-simulator-bettess-method">🌊 Finite Breakwater Diffraction Simulator (Bettess Method)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-slider-controls">🎛️ Inputs (Slider Controls)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-the-plot">🧭 How to Interpret the Plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-wave-transformation-explorer-shoaling-refraction-coefficients">🌊 Interactive Wave Transformation Explorer — Shoaling &amp; Refraction Coefficients</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs">🎛️ User Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret">🧭 How to Interpret</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions-click-to-reveal-answers">Quiz Questions (Click to Reveal Answers)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-to-the-shoaling-coefficient-k-s-as-water-depth-decreases">1. What happens to the shoaling coefficient ( K_s ) as water depth decreases?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-coefficient-accounts-for-wave-direction-change-due-to-depth-variation">2. Which coefficient accounts for wave direction change due to depth variation?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-the-diffraction-model-what-does-a-value-of-k-d-approx-1-indicate">3. In the diffraction model, what does a value of ( K_d \approx 1 ) indicate?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-parameter-most-directly-controls-the-symmetry-of-the-diffraction-field">4. Which parameter most directly controls the symmetry of the diffraction field?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-primary-reason-for-computing-diffraction-from-both-breakwater-tips">5. What is the primary reason for computing diffraction from both breakwater tips?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

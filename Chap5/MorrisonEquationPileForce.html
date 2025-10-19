@@ -1,0 +1,1486 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 5 Coastal Engineering: Forces on Piles &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap5/MorrisonEquationPileForce';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Sustainabilty and Engineering: Sustainable Water" href="../Chap6/SustainableWaterSoln.html" />
+    <link rel="prev" title="Chapter 5 Coastal Engineering: Vertical Structures Using Minikin Method" href="Manikin_Goda.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap5/MorrisonEquationPileForce.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap5/MorrisonEquationPileForce.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap5/MorrisonEquationPileForce.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap5/MorrisonEquationPileForce.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap5/MorrisonEquationPileForce.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5 Coastal Engineering: Forces on Piles</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-equation-for-forces-on-slender-piles">Morison Equation for Forces on Slender Piles</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-equation">Morison Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inertia-force">Inertia Force:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drag-force">Drag Force:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-coefficient-values">Typical Coefficient Values</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-corrections">✅ Notes and Corrections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-induced-forces-on-coastal-piles-morison-vs-spm-design-comparison">🌊 Wave-Induced Forces on Coastal Piles — Morison vs. SPM Design Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-equation-dynamic-analysis">💡 Morison Equation (Dynamic Analysis)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spm-estimation-static-design-values">💡 SPM Estimation (Static Design Values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🎛️ Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs-interpretation">📊 Outputs &amp; Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-coastal-pile-force-simulator-morison-vs-spm-methods">🌊 Interactive Coastal Pile Force Simulator — Morison vs. SPM Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs-via-sliders">🎛️ User Inputs (via sliders)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🧭 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-spm-wave-forces-learning-module">Morison + SPM Wave Forces Learning Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-activity">Bonus Activity</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#this-module-pairs-perfectly-with-the-morison-spm-force-and-moment-explorer-in-your-jupyter-notebook-engage-visually-and-think-critically">This module pairs perfectly with the <strong>Morison + SPM Force and Moment Explorer</strong> in your Jupyter Notebook. Engage visually and think critically!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-coastal-engineering-forces-on-piles">
+<h1>Chapter 5 Coastal Engineering: Forces on Piles<a class="headerlink" href="#chapter-5-coastal-engineering-forces-on-piles" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Forces on Structure</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Forces on Slender Piles</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Simulation"><span class="xref myst">Simulation: Intereative Force Calculator</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="wave-force-on-slender-piles">
+<a class="reference internal image-reference" href="../_images/SlenderPiles.png"><img alt="Descriptive alt text for accessibility" src="../_images/SlenderPiles.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">**Figure 5.18 **: Wave Force on Slender Piles.</span><a class="headerlink" href="#wave-force-on-slender-piles" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="morison-equation-for-forces-on-slender-piles">
+<h3>Morison Equation for Forces on Slender Piles<a class="headerlink" href="#morison-equation-for-forces-on-slender-piles" title="Link to this heading">#</a></h3>
+<p>The <strong>Morison Equation</strong> is a semi-empirical formulation used to estimate the hydrodynamic force exerted by oscillatory flow (from waves or currents) on slender cylindrical members such as piles or risers. It’s especially valid when the <strong>pile diameter is much smaller than the incident wavelength</strong>, so diffraction effects are negligible.</p>
+<p>In offshore and coastal engineering, understanding the interaction between ocean waves and structural elements is critical for ensuring safety and reliability. When dealing with slender cylindrical structures—such as piles, piers, or offshore platforms—the Morison equation provides a practical framework for estimating hydrodynamic forces induced by wave action.</p>
+<p>The Morison equation is particularly effective when the diameter of the pile is small relative to the incident wavelength (i.e., when the structure is “slender”), allowing simplification of complex fluid dynamics into an additive formulation of inertia and drag components. These two primary components represent:</p>
+<p>Inertia force, due to the acceleration of the fluid mass surrounding the pile.</p>
+<p>Drag force, resulting from the velocity of fluid flow past the pile and the associated pressure differential.</p>
+<p>This approach assumes that wave-structure interaction does not significantly alter the wave field—a valid assumption for slender elements—and is widely employed in both preliminary design and detailed analyses of marine structures.</p>
+<hr class="docutils" />
+<section id="morison-equation">
+<h4>Morison Equation<a class="headerlink" href="#morison-equation" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+F(t) = \underbrace{\frac{\pi}{4} \rho D^2 C_m \frac{dU}{dt}}_{\text{Inertia Force}} + \underbrace{\frac{1}{2} \rho D C_d U |U|}_{\text{Drag Force}}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( F(t) \)</span>): Total horizontal force per unit length (N/m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \rho \)</span>): Water density (kg/m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( D \)</span>): Pile diameter (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C_d \)</span>): Drag coefficient (dimensionless)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C_m \)</span>): Inertia coefficient (dimensionless, includes added mass)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( U(t) \)</span>): Water particle velocity (m/s)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \frac{dU}{dt} \)</span>): Water particle acceleration (m/s²)</p></li>
+</ul>
+</section>
+<section id="inertia-force">
+<h4>Inertia Force:<a class="headerlink" href="#inertia-force" title="Link to this heading">#</a></h4>
+<p>Proportional to <strong>acceleration</strong> of the fluid. Dominates in <strong>low Reynolds number</strong> or small body scenarios.</p>
+<div class="math notranslate nohighlight">
+\[
+F_\text{inertia} = \frac{\pi}{4} \rho D^2 C_m \frac{dU}{dt}
+\]</div>
+</section>
+<section id="drag-force">
+<h4>Drag Force:<a class="headerlink" href="#drag-force" title="Link to this heading">#</a></h4>
+<p>Proportional to <strong>velocity squared</strong>. Dominates at higher velocities and larger diameters.</p>
+<div class="math notranslate nohighlight">
+\[
+F_\text{drag} = \frac{1}{2} \rho D C_d U |U|
+\]</div>
+<hr class="docutils" />
+</section>
+<section id="typical-coefficient-values">
+<h4>Typical Coefficient Values<a class="headerlink" href="#typical-coefficient-values" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Coefficient</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Typical Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(( C_d \)</span>)</p></td>
+<td><p>Drag coefficient</p></td>
+<td><p>0.6–1.2 (varies with shape and flow regime)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(( C_m \)</span>)</p></td>
+<td><p>Inertia coefficient</p></td>
+<td><p>1.8–2.0 (includes added mass)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="notes-and-corrections">
+<h3>✅ Notes and Corrections<a class="headerlink" href="#notes-and-corrections" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Ensure consistent units (SI or Imperial).</p></li>
+<li><p>Use time-varying velocity and acceleration profiles for dynamic analysis.</p></li>
+<li><p>For multiple piles or pile groups, apply interaction corrections and velocity field adjustments.</p></li>
+<li><p>Figures and equations referenced are from the <strong>Shore Protection Manual (SPM)</strong>.</p></li>
+</ul>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id105" title="J.R. Morison, M.P. O'Brien, J.W. Johnson, and S.A. Schaaf. The force exerted by surface waves on piles. Journal of Petroleum Technology, 2(5):149–154, 1950. doi:10.2118/950149-G.">Morison <em>et al.</em>, 1950</a>]</span> introduced the foundational equation for calculating wave forces on slender piles, combining inertia and drag components based on relative fluid motion. <span id="id2">[<a class="reference internal" href="../markdown.html#id106" title="Michael Tomlinson and John Woodward. Pile Design and Construction Practice. CRC Press, 5th edition, 2008. ISBN 9780415465772. Includes wave force calculations using Morison equation.">Tomlinson and Woodward, 2008</a>]</span> applies Morison’s formulation in practical pile design, emphasizing empirical coefficients and construction considerations. <span id="id3">[<a class="reference internal" href="../markdown.html#id96" title="United States Army Corps of Engineers. Shore Protection Manual. Volume I and II. Waterways Experiment Station, Coastal Engineering Research Center, Vicksburg, Mississippi, 4th edition, 1984. Prepared for the Department of the Army, US Army Corps of Engineers, Washington, DC.">of Engineers, 1984</a>]</span> integrates Morison’s method into coastal design workflows, offering charts and guidance for wave loading on vertical piles. Together, these sources establish a robust framework for estimating wave-induced forces on slender marine structures.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="wave-induced-forces-on-coastal-piles-morison-vs-spm-design-comparison">
+<h3>🌊 Wave-Induced Forces on Coastal Piles — Morison vs. SPM Design Comparison<a class="headerlink" href="#wave-induced-forces-on-coastal-piles-morison-vs-spm-design-comparison" title="Link to this heading">#</a></h3>
+<p>This Python script models and compares <strong>wave forces and moments</strong> acting on a slender vertical pile using:</p>
+<ul class="simple">
+<li><p><strong>Morison Equation</strong> — time-varying forces from drag and inertia</p></li>
+<li><p><strong>SPM Method (Shore Protection Manual)</strong> — empirical static estimates for force and moment</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-it-does">
+<h3>🧠 What It Does<a class="headerlink" href="#what-it-does" title="Link to this heading">#</a></h3>
+</section>
+<section id="morison-equation-dynamic-analysis">
+<h3>💡 Morison Equation (Dynamic Analysis)<a class="headerlink" href="#morison-equation-dynamic-analysis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Models force components:</p>
+<ul>
+<li><p><strong>Drag</strong>: depends on velocity and pile diameter</p></li>
+<li><p><strong>Inertia</strong>: depends on water acceleration</p></li>
+</ul>
+</li>
+<li><p>Calculates:</p>
+<ul>
+<li><p>Time series of <strong>total force per unit length</strong></p></li>
+</ul>
+</li>
+<li><p>Visualizes drag, inertia, and combined effects over time</p></li>
+</ul>
+</section>
+<section id="spm-estimation-static-design-values">
+<h3>💡 SPM Estimation (Static Design Values)<a class="headerlink" href="#spm-estimation-static-design-values" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses wave height (H), water depth (h), and coefficients (Cf, Cm)</p></li>
+<li><p>Outputs:</p>
+<ul>
+<li><p><strong>Total horizontal wave force (F_spm)</strong></p></li>
+<li><p><strong>Overturning moment at seabed (M_spm)</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="inputs">
+<h3>🎛️ Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rho</span></code></p></td>
+<td><p>Seawater density (kg/m³)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p>Pile diameter (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Cd,</span> <span class="pre">Cm</span></code></p></td>
+<td><p>Drag and inertia coefficients</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
+<td><p>Wave velocity amplitude (m/s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>Wave period (s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+<td><p>Wave height for SPM (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<td><p>Water depth (m)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="outputs-interpretation">
+<h3>📊 Outputs &amp; Interpretation<a class="headerlink" href="#outputs-interpretation" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Output</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Morison</strong></p></td>
+<td><p>Time-dependent force (N/m)</p></td>
+<td><p>Captures dynamic loading across wave cycle</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SPM</strong></p></td>
+<td><p>Force (N), Moment (Nm)</p></td>
+<td><p>Simplified estimates for design sizing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p>📈 Morison force plot shows how inertia dominates near wave peaks and drag near velocity shifts</p></li>
+<li><p>🧮 SPM values provide conservative approximations for pile sizing and stability checks</p></li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p><em>Use Morison for dynamic load analysis, especially for slender marine piles. Use SPM for quick sizing and early-stage design.</em></p>
+</div></blockquote>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># --- Morison Parameters ---</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">1025</span>            <span class="c1"># kg/m³ (seawater)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mf">1.0</span>               <span class="c1"># Pile diameter (m)</span>
+<span class="n">Cd</span> <span class="o">=</span> <span class="mf">1.0</span>              <span class="c1"># Drag coefficient</span>
+<span class="n">Cm</span> <span class="o">=</span> <span class="mf">2.0</span>              <span class="c1"># Inertia coefficient</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.5</span>               <span class="c1"># Velocity amplitude (m/s)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>                <span class="c1"># Wave period (s)</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">T</span> <span class="c1"># Angular frequency</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Velocity and acceleration</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">dUdt</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Morison forces per unit length</span>
+<span class="n">F_inertia</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">D</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">Cm</span> <span class="o">*</span> <span class="n">dUdt</span>
+<span class="n">F_drag</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">Cd</span> <span class="o">*</span> <span class="n">U</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">F_morison</span> <span class="o">=</span> <span class="n">F_inertia</span> <span class="o">+</span> <span class="n">F_drag</span>
+
+<span class="c1"># Plot Morison force</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F_morison</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Force&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F_drag</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Drag&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F_inertia</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inertia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;🌊 Morison Equation Force on Slender Pile&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Force per unit length (N/m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- SPM Force &amp; Moment Estimate ---</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mf">3.5</span>     <span class="c1"># Wave height (m)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># Water depth (m)</span>
+<span class="n">Cf</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># Force coefficient (SPM)</span>
+<span class="n">Cm_spm</span> <span class="o">=</span> <span class="mf">0.3</span>  <span class="c1"># Moment coefficient (SPM)</span>
+
+<span class="n">F_spm</span> <span class="o">=</span> <span class="n">Cf</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="mf">9.81</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span>         <span class="c1"># Total horizontal force</span>
+<span class="n">M_spm</span> <span class="o">=</span> <span class="n">Cm_spm</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="mf">9.81</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span>       <span class="c1"># Overturning moment at seabed</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🌊 SPM-based Design Estimates&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Wave Force (F): </span><span class="si">{</span><span class="n">F_spm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> N&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Moment at Seabed (M): </span><span class="si">{</span><span class="n">M_spm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> Nm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\satis\AppData\Local\Temp\ipykernel_34316\427159378.py:33: UserWarning: Glyph 127754 (\N{WATER WAVE}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+</pre></div>
+</div>
+<img alt="../_images/7282758fc21d67eb7c30544c0013b615afc74d3e68e527fc24efff736752e3a9.png" src="../_images/7282758fc21d67eb7c30544c0013b615afc74d3e68e527fc24efff736752e3a9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>🌊 SPM-based Design Estimates
+Estimated Wave Force (F): 61588.4 N
+Estimated Moment at Seabed (M): 369530.4 Nm
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>3. Simulation<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="interactive-coastal-pile-force-simulator-morison-vs-spm-methods">
+<h3>🌊 Interactive Coastal Pile Force Simulator — Morison vs. SPM Methods<a class="headerlink" href="#interactive-coastal-pile-force-simulator-morison-vs-spm-methods" title="Link to this heading">#</a></h3>
+<p>This Jupyter-based tool estimates and compares <strong>wave-induced forces and overturning moments</strong> on vertical coastal piles using two classic engineering approaches:</p>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h3>🧠 What It Does<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Morison Equation (Dynamic):</strong></p>
+<ul>
+<li><p>Time-varying force decomposition into:</p>
+<ul>
+<li><p><strong>Drag force</strong> (velocity-dependent)</p></li>
+<li><p><strong>Inertia force</strong> (acceleration-dependent)</p></li>
+</ul>
+</li>
+<li><p>Computes and plots per-unit-length force over time</p></li>
+</ul>
+</li>
+<li><p><strong>SPM Method (Static):</strong></p>
+<ul>
+<li><p>Empirical estimation of:</p>
+<ul>
+<li><p>Total horizontal wave force</p></li>
+<li><p>Seabed moment from wave impact</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="user-inputs-via-sliders">
+<h3>🎛️ User Inputs (via sliders)<a class="headerlink" href="#user-inputs-via-sliders" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+<td><p>Wave height (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>Wave period (s)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+<td><p>Pile diameter (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Cd</span></code></p></td>
+<td><p>Drag coefficient</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Cm</span></code></p></td>
+<td><p>Inertia coefficient</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">h</span></code></p></td>
+<td><p>Water depth (m)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📊 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>📈 Time series plot of:</p>
+<ul>
+<li><p>Total force</p></li>
+<li><p>Drag component</p></li>
+<li><p>Inertia component</p></li>
+</ul>
+</li>
+<li><p>🧮 Summary table:</p>
+<ul>
+<li><p>Peak drag, inertia, and total forces (Morison)</p></li>
+<li><p>Static wave force and moment (SPM)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-results">
+<h3>🧭 How to Interpret Results<a class="headerlink" href="#how-to-interpret-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use <strong>Morison</strong> outputs to assess dynamic load cycles and fatigue risk</p></li>
+<li><p>Use <strong>SPM</strong> values for conservative design estimates of static loading</p></li>
+<li><p>Higher wave height, longer periods, and larger diameters yield greater forces and moments</p></li>
+<li><p>Comparing both methods helps balance simplicity vs. physical accuracy</p></li>
+</ul>
+<blockquote>
+<div><p><em>Ideal for coastal engineers evaluating wave-structure interaction under varying sea states and design scenarios.</em></p>
+</div></blockquote>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># --- Morison and SPM Functions ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_morison_forces</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">Cd</span><span class="p">,</span> <span class="n">Cm</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">dUdt</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">F_drag</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">Cd</span> <span class="o">*</span> <span class="n">U</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">F_inertia</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">D</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">Cm</span> <span class="o">*</span> <span class="n">dUdt</span>
+    <span class="n">F_total</span> <span class="o">=</span> <span class="n">F_drag</span> <span class="o">+</span> <span class="n">F_inertia</span>
+    <span class="k">return</span> <span class="n">F_drag</span><span class="p">,</span> <span class="n">F_inertia</span><span class="p">,</span> <span class="n">F_total</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_spm_force_moment</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">1025</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mf">9.81</span><span class="p">,</span> <span class="n">Cf</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Cm_spm</span><span class="o">=</span><span class="mf">0.3</span><span class="p">):</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">Cf</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">Cm_spm</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="k">return</span> <span class="n">F</span><span class="p">,</span> <span class="n">M</span>
+
+<span class="c1"># --- Update function ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">Cd</span><span class="p">,</span> <span class="n">Cm</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">rho</span> <span class="o">=</span> <span class="mi">1025</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+    <span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">T</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">H</span> <span class="o">/</span> <span class="mi">2</span>               <span class="c1"># Approximate velocity amplitude</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+    <span class="c1"># Morison Forces</span>
+    <span class="n">F_drag</span><span class="p">,</span> <span class="n">F_inertia</span><span class="p">,</span> <span class="n">F_total</span> <span class="o">=</span> <span class="n">compute_morison_forces</span><span class="p">(</span><span class="n">rho</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">Cd</span><span class="p">,</span> <span class="n">Cm</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">peak_F_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F_total</span><span class="p">))</span>
+    <span class="n">peak_F_drag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F_drag</span><span class="p">))</span>
+    <span class="n">peak_F_inertia</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">F_inertia</span><span class="p">))</span>
+
+    <span class="c1"># SPM Forces</span>
+    <span class="n">F_spm</span><span class="p">,</span> <span class="n">M_spm</span> <span class="o">=</span> <span class="n">compute_spm_force_moment</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="n">rho</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+
+    <span class="c1"># Plotting</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F_total</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Force&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F_drag</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Drag Force&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F_inertia</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inertia Force&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;⏱️ Time History of Morison Force Components&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Force per unit length (N/m)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># Summary Table</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📊 **Summary for Inputs:**&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Wave Height (H): </span><span class="si">{</span><span class="n">H</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Wave Period (T): </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Pile Diameter (D): </span><span class="si">{</span><span class="n">D</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Water Depth (h): </span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Cd: </span><span class="si">{</span><span class="n">Cd</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Cm: </span><span class="si">{</span><span class="n">Cm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🌀 **Morison Equation Results**&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Peak Total Force:   </span><span class="si">{</span><span class="n">peak_F_total</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> N/m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Peak Drag Force:    </span><span class="si">{</span><span class="n">peak_F_drag</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> N/m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Peak Inertia Force: </span><span class="si">{</span><span class="n">peak_F_inertia</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> N/m&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📏 **SPM Estimates**&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Estimated Total Force:  </span><span class="si">{</span><span class="n">F_spm</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> N&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Estimated Moment @ Seabed: </span><span class="si">{</span><span class="n">M_spm</span><span class="si">:</span><span class="s2">,.1f</span><span class="si">}</span><span class="s2"> Nm&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Widgets ---</span>
+<span class="n">slider_H</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;H (m)&#39;</span><span class="p">)</span>
+<span class="n">slider_T</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;T (s)&#39;</span><span class="p">)</span>
+<span class="n">slider_D</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;D (m)&#39;</span><span class="p">)</span>
+<span class="n">slider_Cd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Cd&#39;</span><span class="p">)</span>
+<span class="n">slider_Cm</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Cm&#39;</span><span class="p">)</span>
+<span class="n">slider_h</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Depth h (m)&#39;</span><span class="p">)</span>
+
+<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="s2">&quot;&lt;h3&gt;🌊 Morison + SPM Force and Moment Explorer&lt;/h3&gt;&quot;</span><span class="p">),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">slider_H</span><span class="p">,</span> <span class="n">slider_T</span><span class="p">,</span> <span class="n">slider_D</span><span class="p">]),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">slider_Cd</span><span class="p">,</span> <span class="n">slider_Cm</span><span class="p">,</span> <span class="n">slider_h</span><span class="p">])</span>
+<span class="p">])</span>
+
+<span class="c1"># Interactive output</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="n">slider_H</span><span class="p">,</span>
+    <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="n">slider_T</span><span class="p">,</span>
+    <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="n">slider_D</span><span class="p">,</span>
+    <span class="s1">&#39;Cd&#39;</span><span class="p">:</span> <span class="n">slider_Cd</span><span class="p">,</span>
+    <span class="s1">&#39;Cm&#39;</span><span class="p">:</span> <span class="n">slider_Cm</span><span class="p">,</span>
+    <span class="s1">&#39;h&#39;</span><span class="p">:</span> <span class="n">slider_h</span>
+<span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0634c1c17f1f425c9a473c508d5c108f", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8f855172e4514748b08d5f8e80858ca3", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>4. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="morison-spm-wave-forces-learning-module">
+<h3>Morison + SPM Wave Forces Learning Module<a class="headerlink" href="#morison-spm-wave-forces-learning-module" title="Link to this heading">#</a></h3>
+<section id="learning-objectives">
+<h4>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h4>
+<p>By the end of this module, you will be able to:</p>
+<ul class="simple">
+<li><p>Differentiate between Morison and SPM wave force formulations.</p></li>
+<li><p>Understand how wave parameters (height, period) and structural parameters (diameter, Cd, Cm) affect force and moment predictions.</p></li>
+<li><p>Analyze the contribution of drag and inertia forces over time.</p></li>
+<li><p>Reflect on design considerations in offshore structures based on wave loading.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h4>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>What physical phenomena are represented by the <strong>drag</strong> and <strong>inertia</strong> terms in Morison’s equation?</p></li>
+<li><p>How does wave <strong>period (T)</strong> influence the <strong>inertia force</strong> component in Morison’s model?</p></li>
+<li><p>Why is <strong>diameter (D)</strong> squared in the inertia term but only linear in the drag term?</p></li>
+<li><p>In what situations would the <strong>SPM method</strong> be more suitable than Morison’s equation?</p></li>
+<li><p>How is the <strong>moment</strong> at the seabed calculated in the SPM method?</p></li>
+<li><p>What role does the <strong>wave height (H)</strong> play in both Morison and SPM formulations?</p></li>
+<li><p>Why might SPM overestimate forces for small-diameter piles?</p></li>
+<li><p>How do <strong>Cd (drag coefficient)</strong> and <strong>Cm (inertia coefficient)</strong> influence the shape and peak of the total force curve?</p></li>
+<li><p>What simplifications are made in the assumption that <strong>A = H/2</strong> for computing wave orbital velocity?</p></li>
+<li><p>Why does the total force waveform appear sinusoidal, and how do drag and inertia superimpose?</p></li>
+</ol>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h5>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>Based on the plot output, during which parts of the wave cycle do <strong>drag</strong> and <strong>inertia</strong> forces dominate?</p></li>
+<li><p>What design considerations would you make if your structure experiences a high <strong>peak total force</strong> relative to its size?</p></li>
+<li><p>How could incorrect selection of <strong>Cd</strong> and <strong>Cm</strong> affect the safety of an offshore foundation?</p></li>
+<li><p>Reflect on a scenario where increasing <strong>depth (h)</strong> dramatically changes the SPM moment. What does this imply structurally?</p></li>
+<li><p>How does changing the <strong>wave period</strong> affect your predictions of <strong>total force</strong> in your simulation?</p></li>
+<li><p>If your structure is located in a region with mostly short-period waves, which force component is likely to dominate, and why?</p></li>
+<li><p>Consider a case where SPM and Morison give significantly different force predictions. How would you determine which method is more appropriate?</p></li>
+<li><p>What assumptions inherent in these models could limit their use in complex sea states?</p></li>
+<li><p>How might sensor data (e.g., real-time wave height and period) be integrated with this model in a real-world monitoring system?</p></li>
+<li><p>After running the simulation with extreme wave inputs, how would your design strategy change for fatigue or ultimate strength?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="bonus-activity">
+<h5>Bonus Activity<a class="headerlink" href="#bonus-activity" title="Link to this heading">#</a></h5>
+<p>Run the interactive simulation and vary:</p>
+<ul class="simple">
+<li><p>Wave Height (H)</p></li>
+<li><p>Wave Period (T)</p></li>
+<li><p>Pile Diameter (D)</p></li>
+<li><p>Cd and Cm</p></li>
+<li><p>Water Depth (h)</p></li>
+</ul>
+<p>Record your peak total forces and seabed moments, then answer:</p>
+<ul class="simple">
+<li><p>What variable causes the <strong>most significant</strong> increase in total wave force?</p></li>
+<li><p>Which variable most affects the <strong>moment at the seabed</strong>?</p></li>
+<li><p>Where might you consider using damping devices or structural reinforcements?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="this-module-pairs-perfectly-with-the-morison-spm-force-and-moment-explorer-in-your-jupyter-notebook-engage-visually-and-think-critically">
+<h5>This module pairs perfectly with the <strong>Morison + SPM Force and Moment Explorer</strong> in your Jupyter Notebook. Engage visually and think critically!<a class="headerlink" href="#this-module-pairs-perfectly-with-the-morison-spm-force-and-moment-explorer-in-your-jupyter-notebook-engage-visually-and-think-critically" title="Link to this heading">#</a></h5>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Manikin_Goda.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Vertical Structures Using Minikin Method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Chap6/SustainableWaterSoln.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Sustainabilty and Engineering: Sustainable Water</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-equation-for-forces-on-slender-piles">Morison Equation for Forces on Slender Piles</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-equation">Morison Equation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inertia-force">Inertia Force:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drag-force">Drag Force:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-coefficient-values">Typical Coefficient Values</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-and-corrections">✅ Notes and Corrections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-induced-forces-on-coastal-piles-morison-vs-spm-design-comparison">🌊 Wave-Induced Forces on Coastal Piles — Morison vs. SPM Design Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-does">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-equation-dynamic-analysis">💡 Morison Equation (Dynamic Analysis)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spm-estimation-static-design-values">💡 SPM Estimation (Static Design Values)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🎛️ Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs-interpretation">📊 Outputs &amp; Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-coastal-pile-force-simulator-morison-vs-spm-methods">🌊 Interactive Coastal Pile Force Simulator — Morison vs. SPM Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">🧠 What It Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs-via-sliders">🎛️ User Inputs (via sliders)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🧭 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#morison-spm-wave-forces-learning-module">Morison + SPM Wave Forces Learning Module</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-activity">Bonus Activity</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#this-module-pairs-perfectly-with-the-morison-spm-force-and-moment-explorer-in-your-jupyter-notebook-engage-visually-and-think-critically">This module pairs perfectly with the <strong>Morison + SPM Force and Moment Explorer</strong> in your Jupyter Notebook. Engage visually and think critically!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

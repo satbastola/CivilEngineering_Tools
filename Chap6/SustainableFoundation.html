@@ -1,0 +1,1528 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Enginereing Sustainability: Sustainable Geotech &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/SustainableFoundation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Enginereing Sustainability: Life Cycle Assessment" href="LifeCycleAssessment.html" />
+    <link rel="prev" title="Chapter 6 Enginereing Sustainability: Sustainable Concrete" href="ConcreteSustainability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/SustainableFoundation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/SustainableFoundation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/SustainableFoundation.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/SustainableFoundation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/SustainableFoundation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Enginereing Sustainability: Sustainable Geotech</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainable-geotechnical-engineering-overview">🌱 Sustainable Geotechnical Engineering: Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-strategies">🧭 Key Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opportunities">🚀 Opportunities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges">⚠️ Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-impact-potential">🌍 Climate Impact Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-insight">📘 Summary Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background-sustainable-geotechnical-engineering-calculator">🧱 Theoretical Background: Sustainable Geotechnical Engineering Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">📘 Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-models">📐 Engineering Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shallow-foundation-bearing-capacity">1. <strong>Shallow Foundation Bearing Capacity</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pile-foundation-axial-capacity">2. <strong>Pile Foundation Axial Capacity</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-earth-pressure">3. <strong>Retaining Wall Earth Pressure</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-metrics">🌍 Sustainability Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embodied-carbon">1. <strong>Embodied Carbon</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#life-cycle-cost">2. <strong>Life Cycle Cost</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-score">3. <strong>Sustainability Score</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-estimation">📊 Material Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-sources">📚 References and Sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-input-ranges">📥 Typical Input Ranges</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-conceptual-and-quiz-questions-sustainable-geotechnical-engineering-calculator">🧱 Reflective, Conceptual, and Quiz Questions: Sustainable Geotechnical Engineering Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-design">Foundation Design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Material Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Sustainability Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-enginereing-sustainability-sustainable-geotech">
+<h1>Chapter 6 Enginereing Sustainability: Sustainable Geotech<a class="headerlink" href="#chapter-6-enginereing-sustainability-sustainable-geotech" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Sustainable Geotech</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Sustainable Geotech</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="sustainable-geotechnical-engineering">
+<a class="reference internal image-reference" href="../_images/SustainableGeotech.png"><img alt="Descriptive alt text for accessibility" src="../_images/SustainableGeotech.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">**Figure 6.10 **: Sustainable Geotechnical Engineering</span><a class="headerlink" href="#sustainable-geotechnical-engineering" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="sustainable-geotechnical-engineering-overview">
+<h3>🌱 Sustainable Geotechnical Engineering: Overview<a class="headerlink" href="#sustainable-geotechnical-engineering-overview" title="Link to this heading">#</a></h3>
+<p>Sustainable geotechnics applies environmental, economic, and social principles to geotechnical design, construction, and maintenance. It aims to reduce the ecological footprint of infrastructure while maintaining safety and performance.</p>
+</section>
+<hr class="docutils" />
+<section id="key-strategies">
+<h3>🧭 Key Strategies<a class="headerlink" href="#key-strategies" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Material Optimization</strong><br />
+Use of recycled aggregates, low-carbon concrete, and geosynthetics to reduce embodied carbon</p></li>
+<li><p><strong>Design Efficiency</strong><br />
+Ground improvement techniques (e.g., vibro compaction, rigid inclusions) to minimize deep foundations</p></li>
+<li><p><strong>Energy Integration</strong><br />
+Incorporation of geothermal systems and energy-harvesting sensors in foundations</p></li>
+<li><p><strong>Life Cycle Assessment (LCA)</strong><br />
+Evaluate environmental impacts from cradle to grave using ISO 14040/14044 frameworks</p></li>
+<li><p><strong>Sustainability Rating Tools</strong><br />
+Use of Envision and other SATs to guide sustainable infrastructure planning</p></li>
+<li><p><strong>Digital Innovation</strong><br />
+AI, IoT, and machine learning for optimized site characterization and real-time monitoring</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="opportunities">
+<h3>🚀 Opportunities<a class="headerlink" href="#opportunities" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Carbon Reduction</strong><br />
+Sustainable geotechnics can reduce emissions by <strong>35–90%</strong> in foundation systems through material substitution and design optimization</p></li>
+<li><p><strong>Resource Conservation</strong><br />
+Reuse of existing foundations and materials reduces waste and conserves natural resources</p></li>
+<li><p><strong>Resilience and Adaptation</strong><br />
+Designs that account for climate risks (e.g., liquefaction, flooding) improve long-term sustainability</p></li>
+<li><p><strong>Interdisciplinary Collaboration</strong><br />
+Integration with environmental science, urban planning, and renewable energy sectors</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="challenges">
+<h3>⚠️ Challenges<a class="headerlink" href="#challenges" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Higher Upfront Costs</strong><br />
+Sustainable materials and techniques may require greater initial investment</p></li>
+<li><p><strong>Limited Material Availability</strong><br />
+Access to low-carbon alternatives varies regionally</p></li>
+<li><p><strong>Regulatory Gaps</strong><br />
+Lack of standardized sustainability mandates in geotechnical codes</p></li>
+<li><p><strong>Stakeholder Alignment</strong><br />
+Balancing cost, performance, and sustainability across diverse project teams</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="climate-impact-potential">
+<h3>🌍 Climate Impact Potential<a class="headerlink" href="#climate-impact-potential" title="Link to this heading">#</a></h3>
+<p>Geotechnical construction contributes <strong>15–23%</strong> of a building’s embodied carbon. By adopting sustainable practices—such as avoiding concrete-heavy foundations, optimizing design, and using alternative fuels—projects have demonstrated <strong>carbon savings of over 90%</strong>, translating to tens of thousands of metric tons of CO₂e avoided.</p>
+</section>
+<hr class="docutils" />
+<section id="summary-insight">
+<h3>📘 Summary Insight<a class="headerlink" href="#summary-insight" title="Link to this heading">#</a></h3>
+<p>Sustainable geotechnical engineering is not only feasible—it’s essential. Through innovative materials, smarter design, and life cycle thinking, geotechnical professionals can lead the charge in reducing emissions, conserving resources, and building resilient infrastructure. The path forward requires collaboration, education, and bold adoption of emerging technologies.</p>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id131" title="European Federation of Foundation Contractors (EFFC) and Deep Foundations Institute (DFI). Effc-dfi geotechnical carbon calculator. http://www.geotechnicalcarboncalculator.com, 2022. Web-based tool for calculating CO₂ emissions of foundation and geotechnical works, enabling design comparisons and benchmarking.">European Federation of Foundation Contractors (EFFC) and Deep Foundations Institute (DFI), 2022</a>]</span> is the Geotechnical Carbon Calculator, which calculates CO₂ emissions for foundation and geotechnical works using standardized, verifiable data. The calculator enables comparison of design alternatives and tracks performance from planning to post-construction. The calculator is tailored specifically for geotechnical projects, making it the only sector-specific carbon tool of its kind</p>
+<p><span id="id2">[<a class="reference internal" href="../markdown.html#id130" title="Geo-Institute Sustainability in Geotechnical Engineering Committee. Sustainability in geotechnical engineering. Technical Report, American Society of Civil Engineers (ASCE) Geo-Institute, 2022. Technical module outlining sustainability principles, assessment tools, and case studies for geotechnical engineering practice. URL: https://www.geoinstitute.org/sites/default/files/inline-files/SM_GTT_Final_12122022.pdf.">Geo-Institute Sustainability in Geotechnical Engineering Committee, 2022</a>]</span> Links geotechnical practice to UN SDGs, emphasizing resilience, stakeholder engagement, and holistic design. Defines sustainability for geotechnical engineers using ASCE ethics and the Brundtland framework. It introduces tools like LCA, LCCA, and carbon calculators for project-level assessment, including case studies on ground improvement and pile foundations with quantified impacts.</p>
+</section>
+<section id="theoretical-background-sustainable-geotechnical-engineering-calculator">
+<h3>🧱 Theoretical Background: Sustainable Geotechnical Engineering Calculator<a class="headerlink" href="#theoretical-background-sustainable-geotechnical-engineering-calculator" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="overview">
+<h3>📘 Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<p>This calculator estimates the environmental and structural performance of common foundation systems—<strong>shallow footings</strong>, <strong>pile foundations</strong>, and <strong>retaining walls</strong>—based on user-defined geometry and soil parameters. It integrates:</p>
+<ul class="simple">
+<li><p>Engineering design models for bearing capacity, axial pile capacity, and earth pressure</p></li>
+<li><p>Material quantity estimation for concrete, steel, and geosynthetics</p></li>
+<li><p>Embodied carbon and life cycle cost calculations</p></li>
+<li><p>A sustainability scoring system based on reuse, emissions, and cost</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="engineering-models">
+<h3>📐 Engineering Models<a class="headerlink" href="#engineering-models" title="Link to this heading">#</a></h3>
+</section>
+<section id="shallow-foundation-bearing-capacity">
+<h3>1. <strong>Shallow Foundation Bearing Capacity</strong><a class="headerlink" href="#shallow-foundation-bearing-capacity" title="Link to this heading">#</a></h3>
+<p>Based on Terzaghi’s equation for strip footings:</p>
+<div class="math notranslate nohighlight">
+\[
+q_{\text{ult}} = c N_c + q N_q + 0.5 \gamma B N_\gamma
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( c \)</span>): soil cohesion (kPa)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( q \)</span>): overburden pressure (kPa)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \gamma \)</span>): unit weight of soil (kN/m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( B \)</span>): footing width (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( N_c, N_q, N_\gamma \)</span>): bearing capacity factors (empirical)</p></li>
+</ul>
+</section>
+<section id="pile-foundation-axial-capacity">
+<h3>2. <strong>Pile Foundation Axial Capacity</strong><a class="headerlink" href="#pile-foundation-axial-capacity" title="Link to this heading">#</a></h3>
+<p>Simplified model combining skin friction and end bearing:</p>
+<div class="math notranslate nohighlight">
+\[
+Q_{\text{ult}} = \alpha c \pi L + c A_p N_c
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \alpha \)</span>): adhesion factor (typically 0.6)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( c \)</span>): cohesion</p></li>
+<li><p><span class="math notranslate nohighlight">\(( L \)</span>): pile length (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( A_p \)</span>): pile cross-sectional area (m²)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( N_c \)</span>): bearing capacity factor (typically 9 for cohesive soils)</p></li>
+</ul>
+</section>
+<section id="retaining-wall-earth-pressure">
+<h3>3. <strong>Retaining Wall Earth Pressure</strong><a class="headerlink" href="#retaining-wall-earth-pressure" title="Link to this heading">#</a></h3>
+<p>Using Rankine’s active earth pressure theory:</p>
+<div class="math notranslate nohighlight">
+\[
+P_a = \frac{1}{2} \gamma H^2 K_a
+\quad \text{where} \quad
+K_a = \frac{1 - \sin(\phi)}{1 + \sin(\phi)}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \gamma \)</span>): unit weight of soil</p></li>
+<li><p><span class="math notranslate nohighlight">\(( H \)</span>): wall height (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \phi \)</span>): internal friction angle (°)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="sustainability-metrics">
+<h3>🌍 Sustainability Metrics<a class="headerlink" href="#sustainability-metrics" title="Link to this heading">#</a></h3>
+</section>
+<section id="embodied-carbon">
+<h3>1. <strong>Embodied Carbon</strong><a class="headerlink" href="#embodied-carbon" title="Link to this heading">#</a></h3>
+<p>Calculated using emission factors:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Material</p></th>
+<th class="head"><p>Emission Factor (kg CO₂/kg)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Concrete</p></td>
+<td><p>0.15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Steel</p></td>
+<td><p>1.85</p></td>
+</tr>
+<tr class="row-even"><td><p>Geosynthetics</p></td>
+<td><p>2.50</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="math notranslate nohighlight">
+\[
+\text{Carbon} = \sum (\text{mass}_i \times \text{emission factor}_i)
+\]</div>
+</section>
+<section id="life-cycle-cost">
+<h3>2. <strong>Life Cycle Cost</strong><a class="headerlink" href="#life-cycle-cost" title="Link to this heading">#</a></h3>
+<p>Estimated using unit costs:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Material</p></th>
+<th class="head"><p>Cost ($/kg)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Concrete</p></td>
+<td><p>0.10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Steel</p></td>
+<td><p>1.20</p></td>
+</tr>
+<tr class="row-even"><td><p>Geosynthetics</p></td>
+<td><p>2.00</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="math notranslate nohighlight">
+\[
+\text{Cost} = \sum (\text{mass}_i \times \text{unit cost}_i)
+\]</div>
+</section>
+<section id="sustainability-score">
+<h3>3. <strong>Sustainability Score</strong><a class="headerlink" href="#sustainability-score" title="Link to this heading">#</a></h3>
+<p>Empirical scoring system (0–10):</p>
+<ul class="simple">
+<li><p>+2 if reuse ≥ 50%</p></li>
+<li><p>+2 if carbon &lt; 500 kg CO₂</p></li>
+<li><p>+1 if cost &lt; $1000</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="material-estimation">
+<h3>📊 Material Estimation<a class="headerlink" href="#material-estimation" title="Link to this heading">#</a></h3>
+<p>Concrete volume is calculated from geometry:</p>
+<ul class="simple">
+<li><p>Shallow footing: <span class="math notranslate nohighlight">\(( V = B \times B \times D \)</span>)</p></li>
+<li><p>Pile: <span class="math notranslate nohighlight">\(( V = A_p \times L \)</span>)</p></li>
+<li><p>Retaining wall: <span class="math notranslate nohighlight">\(( V = H \times t_{\text{wall}} \times L_{\text{wall}} \)</span>)</p></li>
+</ul>
+<p>Steel mass is estimated using typical reinforcement ratios:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Foundation Type</p></th>
+<th class="head"><p>Steel Ratio (kg/m³)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Shallow Footing</p></td>
+<td><p>100</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pile Foundation</p></td>
+<td><p>120</p></td>
+</tr>
+<tr class="row-even"><td><p>Retaining Wall</p></td>
+<td><p>150</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="references-and-sources">
+<h3>📚 References and Sources<a class="headerlink" href="#references-and-sources" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Terzaghi, K. (1943). <em>Theoretical Soil Mechanics</em>. Wiley.</p></li>
+<li><p>Das, B.M. (2010). <em>Principles of Foundation Engineering</em>. Cengage.</p></li>
+<li><p>Rankine, W.J.M. (1857). <em>On the Stability of Retaining Walls</em>. Philosophical Transactions.</p></li>
+<li><p>Hammond, G.P., &amp; Jones, C.I. (2008). <em>Embodied energy and carbon in construction materials</em>. ICE Proceedings.</p></li>
+<li><p>World Bank (2020). <em>Low Carbon Construction Materials: Cost and Emissions Benchmarks</em>.</p></li>
+</ul>
+</section>
+<section id="typical-input-ranges">
+<h3>📥 Typical Input Ranges<a class="headerlink" href="#typical-input-ranges" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Typical Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Cohesion <span class="math notranslate nohighlight">\(( c \)</span>)</p></td>
+<td><p>0–100 kPa</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unit Weight <span class="math notranslate nohighlight">\(( \gamma \)</span>)</p></td>
+<td><p>16–22 kN/m³</p></td>
+</tr>
+<tr class="row-even"><td><p>Friction Angle <span class="math notranslate nohighlight">\(( \phi \)</span>)</p></td>
+<td><p>25–40°</p></td>
+</tr>
+<tr class="row-odd"><td><p>Reuse Percentage</p></td>
+<td><p>0–100%</p></td>
+</tr>
+<tr class="row-even"><td><p>Concrete Density</p></td>
+<td><p>2400 kg/m³</p></td>
+</tr>
+<tr class="row-odd"><td><p>Steel Reinforcement</p></td>
+<td><p>100–150 kg/m³</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># Emission and cost factors</span>
+<span class="n">emission_factors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;concrete&quot;</span><span class="p">:</span> <span class="mf">0.15</span><span class="p">,</span> <span class="s2">&quot;steel&quot;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">,</span> <span class="s2">&quot;geosynthetic&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">}</span>
+<span class="n">cost_factors</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;concrete&quot;</span><span class="p">:</span> <span class="mf">0.10</span><span class="p">,</span> <span class="s2">&quot;steel&quot;</span><span class="p">:</span> <span class="mf">1.20</span><span class="p">,</span> <span class="s2">&quot;geosynthetic&quot;</span><span class="p">:</span> <span class="mf">2.00</span><span class="p">}</span>
+
+<span class="c1"># Engineering models</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bearing_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
+    <span class="n">Nc</span><span class="p">,</span> <span class="n">Nq</span><span class="p">,</span> <span class="n">Ngamma</span> <span class="o">=</span> <span class="mf">5.14</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span>
+    <span class="k">return</span> <span class="n">c</span> <span class="o">*</span> <span class="n">Nc</span> <span class="o">+</span> <span class="n">q</span> <span class="o">*</span> <span class="n">Nq</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">B</span> <span class="o">*</span> <span class="n">Ngamma</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pile_capacity</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">Ap</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">):</span>
+    <span class="n">Qs</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">L</span>
+    <span class="n">Qp</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">Ap</span> <span class="o">*</span> <span class="mi">9</span>
+    <span class="k">return</span> <span class="n">Qs</span> <span class="o">+</span> <span class="n">Qp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">earth_pressure</span><span class="p">(</span><span class="n">gamma</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+    <span class="n">Ka</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">phi</span><span class="p">)))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">phi</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">Ka</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sustainability_score</span><span class="p">(</span><span class="n">reuse_pct</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="n">cost</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">if</span> <span class="n">reuse_pct</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span> <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">carbon</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span> <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span> <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Material estimation</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_materials</span><span class="p">(</span><span class="n">foundation_type</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">Ap</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">t_wall</span><span class="p">,</span> <span class="n">wall_length</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">foundation_type</span> <span class="o">==</span> <span class="s2">&quot;Shallow&quot;</span><span class="p">:</span>
+        <span class="n">V_conc</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">B</span> <span class="o">*</span> <span class="n">D</span>
+        <span class="n">steel_ratio</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="k">elif</span> <span class="n">foundation_type</span> <span class="o">==</span> <span class="s2">&quot;Pile&quot;</span><span class="p">:</span>
+        <span class="n">V_conc</span> <span class="o">=</span> <span class="n">Ap</span> <span class="o">*</span> <span class="n">L</span>
+        <span class="n">steel_ratio</span> <span class="o">=</span> <span class="mi">120</span>
+    <span class="k">elif</span> <span class="n">foundation_type</span> <span class="o">==</span> <span class="s2">&quot;Retaining Wall&quot;</span><span class="p">:</span>
+        <span class="n">V_conc</span> <span class="o">=</span> <span class="n">H</span> <span class="o">*</span> <span class="n">t_wall</span> <span class="o">*</span> <span class="n">wall_length</span>
+        <span class="n">steel_ratio</span> <span class="o">=</span> <span class="mi">150</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">V_conc</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">steel_ratio</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">concrete_kg</span> <span class="o">=</span> <span class="n">V_conc</span> <span class="o">*</span> <span class="mi">2400</span>
+    <span class="n">steel_kg</span> <span class="o">=</span> <span class="n">V_conc</span> <span class="o">*</span> <span class="n">steel_ratio</span>
+    <span class="k">return</span> <span class="n">concrete_kg</span><span class="p">,</span> <span class="n">steel_kg</span>
+
+<span class="c1"># Widgets</span>
+<span class="n">foundation_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Shallow&quot;</span><span class="p">,</span> <span class="s2">&quot;Pile&quot;</span><span class="p">,</span> <span class="s2">&quot;Retaining Wall&quot;</span><span class="p">,</span> <span class="s2">&quot;Geosynthetic-Reinforced&quot;</span><span class="p">],</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Type&#39;</span>
+<span class="p">)</span>
+<span class="n">reuse_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Reuse (%)&#39;</span><span class="p">)</span>
+<span class="n">geo_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Geosynthetics (kg)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Geometry</span>
+<span class="n">B_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Footing Width (m)&#39;</span><span class="p">)</span>
+<span class="n">D_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Footing Depth (m)&#39;</span><span class="p">)</span>
+<span class="n">Ap_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Pile Area (m²)&#39;</span><span class="p">)</span>
+<span class="n">L_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Pile Length (m)&#39;</span><span class="p">)</span>
+<span class="n">H_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wall Height (m)&#39;</span><span class="p">)</span>
+<span class="n">t_wall_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wall Thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">wall_length_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wall Length (m)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Soil</span>
+<span class="n">c_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Cohesion (kPa)&#39;</span><span class="p">)</span>
+<span class="n">gamma_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Unit Weight (kN/m³)&#39;</span><span class="p">)</span>
+<span class="n">q_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Overburden (kPa)&#39;</span><span class="p">)</span>
+<span class="n">phi_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Friction Angle (°)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Output and button</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Run Analysis&quot;</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s1">&#39;success&#39;</span><span class="p">)</span>
+
+<span class="c1"># Update visible inputs</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_visibility</span><span class="p">(</span><span class="n">change</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">base</span> <span class="o">=</span> <span class="p">[</span><span class="n">foundation_dropdown</span><span class="p">,</span> <span class="n">reuse_slider</span><span class="p">,</span> <span class="n">geo_slider</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Shallow&quot;</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="p">[</span><span class="n">B_slider</span><span class="p">,</span> <span class="n">D_slider</span><span class="p">,</span> <span class="n">c_slider</span><span class="p">,</span> <span class="n">gamma_slider</span><span class="p">,</span> <span class="n">q_slider</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Pile&quot;</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="p">[</span><span class="n">Ap_slider</span><span class="p">,</span> <span class="n">L_slider</span><span class="p">,</span> <span class="n">c_slider</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Retaining Wall&quot;</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="p">[</span><span class="n">H_slider</span><span class="p">,</span> <span class="n">t_wall_slider</span><span class="p">,</span> <span class="n">wall_length_slider</span><span class="p">,</span> <span class="n">gamma_slider</span><span class="p">,</span> <span class="n">phi_slider</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="n">base</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">(</span><span class="n">inputs</span> <span class="o">+</span> <span class="p">[</span><span class="n">run_button</span><span class="p">]))</span>
+
+<span class="c1"># Compute results</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_results</span><span class="p">(</span><span class="n">button</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">concrete_kg</span><span class="p">,</span> <span class="n">steel_kg</span> <span class="o">=</span> <span class="n">estimate_materials</span><span class="p">(</span>
+            <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">B_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">D_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">Ap_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">L_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">H_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">t_wall_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">wall_length_slider</span><span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span>
+        <span class="n">concrete_eff</span> <span class="o">=</span> <span class="n">concrete_kg</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">reuse_slider</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">steel_eff</span> <span class="o">=</span> <span class="n">steel_kg</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">reuse_slider</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">geo_eff</span> <span class="o">=</span> <span class="n">geo_slider</span><span class="o">.</span><span class="n">value</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">reuse_slider</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+
+        <span class="n">carbon</span> <span class="o">=</span> <span class="p">(</span><span class="n">concrete_eff</span> <span class="o">*</span> <span class="n">emission_factors</span><span class="p">[</span><span class="s2">&quot;concrete&quot;</span><span class="p">]</span> <span class="o">+</span>
+                  <span class="n">steel_eff</span> <span class="o">*</span> <span class="n">emission_factors</span><span class="p">[</span><span class="s2">&quot;steel&quot;</span><span class="p">]</span> <span class="o">+</span>
+                  <span class="n">geo_eff</span> <span class="o">*</span> <span class="n">emission_factors</span><span class="p">[</span><span class="s2">&quot;geosynthetic&quot;</span><span class="p">])</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="p">(</span><span class="n">concrete_eff</span> <span class="o">*</span> <span class="n">cost_factors</span><span class="p">[</span><span class="s2">&quot;concrete&quot;</span><span class="p">]</span> <span class="o">+</span>
+                <span class="n">steel_eff</span> <span class="o">*</span> <span class="n">cost_factors</span><span class="p">[</span><span class="s2">&quot;steel&quot;</span><span class="p">]</span> <span class="o">+</span>
+                <span class="n">geo_eff</span> <span class="o">*</span> <span class="n">cost_factors</span><span class="p">[</span><span class="s2">&quot;geosynthetic&quot;</span><span class="p">])</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">sustainability_score</span><span class="p">(</span><span class="n">reuse_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">carbon</span><span class="p">,</span> <span class="n">cost</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Shallow&quot;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">bearing_capacity</span><span class="p">(</span><span class="n">c_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">gamma_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">B_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">q_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Ultimate Bearing Capacity (kPa)&quot;</span>
+        <span class="k">elif</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Pile&quot;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">pile_capacity</span><span class="p">(</span><span class="n">c_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">Ap_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">L_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Axial Pile Capacity (kN)&quot;</span>
+        <span class="k">elif</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Retaining Wall&quot;</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">earth_pressure</span><span class="p">(</span><span class="n">gamma_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">H_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">phi_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Active Earth Pressure (kN/m)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;N/A&quot;</span>
+            <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;Performance Metric&quot;</span>
+        <span class="c1"># 📘 Interpretation and Summary</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📘 Interpretation:&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Embodied carbon interpretation</span>
+        <span class="k">if</span> <span class="n">carbon</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Low embodied carbon — aligns with sustainable construction targets.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">carbon</span> <span class="o">&lt;</span> <span class="mi">800</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Moderate embodied carbon — better than conventional but could improve.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ High embodied carbon — consider reducing concrete or increasing reuse.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Cost interpretation</span>
+        <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Economical design — suitable for budget-sensitive projects.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">1500</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Moderate cost — acceptable for performance-driven applications.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ High cost — consider optimizing material use or sourcing.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Strength interpretation</span>
+        <span class="k">if</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Shallow&quot;</span> <span class="ow">and</span> <span class="n">result</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Low bearing capacity — may not be suitable for heavy loads.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Pile&quot;</span> <span class="ow">and</span> <span class="n">result</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Low axial capacity — consider increasing pile length or diameter.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;Retaining Wall&quot;</span> <span class="ow">and</span> <span class="n">result</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Low earth pressure — verify soil parameters.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Structural performance appears adequate for typical conditions.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Sustainability score interpretation</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ High sustainability score — excellent balance of cost, carbon, and reuse.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Moderate sustainability — room for improvement.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ Low sustainability — redesign recommended.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># 📊 Summary Table</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 Summary Compared to Typical Values:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Metric&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="s1">&#39;Your Design&#39;</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}{</span><span class="s1">&#39;Typical Range&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Embodied Carbon (kg CO₂)&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="n">carbon</span><span class="si">:</span><span class="s2">&gt;15.1f</span><span class="si">}{</span><span class="s1">&#39;300–800&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Life Cycle Cost ($)&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="n">cost</span><span class="si">:</span><span class="s2">&gt;15.2f</span><span class="si">}{</span><span class="s1">&#39;800–1500&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="n">result</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">result</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}{</span><span class="s1">&#39;Depends on type&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Sustainability Score&#39;</span><span class="si">:</span><span class="s2">&lt;25</span><span class="si">}{</span><span class="n">score</span><span class="si">:</span><span class="s2">&gt;15</span><span class="si">}{</span><span class="s1">&#39;5–10&#39;</span><span class="si">:</span><span class="s2">&gt;20</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        
+        
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🏗️ Foundation Type: </span><span class="si">{</span><span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concrete Volume: </span><span class="si">{</span><span class="n">concrete_kg</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2400</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m³&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concrete Used: </span><span class="si">{</span><span class="n">concrete_eff</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Steel Used: </span><span class="si">{</span><span class="n">steel_eff</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Geosynthetics Used: </span><span class="si">{</span><span class="n">geo_eff</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reuse Percentage: </span><span class="si">{</span><span class="n">reuse_slider</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🌍 Embodied Carbon: </span><span class="si">{</span><span class="n">carbon</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg CO₂&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💰 Life Cycle Cost: $</span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📏 </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="nb">str</span><span class="p">)</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">result</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧠 Sustainability Score: </span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s2">/10&quot;</span><span class="p">)</span>
+
+        <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Carbon (kg CO₂)&#39;</span><span class="p">,</span> <span class="s1">&#39;Cost ($)&#39;</span><span class="p">,</span> <span class="s1">&#39;Sustainability&#39;</span><span class="p">]</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">carbon</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">score</span><span class="p">]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sustainable Geotechnical Metrics&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Link triggers</span>
+<span class="n">foundation_dropdown</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_visibility</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">compute_results</span><span class="p">)</span>
+
+<span class="c1"># Initial display</span>
+<span class="n">update_visibility</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c5a38f6df651499b926c1f6853cfe4d1", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="reflective-conceptual-and-quiz-questions-sustainable-geotechnical-engineering-calculator">
+<h3>🧱 Reflective, Conceptual, and Quiz Questions: Sustainable Geotechnical Engineering Calculator<a class="headerlink" href="#reflective-conceptual-and-quiz-questions-sustainable-geotechnical-engineering-calculator" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>📘 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<p>These questions explore the engineering principles, sustainability metrics, and modeling logic behind the calculator.</p>
+</section>
+<section id="foundation-design">
+<h3>Foundation Design<a class="headerlink" href="#foundation-design" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What are the key differences in load transfer mechanisms between shallow and deep foundations?</p></li>
+<li><p>How does geometry (e.g., footing width, pile length, wall height) influence material demand and structural performance?</p></li>
+<li><p>Why is bearing capacity estimated using Terzaghi’s equation for shallow foundations?</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Material Estimation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How is concrete volume estimated from geometric inputs, and why is density used to convert to mass?</p></li>
+<li><p>What assumptions are made about steel reinforcement ratios in different foundation types?</p></li>
+<li><p>How does material reuse affect both embodied carbon and cost?</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Sustainability Metrics<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Why is embodied carbon a critical metric in geotechnical design?</p></li>
+<li><p>How does the sustainability score balance environmental and economic performance?</p></li>
+<li><p>What are the limitations of using fixed emission and cost factors across diverse project contexts?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>🔍 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<p>These questions encourage critical thinking and application to real-world design decisions.</p>
+<ul class="simple">
+<li><p>If your project site has soft clay and high water table, which foundation type would you choose and why?</p></li>
+<li><p>How would your design change if the goal was to minimize embodied carbon rather than maximize bearing capacity?</p></li>
+<li><p>What trade-offs exist between increasing wall thickness for strength and reducing material use for sustainability?</p></li>
+<li><p>How could this model be extended to include excavation impacts or construction equipment emissions?</p></li>
+<li><p>What policy or procurement strategies could incentivize reuse of foundation materials?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>❓ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="multiple-choice">
+<h3>Multiple Choice<a class="headerlink" href="#multiple-choice" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which foundation type typically requires the greatest volume of concrete per unit area?</strong><br />
+A. Shallow footing<br />
+B. Pile foundation<br />
+C. Retaining wall<br />
+D. Geosynthetic-reinforced soil<br />
+<strong>Answer:</strong> B</p></li>
+<li><p><strong>What is the primary factor influencing axial capacity of a pile in cohesive soil?</strong><br />
+A. Pile diameter<br />
+B. Soil friction angle<br />
+C. Cohesion and pile length<br />
+D. Wall height<br />
+<strong>Answer:</strong> C</p></li>
+<li><p><strong>Which parameter most directly affects active earth pressure on a retaining wall?</strong><br />
+A. Wall thickness<br />
+B. Soil cohesion<br />
+C. Friction angle and wall height<br />
+D. Pile area<br />
+<strong>Answer:</strong> C</p></li>
+</ol>
+</section>
+<section id="true-false">
+<h3>True/False<a class="headerlink" href="#true-false" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>Increasing reuse percentage reduces both embodied carbon and material cost.</strong><br />
+<strong>Answer:</strong> True</p></li>
+<li><p><strong>The sustainability score increases if the design uses more concrete.</strong><br />
+<strong>Answer:</strong> False</p></li>
+<li><p><strong>Steel reinforcement is assumed to scale linearly with concrete volume in this model.</strong><br />
+<strong>Answer:</strong> True</p></li>
+</ol>
+</section>
+<section id="short-answer">
+<h3>Short Answer<a class="headerlink" href="#short-answer" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="7">
+<li><p><strong>Explain how the calculator estimates concrete mass from geometric inputs.</strong><br />
+<em>Answer:</em> It calculates volume based on foundation geometry and multiplies by concrete density (2400 kg/m³) to estimate mass.</p></li>
+<li><p><strong>What are the environmental benefits of using geosynthetics in foundation systems?</strong><br />
+<em>Answer:</em> Geosynthetics can reduce the need for bulk materials, improve soil performance, and enable reuse or modular design, lowering overall carbon footprint.</p></li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ConcreteSustainability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: Sustainable Concrete</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="LifeCycleAssessment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: Life Cycle Assessment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainable-geotechnical-engineering-overview">🌱 Sustainable Geotechnical Engineering: Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-strategies">🧭 Key Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opportunities">🚀 Opportunities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges">⚠️ Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-impact-potential">🌍 Climate Impact Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-insight">📘 Summary Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background-sustainable-geotechnical-engineering-calculator">🧱 Theoretical Background: Sustainable Geotechnical Engineering Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">📘 Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-models">📐 Engineering Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shallow-foundation-bearing-capacity">1. <strong>Shallow Foundation Bearing Capacity</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pile-foundation-axial-capacity">2. <strong>Pile Foundation Axial Capacity</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-earth-pressure">3. <strong>Retaining Wall Earth Pressure</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-metrics">🌍 Sustainability Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#embodied-carbon">1. <strong>Embodied Carbon</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#life-cycle-cost">2. <strong>Life Cycle Cost</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainability-score">3. <strong>Sustainability Score</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-estimation">📊 Material Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references-and-sources">📚 References and Sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-input-ranges">📥 Typical Input Ranges</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-conceptual-and-quiz-questions-sustainable-geotechnical-engineering-calculator">🧱 Reflective, Conceptual, and Quiz Questions: Sustainable Geotechnical Engineering Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-design">Foundation Design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Material Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Sustainability Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

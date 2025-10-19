@@ -1,0 +1,1266 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Enginereing Sustainability: CarbonateCycleClimate &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/CarbonateCycleClimate';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Sustainable Engineering: Renewal Energy" href="RenewalEnergy.html" />
+    <link rel="prev" title="Chapter 6 Enginereing Sustainability: BioGeoChemCycle" href="BioGeoChemCycle.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/CarbonateCycleClimate.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/CarbonateCycleClimate.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/CarbonateCycleClimate.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/CarbonateCycleClimate.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/CarbonateCycleClimate.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Enginereing Sustainability: CarbonateCycleClimate</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carbonate-cycle-definition-buffering-role-and-climate-importance">🌊 Carbonate Cycle – Definition, Buffering Role, and Climate Importance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-carbonate-cycle">🌍 Overview of the Carbonate Cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carbonate-equilibrium-equations">⚖️ Carbonate Equilibrium Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#co2-dissolution-and-hydration">1. CO₂ Dissolution and Hydration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#carbonic-acid-dissociation">2. Carbonic Acid Dissociation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bicarbonate-dissociation">3. Bicarbonate Dissociation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calcium-carbonate-solubility">4. Calcium Carbonate Solubility</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#water-dissociation">5. Water Dissociation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-vs-closed-carbonate-systems">🔁 Open vs. Closed Carbonate Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-regulating-water-buffering-capacity">💧 Importance in Regulating Water Buffering Capacity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-relevance-co2-capture-potential">🌍 Climate Relevance – CO₂ Capture Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-summary">📌 In Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-enhanced-carbonate-cycle-simulator">🌎 Summary – Enhanced Carbonate Cycle Simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📤 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-enginereing-sustainability-carbonatecycleclimate">
+<h1>Chapter 6 Enginereing Sustainability: CarbonateCycleClimate<a class="headerlink" href="#chapter-6-enginereing-sustainability-carbonatecycleclimate" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Carbonate Cycle</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Carbonate Cycle</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="carbonate-cycle-equilibrium-chemical-equations">
+<a class="reference internal image-reference" href="../_images/CarbonateCycleImage.png"><img alt="Descriptive alt text for accessibility" src="../_images/CarbonateCycleImage.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">**Figure 6.13 **: Carbonate Cycle Equilibrium Chemical Equations</span><a class="headerlink" href="#carbonate-cycle-equilibrium-chemical-equations" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="carbonate-cycle-definition-buffering-role-and-climate-importance">
+<h3>🌊 Carbonate Cycle – Definition, Buffering Role, and Climate Importance<a class="headerlink" href="#carbonate-cycle-definition-buffering-role-and-climate-importance" title="Link to this heading">#</a></h3>
+<p>The <strong>carbonate cycle</strong> is a critical part of the global carbon cycle, regulating the movement of carbon between the atmosphere, hydrosphere, lithosphere, and biosphere. It plays a central role in <strong>pH buffering</strong>, <strong>mineral stability</strong>, and <strong>CO₂ regulation</strong> in natural and engineered systems. The <strong>carbonate cycle</strong> describes the movement of carbon through <strong>carbonate minerals</strong>, <strong>water bodies</strong>, and <strong>geologic processes</strong> over long time scales. It is part of the larger carbon cycle, but specifically involves:</p>
+<ul class="simple">
+<li><p><strong>CO₂ dissolution</strong> in water → forms carbonic acid (H₂CO₃)</p></li>
+<li><p><strong>Carbonate equilibria</strong> between bicarbonate (HCO₃⁻), carbonate ions (CO₃²⁻), and dissolved CO₂</p></li>
+<li><p><strong>Sedimentation</strong> of calcium carbonate (CaCO₃) by marine organisms</p></li>
+<li><p><strong>Weathering and metamorphism</strong> of carbonate rocks (e.g., limestone, dolomite)</p></li>
+<li><p><strong>Volcanic and tectonic emissions</strong> returning carbon to the atmosphere</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="overview-of-the-carbonate-cycle">
+<h3>🌍 Overview of the Carbonate Cycle<a class="headerlink" href="#overview-of-the-carbonate-cycle" title="Link to this heading">#</a></h3>
+<p>Key processes in the carbonate cycle include:</p>
+<ul class="simple">
+<li><p><strong>Atmospheric CO₂ dissolution</strong> into water</p></li>
+<li><p>Formation of <strong>carbonic acid (H₂CO₃)</strong></p></li>
+<li><p>Dissociation into <strong>bicarbonate (HCO₃⁻)</strong> and <strong>carbonate (CO₃²⁻)</strong></p></li>
+<li><p>Precipitation or dissolution of <strong>calcium carbonate (CaCO₃)</strong></p></li>
+<li><p><strong>Biological uptake and release</strong> of CO₂ through respiration and photosynthesis</p></li>
+<li><p><strong>Weathering of carbonate rocks</strong>, releasing bicarbonate into water systems</p></li>
+</ul>
+<p>These reactions are <strong>pH-dependent</strong> and form the basis of <strong>alkalinity</strong> and <strong>acid neutralization capacity</strong> in water bodies.</p>
+</section>
+<hr class="docutils" />
+<section id="carbonate-equilibrium-equations">
+<h3>⚖️ Carbonate Equilibrium Equations<a class="headerlink" href="#carbonate-equilibrium-equations" title="Link to this heading">#</a></h3>
+<section id="co2-dissolution-and-hydration">
+<h4>1. CO₂ Dissolution and Hydration<a class="headerlink" href="#co2-dissolution-and-hydration" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{CO}_2(g) \rightleftharpoons \text{CO}_2(aq)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{CO}_2(aq) + \text{H}_2O \rightleftharpoons \text{H}_2CO_3
+\]</div>
+</section>
+<section id="carbonic-acid-dissociation">
+<h4>2. Carbonic Acid Dissociation<a class="headerlink" href="#carbonic-acid-dissociation" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{H}_2CO_3 \rightleftharpoons \text{H}^+ + \text{HCO}_3^- \quad (K_1 \approx 10^{-6.3})
+\]</div>
+</section>
+<section id="bicarbonate-dissociation">
+<h4>3. Bicarbonate Dissociation<a class="headerlink" href="#bicarbonate-dissociation" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{HCO}_3^- \rightleftharpoons \text{H}^+ + \text{CO}_3^{2-} \quad (K_2 \approx 10^{-10.3})
+\]</div>
+</section>
+<section id="calcium-carbonate-solubility">
+<h4>4. Calcium Carbonate Solubility<a class="headerlink" href="#calcium-carbonate-solubility" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{CaCO}_3(s) \rightleftharpoons \text{Ca}^{2+} + \text{CO}_3^{2-} \quad (K_{sp} \approx 4.47 \times 10^{-9})
+\]</div>
+</section>
+<section id="water-dissociation">
+<h4>5. Water Dissociation<a class="headerlink" href="#water-dissociation" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{H}_2O \rightleftharpoons \text{H}^+ + \text{OH}^- \quad (K_w \approx 10^{-14})
+\]</div>
+</section>
+</section>
+<section id="open-vs-closed-carbonate-systems">
+<h3>🔁 Open vs. Closed Carbonate Systems<a class="headerlink" href="#open-vs-closed-carbonate-systems" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>System Type</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>CO₂ Interaction</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Open</strong></p></td>
+<td><p>Exchanges CO₂ freely with atmosphere</p></td>
+<td><p>Dynamic pH changes</p></td>
+<td><p>Surface ocean, rivers</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Closed</strong></p></td>
+<td><p>Isolated from atmosphere</p></td>
+<td><p>Limited buffering</p></td>
+<td><p>Deep lakes, groundwater aquifers</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Open systems allow atmospheric CO₂ to influence carbonate equilibria directly, which increases <strong>ocean acidification risk</strong> when CO₂ levels rise.</p>
+</section>
+<hr class="docutils" />
+<section id="importance-in-regulating-water-buffering-capacity">
+<h3>💧 Importance in Regulating Water Buffering Capacity<a class="headerlink" href="#importance-in-regulating-water-buffering-capacity" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Alkalinity</strong></p></td>
+<td><p>The water’s ability to resist pH changes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Carbonate System</strong></p></td>
+<td><p>Main contributor to alkalinity in oceans and lakes</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Buffering</strong></p></td>
+<td><p>Maintains stable pH despite acid inputs (e.g., CO₂, acids)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Equilibrium Reactions</strong></p></td>
+<td><p>CO₂ ⇌ H₂CO₃ ⇌ HCO₃⁻ ⇌ CO₃²⁻; these govern how CO₂ behaves in water</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Carbonate buffering stabilizes aquatic environments, supports marine life, and controls <strong>CO₂ solubility</strong>—essential for climate regulation and ecosystem resilience.</p>
+</section>
+<hr class="docutils" />
+<section id="climate-relevance-co2-capture-potential">
+<h3>🌍 Climate Relevance – CO₂ Capture Potential<a class="headerlink" href="#climate-relevance-co2-capture-potential" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Long-Term Carbon Sink</strong>: Carbonate rocks can lock carbon for millions of years</p></li>
+<li><p><strong>Oceanic Uptake</strong>: Ocean carbonate system absorbs large amounts of CO₂</p></li>
+<li><p><strong>Enhanced Weathering</strong>: Applied to soils and coasts, this technique mimics natural carbonate drawdown to sequester atmospheric CO₂</p></li>
+<li><p><strong>Geological Carbon Storage</strong>: CO₂ reacts with minerals to form solid carbonates, permanently storing carbon</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="in-summary">
+<h3>📌 In Summary<a class="headerlink" href="#in-summary" title="Link to this heading">#</a></h3>
+<p>The carbonate cycle is a <strong>natural climate regulator</strong>, a <strong>chemical pH buffer</strong>, and a potential ally in <strong>global carbon mitigation strategies</strong>. It stabilizes aquatic environments and serves as one of the most enduring carbon sinks on Earth.</p>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id117" title="J. W. Morse and F. T. Mackenzie. Geochemistry of Sedimentary Carbonates. Volume 48 of Developments in Sedimentology. Elsevier, 1990. ISBN 9780080869629. URL: https://books.google.com/books/about/Geochemistry_of_Sedimentary_Carbonates.html?id=3Cvk2lkukgEC.">Morse and Mackenzie, 1990</a>]</span> is a cornerstone reference for understanding the carbonate cycle, including: - CO₂–carbonic acid equilibria - Carbonate mineral solubility and diagenesis - Oceanic and shoal-water carbonate systems- Human impacts on the global carbon cycle</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="summary-enhanced-carbonate-cycle-simulator">
+<h3>🌎 Summary – Enhanced Carbonate Cycle Simulator<a class="headerlink" href="#summary-enhanced-carbonate-cycle-simulator" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
+<p>An interactive Python tool that models the Earth’s <strong>carbonate system</strong> as part of the long-term global carbon cycle. It simulates how <strong>atmospheric CO₂</strong>, <strong>temperature</strong>, <strong>ocean chemistry</strong>, <strong>geological features</strong>, and <strong>climate factors</strong> interact to regulate carbon through ocean uptake, carbonate sedimentation, weathering, and volcanic emissions.</p>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Calculates <strong>ocean CO₂ uptake</strong> based on solubility and global temperature</p></li>
+<li><p>Simulates <strong>carbonate deposition</strong> rate influenced by temperature and ocean pH</p></li>
+<li><p>Estimates <strong>silicate rock weathering</strong>, a natural CO₂ drawdown driven by rainfall and temperature</p></li>
+<li><p>Adds <strong>volcanic carbon flux</strong>, representing geologic emissions</p></li>
+<li><p>Aggregates all fluxes into a <strong>net carbon sink change</strong>, indicating the Earth’s long-term carbon balance</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="inputs">
+<h3>📥 Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input Parameter</p></th>
+<th class="head"><p>Role in Simulation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Atmospheric CO₂ (ppm)</p></td>
+<td><p>Drives carbon availability and weathering rate</p></td>
+</tr>
+<tr class="row-odd"><td><p>Global Temperature (°C)</p></td>
+<td><p>Affects solubility, biological activity, feedbacks</p></td>
+</tr>
+<tr class="row-even"><td><p>Ocean Area (km²)</p></td>
+<td><p>Controls volume for oceanic CO₂ absorption</p></td>
+</tr>
+<tr class="row-odd"><td><p>Continental Area (km²)</p></td>
+<td><p>Governs surface available for silicate weathering</p></td>
+</tr>
+<tr class="row-even"><td><p>Ocean pH</p></td>
+<td><p>Modulates rate of carbonate deposition</p></td>
+</tr>
+<tr class="row-odd"><td><p>Precipitation (mm/year)</p></td>
+<td><p>Amplifies chemical weathering of rocks</p></td>
+</tr>
+<tr class="row-even"><td><p>Volcanic C Flux (Pg/year)</p></td>
+<td><p>Adds carbon from mantle sources</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📤 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ocean CO₂ Uptake</p></td>
+<td><p>Carbon removed from atmosphere into ocean</p></td>
+</tr>
+<tr class="row-odd"><td><p>Carbonate Deposition</p></td>
+<td><p>Carbon stored as seafloor sediments</p></td>
+</tr>
+<tr class="row-even"><td><p>Silicate Weathering</p></td>
+<td><p>Rock-based CO₂ removal via chemical reactions</p></td>
+</tr>
+<tr class="row-odd"><td><p>Volcanic Emissions</p></td>
+<td><p>CO₂ released geologically</p></td>
+</tr>
+<tr class="row-even"><td><p>Net Carbon Sink Δ</p></td>
+<td><p>Net carbon removal or release from the system</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-results">
+<h3>🔍 How to Interpret Results<a class="headerlink" href="#how-to-interpret-results" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Positive Net Carbon Sink</strong> → more carbon retained in Earth systems</p></li>
+<li><p><strong>Lower Ocean pH</strong> → reduced carbonate deposition → less long-term storage</p></li>
+<li><p><strong>Higher Temperature &amp; CO₂</strong> → increased weathering but reduced ocean solubility</p></li>
+<li><p><strong>Balance across fluxes</strong> reflects dynamic feedback between <strong>climate drivers</strong> and <strong>carbon reservoirs</strong></p></li>
+</ul>
+<p>This simulator provides a simplified view of deep-time carbon regulation—ideal for educational, exploratory, or scenario-based climate modeling.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🌎 Enhanced Carbonate Cycle Simulator – Climate, Geochemistry, Ocean Feedbacks</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># 📋 Expanded Input Parameters</span>
+<span class="n">atm_CO2_ppm</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">420</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">280</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Atmospheric CO₂ (ppm)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">temp_C</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">35.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Global Temp (°C)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">ocean_area_km2</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">360e6</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Ocean Area (km²)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">continental_area_km2</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">150e6</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Continental Area (km²)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">pH_ocean</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">8.1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">8.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Ocean pH&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">precip_mm</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Annual Precipitation (mm)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+<span class="n">volcanic_flux</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Volcanic C Flux (Pg C/year)&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;180px&#39;</span><span class="p">})</span>
+
+<span class="c1"># 🧮 Simulation Logic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">simulate_enhanced_carbonate_cycle</span><span class="p">(</span><span class="n">CO2_ppm</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">ocean_area</span><span class="p">,</span> <span class="n">continent_area</span><span class="p">,</span> <span class="n">ocean_pH</span><span class="p">,</span> <span class="n">precip_mm</span><span class="p">,</span> <span class="n">volc_flux</span><span class="p">):</span>
+    <span class="n">ocean_solubility</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">0.04</span> <span class="o">-</span> <span class="mf">0.0015</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp</span> <span class="o">-</span> <span class="mi">15</span><span class="p">),</span> <span class="mf">0.015</span><span class="p">)</span>
+    <span class="n">ocean_uptake</span> <span class="o">=</span> <span class="n">ocean_area</span> <span class="o">*</span> <span class="n">ocean_solubility</span> <span class="o">*</span> <span class="n">CO2_ppm</span> <span class="o">*</span> <span class="mf">1e-6</span>  <span class="c1"># Gt C</span>
+
+    <span class="n">pH_scaling</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mf">8.2</span> <span class="o">-</span> <span class="n">ocean_pH</span><span class="p">)</span> <span class="o">/</span> <span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># Lower pH reduces deposition</span>
+    <span class="n">carbonate_deposition</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">temp</span> <span class="o">-</span> <span class="mi">20</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">30</span><span class="p">)</span> <span class="o">*</span> <span class="n">pH_scaling</span> <span class="o">*</span> <span class="mf">1e8</span>
+
+    <span class="n">weathering_rate</span> <span class="o">=</span> <span class="mf">1e-4</span> <span class="o">*</span> <span class="p">(</span><span class="n">CO2_ppm</span> <span class="o">/</span> <span class="mi">400</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">temp</span> <span class="o">/</span> <span class="mi">15</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">precip_mm</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">silicate_weathering</span> <span class="o">=</span> <span class="n">weathering_rate</span> <span class="o">*</span> <span class="n">continent_area</span>  <span class="c1"># Gt C/year proxy</span>
+
+    <span class="n">volcanic_input</span> <span class="o">=</span> <span class="n">volc_flux</span> <span class="o">*</span> <span class="mf">1e3</span>  <span class="c1"># Convert Pg to Gt (proxy units)</span>
+
+    <span class="n">net_carbon_sink</span> <span class="o">=</span> <span class="n">ocean_uptake</span> <span class="o">+</span> <span class="n">silicate_weathering</span> <span class="o">-</span> <span class="n">carbonate_deposition</span> <span class="o">+</span> <span class="n">volcanic_input</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;Ocean CO₂ Uptake&#39;</span><span class="p">:</span> <span class="n">ocean_uptake</span><span class="p">,</span>
+        <span class="s1">&#39;Carbonate Deposition&#39;</span><span class="p">:</span> <span class="n">carbonate_deposition</span><span class="p">,</span>
+        <span class="s1">&#39;Silicate Weathering&#39;</span><span class="p">:</span> <span class="n">silicate_weathering</span><span class="p">,</span>
+        <span class="s1">&#39;Volcanic Emissions&#39;</span><span class="p">:</span> <span class="n">volcanic_input</span><span class="p">,</span>
+        <span class="s1">&#39;Net Carbon Sink Δ&#39;</span><span class="p">:</span> <span class="n">net_carbon_sink</span>
+    <span class="p">}</span>
+
+<span class="c1"># 🔘 Button &amp; Output</span>
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Simulate Advanced Carbonate Cycle&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;280px&#39;</span><span class="p">))</span>
+<span class="n">output_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output_box</span><span class="p">:</span>
+        <span class="n">output_box</span><span class="o">.</span><span class="n">clear_output</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">simulate_enhanced_carbonate_cycle</span><span class="p">(</span>
+            <span class="n">atm_CO2_ppm</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">temp_C</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">ocean_area_km2</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">continental_area_km2</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">pH_ocean</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">precip_mm</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">volcanic_flux</span><span class="o">.</span><span class="n">value</span>
+        <span class="p">)</span>
+
+        <span class="c1"># 📝 Report</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🧪 Carbonate Cycle Simulation – Enhanced Version</span>
+
+<span class="s2">**Atmospheric CO₂**: </span><span class="si">{</span><span class="n">atm_CO2_ppm</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> ppm  </span>
+<span class="s2">**Global Temperature**: </span><span class="si">{</span><span class="n">temp_C</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> °C  </span>
+<span class="s2">**Ocean Area**: </span><span class="si">{</span><span class="n">ocean_area_km2</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.0e</span><span class="si">}</span><span class="s2"> km²  </span>
+<span class="s2">**Continental Area**: </span><span class="si">{</span><span class="n">continental_area_km2</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.0e</span><span class="si">}</span><span class="s2"> km²  </span>
+<span class="s2">**Ocean pH**: </span><span class="si">{</span><span class="n">pH_ocean</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">**Annual Precipitation**: </span><span class="si">{</span><span class="n">precip_mm</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> mm  </span>
+<span class="s2">**Volcanic C Flux**: </span><span class="si">{</span><span class="n">volcanic_flux</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Pg C/year  </span>
+
+<span class="s2">| Component              | Carbon Flux Estimate (proxy units) |</span>
+<span class="s2">|------------------------|--------------------------------------|</span>
+<span class="s2">| Ocean CO₂ Uptake       | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Ocean CO₂ Uptake&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">     |</span>
+<span class="s2">| Carbonate Deposition   | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Carbonate Deposition&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">|</span>
+<span class="s2">| Silicate Weathering    | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Silicate Weathering&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> |</span>
+<span class="s2">| Volcanic Emissions     | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Volcanic Emissions&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">  |</span>
+<span class="s2">| Net Carbon Sink Change | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;Net Carbon Sink Δ&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">   |</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+
+        <span class="c1"># 📊 Visualization</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="s1">&#39;#9467bd&#39;</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Carbon Flux (proxy units)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Carbonate Cycle – Climate Regulation Components&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="c1"># 🧩 Interface Display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">atm_CO2_ppm</span><span class="p">,</span> <span class="n">temp_C</span><span class="p">,</span> <span class="n">pH_ocean</span><span class="p">]),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">ocean_area_km2</span><span class="p">,</span> <span class="n">continental_area_km2</span><span class="p">]),</span>
+    <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">precip_mm</span><span class="p">,</span> <span class="n">volcanic_flux</span><span class="p">]),</span>
+    <span class="n">run_btn</span><span class="p">,</span>
+    <span class="n">output_box</span>
+<span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="BioGeoChemCycle.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: BioGeoChemCycle</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="RenewalEnergy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Sustainable Engineering: Renewal Energy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carbonate-cycle-definition-buffering-role-and-climate-importance">🌊 Carbonate Cycle – Definition, Buffering Role, and Climate Importance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-the-carbonate-cycle">🌍 Overview of the Carbonate Cycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carbonate-equilibrium-equations">⚖️ Carbonate Equilibrium Equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#co2-dissolution-and-hydration">1. CO₂ Dissolution and Hydration</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#carbonic-acid-dissociation">2. Carbonic Acid Dissociation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bicarbonate-dissociation">3. Bicarbonate Dissociation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calcium-carbonate-solubility">4. Calcium Carbonate Solubility</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#water-dissociation">5. Water Dissociation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-vs-closed-carbonate-systems">🔁 Open vs. Closed Carbonate Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-regulating-water-buffering-capacity">💧 Importance in Regulating Water Buffering Capacity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-relevance-co2-capture-potential">🌍 Climate Relevance – CO₂ Capture Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-summary">📌 In Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-enhanced-carbonate-cycle-simulator">🌎 Summary – Enhanced Carbonate Cycle Simulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">📥 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📤 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-results">🔍 How to Interpret Results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

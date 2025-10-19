@@ -1,0 +1,1410 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 3 Hydraulics: Design of Culverts &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap3/CulvertDesign';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 3 Hydraulics: Hydraulic Pumps" href="PumpDesignSelection.html" />
+    <link rel="prev" title="Chapter 3: Energy Dissipator" href="EnergyDissipator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap3/CulvertDesign.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap3/CulvertDesign.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap3/CulvertDesign.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap3/CulvertDesign.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap3/CulvertDesign.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 3 Hydraulics: Design of Culverts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-culvert">What Is a Culvert?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-culverts">📚 Functions of Culverts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-culverts">🧱 Types of Culverts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-table-culverts-by-shape-material-and-flow-type">🧮 Classification Table: Culverts by Shape, Material, and Flow Type</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-culvert-design">⚠️ Challenges in Culvert Design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#culvert-hydraulics-classification-ven-te-chow">🚧 Culvert Hydraulics Classification – Ven Te Chow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#culvert-flow-classification-table">📊 Culvert Flow Classification Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtypes-of-culvert-flow-outlet-controlled">🔍 Subtypes of Culvert Flow (Outlet-Controlled)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-implications">📐 Design Implications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-culvert-design-tool-inlet-vs-outlet-control">Interactive Culvert Design Tool – Inlet vs Outlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-regimes">Flow Control Regimes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inlet-control">🔵 Inlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlet-control">🟢 Outlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-highlights">Output Highlights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#culvert-design-learning-module-inlet-vs-outlet-control">Culvert Design Learning Module – Inlet vs Outlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions-with-hints">Conceptual Questions (with Hints)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions-with-hints">🔍 Reflective Questions (with Hints)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-problem-solution">🧪 General Problem &amp; Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">✅ Quiz Questions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-hydraulics-design-of-culverts">
+<h1>Chapter 3 Hydraulics: Design of Culverts<a class="headerlink" href="#chapter-3-hydraulics-design-of-culverts" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Culvert Design</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Inlet and Outlet Control</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<section id="what-is-a-culvert">
+<h3>What Is a Culvert?<a class="headerlink" href="#what-is-a-culvert" title="Link to this heading">#</a></h3>
+<p>A <strong>culvert</strong> is a hydraulic structure that allows water to flow under a road, railroad, embankment, or similar obstruction. Understanding the culvert’s capacity under different control conditions is critical for proper drainage, flood mitigation, and road safety.</p>
+</section>
+<section id="functions-of-culverts">
+<h3>📚 Functions of Culverts<a class="headerlink" href="#functions-of-culverts" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Drainage Conveyance</strong>: Transfers water across roads or embankments</p></li>
+<li><p><strong>Flood Control</strong>: Prevents overtopping and erosion during storm events</p></li>
+<li><p><strong>Habitat Connectivity</strong>: Maintains aquatic organism passage and stream continuity</p></li>
+<li><p><strong>Roadway Protection</strong>: Prevents water accumulation and structural damage</p></li>
+<li><p><strong>Stormwater Management</strong>: Integrates with detention and conveyance systems</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="types-of-culverts">
+<h3>🧱 Types of Culverts<a class="headerlink" href="#types-of-culverts" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pipe Culvert</strong></p></td>
+<td><p>Circular or elliptical pipe; commonly made of concrete, steel, or HDPE</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Box Culvert</strong></p></td>
+<td><p>Rectangular concrete structure; suitable for high flows and shallow cover</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Arch Culvert</strong></p></td>
+<td><p>Open-bottom arch; preserves streambed and supports ecological flow</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slab Culvert</strong></p></td>
+<td><p>Flat slab over open channel; used for short spans</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bridge Culvert</strong></p></td>
+<td><p>Hybrid between culvert and small bridge; spans wider channels</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="classification-table-culverts-by-shape-material-and-flow-type">
+<h3>🧮 Classification Table: Culverts by Shape, Material, and Flow Type<a class="headerlink" href="#classification-table-culverts-by-shape-material-and-flow-type" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Classification Category</p></th>
+<th class="head"><p>Subtypes / Examples</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Shape</strong></p></td>
+<td><p>Circular, Elliptical, Box, Arch, Slab</p></td>
+<td><p>Influences hydraulic capacity and structural design</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Material</strong></p></td>
+<td><p>Concrete, Corrugated Steel, HDPE, PVC</p></td>
+<td><p>Affects durability, cost, and installation method</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Flow Type</strong></p></td>
+<td><p>Inlet-controlled, Outlet-controlled</p></td>
+<td><p>Determines headwater elevation and flow regime</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Installation</strong></p></td>
+<td><p>Embedded, Open-bottom, Closed-bottom</p></td>
+<td><p>Impacts ecological connectivity and scour potential</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hydraulic Design</strong></p></td>
+<td><p>Subcritical, Supercritical, Pressurized</p></td>
+<td><p>Guides sizing and energy dissipation strategies</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="challenges-in-culvert-design">
+<h2>⚠️ Challenges in Culvert Design<a class="headerlink" href="#challenges-in-culvert-design" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Challenge</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hydraulic Capacity</strong></p></td>
+<td><p>Must convey design flow without overtopping or excessive headwater</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sediment Transport</strong></p></td>
+<td><p>Risk of blockage or scour if not properly sized or aligned</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ecological Impact</strong></p></td>
+<td><p>Can disrupt fish passage and stream continuity if poorly designed</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Structural Integrity</strong></p></td>
+<td><p>Must withstand loads from traffic and soil pressure</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maintenance Access</strong></p></td>
+<td><p>Requires inspection and debris removal to prevent clogging</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Energy Dissipation</strong></p></td>
+<td><p>High velocities may require aprons, baffles, or stilling basins</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="culvert-hydraulics-classification-ven-te-chow">
+<h3>🚧 Culvert Hydraulics Classification – Ven Te Chow<a class="headerlink" href="#culvert-hydraulics-classification-ven-te-chow" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id13" title="Ven Te Chow. Open-Channel Hydraulics. McGraw-Hill, New York, NY, 1959. ISBN 9781932846188. A foundational text covering uniform, varied, and unsteady flow in open channels.">Chow, 1959</a>]</span> classified culvert flow based on the <strong>location of hydraulic control</strong> and the <strong>flow regime</strong>. These classifications help engineers determine headwater elevation, flow capacity, and whether the culvert is operating under inlet or outlet control.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="culvert-flow-classification-table">
+<h2>📊 Culvert Flow Classification Table<a class="headerlink" href="#culvert-flow-classification-table" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Flow Type</p></th>
+<th class="head"><p>Control Location</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Inlet Control</strong></p></td>
+<td><p>At the entrance</p></td>
+<td><p>Flow is governed by the culvert entrance geometry and headwater elevation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Outlet Control</strong></p></td>
+<td><p>At the exit</p></td>
+<td><p>Flow is governed by downstream conditions and full barrel hydraulics.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="subtypes-of-culvert-flow-outlet-controlled">
+<h3>🔍 Subtypes of Culvert Flow (Outlet-Controlled)<a class="headerlink" href="#subtypes-of-culvert-flow-outlet-controlled" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Flow Regime</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Subcritical Flow</strong></p></td>
+<td><p>Flow is slow and deep; controlled by downstream tailwater.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Supercritical Flow</strong></p></td>
+<td><p>Flow is fast and shallow; controlled by upstream conditions.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pressurized Flow</strong></p></td>
+<td><p>Culvert flows full; behaves like a pipe under pressure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Free Surface Flow</strong></p></td>
+<td><p>Flow has a free surface; behaves like open channel flow.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="design-implications">
+<h3>📐 Design Implications<a class="headerlink" href="#design-implications" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Inlet Control</strong>: Use entrance geometry and headwater to size culvert.</p></li>
+<li><p><strong>Outlet Control</strong>: Consider barrel roughness, slope, and tailwater elevation.</p></li>
+<li><p><strong>Critical Depth</strong>: Helps determine control section and flow regime.</p></li>
+<li><p><strong>Energy Losses</strong>: Include entrance, friction, and exit losses in design.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="conceptual-insight">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#conceptual-insight" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Ven Te Chow’s classification helps engineers identify the <strong>governing control point</strong><br />
+and apply appropriate equations for <strong>culvert sizing</strong>, <strong>headwater prediction</strong>, and <strong>flow regime analysis</strong>.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Culverts are more than just pipes under roads —<br />
+they are critical hydraulic structures that balance <strong>engineering</strong>, <strong>environmental</strong>, and <strong>hydrologic</strong> needs.</p>
+</div></blockquote>
+</section>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id2">[<a class="reference internal" href="../markdown.html#id37" title="Ram S. Gupta. Hydrology and Hydraulic Systems. Waveland Press, Long Grove, IL, 4th edition, 2017. ISBN 9781478630913.">Gupta, 2017</a>]</span> focuses on simplified culvert design using empirical formulas and flow classifications, emphasizing inlet/outlet control and headwater analysis. Ideal for undergraduate learners and competitive exam preparation with clear, formula-based steps.
+<span id="id3">[<a class="reference internal" href="../markdown.html#id3">Norman <em>et al.</em>, 2001</a>]</span> provides a comprehensive description integrating HEC-5, HEC-10, and HEC-13, covering hydrology, storage routing, inlet/outlet control, and performance curves for diverse culvert types.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="interactive-culvert-design-tool-inlet-vs-outlet-control">
+<h3>Interactive Culvert Design Tool – Inlet vs Outlet Control<a class="headerlink" href="#interactive-culvert-design-tool-inlet-vs-outlet-control" title="Link to this heading">#</a></h3>
+<p>This tool estimates and visualizes flow through a culvert under both <strong>inlet control</strong> and <strong>outlet control</strong> conditions, following standard hydraulic design principles from FHWA HDS-5.</p>
+</section>
+<section id="flow-control-regimes">
+<h3>Flow Control Regimes<a class="headerlink" href="#flow-control-regimes" title="Link to this heading">#</a></h3>
+</section>
+<section id="inlet-control">
+<h3>🔵 Inlet Control<a class="headerlink" href="#inlet-control" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Occurs when the culvert barrel is not flowing full.</p></li>
+<li><p>Flow depends on:</p>
+<ul>
+<li><p>Entrance geometry (weir or orifice behavior)</p></li>
+<li><p>Headwater elevation ( H_e )</p></li>
+<li><p>Culvert width or cross-sectional area</p></li>
+</ul>
+</li>
+<li><p>Two options:</p>
+<ul>
+<li><p><strong>Weir flow</strong>: $<span class="math notranslate nohighlight">\(
+Q = C_d \cdot b \cdot H_e^{1.5}
+\)</span>$</p></li>
+<li><p><strong>Orifice flow</strong>: $<span class="math notranslate nohighlight">\(
+Q = C_d \cdot A \cdot \sqrt{2gH_e}
+\)</span>$</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="outlet-control">
+<h3>🟢 Outlet Control<a class="headerlink" href="#outlet-control" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Occurs when the culvert flows full and tailwater affects the flow.</p></li>
+<li><p>Governed by <strong>Manning’s equation</strong>:
+<span class="math notranslate nohighlight">\(
+Q = \frac{1}{n} \cdot A \cdot R^{2/3} \cdot \sqrt{S}
+\)</span></p></li>
+<li><p>Depends on:</p>
+<ul>
+<li><p>Culvert shape and size</p></li>
+<li><p>Hydraulic radius <span class="math notranslate nohighlight">\(( R = A / P \)</span>)</p></li>
+<li><p>Slope <span class="math notranslate nohighlight">\(( S \)</span>)</p></li>
+<li><p>Roughness coefficient <span class="math notranslate nohighlight">\(( n \)</span>)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<p>You control the following parameters:</p>
+<ul class="simple">
+<li><p><strong>Culvert Shape</strong>: Circular or Box (square)</p></li>
+<li><p><strong>Diameter or Depth</strong> <span class="math notranslate nohighlight">\(( d \)</span>): Defines area <span class="math notranslate nohighlight">\(( A \)</span>) and perimeter <span class="math notranslate nohighlight">\(( P \)</span>)</p></li>
+<li><p><strong>Length <span class="math notranslate nohighlight">\(( L \)</span>)</strong> and <strong>Slope <span class="math notranslate nohighlight">\(( S \)</span>)</strong></p></li>
+<li><p><strong>Headwater depth</strong> <span class="math notranslate nohighlight">\(( H_e \)</span>) and <strong>Tailwater depth</strong> <span class="math notranslate nohighlight">\(( H_c \)</span>)</p></li>
+<li><p><strong>Inlet Type</strong>: Weir or Orifice</p></li>
+<li><p><strong>Manning’s n</strong>: Roughness (based on material)</p></li>
+</ul>
+<p>For each scenario, the tool computes:</p>
+<ul class="simple">
+<li><p>Discharge under <strong>inlet control</strong></p></li>
+<li><p>Discharge under <strong>outlet control</strong></p></li>
+<li><p>Governing condition based on which flow is more restrictive</p></li>
+<li><p><strong>Visual plot</strong> comparing both flow regimes over a range of heads</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="output-highlights">
+<h3>Output Highlights<a class="headerlink" href="#output-highlights" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>💡 <strong>Flow curves</strong> for inlet and outlet control</p></li>
+<li><p>🔵 <strong>Vertical markers</strong> at selected inlet and outlet heads</p></li>
+<li><p>✅ Automatically identifies <strong>governing condition</strong></p></li>
+<li><p>Adaptable for <strong>preliminary design, teaching</strong>, and hydraulic analysis</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">Dropdown</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>  <span class="c1"># m/s² gravity</span>
+
+<span class="c1"># Inlet Control Flow (weir or orifice equation, depends on head and entrance type)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">culvert_inlet_control</span><span class="p">(</span><span class="n">Q_type</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">He</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Cd_weir</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">Cd_orifice</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">Q_type</span> <span class="o">==</span> <span class="s2">&quot;Weir&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Cd_weir</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">He</span><span class="o">**</span><span class="mf">1.5</span>
+    <span class="k">elif</span> <span class="n">Q_type</span> <span class="o">==</span> <span class="s2">&quot;Orifice&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Cd_orifice</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">He</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+<span class="c1"># Outlet Control Flow (full barrel, based on Manning&#39;s equation)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">culvert_outlet_control</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">R</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span><span class="o">**</span><span class="mf">0.5</span>
+
+<span class="c1"># Wrapper function for visualization and comparison</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">culvert_design</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">He</span><span class="p">,</span> <span class="n">Hc</span><span class="p">,</span> <span class="n">Q_type</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">if</span> <span class="n">shape</span> <span class="o">==</span> <span class="s2">&quot;Circular&quot;</span> <span class="k">else</span> <span class="n">d</span> <span class="o">*</span> <span class="n">d</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">d</span> <span class="k">if</span> <span class="n">shape</span> <span class="o">==</span> <span class="s2">&quot;Circular&quot;</span> <span class="k">else</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">A</span> <span class="o">/</span> <span class="n">P</span>
+
+    <span class="c1"># Inlet Control</span>
+    <span class="n">Q_inlet</span> <span class="o">=</span> <span class="n">culvert_inlet_control</span><span class="p">(</span><span class="n">Q_type</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">He</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+    <span class="c1"># Outlet Control</span>
+    <span class="n">Q_outlet</span> <span class="o">=</span> <span class="n">culvert_outlet_control</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🧮 Culvert Design Summary&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape: </span><span class="si">{</span><span class="n">shape</span><span class="si">}</span><span class="s2">, Diameter/Depth: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Length: </span><span class="si">{</span><span class="n">L</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m, Slope: </span><span class="si">{</span><span class="n">S</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Headwater Elevation (inlet): </span><span class="si">{</span><span class="n">He</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Tailwater Elevation (outlet): </span><span class="si">{</span><span class="n">Hc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔵 Inlet Control Discharge (Q_in): </span><span class="si">{</span><span class="n">Q_inlet</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m³/s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🟢 Outlet Control Discharge (Q_out): </span><span class="si">{</span><span class="n">Q_outlet</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> m³/s&quot;</span><span class="p">)</span>
+
+    <span class="n">governing</span> <span class="o">=</span> <span class="s2">&quot;Inlet Control&quot;</span> <span class="k">if</span> <span class="n">Q_inlet</span> <span class="o">&lt;</span> <span class="n">Q_outlet</span> <span class="k">else</span> <span class="s2">&quot;Outlet Control&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Governing Flow Control: </span><span class="si">{</span><span class="n">governing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Optional plot</span>
+    <span class="n">heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">He</span><span class="p">,</span> <span class="n">Hc</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">Q_in</span> <span class="o">=</span> <span class="p">[</span><span class="n">culvert_inlet_control</span><span class="p">(</span><span class="n">Q_type</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">H</span> <span class="ow">in</span> <span class="n">heads</span><span class="p">]</span>
+    <span class="n">Q_out</span> <span class="o">=</span> <span class="p">[</span><span class="n">culvert_outlet_control</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">S</span><span class="p">)]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">heads</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heads</span><span class="p">,</span> <span class="n">Q_in</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Inlet Control&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">heads</span><span class="p">,</span> <span class="n">Q_out</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Outlet Control&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">He</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Inlet Head&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">Hc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tailwater Depth&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Head H (m)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Discharge Q (m³/s)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Culvert Flow: Inlet vs Outlet Control&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Interactive controls</span>
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">culvert_design</span><span class="p">,</span>
+    <span class="n">d</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Diameter d (m)&quot;</span><span class="p">),</span>
+    <span class="n">L</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Length L (m)&quot;</span><span class="p">),</span>
+    <span class="n">S</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">,</span> <span class="n">readout_format</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Slope S&quot;</span><span class="p">),</span>
+    <span class="n">n</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.013</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.035</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Manning n&quot;</span><span class="p">),</span>
+    <span class="n">He</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Inlet Head He&quot;</span><span class="p">),</span>
+    <span class="n">Hc</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Tailwater Depth Hc&quot;</span><span class="p">),</span>
+    <span class="n">Q_type</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Weir&quot;</span><span class="p">,</span> <span class="s2">&quot;Orifice&quot;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Weir&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Inlet Type&quot;</span><span class="p">),</span>
+    <span class="n">shape</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Circular&quot;</span><span class="p">,</span> <span class="s2">&quot;Box&quot;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Circular&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Culvert Shape&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1c702591420b464da5bc6a7f3e1472bc", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.culvert_design(d, L, S, n, He, Hc, Q_type, shape)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="culvert-design-learning-module-inlet-vs-outlet-control">
+<h3>Culvert Design Learning Module – Inlet vs Outlet Control<a class="headerlink" href="#culvert-design-learning-module-inlet-vs-outlet-control" title="Link to this heading">#</a></h3>
+<p>This resource supports the interactive culvert design tool by deepening conceptual understanding and promoting reflective thinking in hydraulic engineering.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions-with-hints">
+<h3>Conceptual Questions (with Hints)<a class="headerlink" href="#conceptual-questions-with-hints" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What distinguishes inlet control from outlet control in culvert hydraulics, and why does it matter for culvert design?</strong><br />
+🔎 <em>Hint: Think about whether flow is limited by the entrance geometry or by what happens inside the barrel.</em></p></li>
+<li><p><strong>How does Manning’s equation reflect the influence of pipe roughness, geometry, and slope in outlet-controlled culvert flow?</strong><br />
+🔎 <em>Hint: Pay attention to the role of the roughness coefficient ( n ), hydraulic radius ( R ), and slope ( S ).</em></p></li>
+<li><p><strong>Why does the governing control condition depend on the comparison between inlet and outlet discharge capacities?</strong><br />
+🔎 <em>Hint: Consider which component of the culvert system is more restrictive to flow under given conditions.</em></p></li>
+<li><p><strong>When modeling inlet control, why are both weir and orifice equations used? What do they represent physically?</strong><br />
+🔎 <em>Hint: It depends on whether the flow is free over the crest or fully submerged at the entrance.</em></p></li>
+<li><p><strong>Explain how culvert shape (circular vs. box) affects flow area and perimeter, and thus flow regime and velocity.</strong><br />
+🔎 <em>Hint: Different shapes result in different hydraulic radii, affecting resistance and capacity.</em></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions-with-hints">
+<h3>🔍 Reflective Questions (with Hints)<a class="headerlink" href="#reflective-questions-with-hints" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>In mountainous terrain, which control (inlet or outlet) likely governs culvert flow, and why?</strong><br />
+🔎 <em>Hint: Think about high slopes, short culvert lengths, and swift approach flows.</em></p></li>
+<li><p><strong>How might debris accumulation at the entrance affect the accuracy of inlet control predictions?</strong><br />
+🔎 <em>Hint: Imagine how effective flow area and entrance geometry could change in practice.</em></p></li>
+<li><p><strong>If tailwater level increases over time due to downstream changes, what happens to the governing control assumption?</strong><br />
+🔎 <em>Hint: A rising outlet depth could push the system into full-pipe flow conditions.</em></p></li>
+<li><p><strong>Why is it important to account for both frequent low flows and rare flood events in culvert design?</strong><br />
+🔎 <em>Hint: Reliability and safety aren’t based on a single storm. Think resilience and serviceability.</em></p></li>
+<li><p><strong>How might increased rainfall intensity due to climate change affect culvert sizing and design safety margins?</strong><br />
+🔎 <em>Hint: Consider whether current designs are conservative enough for future extremes.</em></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="general-problem-solution">
+<h3>🧪 General Problem &amp; Solution<a class="headerlink" href="#general-problem-solution" title="Link to this heading">#</a></h3>
+<p><strong>Problem:</strong><br />
+A circular culvert has diameter ( d = 1.2 ) m, length ( L = 30 ) m, slope ( S = 0.01 ), and Manning’s ( n = 0.013 ). The headwater depth at the entrance is ( H_e = 1.0 ) m, and tailwater depth is ( H_c = 0.5 ) m. Determine the inlet and outlet control discharges for both weir and orifice entrance conditions. Assume:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( C_d^{\text{weir}} = 0.6 \)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( C_d^{\text{orifice}} = 0.5 \)</span>)</p></li>
+</ul>
+<p><strong>Solution:</strong></p>
+<ol class="arabic simple">
+<li><p>Cross-sectional area of circular culvert:
+$<span class="math notranslate nohighlight">\(
+A = \pi \left( \frac{1.2}{2} \right)^2 \approx 1.13\ \text{m²}
+\)</span>$</p></li>
+<li><p>Wetted perimeter:
+$<span class="math notranslate nohighlight">\(
+P = \pi \cdot 1.2 \approx 3.77\ \text{m}
+\)</span>$</p></li>
+<li><p>Hydraulic radius:
+$<span class="math notranslate nohighlight">\(
+R = \frac{A}{P} \approx \frac{1.13}{3.77} \approx 0.30\ \text{m}
+\)</span>$</p></li>
+<li><p>Inlet Control (Weir Flow):
+$<span class="math notranslate nohighlight">\(
+Q_{\text{in,weir}} = 0.6 \cdot 1.2 \cdot 1.0^{1.5} = 0.72\ \text{m³/s}
+\)</span>$</p></li>
+<li><p>Inlet Control (Orifice Flow):
+$<span class="math notranslate nohighlight">\(
+Q_{\text{in,orifice}} = 0.5 \cdot 1.13 \cdot \sqrt{2 \cdot 9.81 \cdot 1.0} \approx 2.50\ \text{m³/s}
+\)</span>$</p></li>
+<li><p>Outlet Control:
+$<span class="math notranslate nohighlight">\(
+Q_{\text{out}} = \frac{1}{0.013} \cdot 1.13 \cdot 0.30^{2/3} \cdot \sqrt{0.01} \approx 1.80\ \text{m³/s}
+\)</span>$</p></li>
+</ol>
+<p><strong>Conclusion:</strong> The governing discharge is the lower of the estimates:<br />
+✅ Governing flow = <strong>0.72 m³/s</strong> (inlet control, weir condition)</p>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>✅ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+<p><strong>Q1.</strong> Inlet control occurs when:<br />
+A. The barrel is flowing full<br />
+B. Tailwater controls capacity<br />
+C. Entrance geometry and headwater dominate<br />
+D. The outlet is submerged<br />
+🟢 <strong>Correct Answer:</strong> C</p>
+<hr class="docutils" />
+<p><strong>Q2.</strong> Which of the following increases outlet-controlled flow?<br />
+A. Higher Manning’s ( n )<br />
+B. Steeper culvert slope<br />
+C. Longer culvert<br />
+D. Smaller cross-sectional area<br />
+🟢 <strong>Correct Answer:</strong> B</p>
+<hr class="docutils" />
+<p><strong>Q3.</strong> The flow area of a circular culvert with diameter 1.0 m is approximately:<br />
+A. 0.79 m²<br />
+B. 1.00 m²<br />
+C. 3.14 m²<br />
+D. 0.50 m²<br />
+🟢 <strong>Correct Answer:</strong> A</p>
+<hr class="docutils" />
+<p><strong>Q4.</strong> Which is true about weir and orifice inlet equations?<br />
+A. Weir equation is more valid when culvert is submerged<br />
+B. Orifice equation is used for shallow flow<br />
+C. Weir flow occurs when water just begins overtopping<br />
+D. Orifice flow assumes zero entrance loss<br />
+🟢 <strong>Correct Answer:</strong> C</p>
+<hr class="docutils" />
+<p><strong>Q5.</strong> If a culvert design shows <span class="math notranslate nohighlight">\(( Q_{\text{in}} &gt; Q_{\text{out}} \)</span>), which condition governs?<br />
+A. Inlet Control<br />
+B. Outlet Control<br />
+C. Submerged Flow<br />
+D. Critical Flow<br />
+🟢 <strong>Correct Answer:</strong> B</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="EnergyDissipator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 3: Energy Dissipator</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="PumpDesignSelection.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 3 Hydraulics: Hydraulic Pumps</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-culvert">What Is a Culvert?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-culverts">📚 Functions of Culverts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-culverts">🧱 Types of Culverts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-table-culverts-by-shape-material-and-flow-type">🧮 Classification Table: Culverts by Shape, Material, and Flow Type</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-culvert-design">⚠️ Challenges in Culvert Design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#culvert-hydraulics-classification-ven-te-chow">🚧 Culvert Hydraulics Classification – Ven Te Chow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#culvert-flow-classification-table">📊 Culvert Flow Classification Table</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subtypes-of-culvert-flow-outlet-controlled">🔍 Subtypes of Culvert Flow (Outlet-Controlled)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-implications">📐 Design Implications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-culvert-design-tool-inlet-vs-outlet-control">Interactive Culvert Design Tool – Inlet vs Outlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-regimes">Flow Control Regimes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inlet-control">🔵 Inlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outlet-control">🟢 Outlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-highlights">Output Highlights</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#culvert-design-learning-module-inlet-vs-outlet-control">Culvert Design Learning Module – Inlet vs Outlet Control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions-with-hints">Conceptual Questions (with Hints)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions-with-hints">🔍 Reflective Questions (with Hints)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-problem-solution">🧪 General Problem &amp; Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">✅ Quiz Questions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

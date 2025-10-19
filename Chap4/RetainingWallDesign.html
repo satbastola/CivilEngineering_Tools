@@ -1,0 +1,1860 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 4 Geotechnical Engineering: Canilever Retaining Wall &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap4/RetainingWallDesign';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chpater 4 Geotechnical Engineering: Slope Stability" href="slope_stability_analysis.html" />
+    <link rel="prev" title="Chapter 4 Geotechnical Engineering: Pile Capacity Estimation" href="PileCapacity.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap4/RetainingWallDesign.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap4/RetainingWallDesign.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap4/RetainingWallDesign.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap4/RetainingWallDesign.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap4/RetainingWallDesign.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 4 Geotechnical Engineering: Canilever Retaining Wall</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-definition-purpose-design-philosophy-and-methods">🧱 Retaining Wall: Definition, Purpose, Design Philosophy, and Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-a-retaining-wall-needed">🧠 Why Is a Retaining Wall Needed?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-philosophy">📐 Design Philosophy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lateral-earth-pressure-rankine-or-coulomb">1. <strong>Lateral Earth Pressure (Rankine or Coulomb)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sliding-check">2. <strong>Sliding Check</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#overturning-check">3. <strong>Overturning Check</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-check">4. <strong>Bearing Capacity Check</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-design-methods">🛠️ Retaining Wall Design Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantilever-retaining-wall-design-theoretical-overview">Cantilever Retaining Wall Design – Theoretical Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-concept">Design Concept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters">Key Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equations">Governing Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#active-earth-pressure-rankine-theory">1. <strong>Active Earth Pressure (Rankine Theory)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overturning-moment">2. <strong>Overturning Moment</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resisting-moment-from-wall-weight">3. <strong>Resisting Moment from Wall Weight</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-of-safety-overturning">4. <strong>Factor of Safety (Overturning)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-guidance">Design Guidance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantilever-retaining-wall-design-report">🧱 Cantilever Retaining Wall Design Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-summary">📘 Project Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-inputs">📐 Design Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculated-values">🧮 Calculated Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-assessment">📊 Stability Assessment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📚 References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-design-quiz-reflection">Retaining Wall Design: Quiz &amp; Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-challenge">Calculation Challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-parametric-study-factor-of-safety-fs">🧱 Retaining Wall Parametric Study – Factor of Safety (FS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-steps">🔧 Calculation Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">🧠 Conceptual Insight</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-design-parametric-study-quiz-reflection">🧠 Retaining Wall Design &amp; Parametric Study: Quiz &amp; Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">✅ Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-study-challenge">📐 Parametric Study Challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">🔍 Reflection Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">💡 Design Insight</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-4-geotechnical-engineering-canilever-retaining-wall">
+<h1>Chapter 4 Geotechnical Engineering: Canilever Retaining Wall<a class="headerlink" href="#chapter-4-geotechnical-engineering-canilever-retaining-wall" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Retaining Wall</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Retaining Wall</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Simulation"><span class="xref myst">Simulation: Parameteric analysis</span></a></p></li>
+<li><p><a class="reference internal" href="#5.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="retaining-wall">
+<a class="reference internal image-reference" href="Chap4/Retainingwall.png"><img alt="Descriptive alt text for accessibility" src="Chap4/Retainingwall.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">** Figure 4.10 **: Retaining Wall.</span><a class="headerlink" href="#retaining-wall" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="retaining-wall-definition-purpose-design-philosophy-and-methods">
+<h3>🧱 Retaining Wall: Definition, Purpose, Design Philosophy, and Methods<a class="headerlink" href="#retaining-wall-definition-purpose-design-philosophy-and-methods" title="Link to this heading">#</a></h3>
+<p>A <strong>retaining wall</strong> is a structure designed to <strong>hold back soil or rock</strong> from a slope or excavation. It resists <strong>lateral earth pressure</strong> and prevents soil movement, erosion, or collapse in areas with elevation differences.</p>
+</section>
+<hr class="docutils" />
+<section id="why-is-a-retaining-wall-needed">
+<h3>🧠 Why Is a Retaining Wall Needed?<a class="headerlink" href="#why-is-a-retaining-wall-needed" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Purpose</p></th>
+<th class="head"><p>Explanation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Slope Stabilization</strong></p></td>
+<td><p>Prevents landslides and erosion in hilly terrain</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Grade Separation</strong></p></td>
+<td><p>Supports vertical or near-vertical cuts in terrain</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Basement and Excavation Support</strong></p></td>
+<td><p>Holds back soil during construction or for underground structures</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Road and Bridge Embankments</strong></p></td>
+<td><p>Maintains roadway elevation and prevents soil sloughing</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Landscape and Urban Design</strong></p></td>
+<td><p>Creates usable flat areas in sloped environments</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="design-philosophy">
+<h3>📐 Design Philosophy<a class="headerlink" href="#design-philosophy" title="Link to this heading">#</a></h3>
+<p>Retaining walls must be designed to resist:</p>
+<ul class="simple">
+<li><p><strong>Lateral earth pressure</strong> from retained soil</p></li>
+<li><p><strong>Hydrostatic pressure</strong> from groundwater</p></li>
+<li><p><strong>Surcharge loads</strong> (traffic, structures)</p></li>
+<li><p><strong>Sliding, overturning, and bearing failure</strong></p></li>
+</ul>
+<p>Design involves:</p>
+<ul class="simple">
+<li><p><strong>Stability analysis</strong> (external and internal)</p></li>
+<li><p><strong>Drainage provisions</strong> to reduce water pressure</p></li>
+<li><p><strong>Material selection</strong> (concrete, masonry, timber, geosynthetics)</p></li>
+</ul>
+<hr class="docutils" />
+<section id="lateral-earth-pressure-rankine-or-coulomb">
+<h4>1. <strong>Lateral Earth Pressure (Rankine or Coulomb)</strong><a class="headerlink" href="#lateral-earth-pressure-rankine-or-coulomb" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+P_a = \frac{1}{2} K_a \gamma H^2
+\)</span></p>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( P_a \)</span>): active earth pressure</p></li>
+<li><p><span class="math notranslate nohighlight">\(( K_a \)</span>): active earth pressure coefficient</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \gamma \)</span>): unit weight of soil</p></li>
+<li><p><span class="math notranslate nohighlight">\(( H \)</span>): height of wall</p></li>
+</ul>
+</section>
+<section id="sliding-check">
+<h4>2. <strong>Sliding Check</strong><a class="headerlink" href="#sliding-check" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+F_s = \frac{\text{Resisting Force}}{\text{Driving Force}} &gt; 1.5
+\)</span></p>
+</section>
+<section id="overturning-check">
+<h4>3. <strong>Overturning Check</strong><a class="headerlink" href="#overturning-check" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+F_o = \frac{\text{Resisting Moment}}{\text{Overturning Moment}} &gt; 2.0
+\)</span></p>
+</section>
+<section id="bearing-capacity-check">
+<h4>4. <strong>Bearing Capacity Check</strong><a class="headerlink" href="#bearing-capacity-check" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+q = \frac{P}{A} \leq q_{\text{allowable}}
+\)</span></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="retaining-wall-design-methods">
+<h3>🛠️ Retaining Wall Design Methods<a class="headerlink" href="#retaining-wall-design-methods" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Gravity Wall</strong></p></td>
+<td><p>Uses mass and weight to resist pressure; suitable for low walls</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cantilever Wall</strong></p></td>
+<td><p>Reinforced concrete wall with stem and base slab; efficient for medium heights</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Counterfort Wall</strong></p></td>
+<td><p>Cantilever wall with rear supports (counterforts) for tall walls</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Anchored Wall</strong></p></td>
+<td><p>Uses cables or rods anchored into soil or rock for additional resistance</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mechanically Stabilized Earth (MSE)</strong></p></td>
+<td><p>Uses geogrid or geotextile reinforcement with modular facing units</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sheet Pile Wall</strong></p></td>
+<td><p>Thin vertical elements driven into ground; used in soft soils or waterfronts</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="conceptual-insight">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#conceptual-insight" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Retaining walls are <strong>critical for terrain management and structural safety</strong> —<br />
+their design must balance <strong>earth pressure, drainage, and stability</strong> under various loading conditions.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id68" title="William J.M. Rankine. On the stability of retaining walls. Philosophical Transactions of the Royal Society, 1857.">Rankine, 1857</a>]</span>  marks the first formal analytical framework for lateral earth pressure, which is foundational to retaining wall design.<span id="id2">[]</span> is widely regarded as a cornerstone text in geotechnical education, particularly for retaining wall analysis and design</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="cantilever-retaining-wall-design-theoretical-overview">
+<h3>Cantilever Retaining Wall Design – Theoretical Overview<a class="headerlink" href="#cantilever-retaining-wall-design-theoretical-overview" title="Link to this heading">#</a></h3>
+<p>This interactive tool models the stability of a <strong>cantilever retaining wall</strong> subjected to lateral earth pressure and surcharge loads. It evaluates the <strong>overturning stability</strong> and visualizes the wall geometry and pressure distribution.</p>
+</section>
+<hr class="docutils" />
+<section id="design-concept">
+<h3>Design Concept<a class="headerlink" href="#design-concept" title="Link to this heading">#</a></h3>
+<p>A cantilever retaining wall resists lateral soil pressure using its own weight and geometry. The wall consists of:</p>
+<ul class="simple">
+<li><p><strong>Stem</strong>: vertical slab retaining the soil</p></li>
+<li><p><strong>Base slab</strong>: horizontal footing divided into:</p>
+<ul>
+<li><p><strong>Heel</strong> (under the retained soil)</p></li>
+<li><p><strong>Toe</strong> (in front of the stem)</p></li>
+</ul>
+</li>
+</ul>
+<p>The wall must resist <strong>overturning</strong>, <strong>sliding</strong>, and <strong>bearing failure</strong>. This model focuses on <strong>overturning stability</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="key-parameters">
+<h3>Key Parameters<a class="headerlink" href="#key-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(( H \)</span>)</p></td>
+<td><p>Wall height (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(( \gamma_s \)</span>)</p></td>
+<td><p>Soil unit weight (kN/m³)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(( \phi \)</span>)</p></td>
+<td><p>Soil internal friction angle (°)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(( \gamma_c \)</span>)</p></td>
+<td><p>Concrete unit weight (kN/m³)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(( q \)</span>)</p></td>
+<td><p>Surcharge load on retained soil (kN/m²)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(( t_s \)</span>)</p></td>
+<td><p>Stem thickness (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(( t_b \)</span>)</p></td>
+<td><p>Base thickness (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(( L_t \)</span>)</p></td>
+<td><p>Toe length (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(( L_h \)</span>)</p></td>
+<td><p>Heel length (m)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(( FS \)</span>)</p></td>
+<td><p>Factor of safety against overturning</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="governing-equations">
+<h3>Governing Equations<a class="headerlink" href="#governing-equations" title="Link to this heading">#</a></h3>
+</section>
+<section id="active-earth-pressure-rankine-theory">
+<h3>1. <strong>Active Earth Pressure (Rankine Theory)</strong><a class="headerlink" href="#active-earth-pressure-rankine-theory" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+K_a = \tan^2\left(45^\circ - \frac{\phi}{2}\right)
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(
+P_a = \frac{1}{2} \gamma_s K_a H^2 + K_a q H
+\)</span></p>
+<ul class="simple">
+<li><p>First term: pressure from soil weight</p></li>
+<li><p>Second term: pressure from surcharge</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="overturning-moment">
+<h3>2. <strong>Overturning Moment</strong><a class="headerlink" href="#overturning-moment" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+M_o = P_a \cdot \frac{H}{3}
+\)</span></p>
+<ul class="simple">
+<li><p>Assumes pressure acts at 1/3 height from base</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="resisting-moment-from-wall-weight">
+<h3>3. <strong>Resisting Moment from Wall Weight</strong><a class="headerlink" href="#resisting-moment-from-wall-weight" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+W = \gamma_c \cdot (L_t + L_h) \cdot t_b
+\quad \Rightarrow \quad
+M_r = W \cdot \frac{(L_t + L_h)}{2}
+\)</span></p>
+</section>
+<hr class="docutils" />
+<section id="factor-of-safety-overturning">
+<h3>4. <strong>Factor of Safety (Overturning)</strong><a class="headerlink" href="#factor-of-safety-overturning" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+FS = \frac{M_r}{M_o}
+\)</span></p>
+<ul class="simple">
+<li><p>Must satisfy: ( FS \geq 1.5 ) (typical design criterion)</p></li>
+</ul>
+</section>
+<section id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Wall geometry is plotted to scale</p></li>
+<li><p>Pressure diagram shows increasing lateral force with depth</p></li>
+<li><p>Labels indicate stem, toe, heel, and base dimensions</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="design-guidance">
+<h3>Design Guidance<a class="headerlink" href="#design-guidance" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Increase <strong>heel length</strong> or <strong>base thickness</strong> to improve stability</p></li>
+<li><p>Use higher <strong>concrete unit weight</strong> for more resisting moment</p></li>
+<li><p>Reduce <strong>surcharge</strong> or <strong>wall height</strong> to lower overturning moment</p></li>
+<li><p>Ensure <strong>FS ≥ 1.5</strong> for safe design</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h3>References<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Coduto, D.P. (2011). <em>Foundation Design: Principles and Practices</em></p></li>
+<li><p>Bowles, J.E. (1996). <em>Foundation Analysis and Design</em></p></li>
+<li><p>Terzaghi, K., Peck, R.B., &amp; Mesri, G. (1996). <em>Soil Mechanics in Engineering Practice</em></p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Interactive design and visualization function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">design_retaining_wall</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">gamma_s</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">gamma_c</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">toe_length</span><span class="p">,</span> <span class="n">heel_length</span><span class="p">,</span> <span class="n">stem_thickness</span><span class="p">,</span> <span class="n">base_thickness</span><span class="p">,</span> <span class="n">fs_overturning</span><span class="p">,</span> <span class="n">h_passive</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Geometry</span>
+    <span class="n">base_width</span> <span class="o">=</span> <span class="n">toe_length</span> <span class="o">+</span> <span class="n">heel_length</span>
+    <span class="n">Ka</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">Kp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span> <span class="o">+</span> <span class="n">phi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+
+    <span class="c1"># Active pressure</span>
+    <span class="n">Pa_soil</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma_s</span> <span class="o">*</span> <span class="n">Ka</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">Pa_surcharge</span> <span class="o">=</span> <span class="n">Ka</span> <span class="o">*</span> <span class="n">q</span> <span class="o">*</span> <span class="n">H</span>
+    <span class="n">Pa_total</span> <span class="o">=</span> <span class="n">Pa_soil</span> <span class="o">+</span> <span class="n">Pa_surcharge</span>
+    <span class="n">h_pa</span> <span class="o">=</span> <span class="n">H</span> <span class="o">/</span> <span class="mi">3</span>
+
+    <span class="c1"># Passive pressure</span>
+    <span class="n">Pp</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma_s</span> <span class="o">*</span> <span class="n">Kp</span> <span class="o">*</span> <span class="n">h_passive</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">Mp_passive</span> <span class="o">=</span> <span class="n">Pp</span> <span class="o">*</span> <span class="n">h_passive</span> <span class="o">/</span> <span class="mi">3</span>
+
+    <span class="c1"># Resisting moment from wall weight</span>
+    <span class="n">W_concrete</span> <span class="o">=</span> <span class="n">gamma_c</span> <span class="o">*</span> <span class="n">base_width</span> <span class="o">*</span> <span class="n">base_thickness</span>
+    <span class="n">Mr_weight</span> <span class="o">=</span> <span class="n">W_concrete</span> <span class="o">*</span> <span class="p">(</span><span class="n">base_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Total resisting moment</span>
+    <span class="n">Mr_total</span> <span class="o">=</span> <span class="n">Mr_weight</span> <span class="o">+</span> <span class="n">Mp_passive</span>
+
+    <span class="c1"># Overturning moment</span>
+    <span class="n">Mo</span> <span class="o">=</span> <span class="n">Pa_total</span> <span class="o">*</span> <span class="n">h_pa</span>
+    <span class="n">FS</span> <span class="o">=</span> <span class="n">Mr_total</span> <span class="o">/</span> <span class="n">Mo</span>
+
+    <span class="c1"># 📋 Output summary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧱 Wall Height: </span><span class="si">{</span><span class="n">H</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌍 Soil γ: </span><span class="si">{</span><span class="n">gamma_s</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kN/m³, φ: </span><span class="si">{</span><span class="n">phi</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧪 Concrete γ: </span><span class="si">{</span><span class="n">gamma_c</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kN/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📐 Surcharge: </span><span class="si">{</span><span class="n">q</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kN/m²&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📏 Toe: </span><span class="si">{</span><span class="n">toe_length</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Heel: </span><span class="si">{</span><span class="n">heel_length</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Stem: </span><span class="si">{</span><span class="n">stem_thickness</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧮 Active Pressure: </span><span class="si">{</span><span class="n">Pa_total</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kN/m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧮 Passive Pressure: </span><span class="si">{</span><span class="n">Pp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kN/m (Depth = </span><span class="si">{</span><span class="n">h_passive</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔄 Overturning Moment: </span><span class="si">{</span><span class="n">Mo</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kN·m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🛡️ Resisting Moment (Weight): </span><span class="si">{</span><span class="n">Mr_weight</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kN·m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🛡️ Resisting Moment (Passive): </span><span class="si">{</span><span class="n">Mp_passive</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kN·m&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧮 Total FS (Overturning): </span><span class="si">{</span><span class="n">FS</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> (Required ≥ </span><span class="si">{</span><span class="n">fs_overturning</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">FS</span> <span class="o">&lt;</span> <span class="n">fs_overturning</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Increase heel length, base thickness, or passive depth to improve stability.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Design satisfies overturning stability.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 📈 Visualization</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># Wall outline</span>
+    <span class="n">x_stem</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">stem_thickness</span><span class="p">,</span> <span class="n">stem_thickness</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_stem</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_stem</span><span class="p">,</span> <span class="n">y_stem</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Base slab</span>
+    <span class="n">x_base</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">toe_length</span><span class="p">,</span> <span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">heel_length</span><span class="p">]</span>
+    <span class="n">y_base</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">base_thickness</span><span class="p">,</span> <span class="o">-</span><span class="n">base_thickness</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_base</span><span class="p">,</span> <span class="n">y_base</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="n">toe_length</span><span class="p">,</span> <span class="o">-</span><span class="n">toe_length</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">base_thickness</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">heel_length</span><span class="p">,</span> <span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">heel_length</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">base_thickness</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="n">toe_length</span><span class="p">,</span> <span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">heel_length</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Active pressure diagram</span>
+    <span class="n">y_press</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">gamma_s</span> <span class="o">*</span> <span class="n">Ka</span> <span class="o">*</span> <span class="n">y_press</span> <span class="o">+</span> <span class="n">Ka</span> <span class="o">*</span> <span class="n">q</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">y_press</span><span class="p">,</span> <span class="n">stem_thickness</span><span class="p">,</span> <span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">pressure</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Active Pressure&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Passive pressure diagram</span>
+    <span class="n">y_passive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">h_passive</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">pressure_p</span> <span class="o">=</span> <span class="n">gamma_s</span> <span class="o">*</span> <span class="n">Kp</span> <span class="o">*</span> <span class="n">y_passive</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">y_passive</span><span class="p">,</span> <span class="o">-</span><span class="n">toe_length</span> <span class="o">-</span> <span class="n">pressure_p</span> <span class="o">/</span> <span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="n">toe_length</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Passive Pressure&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Geometry labels</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">stem_thickness</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">H</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;H = </span><span class="si">{</span><span class="n">H</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">heel_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">base_thickness</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Heel = </span><span class="si">{</span><span class="n">heel_length</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="n">toe_length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">base_thickness</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Toe = </span><span class="si">{</span><span class="n">toe_length</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">stem_thickness</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="n">base_thickness</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Stem = </span><span class="si">{</span><span class="n">stem_thickness</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">heel_length</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="n">base_thickness</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Base = </span><span class="si">{</span><span class="n">base_thickness</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot settings</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Retaining Wall Geometry with Active and Passive Pressure&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Horizontal Distance (m)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Vertical Distance (m)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">base_thickness</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">H</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">toe_length</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">stem_thickness</span> <span class="o">+</span> <span class="n">heel_length</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎚️ Interactive controls</span>
+<span class="n">H_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wall Height (m)&#39;</span><span class="p">)</span>
+<span class="n">gamma_s_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">18.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">16.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">22.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Soil γ (kN/m³)&#39;</span><span class="p">)</span>
+<span class="n">phi_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">45.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Soil φ (°)&#39;</span><span class="p">)</span>
+<span class="n">gamma_c_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">24.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">22.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">26.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Concrete γ (kN/m³)&#39;</span><span class="p">)</span>
+<span class="n">q_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Surcharge (kN/m²)&#39;</span><span class="p">)</span>
+<span class="n">toe_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Toe Length (m)&#39;</span><span class="p">)</span>
+<span class="n">heel_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Heel Length (m)&#39;</span><span class="p">)</span>
+<span class="n">stem_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Stem Thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">base_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Base Thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">fs_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;FS Required&#39;</span><span class="p">)</span>
+<span class="n">h_passive_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Passive Depth (m)&#39;</span><span class="p">)</span>
+
+<span class="n">interactive_wall</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">design_retaining_wall</span><span class="p">,</span>
+    <span class="n">H</span><span class="o">=</span><span class="n">H_slider</span><span class="p">,</span>
+    <span class="n">gamma_s</span><span class="o">=</span><span class="n">gamma_s_slider</span><span class="p">,</span>
+    <span class="n">phi</span><span class="o">=</span><span class="n">phi_slider</span><span class="p">,</span>
+    <span class="n">gamma_c</span><span class="o">=</span><span class="n">gamma_c_slider</span><span class="p">,</span>
+    <span class="n">q</span><span class="o">=</span><span class="n">q_slider</span><span class="p">,</span>
+    <span class="n">toe_length</span><span class="o">=</span><span class="n">toe_slider</span><span class="p">,</span>
+    <span class="n">heel_length</span><span class="o">=</span><span class="n">heel_slider</span><span class="p">,</span>
+    <span class="n">stem_thickness</span><span class="o">=</span><span class="n">stem_slider</span><span class="p">,</span>
+    <span class="n">base_thickness</span><span class="o">=</span><span class="n">base_slider</span><span class="p">,</span>
+    <span class="n">fs_overturning</span><span class="o">=</span><span class="n">fs_slider</span><span class="p">,</span>
+    <span class="n">h_passive</span><span class="o">=</span><span class="n">h_passive_slider</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_wall</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f7251765cab04502b1d7b08b6ae73a27", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="cantilever-retaining-wall-design-report">
+<h3>🧱 Cantilever Retaining Wall Design Report<a class="headerlink" href="#cantilever-retaining-wall-design-report" title="Link to this heading">#</a></h3>
+</section>
+<section id="project-summary">
+<h3>📘 Project Summary<a class="headerlink" href="#project-summary" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wall Type</strong>: Cantilever Retaining Wall</p></li>
+<li><p><strong>Design Objective</strong>: Evaluate overturning stability using active and passive earth pressure</p></li>
+<li><p><strong>Design Method</strong>: Rankine theory for lateral pressure, moment equilibrium for stability</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="design-inputs">
+<h3>📐 Design Inputs<a class="headerlink" href="#design-inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Wall Height ( H )</p></td>
+<td><p>4.0</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Soil Unit Weight ( \gamma_s )</p></td>
+<td><p>18.0</p></td>
+<td><p>kN/m³</p></td>
+</tr>
+<tr class="row-even"><td><p>Soil Friction Angle ( \phi )</p></td>
+<td><p>30.0</p></td>
+<td><p>degrees</p></td>
+</tr>
+<tr class="row-odd"><td><p>Concrete Unit Weight ( \gamma_c )</p></td>
+<td><p>24.0</p></td>
+<td><p>kN/m³</p></td>
+</tr>
+<tr class="row-even"><td><p>Surcharge Load ( q )</p></td>
+<td><p>10.0</p></td>
+<td><p>kN/m²</p></td>
+</tr>
+<tr class="row-odd"><td><p>Toe Length</p></td>
+<td><p>1.0</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p>Heel Length</p></td>
+<td><p>1.5</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stem Thickness</p></td>
+<td><p>0.3</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p>Base Thickness</p></td>
+<td><p>0.5</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Passive Soil Depth</p></td>
+<td><p>0.5</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-even"><td><p>Required FS (Overturning)</p></td>
+<td><p>1.5</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="calculated-values">
+<h3>🧮 Calculated Values<a class="headerlink" href="#calculated-values" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Units</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Active Pressure ( P_a )</p></td>
+<td><p>108.0</p></td>
+<td><p>kN/m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Passive Pressure ( P_p )</p></td>
+<td><p>13.5</p></td>
+<td><p>kN/m</p></td>
+</tr>
+<tr class="row-even"><td><p>Overturning Moment ( M_o )</p></td>
+<td><p>144.0</p></td>
+<td><p>kN·m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resisting Moment (Weight) ( M_r )</p></td>
+<td><p>180.0</p></td>
+<td><p>kN·m</p></td>
+</tr>
+<tr class="row-even"><td><p>Resisting Moment (Passive)</p></td>
+<td><p>2.25</p></td>
+<td><p>kN·m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Total Resisting Moment</p></td>
+<td><p>182.25</p></td>
+<td><p>kN·m</p></td>
+</tr>
+<tr class="row-even"><td><p>Factor of Safety (FS)</p></td>
+<td><p>1.27</p></td>
+<td><p>—</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="stability-assessment">
+<h3>📊 Stability Assessment<a class="headerlink" href="#stability-assessment" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>✅ <strong>FS ≥ 1.5</strong> → Safe</p></li>
+<li><p>⚠️ <strong>FS &lt; 1.5</strong> → Risk of overturning</p></li>
+</ul>
+<p><strong>Current FS</strong>: 1.27 → ⚠️ <em>Increase heel length, base thickness, or passive depth to improve stability.</em></p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3>📚 References<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p><strong><span id="id5">[<a class="reference internal" href="../markdown.html#id69" title="William John Macquorn Rankine. On the stability of loose earth. 1857. Introduces Rankine's Earth Pressure Theory for active and passive lateral soil pressures.">Rankine, 1857</a>]</span></strong>: Presents the foundational earth pressure theory for active and passive pressures. <strong><span id="id6">[<a class="reference internal" href="../markdown.html#id70" title="Donald P. Coduto. Foundation Design: Principles and Practices. Prentice Hall, Upper Saddle River, NJ, 2nd edition, 2011. ISBN 9780135897065. Comprehensive coverage of shallow and deep foundations, lateral earth pressure, and retaining structures.">Coduto, 2011</a>]</span></strong>: Applies Rankine principles to design checks for gravity and cantilever walls. <strong><span id="id7">[<a class="reference internal" href="../markdown.html#id71" title="Ryan R. Berg, Barry R. Christopher, and Naresh C. Samtani. Design and Construction of Mechanically Stabilized Earth Walls and Reinforced Soil Slopes. Washington, D.C., 2010. FHWA GEC 011 – Volume I; includes retaining wall design guidelines and LRFD procedures.">Berg <em>et al.</em>, 2010</a>]</span></strong>: Provides LRFD-based methods for MSE walls, emphasizing stability and reinforcement.<strong><span id="id8">[<a class="reference internal" href="../markdown.html#id72" title="Joseph E. Bowles. Foundation Analysis and Design. McGraw-Hill, New York, 5th edition, 1996. ISBN 9780079122476. Extensive treatment of bearing capacity, settlement, lateral earth pressure, and pile design.">Bowles, 1996</a>]</span></strong>: Bridges theory with practical charts and structural detailing for wall design. <strong><span id="id9">[<a class="reference internal" href="../markdown.html#id43" title="Braja M. Das. Principles of Foundation Engineering. Cengage Learning, Stamford, CT, 7th edition, 2010. ISBN 9780495411307.">Das, 2010</a>]</span></strong>: Covers gravity, cantilever, and counterfort retaining walls with geometric guidelines. Applies <strong>Rankine’s theory</strong> for earth pressure estimation. Emphasizes design checks for <strong>sliding</strong>, <strong>overturning</strong>, and <strong>bearing capacity</strong>. Includes pressure diagrams, moment tables, and safety factors. Discusses <strong>MSE walls</strong>, geogrid reinforcement, drainage, and seismic considerations.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="retaining-wall-design-quiz-reflection">
+<h3>Retaining Wall Design: Quiz &amp; Reflection<a class="headerlink" href="#retaining-wall-design-quiz-reflection" title="Link to this heading">#</a></h3>
+<p>This section helps you test your understanding of cantilever retaining wall design, stability analysis, and the physical meaning of key parameters.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What does the Rankine active earth pressure coefficient ( K_a ) depend on?</strong></p>
+<ul class="simple">
+<li><p>A. Soil unit weight</p></li>
+<li><p>B. Wall height</p></li>
+<li><p>C. Soil friction angle</p></li>
+<li><p>D. Concrete density</p></li>
+</ul>
+</li>
+<li><p><strong>Where is the resultant lateral earth pressure assumed to act?</strong></p>
+<ul class="simple">
+<li><p>A. At the top of the wall</p></li>
+<li><p>B. At mid-height</p></li>
+<li><p>C. At one-third the wall height from the base</p></li>
+<li><p>D. At the heel</p></li>
+</ul>
+</li>
+<li><p><strong>Which component of the wall contributes most to resisting overturning?</strong></p>
+<ul class="simple">
+<li><p>A. Stem thickness</p></li>
+<li><p>B. Toe length</p></li>
+<li><p>C. Heel length and base weight</p></li>
+<li><p>D. Surcharge load</p></li>
+</ul>
+</li>
+<li><p><strong>What happens if the factor of safety against overturning is less than 1.5?</strong></p>
+<ul class="simple">
+<li><p>A. The wall is safe</p></li>
+<li><p>B. The wall may slide</p></li>
+<li><p>C. The wall may overturn</p></li>
+<li><p>D. The wall is over-designed</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="calculation-challenge">
+<h3>Calculation Challenge<a class="headerlink" href="#calculation-challenge" title="Link to this heading">#</a></h3>
+<p>Given:</p>
+<ul class="simple">
+<li><p>Wall height <span class="math notranslate nohighlight">\(( H = 5.0 \, \text{m} \)</span>)</p></li>
+<li><p>Soil unit weight <span class="math notranslate nohighlight">\(( \gamma_s = 18 \, \text{kN/m}^3 \)</span>)</p></li>
+<li><p>Soil friction angle <span class="math notranslate nohighlight">\(( \phi = 30^\circ \)</span>)</p></li>
+<li><p>Surcharge <span class="math notranslate nohighlight">\(( q = 10 \, \text{kN/m}^2 \)</span>)</p></li>
+</ul>
+<p><strong>Tasks:</strong></p>
+<ol class="arabic simple">
+<li><p>Calculate the Rankine active earth pressure coefficient <span class="math notranslate nohighlight">\(( K_a \)</span>).</p></li>
+<li><p>Compute the total lateral pressure <span class="math notranslate nohighlight">\(( P_a \)</span>).</p></li>
+<li><p>Estimate the overturning moment <span class="math notranslate nohighlight">\(( M_o \)</span>).</p></li>
+<li><p>If the base width is 3.0 m and thickness is 0.5 m, compute the resisting moment <span class="math notranslate nohighlight">\(( M_r \)</span>).</p></li>
+<li><p>Determine the factor of safety <span class="math notranslate nohighlight">\(( FS \)</span>).</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflection-questions">
+<h3>Reflection Questions<a class="headerlink" href="#reflection-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Why is the pressure diagram triangular in shape, and how does surcharge affect it?</strong></p></li>
+<li><p><strong>How does increasing heel length improve stability against overturning?</strong></p></li>
+<li><p><strong>What are the limitations of using only overturning checks in retaining wall design?</strong></p></li>
+<li><p><strong>How would you modify the design for seismic conditions or water pressure behind the wall?</strong></p></li>
+<li><p><strong>What practical constraints (e.g., excavation limits, cost, aesthetics) might influence your design choices?</strong></p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>4. Simulation<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section id="retaining-wall-parametric-study-factor-of-safety-fs">
+<h3>🧱 Retaining Wall Parametric Study – Factor of Safety (FS)<a class="headerlink" href="#retaining-wall-parametric-study-factor-of-safety-fs" title="Link to this heading">#</a></h3>
+<p>This tool analyzes how changes in <strong>heel length</strong> or <strong>passive soil depth</strong> affect the <strong>Factor of Safety (FS)</strong> against overturning for a retaining wall. It helps engineers evaluate design sensitivity and optimize wall geometry.</p>
+</section>
+<hr class="docutils" />
+<section id="calculation-steps">
+<h3>🔧 Calculation Steps<a class="headerlink" href="#calculation-steps" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Computes <strong>active earth pressure (Pa)</strong> using Rankine theory:
+<span class="math notranslate nohighlight">\(
+P_a = \frac{1}{2} K_a \gamma H^2 + K_a q H
+\)</span></p></li>
+<li><p>Calculates <strong>overturning moment (Mo)</strong> from Pa.</p></li>
+<li><p>Varies either:</p>
+<ul class="simple">
+<li><p><strong>Heel Length</strong>: affects wall weight and resisting moment</p></li>
+<li><p><strong>Passive Depth</strong>: adds passive resistance and moment</p></li>
+</ul>
+</li>
+<li><p>Computes <strong>resisting moment (Mr)</strong> and <strong>FS</strong>:
+<span class="math notranslate nohighlight">\(
+FS = \frac{M_r + M_{passive}}{M_o}
+\)</span></p></li>
+<li><p>Plots FS vs. selected parameter and compares to required FS.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-inputs">
+<h3>📊 How to Interpret Inputs<a class="headerlink" href="#how-to-interpret-inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input Parameter</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wall</span> <span class="pre">Height</span> <span class="pre">(H)</span></code></p></td>
+<td><p>Height of retained soil</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Soil</span> <span class="pre">γ</span></code>, <code class="docutils literal notranslate"><span class="pre">φ</span></code></p></td>
+<td><p>Unit weight and friction angle of backfill soil</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Concrete</span> <span class="pre">γ</span></code></p></td>
+<td><p>Unit weight of wall material</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Surcharge</span> <span class="pre">(q)</span></code></p></td>
+<td><p>Additional surface load</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Toe,</span> <span class="pre">Stem,</span> <span class="pre">Base</span></code></p></td>
+<td><p>Wall geometry dimensions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Required</span> <span class="pre">FS</span></code></p></td>
+<td><p>Minimum acceptable factor of safety</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Vary</span></code></p></td>
+<td><p>Select parameter to vary (Heel Length or Passive Depth)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret-outputs">
+<h3>📋 How to Interpret Outputs<a class="headerlink" href="#how-to-interpret-outputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output</p></th>
+<th class="head"><p>Interpretation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>FS Curve</strong></p></td>
+<td><p>Shows how FS changes with heel length or passive depth</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Red Line</strong></p></td>
+<td><p>Required FS threshold for safe design</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Above Line</strong></p></td>
+<td><p>Design is stable; FS meets or exceeds requirement</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Below Line</strong></p></td>
+<td><p>Design is unsafe; adjust geometry or soil parameters</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h3>🧠 Conceptual Insight<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>This tool supports <strong>retaining wall optimization</strong> by visualizing how geometric and soil parameters affect <strong>stability</strong> —<br />
+enabling informed decisions for safe and efficient design.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📐 Parametric study function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">parametric_FS</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">gamma_s</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">gamma_c</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">toe_length</span><span class="p">,</span> <span class="n">stem_thickness</span><span class="p">,</span> <span class="n">base_thickness</span><span class="p">,</span> <span class="n">fs_required</span><span class="p">,</span> <span class="n">vary_param</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">Ka</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span> <span class="o">-</span> <span class="n">phi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">Kp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span> <span class="o">+</span> <span class="n">phi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">Pa_total</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma_s</span> <span class="o">*</span> <span class="n">Ka</span> <span class="o">*</span> <span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Ka</span> <span class="o">*</span> <span class="n">q</span> <span class="o">*</span> <span class="n">H</span>
+    <span class="n">Mo</span> <span class="o">=</span> <span class="n">Pa_total</span> <span class="o">*</span> <span class="p">(</span><span class="n">H</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Vary heel length or passive depth</span>
+    <span class="k">if</span> <span class="n">vary_param</span> <span class="o">==</span> <span class="s1">&#39;Heel Length&#39;</span><span class="p">:</span>
+        <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">fs_vals</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">heel_length</span> <span class="ow">in</span> <span class="n">x_vals</span><span class="p">:</span>
+            <span class="n">base_width</span> <span class="o">=</span> <span class="n">toe_length</span> <span class="o">+</span> <span class="n">heel_length</span>
+            <span class="n">W_concrete</span> <span class="o">=</span> <span class="n">gamma_c</span> <span class="o">*</span> <span class="n">base_width</span> <span class="o">*</span> <span class="n">base_thickness</span>
+            <span class="n">Mr_weight</span> <span class="o">=</span> <span class="n">W_concrete</span> <span class="o">*</span> <span class="p">(</span><span class="n">base_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">FS</span> <span class="o">=</span> <span class="n">Mr_weight</span> <span class="o">/</span> <span class="n">Mo</span>
+            <span class="n">fs_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FS</span><span class="p">)</span>
+        <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Heel Length (m)&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">fs_vals</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">base_width</span> <span class="o">=</span> <span class="n">toe_length</span> <span class="o">+</span> <span class="mf">1.5</span>  <span class="c1"># fixed heel</span>
+        <span class="n">W_concrete</span> <span class="o">=</span> <span class="n">gamma_c</span> <span class="o">*</span> <span class="n">base_width</span> <span class="o">*</span> <span class="n">base_thickness</span>
+        <span class="n">Mr_weight</span> <span class="o">=</span> <span class="n">W_concrete</span> <span class="o">*</span> <span class="p">(</span><span class="n">base_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">h_passive</span> <span class="ow">in</span> <span class="n">x_vals</span><span class="p">:</span>
+            <span class="n">Pp</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">gamma_s</span> <span class="o">*</span> <span class="n">Kp</span> <span class="o">*</span> <span class="n">h_passive</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">Mp_passive</span> <span class="o">=</span> <span class="n">Pp</span> <span class="o">*</span> <span class="n">h_passive</span> <span class="o">/</span> <span class="mi">3</span>
+            <span class="n">FS</span> <span class="o">=</span> <span class="p">(</span><span class="n">Mr_weight</span> <span class="o">+</span> <span class="n">Mp_passive</span><span class="p">)</span> <span class="o">/</span> <span class="n">Mo</span>
+            <span class="n">fs_vals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FS</span><span class="p">)</span>
+        <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;Passive Depth (m)&#39;</span>
+
+    <span class="c1"># Plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">fs_vals</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Factor of Safety&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;teal&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">fs_required</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Required FS = </span><span class="si">{</span><span class="n">fs_required</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Factor of Safety (FS)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Parametric Study: FS vs. </span><span class="si">{</span><span class="n">xlabel</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🎚️ Controls</span>
+<span class="n">H_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wall Height (m)&#39;</span><span class="p">)</span>
+<span class="n">gamma_s_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">18.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">16.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">22.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Soil γ (kN/m³)&#39;</span><span class="p">)</span>
+<span class="n">phi_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">45.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Soil φ (°)&#39;</span><span class="p">)</span>
+<span class="n">gamma_c_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">24.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">22.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">26.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Concrete γ (kN/m³)&#39;</span><span class="p">)</span>
+<span class="n">q_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Surcharge (kN/m²)&#39;</span><span class="p">)</span>
+<span class="n">toe_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Toe Length (m)&#39;</span><span class="p">)</span>
+<span class="n">stem_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Stem Thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">base_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Base Thickness (m)&#39;</span><span class="p">)</span>
+<span class="n">fs_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Required FS&#39;</span><span class="p">)</span>
+<span class="n">param_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Heel Length&#39;</span><span class="p">,</span> <span class="s1">&#39;Passive Depth&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Heel Length&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Vary&#39;</span><span class="p">)</span>
+
+<span class="n">interactive_study</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">parametric_FS</span><span class="p">,</span>
+    <span class="n">H</span><span class="o">=</span><span class="n">H_slider</span><span class="p">,</span>
+    <span class="n">gamma_s</span><span class="o">=</span><span class="n">gamma_s_slider</span><span class="p">,</span>
+    <span class="n">phi</span><span class="o">=</span><span class="n">phi_slider</span><span class="p">,</span>
+    <span class="n">gamma_c</span><span class="o">=</span><span class="n">gamma_c_slider</span><span class="p">,</span>
+    <span class="n">q</span><span class="o">=</span><span class="n">q_slider</span><span class="p">,</span>
+    <span class="n">toe_length</span><span class="o">=</span><span class="n">toe_slider</span><span class="p">,</span>
+    <span class="n">stem_thickness</span><span class="o">=</span><span class="n">stem_slider</span><span class="p">,</span>
+    <span class="n">base_thickness</span><span class="o">=</span><span class="n">base_slider</span><span class="p">,</span>
+    <span class="n">fs_required</span><span class="o">=</span><span class="n">fs_slider</span><span class="p">,</span>
+    <span class="n">vary_param</span><span class="o">=</span><span class="n">param_dropdown</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_study</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8bb2078f0a644a9699fd0f699a0e0c8b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2>5. Self-Assessment<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<section id="retaining-wall-design-parametric-study-quiz-reflection">
+<h3>🧠 Retaining Wall Design &amp; Parametric Study: Quiz &amp; Reflection<a class="headerlink" href="#retaining-wall-design-parametric-study-quiz-reflection" title="Link to this heading">#</a></h3>
+<p>This section helps reinforce key concepts from the retaining wall design tool and parametric analysis. It includes multiple-choice questions, conceptual prompts, and reflective challenges.</p>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h3>✅ Conceptual Questions<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which parameter most directly increases the resisting moment against overturning?</strong></p>
+<ul class="simple">
+<li><p>A. Stem thickness</p></li>
+<li><p>B. Heel length</p></li>
+<li><p>C. Surcharge load</p></li>
+<li><p>D. Toe length</p></li>
+</ul>
+</li>
+<li><p><strong>Passive earth pressure is only mobilized when:</strong></p>
+<ul class="simple">
+<li><p>A. The wall is fully buried</p></li>
+<li><p>B. The wall moves toward the soil in front of it</p></li>
+<li><p>C. The surcharge exceeds the soil weight</p></li>
+<li><p>D. The stem thickness is reduced</p></li>
+</ul>
+</li>
+<li><p><strong>In Rankine theory, the active earth pressure coefficient <span class="math notranslate nohighlight">\(( K_a \)</span>) decreases when:</strong></p>
+<ul class="simple">
+<li><p>A. Soil friction angle increases</p></li>
+<li><p>B. Wall height increases</p></li>
+<li><p>C. Concrete unit weight increases</p></li>
+<li><p>D. Passive depth increases</p></li>
+</ul>
+</li>
+<li><p><strong>What does the failure envelope represent in the retaining wall visualization?</strong></p>
+<ul class="simple">
+<li><p>A. The maximum soil pressure</p></li>
+<li><p>B. The required resisting moment for safe design</p></li>
+<li><p>C. The depth of passive soil</p></li>
+<li><p>D. The location of the water table</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="parametric-study-challenge">
+<h3>📐 Parametric Study Challenge<a class="headerlink" href="#parametric-study-challenge" title="Link to this heading">#</a></h3>
+<p>You performed a parametric study of <strong>FS vs. heel length</strong> and found that FS = 1.5 when heel length = 2.2 m.</p>
+<ol class="arabic simple">
+<li><p>What happens to FS if heel length is reduced to 1.5 m?</p></li>
+<li><p>How would increasing passive depth affect FS at fixed heel length?</p></li>
+<li><p>Why is it useful to plot FS vs. design variables before finalizing geometry?</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h3>🔍 Reflection Questions<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>How does the balance between overturning and resisting moments guide your design decisions?</strong></p></li>
+<li><p><strong>What practical constraints (e.g., excavation limits, cost, aesthetics) might limit heel length or passive depth?</strong></p></li>
+<li><p><strong>If FS is slightly below the required threshold, what are your options as a designer?</strong></p></li>
+<li><p><strong>How would the presence of water or seismic loads change your approach to stability analysis?</strong></p></li>
+<li><p><strong>Why is it important to visualize both pressure diagrams and moment comparisons in retaining wall design?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="design-insight">
+<h3>💡 Design Insight<a class="headerlink" href="#design-insight" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>“Parametric studies reveal the sensitivity of your design to key variables. They help you make informed decisions, avoid overdesign, and ensure safety under varying conditions.”</p>
+</div></blockquote>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PileCapacity.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 4 Geotechnical Engineering: Pile Capacity Estimation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="slope_stability_analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chpater 4 Geotechnical Engineering: Slope Stability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-definition-purpose-design-philosophy-and-methods">🧱 Retaining Wall: Definition, Purpose, Design Philosophy, and Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-is-a-retaining-wall-needed">🧠 Why Is a Retaining Wall Needed?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-philosophy">📐 Design Philosophy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lateral-earth-pressure-rankine-or-coulomb">1. <strong>Lateral Earth Pressure (Rankine or Coulomb)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sliding-check">2. <strong>Sliding Check</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#overturning-check">3. <strong>Overturning Check</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bearing-capacity-check">4. <strong>Bearing Capacity Check</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-design-methods">🛠️ Retaining Wall Design Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-insight">🧠 Conceptual Insight</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantilever-retaining-wall-design-theoretical-overview">Cantilever Retaining Wall Design – Theoretical Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-concept">Design Concept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters">Key Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equations">Governing Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#active-earth-pressure-rankine-theory">1. <strong>Active Earth Pressure (Rankine Theory)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overturning-moment">2. <strong>Overturning Moment</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resisting-moment-from-wall-weight">3. <strong>Resisting Moment from Wall Weight</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factor-of-safety-overturning">4. <strong>Factor of Safety (Overturning)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-guidance">Design Guidance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cantilever-retaining-wall-design-report">🧱 Cantilever Retaining Wall Design Report</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-summary">📘 Project Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-inputs">📐 Design Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculated-values">🧮 Calculated Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-assessment">📊 Stability Assessment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📚 References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-design-quiz-reflection">Retaining Wall Design: Quiz &amp; Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-challenge">Calculation Challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-questions">Reflection Questions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-parametric-study-factor-of-safety-fs">🧱 Retaining Wall Parametric Study – Factor of Safety (FS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-steps">🔧 Calculation Steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-inputs">📊 How to Interpret Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret-outputs">📋 How to Interpret Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">🧠 Conceptual Insight</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retaining-wall-design-parametric-study-quiz-reflection">🧠 Retaining Wall Design &amp; Parametric Study: Quiz &amp; Reflection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">✅ Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-study-challenge">📐 Parametric Study Challenge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">🔍 Reflection Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#design-insight">💡 Design Insight</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

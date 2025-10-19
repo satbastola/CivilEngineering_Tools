@@ -1,0 +1,1516 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Enginereing Sustainability: Sustainable Concrete &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/ConcreteSustainability';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Enginereing Sustainability: Sustainable Geotech" href="SustainableFoundation.html" />
+    <link rel="prev" title="Chapter 6 Sustainabilty and Engineering: Windown Transmittance" href="WindowTransmittanceAnalysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/ConcreteSustainability.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/ConcreteSustainability.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/ConcreteSustainability.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/ConcreteSustainability.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/ConcreteSustainability.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Enginereing Sustainability: Sustainable Concrete</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainable-concrete-definition-advances-and-climate-potential">🧱 Sustainable Concrete: Definition, Advances, and Climate Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-impact-and-potential">🌍 Climate Impact and Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-advances-in-the-u-s-2025">🇺🇸 Current Advances in the U.S. (2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-innovations">Key Innovations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notable-projects">Notable Projects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-toward-sustainable-concrete">🛠️ Approaches Toward Sustainable Concrete</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-cement-use">1. Reduce Cement Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reuse-and-recycle">2. Reuse and Recycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#substitute-clinker">3. Substitute Clinker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-based-standards">📈 Performance-Based Standards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">📚 Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-sustainable-concrete-emissions-calculator">🧱 Methodology: Sustainable Concrete Emissions Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emission-factors">📚 Emission Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mix-design-assumptions">📐 Mix Design Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-calculation">🧮 Emissions Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">📊 Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛️ Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">🧠 Purpose</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">📚 Emission Factors</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📐 Mix Design Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧮 Emissions Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compressive-strength-estimation">🧱 Compressive Strength Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-impact">Material Impact</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-metrics">Engineering Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-and-environmental-trade-offs">Economic and Environmental Trade-offs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-enginereing-sustainability-sustainable-concrete">
+<h1>Chapter 6 Enginereing Sustainability: Sustainable Concrete<a class="headerlink" href="#chapter-6-enginereing-sustainability-sustainable-concrete" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Sustainable Concrete</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Sustainable Concrete</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/HouseOrientationimage.png"><img alt="Descriptive alt text for accessibility" src="../_images/HouseOrientationimage.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">**Figure 6.9 **: Sustainable Concrete</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="sustainable-concrete-definition-advances-and-climate-potential">
+<h3>🧱 Sustainable Concrete: Definition, Advances, and Climate Potential<a class="headerlink" href="#sustainable-concrete-definition-advances-and-climate-potential" title="Link to this heading">#</a></h3>
+</section>
+<section id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
+<p><strong>Sustainable concrete</strong> refers to concrete designed and produced to minimize environmental impact while maintaining structural performance. It incorporates:</p>
+<ul class="simple">
+<li><p>Supplementary Cementitious Materials (SCMs) like fly ash, slag, silica fume, and calcined clays</p></li>
+<li><p>Recycled aggregates from construction and demolition waste</p></li>
+<li><p>Low-carbon binders and alternative fuels in cement production</p></li>
+<li><p>Carbon capture and utilization (CCU) technologies</p></li>
+</ul>
+<p>Concrete is the most used engineering material globally, second only to water. Making it sustainable is crucial for addressing climate change, as <strong>cement production alone contributes ~8% of global CO₂ emissions</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="climate-impact-and-potential">
+<h3>🌍 Climate Impact and Potential<a class="headerlink" href="#climate-impact-and-potential" title="Link to this heading">#</a></h3>
+<p>Achieving sustainability in concrete can:</p>
+<ul class="simple">
+<li><p>Reduce embodied carbon by <strong>40–90%</strong> depending on the mix and SCMs used</p></li>
+<li><p>Turn concrete into a <strong>carbon sink</strong> via carbonation and carbon-negative additives</p></li>
+<li><p>Enable <strong>circular economy</strong> through reuse of industrial byproducts and recycled aggregates</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="current-advances-in-the-u-s-2025">
+<h3>🇺🇸 Current Advances in the U.S. (2025)<a class="headerlink" href="#current-advances-in-the-u-s-2025" title="Link to this heading">#</a></h3>
+</section>
+<section id="key-innovations">
+<h3>Key Innovations<a class="headerlink" href="#key-innovations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Carbon-negative concrete</strong> using seawater and CO₂ to grow sand-like minerals</p></li>
+<li><p><strong>Internal-external CO₂ curing</strong> for deeper carbonation and 100% strength boost</p></li>
+<li><p><strong>AI-optimized mix designs</strong> to reduce cement overuse without compromising strength</p></li>
+<li><p><strong>Electrochemical cement production</strong> using silicate minerals instead of limestone</p></li>
+</ul>
+</section>
+<section id="notable-projects">
+<h3>Notable Projects<a class="headerlink" href="#notable-projects" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>MIT’s <strong>sodium bicarbonate-based early carbonation process</strong></p></li>
+<li><p>Temple University’s <strong>scalable carbonatable concrete</strong> for structural use</p></li>
+<li><p>Meta and Microsoft <strong>piloting low-carbon concrete</strong> in data centers</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="approaches-toward-sustainable-concrete">
+<h3>🛠️ Approaches Toward Sustainable Concrete<a class="headerlink" href="#approaches-toward-sustainable-concrete" title="Link to this heading">#</a></h3>
+</section>
+<section id="reduce-cement-use">
+<h3>1. Reduce Cement Use<a class="headerlink" href="#reduce-cement-use" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Optimize mix designs for strength and durability</p></li>
+<li><p>Use <strong>high-performance concrete (HPC)</strong> and <strong>ultra-high-performance concrete (UHPC)</strong></p></li>
+</ul>
+</section>
+<section id="reuse-and-recycle">
+<h3>2. Reuse and Recycle<a class="headerlink" href="#reuse-and-recycle" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Recycled concrete aggregates (RCA)</strong></p></li>
+<li><p><strong>Reclaimed asphalt pavement</strong> and <strong>blast furnace slag</strong></p></li>
+</ul>
+</section>
+<section id="substitute-clinker">
+<h3>3. Substitute Clinker<a class="headerlink" href="#substitute-clinker" title="Link to this heading">#</a></h3>
+<p>Clinker is the most carbon-intensive component of cement. Substitution strategies include:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Substitute Material</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Benefits</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Fly Ash</p></td>
+<td><p>Pozzolanic SCM</p></td>
+<td><p>Reduces CO₂, improves durability</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ground Granulated Blast Furnace Slag</p></td>
+<td><p>Hydraulic SCM</p></td>
+<td><p>High strength, low permeability</p></td>
+</tr>
+<tr class="row-even"><td><p>Calcined Clay (e.g. LC3)</p></td>
+<td><p>Pozzolanic SCM</p></td>
+<td><p>Abundant, reduces emissions by ~30–40%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Silica Fume</p></td>
+<td><p>Pozzolanic SCM</p></td>
+<td><p>Enhances strength and impermeability</p></td>
+</tr>
+<tr class="row-even"><td><p>Limestone (finely ground)</p></td>
+<td><p>Filler/SCM</p></td>
+<td><p>Reduces clinker content, improves workability</p></td>
+</tr>
+<tr class="row-odd"><td><p>Recycled Concrete Fines</p></td>
+<td><p>Emerging SCM</p></td>
+<td><p>Circular economy, promising durability</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>⚠️ Availability of SCMs like fly ash and slag is declining due to decarbonization of coal and steel sectors</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="performance-based-standards">
+<h3>📈 Performance-Based Standards<a class="headerlink" href="#performance-based-standards" title="Link to this heading">#</a></h3>
+<p>Transitioning from <strong>recipe-based standards</strong> to <strong>performance-based standards</strong> (e.g., EN 197-5, EN 197-6) allows:</p>
+<ul class="simple">
+<li><p>Greater flexibility in SCM use</p></li>
+<li><p>Faster adoption of low-carbon cements</p></li>
+<li><p>Preservation of strength and durability through mix optimization</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h3>📚 Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
+<p>Sustainable concrete is not just a material innovation—it’s a <strong>climate strategy</strong>. Through SCMs, clinker substitution, carbon capture, and smart design, it offers a pathway to <strong>net-zero construction</strong>. The U.S. is advancing rapidly with scalable technologies, AI-driven optimization, and industry partnerships.</p>
+</section>
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h3>
+<p><span id="id1">[<a class="reference internal" href="../markdown.html#id120" title="Alireza Bahrami, editor. Advances in Sustainable Concrete for Construction. Springer Nature Switzerland, Cham, 2025. ISBN 9783031850516. Covers climate-improved concrete, SCMs, ECCs, internal curing, and empirical performance models. URL: https://link.springer.com/book/10.1007/978-3-031-85052-3, doi:10.1007/978-3-031-85052-3.">Bahrami, 2025</a>]</span> offers a comprehensive and forward-looking review of sustainable concrete technologies, materials, and design strategies aimed at reducing the environmental footprint of construction. It integrates climate-improved concrete, low-carbon binders, recycled aggregates, and engineered cementitious composites (ECCs) into a unified framework for sustainable infrastructure.</p>
+</section>
+<section id="methodology-sustainable-concrete-emissions-calculator">
+<h3>🧱 Methodology: Sustainable Concrete Emissions Calculator<a class="headerlink" href="#methodology-sustainable-concrete-emissions-calculator" title="Link to this heading">#</a></h3>
+<p>This interactive model estimates the <strong>embodied carbon</strong> of concrete mixes based on literature-derived emission factors and user-defined material proportions. It allows exploration of strategies to reduce environmental impact by adjusting the percentage of clinker, supplementary cementitious materials (SCMs), and recycled aggregates.</p>
+</section>
+<hr class="docutils" />
+<section id="emission-factors">
+<h3>📚 Emission Factors<a class="headerlink" href="#emission-factors" title="Link to this heading">#</a></h3>
+<p>The model uses published average values for <strong>CO₂ emissions per kilogram of material</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Material</p></th>
+<th class="head"><p>Emission Factor (kg CO₂/kg)</p></th>
+<th class="head"><p>Source/Justification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Clinker</p></td>
+<td><p>0.85</p></td>
+<td><p>High due to calcination and fuel use</p></td>
+</tr>
+<tr class="row-odd"><td><p>SCM (e.g., fly ash)</p></td>
+<td><p>0.05</p></td>
+<td><p>By-product with low embodied carbon</p></td>
+</tr>
+<tr class="row-even"><td><p>Natural Aggregate</p></td>
+<td><p>0.005</p></td>
+<td><p>Low emissions from extraction and transport</p></td>
+</tr>
+<tr class="row-odd"><td><p>Recycled Aggregate</p></td>
+<td><p>0.002</p></td>
+<td><p>Lower emissions due to reuse</p></td>
+</tr>
+<tr class="row-even"><td><p>Water</p></td>
+<td><p>0.0003</p></td>
+<td><p>Minimal impact</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="mix-design-assumptions">
+<h3>📐 Mix Design Assumptions<a class="headerlink" href="#mix-design-assumptions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Binder content</strong>: 350 kg/m³ (clinker + SCM)</p></li>
+<li><p><strong>Aggregate content</strong>: 1800 kg/m³</p></li>
+<li><p><strong>Water content</strong>: 180 kg/m³</p></li>
+<li><p>Users adjust:</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="emissions-calculation">
+<h3>🧮 Emissions Calculation<a class="headerlink" href="#emissions-calculation" title="Link to this heading">#</a></h3>
+<p>For each material:
+$<span class="math notranslate nohighlight">\(
+\text{Emissions} = \text{Mass} \times \text{Emission Factor}
+\)</span>$</p>
+<p>Total embodied carbon is the sum of emissions from:</p>
+<ul class="simple">
+<li><p>Clinker</p></li>
+<li><p>SCM</p></li>
+<li><p>Natural aggregate</p></li>
+<li><p>Recycled aggregate</p></li>
+<li><p>Water</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="visualization">
+<h3>📊 Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h3>
+<p>A <strong>pie chart</strong> displays the contribution of each material to the total carbon footprint, helping users identify which components dominate emissions.</p>
+</section>
+<hr class="docutils" />
+<section id="interactive-controls">
+<h3>🎛️ Interactive Controls<a class="headerlink" href="#interactive-controls" title="Link to this heading">#</a></h3>
+<p>Users can explore sustainability strategies by adjusting:</p>
+<ul class="simple">
+<li><p><strong>Clinker percentage</strong> (40–100%)</p></li>
+<li><p><strong>SCM percentage</strong> (0–60%)</p></li>
+<li><p><strong>Recycled aggregate percentage</strong> (0–100%)</p></li>
+</ul>
+<p>The model dynamically updates:</p>
+<ul class="simple">
+<li><p>Material quantities (kg/m³)</p></li>
+<li><p>Total embodied carbon (kg CO₂/m³)</p></li>
+<li><p>Visual breakdown of emissions</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="purpose">
+<h3>🧠 Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h3>
+<p>This tool supports:</p>
+<ul class="simple">
+<li><p>Sustainable design decisions</p></li>
+<li><p>Educational exploration of low-carbon concrete</p></li>
+<li><p>Scenario analysis for material substitution</p></li>
+</ul>
+<p>The enhanced model estimates the <strong>embodied carbon</strong>, <strong>performance characteristics</strong>, and <strong>economic implications</strong> of concrete mixes. It integrates user-defined material proportions with engineering targets and sustainability metrics to support informed decision-making.</p>
+<hr class="docutils" />
+<section id="id2">
+<h4>📚 Emission Factors<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>Same as the base model, using literature-derived values for CO₂ emissions per kg of material:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Material</p></th>
+<th class="head"><p>Emission Factor (kg CO₂/kg)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Clinker</p></td>
+<td><p>0.85</p></td>
+</tr>
+<tr class="row-odd"><td><p>SCM (e.g., fly ash)</p></td>
+<td><p>0.05</p></td>
+</tr>
+<tr class="row-even"><td><p>Natural Aggregate</p></td>
+<td><p>0.005</p></td>
+</tr>
+<tr class="row-odd"><td><p>Recycled Aggregate</p></td>
+<td><p>0.002</p></td>
+</tr>
+<tr class="row-even"><td><p>Water</p></td>
+<td><p>0.0003</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h3>📐 Mix Design Assumptions<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Binder content</strong>: 350 kg/m³ (clinker + SCM)</p></li>
+<li><p><strong>Aggregate content</strong>: 1800 kg/m³</p></li>
+<li><p><strong>Water content</strong>: 180 kg/m³</p></li>
+<li><p>Adjustable parameters:</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3>🧮 Emissions Calculation<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\text{Emissions} = \sum_{i} \text{Mass}_i \times \text{Emission Factor}_i
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="compressive-strength-estimation">
+<h3>🧱 Compressive Strength Estimation<a class="headerlink" href="#compressive-strength-estimation" title="Link to this heading">#</a></h3>
+<p>Empirical relationships from literature suggest that compressive strength ( f_c ) depends on binder type and water-to-cement ratio (w/c):</p>
+<div class="math notranslate nohighlight">
+\[
+f_c = k \cdot \left( \frac{C}{W} \right)^\alpha
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( C \)</span>): effective cementitious content (kg/m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( W \)</span>): water content (kg/m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( k, \alpha \)</span>): empirical constants (e.g., <span class="math notranslate nohighlight">\(( k = 30 \)</span>), <span class="math notranslate nohighlight">\(( \alpha = 0.5 \)</span>))</p></li>
+<li><p>SCMs may reduce early strength but improve long-term</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Run this cell in a Jupyter Notebook</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 📚 Emission factors (kg CO₂/kg)</span>
+<span class="n">emission_factors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;clinker&quot;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>
+    <span class="s2">&quot;SCM&quot;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="s2">&quot;aggregate&quot;</span><span class="p">:</span> <span class="mf">0.005</span><span class="p">,</span>
+    <span class="s2">&quot;recycled_agg&quot;</span><span class="p">:</span> <span class="mf">0.002</span><span class="p">,</span>
+    <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="mf">0.0003</span>
+<span class="p">}</span>
+
+<span class="c1"># 💰 Unit costs ($/kg)</span>
+<span class="n">cost_factors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;clinker&quot;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span>
+    <span class="s2">&quot;SCM&quot;</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>
+    <span class="s2">&quot;aggregate&quot;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="s2">&quot;recycled_agg&quot;</span><span class="p">:</span> <span class="mf">0.008</span><span class="p">,</span>
+    <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="mf">0.001</span>
+<span class="p">}</span>
+
+<span class="c1"># 📐 Default mix proportions</span>
+<span class="n">default_mix</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;binder_total&quot;</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>   <span class="c1"># kg/m³</span>
+    <span class="s2">&quot;aggregate_total&quot;</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span>
+    <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="mi">180</span>
+<span class="p">}</span>
+
+<span class="c1"># 📏 Compressive strength model (empirical)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_strength</span><span class="p">(</span><span class="n">w_b_ratio</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># strength coefficient</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+    <span class="k">return</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">w_b_ratio</span> <span class="o">**</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># 🛡️ Durability scoring</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">durability_score</span><span class="p">(</span><span class="n">scm_pct</span><span class="p">,</span> <span class="n">recycled_pct</span><span class="p">):</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">if</span> <span class="n">scm_pct</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">recycled_pct</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">-=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">default_mix</span><span class="p">[</span><span class="s2">&quot;water&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">default_mix</span><span class="p">[</span><span class="s2">&quot;binder_total&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.45</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 💰 Life cycle cost</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_cost</span><span class="p">(</span><span class="n">mix</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">mix</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">cost_factors</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mix</span><span class="p">)</span>
+
+<span class="c1"># 🌍 Embodied carbon</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_emissions</span><span class="p">(</span><span class="n">mix</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">mix</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">emission_factors</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">mix</span><span class="p">)</span>
+
+<span class="c1"># 📊 Interactive function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_mix</span><span class="p">(</span><span class="n">clinker_pct</span><span class="p">,</span> <span class="n">scm_pct</span><span class="p">,</span> <span class="n">recycled_pct</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">binder_total</span> <span class="o">=</span> <span class="n">default_mix</span><span class="p">[</span><span class="s2">&quot;binder_total&quot;</span><span class="p">]</span>
+    <span class="n">aggregate_total</span> <span class="o">=</span> <span class="n">default_mix</span><span class="p">[</span><span class="s2">&quot;aggregate_total&quot;</span><span class="p">]</span>
+    <span class="n">water</span> <span class="o">=</span> <span class="n">default_mix</span><span class="p">[</span><span class="s2">&quot;water&quot;</span><span class="p">]</span>
+
+    <span class="n">clinker</span> <span class="o">=</span> <span class="n">binder_total</span> <span class="o">*</span> <span class="n">clinker_pct</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">scm</span> <span class="o">=</span> <span class="n">binder_total</span> <span class="o">*</span> <span class="n">scm_pct</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">recycled_agg</span> <span class="o">=</span> <span class="n">aggregate_total</span> <span class="o">*</span> <span class="n">recycled_pct</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">natural_agg</span> <span class="o">=</span> <span class="n">aggregate_total</span> <span class="o">-</span> <span class="n">recycled_agg</span>
+
+    <span class="n">mix</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;clinker&quot;</span><span class="p">:</span> <span class="n">clinker</span><span class="p">,</span>
+        <span class="s2">&quot;SCM&quot;</span><span class="p">:</span> <span class="n">scm</span><span class="p">,</span>
+        <span class="s2">&quot;aggregate&quot;</span><span class="p">:</span> <span class="n">natural_agg</span><span class="p">,</span>
+        <span class="s2">&quot;recycled_agg&quot;</span><span class="p">:</span> <span class="n">recycled_agg</span><span class="p">,</span>
+        <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="n">water</span>
+    <span class="p">}</span>
+
+    <span class="n">emissions</span> <span class="o">=</span> <span class="n">calculate_emissions</span><span class="p">(</span><span class="n">mix</span><span class="p">)</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">calculate_cost</span><span class="p">(</span><span class="n">mix</span><span class="p">)</span>
+    <span class="n">w_b_ratio</span> <span class="o">=</span> <span class="n">water</span> <span class="o">/</span> <span class="n">binder_total</span>
+    <span class="n">strength</span> <span class="o">=</span> <span class="n">estimate_strength</span><span class="p">(</span><span class="n">w_b_ratio</span><span class="p">)</span>
+    <span class="n">durability</span> <span class="o">=</span> <span class="n">durability_score</span><span class="p">(</span><span class="n">scm_pct</span><span class="p">,</span> <span class="n">recycled_pct</span><span class="p">)</span>
+
+    <span class="c1"># 📋 Summary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🧱 Sustainable Concrete Mix:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Clinker: </span><span class="si">{</span><span class="n">clinker</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SCM: </span><span class="si">{</span><span class="n">scm</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Natural Aggregate: </span><span class="si">{</span><span class="n">natural_agg</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recycled Aggregate: </span><span class="si">{</span><span class="n">recycled_agg</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Water: </span><span class="si">{</span><span class="n">water</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🌍 Embodied Carbon: </span><span class="si">{</span><span class="n">emissions</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg CO₂/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💰 Life Cycle Cost: $</span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">/m³&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📏 Estimated Compressive Strength: </span><span class="si">{</span><span class="n">strength</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> MPa&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🛡️ Durability Score (0–10): </span><span class="si">{</span><span class="n">durability</span><span class="si">}</span><span class="s2">/10&quot;</span><span class="p">)</span>
+
+    <span class="c1"># 📈 Bar chart</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Carbon (kg CO₂)&#39;</span><span class="p">,</span> <span class="s1">&#39;Cost ($)&#39;</span><span class="p">,</span> <span class="s1">&#39;Strength (MPa)&#39;</span><span class="p">,</span> <span class="s1">&#39;Durability&#39;</span><span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">emissions</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">strength</span><span class="p">,</span> <span class="n">durability</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sustainable Concrete Performance Metrics&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># 📘 Interpretation</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📘 Interpretation:&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Carbon footprint</span>
+    <span class="k">if</span> <span class="n">emissions</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Low embodied carbon — suitable for green building certification.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">emissions</span> <span class="o">&lt;</span> <span class="mi">350</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Moderate embodied carbon — better than conventional mixes.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ High embodied carbon — consider reducing clinker or increasing SCM.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Strength</span>
+    <span class="k">if</span> <span class="n">strength</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Low strength — suitable for non-structural applications.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">strength</span> <span class="o">&lt;</span> <span class="mi">35</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Moderate strength — suitable for residential or light-duty structures.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ High strength — suitable for structural and infrastructure-grade concrete.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Durability</span>
+    <span class="k">if</span> <span class="n">durability</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ High durability — good resistance to environmental degradation.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">durability</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Moderate durability — may require protective measures.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ Low durability — not recommended for exposed or aggressive environments.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Cost</span>
+    <span class="k">if</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Economical mix — cost-effective for large-scale use.&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;⚠️ Moderate cost — acceptable for performance-driven applications.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ High cost — consider optimizing material selection.&quot;</span><span class="p">)</span>
+
+<span class="c1"># 🎛️ Interactive sliders</span>
+<span class="n">clinker_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">85</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Clinker %&#39;</span><span class="p">)</span>
+<span class="n">scm_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;SCM %&#39;</span><span class="p">)</span>
+<span class="n">recycled_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Recycled Agg %&#39;</span><span class="p">)</span>
+
+<span class="n">interactive_mix</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span>
+    <span class="n">update_mix</span><span class="p">,</span>
+    <span class="n">clinker_pct</span><span class="o">=</span><span class="n">clinker_slider</span><span class="p">,</span>
+    <span class="n">scm_pct</span><span class="o">=</span><span class="n">scm_slider</span><span class="p">,</span>
+    <span class="n">recycled_pct</span><span class="o">=</span><span class="n">recycled_slider</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interactive_mix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "179dbc6210f3429186884193f4ce1f38", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="conceptual-questions">
+<h3>📘 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<p>These questions explore the physical principles, modeling logic, and sustainability metrics embedded in the calculator.</p>
+</section>
+<section id="material-impact">
+<h3>Material Impact<a class="headerlink" href="#material-impact" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Why is clinker the most carbon-intensive component in concrete?</p></li>
+<li><p>What role do supplementary cementitious materials (SCMs) play in reducing embodied carbon?</p></li>
+<li><p>How does the use of recycled aggregate influence both environmental and mechanical performance?</p></li>
+</ul>
+</section>
+<section id="engineering-metrics">
+<h3>Engineering Metrics<a class="headerlink" href="#engineering-metrics" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What is the significance of the water-to-binder ratio in estimating compressive strength?</p></li>
+<li><p>How does SCM content affect durability, especially in sulfate-rich or marine environments?</p></li>
+<li><p>Why is compressive strength modeled using an empirical power-law relationship?</p></li>
+</ul>
+</section>
+<section id="economic-and-environmental-trade-offs">
+<h3>Economic and Environmental Trade-offs<a class="headerlink" href="#economic-and-environmental-trade-offs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How does life cycle cost reflect both material prices and sustainability choices?</p></li>
+<li><p>Why might a mix with lower embodied carbon still have higher cost?</p></li>
+<li><p>What are the limitations of using static emission and cost factors in dynamic construction contexts?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>🔍 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<p>These questions encourage critical thinking and application to real-world design and sustainability decisions.</p>
+<ul class="simple">
+<li><p>If your goal is to design a mix for a coastal structure, how would you adjust SCM and recycled aggregate percentages?</p></li>
+<li><p>How would your mix design change if the project prioritized cost over carbon reduction?</p></li>
+<li><p>What are the trade-offs between achieving high compressive strength and minimizing embodied carbon?</p></li>
+<li><p>How could this model be extended to include long-term durability testing or service life predictions?</p></li>
+<li><p>What policy incentives could encourage adoption of low-carbon concrete mixes in public infrastructure?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>❓ Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="multiple-choice">
+<h3>Multiple Choice<a class="headerlink" href="#multiple-choice" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which material contributes the most to embodied carbon in a typical concrete mix?</strong><br />
+A. Water<br />
+B. Recycled Aggregate<br />
+C. Clinker<br />
+D. SCM<br />
+<strong>Answer:</strong> C</p></li>
+<li><p><strong>What is the primary benefit of using SCMs like fly ash or slag?</strong><br />
+A. Increased water demand<br />
+B. Lower compressive strength<br />
+C. Reduced carbon footprint<br />
+D. Higher cost<br />
+<strong>Answer:</strong> C</p></li>
+<li><p><strong>Which factor most directly influences compressive strength in the model?</strong><br />
+A. Aggregate type<br />
+B. Water-to-binder ratio<br />
+C. SCM percentage<br />
+D. Recycled aggregate percentage<br />
+<strong>Answer:</strong> B</p></li>
+</ol>
+</section>
+<section id="true-false">
+<h3>True/False<a class="headerlink" href="#true-false" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>Increasing SCM content generally improves sulfate resistance.</strong><br />
+<strong>Answer:</strong> True</p></li>
+<li><p><strong>Recycled aggregates always improve durability.</strong><br />
+<strong>Answer:</strong> False</p></li>
+<li><p><strong>The model assumes a fixed water content across all mix designs.</strong><br />
+<strong>Answer:</strong> True</p></li>
+</ol>
+</section>
+<section id="short-answer">
+<h3>Short Answer<a class="headerlink" href="#short-answer" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="7">
+<li><p><strong>Explain why reducing clinker content lowers the embodied carbon of concrete.</strong><br />
+<em>Answer:</em> Clinker production involves high-temperature calcination and fossil fuel combustion, making it the most carbon-intensive component.</p></li>
+<li><p><strong>What are the potential durability concerns when using high percentages of recycled aggregate?</strong><br />
+<em>Answer:</em> Reduced freeze-thaw resistance, increased shrinkage, and lower long-term strength due to variability in recycled material quality.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="WindowTransmittanceAnalysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Sustainabilty and Engineering: Windown Transmittance</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SustainableFoundation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Enginereing Sustainability: Sustainable Geotech</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sustainable-concrete-definition-advances-and-climate-potential">🧱 Sustainable Concrete: Definition, Advances, and Climate Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-impact-and-potential">🌍 Climate Impact and Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-advances-in-the-u-s-2025">🇺🇸 Current Advances in the U.S. (2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-innovations">Key Innovations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notable-projects">Notable Projects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-toward-sustainable-concrete">🛠️ Approaches Toward Sustainable Concrete</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-cement-use">1. Reduce Cement Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reuse-and-recycle">2. Reuse and Recycle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#substitute-clinker">3. Substitute Clinker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-based-standards">📈 Performance-Based Standards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">📚 Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-sustainable-concrete-emissions-calculator">🧱 Methodology: Sustainable Concrete Emissions Calculator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emission-factors">📚 Emission Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mix-design-assumptions">📐 Mix Design Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissions-calculation">🧮 Emissions Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">📊 Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛️ Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">🧠 Purpose</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">📚 Emission Factors</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">📐 Mix Design Assumptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">🧮 Emissions Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compressive-strength-estimation">🧱 Compressive Strength Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">📘 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#material-impact">Material Impact</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#engineering-metrics">Engineering Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#economic-and-environmental-trade-offs">Economic and Environmental Trade-offs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">🔍 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">❓ Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

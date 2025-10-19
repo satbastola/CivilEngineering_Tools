@@ -1,0 +1,1936 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 5 Coastal Engineering: Stability of Beach Profile &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap5/BeachStability';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 5 Coastal Engineering: Equilibrium Breach Profile" href="EquilibriumBeachProfile.html" />
+    <link rel="prev" title="Chapter 5 Coastal Engineering: Longshore sediment transport" href="SedimentTransport.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap5/BeachStability.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap5/BeachStability.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap5/BeachStability.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap5/BeachStability.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap5/BeachStability.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5 Coastal Engineering: Stability of Beach Profile</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beach-profile-overview">🏖️ Beach Profile Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-beach-profiles-can-be-unstable">⚠️ Why Beach Profiles Can Be Unstable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-improve-and-check-beach-profile-stability">🛠️ How to Improve and Check Beach Profile Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#improvement-strategies">🔧 Improvement Strategies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-assessment-methods">📐 Stability Assessment Methods</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-coastal-stability-overview">🌍 U.S. Coastal Stability Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#most-unstable-coastal-zones">🚨 Most Unstable Coastal Zones</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#most-stable-coastal-zones">✅ Most Stable Coastal Zones</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-beach-profile-evaluation-based-on-spm-principles">Interactive Beach Profile Evaluation Based on SPM Principles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs">User Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coastal-metrics-computed">Coastal Metrics Computed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-logic">Classification Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spm-based-beach-profile-classification-interactive-python-tool">🏖️ SPM-Based Beach Profile Classification (Interactive Python Tool)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-tool-does">🧠 What the Tool Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs-via-sliders">🎛️ User Inputs (via Sliders)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-metrics-interpretation">📊 Output Metrics &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-summary-displayed">📋 Example Summary Displayed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-fall-velocity-estimation-tool">🧪 Sediment Fall Velocity Estimation Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">🎯 Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📥 User Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-calculations">📐 Key Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-display">📊 Output Display</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berm-bar-formation-predictor-summary">🌊 Berm-Bar Formation Predictor: Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-equation-fall-velocity-stokes-law">📐 Core Equation: Fall Velocity (Stokes’ Law)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-summaries">🧮 Method Summaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#and-h-d-ratio">1. <strong>ω*</strong> and H/D Ratio</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spm-based-iribarren-number">2. <strong>SPM-Based (Iribarren Number)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kraus-larson-1988">3. <strong>Kraus &amp; Larson (1988)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensional-fall-time-spm-fig-4-29">4. <strong>Dimensional Fall Time (SPM Fig 4-29)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">🎛️ Interactive Inputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beach-profile-evaluation-based-on-shore-protection-manual-principles">Beach Profile Evaluation Based on Shore Protection Manual Principles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-coastal-profile-classification">🧪 Quiz: Coastal Profile Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-iribarren-number-ir-measure">1. What does the Iribarren Number (Ir) measure?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-beach-profile-is-typically-associated-with-a-high-iribarren-number-ir-3-3">2. Which beach profile is typically associated with a high Iribarren Number (Ir &gt; 3.3)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-to-the-mobility-ratio-when-sediment-size-d50-decreases">3. What happens to the mobility ratio when sediment size (D50) decreases?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-primary-characteristic-of-a-dissipative-beach-profile">4. What is the primary characteristic of a dissipative beach profile?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-parameter-is-most-directly-influenced-by-wave-period-t">5. Which parameter is most directly influenced by wave period (T)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Reflective Questions</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts">❓ Reflective Prompts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-yourself">🧠 Quiz Yourself</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-coastal-engineering-stability-of-beach-profile">
+<h1>Chapter 5 Coastal Engineering: Stability of Beach Profile<a class="headerlink" href="#chapter-5-coastal-engineering-stability-of-beach-profile" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Wave Kinematics</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: AiryWave</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="beach-profile-and-stability">
+<a class="reference internal image-reference" href="../_images/BeachStabilityImage.png"><img alt="Descriptive alt text for accessibility" src="../_images/BeachStabilityImage.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">**Figure 5.9 **: Breach Profile and Stability.</span><a class="headerlink" href="#beach-profile-and-stability" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="beach-profile-overview">
+<h3>🏖️ Beach Profile Overview<a class="headerlink" href="#beach-profile-overview" title="Link to this heading">#</a></h3>
+<p>A <strong>beach profile</strong> is a cross-sectional representation of the beach from the backshore (dune or cliff) to the offshore zone. It includes features like:</p>
+<ul class="simple">
+<li><p><strong>Berm</strong>: Flat area formed by wave deposition</p></li>
+<li><p><strong>Foreshore</strong>: Slope between high and low tide marks</p></li>
+<li><p><strong>Inshore/Offshore bars</strong>: Submerged ridges formed by wave action</p></li>
+<li><p><strong>Dune or cliff</strong>: Landward boundary</p></li>
+</ul>
+<p>Beach profiles are dynamic and respond to wave energy, sediment supply, tides, and seasonal changes.</p>
+</section>
+<hr class="docutils" />
+<section id="why-beach-profiles-can-be-unstable">
+<h3>⚠️ Why Beach Profiles Can Be Unstable<a class="headerlink" href="#why-beach-profiles-can-be-unstable" title="Link to this heading">#</a></h3>
+<p>Beach profiles are inherently unstable due to:</p>
+<ul class="simple">
+<li><p><strong>Storm events</strong>: High-energy waves erode berms and dunes, pushing sand offshore into bars</p></li>
+<li><p><strong>Seasonal variation</strong>: Winter profiles are flatter and eroded; summer profiles are steeper and accreted</p></li>
+<li><p><strong>Sediment imbalance</strong>: Reduced sediment supply from rivers or human activity (e.g., dams, jetties) leads to erosion</p></li>
+<li><p><strong>Sea-level rise</strong>: Increases overwash and landward migration of beaches</p></li>
+<li><p><strong>Human interference</strong>: Seawalls, groynes, and development disrupt natural sediment transport</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-improve-and-check-beach-profile-stability">
+<h3>🛠️ How to Improve and Check Beach Profile Stability<a class="headerlink" href="#how-to-improve-and-check-beach-profile-stability" title="Link to this heading">#</a></h3>
+<section id="improvement-strategies">
+<h4>🔧 Improvement Strategies<a class="headerlink" href="#improvement-strategies" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Beach nourishment</strong>: Adding compatible sand to restore eroded profiles</p></li>
+<li><p><strong>Living shorelines</strong>: Use vegetation and natural materials to stabilize dunes and berms</p></li>
+<li><p><strong>Sediment management</strong>: Maintain sediment supply from rivers and dredging</p></li>
+<li><p><strong>Profile equilibration</strong>: Design nourishment projects to allow natural reshaping by waves</p></li>
+</ul>
+</section>
+<section id="stability-assessment-methods">
+<h4>📐 Stability Assessment Methods<a class="headerlink" href="#stability-assessment-methods" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Beach profiling</strong>: Measure elevation changes along transects using Emery method or GPS</p></li>
+<li><p><strong>Slope analysis</strong>: Calculate beach angle and cross-sectional area</p></li>
+<li><p><strong>Sediment sampling</strong>: Analyze grain size and sorting to predict mobility</p></li>
+<li><p><strong>Monitoring seasonal changes</strong>: Compare summer vs. winter profiles over time</p></li>
+<li><p><strong>Modeling equilibrium profiles</strong>: Use Dean’s equation ( h = A y^{2/3} ) to predict stable shapes</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="u-s-coastal-stability-overview">
+<h3>🌍 U.S. Coastal Stability Overview<a class="headerlink" href="#u-s-coastal-stability-overview" title="Link to this heading">#</a></h3>
+<section id="most-unstable-coastal-zones">
+<h4>🚨 Most Unstable Coastal Zones<a class="headerlink" href="#most-unstable-coastal-zones" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Causes of Instability</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Louisiana Gulf Coast</p></td>
+<td><p>Rapid land loss (football field every 100 minutes), subsidence, sea-level rise</p></td>
+</tr>
+<tr class="row-odd"><td><p>Florida Gulf Coast</p></td>
+<td><p>Low dunes, high erosion rates, frequent hurricanes</p></td>
+</tr>
+<tr class="row-even"><td><p>Outer Banks, NC</p></td>
+<td><p>Barrier islands eroding up to 15 ft/year, storm surge vulnerability</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texas Gulf Coast</p></td>
+<td><p>High erosion, urbanization, sediment loss</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="most-stable-coastal-zones">
+<h4>✅ Most Stable Coastal Zones<a class="headerlink" href="#most-stable-coastal-zones" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Stability Factors</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Pacific Northwest (e.g., Oregon)</p></td>
+<td><p>Rocky coastlines, higher dunes, lower erosion rates</p></td>
+</tr>
+<tr class="row-odd"><td><p>New England (e.g., Cape Cod)</p></td>
+<td><p>Active restoration, dune management, and sediment control</p></td>
+</tr>
+<tr class="row-even"><td><p>California Channel Islands</p></td>
+<td><p>Protected marine zones, limited development</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p>Beach profiles are dynamic systems shaped by natural forces and human interventions. Their stability is crucial for coastal resilience, habitat preservation, and infrastructure protection. By applying equilibrium theory, sediment management, and adaptive design, engineers and planners can mitigate erosion and enhance long-term stability. In the U.S., the Gulf Coast faces the greatest instability, while parts of the Pacific Northwest and New England remain relatively stable due to geology and proactive management. In <span id="id1">[]</span> introduces the equilibrium beach profile as a concave-upward shape governed by wave energy dissipation and sediment characteristics.  Dean emphasizes that beach profiles naturally adjust to maintain equilibrium under varying wave conditions, and that slope stability is a function of sediment transport balance rather than geotechnical failure. <span id="id2">[<a class="reference internal" href="../markdown.html#id73" title="U.S. Army Corps of Engineers. Shore Protection Manual. Coastal Engineering Research Center, Waterways Experiment Station, Vicksburg, MS, 1984.">U.S. Army Corps of Engineers, 1984</a>]</span>  builds on this by describing beach profiles in terms of morphological zones—berm, foreshore, and nearshore bars—each shaped by local wave climate and sediment supply. It focuses on empirical methods to assess profile changes due to storms, wave runup, and sediment transport. Slope stability in this context is interpreted as the beach’s ability to resist erosion and maintain form under dynamic forcing, rather than structural failure. The manual includes design guidance such as the Bruun Rule for shoreline retreat and empirical relationships between beach slope and sediment grain size.
+In <span id="id3">[<a class="reference internal" href="../markdown.html#id77" title="U.S. Army Corps of Engineers. Coastal Engineering Manual. Washington, DC, 2002.">U.S. Army Corps of Engineers, 2002</a>]</span>, the Coastal Engineering Manual integrates Dean’s equilibrium theory with broader design and analysis frameworks. It uses beach profiles not only for morphological understanding but also for predicting wave transformation, runup, and erosion potential.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="interactive-beach-profile-evaluation-based-on-spm-principles">
+<h3>Interactive Beach Profile Evaluation Based on SPM Principles<a class="headerlink" href="#interactive-beach-profile-evaluation-based-on-spm-principles" title="Link to this heading">#</a></h3>
+<p>This Jupyter Notebook tool provides an interactive evaluation of coastal beach profiles using key parameters inspired by the <strong>Shore Protection Manual (SPM)</strong>. It assesses whether a beach is <strong>reflective</strong>, <strong>dissipative</strong>, or <strong>intermediate</strong>, and estimates <strong>stability</strong> based on sediment mobility.</p>
+</section>
+<section id="user-inputs">
+<h3>User Inputs<a class="headerlink" href="#user-inputs" title="Link to this heading">#</a></h3>
+<p>You can modify the following parameters using sliders:</p>
+<ul class="simple">
+<li><p><strong>Wave Height (Hb)</strong>: Represents significant wave height in meters.</p></li>
+<li><p><strong>Wave Period (T)</strong>: Time interval between wave crests in seconds.</p></li>
+<li><p><strong>Beach Slope (tan β)</strong>: Indicates the steepness of the beach profile.</p></li>
+<li><p><strong>Sediment Size (D50)</strong>: Median grain size of beach sediment in meters.</p></li>
+</ul>
+</section>
+<section id="coastal-metrics-computed">
+<h3>Coastal Metrics Computed<a class="headerlink" href="#coastal-metrics-computed" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wave Steepness</strong> ( S = \frac{H_b}{L_0} ): Measures relative wave height to wavelength.</p></li>
+<li><p><strong>Iribarren Number</strong> ( Ir = \frac{\tan \beta}{\sqrt{H_b / L_0}} ): Surf similarity parameter.</p></li>
+<li><p><strong>Mobility Ratio</strong> ( M = \frac{H_b}{w_f} ): Compares wave energy to sediment settling ability.</p></li>
+</ul>
+</section>
+<section id="classification-logic">
+<h3>Classification Logic<a class="headerlink" href="#classification-logic" title="Link to this heading">#</a></h3>
+<p>Based on the inputs, the profile is classified as:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Iribarren Number</p></th>
+<th class="head"><p>Beach Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ir &gt; 3.3</p></td>
+<td><p>Reflective Profile</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ir &lt; 0.3</p></td>
+<td><p>Dissipative Profile</p></td>
+</tr>
+<tr class="row-even"><td><p>0.3 ≤ Ir ≤ 3.3</p></td>
+<td><p>Intermediate Profile</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Additionally, sediment mobility determines:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mobility Ratio</p></th>
+<th class="head"><p>Stability Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>&lt; 100</p></td>
+<td><p>Likely Stable</p></td>
+</tr>
+<tr class="row-odd"><td><p>&gt; 300</p></td>
+<td><p>Likely Unstable</p></td>
+</tr>
+<tr class="row-even"><td><p>100–300</p></td>
+<td><p>Possibly Transitional</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="how-it-works">
+<h3>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<p>When you adjust the sliders, the tool recalculates the following:</p>
+<ul class="simple">
+<li><p>Deep-water wavelength ( L_0 )</p></li>
+<li><p>Wave steepness</p></li>
+<li><p>Iribarren number</p></li>
+<li><p>Sediment fall velocity (approximate)</p></li>
+<li><p>Mobility ratio</p></li>
+<li><p>Profile classification and stability result</p></li>
+</ul>
+</section>
+<section id="spm-based-beach-profile-classification-interactive-python-tool">
+<h3>🏖️ SPM-Based Beach Profile Classification (Interactive Python Tool)<a class="headerlink" href="#spm-based-beach-profile-classification-interactive-python-tool" title="Link to this heading">#</a></h3>
+<p>This Jupyter Notebook tool evaluates beach morphodynamics using principles from the <strong>Shore Protection Manual (SPM)</strong>. It calculates wave steepness, Iribarren number, and sediment mobility to classify coastal profiles and estimate their stability.</p>
+</section>
+<hr class="docutils" />
+<section id="what-the-tool-does">
+<h3>🧠 What the Tool Does<a class="headerlink" href="#what-the-tool-does" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Accepts inputs: wave height, wave period, beach slope, and sediment grain size (D50)</p></li>
+<li><p>Computes:</p>
+<ul>
+<li><p><strong>Wave steepness</strong>: steepness of wave form</p></li>
+<li><p><strong>Iribarren number (Ir)</strong>: classifies beach response to wave forcing</p></li>
+<li><p><strong>Mobility ratio</strong>: estimates sediment movement tendency</p></li>
+</ul>
+</li>
+<li><p>Outputs:</p>
+<ul>
+<li><p><strong>Profile type</strong>: Reflective, Intermediate, or Dissipative</p></li>
+<li><p><strong>Stability status</strong>: Likely Stable, Possibly Transitional, Likely Unstable</p></li>
+</ul>
+</li>
+<li><p>Enables interactive exploration via sliders</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="user-inputs-via-sliders">
+<h3>🎛️ User Inputs (via Sliders)<a class="headerlink" href="#user-inputs-via-sliders" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Typical Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Hb</span></code></p></td>
+<td><p>Wave Height (m)</p></td>
+<td><p>0.5 – 5.0 m</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>Wave Period (s)</p></td>
+<td><p>4.0 – 12.0 s</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">slope</span></code></p></td>
+<td><p>Beach Slope</p></td>
+<td><p>0.005 – 0.05</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">D50</span></code></p></td>
+<td><p>Mean sediment diameter (m)</p></td>
+<td><p>0.00005 – 0.001 m</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="output-metrics-interpretation">
+<h3>📊 Output Metrics &amp; Interpretation<a class="headerlink" href="#output-metrics-interpretation" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Metric</p></th>
+<th class="head"><p>Meaning &amp; Guidance</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Wave Steepness</strong></p></td>
+<td><p>Higher = sharper waves, more erosive potential</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Iribarren Number</strong></p></td>
+<td><p>Low (&lt;0.3) = flat/dissipative; High (&gt;3.3) = steep/reflective</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mobility Ratio</strong></p></td>
+<td><p>High &gt;300 = active sediment motion; Low &lt;100 = sediment stability</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Profile Type</strong></p></td>
+<td><p>Helps predict hydrodynamic energy and sediment distribution</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stability Status</strong></p></td>
+<td><p>Indicates likelihood of profile erosion or accretion</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="example-summary-displayed">
+<h3>📋 Example Summary Displayed<a class="headerlink" href="#example-summary-displayed" title="Link to this heading">#</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>📋 Beach Profile Evaluation Based on SPM:
+  • Wave Height: 1.50 m
+  • Wave Period: 8.00 s
+  • Beach Slope: 0.020
+  • Sediment Size (D50): 0.00020 m
+
+🔎 Wave Steepness: 0.0157
+🔎 Iribarren Number: 1.95
+🔎 Mobility Ratio: 335.4
+
+🏖️ Profile Type: Intermediate Profile — transitional behavior
+🔒 Stability Status: Likely Unstable
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="c1"># 🌐 Constants</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>  <span class="c1"># gravity (m/s²)</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mi">1025</span>  <span class="c1"># seawater density (kg/m³)</span>
+
+<span class="c1"># 📐 Classification logic based on SPM principles</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">classify_spm_profile</span><span class="p">(</span><span class="n">Hb</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">D50</span><span class="p">):</span>
+    <span class="n">D50</span><span class="o">=</span><span class="n">D50</span><span class="o">/</span><span class="mi">1000</span>
+    <span class="n">L0</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="n">T</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>          <span class="c1"># deep water wavelength</span>
+    <span class="n">steepness</span> <span class="o">=</span> <span class="n">Hb</span> <span class="o">/</span> <span class="n">L0</span>                    <span class="c1"># wave steepness</span>
+    <span class="n">Ir</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Hb</span> <span class="o">/</span> <span class="n">L0</span><span class="p">)</span>          <span class="c1"># Iribarren number</span>
+    <span class="n">fall_velocity</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">D50</span><span class="o">**</span><span class="mf">0.5</span>        <span class="c1"># empirical fall velocity (approximation)</span>
+    <span class="n">mobility_ratio</span> <span class="o">=</span> <span class="n">Hb</span> <span class="o">/</span> <span class="n">fall_velocity</span>    <span class="c1"># sediment mobility index</span>
+
+    <span class="c1"># SPM-style profile categorization</span>
+    <span class="k">if</span> <span class="n">Ir</span> <span class="o">&gt;</span> <span class="mf">3.3</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="s2">&quot;Reflective Profile — steep, stable beach&quot;</span>
+    <span class="k">elif</span> <span class="n">Ir</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="s2">&quot;Dissipative Profile — flat, prone to erosion&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="s2">&quot;Intermediate Profile — transitional behavior&quot;</span>
+
+    <span class="c1"># Stability estimate (simplified)</span>
+    <span class="k">if</span> <span class="n">mobility_ratio</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">stability</span> <span class="o">=</span> <span class="s2">&quot;Likely Stable&quot;</span>
+    <span class="k">elif</span> <span class="n">mobility_ratio</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">stability</span> <span class="o">=</span> <span class="s2">&quot;Likely Unstable&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stability</span> <span class="o">=</span> <span class="s2">&quot;Possibly Transitional&quot;</span>
+
+    <span class="k">return</span> <span class="n">steepness</span><span class="p">,</span> <span class="n">Ir</span><span class="p">,</span> <span class="n">mobility_ratio</span><span class="p">,</span> <span class="n">profile</span><span class="p">,</span> <span class="n">stability</span>
+
+<span class="c1"># 🎛️ Sliders</span>
+<span class="n">Hb_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave Height (m)&#39;</span><span class="p">)</span>
+<span class="n">T_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave Period (s)&#39;</span><span class="p">)</span>
+<span class="n">slope_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Beach Slope&#39;</span><span class="p">)</span>
+<span class="n">D50_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;D50 (mm)&#39;</span><span class="p">)</span>
+
+<span class="c1"># 📦 Output container</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
+
+<span class="c1"># 🔄 Update function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">Hb</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">D50</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">steepness</span><span class="p">,</span> <span class="n">Ir</span><span class="p">,</span> <span class="n">mobility</span><span class="p">,</span> <span class="n">profile</span><span class="p">,</span> <span class="n">stability</span> <span class="o">=</span> <span class="n">classify_spm_profile</span><span class="p">(</span><span class="n">Hb</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">D50</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;📋 Beach Profile Evaluation Based on SPM:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • Wave Height: </span><span class="si">{</span><span class="n">Hb</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • Wave Period: </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • Beach Slope: </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  • Sediment Size (D50): </span><span class="si">{</span><span class="n">D50</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🔎 Wave Steepness: </span><span class="si">{</span><span class="n">steepness</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔎 Iribarren Number: </span><span class="si">{</span><span class="n">Ir</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔎 Mobility Ratio: </span><span class="si">{</span><span class="n">mobility</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🏖️ Profile Type: </span><span class="si">{</span><span class="n">profile</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔒 Stability Status: </span><span class="si">{</span><span class="n">stability</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 🔗 Link sliders to function</span>
+<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">Hb_slider</span><span class="p">,</span> <span class="n">T_slider</span><span class="p">,</span> <span class="n">slope_slider</span><span class="p">,</span> <span class="n">D50_slider</span><span class="p">])</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;Hb&#39;</span><span class="p">:</span> <span class="n">Hb_slider</span><span class="p">,</span>
+    <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="n">T_slider</span><span class="p">,</span>
+    <span class="s1">&#39;slope&#39;</span><span class="p">:</span> <span class="n">slope_slider</span><span class="p">,</span>
+    <span class="s1">&#39;D50&#39;</span><span class="p">:</span> <span class="n">D50_slider</span>
+<span class="p">})</span>
+
+<span class="c1"># 🚀 Display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e1db0ae59ea64001918e89f79604255c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "228db17928d24751b9385251c69c079d", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## 3. Simulation</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sediment-fall-velocity-estimation-tool">
+<h3>🧪 Sediment Fall Velocity Estimation Tool<a class="headerlink" href="#sediment-fall-velocity-estimation-tool" title="Link to this heading">#</a></h3>
+<p>This interactive Python tool estimates the <strong>fall velocity</strong> of quartz sediment grains in water using multiple empirical models. It helps students explore how grain size and water temperature affect settling speed, and compare different theoretical approaches.</p>
+</section>
+<hr class="docutils" />
+<section id="purpose">
+<h3>🎯 Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h3>
+<p>To calculate and compare sediment fall velocities using:</p>
+<ul class="simple">
+<li><p><strong>Stokes Law</strong> (laminar flow, small grains)</p></li>
+<li><p><strong>Newton’s Law</strong> (turbulent flow, large grains)</p></li>
+<li><p><strong>Dietrich (1982)</strong> empirical model (transitional regime)</p></li>
+<li><p><strong>Soulsby (1997)</strong> empirical model (coastal engineering)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h3>📥 User Inputs<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Grain Size (mm)</strong>: Diameter of quartz sediment particles</p></li>
+<li><p><strong>Water Temperature (°C)</strong>: Affects kinematic viscosity of water</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="key-calculations">
+<h3>📐 Key Calculations<a class="headerlink" href="#key-calculations" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Kinematic Viscosity</strong>: Interpolated from temperature using a lookup table</p></li>
+<li><p><strong>Density Ratio</strong>: <span class="math notranslate nohighlight">\(( s = \rho_s / \rho_w \)</span>), where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( \rho_s \)</span>) = sediment density (2650 kg/m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \rho_w \)</span>) = water density (1000 kg/m³)</p></li>
+</ul>
+</li>
+<li><p><strong>Fall Velocity Models</strong>:</p>
+<ul class="simple">
+<li><p><strong>Stokes</strong>: <span class="math notranslate nohighlight">\(( w_s = \frac{(s - 1) g d^2}{18 \nu} \)</span>)</p></li>
+<li><p><strong>Newton</strong>: <span class="math notranslate nohighlight">\(( w_s = 1.6 \sqrt{(s - 1) g d} \)</span>)</p></li>
+<li><p><strong>Dietrich (1982)</strong>: Empirical fit using dimensionless particle size <span class="math notranslate nohighlight">\(( D_* \)</span>)</p></li>
+<li><p><strong>Soulsby (1997)</strong>: <span class="math notranslate nohighlight">\(( w_s = \frac{10 \nu}{d} \left( \sqrt{1 + 0.01 D_*^3} - 1 \right) \)</span>)</p></li>
+</ul>
+</li>
+<li><p><strong>Reynolds Number</strong>: Used to classify flow regime:</p>
+<ul class="simple">
+<li><p><strong>Stokes Regime</strong>: <span class="math notranslate nohighlight">\(( Re &lt; 1 \)</span>)</p></li>
+<li><p><strong>Newton Regime</strong>: <span class="math notranslate nohighlight">\(( Re &gt; 500 \)</span>)</p></li>
+<li><p><strong>Transitional Regime</strong>: Intermediate values</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="output-display">
+<h3>📊 Output Display<a class="headerlink" href="#output-display" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Grain diameter and temperature</p></li>
+<li><p>Kinematic viscosity</p></li>
+<li><p>Flow regime and Reynolds number</p></li>
+<li><p>Fall velocity estimates from all four models</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Fall Velocity (m/s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Stokes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Newton</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Dietrich (1982)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Soulsby (1997)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">value</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># Kinematic viscosity interpolation</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">kinematic_viscosity</span><span class="p">(</span><span class="n">temp_C</span><span class="p">):</span>
+    <span class="n">viscosity_table</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="mf">1.79e-6</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mf">1.52e-6</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="mf">1.31e-6</span><span class="p">,</span> <span class="mi">15</span><span class="p">:</span> <span class="mf">1.15e-6</span><span class="p">,</span>
+        <span class="mi">20</span><span class="p">:</span> <span class="mf">1.00e-6</span><span class="p">,</span> <span class="mi">25</span><span class="p">:</span> <span class="mf">0.89e-6</span><span class="p">,</span> <span class="mi">30</span><span class="p">:</span> <span class="mf">0.80e-6</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">temp_C</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">viscosity_table</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">list</span><span class="p">(</span><span class="n">viscosity_table</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+<span class="c1"># Dietrich (1982) empirical model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ws_dietrich</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="n">D_star</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">((</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span> <span class="o">/</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">log_Dstar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">D_star</span><span class="p">)</span>
+    <span class="n">R1</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.76715</span> <span class="o">+</span> <span class="mf">1.92944</span> <span class="o">*</span> <span class="n">log_Dstar</span> <span class="o">-</span> <span class="mf">0.09815</span> <span class="o">*</span> <span class="n">log_Dstar</span><span class="o">**</span><span class="mi">2</span> \
+         <span class="o">-</span> <span class="mf">0.00575</span> <span class="o">*</span> <span class="n">log_Dstar</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.00056</span> <span class="o">*</span> <span class="n">log_Dstar</span><span class="o">**</span><span class="mi">4</span>
+    <span class="n">R2</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">R1</span>
+    <span class="k">return</span> <span class="n">R2</span> <span class="o">*</span> <span class="n">v</span>
+
+<span class="c1"># Soulsby (1997) empirical model</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ws_soulsby</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="n">D_star</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">((</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span> <span class="o">/</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">v</span> <span class="o">/</span> <span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">D_star</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Main function with model comparison</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fall_velocity_models</span><span class="p">(</span><span class="n">d_mm</span><span class="p">,</span> <span class="n">temp_C</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">rho_s</span><span class="o">=</span><span class="mi">2650</span><span class="p">,</span> <span class="n">rho_w</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mf">9.81</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">d_mm</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># mm to meters</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">kinematic_viscosity</span><span class="p">(</span><span class="n">temp_C</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">rho_s</span> <span class="o">/</span> <span class="n">rho_w</span>
+
+    <span class="c1"># Stokes</span>
+    <span class="n">ws_stokes</span> <span class="o">=</span> <span class="p">((</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">18</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">Re_stokes</span> <span class="o">=</span> <span class="n">ws_stokes</span> <span class="o">*</span> <span class="n">d</span> <span class="o">/</span> <span class="n">v</span>
+
+    <span class="c1"># Newton</span>
+    <span class="n">ws_newton</span> <span class="o">=</span> <span class="mf">1.6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">Re_newton</span> <span class="o">=</span> <span class="n">ws_newton</span> <span class="o">*</span> <span class="n">d</span> <span class="o">/</span> <span class="n">v</span>
+
+    <span class="c1"># Dietrich</span>
+    <span class="n">ws_diet</span> <span class="o">=</span> <span class="n">ws_dietrich</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="c1"># Soulsby</span>
+    <span class="n">ws_souls</span> <span class="o">=</span> <span class="n">ws_soulsby</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="c1"># Regime classification</span>
+    <span class="k">if</span> <span class="n">Re_stokes</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">regime</span> <span class="o">=</span> <span class="s2">&quot;Stokes&quot;</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">ws_stokes</span>
+        <span class="n">Re</span> <span class="o">=</span> <span class="n">Re_stokes</span>
+    <span class="k">elif</span> <span class="n">Re_newton</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="n">regime</span> <span class="o">=</span> <span class="s2">&quot;Newton&quot;</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">ws_newton</span>
+        <span class="n">Re</span> <span class="o">=</span> <span class="n">Re_newton</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">regime</span> <span class="o">=</span> <span class="s2">&quot;Transitional&quot;</span>
+        <span class="n">ws</span> <span class="o">=</span> <span class="n">ws_diet</span>  <span class="c1"># Use Dietrich as transitional default</span>
+        <span class="n">Re</span> <span class="o">=</span> <span class="n">ws</span> <span class="o">*</span> <span class="n">d</span> <span class="o">/</span> <span class="n">v</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🧪 Fall Velocity Estimation</span>
+<span class="s2">- **Grain Diameter**: `</span><span class="si">{</span><span class="n">d_mm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mm`</span>
+<span class="s2">- **Water Temperature**: `</span><span class="si">{</span><span class="n">temp_C</span><span class="si">}</span><span class="s2"> °C`</span>
+<span class="s2">- **Kinematic Viscosity**: `</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">.8f</span><span class="si">}</span><span class="s2"> m²/s`</span>
+<span class="s2">- **Flow Regime**: **</span><span class="si">{</span><span class="n">regime</span><span class="si">}</span><span class="s2">**</span>
+<span class="s2">- **Reynolds Number**: `</span><span class="si">{</span><span class="n">Re</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">`</span>
+
+<span class="s2">### 📊 Comparison of Models</span>
+<span class="s2">| Model           | Fall Velocity (m/s) |</span>
+<span class="s2">|------------------|---------------------|</span>
+<span class="s2">| Stokes           | `</span><span class="si">{</span><span class="n">ws_stokes</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">`   |</span>
+<span class="s2">| Newton           | `</span><span class="si">{</span><span class="n">ws_newton</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">`   |</span>
+<span class="s2">| Dietrich (1982)  | `</span><span class="si">{</span><span class="n">ws_diet</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">`     |</span>
+<span class="s2">| Soulsby (1997)   | `</span><span class="si">{</span><span class="n">ws_souls</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">`    |</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
+
+<span class="c1"># Interactive widgets</span>
+<span class="n">d_slider_mm</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Grain Size (mm)&#39;</span><span class="p">)</span>
+<span class="n">temp_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Temp (°C)&#39;</span><span class="p">)</span>
+
+<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">d_slider_mm</span><span class="p">,</span> <span class="n">temp_slider</span><span class="p">])</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">fall_velocity_models</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;d_mm&#39;</span><span class="p">:</span> <span class="n">d_slider_mm</span><span class="p">,</span> <span class="s1">&#39;temp_C&#39;</span><span class="p">:</span> <span class="n">temp_slider</span><span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7702945d490049559d2b3b04442bfd32", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9131ff3fa42d4893a988fb038dad159d", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## 3. Simulation</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="berm-bar-formation-predictor-summary">
+<h2>🌊 Berm-Bar Formation Predictor: Summary<a class="headerlink" href="#berm-bar-formation-predictor-summary" title="Link to this heading">#</a></h2>
+<p>This interactive tool estimates coastal profile formation (berm vs. bar) using four sediment transport models. It uses wave height, wave period, grain size, and beach slope to compute key parameters and classify profile types.</p>
+<hr class="docutils" />
+<section id="core-equation-fall-velocity-stokes-law">
+<h3>📐 Core Equation: Fall Velocity (Stokes’ Law)<a class="headerlink" href="#core-equation-fall-velocity-stokes-law" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+w_f = \frac{(\rho_s - \rho) g D^2}{18 \mu}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( w_f \)</span>): fall velocity (m/s)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( D \)</span>): grain diameter (m)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \rho_s \)</span>): sediment density (2650 kg/m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \rho \)</span>): water density (1025 kg/m³)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \mu \)</span>): dynamic viscosity (0.001 Pa·s)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="method-summaries">
+<h3>🧮 Method Summaries<a class="headerlink" href="#method-summaries" title="Link to this heading">#</a></h3>
+<section id="and-h-d-ratio">
+<h4>1. <strong>ω*</strong> and H/D Ratio<a class="headerlink" href="#and-h-d-ratio" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\omega^* = \frac{H}{w_f T}, \quad \frac{H}{D}
+\]</div>
+<ul class="simple">
+<li><p><strong>Bar formation</strong>: <span class="math notranslate nohighlight">\(( \omega^* &lt; 1.5 \)</span>) and <span class="math notranslate nohighlight">\(( H/D &gt; 20 \)</span>)</p></li>
+<li><p><strong>Berm formation</strong>: <span class="math notranslate nohighlight">\(( \omega^* &gt; 2.5 \)</span>) and <span class="math notranslate nohighlight">\(( H/D &lt; 10 \)</span>)</p></li>
+<li><p><strong>Transitional</strong>: otherwise</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="spm-based-iribarren-number">
+<h4>2. <strong>SPM-Based (Iribarren Number)</strong><a class="headerlink" href="#spm-based-iribarren-number" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+L_0 = \frac{g T^2}{2\pi}, \quad Ir = \frac{\tan\beta}{\sqrt{H/L_0}}, \quad \text{Mobility} = \frac{H}{w_f}
+\]</div>
+<ul class="simple">
+<li><p><strong>Profile Type</strong>:</p>
+<ul>
+<li><p>Reflective: $( Ir &gt; 3.3 $)</p></li>
+<li><p>Dissipative: <span class="math notranslate nohighlight">\(( Ir &lt; 0.3 \)</span>)</p></li>
+<li><p>Intermediate: otherwise</p></li>
+</ul>
+</li>
+<li><p><strong>Stability</strong>:</p>
+<ul>
+<li><p>Stable: <span class="math notranslate nohighlight">\(( H/w_f &lt; 100 \)</span>)</p></li>
+<li><p>Unstable: <span class="math notranslate nohighlight">\(( H/w_f &gt; 300 \)</span>)</p></li>
+<li><p>Transitional: otherwise</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="kraus-larson-1988">
+<h4>3. <strong>Kraus &amp; Larson (1988)</strong><a class="headerlink" href="#kraus-larson-1988" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{Steepness} = \frac{H}{L}, \quad L = \frac{g T^2}{2\pi}
+\]</div>
+<ul class="simple">
+<li><p><strong>Thresholds</strong>:</p>
+<ul>
+<li><p>Berm: <span class="math notranslate nohighlight">\(( H/L &lt; \frac{1.7\pi w_f}{gT} \)</span>)</p></li>
+<li><p>Bar: <span class="math notranslate nohighlight">\(( H/L &gt; \frac{5.5\pi w_f}{gT} \)</span>)</p></li>
+<li><p>Transitional: otherwise</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="dimensional-fall-time-spm-fig-4-29">
+<h4>4. <strong>Dimensional Fall Time (SPM Fig 4-29)</strong><a class="headerlink" href="#dimensional-fall-time-spm-fig-4-29" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[
+\text{Fall Time} = \frac{H}{w_f T}
+\]</div>
+<ul class="simple">
+<li><p>Berm: <span class="math notranslate nohighlight">\(( &lt; 1 \)</span>)</p></li>
+<li><p>Bar: <span class="math notranslate nohighlight">\(( &gt; 2 \)</span>)</p></li>
+<li><p>Transitional: otherwise</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="interactive-inputs">
+<h3>🎛️ Interactive Inputs<a class="headerlink" href="#interactive-inputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wave Height (H)</strong>: 0.5–5.0 m</p></li>
+<li><p><strong>Grain Size (D)</strong>: 0.1–5.5 mm</p></li>
+<li><p><strong>Wave Period (T)</strong>: 4–12 s</p></li>
+<li><p><strong>Beach Slope (tanβ)</strong>: 0.005–0.05</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">clear_output</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>  <span class="c1"># gravity</span>
+
+<span class="c1"># Estimate fall velocity using Stokes&#39; Law</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_fall_velocity_stokes</span><span class="p">(</span><span class="n">diameter_m</span><span class="p">,</span> <span class="n">rho_s</span><span class="o">=</span><span class="mi">2650</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">1025</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">rho_s</span> <span class="o">-</span> <span class="n">rho</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">diameter_m</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">18</span> <span class="o">*</span> <span class="n">mu</span><span class="p">)</span>
+
+<span class="c1"># Method 1: ω* and H/D Ratio</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">method_omega_star</span><span class="p">(</span><span class="n">wave_height</span><span class="p">,</span> <span class="n">wave_period</span><span class="p">,</span> <span class="n">grain_diameter_mm</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">grain_diameter_mm</span>
+    <span class="n">fall_velocity</span> <span class="o">=</span> <span class="n">estimate_fall_velocity_stokes</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="c1">#    omega_star = fall_velocity / np.sqrt(g * d)</span>
+    <span class="n">omega_star</span> <span class="o">=</span> <span class="n">wave_height</span><span class="o">/</span><span class="p">(</span><span class="n">fall_velocity</span> <span class="o">*</span> <span class="n">wave_period</span><span class="p">)</span>
+    
+    <span class="n">H_D_ratio</span> <span class="o">=</span> <span class="n">wave_height</span> <span class="o">/</span> <span class="n">d</span>
+
+    <span class="k">if</span> <span class="n">omega_star</span> <span class="o">&lt;</span> <span class="mf">1.5</span> <span class="ow">and</span> <span class="n">H_D_ratio</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+        <span class="n">likelihood</span> <span class="o">=</span> <span class="s2">&quot;🌊 High likelihood of bar formation&quot;</span>
+    <span class="k">elif</span> <span class="n">omega_star</span> <span class="o">&gt;</span> <span class="mf">2.5</span> <span class="ow">and</span> <span class="n">H_D_ratio</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">likelihood</span> <span class="o">=</span> <span class="s2">&quot;🏖️ High likelihood of berm formation&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">likelihood</span> <span class="o">=</span> <span class="s2">&quot;🌤️ Transitional or mixed profile likely&quot;</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### Method: ω* and H/D Ratio</span>
+<span class="s2">- **ω\***: `</span><span class="si">{</span><span class="n">omega_star</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">`</span>
+<span class="s2">- **H/D**: `</span><span class="si">{</span><span class="n">H_D_ratio</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">`</span>
+<span class="s2">- **Fall Velocity (Stokes)**: `</span><span class="si">{</span><span class="n">fall_velocity</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> m/s`</span>
+<span class="s2">- **Formation Likelihood**: **</span><span class="si">{</span><span class="n">likelihood</span><span class="si">}</span><span class="s2">**</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Method 2: SPM-Based</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">method_spm</span><span class="p">(</span><span class="n">wave_height</span><span class="p">,</span> <span class="n">wave_period</span><span class="p">,</span> <span class="n">beach_slope</span><span class="p">,</span> <span class="n">grain_diameter_m</span><span class="p">):</span>
+    <span class="n">L0</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="n">wave_period</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+    <span class="n">Ir</span> <span class="o">=</span> <span class="n">beach_slope</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">wave_height</span> <span class="o">/</span> <span class="n">L0</span><span class="p">)</span>
+    <span class="n">fall_velocity</span> <span class="o">=</span> <span class="n">estimate_fall_velocity_stokes</span><span class="p">(</span><span class="n">grain_diameter_m</span><span class="p">)</span>
+    <span class="n">mobility_ratio</span> <span class="o">=</span> <span class="n">wave_height</span> <span class="o">/</span> <span class="n">fall_velocity</span>
+
+    <span class="k">if</span> <span class="n">Ir</span> <span class="o">&gt;</span> <span class="mf">3.3</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="s2">&quot;Reflective Profile&quot;</span>
+    <span class="k">elif</span> <span class="n">Ir</span> <span class="o">&lt;</span> <span class="mf">0.3</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="s2">&quot;Dissipative Profile&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">profile</span> <span class="o">=</span> <span class="s2">&quot;Intermediate Profile&quot;</span>
+
+    <span class="k">if</span> <span class="n">mobility_ratio</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">stability</span> <span class="o">=</span> <span class="s2">&quot;Likely Stable&quot;</span>
+    <span class="k">elif</span> <span class="n">mobility_ratio</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">stability</span> <span class="o">=</span> <span class="s2">&quot;Likely Unstable&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">stability</span> <span class="o">=</span> <span class="s2">&quot;Possibly Transitional&quot;</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### Method: SPM-Based</span>
+<span class="s2">- **Iribarren Number**: `</span><span class="si">{</span><span class="n">Ir</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">`</span>
+<span class="s2">- **Mobility Ratio (H/wf)**: `</span><span class="si">{</span><span class="n">mobility_ratio</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">`</span>
+<span class="s2">- **Fall Velocity (Stokes)**: `</span><span class="si">{</span><span class="n">fall_velocity</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> m/s`</span>
+<span class="s2">- **Profile Type**: **</span><span class="si">{</span><span class="n">profile</span><span class="si">}</span><span class="s2">**</span>
+<span class="s2">- **Stability**: **</span><span class="si">{</span><span class="n">stability</span><span class="si">}</span><span class="s2">**</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># Method 3: Kraus &amp; Larson (1988)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">method_kraus_larson</span><span class="p">(</span><span class="n">wave_height</span><span class="p">,</span> <span class="n">wave_period</span><span class="p">,</span> <span class="n">grain_diameter_mm</span><span class="p">):</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">grain_diameter_mm</span>
+    <span class="n">fall_velocity</span> <span class="o">=</span> <span class="n">estimate_fall_velocity_stokes</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>    
+    <span class="n">wavelength</span><span class="o">=</span><span class="mf">9.81</span><span class="o">*</span><span class="n">wave_period</span><span class="o">*</span><span class="n">wave_period</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">3.14</span><span class="p">)</span>
+    
+    <span class="n">steepness</span> <span class="o">=</span> <span class="n">wave_height</span><span class="o">/</span><span class="n">wavelength</span>
+
+    <span class="n">dim_up</span><span class="o">=</span><span class="mf">5.5</span><span class="o">*</span><span class="mf">3.14</span><span class="o">*</span><span class="n">fall_velocity</span><span class="o">/</span><span class="p">(</span><span class="mf">9.81</span><span class="o">*</span><span class="n">wave_period</span><span class="p">)</span>
+    <span class="n">dim_lw</span><span class="o">=</span><span class="mf">1.7</span><span class="o">*</span><span class="mf">3.14</span><span class="o">*</span><span class="n">fall_velocity</span><span class="o">/</span><span class="p">(</span><span class="mf">9.81</span><span class="o">*</span><span class="n">wave_period</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">steepness</span> <span class="o">&lt;</span> <span class="n">dim_lw</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;🏖️ Berm formation likely (low mobility)&quot;</span>
+    <span class="k">elif</span> <span class="n">steepness</span> <span class="o">&gt;</span> <span class="n">dim_up</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;🌊 Bar formation likely (high mobility)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;🌤️ Transitional profile likely&quot;</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">### Method: Kraus &amp; Larson (1988)</span>
+<span class="s2">- **Deep water Wave Steepness (H/L)**: `</span><span class="si">{</span><span class="n">steepness</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">`</span>
+<span class="s2">- **Formation Likelihood**: **</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">**</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+
+
+<span class="c1"># Method 4: Dimensional Fall Time (SPM Fig 4-29)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">method_fall_time</span><span class="p">(</span><span class="n">wave_period</span><span class="p">,</span> <span class="n">wave_height</span><span class="p">,</span> <span class="n">grain_diameter_m</span><span class="p">):</span>
+    <span class="n">fall_velocity</span> <span class="o">=</span> <span class="n">estimate_fall_velocity_stokes</span><span class="p">(</span><span class="n">grain_diameter_m</span><span class="p">)</span>
+    <span class="n">fall_time</span> <span class="o">=</span> <span class="n">wave_height</span> <span class="o">/</span> <span class="p">(</span><span class="n">fall_velocity</span><span class="o">*</span><span class="n">wave_period</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">fall_time</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;🏖️ Berm formation likely (short fall time)&quot;</span>
+    <span class="k">elif</span> <span class="n">fall_time</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;🌊 Bar formation likely (long fall time)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;🌤️ Transitional profile likely&quot;</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### Method: Dimensional Fall Time (SPM Fig 4-29)</span>
+<span class="s2">- **Fall Time (T/wf)**: `</span><span class="si">{</span><span class="n">fall_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">`</span>
+<span class="s2">- **Fall Velocity (Stokes)**: `</span><span class="si">{</span><span class="n">fall_velocity</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> m/s`</span>
+<span class="s2">- **Formation Likelihood**: **</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">**</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Unified interactive function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">berm_bar_predictor</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">wave_height</span><span class="p">,</span> <span class="n">grain_diameter</span><span class="p">,</span> <span class="n">wave_period</span><span class="p">,</span> <span class="n">beach_slope</span><span class="p">):</span>
+    <span class="n">grain_diameter_m</span> <span class="o">=</span> <span class="n">grain_diameter</span> <span class="o">/</span> <span class="mi">1000</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;ω* and H/D Ratio&quot;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">method_omega_star</span><span class="p">(</span><span class="n">wave_height</span><span class="p">,</span> <span class="n">wave_period</span><span class="p">,</span> <span class="n">grain_diameter_m</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;SPM-Based&quot;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">method_spm</span><span class="p">(</span><span class="n">wave_height</span><span class="p">,</span> <span class="n">wave_period</span><span class="p">,</span> <span class="n">beach_slope</span><span class="p">,</span> <span class="n">grain_diameter_m</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;Kraus &amp; Larson (1988)&quot;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">method_kraus_larson</span><span class="p">(</span><span class="n">wave_height</span><span class="p">,</span> <span class="n">wave_period</span><span class="p">,</span> <span class="n">grain_diameter_m</span><span class="p">)</span>
+        
+    <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;Dimensional Fall Time (SPM Fig 4-29)&quot;</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">method_fall_time</span><span class="p">(</span><span class="n">wave_period</span><span class="p">,</span> <span class="n">wave_height</span><span class="p">,</span> <span class="n">grain_diameter_m</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s2">&quot;❌ Unknown method selected.&quot;</span>
+
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+<span class="c1"># Widgets</span>
+<span class="n">method_selector</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ω* and H/D Ratio&quot;</span><span class="p">,</span> <span class="s2">&quot;SPM-Based&quot;</span><span class="p">,</span> <span class="s2">&quot;Kraus &amp; Larson (1988)&quot;</span><span class="p">,</span> <span class="s2">&quot;Dimensional Fall Time (SPM Fig 4-29)&quot;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s2">&quot;ω* and H/D Ratio&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Method:&quot;</span>
+<span class="p">)</span>
+
+<span class="n">wave_height_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave Height (m)&#39;</span><span class="p">)</span>
+<span class="n">grain_size_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">5.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Grain Size (mm)&#39;</span><span class="p">)</span>
+<span class="n">wave_period_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wave Period (s)&#39;</span><span class="p">)</span>
+<span class="n">beach_slope_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Beach Slope&#39;</span><span class="p">)</span>
+
+<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">method_selector</span><span class="p">,</span>
+    <span class="n">wave_height_slider</span><span class="p">,</span>
+    <span class="n">grain_size_slider</span><span class="p">,</span>
+    <span class="n">wave_period_slider</span><span class="p">,</span>
+    <span class="n">beach_slope_slider</span>
+<span class="p">])</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">berm_bar_predictor</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;method&#39;</span><span class="p">:</span> <span class="n">method_selector</span><span class="p">,</span>
+    <span class="s1">&#39;wave_height&#39;</span><span class="p">:</span> <span class="n">wave_height_slider</span><span class="p">,</span>
+    <span class="s1">&#39;grain_diameter&#39;</span><span class="p">:</span> <span class="n">grain_size_slider</span><span class="p">,</span>
+    <span class="s1">&#39;wave_period&#39;</span><span class="p">:</span> <span class="n">wave_period_slider</span><span class="p">,</span>
+    <span class="s1">&#39;beach_slope&#39;</span><span class="p">:</span> <span class="n">beach_slope_slider</span>
+<span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:33: SyntaxWarning: invalid escape sequence &#39;\*&#39;
+&lt;&gt;:33: SyntaxWarning: invalid escape sequence &#39;\*&#39;
+C:\Users\satis\AppData\Local\Temp\ipykernel_20684\1832630208.py:33: SyntaxWarning: invalid escape sequence &#39;\*&#39;
+  &quot;&quot;&quot;
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b99a801107e440db9f24bdd8104fb184", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "6559f2de709d4625ade0d2b994be7f0e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="beach-profile-evaluation-based-on-shore-protection-manual-principles">
+<h3>Beach Profile Evaluation Based on Shore Protection Manual Principles<a class="headerlink" href="#beach-profile-evaluation-based-on-shore-protection-manual-principles" title="Link to this heading">#</a></h3>
+<p>This section includes conceptual understanding checks, self-reflection prompts, and a multiple-choice quiz to reinforce learning about coastal beach classification and stability analysis using wave and sediment parameters.</p>
+</section>
+<hr class="docutils" />
+<section id="conceptual-questions">
+<h3>Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>What physical parameters influence beach profile classification in the SPM framework?</strong></p></li>
+<li><p><strong>How does wave steepness affect the classification of beach types?</strong></p></li>
+<li><p><strong>What is the Iribarren number, and how is it used to characterize the surf zone?</strong></p></li>
+<li><p><strong>Why does sediment size (D50) influence beach stability and erosion potential?</strong></p></li>
+<li><p><strong>How does the mobility ratio help assess sediment transport during wave events?</strong></p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>🌊 <strong>Have you observed beaches that shift between summer and winter profiles? What environmental changes trigger this shift?</strong></p></li>
+<li><p>📏 <strong>If you were designing a coastal protection structure, how would you use the Iribarren number to predict wave runup and beach response?</strong></p></li>
+<li><p>🧠 <strong>Which parameter — wave height, wave period, or sediment size — do you think has the strongest impact on profile stability in your local context? Why?</strong></p></li>
+<li><p>🏗️ <strong>How might the classification differ if the beach is artificial or engineered (e.g., nourished or armored)?</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-coastal-profile-classification">
+<h3>🧪 Quiz: Coastal Profile Classification<a class="headerlink" href="#quiz-coastal-profile-classification" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Select the correct option(s) for each question.</p>
+</div></blockquote>
+</section>
+<section id="what-does-the-iribarren-number-ir-measure">
+<h3>1. What does the Iribarren Number (Ir) measure?<a class="headerlink" href="#what-does-the-iribarren-number-ir-measure" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The steepness of a wave relative to its wavelength</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The ratio of wave height to sediment size</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> The surf similarity parameter, comparing beach slope to wave steepness</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The stability of a beach profile under wave action</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="which-beach-profile-is-typically-associated-with-a-high-iribarren-number-ir-3-3">
+<h3>2. Which beach profile is typically associated with a high Iribarren Number (Ir &gt; 3.3)?<a class="headerlink" href="#which-beach-profile-is-typically-associated-with-a-high-iribarren-number-ir-3-3" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Dissipative Profile</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Reflective Profile</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Intermediate Profile</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Erosive Profile</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-happens-to-the-mobility-ratio-when-sediment-size-d50-decreases">
+<h3>3. What happens to the mobility ratio when sediment size (D50) decreases?<a class="headerlink" href="#what-happens-to-the-mobility-ratio-when-sediment-size-d50-decreases" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> The mobility ratio increases, making the beach more unstable</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The mobility ratio decreases, making the beach more stable</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The mobility ratio remains constant</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The mobility ratio becomes irrelevant</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-is-the-primary-characteristic-of-a-dissipative-beach-profile">
+<h3>4. What is the primary characteristic of a dissipative beach profile?<a class="headerlink" href="#what-is-the-primary-characteristic-of-a-dissipative-beach-profile" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Steep slope with minimal wave energy dissipation</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Flat slope with high wave energy dissipation</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Moderate slope with transitional wave energy dissipation</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Unstable sediment transport with no clear classification</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="which-parameter-is-most-directly-influenced-by-wave-period-t">
+<h3>5. Which parameter is most directly influenced by wave period (T)?<a class="headerlink" href="#which-parameter-is-most-directly-influenced-by-wave-period-t" title="Link to this heading">#</a></h3>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Wave steepness</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Iribarren Number</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Deep-water wavelength (L₀)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Sediment size (D50)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h3><strong>Reflective Questions</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="reflective-prompts">
+<h4>❓ Reflective Prompts<a class="headerlink" href="#reflective-prompts" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>What happens to ω* when grain size increases?</p></li>
+<li><p>Why does high H/D favor offshore transport?</p></li>
+<li><p>How might seasonal wave patterns affect berm-bar dynamics?</p></li>
+</ul>
+</section>
+<section id="quiz-yourself">
+<h4>🧠 Quiz Yourself<a class="headerlink" href="#quiz-yourself" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>What does a low ω* value suggest about sediment mobility?</p></li>
+<li><p>If H₀ = 3 m and D = 0.0002 m, what is H/D? What profile is likely?</p></li>
+<li><p>True or False: Berms form during high-energy wave events.</p></li>
+</ol>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="SedimentTransport.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Longshore sediment transport</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="EquilibriumBeachProfile.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Equilibrium Breach Profile</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beach-profile-overview">🏖️ Beach Profile Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-beach-profiles-can-be-unstable">⚠️ Why Beach Profiles Can Be Unstable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-improve-and-check-beach-profile-stability">🛠️ How to Improve and Check Beach Profile Stability</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#improvement-strategies">🔧 Improvement Strategies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-assessment-methods">📐 Stability Assessment Methods</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-coastal-stability-overview">🌍 U.S. Coastal Stability Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#most-unstable-coastal-zones">🚨 Most Unstable Coastal Zones</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#most-stable-coastal-zones">✅ Most Stable Coastal Zones</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-beach-profile-evaluation-based-on-spm-principles">Interactive Beach Profile Evaluation Based on SPM Principles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs">User Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coastal-metrics-computed">Coastal Metrics Computed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-logic">Classification Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spm-based-beach-profile-classification-interactive-python-tool">🏖️ SPM-Based Beach Profile Classification (Interactive Python Tool)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-the-tool-does">🧠 What the Tool Does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-inputs-via-sliders">🎛️ User Inputs (via Sliders)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-metrics-interpretation">📊 Output Metrics &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-summary-displayed">📋 Example Summary Displayed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sediment-fall-velocity-estimation-tool">🧪 Sediment Fall Velocity Estimation Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">🎯 Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📥 User Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-calculations">📐 Key Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-display">📊 Output Display</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#berm-bar-formation-predictor-summary">🌊 Berm-Bar Formation Predictor: Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-equation-fall-velocity-stokes-law">📐 Core Equation: Fall Velocity (Stokes’ Law)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-summaries">🧮 Method Summaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#and-h-d-ratio">1. <strong>ω*</strong> and H/D Ratio</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spm-based-iribarren-number">2. <strong>SPM-Based (Iribarren Number)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kraus-larson-1988">3. <strong>Kraus &amp; Larson (1988)</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensional-fall-time-spm-fig-4-29">4. <strong>Dimensional Fall Time (SPM Fig 4-29)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">🎛️ Interactive Inputs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#beach-profile-evaluation-based-on-shore-protection-manual-principles">Beach Profile Evaluation Based on Shore Protection Manual Principles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-coastal-profile-classification">🧪 Quiz: Coastal Profile Classification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-the-iribarren-number-ir-measure">1. What does the Iribarren Number (Ir) measure?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-beach-profile-is-typically-associated-with-a-high-iribarren-number-ir-3-3">2. Which beach profile is typically associated with a high Iribarren Number (Ir &gt; 3.3)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-to-the-mobility-ratio-when-sediment-size-d50-decreases">3. What happens to the mobility ratio when sediment size (D50) decreases?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-primary-characteristic-of-a-dissipative-beach-profile">4. What is the primary characteristic of a dissipative beach profile?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-parameter-is-most-directly-influenced-by-wave-period-t">5. Which parameter is most directly influenced by wave period (T)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Reflective Questions</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-prompts">❓ Reflective Prompts</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-yourself">🧠 Quiz Yourself</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

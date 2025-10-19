@@ -1,0 +1,1720 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Sustainabilty and Engineering: Carbon Calculator &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"01b399849a5d4ae3a6669a2f831ed923": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "02b156d001b1439ca07d05d638880c9c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"children": ["IPY_MODEL_08e27ee9623f4e30926d6e330e887114", "IPY_MODEL_1bead3b42a134ddca44add7b20dc219f"], "layout": "IPY_MODEL_d4c622f25b50458a9fdc4f143626d7d3"}}, "03f33b753d1a471badc28c2c30099686": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Electricity (kWh)", "layout": "IPY_MODEL_dd51d78b04484040a48daf79733bfce1", "max": 50000, "step": 1000, "style": "IPY_MODEL_aeff22dce41c42d8afb724e4c3117377", "value": 10000}}, "05ca584c2fe44ccca9c16103201d7997": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "08e27ee9623f4e30926d6e330e887114": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DropdownModel", "state": {"_options_labels": ["Residential", "Commercial", "Industrial"], "description": "Building Type:", "index": 1, "layout": "IPY_MODEL_6800610a482e46f1b0d5516dbc26e999", "style": "IPY_MODEL_a62f2f4c223b4a9c8b4a95f2b04542e4"}}, "095ff9c7cab34205945be9a8db00b543": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "0ff6e8c3ec3648efb75386fbc22f1b3a": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "12a33198761f4ee8a27fd334e5d85553": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Glass (kg)", "layout": "IPY_MODEL_5c026d04430747bb9c195f5806e8db52", "max": 5000, "step": 100, "style": "IPY_MODEL_a61787d8bc1a4102aa4b3f96af9b0e68", "value": 1000}}, "148bd57aa9174f64a0ff0c9f6c0bc4ae": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "14913612e3e9458e8fc67c615ccce1cc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Wood (kg)", "layout": "IPY_MODEL_01b399849a5d4ae3a6669a2f831ed923", "max": 10000, "step": 500, "style": "IPY_MODEL_92e4fb3000bc434b9672c61e05441fe5", "value": 3000}}, "14ee84d34bc64a4e857024ec4035019f": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "155edd7ff0a342dda7881d4861e3c65e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Asphalt (kg)", "layout": "IPY_MODEL_14ee84d34bc64a4e857024ec4035019f", "max": 20000, "step": 500, "style": "IPY_MODEL_148bd57aa9174f64a0ff0c9f6c0bc4ae", "value": 5000}}, "1b4d1f4849c54918bb016775adb354f2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "VBoxModel", "state": {"_dom_classes": ["widget-interact"], "children": ["IPY_MODEL_eaf3a79040584f48b571f4f7119d95c0", "IPY_MODEL_635e47d05d044cdaa6f72102c57fbad0", "IPY_MODEL_12a33198761f4ee8a27fd334e5d85553", "IPY_MODEL_cf01664e0b85437e8e159679118ff16f", "IPY_MODEL_8987eda827f34c18bc15d0dce6957c39", "IPY_MODEL_03f33b753d1a471badc28c2c30099686", "IPY_MODEL_14913612e3e9458e8fc67c615ccce1cc", "IPY_MODEL_155edd7ff0a342dda7881d4861e3c65e", "IPY_MODEL_51dc31dba7cd48a5bf4d86909b360f4b", "IPY_MODEL_77b839b0cf824c4581568a1a8fc1891d", "IPY_MODEL_4d3229386032444a8916a48721f9027c", "IPY_MODEL_d45fbeb6c4894eb7b0b8f82eabdfa301"], "layout": "IPY_MODEL_d20e7ef558fe495b84cb48d3c7425b33"}}, "1bead3b42a134ddca44add7b20dc219f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "continuous_update": false, "description": "Floor Area (m\u00b2):", "layout": "IPY_MODEL_05ca584c2fe44ccca9c16103201d7997", "max": 10000, "min": 100, "step": 100, "style": "IPY_MODEL_7e8fd48382114321900faf3a26d086c7", "value": 5800}}, "20192a7bc45d467593b2b0ff032e8515": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "2a73ad6c9bc2440e9bf29554d4d56c53": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "3d4fa4e078014441b0f92a611be3eab6": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "472e238ee0134fdabac356e394ed7eed": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": ""}}, "4d3229386032444a8916a48721f9027c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DropdownModel", "state": {"_options_labels": ["Float", "Tempered", "Low-E"], "description": "Glass Type", "index": 0, "layout": "IPY_MODEL_d8de2478b92e46ad9c0f57865c013dd7", "style": "IPY_MODEL_844cc0b51cb14fed92aa3797167fcee0"}}, "51dc31dba7cd48a5bf4d86909b360f4b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DropdownModel", "state": {"_options_labels": ["Standard", "Low-carbon", "High-strength"], "description": "Concrete Type", "index": 0, "layout": "IPY_MODEL_2a73ad6c9bc2440e9bf29554d4d56c53", "style": "IPY_MODEL_d919c3ebf0704e7f91d21a1ba23daa2c"}}, "5c026d04430747bb9c195f5806e8db52": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "5de03b1f26af4e49b8c4c06f9194b67f": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "5eacbcec9b2642598787b17121b9dc77": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "635e47d05d044cdaa6f72102c57fbad0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Steel (kg)", "layout": "IPY_MODEL_bec878afc2e74afbb73690ff687720aa", "max": 20000, "step": 500, "style": "IPY_MODEL_095ff9c7cab34205945be9a8db00b543", "value": 5000}}, "6800610a482e46f1b0d5516dbc26e999": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "77b839b0cf824c4581568a1a8fc1891d": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DropdownModel", "state": {"_options_labels": ["Recycled", "Standard", "Stainless"], "description": "Steel Type", "index": 1, "layout": "IPY_MODEL_0ff6e8c3ec3648efb75386fbc22f1b3a", "style": "IPY_MODEL_472e238ee0134fdabac356e394ed7eed"}}, "7c2d30ba753748589ae5ec0251c52b9b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "7e8fd48382114321900faf3a26d086c7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": "initial"}}, "844cc0b51cb14fed92aa3797167fcee0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": ""}}, "86579fbca36a40dea364c82ce6191c7f": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "8987eda827f34c18bc15d0dce6957c39": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Transport (km-ton)", "layout": "IPY_MODEL_5eacbcec9b2642598787b17121b9dc77", "max": 10000, "step": 100, "style": "IPY_MODEL_7c2d30ba753748589ae5ec0251c52b9b", "value": 1000}}, "92e4fb3000bc434b9672c61e05441fe5": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "9da08a7caf85462ebeff9c47340590e2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "a61787d8bc1a4102aa4b3f96af9b0e68": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "a62f2f4c223b4a9c8b4a95f2b04542e4": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": "initial"}}, "aeff22dce41c42d8afb724e4c3117377": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "bec878afc2e74afbb73690ff687720aa": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "cf01664e0b85437e8e159679118ff16f": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Diesel (L)", "layout": "IPY_MODEL_3d4fa4e078014441b0f92a611be3eab6", "max": 10000, "step": 100, "style": "IPY_MODEL_ea88443356734da99985ff25b4fa39de", "value": 2000}}, "d20e7ef558fe495b84cb48d3c7425b33": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "d45fbeb6c4894eb7b0b8f82eabdfa301": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"layout": "IPY_MODEL_5de03b1f26af4e49b8c4c06f9194b67f", "outputs": [{"data": {"image/png": "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ioWGhrKTJ0+y/v37617/X331FdNoNE3eV3OSnvz8fPbSSy8xV1dXJhaLmY+PD/vggw/0PpAZY6yiooK99957zNvbm4nFYubq6sqmTJnCCgsL9a535+/Jy8uLMXbrb3Xp0qXsjTfeYE5OTkwmk7GBAwey06dP612r9nV7/vx5FhMTwxQKBbvnnnt0+2rPWQsAe/nll9mSJUtYcHAwMzMzY127dtX9TTN2673gzoehvpQkJyczAHUSjPrMnDmTAWAZGRm6bUOGDGFBQUF1yn755Zf1fkGpqqpioaGh7I033tD9jdyZ9Hz++ecMAMvMzNTbfvToUQaALV++vNE460t64uPjmY+PD4uMjGTZ2dmMMca0Wi374osvmKenJ5NKpaxXr15s586dLCoqqskE+NSpUwwAe+GFFxotV+vll19mANixY8fq3a9UKpm1tTULCwtr1vlI61DS00K1Hx7Hjx9nKpVK76FWq3Xljh49yjiOY4899hjbunUr27t3L1u0aBF7+umnGWM13+hrz/XRRx+xY8eOsWPHjuk+PBpKetzd3VlYWBhbsWIF27p1K+vTpw8Ti8Xs448/Zv369WPr1q1j69evZ4GBgczJyUmv1mPNmjXs448/ZuvXr2cHDhxgK1euZFFRUczBwUH35pCTk6N7s/rll190cdV++C1dupRxHMfGjBnD1q1bxzZt2sRGjhzJhEKhXuKze/duJhQKWf/+/dm6devYmjVrWEREBPP09LyrpGfs2LEMALt27ZruOXFxcWG+vr5s4cKFbN++fezkyZPsypUrzMLCgvn5+bElS5awLVu2sMcff5wBYN98843ufPUlPZcuXWJWVlYsPDycLVmyhO3cuZO99dZbTCAQsBkzZujKlZSUsNDQUGZubs4+/fRTtmPHDrZ27Vr2+uuvs71797LKykq2fft2BoA9++yzuufy+vXrDd73/fffz4RCYb3fBOvTnN8pY7det25ubmzy5Mls27Zt7J9//mFqtVr3WvPy8mLvvPMO27FjB/vhhx+Yubk569GjB6uurtadZ/LkyQwAe+WVV9j27dvZr7/+yhwcHJiHh4fe9aKiopidnR0LCAhgv/76K9u1axebMmUKA8D++uuvJu/Ly8uLjRgxos7fWG3CVFFRwbp27crMzc3Z999/z3bu3MmmT5/ORCIRGzFihO48Wq2WDR06lIlEIjZ9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kKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCSo9IiIiEhIUOkRERGRkKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCSo9IiIiEhIUOkRERGRkKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCSo9IiIiEhIUOkRERGRkKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCSo9IiIiEhIUOkRERGRkKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCSo9IiIiEhIUOkRERGRkKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCSo9IiIiEhIUOkRERGRkKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCSo9IiIiEhIUOkRERGRkKDSIyIiIiFBpUdERERCgkqPiIiIhASVHhEREQkJKj0iIiISElR6REREJCT8P+u8bu4mzdHxAAAAAElFTkSuQmCC", "text/plain": "<Figure size 800x600 with 1 Axes>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "### \ud83c\udf0d Estimated Total Carbon Emissions: `22040 kg CO\u2082`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "**Concrete**: 10000 kg \u00d7 0.13 kg CO\u2082/kg = `1300 kg CO\u2082`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "**Steel**: 5000 kg \u00d7 1.85 kg CO\u2082/kg = `9250 kg CO\u2082`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "**Glass**: 1000 kg \u00d7 1.0 kg CO\u2082/kg = `1000 kg CO\u2082`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}]}}, "d4c622f25b50458a9fdc4f143626d7d3": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "d8de2478b92e46ad9c0f57865c013dd7": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "d919c3ebf0704e7f91d21a1ba23daa2c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "DescriptionStyleModel", "state": {"description_width": ""}}, "dd51d78b04484040a48daf79733bfce1": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "ea88443356734da99985ff25b4fa39de": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "SliderStyleModel", "state": {"description_width": ""}}, "eaf3a79040584f48b571f4f7119d95c0": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "IntSliderModel", "state": {"behavior": "drag-tap", "description": "Concrete (kg)", "layout": "IPY_MODEL_20192a7bc45d467593b2b0ff032e8515", "max": 50000, "step": 1000, "style": "IPY_MODEL_9da08a7caf85462ebeff9c47340590e2", "value": 10000}}, "f46c55e4369e4385a756a94233f2c698": {"model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "model_name": "OutputModel", "state": {"layout": "IPY_MODEL_86579fbca36a40dea364c82ce6191c7f", "outputs": [{"data": {"text/markdown": "### \ud83d\udcd0 Estimated Quantities for **Commercial** Building (5800 m\u00b2)", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Concrete**: `2900000 kg`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Steel**: `464000 kg`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Wood**: `58000 kg`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Glass**: `116000 kg`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Asphalt**: `58000 kg`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Electricity**: `1450000 kWh/year`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Diesel**: `5800.0 liters`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "- **Transport**: `87000 km-ton`", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}, {"data": {"text/markdown": "**\ud83d\udcd6 Source:** Derived from [ASHRAE](https://www.ashrae.org/), [US DOE Commercial Buildings Energy Consumption Survey (CBECS)](https://www.eia.gov/consumption/commercial/), and LEED baseline estimates.", "text/plain": "<IPython.core.display.Markdown object>"}, "metadata": {}, "output_type": "display_data"}]}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap6/CarbonCalculatorx';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap6/CarbonCalculatorx.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap6/CarbonCalculatorx.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap6/CarbonCalculatorx.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap6/CarbonCalculatorx.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap6/CarbonCalculatorx.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Sustainabilty and Engineering: Carbon Calculator</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 6 Sustainabilty and Engineering: Carbon Calculator</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carbon-footprint-calculators">🧮 Carbon Footprint Calculators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">⚙️ Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-mathematical-approaches">🧠 Core Mathematical Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle-assessment-lca">1. Lifecycle Assessment (LCA)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputoutput-io-model">2. Input–Output (IO) Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residential-carbon-footprint-model">🏠 Residential Carbon Footprint Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-t-shirt-footprint-lca">📈 Example: T-Shirt Footprint (LCA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opportunities-for-integration">🔍 Opportunities for Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">📚 References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges">🚧 Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opportunities">🌱 Opportunities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">📚 References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-carbon-footprint-calculator-description">🌍 Personal Carbon Footprint Calculator — Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-calculates">What It Calculates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transportation">🚗 Transportation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home-energy-use">⚡ Home Energy Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diet-choice">🍽️ Diet Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumption">👕 Consumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emission-factors-used">Emission Factors Used</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emission-factors">Emission Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-based-modeling">Activity-Based Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-interpretation">Visualization &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construction-carbon-footprint-calculator-methodology-sources">🏗️ Construction Carbon Footprint Calculator — Methodology &amp; Sources</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">📐 Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-method">🧮 Calculation Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📊 Emission Factors Used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#educational-purpose">🎓 Educational Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-assumptions">📚 Notes &amp; Assumptions</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-sustainabilty-and-engineering-carbon-calculator">
+<h1>Chapter 6 Sustainabilty and Engineering: Carbon Calculator<a class="headerlink" href="#chapter-6-sustainabilty-and-engineering-carbon-calculator" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Carbon Calculator</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Carbon Calculator</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="schematic-of-carbon-footprint-calculator">
+<a class="reference internal image-reference" href="../_images/CarbonCalculatorimage.png"><img alt="Descriptive alt text for accessibility" src="../_images/CarbonCalculatorimage.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">**Figure 6.3 **: Schematic of Carbon footprint Calculator</span><a class="headerlink" href="#schematic-of-carbon-footprint-calculator" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="carbon-footprint-calculators">
+<h3>🧮 Carbon Footprint Calculators<a class="headerlink" href="#carbon-footprint-calculators" title="Link to this heading">#</a></h3>
+</section>
+<section id="definition">
+<h3>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
+<p>A <strong>carbon footprint calculator (CFC)</strong> estimates the greenhouse gas emissions (GHGs) associated with an individual’s, household’s, organization’s, or product’s activities. Results are typically expressed in <strong>CO₂-equivalents (CO₂e)</strong> and span domains such as transportation, energy use, diet, and consumption.</p>
+</section>
+<hr class="docutils" />
+<section id="methodology">
+<h3>⚙️ Methodology<a class="headerlink" href="#methodology" title="Link to this heading">#</a></h3>
+<p>Carbon calculators use either <strong>top-down</strong> or <strong>bottom-up</strong> approaches:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Top-down</p></td>
+<td><p>Uses national or sectoral averages (e.g., input–output models)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bottom-up</p></td>
+<td><p>Uses user-specific data (e.g., energy bills, travel logs, purchase history)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="key-components">
+<h3>Key Components:<a class="headerlink" href="#key-components" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Emission factors</strong>: kg CO₂e per unit of activity (e.g., per kWh, per mile)</p></li>
+<li><p><strong>Life cycle analysis (LCA)</strong>: For products and services</p></li>
+<li><p><strong>Scope definitions</strong>: Often limited to Scope 1 (direct) and Scope 2 (indirect energy)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="core-mathematical-approaches">
+<h3>🧠 Core Mathematical Approaches<a class="headerlink" href="#core-mathematical-approaches" title="Link to this heading">#</a></h3>
+<section id="lifecycle-assessment-lca">
+<h4>1. Lifecycle Assessment (LCA)<a class="headerlink" href="#lifecycle-assessment-lca" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Scope</strong>: Cradle-to-grave emissions of products or services</p></li>
+<li><p><strong>Equation</strong>:
+$<span class="math notranslate nohighlight">\(
+\text{Total Emissions} = \sum_{i=1}^{n} A_i \cdot EF_i
+\)</span>$</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(( A_i \)</span>): Activity data (e.g., kWh, miles, kg of food)</p></li>
+<li><p><span class="math notranslate nohighlight">\(( EF_i \)</span>): Emission factor (e.g., kg CO₂e per unit)</p></li>
+</ul>
+</li>
+<li><p><strong>Use Case</strong>: Product-specific footprints, detailed consumer analysis</p></li>
+</ul>
+</section>
+</section>
+<section id="inputoutput-io-model">
+<h3>2. Input–Output (IO) Model<a class="headerlink" href="#inputoutput-io-model" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Scope</strong>: Economy-wide emissions based on sectoral interdependencies</p></li>
+<li><p><strong>Equation</strong>:
+$<span class="math notranslate nohighlight">\(
+\mathbf{F} = \mathbf{E} \cdot (\mathbf{I} - \mathbf{A})^{-1} \cdot \mathbf{y}
+\)</span>$</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(( \mathbf{F} \)</span>): Final carbon footprint vector</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \mathbf{E} \)</span>): Emissions per unit output by sector</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \mathbf{A} \)</span>): Input-output coefficient matrix</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \mathbf{y} \)</span>): Final demand vector</p></li>
+<li><p><span class="math notranslate nohighlight">\(( \mathbf{I} \)</span>): Identity matrix</p></li>
+</ul>
+</li>
+<li><p><strong>Use Case</strong>: National or regional footprint estimation, indirect emissions</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="residential-carbon-footprint-model">
+<h2>🏠 Residential Carbon Footprint Model<a class="headerlink" href="#residential-carbon-footprint-model" title="Link to this heading">#</a></h2>
+<section id="components">
+<h3>Components:<a class="headerlink" href="#components" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Energy Use</strong>:
+$<span class="math notranslate nohighlight">\(
+\text{Emissions}_{\text{energy}} = \text{kWh} \cdot \text{EF}_{\text{electricity}} + \text{Therms} \cdot \text{EF}_{\text{gas}}
+\)</span>$</p></li>
+<li><p><strong>Transportation</strong>:
+$<span class="math notranslate nohighlight">\(
+\text{Emissions}_{\text{transport}} = \text{Miles} \cdot \text{EF}_{\text{vehicle type}}
+\)</span>$</p></li>
+<li><p><strong>Food Consumption</strong>:
+$<span class="math notranslate nohighlight">\(
+\text{Emissions}_{\text{food}} = \sum_{j} \text{kg}_{j} \cdot \text{EF}_{j}
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(( j \)</span>): Food categories (e.g., meat, dairy, vegetables)</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="example-t-shirt-footprint-lca">
+<h3>📈 Example: T-Shirt Footprint (LCA)<a class="headerlink" href="#example-t-shirt-footprint-lca" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cotton production → Water use, pesticides, fuel</p></li>
+<li><p>Manufacturing → Electricity, labor</p></li>
+<li><p>Transport → Fuel emissions</p></li>
+<li><p>Use phase → Washing, drying</p></li>
+<li><p>Disposal → Waste emissions</p></li>
+</ul>
+<p>Each stage contributes to the total footprint:
+$<span class="math notranslate nohighlight">\(
+\text{Total CO₂e} = \text{Raw Material} + \text{Production} + \text{Transport} + \text{Use} + \text{End-of-Life}
+\)</span>$</p>
+</section>
+<hr class="docutils" />
+<section id="opportunities-for-integration">
+<h3>🔍 Opportunities for Integration<a class="headerlink" href="#opportunities-for-integration" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Combine <strong>LCA</strong> for product-level detail with <strong>IO</strong> for systemic analysis</p></li>
+<li><p>Use <strong>quadratic or exponential interpolation</strong> for emissions reduction pathways</p></li>
+<li><p>Enable <strong>scenario modeling</strong> for policy and behavioral interventions</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>📚 References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ebsco.com/research-starters/environmental-sciences/mathematics-carbon-footprints">EBSCO: Mathematics of Carbon Footprints</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/html/2501.06251v1">arXiv: Input-Output Method for Carbon Calculators</a></p></li>
+<li><p><a class="reference external" href="https://www.intechopen.com/chapters/68928">IntechOpen: Mathematical Model for CO₂ Emissions Reduction</a></p></li>
+<li><p><a class="reference external" href="https://www.researchsquare.com/article/rs-4270354/v1">Research Square: Residential Carbon Footprint Model</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="challenges">
+<h3>🚧 Challenges<a class="headerlink" href="#challenges" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Data quality and transparency</strong><br />
+Inconsistent emission factors and unclear system boundaries</p></li>
+<li><p><strong>User engagement</strong><br />
+Low retention and limited behavioral change</p></li>
+<li><p><strong>Overemphasis on individual responsibility</strong><br />
+May obscure systemic and policy-level solutions</p></li>
+<li><p><strong>Cultural and contextual mismatch</strong><br />
+Lack of localization for diet, energy mix, or transport norms</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="opportunities">
+<h3>🌱 Opportunities<a class="headerlink" href="#opportunities" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Behavioral nudges and gamification</strong><br />
+Use of challenges, goals, and social comparisons</p></li>
+<li><p><strong>Integration with financial and lifestyle data</strong><br />
+Tools like <em>Svalna</em> use bank transactions for footprint estimation</p></li>
+<li><p><strong>Policy and education tools</strong><br />
+Supports curriculum integration and sustainability campaigns</p></li>
+<li><p><strong>Standardization and benchmarking</strong><br />
+Enables cross-comparison and validation of calculators</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h3>📚 References<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+</section>
+<section id="personal-carbon-footprint-calculator-description">
+<h3>🌍 Personal Carbon Footprint Calculator — Description<a class="headerlink" href="#personal-carbon-footprint-calculator-description" title="Link to this heading">#</a></h3>
+<p>This interactive Python tool helps individuals estimate their <strong>annual carbon emissions</strong> based on detailed lifestyle choices. It enables users to visualize and understand which habits contribute most to their environmental impact.</p>
+</section>
+<hr class="docutils" />
+<section id="purpose">
+<h3>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Quantify carbon emissions from <strong>daily routines</strong></p></li>
+<li><p>Compare lifestyle choices (diet, transportation, consumption)</p></li>
+<li><p>Identify high-impact areas to target for sustainability improvements</p></li>
+<li><p>Empower users to make informed decisions toward a lower footprint</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="what-it-calculates">
+<h3>What It Calculates<a class="headerlink" href="#what-it-calculates" title="Link to this heading">#</a></h3>
+<p>The tool includes these components:</p>
+</section>
+<section id="transportation">
+<h3>🚗 Transportation<a class="headerlink" href="#transportation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Km driven per week</strong> — with emission factors based on fuel type</p></li>
+<li><p><strong>Flights per year</strong> — considers average hours per flight and per-hour emissions</p></li>
+</ul>
+</section>
+<section id="home-energy-use">
+<h3>⚡ Home Energy Use<a class="headerlink" href="#home-energy-use" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Electricity consumption (kWh/year)</strong> — based on national energy mix</p></li>
+<li><p><strong>Gas use (m³/year)</strong> — natural gas combustion for heating/cooking</p></li>
+</ul>
+</section>
+<section id="diet-choice">
+<h3>🍽️ Diet Choice<a class="headerlink" href="#diet-choice" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Select between <strong>Meat</strong>, <strong>Vegetarian</strong>, or <strong>Vegan</strong></p></li>
+<li><p>Assesses daily food-related emissions using published averages</p></li>
+</ul>
+</section>
+<section id="consumption">
+<h3>👕 Consumption<a class="headerlink" href="#consumption" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Clothes purchased per month</strong></p></li>
+<li><p><strong>Electronics purchased per year</strong></p></li>
+<li><p>Estimates manufacturing-related emissions</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="visualization">
+<h3>Visualization<a class="headerlink" href="#visualization" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Generates a <strong>pie chart</strong> showing the relative share of each category</p></li>
+<li><p>Displays <strong>total annual carbon footprint in kg CO₂</strong></p></li>
+<li><p>Text output summarizes your personal impact</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="emission-factors-used">
+<h3>Emission Factors Used<a class="headerlink" href="#emission-factors-used" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Emission Factor</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Car travel</p></td>
+<td><p>0.21 kg CO₂/km</p></td>
+<td><p>Distance</p></td>
+</tr>
+<tr class="row-odd"><td><p>Flights</p></td>
+<td><p>90 kg CO₂/hour</p></td>
+<td><p>Flight time</p></td>
+</tr>
+<tr class="row-even"><td><p>Electricity</p></td>
+<td><p>0.45 kg CO₂/kWh</p></td>
+<td><p>Based on regional mix</p></td>
+</tr>
+<tr class="row-odd"><td><p>Natural Gas</p></td>
+<td><p>2.05 kg CO₂/m³</p></td>
+<td><p>Fossil fuel combustion</p></td>
+</tr>
+<tr class="row-even"><td><p>Meat Diet</p></td>
+<td><p>7.2 kg CO₂/day</p></td>
+<td><p>High animal consumption</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vegetarian</p></td>
+<td><p>3.8 kg CO₂/day</p></td>
+<td><p>Reduced animal products</p></td>
+</tr>
+<tr class="row-even"><td><p>Vegan</p></td>
+<td><p>2.5 kg CO₂/day</p></td>
+<td><p>Plant-based only</p></td>
+</tr>
+<tr class="row-odd"><td><p>Clothing</p></td>
+<td><p>25 kg CO₂/item</p></td>
+<td><p>Manufacturing impact</p></td>
+</tr>
+<tr class="row-even"><td><p>Electronics</p></td>
+<td><p>100 kg CO₂/item</p></td>
+<td><p>Production + logistics</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="use-cases">
+<h3>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Evaluate your current lifestyle’s carbon impact</p></li>
+<li><p>Compare emission sources to find top contributors</p></li>
+<li><p>Test improvement scenarios (e.g. switching to public transport or vegan diet)</p></li>
+<li><p>Support sustainability goals, climate pledges, or carbon offset planning</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reference">
+<h3>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h3>
+<p><span id="id2">[<a class="reference internal" href="../markdown.html#id118" title="Mike Berners-Lee. The Carbon Footprint of Everything. Greystone Books Ltd, 2022. ISBN 9781771645775. URL: https://books.google.com/books/about/The_Carbon_Footprint_of_Everything.html?id=CkBUEAAAQBAJ.">Berners-Lee, 2022</a>]</span>- A comprehensive, item-by-item breakdown of carbon footprints—from bananas to bitcoin - Based on rigorous life cycle analysis and updated with post-pandemic data. <span id="id3">[<a class="reference internal" href="../markdown.html#id119" title="United Nations Climate Change Learning Partnership. Un greenhouse gas calculator manual. UN CC:Learn Knowledge Sharing Platform, 2009. Guidance document for calculating carbon footprints in UN agencies and educational contexts. URL: https://www.uncclearn.org/resources/library/un-greenhouse-gas-calculator-manual/.">United Nations Climate Change Learning Partnership, 2009</a>]</span> Provides standardized methodologies for calculating carbon footprints across UN agencies, suitable for adaptation in academic and operational contexts.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">interact</span>
+
+<span class="c1"># 📊 Emission factors (in kg CO₂ per unit)</span>
+<span class="n">factors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;car&#39;</span><span class="p">:</span> <span class="mf">0.21</span><span class="p">,</span>         <span class="c1"># kg CO₂/km (average car)</span>
+    <span class="s1">&#39;flight&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>        <span class="c1"># kg CO₂ per hour of flying</span>
+    <span class="s1">&#39;electricity&#39;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">,</span> <span class="c1"># kg CO₂/kWh (varies by country)</span>
+    <span class="s1">&#39;gas&#39;</span><span class="p">:</span> <span class="mf">2.05</span><span class="p">,</span>         <span class="c1"># kg CO₂/m³</span>
+    <span class="s1">&#39;meat&#39;</span><span class="p">:</span> <span class="mf">7.2</span><span class="p">,</span>         <span class="c1"># kg CO₂/day (high meat diet)</span>
+    <span class="s1">&#39;vegetarian&#39;</span><span class="p">:</span> <span class="mf">3.8</span><span class="p">,</span>   <span class="c1"># kg CO₂/day (vegetarian diet)</span>
+    <span class="s1">&#39;vegan&#39;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>        <span class="c1"># kg CO₂/day (vegan diet)</span>
+    <span class="s1">&#39;clothing&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>      <span class="c1"># kg CO₂ per item</span>
+    <span class="s1">&#39;electronics&#39;</span><span class="p">:</span> <span class="mi">100</span>   <span class="c1"># kg CO₂ per item</span>
+<span class="p">}</span>
+
+<span class="c1"># 🧮 Carbon calculation function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">carbon_footprint</span><span class="p">(</span><span class="n">km_per_week</span><span class="p">,</span> <span class="n">flights_per_year</span><span class="p">,</span> <span class="n">flight_hours</span><span class="p">,</span>
+                     <span class="n">electricity_kwh</span><span class="p">,</span> <span class="n">gas_m3</span><span class="p">,</span> <span class="n">diet_choice</span><span class="p">,</span>
+                     <span class="n">clothes_per_month</span><span class="p">,</span> <span class="n">electronics_per_year</span><span class="p">):</span>
+
+    <span class="n">annual_car</span> <span class="o">=</span> <span class="n">km_per_week</span> <span class="o">*</span> <span class="mi">52</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;car&#39;</span><span class="p">]</span>
+    <span class="n">annual_flight</span> <span class="o">=</span> <span class="n">flights_per_year</span> <span class="o">*</span> <span class="n">flight_hours</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;flight&#39;</span><span class="p">]</span>
+    <span class="n">annual_electric</span> <span class="o">=</span> <span class="n">electricity_kwh</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;electricity&#39;</span><span class="p">]</span>
+    <span class="n">annual_gas</span> <span class="o">=</span> <span class="n">gas_m3</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;gas&#39;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">diet_choice</span> <span class="o">==</span> <span class="s1">&#39;Meat&#39;</span><span class="p">:</span>
+        <span class="n">annual_diet</span> <span class="o">=</span> <span class="mi">365</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;meat&#39;</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">diet_choice</span> <span class="o">==</span> <span class="s1">&#39;Vegetarian&#39;</span><span class="p">:</span>
+        <span class="n">annual_diet</span> <span class="o">=</span> <span class="mi">365</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;vegetarian&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># Vegan</span>
+        <span class="n">annual_diet</span> <span class="o">=</span> <span class="mi">365</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;vegan&#39;</span><span class="p">]</span>
+
+    <span class="n">annual_clothes</span> <span class="o">=</span> <span class="n">clothes_per_month</span> <span class="o">*</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;clothing&#39;</span><span class="p">]</span>
+    <span class="n">annual_electronics</span> <span class="o">=</span> <span class="n">electronics_per_year</span> <span class="o">*</span> <span class="n">factors</span><span class="p">[</span><span class="s1">&#39;electronics&#39;</span><span class="p">]</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="p">(</span><span class="n">annual_car</span> <span class="o">+</span> <span class="n">annual_flight</span> <span class="o">+</span> <span class="n">annual_electric</span> <span class="o">+</span>
+             <span class="n">annual_gas</span> <span class="o">+</span> <span class="n">annual_diet</span> <span class="o">+</span> <span class="n">annual_clothes</span> <span class="o">+</span> <span class="n">annual_electronics</span><span class="p">)</span>
+
+    <span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Car&#39;</span><span class="p">,</span> <span class="s1">&#39;Flight&#39;</span><span class="p">,</span> <span class="s1">&#39;Electricity&#39;</span><span class="p">,</span> <span class="s1">&#39;Gas&#39;</span><span class="p">,</span> <span class="s1">&#39;Diet&#39;</span><span class="p">,</span> <span class="s1">&#39;Clothing&#39;</span><span class="p">,</span> <span class="s1">&#39;Electronics&#39;</span><span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">annual_car</span><span class="p">,</span> <span class="n">annual_flight</span><span class="p">,</span> <span class="n">annual_electric</span><span class="p">,</span> <span class="n">annual_gas</span><span class="p">,</span>
+              <span class="n">annual_diet</span><span class="p">,</span> <span class="n">annual_clothes</span><span class="p">,</span> <span class="n">annual_electronics</span><span class="p">]</span>
+
+    <span class="c1"># 📈 Pie chart</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Annual Carbon Footprint: </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg CO₂&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌍 Your Estimated Annual Carbon Footprint: </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg CO₂&quot;</span><span class="p">)</span>
+
+<span class="c1"># 🎛️ Interactive sliders &amp; dropdown</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">carbon_footprint</span><span class="p">,</span>
+         <span class="n">km_per_week</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Km Driven/Week&#39;</span><span class="p">),</span>
+         <span class="n">flights_per_year</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Flights/Year&#39;</span><span class="p">),</span>
+         <span class="n">flight_hours</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Flight Hours Avg&#39;</span><span class="p">),</span>
+         <span class="n">electricity_kwh</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;kWh/Year&#39;</span><span class="p">),</span>
+         <span class="n">gas_m3</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Gas (m³/Year)&#39;</span><span class="p">),</span>
+         <span class="n">diet_choice</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Meat&#39;</span><span class="p">,</span> <span class="s1">&#39;Vegetarian&#39;</span><span class="p">,</span> <span class="s1">&#39;Vegan&#39;</span><span class="p">],</span>
+         <span class="n">clothes_per_month</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Clothes Bought/Month&#39;</span><span class="p">),</span>
+         <span class="n">electronics_per_year</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Electronics/Year&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "fa8660f556194b71a0c23c387446b08e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="self-assessment">
+<h2>3. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="emission-factors">
+<h3>Emission Factors<a class="headerlink" href="#emission-factors" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What does an emission factor represent, and how is it used to estimate carbon output?</p></li>
+<li><p>Why are different units used for different activities (e.g., kg CO₂/km for cars, kg CO₂/day for diet)?</p></li>
+<li><p>How do emission factors vary by region, technology, or behavior?</p></li>
+</ul>
+</section>
+<section id="activity-based-modeling">
+<h3>Activity-Based Modeling<a class="headerlink" href="#activity-based-modeling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Why is car travel modeled on a weekly basis while electricity and gas are annualized?</p></li>
+<li><p>What assumptions are made about the consistency of user behavior over time?</p></li>
+<li><p>How does the model aggregate emissions from diverse sources into a single footprint?</p></li>
+</ul>
+</section>
+<section id="visualization-interpretation">
+<h3>Visualization &amp; Interpretation<a class="headerlink" href="#visualization-interpretation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What does the pie chart reveal about the relative contribution of each category?</p></li>
+<li><p>Why might diet or flights dominate the footprint for some users?</p></li>
+<li><p>How could the model be adapted to show monthly or lifetime emissions?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<p>These questions encourage users to think critically about their lifestyle and sustainability choices.</p>
+<ul class="simple">
+<li><p>Which category in your footprint surprised you the most, and why?</p></li>
+<li><p>What changes could you make to reduce your footprint without compromising quality of life?</p></li>
+<li><p>How would your footprint change if you switched to renewable electricity or public transport?</p></li>
+<li><p>What are the limitations of using static emission factors for dynamic behaviors?</p></li>
+<li><p>How could this model be used to support policy decisions or personal goal-setting?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="multiple-choice">
+<h3>Multiple Choice<a class="headerlink" href="#multiple-choice" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Which activity has the highest emission factor per unit in this model?</strong><br />
+A. Car travel<br />
+B. Electricity use<br />
+C. Flight hours<br />
+D. Clothing purchases<br />
+<strong>Answer:</strong> C</p></li>
+<li><p><strong>If you fly 5 times a year for 3 hours each, what is your flight-related footprint?</strong><br />
+A. 270 kg CO₂<br />
+B. 450 kg CO₂<br />
+C. 1,350 kg CO₂<br />
+D. 90 kg CO₂<br />
+<strong>Answer:</strong> C</p></li>
+<li><p><strong>Which diet has the lowest carbon footprint per day?</strong><br />
+A. Meat<br />
+B. Vegetarian<br />
+C. Vegan<br />
+D. Flexitarian<br />
+<strong>Answer:</strong> C</p></li>
+</ol>
+</section>
+<section id="true-false">
+<h3>True/False<a class="headerlink" href="#true-false" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>Electricity and gas emissions are calculated using annual consumption.</strong><br />
+<strong>Answer:</strong> True</p></li>
+<li><p><strong>The model assumes that all flights have the same duration.</strong><br />
+<strong>Answer:</strong> False</p></li>
+<li><p><strong>Buying fewer electronics has no impact on your carbon footprint.</strong><br />
+<strong>Answer:</strong> False</p></li>
+</ol>
+</section>
+<section id="short-answer">
+<h3>Short Answer<a class="headerlink" href="#short-answer" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="7">
+<li><p><strong>Explain how the model calculates total emissions from car travel.</strong><br />
+<em>Answer:</em> It multiplies kilometers driven per week by 52 weeks and then by the car emission factor (kg CO₂/km).</p></li>
+<li><p><strong>Why might the diet category have a large impact on total emissions?</strong><br />
+<em>Answer:</em> Because diet is a daily activity, even small differences in emission factors accumulate significantly over a year.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="construction-carbon-footprint-calculator-methodology-sources">
+<h1>🏗️ Construction Carbon Footprint Calculator — Methodology &amp; Sources<a class="headerlink" href="#construction-carbon-footprint-calculator-methodology-sources" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>📐 Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This calculator estimates the total carbon emissions associated with a construction project based on:</p>
+<ul class="simple">
+<li><p><strong>Material quantities</strong> (e.g., kg of concrete, steel, glass)</p></li>
+<li><p><strong>Material types</strong> (e.g., recycled steel vs stainless)</p></li>
+<li><p><strong>Energy and transport inputs</strong> (e.g., diesel, electricity, km-ton of transport)</p></li>
+</ul>
+<p>It uses emission factors (kg CO₂ per unit) to compute the footprint for each category and visualizes the results using a pie chart.</p>
+</section>
+<hr class="docutils" />
+<section id="calculation-method">
+<h2>🧮 Calculation Method<a class="headerlink" href="#calculation-method" title="Link to this heading">#</a></h2>
+<p>For each input category, the carbon footprint is calculated as:</p>
+<p>The total footprint is the sum of all categories:
+Total Emissions = Σ Emissions_category</p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>📊 Emission Factors Used<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Emission Factor (kg CO₂/unit)</p></th>
+<th class="head"><p>Source</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Concrete</strong></p></td>
+<td><p>Standard</p></td>
+<td><p>0.13 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://www.wbcsd.org/">WBCSD Cement Initiative</a></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Low-carbon</p></td>
+<td><p>0.08 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://www.carboncure.com/">CarbonCure</a></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>High-strength</p></td>
+<td><p>0.18 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://circularecology.com/embodied-carbon-footprint-database.html">ICE Database</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Steel</strong></p></td>
+<td><p>Recycled</p></td>
+<td><p>0.90 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://worldsteel.org/">World Steel Association</a></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Standard</p></td>
+<td><p>1.85 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://circularecology.com/">ICE Database</a></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Stainless</p></td>
+<td><p>2.50 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://circularecology.com/">ICE Database</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Glass</strong></p></td>
+<td><p>Float</p></td>
+<td><p>1.00 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://glassforeurope.com/">Glass for Europe</a></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>Tempered</p></td>
+<td><p>1.50 kg CO₂/kg</p></td>
+<td><p>[Environmental Product Declarations (EPDs)]</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>Low-E</p></td>
+<td><p>2.00 kg CO₂/kg</p></td>
+<td><p>[EPDs &amp; Manufacturer Data]</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Diesel</strong></p></td>
+<td><p>—</p></td>
+<td><p>2.68 kg CO₂/liter</p></td>
+<td><p><a class="reference external" href="https://www.gov.uk/government/collections/government-conversion-factors-for-company-reporting">UK DEFRA GHG Conversion Factors</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Transport</strong></p></td>
+<td><p>—</p></td>
+<td><p>0.21 kg CO₂/km-ton</p></td>
+<td><p><a class="reference external" href="https://globalabc.org/">UNEP GlobalABC</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Electricity</strong></p></td>
+<td><p>—</p></td>
+<td><p>0.45 kg CO₂/kWh</p></td>
+<td><p><a class="reference external" href="https://www.iea.org/reports/world-energy-outlook-2023">IEA World Energy Outlook</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wood</strong></p></td>
+<td><p>—</p></td>
+<td><p>0.04 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://circularecology.com/">ICE Database</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Asphalt</strong></p></td>
+<td><p>—</p></td>
+<td><p>0.06 kg CO₂/kg</p></td>
+<td><p><a class="reference external" href="https://www.epa.gov/">US EPA</a> &amp; <a class="reference external" href="https://circularecology.com/">ICE Database</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="educational-purpose">
+<h2>🎓 Educational Purpose<a class="headerlink" href="#educational-purpose" title="Link to this heading">#</a></h2>
+<p>This tool is designed to:</p>
+<ul class="simple">
+<li><p>Help learners explore how <strong>material choices</strong> affect emissions</p></li>
+<li><p>Encourage <strong>systems thinking</strong> in sustainable design</p></li>
+<li><p>Support <strong>transparent engineering decisions</strong> with traceable data</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="notes-assumptions">
+<h2>📚 Notes &amp; Assumptions<a class="headerlink" href="#notes-assumptions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Emission factors are <strong>averages</strong> and vary by region, supplier, and production method.</p></li>
+<li><p>Transport emissions assume <strong>medium-duty truck</strong> over average distances.</p></li>
+<li><p>Electricity emissions are based on a <strong>global average grid mix</strong>; adjust for local grids if needed.</p></li>
+<li><p>All data is sourced from <strong>open databases</strong>, <strong>industry reports</strong>, and <strong>peer-reviewed publications</strong>.</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>Developed as part of an open-source civil engineering curriculum to foster ecological literacy and carbon-conscious design.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># 📦 Typical quantity factors per m² (approximate)</span>
+<span class="n">quantity_factors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Residential&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;concrete&#39;</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>     <span class="c1"># kg/m²</span>
+        <span class="s1">&#39;steel&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>         <span class="c1"># kg/m²</span>
+        <span class="s1">&#39;wood&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>          <span class="c1"># kg/m²</span>
+        <span class="s1">&#39;glass&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>          <span class="c1"># kg/m²</span>
+        <span class="s1">&#39;asphalt&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>        <span class="c1"># kg/m²</span>
+        <span class="s1">&#39;electricity&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>  <span class="c1"># kWh/m²/year</span>
+        <span class="s1">&#39;diesel&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>       <span class="c1"># liters/m²</span>
+        <span class="s1">&#39;transport&#39;</span><span class="p">:</span> <span class="mi">10</span>      <span class="c1"># km-ton/m²</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;Commercial&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;concrete&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="s1">&#39;steel&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+        <span class="s1">&#39;wood&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;glass&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s1">&#39;asphalt&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;electricity&#39;</span><span class="p">:</span> <span class="mi">250</span><span class="p">,</span>
+        <span class="s1">&#39;diesel&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s1">&#39;transport&#39;</span><span class="p">:</span> <span class="mi">15</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;Industrial&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;concrete&#39;</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
+        <span class="s1">&#39;steel&#39;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span>
+        <span class="s1">&#39;wood&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s1">&#39;glass&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+        <span class="s1">&#39;asphalt&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+        <span class="s1">&#39;electricity&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
+        <span class="s1">&#39;diesel&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="s1">&#39;transport&#39;</span><span class="p">:</span> <span class="mi">25</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># 📚 Source references</span>
+<span class="n">sources</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Residential&#39;</span><span class="p">:</span> <span class="s2">&quot;Based on aggregated data from [IEA](https://www.iea.org/reports/tracking-buildings-2020), [UNEP GlobalABC](https://globalabc.org/), and industry benchmarks for low-rise housing.&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;Commercial&#39;</span><span class="p">:</span> <span class="s2">&quot;Derived from [ASHRAE](https://www.ashrae.org/), [US DOE Commercial Buildings Energy Consumption Survey (CBECS)](https://www.eia.gov/consumption/commercial/), and LEED baseline estimates.&quot;</span><span class="p">,</span>
+    <span class="s1">&#39;Industrial&#39;</span><span class="p">:</span> <span class="s2">&quot;Estimated using [IEA Industrial Sector Reports](https://www.iea.org/topics/industry), [WBCSD Cement Sustainability Initiative](https://www.wbcsd.org/), and academic case studies on manufacturing facilities.&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># 🧮 Estimation function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">estimate_quantities</span><span class="p">(</span><span class="n">building_type</span><span class="p">,</span> <span class="n">floor_area_m2</span><span class="p">):</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="n">quantity_factors</span><span class="p">[</span><span class="n">building_type</span><span class="p">]</span>
+    <span class="n">estimates</span> <span class="o">=</span> <span class="p">{</span><span class="n">material</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">floor_area_m2</span> <span class="o">*</span> <span class="n">factor</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">material</span><span class="p">,</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">factors</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+    
+    <span class="c1"># 📊 Display results</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 📐 Estimated Quantities for **</span><span class="si">{</span><span class="n">building_type</span><span class="si">}</span><span class="s2">** Building (</span><span class="si">{</span><span class="n">floor_area_m2</span><span class="si">}</span><span class="s2"> m²)&quot;</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">material</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">estimates</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">unit</span> <span class="o">=</span> <span class="s1">&#39;kg&#39;</span> <span class="k">if</span> <span class="n">material</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;concrete&#39;</span><span class="p">,</span> <span class="s1">&#39;steel&#39;</span><span class="p">,</span> <span class="s1">&#39;wood&#39;</span><span class="p">,</span> <span class="s1">&#39;glass&#39;</span><span class="p">,</span> <span class="s1">&#39;asphalt&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s1">&#39;kWh/year&#39;</span> <span class="k">if</span> <span class="n">material</span> <span class="o">==</span> <span class="s1">&#39;electricity&#39;</span> <span class="k">else</span> <span class="s1">&#39;liters&#39;</span> <span class="k">if</span> <span class="n">material</span> <span class="o">==</span> <span class="s1">&#39;diesel&#39;</span> <span class="k">else</span> <span class="s1">&#39;km-ton&#39;</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- **</span><span class="si">{</span><span class="n">material</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">**: `</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">`&quot;</span><span class="p">))</span>
+    
+    <span class="c1"># 📚 Show source</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**📖 Source:** </span><span class="si">{</span><span class="n">sources</span><span class="p">[</span><span class="n">building_type</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+
+<span class="c1"># 🎛️ Interactive widgets</span>
+<span class="n">building_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">quantity_factors</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Residential&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Building Type:&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">area_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Floor Area (m²):&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">},</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">building_dropdown</span><span class="p">,</span> <span class="n">area_slider</span><span class="p">])</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">estimate_quantities</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;building_type&#39;</span><span class="p">:</span> <span class="n">building_dropdown</span><span class="p">,</span> <span class="s1">&#39;floor_area_m2&#39;</span><span class="p">:</span> <span class="n">area_slider</span><span class="p">})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "02b156d001b1439ca07d05d638880c9c", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "f46c55e4369e4385a756a94233f2c698", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">IntSlider</span><span class="p">,</span> <span class="n">Dropdown</span><span class="p">,</span> <span class="n">interact</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+
+<span class="c1"># 📊 Emission factors by material type (kg CO₂ per unit)</span>
+<span class="n">material_factors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;concrete&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;Standard&#39;</span><span class="p">:</span> <span class="mf">0.13</span><span class="p">,</span>
+        <span class="s1">&#39;Low-carbon&#39;</span><span class="p">:</span> <span class="mf">0.08</span><span class="p">,</span>
+        <span class="s1">&#39;High-strength&#39;</span><span class="p">:</span> <span class="mf">0.18</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;steel&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;Recycled&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="s1">&#39;Standard&#39;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">,</span>
+        <span class="s1">&#39;Stainless&#39;</span><span class="p">:</span> <span class="mf">2.5</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;glass&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;Float&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="s1">&#39;Tempered&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span>
+        <span class="s1">&#39;Low-E&#39;</span><span class="p">:</span> <span class="mf">2.0</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;diesel&#39;</span><span class="p">:</span> <span class="mf">2.68</span><span class="p">,</span>
+    <span class="s1">&#39;transport&#39;</span><span class="p">:</span> <span class="mf">0.21</span><span class="p">,</span>
+    <span class="s1">&#39;electricity&#39;</span><span class="p">:</span> <span class="mf">0.45</span><span class="p">,</span>
+    <span class="s1">&#39;wood&#39;</span><span class="p">:</span> <span class="mf">0.04</span><span class="p">,</span>
+    <span class="s1">&#39;asphalt&#39;</span><span class="p">:</span> <span class="mf">0.06</span>
+<span class="p">}</span>
+
+<span class="c1"># 🧮 Carbon footprint function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">construction_footprint</span><span class="p">(</span><span class="n">concrete_kg</span><span class="p">,</span> <span class="n">steel_kg</span><span class="p">,</span> <span class="n">glass_kg</span><span class="p">,</span>
+                           <span class="n">diesel_liters</span><span class="p">,</span> <span class="n">transport_km_ton</span><span class="p">,</span> <span class="n">electricity_kwh</span><span class="p">,</span>
+                           <span class="n">wood_kg</span><span class="p">,</span> <span class="n">asphalt_kg</span><span class="p">,</span>
+                           <span class="n">concrete_type</span><span class="p">,</span> <span class="n">steel_type</span><span class="p">,</span> <span class="n">glass_type</span><span class="p">):</span>
+
+    <span class="n">emissions</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;Concrete&#39;</span><span class="p">:</span> <span class="n">concrete_kg</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;concrete&#39;</span><span class="p">][</span><span class="n">concrete_type</span><span class="p">],</span>
+        <span class="s1">&#39;Steel&#39;</span><span class="p">:</span> <span class="n">steel_kg</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;steel&#39;</span><span class="p">][</span><span class="n">steel_type</span><span class="p">],</span>
+        <span class="s1">&#39;Glass&#39;</span><span class="p">:</span> <span class="n">glass_kg</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;glass&#39;</span><span class="p">][</span><span class="n">glass_type</span><span class="p">],</span>
+        <span class="s1">&#39;Diesel&#39;</span><span class="p">:</span> <span class="n">diesel_liters</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;diesel&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;Transport&#39;</span><span class="p">:</span> <span class="n">transport_km_ton</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;transport&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;Electricity&#39;</span><span class="p">:</span> <span class="n">electricity_kwh</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;electricity&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;Wood&#39;</span><span class="p">:</span> <span class="n">wood_kg</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;wood&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;Asphalt&#39;</span><span class="p">:</span> <span class="n">asphalt_kg</span> <span class="o">*</span> <span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;asphalt&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">total</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">emissions</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">emissions</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">emissions</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+    <span class="c1"># 📈 Pie chart</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">140</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated Project Carbon Footprint: </span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg CO₂&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="c1"># 📋 Summary</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;### 🌍 Estimated Total Carbon Emissions: `</span><span class="si">{</span><span class="n">total</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg CO₂`&quot;</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Concrete**: </span><span class="si">{</span><span class="n">concrete_kg</span><span class="si">}</span><span class="s2"> kg × </span><span class="si">{</span><span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;concrete&#39;</span><span class="p">][</span><span class="n">concrete_type</span><span class="p">]</span><span class="si">}</span><span class="s2"> kg CO₂/kg = `</span><span class="si">{</span><span class="n">emissions</span><span class="p">[</span><span class="s1">&#39;Concrete&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg CO₂`&quot;</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Steel**: </span><span class="si">{</span><span class="n">steel_kg</span><span class="si">}</span><span class="s2"> kg × </span><span class="si">{</span><span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;steel&#39;</span><span class="p">][</span><span class="n">steel_type</span><span class="p">]</span><span class="si">}</span><span class="s2"> kg CO₂/kg = `</span><span class="si">{</span><span class="n">emissions</span><span class="p">[</span><span class="s1">&#39;Steel&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg CO₂`&quot;</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;**Glass**: </span><span class="si">{</span><span class="n">glass_kg</span><span class="si">}</span><span class="s2"> kg × </span><span class="si">{</span><span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;glass&#39;</span><span class="p">][</span><span class="n">glass_type</span><span class="p">]</span><span class="si">}</span><span class="s2"> kg CO₂/kg = `</span><span class="si">{</span><span class="n">emissions</span><span class="p">[</span><span class="s1">&#39;Glass&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> kg CO₂`&quot;</span><span class="p">))</span>
+
+<span class="c1"># 🎛️ Interactive widgets</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">construction_footprint</span><span class="p">,</span>
+         <span class="n">concrete_kg</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Concrete (kg)&#39;</span><span class="p">),</span>
+         <span class="n">steel_kg</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Steel (kg)&#39;</span><span class="p">),</span>
+         <span class="n">glass_kg</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Glass (kg)&#39;</span><span class="p">),</span>
+         <span class="n">diesel_liters</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Diesel (L)&#39;</span><span class="p">),</span>
+         <span class="n">transport_km_ton</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Transport (km-ton)&#39;</span><span class="p">),</span>
+         <span class="n">electricity_kwh</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Electricity (kWh)&#39;</span><span class="p">),</span>
+         <span class="n">wood_kg</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Wood (kg)&#39;</span><span class="p">),</span>
+         <span class="n">asphalt_kg</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Asphalt (kg)&#39;</span><span class="p">),</span>
+         <span class="n">concrete_type</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;concrete&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Standard&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Concrete Type&#39;</span><span class="p">),</span>
+         <span class="n">steel_type</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;steel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Standard&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Steel Type&#39;</span><span class="p">),</span>
+         <span class="n">glass_type</span><span class="o">=</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">material_factors</span><span class="p">[</span><span class="s1">&#39;glass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Float&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Glass Type&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1b4d1f4849c54918bb016775adb354f2", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chapter 6 Sustainabilty and Engineering: Carbon Calculator</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#carbon-footprint-calculators">🧮 Carbon Footprint Calculators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">⚙️ Methodology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#core-mathematical-approaches">🧠 Core Mathematical Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lifecycle-assessment-lca">1. Lifecycle Assessment (LCA)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputoutput-io-model">2. Input–Output (IO) Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residential-carbon-footprint-model">🏠 Residential Carbon Footprint Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-t-shirt-footprint-lca">📈 Example: T-Shirt Footprint (LCA)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opportunities-for-integration">🔍 Opportunities for Integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">📚 References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges">🚧 Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opportunities">🌱 Opportunities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">📚 References</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-carbon-footprint-calculator-description">🌍 Personal Carbon Footprint Calculator — Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-calculates">What It Calculates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transportation">🚗 Transportation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#home-energy-use">⚡ Home Energy Use</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diet-choice">🍽️ Diet Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumption">👕 Consumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization">Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emission-factors-used">Emission Factors Used</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">3. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emission-factors">Emission Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#activity-based-modeling">Activity-Based Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-interpretation">Visualization &amp; Interpretation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-choice">Multiple Choice</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#true-false">True/False</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#short-answer">Short Answer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#construction-carbon-footprint-calculator-methodology-sources">🏗️ Construction Carbon Footprint Calculator — Methodology &amp; Sources</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">📐 Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-method">🧮 Calculation Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">📊 Emission Factors Used</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#educational-purpose">🎓 Educational Purpose</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-assumptions">📚 Notes &amp; Assumptions</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

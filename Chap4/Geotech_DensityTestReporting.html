@@ -1,0 +1,1874 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 6 Geotech Engineering Laboratory: Soil Density &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap4/Geotech_DensityTestReporting';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 6 Geotech Engineering Laboratory: Soil Permeability" href="PermeabiltyTest.html" />
+    <link rel="prev" title="Chapter 6 Geotech Engineering Laboratory: Liquid and Plastic Limit" href="LiquidPlasticLimit.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Waveprediction.html">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap5/MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap4/Geotech_DensityTestReporting.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap4/Geotech_DensityTestReporting.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap4/Geotech_DensityTestReporting.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap4/Geotech_DensityTestReporting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap4/Geotech_DensityTestReporting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 6 Geotech Engineering Laboratory: Soil Density</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-density-in-geotechnical-engineering">🧱 Soil Density in Geotechnical Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">📘 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-soil-density">Types of Soil Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-geotechnical-engineering">🎯 Importance in Geotechnical Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-measurement-proctor-compaction-test">🧪 Lab Measurement – Proctor Compaction Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-principle">Test Principle:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-equations">Key Equations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-measurement-sand-cone-test">🏜️ Field Measurement – Sand Cone Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-astm-d1556">Standard: ASTM D1556</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedure">Procedure:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equations">Equations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance">Acceptance:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proctor-soil-compaction-tool-summary">🧱 Interactive Proctor Soil Compaction Tool Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🔧 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-logic">🔢 Computation Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proctor-soil-compaction-methods-u-s-standards-procedures">🧱 Proctor Soil Compaction Methods – U.S. Standards &amp; Procedures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-standards-overview">📑 U.S. Standards Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedure-comparison-table">⚙️ Procedure Comparison Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-notes">📐 Interpretation Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-interpretation">📊 Output &amp; Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sand-cone-test-report-field-soil-density-determination-astm-d1556">🏜️ Sand Cone Test Report – Field Soil Density Determination (ASTM D1556)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-summary">📋 Test Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-parameters">🧪 Input Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">⚙️ Computation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-of-test-hole">1. Volume of Test Hole</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-density">2. Bulk Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-density">3. Dry Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corrections-in-sand-cone-test">🛠️ Corrections in Sand Cone Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apparatus-calibration">📏 1. Apparatus Calibration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moisture-content-correction">🧪 2. Moisture Content Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excavation-volume-correction">⚙️ 3. Excavation Volume Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-factors">🌡️ 4. Environmental Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-vs-lab-density-comparison">📊 5. Field vs. Lab Density Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-output-table">📄 Sample Output Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🧭 Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proctor-soil-compaction-conceptual-reflective-quiz-questions">🧠 Proctor Soil Compaction – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-density-calculations">Dry Density Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-specifications">Interpretation &amp; Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-accuracy">Calculation &amp; Accuracy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-design-implications">Interpretation &amp; Design Implications</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-6-geotech-engineering-laboratory-soil-density">
+<h1>Chapter 6 Geotech Engineering Laboratory: Soil Density<a class="headerlink" href="#chapter-6-geotech-engineering-laboratory-soil-density" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Soil Density Lab</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Procter density Test</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Simulation"><span class="xref myst">Simulation: Sand Cone Test</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="classical-proctor-and-sand-cone-test-for-estimation-of-soil-density">
+<a class="reference internal image-reference" href="../_images/soildensity.png"><img alt="Descriptive alt text for accessibility" src="../_images/soildensity.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">**Figure 4.3 **: Classical Proctor and Sand cone test for estimation of soil density</span><a class="headerlink" href="#classical-proctor-and-sand-cone-test-for-estimation-of-soil-density" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="soil-density-in-geotechnical-engineering">
+<h3>🧱 Soil Density in Geotechnical Engineering<a class="headerlink" href="#soil-density-in-geotechnical-engineering" title="Link to this heading">#</a></h3>
+</section>
+<section id="definition">
+<h3>📘 Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
+<p><strong>Soil density</strong> refers to the mass of soil per unit volume. It’s a key parameter in assessing compaction, load-bearing capacity, permeability, and stability of soil for construction and geotechnical applications.</p>
+</section>
+<section id="types-of-soil-density">
+<h3>Types of Soil Density<a class="headerlink" href="#types-of-soil-density" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Bulk Density</strong></p></td>
+<td><p>Includes moisture; total mass per unit volume</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dry Density</strong></p></td>
+<td><p>Mass of solids only, per unit volume (moisture excluded)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum Dry Density (MDD)</strong></p></td>
+<td><p>Highest dry density achievable with optimal moisture</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Relative Density</strong></p></td>
+<td><p>Ratio of field density to lab density (used for granular soils)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="importance-in-geotechnical-engineering">
+<h3>🎯 Importance in Geotechnical Engineering<a class="headerlink" href="#importance-in-geotechnical-engineering" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Foundation Stability</strong>: Influences settlement and bearing capacity</p></li>
+<li><p><strong>Compaction Control</strong>: Ensures strength, minimizes voids</p></li>
+<li><p><strong>Permeability &amp; Drainage</strong>: Affects water movement and seepage</p></li>
+<li><p><strong>Slope &amp; Embankment Safety</strong>: Critical in evaluating failure risk</p></li>
+<li><p><strong>Earthworks Quality Assurance</strong>: Used to validate construction standards</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="lab-measurement-proctor-compaction-test">
+<h3>🧪 Lab Measurement – Proctor Compaction Test<a class="headerlink" href="#lab-measurement-proctor-compaction-test" title="Link to this heading">#</a></h3>
+</section>
+<section id="methods">
+<h3>Methods:<a class="headerlink" href="#methods" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>ASTM Standard</p></th>
+<th class="head"><p>Energy Applied</p></th>
+<th class="head"><p>Use Case</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Standard Proctor</strong></p></td>
+<td><p>ASTM D698</p></td>
+<td><p>12,300 ft-lbf/ft³</p></td>
+<td><p>Residential &amp; non-critical fill</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Modified Proctor</strong></p></td>
+<td><p>ASTM D1557</p></td>
+<td><p>56,000 ft-lbf/ft³</p></td>
+<td><p>Highways, airports, structural fill</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="test-principle">
+<h3>Test Principle:<a class="headerlink" href="#test-principle" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Compact soil in a mold at varied moisture contents</p></li>
+<li><p>Record wet mass and compute <strong>dry density</strong></p></li>
+<li><p>Plot <strong>dry density vs. moisture content</strong></p></li>
+<li><p>Peak defines <strong>maximum dry density</strong> and <strong>optimum moisture</strong></p></li>
+</ul>
+</section>
+<section id="key-equations">
+<h3>Key Equations:<a class="headerlink" href="#key-equations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Bulk Density</strong>:<br />
+<span class="math notranslate nohighlight">\(( \rho_{bulk} = \frac{M_{wet} - M_{mold}}{V_{mold}} \)</span>)</p></li>
+<li><p><strong>Dry Density</strong>:<br />
+<span class="math notranslate nohighlight">\(( \rho_{dry} = \frac{\rho_{bulk}}{1 + w} \)</span>)<br />
+Where ( w ) is moisture fraction (e.g., 12% → 0.12)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="field-measurement-sand-cone-test">
+<h3>🏜️ Field Measurement – Sand Cone Test<a class="headerlink" href="#field-measurement-sand-cone-test" title="Link to this heading">#</a></h3>
+</section>
+<section id="standard-astm-d1556">
+<h3>Standard: ASTM D1556<a class="headerlink" href="#standard-astm-d1556" title="Link to this heading">#</a></h3>
+<p>Used to measure <strong>in-place density</strong> of compacted soil in the field.</p>
+</section>
+<section id="procedure">
+<h3>Procedure:<a class="headerlink" href="#procedure" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Excavate a small test hole</p></li>
+<li><p>Fill hole with calibrated dry sand using cone apparatus</p></li>
+<li><p>Weigh sand used and calculate hole volume</p></li>
+<li><p>Weigh excavated soil and moisture content</p></li>
+<li><p>Compute bulk and dry densities, then compare to lab reference</p></li>
+</ol>
+</section>
+<section id="equations">
+<h3>Equations:<a class="headerlink" href="#equations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Hole Volume</strong>:<br />
+( V = \frac{M_{sand}}{\rho_{sand}} - V_{cone} )</p></li>
+<li><p><strong>Dry Density</strong>:<br />
+( \rho_{dry} = \frac{M_{soil}}{V \times (1 + w)} )</p></li>
+</ul>
+</section>
+<section id="acceptance">
+<h3>Acceptance:<a class="headerlink" href="#acceptance" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>≥ 95% of lab dry density</strong> → Structural zones</p></li>
+<li><p><strong>90–95%</strong> → General backfill</p></li>
+<li><p><strong>&lt; 90%</strong> → May require moisture correction or re-compaction</p></li>
+</ul>
+<hr class="docutils" />
+<p>Would you like a comparison table between Proctor and Sand Cone methods for teaching purposes or a plotting module for moisture vs. density visualization?</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="interactive-proctor-soil-compaction-tool-summary">
+<h3>🧱 Interactive Proctor Soil Compaction Tool Summary<a class="headerlink" href="#interactive-proctor-soil-compaction-tool-summary" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-it-is">
+<h3>📘 What It Is<a class="headerlink" href="#what-it-is" title="Link to this heading">#</a></h3>
+<p>A Jupyter-based widget tool for entering and evaluating lab test data from a <strong>Proctor compaction test</strong>. It calculates dry densities for each trial, identifies the <strong>maximum dry density</strong> and <strong>optimum moisture content</strong>, and provides automated compaction recommendations.</p>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+</section>
+<section id="inputs">
+<h3>🔧 Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Number of Trials</strong>: Adjustable with a slider (1–10)</p></li>
+<li><p><strong>Mold Mass &amp; Volume</strong>: Constants used across all trials</p></li>
+<li><p><strong>Trial Inputs</strong>: Moisture content (%) and wet mass (kg) entered per trial</p></li>
+</ul>
+</section>
+<section id="computation-logic">
+<h3>🔢 Computation Logic<a class="headerlink" href="#computation-logic" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Calculates:</p>
+<ul>
+<li><p>Bulk Density:<br />
+<span class="math notranslate nohighlight">\(( \rho_{bulk} = \frac{M_{wet} - M_{mold}}{V_{mold}} \)</span>)</p></li>
+<li><p>Dry Density:<br />
+<span class="math notranslate nohighlight">\(( \rho_{dry} = \frac{\rho_{bulk}}{1 + w} \)</span>), where <span class="math notranslate nohighlight">\(( w \)</span>) is moisture fraction</p></li>
+</ul>
+</li>
+<li><p>Finds trial with <strong>maximum dry density</strong></p></li>
+<li><p>Assesses if results meet compaction specs</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="proctor-soil-compaction-methods-u-s-standards-procedures">
+<h3>🧱 Proctor Soil Compaction Methods – U.S. Standards &amp; Procedures<a class="headerlink" href="#proctor-soil-compaction-methods-u-s-standards-procedures" title="Link to this heading">#</a></h3>
+</section>
+<section id="u-s-standards-overview">
+<h3>📑 U.S. Standards Overview<a class="headerlink" href="#u-s-standards-overview" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>ASTM Standard</p></th>
+<th class="head"><p>Common Name</p></th>
+<th class="head"><p>Energy Applied</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Standard Proctor</strong></p></td>
+<td><p>ASTM D698</p></td>
+<td><p>“Classical Method”</p></td>
+<td><p>12,300 ft-lbf/ft³</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Modified Proctor</strong></p></td>
+<td><p>ASTM D1557</p></td>
+<td><p>“Modified Energy Method”</p></td>
+<td><p>56,000 ft-lbf/ft³</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="procedure-comparison-table">
+<h3>⚙️ Procedure Comparison Table<a class="headerlink" href="#procedure-comparison-table" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Standard Proctor (D698)</p></th>
+<th class="head"><p>Modified Proctor (D1557)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Mold Size</strong></p></td>
+<td><p>1/30 ft³ (4-inch diameter)</p></td>
+<td><p>Same or 1/13.33 ft³ (6-inch diameter)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Compaction Layers</strong></p></td>
+<td><p>3 layers</p></td>
+<td><p>5 layers</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hammer Weight</strong></p></td>
+<td><p>5.5 lb</p></td>
+<td><p>10 lb</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Drop Height</strong></p></td>
+<td><p>12 inches</p></td>
+<td><p>18 inches</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of Blows/layer</strong></p></td>
+<td><p>25</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Moisture Variation</strong></p></td>
+<td><p>Multiple trials with varying moisture</p></td>
+<td><p>Multiple trials with varying moisture</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Measurements Taken</strong></p></td>
+<td><p>Wet mass, mold volume, moisture content</p></td>
+<td><p>Same</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Calculated Outputs</strong></p></td>
+<td><p>Bulk density, dry density, compaction curve, optimum moisture</p></td>
+<td><p>Same</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Application</strong></p></td>
+<td><p>Residential, embankments, non-critical fills</p></td>
+<td><p>Airports, highways, structural fills</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="interpretation-notes">
+<h3>📐 Interpretation Notes<a class="headerlink" href="#interpretation-notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Bulk Density</strong>:<br />
+<span class="math notranslate nohighlight">\(( \rho_{bulk} = \frac{M_{wet} - M_{mold}}{V_{mold}} \)</span>)</p></li>
+<li><p><strong>Dry Density</strong>:<br />
+<span class="math notranslate nohighlight">\(( \rho_{dry} = \frac{\rho_{bulk}}{1 + w} \)</span>), where <span class="math notranslate nohighlight">\(( w \)</span>) is moisture fraction</p></li>
+<li><p><strong>Curve Analysis</strong>:<br />
+Peak of dry density vs. moisture content curve defines:</p>
+<ul>
+<li><p><strong>Maximum Dry Density (MDD)</strong></p></li>
+<li><p><strong>Optimum Moisture Content (OMC)</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="output-interpretation">
+<h3>📊 Output &amp; Interpretation<a class="headerlink" href="#output-interpretation" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Metric</p></th>
+<th class="head"><p>What It Means</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Dry Density Table</strong></p></td>
+<td><p>Summary per trial showing moisture, mass, bulk and dry densities</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum Dry Density</strong></p></td>
+<td><p>Indicates the peak compaction achieved in lab</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Optimum Moisture Content</strong></p></td>
+<td><p>Moisture level where compaction peaked</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Density Recommendation</strong></p></td>
+<td><p>Evaluates suitability for field applications</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Moisture Recommendation</strong></p></td>
+<td><p>Flags moisture content alignment with cohesive soil norms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p>✅ Use this tool to validate field compaction targets, interpret lab data trends, and train learners on soil behavior under controlled moisture conditions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="c1"># 📋 Setup input widgets</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of Trials:&#39;</span><span class="p">)</span>
+<span class="n">mass_mold_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">2.10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Mold Mass (kg):&#39;</span><span class="p">)</span>
+<span class="n">volume_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">0.00100</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Mold Volume (m³):&#39;</span><span class="p">)</span>
+
+<span class="c1"># Function to generate inputs for each trial</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_trial_inputs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">trial_widgets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">moisture</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">12</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Moisture % (Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="n">mass_wet</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">4.2</span> <span class="o">+</span> <span class="n">i</span><span class="o">*</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Wet Mass (kg, Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+        <span class="n">trial_widgets</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">moisture</span><span class="p">,</span> <span class="n">mass_wet</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">trial_widgets</span>
+
+<span class="n">trial_data</span> <span class="o">=</span> <span class="n">generate_trial_inputs</span><span class="p">(</span><span class="n">num_trials</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_trials</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">trial_data</span>
+    <span class="n">trial_data</span> <span class="o">=</span> <span class="n">generate_trial_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">])</span>
+    <span class="n">input_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">mass_mold_input</span><span class="p">,</span> <span class="n">volume_input</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">trial_data</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">pair</span><span class="p">]</span>
+
+<span class="n">num_trials</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_trials</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">input_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">mass_mold_input</span><span class="p">,</span> <span class="n">volume_input</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">trial_data</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">pair</span><span class="p">])</span>
+
+<span class="n">run_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Generate Report&#39;</span><span class="p">)</span>
+
+<span class="c1"># 📊 Evaluation logic</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_compaction</span><span class="p">(</span><span class="n">max_dry_density</span><span class="p">,</span> <span class="n">optimum_moisture</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">max_dry_density</span> <span class="o">&gt;=</span> <span class="mi">1800</span><span class="p">:</span>
+        <span class="n">density_status</span> <span class="o">=</span> <span class="s2">&quot;✅ Suitable for highway subgrade or structural fill.&quot;</span>
+    <span class="k">elif</span> <span class="n">max_dry_density</span> <span class="o">&gt;=</span> <span class="mi">1600</span><span class="p">:</span>
+        <span class="n">density_status</span> <span class="o">=</span> <span class="s2">&quot;⚠️ Acceptable for general backfill, but not load-bearing zones.&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">density_status</span> <span class="o">=</span> <span class="s2">&quot;❌ Unsuitable for critical applications—consider reprocessing or additives.&quot;</span>
+
+    <span class="k">if</span> <span class="mi">10</span> <span class="o">&lt;=</span> <span class="n">optimum_moisture</span> <span class="o">&lt;=</span> <span class="mi">18</span><span class="p">:</span>
+        <span class="n">moisture_status</span> <span class="o">=</span> <span class="s2">&quot;✅ Moisture content falls within typical optimum range for cohesive soils.&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">moisture_status</span> <span class="o">=</span> <span class="s2">&quot;⚠️ Moisture content may be too low/high—field adjustment recommended.&quot;</span>
+
+    <span class="k">return</span> <span class="n">density_status</span><span class="p">,</span> <span class="n">moisture_status</span>
+
+<span class="c1"># 🧱 Calculation and Markdown display</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">entries</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">mold_mass</span> <span class="o">=</span> <span class="n">mass_mold_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">volume_input</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">trial_data</span><span class="p">:</span>
+        <span class="n">moisture</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mi">100</span>
+        <span class="n">wet_mass</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">bulk_density</span> <span class="o">=</span> <span class="p">(</span><span class="n">wet_mass</span> <span class="o">-</span> <span class="n">mold_mass</span><span class="p">)</span> <span class="o">/</span> <span class="n">V</span>
+        <span class="n">dry_density</span> <span class="o">=</span> <span class="n">bulk_density</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">moisture</span><span class="p">)</span>
+        <span class="n">entries</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;moisture&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;mass_wet&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">wet_mass</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;bulk_density&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">bulk_density</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;dry_density&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">dry_density</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="p">})</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">entries</span><span class="p">)</span>
+    <span class="n">idx_max</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dry_density&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+    <span class="n">max_dry_density</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_max</span><span class="p">,</span> <span class="s1">&#39;dry_density&#39;</span><span class="p">]</span>
+    <span class="n">optimum_moisture</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_max</span><span class="p">,</span> <span class="s1">&#39;moisture&#39;</span><span class="p">]</span>
+    <span class="n">density_status</span><span class="p">,</span> <span class="n">moisture_status</span> <span class="o">=</span> <span class="n">evaluate_compaction</span><span class="p">(</span><span class="n">max_dry_density</span><span class="p">,</span> <span class="n">optimum_moisture</span><span class="p">)</span>
+
+    <span class="c1"># 📄 Report generation</span>
+    <span class="n">report</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🧱 Proctor Soil Compaction Report</span>
+
+<span class="s2">| Trial | Moisture Content (%) | Wet Mass (kg) | Bulk Density (kg/m³) | Dry Density (kg/m³) |</span>
+<span class="s2">|-------|----------------------|----------------|------------------------|----------------------|</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;moisture&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;mass_wet&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;bulk_density&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;dry_density&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> |</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="n">report</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">#### 🔍 Key Results</span>
+<span class="s2">- **Maximum Dry Density**: </span><span class="si">{</span><span class="n">max_dry_density</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kg/m³  </span>
+<span class="s2">- **Optimum Moisture Content**: </span><span class="si">{</span><span class="n">optimum_moisture</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %</span>
+
+<span class="s2">---</span>
+
+<span class="s2">### 🧭 Interpretation &amp; Recommendations</span>
+<span class="s2">- **Density Assessment**: </span><span class="si">{</span><span class="n">density_status</span><span class="si">}</span><span class="s2">  </span>
+<span class="s2">- **Moisture Assessment**: </span><span class="si">{</span><span class="n">moisture_status</span><span class="si">}</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">report</span><span class="p">))</span>
+
+<span class="n">run_button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">num_trials</span><span class="p">,</span> <span class="n">input_box</span><span class="p">,</span> <span class="n">run_button</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7b7dc10a65744fdb9907533bdf5e0746", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>3. Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="sand-cone-test-report-field-soil-density-determination-astm-d1556">
+<h3>🏜️ Sand Cone Test Report – Field Soil Density Determination (ASTM D1556)<a class="headerlink" href="#sand-cone-test-report-field-soil-density-determination-astm-d1556" title="Link to this heading">#</a></h3>
+</section>
+<section id="test-summary">
+<h3>📋 Test Summary<a class="headerlink" href="#test-summary" title="Link to this heading">#</a></h3>
+<p>The sand cone method is used to determine the <strong>in-place density</strong> of compacted soil in the field. It compares the mass of soil excavated to the volume filled by calibrated sand from the cone apparatus.</p>
+</section>
+<hr class="docutils" />
+<section id="input-parameters">
+<h3>🧪 Input Parameters<a class="headerlink" href="#input-parameters" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>Unit</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Mass of Cone + Sand (Before)</p></td>
+<td><p>( M_1 )</p></td>
+<td><p>kg</p></td>
+<td><p>Apparatus + sand before test</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass of Cone + Sand (After)</p></td>
+<td><p>( M_2 )</p></td>
+<td><p>kg</p></td>
+<td><p>Apparatus + sand after filling hole</p></td>
+</tr>
+<tr class="row-even"><td><p>Calibration Density of Sand</p></td>
+<td><p>( \rho_{sand} )</p></td>
+<td><p>kg/m³</p></td>
+<td><p>Known bulk density of calibration sand</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mass of Excavated Soil</p></td>
+<td><p>( M_{soil} )</p></td>
+<td><p>kg</p></td>
+<td><p>Mass of soil removed from test hole</p></td>
+</tr>
+<tr class="row-even"><td><p>Moisture Content</p></td>
+<td><p>( w )</p></td>
+<td><p>%</p></td>
+<td><p>Lab-tested moisture content of excavated soil</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="computation">
+<h3>⚙️ Computation<a class="headerlink" href="#computation" title="Link to this heading">#</a></h3>
+</section>
+<section id="volume-of-test-hole">
+<h3>1. Volume of Test Hole<a class="headerlink" href="#volume-of-test-hole" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(( V = \frac{M_1 - M_2}{\rho_{sand}} \)</span>)<br />
+<em>Mass of sand poured divided by calibration density</em></p>
+</section>
+<section id="bulk-density">
+<h3>2. Bulk Density<a class="headerlink" href="#bulk-density" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(( \rho_{bulk} = \frac{M_{soil}}{V} \)</span>)</p>
+</section>
+<section id="dry-density">
+<h3>3. Dry Density<a class="headerlink" href="#dry-density" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(( \rho_{dry} = \frac{\rho_{bulk}}{1 + \frac{w}{100}} \)</span>)</p>
+</section>
+<hr class="docutils" />
+<section id="corrections-in-sand-cone-test">
+<h3>🛠️ Corrections in Sand Cone Test<a class="headerlink" href="#corrections-in-sand-cone-test" title="Link to this heading">#</a></h3>
+</section>
+<section id="apparatus-calibration">
+<h3>📏 1. Apparatus Calibration<a class="headerlink" href="#apparatus-calibration" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Correction Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Sand Density Calibration</strong></p></td>
+<td><p>Ensure sand used has known unit weight (dry) via standard mold</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cone Volume Adjustment</strong></p></td>
+<td><p>Account for volume in the cone tip that doesn’t enter the hole</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="moisture-content-correction">
+<h3>🧪 2. Moisture Content Correction<a class="headerlink" href="#moisture-content-correction" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Correction Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Dry Density Adjustment</strong></p></td>
+<td><p>Bulk density converted to dry density using lab moisture content</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Evaporative Losses</strong></p></td>
+<td><p>Prevent moisture evaporation between excavation and lab weighing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="excavation-volume-correction">
+<h3>⚙️ 3. Excavation Volume Correction<a class="headerlink" href="#excavation-volume-correction" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Correction Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Over-excavation</strong></p></td>
+<td><p>Correct if the hole is excessively large or irregular in shape</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Collapsing Walls</strong></p></td>
+<td><p>Account for soil collapsing which artificially increases volume</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="environmental-factors">
+<h3>🌡️ 4. Environmental Factors<a class="headerlink" href="#environmental-factors" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Correction Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Temperature Effects</strong></p></td>
+<td><p>Sand density varies with thermal expansion in extreme conditions</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wind/Handling Losses</strong></p></td>
+<td><p>Fine sand or soil particles lost during transfer</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="field-vs-lab-density-comparison">
+<h3>📊 5. Field vs. Lab Density Comparison<a class="headerlink" href="#field-vs-lab-density-comparison" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Correction Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Compaction Ratio</strong></p></td>
+<td><p>Compute field dry density as % of lab Proctor max dry density</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Specification Thresholds</strong></p></td>
+<td><p>Adjust acceptance based on project-specific compaction targets</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="sample-output-table">
+<h3>📄 Sample Output Table<a class="headerlink" href="#sample-output-table" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Trial</p></th>
+<th class="head"><p>Sand Before (kg)</p></th>
+<th class="head"><p>Sand After (kg)</p></th>
+<th class="head"><p>Excavated Soil (kg)</p></th>
+<th class="head"><p>Moisture (%)</p></th>
+<th class="head"><p>Bulk Density (kg/m³)</p></th>
+<th class="head"><p>Dry Density (kg/m³)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>12.50</p></td>
+<td><p>10.10</p></td>
+<td><p>3.85</p></td>
+<td><p>11.5</p></td>
+<td><p>1604.17</p></td>
+<td><p>1438.83</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>12.40</p></td>
+<td><p>10.05</p></td>
+<td><p>3.90</p></td>
+<td><p>12.0</p></td>
+<td><p>1630.43</p></td>
+<td><p>1456.63</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="interpretation">
+<h3>🧭 Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Compare dry density</strong> to lab Proctor maximum to assess compaction adequacy</p></li>
+<li><p>Typical field compaction requirements:</p>
+<ul>
+<li><p>Structural fill: ≥ 95% of Modified Proctor</p></li>
+<li><p>Subgrade/backfill: ≥ 90% of Standard Proctor</p></li>
+</ul>
+</li>
+<li><p>If dry density is low, moisture adjustment or re-compaction may be needed</p></li>
+</ul>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Markdown</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="c1"># 💡 Style for wide labels and input alignment</span>
+<span class="n">label_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;250px&#39;</span><span class="p">}</span>
+<span class="n">input_layout</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;450px&#39;</span><span class="p">)</span>
+
+<span class="c1"># 🔧 Reference Inputs with styling</span>
+<span class="n">rho_sand_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">1550.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Sand Density (kg/m³):&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+
+<span class="n">cone_tip_volume_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Cone Tip Volume Correction (m³):&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+
+<span class="n">lab_dry_density_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mf">1800.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Lab Max Dry Density (kg/m³):&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+
+<span class="n">num_trials</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;No. of Trials:&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+
+<span class="c1"># 📋 Trial Input Generator with styled widgets</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_trial_inputs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">trials</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">M1</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span>
+            <span class="n">value</span><span class="o">=</span><span class="mf">12.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – M₁: Mass Before (kg)&#39;</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+        <span class="n">M2</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span>
+            <span class="n">value</span><span class="o">=</span><span class="mf">10.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – M₂: Mass After (kg)&#39;</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+        <span class="n">M_soil</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span>
+            <span class="n">value</span><span class="o">=</span><span class="mf">3.85</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Excavated Soil (kg)&#39;</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+        <span class="n">moisture</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatText</span><span class="p">(</span>
+            <span class="n">value</span><span class="o">=</span><span class="mf">11.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Trial </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> – Moisture (%)&#39;</span><span class="p">,</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">label_style</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">input_layout</span><span class="p">)</span>
+        <span class="n">trials</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">M1</span><span class="p">,</span> <span class="n">M2</span><span class="p">,</span> <span class="n">M_soil</span><span class="p">,</span> <span class="n">moisture</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">trials</span>
+
+<span class="n">trial_inputs</span> <span class="o">=</span> <span class="n">create_trial_inputs</span><span class="p">(</span><span class="n">num_trials</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_trials</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">trial_inputs</span>
+    <span class="n">trial_inputs</span> <span class="o">=</span> <span class="n">create_trial_inputs</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">])</span>
+    <span class="n">trial_box</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">rho_sand_input</span><span class="p">,</span> <span class="n">cone_tip_volume_input</span><span class="p">,</span> <span class="n">lab_dry_density_input</span><span class="p">]</span> <span class="o">+</span> \
+                         <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">trial_inputs</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">]</span>
+
+<span class="n">num_trials</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update_trials</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+
+<span class="n">trial_box</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">rho_sand_input</span><span class="p">,</span> <span class="n">cone_tip_volume_input</span><span class="p">,</span> <span class="n">lab_dry_density_input</span><span class="p">]</span> <span class="o">+</span> \
+                         <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">trial_inputs</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">group</span><span class="p">])</span>
+
+<span class="n">run_btn</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;Compute &amp; Generate Report&#39;</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;250px&#39;</span><span class="p">))</span>
+
+<span class="c1"># 🧮 Calculation and Markdown Output</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_run_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">rho_sand</span> <span class="o">=</span> <span class="n">rho_sand_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">cone_tip_volume</span> <span class="o">=</span> <span class="n">cone_tip_volume_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">lab_dry_density</span> <span class="o">=</span> <span class="n">lab_dry_density_input</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trial_inputs</span><span class="p">):</span>
+        <span class="n">M1</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">M2</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">M_soil</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">moisture</span> <span class="o">=</span> <span class="n">group</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="n">volume</span> <span class="o">=</span> <span class="p">((</span><span class="n">M1</span> <span class="o">-</span> <span class="n">M2</span><span class="p">)</span> <span class="o">/</span> <span class="n">rho_sand</span><span class="p">)</span> <span class="o">-</span> <span class="n">cone_tip_volume</span>
+        <span class="n">bulk_density</span> <span class="o">=</span> <span class="n">M_soil</span> <span class="o">/</span> <span class="n">volume</span> <span class="k">if</span> <span class="n">volume</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">dry_density</span> <span class="o">=</span> <span class="n">bulk_density</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">moisture</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">bulk_density</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">compaction</span> <span class="o">=</span> <span class="p">(</span><span class="n">dry_density</span> <span class="o">/</span> <span class="n">lab_dry_density</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">lab_dry_density</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="n">remark</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;✅ Pass: Suitable for structural fill&quot;</span> <span class="k">if</span> <span class="n">compaction</span> <span class="o">&gt;=</span> <span class="mi">95</span> <span class="k">else</span>
+            <span class="s2">&quot;⚠️ Acceptable for subgrade/backfill&quot;</span> <span class="k">if</span> <span class="n">compaction</span> <span class="o">&gt;=</span> <span class="mi">90</span> <span class="k">else</span>
+            <span class="s2">&quot;❌ Fail: Rework or adjust moisture&quot;</span>
+        <span class="p">)</span>
+
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;Trial&#39;</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;Volume (m³)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+            <span class="s1">&#39;Bulk Density (kg/m³)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">bulk_density</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;Dry Density (kg/m³)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">dry_density</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="s1">&#39;Compaction (%)&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">compaction</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="s1">&#39;Remark&#39;</span><span class="p">:</span> <span class="n">remark</span>
+        <span class="p">})</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+    <span class="c1"># 📝 Markdown Report</span>
+    <span class="n">report_md</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">### 🏜️ Sand Cone Test – Field Density Report with Corrections</span>
+
+<span class="s2">| Trial | Volume (m³) | Bulk Density (kg/m³) | Dry Density (kg/m³) | Compaction (%) | Remark |</span>
+<span class="s2">|-------|-------------|-----------------------|----------------------|----------------|--------|</span>
+<span class="s2">&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+        <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;| </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Volume (m³)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Bulk Density (kg/m³)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Dry Density (kg/m³)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Compaction (%)&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;Remark&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> |</span><span class="se">\n</span><span class="s2">&quot;</span>
+
+    <span class="n">report_md</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">#### 📌 Reference Settings</span>
+<span class="s2">- **Sand Calibration Density**: </span><span class="si">{</span><span class="n">rho_sand</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³  </span>
+<span class="s2">- **Cone Tip Volume Correction**: </span><span class="si">{</span><span class="n">cone_tip_volume</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> m³  </span>
+<span class="s2">- **Lab Max Dry Density**: </span><span class="si">{</span><span class="n">lab_dry_density</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kg/m³</span>
+
+<span class="s2">---</span>
+
+<span class="s2">### 🧭 Interpretation Guide</span>
+<span class="s2">- **≥ 95%** → ✅ Structural zone approved  </span>
+<span class="s2">- **90–95%** → ⚠️ Acceptable for general fill  </span>
+<span class="s2">- **&lt; 90%** → ❌ May require moisture adjustment or re-compaction</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">report_md</span><span class="p">))</span>
+
+<span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run_click</span><span class="p">)</span>
+
+<span class="c1"># 📦 Display Interface</span>
+<span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">num_trials</span><span class="p">,</span> <span class="n">trial_box</span><span class="p">,</span> <span class="n">run_btn</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "329c6553b7624fc4b0afacf8dc136b66", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+</section>
+<section id="self-assessment">
+<h2>4. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+<section id="proctor-soil-compaction-conceptual-reflective-quiz-questions">
+<h3>🧠 Proctor Soil Compaction – Conceptual, Reflective &amp; Quiz Questions<a class="headerlink" href="#proctor-soil-compaction-conceptual-reflective-quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="conceptual-questions">
+<h3>🔍 Conceptual Questions<a class="headerlink" href="#conceptual-questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What is the role of dry density and moisture content in determining optimal soil compaction?</p></li>
+<li><p>Why is the mold volume critical to computing bulk and dry densities accurately?</p></li>
+<li><p>How does moisture content influence the ability of soil particles to rearrange and compact?</p></li>
+<li><p>What distinguishes bulk density from dry density and why must moisture be corrected?</p></li>
+<li><p>How do you identify optimum moisture content from a set of Proctor test trials?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="reflective-questions">
+<h3>💭 Reflective Questions<a class="headerlink" href="#reflective-questions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>While entering trial data, which values had the greatest impact on dry density trends?</p></li>
+<li><p>What might cause a trial to show lower dry density even with increasing moisture—what field behavior could that reflect?</p></li>
+<li><p>Have you ever seen soil over-compacted in the field—how would dry density results confirm or challenge that impression?</p></li>
+<li><p>If your optimum moisture is outside the 10–18% range, what construction concerns might you raise?</p></li>
+<li><p>How confident are you in explaining the logic behind selecting 1800 kg/m³ as a pass/fail threshold for field density?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="dry-density-calculations">
+<h3>Dry Density Calculations<a class="headerlink" href="#dry-density-calculations" title="Link to this heading">#</a></h3>
+<p><strong>Q1. Which formula correctly computes dry density from bulk density and moisture content?</strong></p>
+<ul class="simple">
+<li><p>A. <span class="math notranslate nohighlight">\(( \rho_{dry} = \rho_{bulk} / (1 + w) \)</span>) ✅</p></li>
+<li><p>B. <span class="math notranslate nohighlight">\(( \rho_{dry} = \rho_{bulk} \times w \)</span>)</p></li>
+<li><p>C. <span class="math notranslate nohighlight">\(( \rho_{dry} = \rho_{bulk} - w \)</span>)</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(( \rho_{dry} = \rho_{bulk} \times (1 + w) \)</span>)</p></li>
+</ul>
+<p><strong>Q2. If mold mass = 2.10 kg, wet mass = 4.40 kg, and volume = 0.001 m³, what is the bulk density?</strong></p>
+<ul class="simple">
+<li><p>A. 2300 kg/m³</p></li>
+<li><p>B. 2200 kg/m³</p></li>
+<li><p>C. 2300 g/cm³</p></li>
+<li><p>D. <span class="math notranslate nohighlight">\(( \frac{4.40 - 2.10}{0.001} = \)</span>) <strong>2300 kg/m³</strong> ✅</p></li>
+</ul>
+<p><strong>Q3. Optimum moisture content corresponds to:</strong></p>
+<ul class="simple">
+<li><p>A. Minimum dry density</p></li>
+<li><p>B. Wettest soil possible</p></li>
+<li><p>C. Peak of dry density vs. moisture curve ✅</p></li>
+<li><p>D. Saturated soil condition</p></li>
+</ul>
+</section>
+<section id="interpretation-specifications">
+<h3>Interpretation &amp; Specifications<a class="headerlink" href="#interpretation-specifications" title="Link to this heading">#</a></h3>
+<p><strong>Q4. Maximum dry density of 1620 kg/m³ falls into which recommendation category?</strong></p>
+<ul class="simple">
+<li><p>A. ✅ Suitable for structural fill</p></li>
+<li><p>B. ⚠️ Acceptable for general backfill ✅</p></li>
+<li><p>C. ❌ Unsuitable</p></li>
+<li><p>D. Requires no action</p></li>
+</ul>
+<p><strong>Q5. Why might a moisture value of 21.5% be flagged in the report?</strong></p>
+<ul class="simple">
+<li><p>A. It’s dry and safe</p></li>
+<li><p>B. It exceeds typical cohesive soil range ✅</p></li>
+<li><p>C. It’s not used in compaction</p></li>
+<li><p>D. Moisture always increases density</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>🔍 Conceptual Questions<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>What does the sand cone test measure in the context of field compaction?</p></li>
+<li><p>Why must the volume of the cone tip be subtracted from the sand volume?</p></li>
+<li><p>How does moisture content influence dry density computation?</p></li>
+<li><p>Why is sand calibration density critical to accurate volume determination?</p></li>
+<li><p>What is the significance of comparing field dry density to lab maximum dry density?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h3>💭 Reflective Questions<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>How might field conditions (e.g., soil texture, weather) affect your measurements during a sand cone test?</p></li>
+<li><p>What are the consequences of neglecting cone volume correction in compaction analysis?</p></li>
+<li><p>If a field test shows 87% compaction, what design risks or construction decisions might follow?</p></li>
+<li><p>How confident are you in explaining each correction factor (volume, moisture, standard comparison) to a site technician?</p></li>
+<li><p>When entering multiple trials, what trends in moisture vs. dry density might suggest over-compaction or poor water control?</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-questions">
+<h3>🧪 Quiz Questions<a class="headerlink" href="#quiz-questions" title="Link to this heading">#</a></h3>
+</section>
+<section id="calculation-accuracy">
+<h3>Calculation &amp; Accuracy<a class="headerlink" href="#calculation-accuracy" title="Link to this heading">#</a></h3>
+<p><strong>Q1. What is the correct formula to compute dry density from bulk density and moisture content?</strong><br />
+A. <span class="math notranslate nohighlight">\(( \rho_{\text{dry}} = \rho_{\text{bulk}} \times (1 + w) \)</span>)<br />
+B. <span class="math notranslate nohighlight">\(( \rho_{\text{dry}} = \rho_{\text{bulk}} / (1 + w/100) \)</span>) ✅<br />
+C. <span class="math notranslate nohighlight">\(( \rho_{\text{dry}} = \rho_{\text{bulk}} - w \)</span>)<br />
+D. <span class="math notranslate nohighlight">\(( \rho_{\text{dry}} = \rho_{\text{bulk}} \times w \)</span>)</p>
+<p><strong>Q2. In a trial with M₁ = 12.50 kg and M₂ = 10.10 kg, what is the sand mass used?</strong><br />
+A. 2.10 kg<br />
+B. 2.40 kg ✅<br />
+C. 0.00001 m³<br />
+D. Depends on moisture content</p>
+<p><strong>Q3. Which correction is essential to prevent overestimation of hole volume?</strong><br />
+A. Sand grain size<br />
+B. Cone tip volume ✅<br />
+C. Soil texture<br />
+D. Temperature adjustment</p>
+</section>
+<section id="interpretation-design-implications">
+<h3>Interpretation &amp; Design Implications<a class="headerlink" href="#interpretation-design-implications" title="Link to this heading">#</a></h3>
+<p><strong>Q4. A field dry density of 1710 kg/m³ compared to lab max of 1800 kg/m³ yields:</strong><br />
+A. 95.0% compaction ✅<br />
+B. 90.0% compaction<br />
+C. 85.0% compaction<br />
+D. Cannot determine</p>
+<p><strong>Q5. Field compaction falling below 90% typically requires:</strong><br />
+A. No action<br />
+B. Sand replacement<br />
+C. Moisture adjustment or re-compaction ✅<br />
+D. Mold volume calibration</p>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LiquidPlasticLimit.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 6 Geotech Engineering Laboratory: Liquid and Plastic Limit</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="PermeabiltyTest.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 6 Geotech Engineering Laboratory: Soil Permeability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#soil-density-in-geotechnical-engineering">🧱 Soil Density in Geotechnical Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">📘 Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-soil-density">Types of Soil Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-in-geotechnical-engineering">🎯 Importance in Geotechnical Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lab-measurement-proctor-compaction-test">🧪 Lab Measurement – Proctor Compaction Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-principle">Test Principle:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-equations">Key Equations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-measurement-sand-cone-test">🏜️ Field Measurement – Sand Cone Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-astm-d1556">Standard: ASTM D1556</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedure">Procedure:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equations">Equations:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acceptance">Acceptance:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proctor-soil-compaction-tool-summary">🧱 Interactive Proctor Soil Compaction Tool Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">📘 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🔧 Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation-logic">🔢 Computation Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proctor-soil-compaction-methods-u-s-standards-procedures">🧱 Proctor Soil Compaction Methods – U.S. Standards &amp; Procedures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-standards-overview">📑 U.S. Standards Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedure-comparison-table">⚙️ Procedure Comparison Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-notes">📐 Interpretation Notes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-interpretation">📊 Output &amp; Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sand-cone-test-report-field-soil-density-determination-astm-d1556">🏜️ Sand Cone Test Report – Field Soil Density Determination (ASTM D1556)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-summary">📋 Test Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-parameters">🧪 Input Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computation">⚙️ Computation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-of-test-hole">1. Volume of Test Hole</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-density">2. Bulk Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-density">3. Dry Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#corrections-in-sand-cone-test">🛠️ Corrections in Sand Cone Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apparatus-calibration">📏 1. Apparatus Calibration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moisture-content-correction">🧪 2. Moisture Content Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excavation-volume-correction">⚙️ 3. Excavation Volume Correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-factors">🌡️ 4. Environmental Factors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field-vs-lab-density-comparison">📊 5. Field vs. Lab Density Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-output-table">📄 Sample Output Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">🧭 Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">4. Self-Assessment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proctor-soil-compaction-conceptual-reflective-quiz-questions">🧠 Proctor Soil Compaction – Conceptual, Reflective &amp; Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-questions">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reflective-questions">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-density-calculations">Dry Density Calculations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-specifications">Interpretation &amp; Specifications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">🔍 Conceptual Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">💭 Reflective Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-questions">🧪 Quiz Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-accuracy">Calculation &amp; Accuracy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-design-implications">Interpretation &amp; Design Implications</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

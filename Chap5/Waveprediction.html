@@ -1,0 +1,2240 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 5 Coastal Engineering: Wave Prediction &#8212; Jupyter Sandbox for Civil Engineering</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-XXXXXXX-X');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chap5/Waveprediction';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapter 5 Coastal Engineering: Tidal Analysis" href="TidalModelWave.html" />
+    <link rel="prev" title="Chapter 5 Coastal Engineering: Seiche and Harbour oscillation" href="Scieche_harbourOscillation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/JupyterbookLogo.png" class="logo__image only-light" alt="Jupyter Sandbox for Civil Engineering - Home"/>
+    <script>document.write(`<img src="../_static/JupyterbookLogo.png" class="logo__image only-dark" alt="Jupyter Sandbox for Civil Engineering - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Jupyter Sandbox for Civil Engineering: Toward a Sustainable World
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/BOD_Modeling.html">1.0 Biochemical Oxygen Demand (BOD) Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/StreeterPhelpsModel.html">1.1 Stream Water Quality – Streeter-Phelps Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/Reactor.html">1.2 Chemical Reactor Performance and Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/LakeModel.html">1.3 Lake Water Quality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/RunoffSedimentNutrient.html">1.4 Stream Water Quality – Sediment and Nutrient</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/IndoorAirQuality.html">1.5 Air Quality – Indoor Air Quality based on CSTR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap1/GaussianPlumeDispersionModel.html">1.6 Air Quality – Gaussian Plume Dispersion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Rainfall_Runoff_PMP_Distribution.html">2.0 SpatioTemporal Disaggregation of Rainfall/Runoff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/RainfallFrequencyRunoffEst_NOAASCS_CN_RationalToolkit.html">2.1 Rainfall Frequency &amp; Runoff Estimation (NOAA, SCS-CN, Rational)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/DroughtIndices.html">2.2 Drought Indices and Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/SoilInfiltration.html">2.3 Soil Hydrology – Infiltration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/ExtremeValueDistribution_ModelSelection.html">2.4 Extreme Value Distribution and Model Selection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/HabitatSuitabilityIndex.html">2.5 Eco-Hydraulics - Habitat Suitabiltiy Index</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/Confined_UnconfinedAquifer.html">2.6 Groundwater Hydrology - Aquifer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap2/geomorphology.html">2.7 Sediment erosion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PipeHeadLoss.html">3.0 Pipe Hydraulics – Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Hydraulics_NormalCritical.html">3.1 Open Channel Hydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GVF.html">3.2 Gradually Varied Flow – Standard and DirectStep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/HydraulicRouting.html">3.3 RiverHydraulics – Normal &amp; Critical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/seepage.html">3.4 Structure – Seepage Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/BroadcrestedWeir.html">3.5 Flow Over Broad-Crested Weirs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/Weir_Notches.html">3.6 Weir Notches and Discharge Relationships</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/EnergyDissipator.html">3.7 Structure – Energy Dissipator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/CulvertDesign.html">3.8 Culvert Design Principles and Calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/PumpDesignSelection.html">Chapter 3 Hydraulics: Hydraulic Pumps</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/StormDrainInletDesign.html">3.10 Design of Stromwater Drain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ChannelDesign.html">3.11 Channel Design- Rigid and Mobile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/GravityDamAnalysis.html">3.12 Structure - Gravity Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap3/ArchDam.html">3.13 Structure - Arch Dam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/USCS_Soil_Classification_Tool.html">4.0 USCS Soil Classification Toolkit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Interactive_PSD_Tool.html">4.1 Particle Size Distribution – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/LiquidPlasticLimit.html">4.2 Atterberts limts test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/Geotech_DensityTestReporting.html">4.3 Lab and Field Density test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PermeabiltyTest.html">4.4 Soil permeability test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/UUStrengthTest.html">4.5 Soil Strength Triaxial Test – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/SoilConsolidationTest.html">4.6 1D Consolidation – Lab Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/1DConsolidationAnalysis.html">4.7 1D Consolidation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/FoundationDesign.html">4.8 Foundation Design Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/PileCapacity.html">4.9 Deep Foundation Design- Piles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/RetainingWallDesign.html">4.10 Retaining wall Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap4/slope_stability_analysis.html">4.11 Slope Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveKInematics_AiryWave.html">5.0 Wave Kinematics – Airy Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NonLinearWaves.html">5.1 Wave Kinematics – Nonlinear Wave Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WaveBreaking.html">5.2 Coastal Waves – Breaking waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffraction_Shoaling_Refraction.html">5.3 Coastal Waves- Transformation I</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Reflection.html">5.4 Coastal Waves- Transformation II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Scieche_harbourOscillation.html">5.5 Coastal Waves - Oscillation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5.6 Coastal Wave- Wind wave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TidalModelWave.html">5.7 Wave Analysis – Tidal Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SedimentTransport.html">5.8 Sediment Transport – Longshore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BeachStability.html">5.9 Sediment Transport - Crossshore Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EquilibriumBeachProfile.html">5.10 Sediment Transport – Beach Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EmpiricalWaverunup.html">5.11 Empirical Wave Run-Up Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DepthofClosure_MultimodelEstimation.html">5.12 Depth of Closure – Multimodel Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sealevel.html">5.13 Sea Level Rise and Variability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BreakwaterDesign.html">5.14 Coastal Structures – Breakwater Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DetachedBreakwater.html">5.15 Coastal Structure - Detached Breakwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SainflouMethod.html">5.16 Coastal Structure – Non-Breakwaves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Manikin_Goda.html">5.17 Coastal Structure – Breaking Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MorrisonEquationPileForce.html">5.18 Pile Force Estimation – Morrison Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableWaterSoln.html">6.0 Engineering Sustainabilty - Watersupply</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LandscapeWaterSim.html">6.1 Engineering Sustainabilty- Landscapewater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/GreenInfrastructureSimulation.html">6.2 Engineering Sustainabilty- Stormwater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonCalculator.html">6.3 Engineering Sustainabilty- Carbon Emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/PETmodel.html">6.5 Potential Evapotranspiration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/HouseOrientation.html">6.6 Solar Energy and Building Orientation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/WindowTransmittanceAnalysis.html">6.8 Window Transmittance Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/ConcreteSustainability.html">6.9 Engineering Sustainabilty- Concrete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/SustainableFoundation.html">6.10 Engineering Sustainabilty- Foundation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/LifeCycleAssessment.html">6.11 Engineering Sustainabilty - LCA Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/BioGeoChemCycle.html">6.12 Environmental Sustainability - Biogeochemical Cycles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/CarbonateCycleClimate.html">6.13 Environmental Sustainability - Carbonate Cycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap6/RenewalEnergy.html">6.14 Environmental Sustainability- Renewal Energy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/DroneComponents.html">7.0 Remote Pilot and Drone- Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FlightControlPerformance.html">7.1 Remote Pilot and Drone- Flight performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/RemotePilotandGIS.html">7.2 Remote Pilot and Drone- GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Merged_RemoteSensing.html">7.3 Remote Pilot and Drone- Remote Sensing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/Photogrammetry_Output.html">7.4 Remote Pilot and Drone- Photogrammetry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap7/FAAKnowledgeTest.html">7.5 Remote Pilot and Drone- Part 107 Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/1NumberSystem.html">🔢 Number Systems Overview</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/2InformationSystem.html">💻 Basics of Computer Information Systems</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/3ComputerLanguage.html">🧠 Programming Language Comparison</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/5DataStructure.html">📚 Classic Data Structures: Definitions, Diagrams, and Trade-offs</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/6SortingSachit.html">🧮 Sorting Algorithms: Concepts, Comparisons, and Curiosities</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/7Searching.html">🔍 Search Algorithms in Computer Science</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/8LogicGate.html">🔌 Logic Gates Overview</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/9SQLCommand.html">SQL command</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/10DataBaseAdminstration.html">🧠 Database Administration Learning Module</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/11CyberSecurity.html">🛡️ Cybersecurity Fundamentals Learning Module</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/12Network.html">🌐 Computer Networks: Overview and Analysis</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/13Statistics.html">📊 Sampling and Descriptive Statistics</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/17ETLProcessing.html">🧠 ETL: Extract, Transform, Load – Foundation of Data-Driven Intelligence</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Chap8/18PowerBI.html">🧠 Data Modeling: Concepts and Types</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/satbastola/CivilEngineering_Tools/HEAD?urlpath=tree/Chap5/Waveprediction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/satbastola/CivilEngineering_Tools/blob/HEAD/Chap5/Waveprediction.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/edit/HEAD/Chap5/Waveprediction.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/satbastola/CivilEngineering_Tools/issues/new?title=Issue%20on%20page%20%2FChap5/Waveprediction.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chap5/Waveprediction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 5 Coastal Engineering: Wave Prediction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-driven-waves-characteristics-formation-and-modeling">🌬️ Wind-Driven Waves: Characteristics, Formation, and Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-wind-driven-waves">1. What Are Wind-Driven Waves?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">2. Key Characteristics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theories-of-energy-transfer">3. Theories of Energy Transfer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phillips-mechanism">3.1 Phillips Mechanism</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miles-mechanism">3.2 Miles Mechanism</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-wave-interactions">3.3 Wave-Wave Interactions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-drift-momentum-transfer">3.4 Stokes Drift &amp; Momentum Transfer</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factors-limiting-wave-growth">4. Factors Limiting Wave Growth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models-for-estimating-wind-waves">5. Models for Estimating Wind Waves</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-generation-models">5.1 First-Generation Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#second-generation-models">5.2 Second-Generation Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#third-generation-models">5.3 Third-Generation Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-models">5.4 Deep Learning Models</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-estimation-example">6. Empirical Estimation Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usace-wind-wave-prediction">7. USACE Wind Wave Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">7.1 Sources</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-prediction">7.2 Empirical Prediction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-modeling-wis">7.3 Numerical Modeling (WIS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-features">7.4 Modeling Features</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-metrics">7.5 Accuracy Metrics</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-table-usace-vs-other-models">8. Comparative Table: USACE vs Other Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">9. References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-driven-wave-height-estimator-empirical-comparison-tool">🌬️ Wind-Driven Wave Height Estimator — Empirical Comparison Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">💡 Purpose</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🎛️ Inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#models-implemented">Models Implemented</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛 Interactive Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-visualization">📊 Output Visualization</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret">🧭 How to Interpret</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-generated-wave-height-estimator-empirical-model-comparison-tool">🌬️ Wind-Generated Wave Height Estimator — Empirical model Comparison Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">🧠 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">🎛️ Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">🧭 How to Interpret</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4 Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usace-wave-prediction-tool-cem-dimensional-analysis">USACE Wave Prediction Tool (CEM Dimensional Analysis)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-framework">Theoretical Framework</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">5 Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-wave-spectrum-comparison-pm-vs-jonswap">Interactive Wave Spectrum Comparison: PM vs JONSWAP</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background">Theoretical Background</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#piersonmoskowitz-pm-spectrum">Pierson–Moskowitz (PM) Spectrum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jonswap-spectrum">🌐 JONSWAP Spectrum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Interactive Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-interpretation">Output Interpretation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6 Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-estimation-of-wave-spectra-and-significant-wave-height-hs">Interactive Estimation of Wave Spectra and Significant Wave Height (Hs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Purpose</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Models Implemented</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">Interactive Inputs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Outputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">7. Self-Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-spectrum-simulation-quiz-questions">🌊 Wave Spectrum Simulation — Quiz Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-1-gravitational-acceleration">🧠 Quiz 1: Gravitational Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-2-purpose-of-pm-spectrum">🧠 Quiz 2: Purpose of PM Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-3-role-of-alpha-in-pm-spectrum">🧠 Quiz 3: Role of \( \alpha \) in PM Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-4-role-of-sigma-in-jonswap-spectrum">🧠 Quiz 4: Role of \( \sigma \) in JONSWAP Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-5-enhancement-factor-gamma">🧠 Quiz 5: Enhancement Factor \( \gamma \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-6-significant-wave-height-h-s">🧠 Quiz 6: Significant Wave Height \( H_s \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-7-zeroth-moment-m-0">🧠 Quiz 7: Zeroth Moment \( m_0 \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-8-default-wind-speed-u-10">🧠 Quiz 8: Default Wind Speed \( U_{10} \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-9-purpose-of-interact-function">🧠 Quiz 9: Purpose of <code class="docutils literal notranslate"><span class="pre">interact</span></code> Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-gravitational-acceleration">❓ Question 1: Gravitational Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-purpose-of-nondim-wave-height-fetch-x-hat">❓ Question 2: Purpose of <code class="docutils literal notranslate"><span class="pre">nondim_wave_height_fetch(X_hat)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-formula-for-x-hat">❓ Question 3: Formula for ( X_{\hat} )</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-output-of-duration-limited-wave-v-t">❓ Question 4: Output of <code class="docutils literal notranslate"><span class="pre">duration_limited_wave(V,</span> <span class="pre">t)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-role-of-constants-a-and-b">❓ Question 5: Role of Constants A and B</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-purpose-of-plot-usace-wave">❓ Question 6: Purpose of <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-units-conversion-in-plot-usace-wave">❓ Question 7: Units Conversion in <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-final-selection-logic">❓ Question 8: Final Selection Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9-interactive-controls">❓ Question 9: Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-10-spm-wave-height-functions">❓ Question 10: SPM Wave Height Functions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-5-coastal-engineering-wave-prediction">
+<h1>Chapter 5 Coastal Engineering: Wave Prediction<a class="headerlink" href="#chapter-5-coastal-engineering-wave-prediction" title="Link to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#1.-Introduction"><span class="xref myst">Introduction: Wave Prediction</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Simulation"><span class="xref myst">Simulation: Wave Prediction</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Self-Assessment"><span class="xref myst">Self-Assessment</span></a></p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="wind-wave-prediction">
+<a class="reference internal image-reference" href="../_images/WindPredictionImage.png"><img alt="Descriptive alt text for accessibility" src="../_images/WindPredictionImage.png" style="width: 600px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">**Figure 5.6 **: Wind Wave Prediction.</span><a class="headerlink" href="#wind-wave-prediction" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="wind-driven-waves-characteristics-formation-and-modeling">
+<h3>🌬️ Wind-Driven Waves: Characteristics, Formation, and Modeling<a class="headerlink" href="#wind-driven-waves-characteristics-formation-and-modeling" title="Link to this heading">#</a></h3>
+</section>
+<section id="what-are-wind-driven-waves">
+<h3>1. What Are Wind-Driven Waves?<a class="headerlink" href="#what-are-wind-driven-waves" title="Link to this heading">#</a></h3>
+<p>Wind-driven waves are surface gravity waves generated by wind blowing across the ocean, sea, or large lake surfaces. They result from energy transfer from the atmosphere to the water surface.</p>
+</section>
+<hr class="docutils" />
+<section id="key-characteristics">
+<h3>2. Key Characteristics<a class="headerlink" href="#key-characteristics" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Typical Range (Fully Developed Sea)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Height</strong></p></td>
+<td><p>0.3 m to 15 m</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Period</strong></p></td>
+<td><p>3 s to 15 s</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wavelength</strong></p></td>
+<td><p>10 m to 200 m</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Speed</strong></p></td>
+<td><p>10 km/h to 50+ km/h</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Wave height</strong>: Vertical distance from trough to crest</p></li>
+<li><p><strong>Wave period</strong>: Time between successive crests</p></li>
+<li><p><strong>Wave length</strong>: Horizontal distance between crests</p></li>
+<li><p><strong>Wave direction</strong>: Aligned with prevailing wind</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="theories-of-energy-transfer">
+<h3>3. Theories of Energy Transfer<a class="headerlink" href="#theories-of-energy-transfer" title="Link to this heading">#</a></h3>
+<section id="phillips-mechanism">
+<h4>3.1 Phillips Mechanism<a class="headerlink" href="#phillips-mechanism" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Initiates wave formation via random pressure fluctuations from turbulent wind.</p></li>
+</ul>
+</section>
+<section id="miles-mechanism">
+<h4>3.2 Miles Mechanism<a class="headerlink" href="#miles-mechanism" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Describes exponential wave growth due to shear instability.</p></li>
+</ul>
+</section>
+<section id="wave-wave-interactions">
+<h4>3.3 Wave-Wave Interactions<a class="headerlink" href="#wave-wave-interactions" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Redistribute energy across wave frequencies, forming swell.</p></li>
+</ul>
+</section>
+<section id="stokes-drift-momentum-transfer">
+<h4>3.4 Stokes Drift &amp; Momentum Transfer<a class="headerlink" href="#stokes-drift-momentum-transfer" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Wind stress induces orbital motion and net energy propagation.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="factors-limiting-wave-growth">
+<h3>4. Factors Limiting Wave Growth<a class="headerlink" href="#factors-limiting-wave-growth" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Limiting Factor</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Wind Speed</strong></p></td>
+<td><p>Must exceed wave speed for energy transfer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fetch</strong></p></td>
+<td><p>Distance over which wind blows uninterrupted.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Duration</strong></p></td>
+<td><p>Time wind has been blowing over the fetch.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Water Depth</strong></p></td>
+<td><p>Shallow water alters wave speed and causes breaking.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wave Saturation</strong></p></td>
+<td><p>Fully developed sea limits further growth.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="models-for-estimating-wind-waves">
+<h3>5. Models for Estimating Wind Waves<a class="headerlink" href="#models-for-estimating-wind-waves" title="Link to this heading">#</a></h3>
+<section id="first-generation-models">
+<h4>5.1 First-Generation Models<a class="headerlink" href="#first-generation-models" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Empirical (e.g., Sverdrup-Munk-Bretschneider).</p></li>
+</ul>
+</section>
+<section id="second-generation-models">
+<h4>5.2 Second-Generation Models<a class="headerlink" href="#second-generation-models" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Include parameterized nonlinear interactions (e.g., SWAMP).</p></li>
+</ul>
+</section>
+<section id="third-generation-models">
+<h4>5.3 Third-Generation Models<a class="headerlink" href="#third-generation-models" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Solve full spectral energy balance:</p>
+<ul>
+<li><p><strong>WAM</strong></p></li>
+<li><p><strong>SWAN</strong></p></li>
+<li><p><strong>WAVEWATCH III</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="deep-learning-models">
+<h4>5.4 Deep Learning Models<a class="headerlink" href="#deep-learning-models" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Neural networks (e.g., Swin Transformer) trained on reanalysis data.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="empirical-estimation-example">
+<h3>6. Empirical Estimation Example<a class="headerlink" href="#empirical-estimation-example" title="Link to this heading">#</a></h3>
+<p>For wind speed of 37 km/h over a 139 km fetch for 10 hours:</p>
+<ul class="simple">
+<li><p><strong>Wave Height</strong> ≈ 1.5 m</p></li>
+<li><p><strong>Wavelength</strong> ≈ 33.8 m</p></li>
+<li><p><strong>Period</strong> ≈ 5.7 s</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="usace-wind-wave-prediction">
+<h3>7. USACE Wind Wave Prediction<a class="headerlink" href="#usace-wind-wave-prediction" title="Link to this heading">#</a></h3>
+<section id="sources">
+<h4>7.1 Sources<a class="headerlink" href="#sources" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>SACEM1984</strong>: Empirical breaker indices.</p></li>
+<li><p><strong>USACE2002</strong>: Hindcast modeling and empirical methods.</p></li>
+</ul>
+</section>
+<section id="empirical-prediction">
+<h4>7.2 Empirical Prediction<a class="headerlink" href="#empirical-prediction" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Based on wind speed, fetch, and duration.</p></li>
+<li><p>Uses dimensionless curves and breaker indices.</p></li>
+</ul>
+</section>
+<section id="numerical-modeling-wis">
+<h4>7.3 Numerical Modeling (WIS)<a class="headerlink" href="#numerical-modeling-wis" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Models: <strong>WAM</strong>, <strong>WAVEWATCH III</strong></p></li>
+<li><p>Driven by ERA5 wind fields.</p></li>
+<li><p>Outputs: Hm0, Tm, αp</p></li>
+</ul>
+</section>
+<section id="modeling-features">
+<h4>7.4 Modeling Features<a class="headerlink" href="#modeling-features" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Wind adjusted to 10 m elevation.</p></li>
+<li><p>Includes storm systems.</p></li>
+<li><p>Hindcast: 1980–2021</p></li>
+</ul>
+</section>
+<section id="accuracy-metrics">
+<h4>7.5 Accuracy Metrics<a class="headerlink" href="#accuracy-metrics" title="Link to this heading">#</a></h4>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Bias</p></th>
+<th class="head"><p>RMSE</p></th>
+<th class="head"><p>Correlation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hm0</p></td>
+<td><p>±0.01–0.23 m</p></td>
+<td><p>0.26–0.53 m</p></td>
+<td><p>&gt;0.90</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tm</p></td>
+<td><p>±0.7–1.6 s</p></td>
+<td><p>1.0–2.6 s</p></td>
+<td><p>~0.75</p></td>
+</tr>
+<tr class="row-even"><td><p>Wind Speed</p></td>
+<td><p>±1 m/s</p></td>
+<td><p>1.5–3 m/s</p></td>
+<td><p>~0.80</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="comparative-table-usace-vs-other-models">
+<h3>8. Comparative Table: USACE vs Other Models<a class="headerlink" href="#comparative-table-usace-vs-other-models" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature / Model Aspect</p></th>
+<th class="head"><p>USACE (WIS, FUNWAVE, CMS-Wave)</p></th>
+<th class="head"><p>SWAN (Delft)</p></th>
+<th class="head"><p>WAVEWATCH III (NOAA)</p></th>
+<th class="head"><p>WAM (ECMWF)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Model Type</strong></p></td>
+<td><p>Phase-averaged / resolving</p></td>
+<td><p>Phase-averaged</p></td>
+<td><p>Phase-averaged</p></td>
+<td><p>Phase-averaged</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Primary Use</strong></p></td>
+<td><p>Coastal engineering, wakes</p></td>
+<td><p>Nearshore transformation</p></td>
+<td><p>Global forecasting</p></td>
+<td><p>Regional/global forecasting</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wind Input</strong></p></td>
+<td><p>ERA5, local</p></td>
+<td><p>User-defined</p></td>
+<td><p>NCEP</p></td>
+<td><p>ECMWF</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wave Processes</strong></p></td>
+<td><p>Wind input, dissipation, interaction</p></td>
+<td><p>Friction, breaking</p></td>
+<td><p>Wind input, dissipation</p></td>
+<td><p>Wind input, dissipation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Resolution</strong></p></td>
+<td><p>High (nearshore)</p></td>
+<td><p>Flexible</p></td>
+<td><p>~0.5° global</p></td>
+<td><p>~0.25° global</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Wave Types</strong></p></td>
+<td><p>Wind waves, wakes, tsunami</p></td>
+<td><p>Wind waves, swell</p></td>
+<td><p>Wind waves, swell</p></td>
+<td><p>Wind waves, swell</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Computational Demand</strong></p></td>
+<td><p>Moderate to high</p></td>
+<td><p>Moderate</p></td>
+<td><p>High</p></td>
+<td><p>High</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>User Interface</strong></p></td>
+<td><p>SMS, Wiki, CLI</p></td>
+<td><p>GUI + CLI</p></td>
+<td><p>CLI</p></td>
+<td><p>CLI</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Strengths</strong></p></td>
+<td><p>Coastal detail, wake modeling</p></td>
+<td><p>Easy setup</p></td>
+<td><p>Global coverage</p></td>
+<td><p>Spectral accuracy</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Limitations</strong></p></td>
+<td><p>Complex setup, limited global</p></td>
+<td><p>Deep water limits</p></td>
+<td><p>Nearshore detail</p></td>
+<td><p>Coastal tuning needed</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="references">
+<h3>9. References<a class="headerlink" href="#references" title="Link to this heading">#</a></h3>
+<p><span id="id1">[]</span> generation explains initial wave formation from turbulent wind pressure, predicting linear energy growth. <span id="id2">[]</span> generation models exponential wave growth via shear instability and critical layer theory. <span id="id3">[]</span>  defines a spectral shape for fully developed seas, enabling wave forecasting from wind data. <span id="id4">[]</span> provides empirical and numerical methods for predicting wave height and period under varied wind conditions. <span id="id5">[<a class="reference internal" href="../markdown.html#id96" title="United States Army Corps of Engineers. Shore Protection Manual. Volume I and II. Waterways Experiment Station, Coastal Engineering Research Center, Vicksburg, Mississippi, 4th edition, 1984. Prepared for the Department of the Army, US Army Corps of Engineers, Washington, DC.">of Engineers, 1984</a>]</span> uses breaker indices and fetch-based curves to estimate design wave forces and wave growth. Together, these works span theory, spectrum modeling, and practical design tools for wind-driven wave prediction.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>2. Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<section id="wind-driven-wave-height-estimator-empirical-comparison-tool">
+<h3>🌬️ Wind-Driven Wave Height Estimator — Empirical Comparison Tool<a class="headerlink" href="#wind-driven-wave-height-estimator-empirical-comparison-tool" title="Link to this heading">#</a></h3>
+<p>This Jupyter Notebook provides a comparative visualization of estimated <strong>significant wave heights</strong> using multiple empirical models based on wind conditions. It empowers learners to explore how wind speed, fetch length, and wind duration influence the formation of surface gravity waves in open water bodies.</p>
+<hr class="docutils" />
+<section id="purpose">
+<h4>💡 Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h4>
+<p>The simulation helps answer questions like:</p>
+<ul class="simple">
+<li><p>How do different empirical formulas estimate wave height?</p></li>
+<li><p>How do wind fetch and duration influence wave growth?</p></li>
+<li><p>How do rapid changes in wind speed affect offshore conditions?</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-it-works">
+<h3>⚙️ How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Defines wave height estimation methods:</p>
+<ul>
+<li><p><strong>Simple empirical</strong>: proportional to ( V^2 )</p></li>
+<li><p><strong>Duration-limited</strong>: includes time-limited growth</p></li>
+<li><p><strong>Fetch-limited</strong>: includes distance over which wind acts</p></li>
+<li><p><strong>NOAA rule of thumb</strong>: quick linear scale of wave height</p></li>
+</ul>
+</li>
+<li><p>Allows user to adjust wind speed (<code class="docutils literal notranslate"><span class="pre">V</span></code>), fetch (<code class="docutils literal notranslate"><span class="pre">F</span></code>), and duration (<code class="docutils literal notranslate"><span class="pre">D</span></code>)</p></li>
+<li><p>Computes height estimates and displays comparison bar chart</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="inputs">
+<h3>🎛️ Inputs<a class="headerlink" href="#inputs" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">V</span></code> (m/s)</p></td>
+<td><p>Wind speed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">F</span></code> (m)</p></td>
+<td><p>Fetch distance — length of water exposed to wind</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">D</span></code> (hr)</p></td>
+<td><p>Duration of wind blowing</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="models-implemented">
+<h4>Models Implemented<a class="headerlink" href="#models-implemented" title="Link to this heading">#</a></h4>
+<p>The following empirical formulas are used to estimate wave height ( H ):</p>
+<ul class="simple">
+<li><p><strong>Simple Empirical</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+H = 0.025 \cdot V^2
+\)</span>$
+A basic quadratic fit for quick estimation.</p></li>
+<li><p><strong>Duration Limited</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+H = 0.0146 \cdot D^{5/7} \cdot V^{9/7}
+\)</span>$
+Appropriate when wave growth is constrained by how long the wind blows.</p></li>
+<li><p><strong>Fetch Limited</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+H = 0.0163 \cdot \sqrt{F / 1000} \cdot V
+\)</span>$
+Models cases where the fetch is the limiting factor for wave development.</p></li>
+<li><p><strong>NOAA Rule of Thumb</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+H = 0.3 \cdot V
+\)</span>$
+A quick linear approximation often used in engineering estimates.</p></li>
+</ul>
+<blockquote>
+<div><p>🔍 <em>Units:</em><br />
+( V ) = Wind speed (m/s),<br />
+( F ) = Fetch length (m),<br />
+( D ) = Wind duration (hr)</p>
+</div></blockquote>
+<hr class="docutils" />
+</section>
+<section id="interactive-controls">
+<h4>🎛 Interactive Controls<a class="headerlink" href="#interactive-controls" title="Link to this heading">#</a></h4>
+<p>Use the sliders below to adjust:</p>
+<ul class="simple">
+<li><p><strong>Wind Speed</strong> (5–50 m/s)</p></li>
+<li><p><strong>Fetch Length</strong> (1,000–500,000 m)</p></li>
+<li><p><strong>Wind Duration</strong> (1–24 hours)
+Each setting dynamically updates the chart, helping you compare how wave height predictions vary by method.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="output-visualization">
+<h4>📊 Output Visualization<a class="headerlink" href="#output-visualization" title="Link to this heading">#</a></h4>
+<p>The bar chart shows estimated wave heights (in meters) from each model for the selected wind conditions. Values are labeled above each bar to enhance clarity and comparison.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="how-to-interpret">
+<h3>🧭 How to Interpret<a class="headerlink" href="#how-to-interpret" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Higher wind speeds</strong> → consistently higher wave heights</p></li>
+<li><p><strong>Fetch-limited vs duration-limited</strong>: shows whether spatial or temporal constraints dominate</p></li>
+<li><p>Helps understand method sensitivity and idealized estimates</p></li>
+<li><p>Useful for rapid planning, initial design screening, and educational purposes</p></li>
+</ul>
+<blockquote>
+<div><p><em>This tool makes empirical wave theory accessible and visually comparable — helpful for coastal engineers, planners, and students.</em></p>
+</div></blockquote>
+</section>
+</section>
+<section id="id6">
+<h2>3. Simulation<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="wind-generated-wave-height-estimator-empirical-model-comparison-tool">
+<h3>🌬️ Wind-Generated Wave Height Estimator — Empirical model Comparison Tool<a class="headerlink" href="#wind-generated-wave-height-estimator-empirical-model-comparison-tool" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="what-it-is">
+<h3>🧠 What It Is<a class="headerlink" href="#what-it-is" title="Link to this heading">#</a></h3>
+<p>An interactive visualization tool that compares multiple empirical formulas for estimating <strong>wind-driven wave height</strong> based on:</p>
+<ul class="simple">
+<li><p>Wind speed (<code class="docutils literal notranslate"><span class="pre">V</span></code>)</p></li>
+<li><p>Fetch distance (<code class="docutils literal notranslate"><span class="pre">F</span></code>)</p></li>
+<li><p>Storm duration (<code class="docutils literal notranslate"><span class="pre">D</span></code>)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h3>⚙️ How It Works<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Implements simple mathematical formulas to estimate wave height using different assumptions:</p>
+<ul>
+<li><p><strong>Simple empirical</strong>: basic velocity-based relation</p></li>
+<li><p><strong>Duration-limited</strong>: depends on how long the wind blows</p></li>
+<li><p><strong>Fetch-limited</strong>: depends on horizontal water exposure</p></li>
+<li><p><strong>NOAA estimate</strong>: rule-of-thumb formula</p></li>
+</ul>
+</li>
+<li><p>Uses <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> to create sliders for input control</p></li>
+<li><p>Plots results in a comparison bar chart using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id8">
+<h3>🎛️ Inputs<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Wind</span> <span class="pre">Speed</span> <span class="pre">(V)</span></code></p></td>
+<td><p>Speed of wind (m/s)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Fetch</span> <span class="pre">(F)</span></code></p></td>
+<td><p>Distance over which wind acts (m)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Duration</span> <span class="pre">(D)</span></code></p></td>
+<td><p>Length of time wind blows (hours)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="outputs">
+<h3>📊 Outputs<a class="headerlink" href="#outputs" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Bar chart</strong> comparing wave height estimates (in meters) across methods</p></li>
+<li><p><strong>Value labels</strong> above each bar for quick readability</p></li>
+<li><p><strong>Chart title</strong> displays current input values for context</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id9">
+<h3>🧭 How to Interpret<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wave height increases</strong> with wind speed and fetch</p></li>
+<li><p>Different methods may yield significantly different estimates depending on input conditions</p></li>
+<li><p>Helps highlight the sensitivity of wave growth to time and distance</p></li>
+<li><p>Useful for preliminary wave modeling, design screening, and student exploration</p></li>
+</ul>
+<blockquote>
+<div><p><em>This tool offers a clear, adjustable view of how waves grow under wind—across simplified empirical approaches.</em></p>
+</div></blockquote>
+</section>
+</section>
+<section id="id10">
+<h2>4 Simulation<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<section id="usace-wave-prediction-tool-cem-dimensional-analysis">
+<h3>USACE Wave Prediction Tool (CEM Dimensional Analysis)<a class="headerlink" href="#usace-wave-prediction-tool-cem-dimensional-analysis" title="Link to this heading">#</a></h3>
+<p>This notebook provides an interactive tool to estimate <strong>significant wave height (Hs)</strong> and <strong>peak wave period (Tp)</strong> using fetch- and duration-limited empirical formulas derived from the <strong>U.S. Army Corps of Engineers Coastal Engineering Manual (CEM)</strong>.</p>
+<hr class="docutils" />
+<section id="objective">
+<h4>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h4>
+<p>To calculate and visualize wave height development under different wind conditions by considering:</p>
+<ul class="simple">
+<li><p><strong>Wind speed (V)</strong> at 10 meters elevation</p></li>
+<li><p><strong>Fetch length (F)</strong> — the uninterrupted distance over which wind blows</p></li>
+<li><p><strong>Wind duration (t)</strong> — the time wind has been blowing at a constant speed and direction</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="theoretical-framework">
+<h4>Theoretical Framework<a class="headerlink" href="#theoretical-framework" title="Link to this heading">#</a></h4>
+<p>The predictions are based on <strong>non-dimensional empirical relationships</strong> fitted to observed data from the Shore Protection Manual (SPM), expressed as:</p>
+<ul class="simple">
+<li><p><strong>Non-dimensional fetch</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\hat{X} = \frac{g \cdot F}{V^2}
+\)</span>$</p></li>
+<li><p><strong>Non-dimensional duration</strong>:<br />
+$<span class="math notranslate nohighlight">\(
+\hat{T} = \frac{g \cdot t}{V}
+\)</span>$</p></li>
+</ul>
+<p>The empirical formulas for <strong>non-dimensional wave height (<span class="math notranslate nohighlight">\(( \hat{H} \)</span>))</strong> and <strong>non-dimensional period (<span class="math notranslate nohighlight">\(( \hat{T}_p \)</span>))</strong> are:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Ĥ</span> <span class="o">=</span> <span class="mf">0.283</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mf">0.0125</span> <span class="o">*</span> <span class="n">X̂</span><span class="p">)</span>
+<span class="n">T̂p</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mf">0.077</span> <span class="o">*</span> <span class="n">X̂</span><span class="o">**</span><span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">IntSlider</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>  <span class="c1"># gravitational acceleration (m/s²)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">nondim_wave_height_fetch</span><span class="p">(</span><span class="n">X_hat</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.283</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="mf">0.0125</span> <span class="o">*</span> <span class="n">X_hat</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nondim_wave_period_fetch</span><span class="p">(</span><span class="n">X_hat</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="mf">0.077</span> <span class="o">*</span> <span class="n">X_hat</span><span class="o">**</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nondim_wave_height_duration</span><span class="p">(</span><span class="n">T_hat</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.283</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="mf">0.0125</span> <span class="o">*</span> <span class="n">T_hat</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nondim_wave_period_duration</span><span class="p">(</span><span class="n">T_hat</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="mf">0.077</span> <span class="o">*</span> <span class="n">T_hat</span><span class="o">**</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># Constants</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>  <span class="c1"># gravitational acceleration</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">0.283</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mf">0.0125</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_limited_wave</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">):</span>
+    <span class="n">X_hat</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="n">F</span> <span class="o">/</span> <span class="n">V</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">H_hat</span> <span class="o">=</span> <span class="n">nondim_wave_height_fetch</span><span class="p">(</span><span class="n">X_hat</span><span class="p">)</span>
+    <span class="n">T_hat</span> <span class="o">=</span> <span class="n">nondim_wave_period_fetch</span><span class="p">(</span><span class="n">X_hat</span><span class="p">)</span>
+    <span class="n">Hs</span> <span class="o">=</span> <span class="n">H_hat</span> <span class="o">*</span> <span class="n">V</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">g</span>
+    <span class="n">Tp</span> <span class="o">=</span> <span class="n">T_hat</span> <span class="o">*</span> <span class="n">V</span> <span class="o">/</span> <span class="n">g</span>
+    <span class="k">return</span> <span class="n">Hs</span><span class="p">,</span> <span class="n">Tp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">duration_limited_wave</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">T_hat</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="n">V</span>
+    <span class="n">H_hat</span> <span class="o">=</span> <span class="n">nondim_wave_height_duration</span><span class="p">(</span><span class="n">T_hat</span><span class="p">)</span>
+    <span class="n">T_hat_val</span> <span class="o">=</span> <span class="n">nondim_wave_period_duration</span><span class="p">(</span><span class="n">T_hat</span><span class="p">)</span>
+    <span class="n">Hs</span> <span class="o">=</span> <span class="n">H_hat</span> <span class="o">*</span> <span class="n">V</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">g</span>
+    <span class="n">Tp</span> <span class="o">=</span> <span class="n">T_hat_val</span> <span class="o">*</span> <span class="n">V</span> <span class="o">/</span> <span class="n">g</span>
+    <span class="k">return</span> <span class="n">Hs</span><span class="p">,</span> <span class="n">Tp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_limited_wave_heightspm</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fetch-limited wave height (SPM)&quot;&quot;&quot;</span>
+    <span class="n">gF_V2</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="n">F</span> <span class="o">/</span> <span class="n">V</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">B</span> <span class="o">*</span> <span class="n">gF_V2</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">g</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">duration_limited_wave_heightspm</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Duration-limited wave height (SPM)&quot;&quot;&quot;</span>
+    <span class="n">gt_V</span> <span class="o">=</span> <span class="n">g</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="n">V</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">B</span> <span class="o">*</span> <span class="n">gt_V</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">g</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_usace_wave</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">F_km</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">t_hr</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">F_km</span> <span class="o">*</span> <span class="mi">1000</span>  <span class="c1"># km → m</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t_hr</span> <span class="o">*</span> <span class="mi">3600</span>  <span class="c1"># hr → s</span>
+    <span class="n">Hf</span><span class="p">,</span> <span class="n">Tf</span> <span class="o">=</span> <span class="n">fetch_limited_wave</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+    <span class="n">Hd</span><span class="p">,</span> <span class="n">Td</span> <span class="o">=</span> <span class="n">duration_limited_wave</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">Hs</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">Hf</span><span class="p">,</span> <span class="n">Hd</span><span class="p">)</span>
+    <span class="n">Tp</span> <span class="o">=</span> <span class="n">Tf</span> <span class="k">if</span> <span class="n">Hf</span> <span class="o">&lt;</span> <span class="n">Hd</span> <span class="k">else</span> <span class="n">Td</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌬️ Wind Speed: </span><span class="si">{</span><span class="n">V</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🌊 Fetch-Limited Hs: </span><span class="si">{</span><span class="n">Hf</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Tp: </span><span class="si">{</span><span class="n">Tf</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⏱️ Duration-Limited Hs: </span><span class="si">{</span><span class="n">Hd</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Tp: </span><span class="si">{</span><span class="n">Td</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Selected Hs: </span><span class="si">{</span><span class="n">Hs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Tp: </span><span class="si">{</span><span class="n">Tp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+    <span class="c1"># Plotting</span>
+    <span class="n">fetch_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="n">Hs_fetch</span> <span class="o">=</span> <span class="p">[</span><span class="n">fetch_limited_wave</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">f</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fetch_range</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fetch_range</span><span class="p">,</span> <span class="n">Hs_fetch</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Fetch-Limited Hs&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Hd</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Duration-Limited Hs = </span><span class="si">{</span><span class="n">Hd</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">Hs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Selected Hs = </span><span class="si">{</span><span class="n">Hs</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Fetch (km)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Significant Wave Height Hs (m)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;USACE Wave Height Prediction (CEM Dimensional Analysis)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">spm_FetchlimitedHs</span><span class="o">=</span><span class="n">fetch_limited_wave_heightspm</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+    <span class="n">spm_DurationlimitedHs</span><span class="o">=</span><span class="n">duration_limited_wave_heightspm</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;spm_FetchlimitedHs=&quot;</span><span class="p">,</span><span class="n">spm_FetchlimitedHs</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;spm_DurationlimitedHs=&quot;</span><span class="p">,</span><span class="n">spm_DurationlimitedHs</span><span class="p">)</span>
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">plot_usace_wave</span><span class="p">,</span>
+    <span class="n">V</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Wind Speed (m/s)&quot;</span><span class="p">),</span>
+    <span class="n">F_km</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Fetch (km)&quot;</span><span class="p">),</span>
+    <span class="n">t_hr</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Duration (hr)&quot;</span><span class="p">)</span>
+<span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "73516f5e9e344aeeb37336799092867e", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_usace_wave(V=15, F_km=50, t_hr=3)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2>5 Simulation<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<section id="interactive-wave-spectrum-comparison-pm-vs-jonswap">
+<h3>Interactive Wave Spectrum Comparison: PM vs JONSWAP<a class="headerlink" href="#interactive-wave-spectrum-comparison-pm-vs-jonswap" title="Link to this heading">#</a></h3>
+<p>This Jupyter Notebook demonstrates the fundamental differences between the <strong>Pierson–Moskowitz (PM)</strong> and <strong>JONSWAP</strong> wave spectra—two widely used models to describe the energy distribution of sea surface waves generated by wind.</p>
+<hr class="docutils" />
+<section id="learning-objectives">
+<h4>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Understand the theoretical foundations of the PM and JONSWAP spectra</p></li>
+<li><p>Explore how wave energy is distributed over frequency for varying wind speeds</p></li>
+<li><p>Examine the effect of spectral peakedness through the JONSWAP γ (gamma) parameter</p></li>
+<li><p>Interpret real-time spectral plots using interactive sliders</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="theoretical-background">
+<h4>Theoretical Background<a class="headerlink" href="#theoretical-background" title="Link to this heading">#</a></h4>
+</section>
+<section id="piersonmoskowitz-pm-spectrum">
+<h4>Pierson–Moskowitz (PM) Spectrum<a class="headerlink" href="#piersonmoskowitz-pm-spectrum" title="Link to this heading">#</a></h4>
+<p>The PM spectrum models a <strong>fully developed sea</strong> where waves have grown under consistent wind over time and space. It assumes the sea is in equilibrium and is controlled primarily by wind speed ( U_{10} ) at 10 meters above the surface.</p>
+<p>The spectral shape is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{PM}(f) = \alpha \frac{g^2}{(2\pi)^4} f^{-5} \exp\left[-1.25 \left( \frac{f_p}{f} \right)^4 \right]
+\]</div>
+</section>
+<hr class="docutils" />
+<section id="jonswap-spectrum">
+<h4>🌐 JONSWAP Spectrum<a class="headerlink" href="#jonswap-spectrum" title="Link to this heading">#</a></h4>
+<p>The <strong>JONSWAP spectrum</strong> extends PM by introducing a <strong>peak enhancement factor ( \gamma )</strong> to account for young, developing seas. It narrows the spectral peak and adds asymmetry to the distribution.</p>
+<p>The expression is:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{JONSWAP}(f) = S_{PM}(f) \cdot \gamma^{\exp \left[ - \frac{(f - f_p)^2}{2 \sigma^2 f_p^2} \right]}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p>( f_p ): peak frequency, inversely related to wind speed</p></li>
+<li><p>( \gamma ): spectral peakedness (default ≈ 3.3)</p></li>
+<li><p>( \sigma ): frequency-dependent bandwidth (0.07 if ( f &lt; f_p ), else 0.09)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h4>Interactive Controls<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
+<p>Use the sliders below to change:</p>
+<ul class="simple">
+<li><p><strong>Wind speed ( U_{10} )</strong> (in m/s): influences peak frequency and total energy</p></li>
+<li><p><strong>Gamma (γ)</strong>: controls the sharpness and intensity of the JONSWAP peak</p></li>
+</ul>
+<p>The simulation will regenerate and plot:</p>
+<ul class="simple">
+<li><p>The <strong>PM spectrum</strong> (solid line)</p></li>
+<li><p>The <strong>JONSWAP spectrum</strong> (dashed line)</p></li>
+</ul>
+<p>All curves are plotted against frequency in Hz with spectral energy density in m²/Hz.</p>
+</section>
+<hr class="docutils" />
+<section id="output-interpretation">
+<h4>Output Interpretation<a class="headerlink" href="#output-interpretation" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Higher wind speeds</strong> shift the peak to lower frequencies (longer waves)</p></li>
+<li><p><strong>Larger γ values</strong> sharpen the JONSWAP spectrum, representing more “peaky” wave energy</p></li>
+<li><p>The <strong>difference between spectra</strong> highlights stages of sea development (from growing to fully developed)</p></li>
+</ul>
+<hr class="docutils" />
+<p>💡 Use this tool to explore real-world sea state dynamics, inform spectral wave modeling, or just to build intuition about wave growth under varying wind conditions.</p>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 🔹 Cell 1: Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">FloatRangeSlider</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="c1"># 🔹 Cell 2: Spectrum Functions</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.0081</span>
+<span class="n">sigma_low</span> <span class="o">=</span> <span class="mf">0.07</span>
+<span class="n">sigma_high</span> <span class="o">=</span> <span class="mf">0.09</span>
+
+<span class="c1"># Pierson–Moskowitz Spectrum</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pm_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">):</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">g</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.83</span> <span class="o">*</span> <span class="n">U10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">fp</span> <span class="o">/</span> <span class="n">f</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># JONSWAP Spectrum</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">jonswap_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">g</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.83</span> <span class="o">*</span> <span class="n">U10</span><span class="p">)</span>
+    <span class="n">S_pm</span> <span class="o">=</span> <span class="n">pm_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">f</span> <span class="o">&lt;=</span> <span class="n">fp</span><span class="p">,</span> <span class="n">sigma_low</span><span class="p">,</span> <span class="n">sigma_high</span><span class="p">)</span>
+    <span class="n">exponent</span> <span class="o">=</span> <span class="o">-</span><span class="p">((</span><span class="n">f</span> <span class="o">-</span> <span class="n">fp</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">fp</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">peak_enhancement</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">S_pm</span> <span class="o">*</span> <span class="n">peak_enhancement</span>
+<span class="c1"># 🔹 Cell 3: Plot and Calculate Hs from Both Spectra</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_and_estimate</span><span class="p">(</span><span class="n">U10</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span> <span class="n">freq_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)):</span>
+    <span class="n">f_min</span><span class="p">,</span> <span class="n">f_max</span> <span class="o">=</span> <span class="n">freq_range</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">f_min</span><span class="p">,</span> <span class="n">f_max</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+    <span class="c1"># Compute spectra</span>
+    <span class="n">S_pm</span> <span class="o">=</span> <span class="n">pm_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">)</span>
+    <span class="n">S_jonswap</span> <span class="o">=</span> <span class="n">jonswap_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+
+    <span class="c1"># Integrate spectra to get Hs</span>
+    <span class="n">m0_pm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">S_pm</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">Hs_pm</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m0_pm</span><span class="p">)</span>
+
+    <span class="n">m0_js</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">S_jonswap</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">Hs_js</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m0_js</span><span class="p">)</span>
+
+    <span class="c1"># Plot spectra</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">S_pm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;PM Spectrum (Hs = </span><span class="si">{</span><span class="n">Hs_pm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m)&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">S_jonswap</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;JONSWAP Spectrum (γ = </span><span class="si">{</span><span class="n">gamma</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, Hs = </span><span class="si">{</span><span class="n">Hs_js</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m)&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Spectral Energy Density $S(f)$ (m²/Hz)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Wave Spectra Comparison at U10 = </span><span class="si">{</span><span class="n">U10</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 🔹 Cell 4: Interactive Sliders</span>
+<span class="n">interact</span><span class="p">(</span>
+    <span class="n">plot_and_estimate</span><span class="p">,</span>
+    <span class="n">U10</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Wind Speed (m/s)&quot;</span><span class="p">),</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mf">3.3</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">7.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gamma (γ)&quot;</span><span class="p">),</span>
+    <span class="n">freq_range</span><span class="o">=</span><span class="n">FloatRangeSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="nb">min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Freq Range (Hz)&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "613d34f5163c492fa0b108a60e5e2b27", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.plot_and_estimate(U10=15.0, gamma=3.3, freq_range=(0.05, 1.5))&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Defining the Spectrum based on observation data and then estimating the significante wave height</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id13">
+<h2>6 Simulation<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<section id="interactive-estimation-of-wave-spectra-and-significant-wave-height-hs">
+<h3>Interactive Estimation of Wave Spectra and Significant Wave Height (Hs)<a class="headerlink" href="#interactive-estimation-of-wave-spectra-and-significant-wave-height-hs" title="Link to this heading">#</a></h3>
+<p>This notebook compares two fundamental ocean wave spectral models—<strong>Pierson–Moskowitz (PM)</strong> and <strong>JONSWAP</strong>—to investigate how wind speed, frequency range, and spectral peakedness affect wave energy distributions and significant wave height estimations.</p>
+<p>–</p>
+<section id="id14">
+<h4>Purpose<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
+<p>Explore how:</p>
+<ul class="simple">
+<li><p>Wind speed at 10 meters height ((U_{10}))</p></li>
+<li><p>JONSWAP peak enhancement factor (( \gamma ))</p></li>
+<li><p>Frequency range of interest
+influence wave spectra shape and total wave energy.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="id15">
+<h4>Models Implemented<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>PM Spectrum</strong>: Represents a fully developed sea state assuming equilibrium under steady wind.
+$<span class="math notranslate nohighlight">\(
+S_{PM}(f) = \alpha \cdot \frac{g^2}{(2\pi)^4} f^{-5} \exp\left[-1.25 \left( \frac{f_p}{f} \right)^4 \right]
+\)</span>$</p></li>
+<li><p><strong>JONSWAP Spectrum</strong>: Enhances the PM spectrum to represent growing seas using a peakedness factor ( \gamma ).</p>
+<div class="math notranslate nohighlight">
+\[
+  S_{JONSWAP}(f) = S_{PM}(f) \cdot \gamma^{\exp \left( - \frac{(f - f_p)^2}{2 \sigma^2 f_p^2} \right)}
+  \]</div>
+</li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="interactive-inputs">
+<h4>Interactive Inputs<a class="headerlink" href="#interactive-inputs" title="Link to this heading">#</a></h4>
+<p>Use the sliders to control:</p>
+<ul class="simple">
+<li><p><strong>Wind Speed (m/s)</strong>: Adjusts the peak frequency and energy content</p></li>
+<li><p><strong>Gamma (γ)</strong>: Defines the sharpness of the spectral peak (JONSWAP only)</p></li>
+<li><p><strong>Frequency Range (Hz)</strong>: Allows you to focus on a specific slice of the spectrum</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="id16">
+<h4>Outputs<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>A line plot comparing the PM and JONSWAP spectra across frequencies</p></li>
+<li><p>Real-time calculation and display of:</p>
+<ul>
+<li><p><strong><span class="math notranslate nohighlight">\(( H_s \)</span>)</strong> from PM spectrum: <span class="math notranslate nohighlight">\(( H_s = 4 \sqrt{m_0} \)</span>)</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(( H_s \)</span>)</strong> from JONSWAP spectrum
+The area under each curve is numerically integrated to yield the zeroth moment ( m_0 ), which is then used to estimate the significant wave height.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<p>📘 <em>Insight</em>: A higher gamma value leads to a narrower, more peaked spectrum—often representing developing wind seas. The PM spectrum is smoother and broader, idealized for fully developed conditions.</p>
+<div class="cell tag_thebe-init docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.0081</span>
+<span class="n">sigma_low</span> <span class="o">=</span> <span class="mf">0.07</span>
+<span class="n">sigma_high</span> <span class="o">=</span> <span class="mf">0.09</span>
+
+<span class="c1"># Example: Station 41001 (East of Cape Hatteras)</span>
+<span class="n">station_id</span> <span class="o">=</span> <span class="s1">&#39;41001&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://www.ndbc.noaa.gov/data/realtime2/</span><span class="si">{</span><span class="n">station_id</span><span class="si">}</span><span class="s1">.txt&#39;</span>
+
+<span class="c1"># Read the data, skipping header rows</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">na_values</span><span class="o">=</span><span class="s1">&#39;MM&#39;</span><span class="p">)</span>
+
+<span class="c1"># Rename columns for clarity</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;YY&#39;</span><span class="p">,</span> <span class="s1">&#39;MM&#39;</span><span class="p">,</span> <span class="s1">&#39;DD&#39;</span><span class="p">,</span> <span class="s1">&#39;hh&#39;</span><span class="p">,</span> <span class="s1">&#39;mm&#39;</span><span class="p">,</span> <span class="s1">&#39;WDIR&#39;</span><span class="p">,</span> <span class="s1">&#39;WSPD&#39;</span><span class="p">,</span> <span class="s1">&#39;GST&#39;</span><span class="p">,</span> <span class="s1">&#39;WVHT&#39;</span><span class="p">,</span> <span class="s1">&#39;DPD&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;APD&#39;</span><span class="p">,</span> <span class="s1">&#39;MWD&#39;</span><span class="p">,</span> <span class="s1">&#39;PRES&#39;</span><span class="p">,</span> <span class="s1">&#39;ATMP&#39;</span><span class="p">,</span> <span class="s1">&#39;WTMP&#39;</span><span class="p">,</span> <span class="s1">&#39;DEWP&#39;</span><span class="p">,</span> <span class="s1">&#39;VIS&#39;</span><span class="p">,</span> <span class="s1">&#39;PTDY&#39;</span><span class="p">,</span><span class="s1">&#39;TIDE&#39;</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;YY&#39;</span><span class="p">:</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;MM&#39;</span><span class="p">:</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;DD&#39;</span><span class="p">:</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;hh&#39;</span><span class="p">:</span><span class="s1">&#39;hour&#39;</span><span class="p">,</span> <span class="s1">&#39;mm&#39;</span><span class="p">:</span><span class="s1">&#39;minute&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Combine date columns into a timestamp</span>
+<span class="c1">#df[&#39;timestamp&#39;] = pd.to_datetime(df[[&#39;YY&#39;, &#39;MM&#39;, &#39;DD&#39;, &#39;hh&#39;, &#39;mm&#39;]])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;hour&#39;</span><span class="p">,</span> <span class="s1">&#39;minute&#39;</span><span class="p">]])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Preview wave height and dominant period</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;WVHT&#39;</span><span class="p">,</span> <span class="s1">&#39;DPD&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># Use most recent record</span>
+<span class="n">latest</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;WVHT&#39;</span><span class="p">,</span> <span class="s1">&#39;DPD&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">Hs_obs</span> <span class="o">=</span> <span class="n">latest</span><span class="p">[</span><span class="s1">&#39;WVHT&#39;</span><span class="p">]</span>
+<span class="n">Tp_obs</span> <span class="o">=</span> <span class="n">latest</span><span class="p">[</span><span class="s1">&#39;DPD&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observed Hs: </span><span class="si">{</span><span class="n">Hs_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Tp: </span><span class="si">{</span><span class="n">Tp_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pm_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">):</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">g</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.83</span> <span class="o">*</span> <span class="n">U10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="o">**-</span><span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">fp</span> <span class="o">/</span> <span class="n">f</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">jonswap_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">3.3</span><span class="p">):</span>
+    <span class="n">S_pm</span> <span class="o">=</span> <span class="n">pm_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10</span><span class="p">)</span>
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">g</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.83</span> <span class="o">*</span> <span class="n">U10</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">f</span> <span class="o">&lt;=</span> <span class="n">fp</span><span class="p">,</span> <span class="n">sigma_low</span><span class="p">,</span> <span class="n">sigma_high</span><span class="p">)</span>
+    <span class="n">enhancement</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">f</span> <span class="o">-</span> <span class="n">fp</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">fp</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">S_pm</span> <span class="o">*</span> <span class="n">enhancement</span>
+
+<span class="c1"># Estimate wind speed from PM inverse formula</span>
+<span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span>
+<span class="n">U10_pm</span> <span class="o">=</span> <span class="p">(</span><span class="n">Tp_obs</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">0.83</span><span class="p">)</span>
+
+<span class="c1"># Estimate peak frequency</span>
+<span class="n">fp</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">Tp_obs</span>
+
+<span class="c1"># Print estimated parameters</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated from NOAA data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Hs = </span><span class="si">{</span><span class="n">Hs_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Tp = </span><span class="si">{</span><span class="n">Tp_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  fp = </span><span class="si">{</span><span class="n">fp</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Estimated U10 (PM) = </span><span class="si">{</span><span class="n">U10_pm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+
+<span class="c1"># Frequency range</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="c1"># Compute spectra</span>
+<span class="n">S_pm</span> <span class="o">=</span> <span class="n">pm_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10_pm</span><span class="p">)</span>
+<span class="n">S_jonswap</span> <span class="o">=</span> <span class="n">jonswap_spectrum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">U10_pm</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">3.3</span><span class="p">)</span>
+<span class="c1"># Integrate to get Hs from spectra</span>
+<span class="n">m0_pm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">S_pm</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">m0_js</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">S_jonswap</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">Hs_pm</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m0_pm</span><span class="p">)</span>
+<span class="n">Hs_js</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">m0_js</span><span class="p">)</span>
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">S_pm</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;PM (Hs ≈ </span><span class="si">{</span><span class="n">Hs_pm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m)&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">S_jonswap</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;JONSWAP γ=3.3 (Hs ≈ </span><span class="si">{</span><span class="n">Hs_js</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m)&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Spectral Density $S(f)$ (m²/Hz)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">station_id</span><span class="si">}</span><span class="s2"> Buoy Spectral Comparison</span><span class="se">\n</span><span class="s2">Observed Hs: </span><span class="si">{</span><span class="n">Hs_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m, Tp: </span><span class="si">{</span><span class="n">Tp_obs</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s, U10 pm: </span><span class="si">{</span><span class="n">U10_pm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     WVHT  DPD
+timestamp                     
+2025-07-21 22:50:00   1.5  7.0
+2025-07-21 22:20:00   1.3  7.0
+2025-07-21 21:50:00   1.4  7.0
+2025-07-21 21:20:00   1.4  7.0
+2025-07-21 20:50:00   1.4  7.0
+Observed Hs: 1.50 m, Tp: 7.00 s
+Estimated from NOAA data:
+  Hs = 1.50 m
+  Tp = 7.00 s
+  fp = 0.143 Hz
+  Estimated U10 (PM) = 13.17 m/s
+</pre></div>
+</div>
+<img alt="../_images/424bef48e94aed22011e01225f899ca83123c8818ab7d14817d6b5c7ab5ad752.png" src="../_images/424bef48e94aed22011e01225f899ca83123c8818ab7d14817d6b5c7ab5ad752.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="self-assessment">
+<h2>7. Self-Assessment<a class="headerlink" href="#self-assessment" title="Link to this heading">#</a></h2>
+</section>
+<section id="wave-spectrum-simulation-quiz-questions">
+<h2>🌊 Wave Spectrum Simulation — Quiz Questions<a class="headerlink" href="#wave-spectrum-simulation-quiz-questions" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="quiz-1-gravitational-acceleration">
+<h3>🧠 Quiz 1: Gravitational Acceleration<a class="headerlink" href="#quiz-1-gravitational-acceleration" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> What is the value of gravitational acceleration \( g \) used in the spectrum functions?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 8.91 m/s²</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 10.0 m/s²</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> 9.81 m/s²</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 9.8 m/s²</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-2-purpose-of-pm-spectrum">
+<h3>🧠 Quiz 2: Purpose of PM Spectrum<a class="headerlink" href="#quiz-2-purpose-of-pm-spectrum" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> What is the purpose of the Pierson–Moskowitz (PM) spectrum function?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> To model wave spectra for fully developed seas</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To calculate wind speed at different altitudes</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To simulate the effect of gamma on wave height</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To determine the frequency range of ocean waves</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-3-role-of-alpha-in-pm-spectrum">
+<h3>🧠 Quiz 3: Role of \( \alpha \) in PM Spectrum<a class="headerlink" href="#quiz-3-role-of-alpha-in-pm-spectrum" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> In the PM spectrum formula, what does \( \alpha \) represent?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> A constant related to wave energy</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The gravitational acceleration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The wind speed at 10 meters above sea level</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The frequency of ocean waves</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-4-role-of-sigma-in-jonswap-spectrum">
+<h3>🧠 Quiz 4: Role of \( \sigma \) in JONSWAP Spectrum<a class="headerlink" href="#quiz-4-role-of-sigma-in-jonswap-spectrum" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> What is the role of \( \sigma \) in the JONSWAP spectrum?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> It determines the width of the frequency peak</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> It represents the gravitational acceleration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> It scales the wave energy density</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> It defines the wind speed at 10 meters above sea level</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-5-enhancement-factor-gamma">
+<h3>🧠 Quiz 5: Enhancement Factor \( \gamma \)<a class="headerlink" href="#quiz-5-enhancement-factor-gamma" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> What is the enhancement factor \( \gamma \) used for in the JONSWAP spectrum?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> To amplify the energy near the peak frequency</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To calculate the gravitational acceleration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To determine the wind speed at 10 meters</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To scale the frequency range</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-6-significant-wave-height-h-s">
+<h3>🧠 Quiz 6: Significant Wave Height \( H_s \)<a class="headerlink" href="#quiz-6-significant-wave-height-h-s" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> How is the significant wave height \( H_s \) calculated from the wave spectrum?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> \( H_s = 4 \sqrt{m_0} \)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> \( H_s = 2 \sqrt{m_0} \)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> \( H_s = m_0 / 4 \)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> \( H_s = m_0 \times 4 \)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-7-zeroth-moment-m-0">
+<h3>🧠 Quiz 7: Zeroth Moment \( m_0 \)<a class="headerlink" href="#quiz-7-zeroth-moment-m-0" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> What does the zeroth moment \( m_0 \) of the wave spectrum represent?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> The total energy of the wave spectrum</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The peak frequency of the wave spectrum</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The width of the frequency peak</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The enhancement factor of the wave spectrum</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-8-default-wind-speed-u-10">
+<h3>🧠 Quiz 8: Default Wind Speed \( U_{10} \)<a class="headerlink" href="#quiz-8-default-wind-speed-u-10" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> What is the default value of wind speed \( U_{10} \) in the interactive plot?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> 15 m/s</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 10 m/s</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 20 m/s</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 5 m/s</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="quiz-9-purpose-of-interact-function">
+<h3>🧠 Quiz 9: Purpose of <code class="docutils literal notranslate"><span class="pre">interact</span></code> Function<a class="headerlink" href="#quiz-9-purpose-of-interact-function" title="Link to this heading">#</a></h3>
+<p><strong>Question:</strong> What is the purpose of the <code class="docutils literal notranslate"><span class="pre">interact</span></code> function in the code?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> To create interactive sliders for user input</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To calculate the wave spectrum</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To plot the wave spectra</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To integrate the wave spectrum</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="question-1-gravitational-acceleration">
+<h3>❓ Question 1: Gravitational Acceleration<a class="headerlink" href="#question-1-gravitational-acceleration" title="Link to this heading">#</a></h3>
+<p>What is the value of gravitational acceleration ( g ) used in the code?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 10.0 m/s²</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 8.91 m/s²</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> 9.81 m/s²</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> 9.8 m/s²</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-2-purpose-of-nondim-wave-height-fetch-x-hat">
+<h3>❓ Question 2: Purpose of <code class="docutils literal notranslate"><span class="pre">nondim_wave_height_fetch(X_hat)</span></code><a class="headerlink" href="#question-2-purpose-of-nondim-wave-height-fetch-x-hat" title="Link to this heading">#</a></h3>
+<p>What does the function <code class="docutils literal notranslate"><span class="pre">nondim_wave_height_fetch(X_hat)</span></code> calculate?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Non-dimensional wave height based on fetch</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Non-dimensional wave period based on fetch</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Dimensional wave height based on fetch</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Dimensional wave period based on fetch</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-3-formula-for-x-hat">
+<h3>❓ Question 3: Formula for ( X_{\hat} )<a class="headerlink" href="#question-3-formula-for-x-hat" title="Link to this heading">#</a></h3>
+<p>What is the formula used to calculate ( X_{\hat} ) in the fetch-limited wave function?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> ( X_{\hat} = \frac{g \cdot F}{V^2} )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> ( X_{\hat} = \frac{F}{g \cdot V^2} )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> ( X_{\hat} = \frac{V^2}{g \cdot F} )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> ( X_{\hat} = \frac{g \cdot V^2}{F} )</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-4-output-of-duration-limited-wave-v-t">
+<h3>❓ Question 4: Output of <code class="docutils literal notranslate"><span class="pre">duration_limited_wave(V,</span> <span class="pre">t)</span></code><a class="headerlink" href="#question-4-output-of-duration-limited-wave-v-t" title="Link to this heading">#</a></h3>
+<p>What does the function <code class="docutils literal notranslate"><span class="pre">duration_limited_wave(V,</span> <span class="pre">t)</span></code> return?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Significant wave height and wave period based on duration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Significant wave height and wave period based on fetch</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Non-dimensional wave height and wave period based on duration</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Non-dimensional wave height and wave period based on fetch</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-5-role-of-constants-a-and-b">
+<h3>❓ Question 5: Role of Constants A and B<a class="headerlink" href="#question-5-role-of-constants-a-and-b" title="Link to this heading">#</a></h3>
+<p>What do the constants <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">0.283</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">=</span> <span class="pre">0.0125</span></code> represent in the SPM formulas?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Empirical coefficients for wave height scaling</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Wind speed and fetch conversion factors</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Gravity and time scaling parameters</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plotting thresholds for wave height</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-6-purpose-of-plot-usace-wave">
+<h3>❓ Question 6: Purpose of <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code><a class="headerlink" href="#question-6-purpose-of-plot-usace-wave" title="Link to this heading">#</a></h3>
+<p>What is the purpose of the <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code> function?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> To plot fetch-limited and duration-limited wave heights and select the final wave height</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To calculate only fetch-limited wave height and period</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To calculate only duration-limited wave height and period</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> To interactively adjust wind speed without plotting</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-7-units-conversion-in-plot-usace-wave">
+<h3>❓ Question 7: Units Conversion in <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code><a class="headerlink" href="#question-7-units-conversion-in-plot-usace-wave" title="Link to this heading">#</a></h3>
+<p>How are fetch and duration converted before calculations?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Fetch: km → m, Duration: hr → s</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Fetch: m → km, Duration: s → hr</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Fetch: km → s, Duration: hr → m</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> No conversion is applied</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-8-final-selection-logic">
+<h3>❓ Question 8: Final Selection Logic<a class="headerlink" href="#question-8-final-selection-logic" title="Link to this heading">#</a></h3>
+<p>How is the final wave height ( H_s ) selected in the <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code> function?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> The minimum of fetch-limited and duration-limited ( H_s )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The maximum of fetch-limited and duration-limited ( H_s )</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> The average of both ( H_s ) values</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Always the fetch-limited ( H_s )</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-9-interactive-controls">
+<h3>❓ Question 9: Interactive Controls<a class="headerlink" href="#question-9-interactive-controls" title="Link to this heading">#</a></h3>
+<p>Which parameters are controlled by sliders in the interactive plot?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Wind speed, fetch (km), and duration (hr)</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Wave height, wave period, and gravity</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Fetch, duration, and plotting resolution</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Only wind speed</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="question-10-spm-wave-height-functions">
+<h3>❓ Question 10: SPM Wave Height Functions<a class="headerlink" href="#question-10-spm-wave-height-functions" title="Link to this heading">#</a></h3>
+<p>What do <code class="docutils literal notranslate"><span class="pre">fetch_limited_wave_heightspm</span></code> and <code class="docutils literal notranslate"><span class="pre">duration_limited_wave_heightspm</span></code> compute?</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Dimensional wave height using SPM formulas</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Non-dimensional wave period using SPM</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Wind speed and fetch ratios</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Interactive plot labels</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "satbastola/CivilEngineering_Tools",
+            ref: "HEAD",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-base-py"
+        },
+        kernelOptions: {
+            name: "conda-base-py",
+            path: "./Chap5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-base-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Scieche_harbourOscillation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Seiche and Harbour oscillation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TidalModelWave.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chapter 5 Coastal Engineering: Tidal Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-driven-waves-characteristics-formation-and-modeling">🌬️ Wind-Driven Waves: Characteristics, Formation, and Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-wind-driven-waves">1. What Are Wind-Driven Waves?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">2. Key Characteristics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theories-of-energy-transfer">3. Theories of Energy Transfer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phillips-mechanism">3.1 Phillips Mechanism</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#miles-mechanism">3.2 Miles Mechanism</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-wave-interactions">3.3 Wave-Wave Interactions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-drift-momentum-transfer">3.4 Stokes Drift &amp; Momentum Transfer</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#factors-limiting-wave-growth">4. Factors Limiting Wave Growth</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models-for-estimating-wind-waves">5. Models for Estimating Wind Waves</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#first-generation-models">5.1 First-Generation Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#second-generation-models">5.2 Second-Generation Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#third-generation-models">5.3 Third-Generation Models</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-learning-models">5.4 Deep Learning Models</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-estimation-example">6. Empirical Estimation Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usace-wind-wave-prediction">7. USACE Wind Wave Prediction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">7.1 Sources</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-prediction">7.2 Empirical Prediction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-modeling-wis">7.3 Numerical Modeling (WIS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-features">7.4 Modeling Features</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#accuracy-metrics">7.5 Accuracy Metrics</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparative-table-usace-vs-other-models">8. Comparative Table: USACE vs Other Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">9. References</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">2. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-driven-wave-height-estimator-empirical-comparison-tool">🌬️ Wind-Driven Wave Height Estimator — Empirical Comparison Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">💡 Purpose</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs">🎛️ Inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#models-implemented">Models Implemented</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-controls">🎛 Interactive Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-visualization">📊 Output Visualization</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-interpret">🧭 How to Interpret</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3. Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wind-generated-wave-height-estimator-empirical-model-comparison-tool">🌬️ Wind-Generated Wave Height Estimator — Empirical model Comparison Tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-it-is">🧠 What It Is</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">⚙️ How It Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">🎛️ Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outputs">📊 Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">🧭 How to Interpret</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4 Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usace-wave-prediction-tool-cem-dimensional-analysis">USACE Wave Prediction Tool (CEM Dimensional Analysis)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-framework">Theoretical Framework</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">5 Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-wave-spectrum-comparison-pm-vs-jonswap">Interactive Wave Spectrum Comparison: PM vs JONSWAP</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background">Theoretical Background</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#piersonmoskowitz-pm-spectrum">Pierson–Moskowitz (PM) Spectrum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jonswap-spectrum">🌐 JONSWAP Spectrum</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Interactive Controls</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-interpretation">Output Interpretation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6 Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-estimation-of-wave-spectra-and-significant-wave-height-hs">Interactive Estimation of Wave Spectra and Significant Wave Height (Hs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Purpose</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Models Implemented</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-inputs">Interactive Inputs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Outputs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-assessment">7. Self-Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wave-spectrum-simulation-quiz-questions">🌊 Wave Spectrum Simulation — Quiz Questions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-1-gravitational-acceleration">🧠 Quiz 1: Gravitational Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-2-purpose-of-pm-spectrum">🧠 Quiz 2: Purpose of PM Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-3-role-of-alpha-in-pm-spectrum">🧠 Quiz 3: Role of \( \alpha \) in PM Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-4-role-of-sigma-in-jonswap-spectrum">🧠 Quiz 4: Role of \( \sigma \) in JONSWAP Spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-5-enhancement-factor-gamma">🧠 Quiz 5: Enhancement Factor \( \gamma \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-6-significant-wave-height-h-s">🧠 Quiz 6: Significant Wave Height \( H_s \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-7-zeroth-moment-m-0">🧠 Quiz 7: Zeroth Moment \( m_0 \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-8-default-wind-speed-u-10">🧠 Quiz 8: Default Wind Speed \( U_{10} \)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiz-9-purpose-of-interact-function">🧠 Quiz 9: Purpose of <code class="docutils literal notranslate"><span class="pre">interact</span></code> Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-gravitational-acceleration">❓ Question 1: Gravitational Acceleration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-purpose-of-nondim-wave-height-fetch-x-hat">❓ Question 2: Purpose of <code class="docutils literal notranslate"><span class="pre">nondim_wave_height_fetch(X_hat)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-formula-for-x-hat">❓ Question 3: Formula for ( X_{\hat} )</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-output-of-duration-limited-wave-v-t">❓ Question 4: Output of <code class="docutils literal notranslate"><span class="pre">duration_limited_wave(V,</span> <span class="pre">t)</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-role-of-constants-a-and-b">❓ Question 5: Role of Constants A and B</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6-purpose-of-plot-usace-wave">❓ Question 6: Purpose of <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7-units-conversion-in-plot-usace-wave">❓ Question 7: Units Conversion in <code class="docutils literal notranslate"><span class="pre">plot_usace_wave</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8-final-selection-logic">❓ Question 8: Final Selection Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9-interactive-controls">❓ Question 9: Interactive Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-10-spm-wave-height-functions">❓ Question 10: SPM Wave Height Functions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Satish Bastola, UNO
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
